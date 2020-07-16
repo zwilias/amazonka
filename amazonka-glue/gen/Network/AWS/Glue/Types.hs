@@ -16,24 +16,24 @@ module Network.AWS.Glue.Types
       glue
 
     -- * Errors
-    , _ValidationException
-    , _AccessDeniedException
-    , _CrawlerRunningException
-    , _SchedulerTransitioningException
-    , _SchedulerRunningException
-    , _ConcurrentRunsExceededException
     , _NoScheduleException
-    , _OperationTimeoutException
-    , _CrawlerNotRunningException
-    , _VersionMismatchException
-    , _EntityNotFoundException
-    , _ConcurrentModificationException
-    , _SchedulerNotRunningException
-    , _InternalServiceException
-    , _InvalidInputException
-    , _ResourceNumberLimitExceededException
     , _IdempotentParameterMismatchException
     , _CrawlerStoppingException
+    , _ResourceNumberLimitExceededException
+    , _ConcurrentRunsExceededException
+    , _InternalServiceException
+    , _SchedulerNotRunningException
+    , _SchedulerTransitioningException
+    , _SchedulerRunningException
+    , _AccessDeniedException
+    , _CrawlerRunningException
+    , _ValidationException
+    , _CrawlerNotRunningException
+    , _VersionMismatchException
+    , _InvalidInputException
+    , _ConcurrentModificationException
+    , _EntityNotFoundException
+    , _OperationTimeoutException
     , _AlreadyExistsException
 
     -- * ConnectionPropertyKey
@@ -787,26 +787,58 @@ glue
           | has (hasStatus 509) e = Just "limit_exceeded"
           | otherwise = Nothing
 
--- | A value could not be validated.
+-- | There is no applicable schedule.
 --
 --
-_ValidationException :: AsError a => Getting (First ServiceError) a ServiceError
-_ValidationException
-  = _MatchServiceError glue "ValidationException"
+_NoScheduleException :: AsError a => Getting (First ServiceError) a ServiceError
+_NoScheduleException
+  = _MatchServiceError glue "NoScheduleException"
 
--- | Access to a resource was denied.
+-- | The same unique identifier was associated with two different records.
 --
 --
-_AccessDeniedException :: AsError a => Getting (First ServiceError) a ServiceError
-_AccessDeniedException
-  = _MatchServiceError glue "AccessDeniedException"
+_IdempotentParameterMismatchException :: AsError a => Getting (First ServiceError) a ServiceError
+_IdempotentParameterMismatchException
+  = _MatchServiceError glue
+      "IdempotentParameterMismatchException"
 
--- | The operation cannot be performed because the crawler is already running.
+-- | The specified crawler is stopping.
 --
 --
-_CrawlerRunningException :: AsError a => Getting (First ServiceError) a ServiceError
-_CrawlerRunningException
-  = _MatchServiceError glue "CrawlerRunningException"
+_CrawlerStoppingException :: AsError a => Getting (First ServiceError) a ServiceError
+_CrawlerStoppingException
+  = _MatchServiceError glue "CrawlerStoppingException"
+
+-- | A resource numerical limit was exceeded.
+--
+--
+_ResourceNumberLimitExceededException :: AsError a => Getting (First ServiceError) a ServiceError
+_ResourceNumberLimitExceededException
+  = _MatchServiceError glue
+      "ResourceNumberLimitExceededException"
+
+-- | Too many jobs are being run concurrently.
+--
+--
+_ConcurrentRunsExceededException :: AsError a => Getting (First ServiceError) a ServiceError
+_ConcurrentRunsExceededException
+  = _MatchServiceError glue
+      "ConcurrentRunsExceededException"
+
+-- | An internal service error occurred.
+--
+--
+_InternalServiceException :: AsError a => Getting (First ServiceError) a ServiceError
+_InternalServiceException
+  = _MatchServiceError glue "InternalServiceException"
+
+-- | The specified scheduler is not running.
+--
+--
+_SchedulerNotRunningException :: AsError a => Getting (First ServiceError) a ServiceError
+_SchedulerNotRunningException
+  = _MatchServiceError glue
+      "SchedulerNotRunningException"
 
 -- | The specified scheduler is transitioning.
 --
@@ -823,27 +855,26 @@ _SchedulerRunningException :: AsError a => Getting (First ServiceError) a Servic
 _SchedulerRunningException
   = _MatchServiceError glue "SchedulerRunningException"
 
--- | Too many jobs are being run concurrently.
+-- | Access to a resource was denied.
 --
 --
-_ConcurrentRunsExceededException :: AsError a => Getting (First ServiceError) a ServiceError
-_ConcurrentRunsExceededException
-  = _MatchServiceError glue
-      "ConcurrentRunsExceededException"
+_AccessDeniedException :: AsError a => Getting (First ServiceError) a ServiceError
+_AccessDeniedException
+  = _MatchServiceError glue "AccessDeniedException"
 
--- | There is no applicable schedule.
+-- | The operation cannot be performed because the crawler is already running.
 --
 --
-_NoScheduleException :: AsError a => Getting (First ServiceError) a ServiceError
-_NoScheduleException
-  = _MatchServiceError glue "NoScheduleException"
+_CrawlerRunningException :: AsError a => Getting (First ServiceError) a ServiceError
+_CrawlerRunningException
+  = _MatchServiceError glue "CrawlerRunningException"
 
--- | The operation timed out.
+-- | A value could not be validated.
 --
 --
-_OperationTimeoutException :: AsError a => Getting (First ServiceError) a ServiceError
-_OperationTimeoutException
-  = _MatchServiceError glue "OperationTimeoutException"
+_ValidationException :: AsError a => Getting (First ServiceError) a ServiceError
+_ValidationException
+  = _MatchServiceError glue "ValidationException"
 
 -- | The specified crawler is not running.
 --
@@ -860,12 +891,12 @@ _VersionMismatchException :: AsError a => Getting (First ServiceError) a Service
 _VersionMismatchException
   = _MatchServiceError glue "VersionMismatchException"
 
--- | A specified entity does not exist
+-- | The input provided was not valid.
 --
 --
-_EntityNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
-_EntityNotFoundException
-  = _MatchServiceError glue "EntityNotFoundException"
+_InvalidInputException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidInputException
+  = _MatchServiceError glue "InvalidInputException"
 
 -- | Two processes are trying to modify a resource simultaneously.
 --
@@ -875,50 +906,19 @@ _ConcurrentModificationException
   = _MatchServiceError glue
       "ConcurrentModificationException"
 
--- | The specified scheduler is not running.
+-- | A specified entity does not exist
 --
 --
-_SchedulerNotRunningException :: AsError a => Getting (First ServiceError) a ServiceError
-_SchedulerNotRunningException
-  = _MatchServiceError glue
-      "SchedulerNotRunningException"
+_EntityNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
+_EntityNotFoundException
+  = _MatchServiceError glue "EntityNotFoundException"
 
--- | An internal service error occurred.
+-- | The operation timed out.
 --
 --
-_InternalServiceException :: AsError a => Getting (First ServiceError) a ServiceError
-_InternalServiceException
-  = _MatchServiceError glue "InternalServiceException"
-
--- | The input provided was not valid.
---
---
-_InvalidInputException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidInputException
-  = _MatchServiceError glue "InvalidInputException"
-
--- | A resource numerical limit was exceeded.
---
---
-_ResourceNumberLimitExceededException :: AsError a => Getting (First ServiceError) a ServiceError
-_ResourceNumberLimitExceededException
-  = _MatchServiceError glue
-      "ResourceNumberLimitExceededException"
-
--- | The same unique identifier was associated with two different records.
---
---
-_IdempotentParameterMismatchException :: AsError a => Getting (First ServiceError) a ServiceError
-_IdempotentParameterMismatchException
-  = _MatchServiceError glue
-      "IdempotentParameterMismatchException"
-
--- | The specified crawler is stopping.
---
---
-_CrawlerStoppingException :: AsError a => Getting (First ServiceError) a ServiceError
-_CrawlerStoppingException
-  = _MatchServiceError glue "CrawlerStoppingException"
+_OperationTimeoutException :: AsError a => Getting (First ServiceError) a ServiceError
+_OperationTimeoutException
+  = _MatchServiceError glue "OperationTimeoutException"
 
 -- | A resource to be created or added already exists.
 --

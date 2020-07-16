@@ -33,8 +33,8 @@ module Network.AWS.EC2.DeleteSnapshot
       deleteSnapshot
     , DeleteSnapshot
     -- * Request Lenses
-    , deleDryRun
-    , deleSnapshotId
+    , dltsnpshtDryRun
+    , dltsnpshtSnapshotId
 
     -- * Destructuring the Response
     , deleteSnapshotResponse
@@ -49,32 +49,32 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteSnapshot' smart constructor.
-data DeleteSnapshot = DeleteSnapshot'{_deleDryRun ::
-                                      !(Maybe Bool),
-                                      _deleSnapshotId :: !Text}
+data DeleteSnapshot = DeleteSnapshot'{_dltsnpshtDryRun
+                                      :: !(Maybe Bool),
+                                      _dltsnpshtSnapshotId :: !Text}
                         deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteSnapshot' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'deleDryRun' - Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
+-- * 'dltsnpshtDryRun' - Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 --
--- * 'deleSnapshotId' - The ID of the EBS snapshot.
+-- * 'dltsnpshtSnapshotId' - The ID of the EBS snapshot.
 deleteSnapshot
-    :: Text -- ^ 'deleSnapshotId'
+    :: Text -- ^ 'dltsnpshtSnapshotId'
     -> DeleteSnapshot
 deleteSnapshot pSnapshotId_
-  = DeleteSnapshot'{_deleDryRun = Nothing,
-                    _deleSnapshotId = pSnapshotId_}
+  = DeleteSnapshot'{_dltsnpshtDryRun = Nothing,
+                    _dltsnpshtSnapshotId = pSnapshotId_}
 
 -- | Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
-deleDryRun :: Lens' DeleteSnapshot (Maybe Bool)
-deleDryRun = lens _deleDryRun (\ s a -> s{_deleDryRun = a})
+dltsnpshtDryRun :: Lens' DeleteSnapshot (Maybe Bool)
+dltsnpshtDryRun = lens _dltsnpshtDryRun (\ s a -> s{_dltsnpshtDryRun = a})
 
 -- | The ID of the EBS snapshot.
-deleSnapshotId :: Lens' DeleteSnapshot Text
-deleSnapshotId = lens _deleSnapshotId (\ s a -> s{_deleSnapshotId = a})
+dltsnpshtSnapshotId :: Lens' DeleteSnapshot Text
+dltsnpshtSnapshotId = lens _dltsnpshtSnapshotId (\ s a -> s{_dltsnpshtSnapshotId = a})
 
 instance AWSRequest DeleteSnapshot where
         type Rs DeleteSnapshot = DeleteSnapshotResponse
@@ -96,8 +96,8 @@ instance ToQuery DeleteSnapshot where
           = mconcat
               ["Action" =: ("DeleteSnapshot" :: ByteString),
                "Version" =: ("2016-11-15" :: ByteString),
-               "DryRun" =: _deleDryRun,
-               "SnapshotId" =: _deleSnapshotId]
+               "DryRun" =: _dltsnpshtDryRun,
+               "SnapshotId" =: _dltsnpshtSnapshotId]
 
 -- | /See:/ 'deleteSnapshotResponse' smart constructor.
 data DeleteSnapshotResponse = DeleteSnapshotResponse'

@@ -28,23 +28,20 @@ module Network.AWS.CertificateManagerPCA
     -- * Errors
     -- $errors
 
-    -- ** InvalidTagException
-    , _InvalidTagException
+    -- ** MalformedCertificateException
+    , _MalformedCertificateException
 
     -- ** MalformedCSRException
     , _MalformedCSRException
 
-    -- ** RequestAlreadyProcessedException
-    , _RequestAlreadyProcessedException
+    -- ** InvalidTagException
+    , _InvalidTagException
 
-    -- ** MalformedCertificateException
-    , _MalformedCertificateException
+    -- ** RequestInProgressException
+    , _RequestInProgressException
 
-    -- ** RequestFailedException
-    , _RequestFailedException
-
-    -- ** CertificateMismatchException
-    , _CertificateMismatchException
+    -- ** InvalidStateException
+    , _InvalidStateException
 
     -- ** TooManyTagsException
     , _TooManyTagsException
@@ -52,29 +49,32 @@ module Network.AWS.CertificateManagerPCA
     -- ** InvalidArgsException
     , _InvalidArgsException
 
-    -- ** RequestInProgressException
-    , _RequestInProgressException
-
-    -- ** ConcurrentModificationException
-    , _ConcurrentModificationException
-
-    -- ** InvalidNextTokenException
-    , _InvalidNextTokenException
-
-    -- ** InvalidARNException
-    , _InvalidARNException
-
-    -- ** InvalidPolicyException
-    , _InvalidPolicyException
+    -- ** CertificateMismatchException
+    , _CertificateMismatchException
 
     -- ** ResourceNotFoundException
     , _ResourceNotFoundException
 
-    -- ** InvalidStateException
-    , _InvalidStateException
+    -- ** InvalidARNException
+    , _InvalidARNException
+
+    -- ** RequestFailedException
+    , _RequestFailedException
+
+    -- ** RequestAlreadyProcessedException
+    , _RequestAlreadyProcessedException
+
+    -- ** InvalidNextTokenException
+    , _InvalidNextTokenException
+
+    -- ** ConcurrentModificationException
+    , _ConcurrentModificationException
 
     -- ** LimitExceededException
     , _LimitExceededException
+
+    -- ** InvalidPolicyException
+    , _InvalidPolicyException
 
     -- * Waiters
     -- $waiters

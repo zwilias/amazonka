@@ -37,9 +37,9 @@ module Network.AWS.Glue.GetTriggers
     , getTriggersResponse
     , GetTriggersResponse
     -- * Response Lenses
-    , gttrsTriggers
-    , gttrsNextToken
-    , gttrsResponseStatus
+    , gttrggrsrsTriggers
+    , gttrggrsrsNextToken
+    , gttrggrsrsResponseStatus
     ) where
 
 import Network.AWS.Glue.Types
@@ -87,10 +87,10 @@ gtsDependentJobName = lens _gtsDependentJobName (\ s a -> s{_gtsDependentJobName
 
 instance AWSPager GetTriggers where
         page rq rs
-          | stop (rs ^. gttrsNextToken) = Nothing
-          | stop (rs ^. gttrsTriggers) = Nothing
+          | stop (rs ^. gttrggrsrsNextToken) = Nothing
+          | stop (rs ^. gttrggrsrsTriggers) = Nothing
           | otherwise =
-            Just $ rq & gtsNextToken .~ rs ^. gttrsNextToken
+            Just $ rq & gtsNextToken .~ rs ^. gttrggrsrsNextToken
 
 instance AWSRequest GetTriggers where
         type Rs GetTriggers = GetTriggersResponse
@@ -130,40 +130,41 @@ instance ToQuery GetTriggers where
         toQuery = const mempty
 
 -- | /See:/ 'getTriggersResponse' smart constructor.
-data GetTriggersResponse = GetTriggersResponse'{_gttrsTriggers
+data GetTriggersResponse = GetTriggersResponse'{_gttrggrsrsTriggers
                                                 :: !(Maybe [Trigger]),
-                                                _gttrsNextToken ::
+                                                _gttrggrsrsNextToken ::
                                                 !(Maybe Text),
-                                                _gttrsResponseStatus :: !Int}
+                                                _gttrggrsrsResponseStatus ::
+                                                !Int}
                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetTriggersResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'gttrsTriggers' - A list of triggers for the specified job.
+-- * 'gttrggrsrsTriggers' - A list of triggers for the specified job.
 --
--- * 'gttrsNextToken' - A continuation token, if not all the requested triggers have yet been returned.
+-- * 'gttrggrsrsNextToken' - A continuation token, if not all the requested triggers have yet been returned.
 --
--- * 'gttrsResponseStatus' - -- | The response status code.
+-- * 'gttrggrsrsResponseStatus' - -- | The response status code.
 getTriggersResponse
-    :: Int -- ^ 'gttrsResponseStatus'
+    :: Int -- ^ 'gttrggrsrsResponseStatus'
     -> GetTriggersResponse
 getTriggersResponse pResponseStatus_
-  = GetTriggersResponse'{_gttrsTriggers = Nothing,
-                         _gttrsNextToken = Nothing,
-                         _gttrsResponseStatus = pResponseStatus_}
+  = GetTriggersResponse'{_gttrggrsrsTriggers = Nothing,
+                         _gttrggrsrsNextToken = Nothing,
+                         _gttrggrsrsResponseStatus = pResponseStatus_}
 
 -- | A list of triggers for the specified job.
-gttrsTriggers :: Lens' GetTriggersResponse [Trigger]
-gttrsTriggers = lens _gttrsTriggers (\ s a -> s{_gttrsTriggers = a}) . _Default . _Coerce
+gttrggrsrsTriggers :: Lens' GetTriggersResponse [Trigger]
+gttrggrsrsTriggers = lens _gttrggrsrsTriggers (\ s a -> s{_gttrggrsrsTriggers = a}) . _Default . _Coerce
 
 -- | A continuation token, if not all the requested triggers have yet been returned.
-gttrsNextToken :: Lens' GetTriggersResponse (Maybe Text)
-gttrsNextToken = lens _gttrsNextToken (\ s a -> s{_gttrsNextToken = a})
+gttrggrsrsNextToken :: Lens' GetTriggersResponse (Maybe Text)
+gttrggrsrsNextToken = lens _gttrggrsrsNextToken (\ s a -> s{_gttrggrsrsNextToken = a})
 
 -- | -- | The response status code.
-gttrsResponseStatus :: Lens' GetTriggersResponse Int
-gttrsResponseStatus = lens _gttrsResponseStatus (\ s a -> s{_gttrsResponseStatus = a})
+gttrggrsrsResponseStatus :: Lens' GetTriggersResponse Int
+gttrggrsrsResponseStatus = lens _gttrggrsrsResponseStatus (\ s a -> s{_gttrggrsrsResponseStatus = a})
 
 instance NFData GetTriggersResponse where

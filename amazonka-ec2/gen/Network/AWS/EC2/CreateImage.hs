@@ -31,12 +31,12 @@ module Network.AWS.EC2.CreateImage
       createImage
     , CreateImage
     -- * Request Lenses
-    , ciiNoReboot
-    , ciiDescription
-    , ciiBlockDeviceMappings
-    , ciiDryRun
-    , ciiInstanceId
-    , ciiName
+    , crtimgNoReboot
+    , crtimgDescription
+    , crtimgBlockDeviceMappings
+    , crtimgDryRun
+    , crtimgInstanceId
+    , crtimgName
 
     -- * Destructuring the Response
     , createImageResponse
@@ -54,64 +54,66 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createImage' smart constructor.
-data CreateImage = CreateImage'{_ciiNoReboot ::
+data CreateImage = CreateImage'{_crtimgNoReboot ::
                                 !(Maybe Bool),
-                                _ciiDescription :: !(Maybe Text),
-                                _ciiBlockDeviceMappings ::
+                                _crtimgDescription :: !(Maybe Text),
+                                _crtimgBlockDeviceMappings ::
                                 !(Maybe [BlockDeviceMapping]),
-                                _ciiDryRun :: !(Maybe Bool),
-                                _ciiInstanceId :: !Text, _ciiName :: !Text}
+                                _crtimgDryRun :: !(Maybe Bool),
+                                _crtimgInstanceId :: !Text,
+                                _crtimgName :: !Text}
                      deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateImage' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ciiNoReboot' - By default, Amazon EC2 attempts to shut down and reboot the instance before creating the image. If the 'No Reboot' option is set, Amazon EC2 doesn't shut down the instance before creating the image. When this option is used, file system integrity on the created image can't be guaranteed.
+-- * 'crtimgNoReboot' - By default, Amazon EC2 attempts to shut down and reboot the instance before creating the image. If the 'No Reboot' option is set, Amazon EC2 doesn't shut down the instance before creating the image. When this option is used, file system integrity on the created image can't be guaranteed.
 --
--- * 'ciiDescription' - A description for the new image.
+-- * 'crtimgDescription' - A description for the new image.
 --
--- * 'ciiBlockDeviceMappings' - The block device mappings. This parameter cannot be used to modify the encryption status of existing volumes or snapshots. To create an AMI with encrypted snapshots, use the 'CopyImage' action.
+-- * 'crtimgBlockDeviceMappings' - The block device mappings. This parameter cannot be used to modify the encryption status of existing volumes or snapshots. To create an AMI with encrypted snapshots, use the 'CopyImage' action.
 --
--- * 'ciiDryRun' - Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
+-- * 'crtimgDryRun' - Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 --
--- * 'ciiInstanceId' - The ID of the instance.
+-- * 'crtimgInstanceId' - The ID of the instance.
 --
--- * 'ciiName' - A name for the new image. Constraints: 3-128 alphanumeric characters, parentheses (()), square brackets ([]), spaces ( ), periods (.), slashes (/), dashes (-), single quotes ('), at-signs (@), or underscores(_)
+-- * 'crtimgName' - A name for the new image. Constraints: 3-128 alphanumeric characters, parentheses (()), square brackets ([]), spaces ( ), periods (.), slashes (/), dashes (-), single quotes ('), at-signs (@), or underscores(_)
 createImage
-    :: Text -- ^ 'ciiInstanceId'
-    -> Text -- ^ 'ciiName'
+    :: Text -- ^ 'crtimgInstanceId'
+    -> Text -- ^ 'crtimgName'
     -> CreateImage
 createImage pInstanceId_ pName_
-  = CreateImage'{_ciiNoReboot = Nothing,
-                 _ciiDescription = Nothing,
-                 _ciiBlockDeviceMappings = Nothing,
-                 _ciiDryRun = Nothing, _ciiInstanceId = pInstanceId_,
-                 _ciiName = pName_}
+  = CreateImage'{_crtimgNoReboot = Nothing,
+                 _crtimgDescription = Nothing,
+                 _crtimgBlockDeviceMappings = Nothing,
+                 _crtimgDryRun = Nothing,
+                 _crtimgInstanceId = pInstanceId_,
+                 _crtimgName = pName_}
 
 -- | By default, Amazon EC2 attempts to shut down and reboot the instance before creating the image. If the 'No Reboot' option is set, Amazon EC2 doesn't shut down the instance before creating the image. When this option is used, file system integrity on the created image can't be guaranteed.
-ciiNoReboot :: Lens' CreateImage (Maybe Bool)
-ciiNoReboot = lens _ciiNoReboot (\ s a -> s{_ciiNoReboot = a})
+crtimgNoReboot :: Lens' CreateImage (Maybe Bool)
+crtimgNoReboot = lens _crtimgNoReboot (\ s a -> s{_crtimgNoReboot = a})
 
 -- | A description for the new image.
-ciiDescription :: Lens' CreateImage (Maybe Text)
-ciiDescription = lens _ciiDescription (\ s a -> s{_ciiDescription = a})
+crtimgDescription :: Lens' CreateImage (Maybe Text)
+crtimgDescription = lens _crtimgDescription (\ s a -> s{_crtimgDescription = a})
 
 -- | The block device mappings. This parameter cannot be used to modify the encryption status of existing volumes or snapshots. To create an AMI with encrypted snapshots, use the 'CopyImage' action.
-ciiBlockDeviceMappings :: Lens' CreateImage [BlockDeviceMapping]
-ciiBlockDeviceMappings = lens _ciiBlockDeviceMappings (\ s a -> s{_ciiBlockDeviceMappings = a}) . _Default . _Coerce
+crtimgBlockDeviceMappings :: Lens' CreateImage [BlockDeviceMapping]
+crtimgBlockDeviceMappings = lens _crtimgBlockDeviceMappings (\ s a -> s{_crtimgBlockDeviceMappings = a}) . _Default . _Coerce
 
 -- | Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
-ciiDryRun :: Lens' CreateImage (Maybe Bool)
-ciiDryRun = lens _ciiDryRun (\ s a -> s{_ciiDryRun = a})
+crtimgDryRun :: Lens' CreateImage (Maybe Bool)
+crtimgDryRun = lens _crtimgDryRun (\ s a -> s{_crtimgDryRun = a})
 
 -- | The ID of the instance.
-ciiInstanceId :: Lens' CreateImage Text
-ciiInstanceId = lens _ciiInstanceId (\ s a -> s{_ciiInstanceId = a})
+crtimgInstanceId :: Lens' CreateImage Text
+crtimgInstanceId = lens _crtimgInstanceId (\ s a -> s{_crtimgInstanceId = a})
 
 -- | A name for the new image. Constraints: 3-128 alphanumeric characters, parentheses (()), square brackets ([]), spaces ( ), periods (.), slashes (/), dashes (-), single quotes ('), at-signs (@), or underscores(_)
-ciiName :: Lens' CreateImage Text
-ciiName = lens _ciiName (\ s a -> s{_ciiName = a})
+crtimgName :: Lens' CreateImage Text
+crtimgName = lens _crtimgName (\ s a -> s{_crtimgName = a})
 
 instance AWSRequest CreateImage where
         type Rs CreateImage = CreateImageResponse
@@ -137,13 +139,14 @@ instance ToQuery CreateImage where
           = mconcat
               ["Action" =: ("CreateImage" :: ByteString),
                "Version" =: ("2016-11-15" :: ByteString),
-               "NoReboot" =: _ciiNoReboot,
-               "Description" =: _ciiDescription,
+               "NoReboot" =: _crtimgNoReboot,
+               "Description" =: _crtimgDescription,
                toQuery
                  (toQueryList "BlockDeviceMapping" <$>
-                    _ciiBlockDeviceMappings),
-               "DryRun" =: _ciiDryRun,
-               "InstanceId" =: _ciiInstanceId, "Name" =: _ciiName]
+                    _crtimgBlockDeviceMappings),
+               "DryRun" =: _crtimgDryRun,
+               "InstanceId" =: _crtimgInstanceId,
+               "Name" =: _crtimgName]
 
 -- | /See:/ 'createImageResponse' smart constructor.
 data CreateImageResponse = CreateImageResponse'{_cirsImageId

@@ -16,14 +16,14 @@ module Network.AWS.MigrationHub.Types
       migrationHub
 
     -- * Errors
-    , _AccessDeniedException
     , _DryRunOperation
     , _PolicyErrorException
-    , _InternalServerError
-    , _InvalidInputException
-    , _ServiceUnavailableException
-    , _ResourceNotFoundException
+    , _AccessDeniedException
     , _UnauthorizedOperation
+    , _ResourceNotFoundException
+    , _ServiceUnavailableException
+    , _InvalidInputException
+    , _InternalServerError
 
     -- * ApplicationStatus
     , ApplicationStatus (..)
@@ -132,14 +132,6 @@ migrationHub
           | has (hasStatus 509) e = Just "limit_exceeded"
           | otherwise = Nothing
 
--- | You do not have sufficient access to perform this action.
---
---
-_AccessDeniedException :: AsError a => Getting (First ServiceError) a ServiceError
-_AccessDeniedException
-  = _MatchServiceError migrationHub
-      "AccessDeniedException"
-
 -- | Exception raised to indicate a successfully authorized action when the @DryRun@ flag is set to "true".
 --
 --
@@ -155,13 +147,37 @@ _PolicyErrorException
   = _MatchServiceError migrationHub
       "PolicyErrorException"
 
+-- | You do not have sufficient access to perform this action.
+--
+--
+_AccessDeniedException :: AsError a => Getting (First ServiceError) a ServiceError
+_AccessDeniedException
+  = _MatchServiceError migrationHub
+      "AccessDeniedException"
+
+-- | Exception raised to indicate a request was not authorized when the @DryRun@ flag is set to "true".
+--
+--
+_UnauthorizedOperation :: AsError a => Getting (First ServiceError) a ServiceError
+_UnauthorizedOperation
+  = _MatchServiceError migrationHub
+      "UnauthorizedOperation"
+
+-- | Exception raised when the request references a resource (ADS configuration, update stream, migration task, etc.) that does not exist in ADS (Application Discovery Service) or in Migration Hub's repository.
+--
+--
+_ResourceNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
+_ResourceNotFoundException
+  = _MatchServiceError migrationHub
+      "ResourceNotFoundException"
+
 -- | Exception raised when there is an internal, configuration, or dependency error encountered.
 --
 --
-_InternalServerError :: AsError a => Getting (First ServiceError) a ServiceError
-_InternalServerError
+_ServiceUnavailableException :: AsError a => Getting (First ServiceError) a ServiceError
+_ServiceUnavailableException
   = _MatchServiceError migrationHub
-      "InternalServerError"
+      "ServiceUnavailableException"
 
 -- | Exception raised when the provided input violates a policy constraint or is entered in the wrong format or data type.
 --
@@ -174,23 +190,7 @@ _InvalidInputException
 -- | Exception raised when there is an internal, configuration, or dependency error encountered.
 --
 --
-_ServiceUnavailableException :: AsError a => Getting (First ServiceError) a ServiceError
-_ServiceUnavailableException
+_InternalServerError :: AsError a => Getting (First ServiceError) a ServiceError
+_InternalServerError
   = _MatchServiceError migrationHub
-      "ServiceUnavailableException"
-
--- | Exception raised when the request references a resource (ADS configuration, update stream, migration task, etc.) that does not exist in ADS (Application Discovery Service) or in Migration Hub's repository.
---
---
-_ResourceNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
-_ResourceNotFoundException
-  = _MatchServiceError migrationHub
-      "ResourceNotFoundException"
-
--- | Exception raised to indicate a request was not authorized when the @DryRun@ flag is set to "true".
---
---
-_UnauthorizedOperation :: AsError a => Getting (First ServiceError) a ServiceError
-_UnauthorizedOperation
-  = _MatchServiceError migrationHub
-      "UnauthorizedOperation"
+      "InternalServerError"

@@ -20,23 +20,23 @@ module Network.AWS.Route53Domains
     -- * Errors
     -- $errors
 
-    -- ** InvalidInput
-    , _InvalidInput
+    -- ** UnsupportedTLD
+    , _UnsupportedTLD
 
     -- ** OperationLimitExceeded
     , _OperationLimitExceeded
 
-    -- ** DomainLimitExceeded
-    , _DomainLimitExceeded
-
-    -- ** UnsupportedTLD
-    , _UnsupportedTLD
-
     -- ** TLDRulesViolation
     , _TLDRulesViolation
 
+    -- ** InvalidInput
+    , _InvalidInput
+
     -- ** DuplicateRequest
     , _DuplicateRequest
+
+    -- ** DomainLimitExceeded
+    , _DomainLimitExceeded
 
     -- * Waiters
     -- $waiters

@@ -16,11 +16,11 @@ module Network.AWS.Discovery.Types
       discovery
 
     -- * Errors
-    , _AuthorizationErrorException
-    , _InvalidParameterException
-    , _InvalidParameterValueException
     , _ServerInternalErrorException
     , _OperationNotPermittedException
+    , _InvalidParameterException
+    , _AuthorizationErrorException
+    , _InvalidParameterValueException
     , _ResourceNotFoundException
 
     -- * AgentStatus
@@ -205,30 +205,6 @@ discovery
           | has (hasStatus 509) e = Just "limit_exceeded"
           | otherwise = Nothing
 
--- | The AWS user account does not have permission to perform the action. Check the IAM policy associated with this account.
---
---
-_AuthorizationErrorException :: AsError a => Getting (First ServiceError) a ServiceError
-_AuthorizationErrorException
-  = _MatchServiceError discovery
-      "AuthorizationErrorException"
-
--- | One or more parameters are not valid. Verify the parameters and try again.
---
---
-_InvalidParameterException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidParameterException
-  = _MatchServiceError discovery
-      "InvalidParameterException"
-
--- | The value of one or more parameters are either invalid or out of range. Verify the parameter values and try again.
---
---
-_InvalidParameterValueException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidParameterValueException
-  = _MatchServiceError discovery
-      "InvalidParameterValueException"
-
 -- | The server experienced an internal error. Try again.
 --
 --
@@ -244,6 +220,30 @@ _OperationNotPermittedException :: AsError a => Getting (First ServiceError) a S
 _OperationNotPermittedException
   = _MatchServiceError discovery
       "OperationNotPermittedException"
+
+-- | One or more parameters are not valid. Verify the parameters and try again.
+--
+--
+_InvalidParameterException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidParameterException
+  = _MatchServiceError discovery
+      "InvalidParameterException"
+
+-- | The AWS user account does not have permission to perform the action. Check the IAM policy associated with this account.
+--
+--
+_AuthorizationErrorException :: AsError a => Getting (First ServiceError) a ServiceError
+_AuthorizationErrorException
+  = _MatchServiceError discovery
+      "AuthorizationErrorException"
+
+-- | The value of one or more parameters are either invalid or out of range. Verify the parameter values and try again.
+--
+--
+_InvalidParameterValueException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidParameterValueException
+  = _MatchServiceError discovery
+      "InvalidParameterValueException"
 
 -- | The specified configuration ID was not located. Verify the configuration ID and try again.
 --

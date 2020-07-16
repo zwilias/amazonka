@@ -27,8 +27,8 @@ module Network.AWS.Glue.GetDatabase
       getDatabase
     , GetDatabase
     -- * Request Lenses
-    , gddCatalogId
-    , gddName
+    , gtdtbsCatalogId
+    , gtdtbsName
 
     -- * Destructuring the Response
     , getDatabaseResponse
@@ -46,32 +46,32 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getDatabase' smart constructor.
-data GetDatabase = GetDatabase'{_gddCatalogId ::
+data GetDatabase = GetDatabase'{_gtdtbsCatalogId ::
                                 !(Maybe Text),
-                                _gddName :: !Text}
+                                _gtdtbsName :: !Text}
                      deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetDatabase' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'gddCatalogId' - The ID of the Data Catalog in which the database resides. If none is supplied, the AWS account ID is used by default.
+-- * 'gtdtbsCatalogId' - The ID of the Data Catalog in which the database resides. If none is supplied, the AWS account ID is used by default.
 --
--- * 'gddName' - The name of the database to retrieve. For Hive compatibility, this should be all lowercase.
+-- * 'gtdtbsName' - The name of the database to retrieve. For Hive compatibility, this should be all lowercase.
 getDatabase
-    :: Text -- ^ 'gddName'
+    :: Text -- ^ 'gtdtbsName'
     -> GetDatabase
 getDatabase pName_
-  = GetDatabase'{_gddCatalogId = Nothing,
-                 _gddName = pName_}
+  = GetDatabase'{_gtdtbsCatalogId = Nothing,
+                 _gtdtbsName = pName_}
 
 -- | The ID of the Data Catalog in which the database resides. If none is supplied, the AWS account ID is used by default.
-gddCatalogId :: Lens' GetDatabase (Maybe Text)
-gddCatalogId = lens _gddCatalogId (\ s a -> s{_gddCatalogId = a})
+gtdtbsCatalogId :: Lens' GetDatabase (Maybe Text)
+gtdtbsCatalogId = lens _gtdtbsCatalogId (\ s a -> s{_gtdtbsCatalogId = a})
 
 -- | The name of the database to retrieve. For Hive compatibility, this should be all lowercase.
-gddName :: Lens' GetDatabase Text
-gddName = lens _gddName (\ s a -> s{_gddName = a})
+gtdtbsName :: Lens' GetDatabase Text
+gtdtbsName = lens _gtdtbsName (\ s a -> s{_gtdtbsName = a})
 
 instance AWSRequest GetDatabase where
         type Rs GetDatabase = GetDatabaseResponse
@@ -99,8 +99,8 @@ instance ToJSON GetDatabase where
         toJSON GetDatabase'{..}
           = object
               (catMaybes
-                 [("CatalogId" .=) <$> _gddCatalogId,
-                  Just ("Name" .= _gddName)])
+                 [("CatalogId" .=) <$> _gtdtbsCatalogId,
+                  Just ("Name" .= _gtdtbsName)])
 
 instance ToPath GetDatabase where
         toPath = const "/"

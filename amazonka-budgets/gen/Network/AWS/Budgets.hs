@@ -56,29 +56,29 @@ module Network.AWS.Budgets
     -- * Errors
     -- $errors
 
-    -- ** AccessDeniedException
-    , _AccessDeniedException
-
-    -- ** InvalidParameterException
-    , _InvalidParameterException
-
-    -- ** InternalErrorException
-    , _InternalErrorException
-
-    -- ** ExpiredNextTokenException
-    , _ExpiredNextTokenException
-
-    -- ** NotFoundException
-    , _NotFoundException
-
-    -- ** InvalidNextTokenException
-    , _InvalidNextTokenException
+    -- ** CreationLimitExceededException
+    , _CreationLimitExceededException
 
     -- ** DuplicateRecordException
     , _DuplicateRecordException
 
-    -- ** CreationLimitExceededException
-    , _CreationLimitExceededException
+    -- ** InvalidParameterException
+    , _InvalidParameterException
+
+    -- ** AccessDeniedException
+    , _AccessDeniedException
+
+    -- ** InternalErrorException
+    , _InternalErrorException
+
+    -- ** InvalidNextTokenException
+    , _InvalidNextTokenException
+
+    -- ** NotFoundException
+    , _NotFoundException
+
+    -- ** ExpiredNextTokenException
+    , _ExpiredNextTokenException
 
     -- * Waiters
     -- $waiters

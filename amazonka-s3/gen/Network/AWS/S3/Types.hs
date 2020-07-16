@@ -16,13 +16,13 @@ module Network.AWS.S3.Types
       s3
 
     -- * Errors
-    , _BucketAlreadyOwnedByYou
-    , _ObjectAlreadyInActiveTierError
     , _BucketAlreadyExists
-    , _ObjectNotInActiveTierError
-    , _NoSuchUpload
     , _NoSuchBucket
+    , _BucketAlreadyOwnedByYou
+    , _NoSuchUpload
+    , _ObjectNotInActiveTierError
     , _NoSuchKey
+    , _ObjectAlreadyInActiveTierError
 
     -- * Re-exported Types
     , module Network.AWS.S3.Internal
@@ -1018,35 +1018,35 @@ s3
           | has (hasStatus 509) e = Just "limit_exceeded"
           | otherwise = Nothing
 
+-- | The requested bucket name is not available. The bucket namespace is shared by all users of the system. Please select a different name and try again.
+_BucketAlreadyExists :: AsError a => Getting (First ServiceError) a ServiceError
+_BucketAlreadyExists
+  = _MatchServiceError s3 "BucketAlreadyExists"
+
+-- | The specified bucket does not exist.
+_NoSuchBucket :: AsError a => Getting (First ServiceError) a ServiceError
+_NoSuchBucket = _MatchServiceError s3 "NoSuchBucket"
+
 -- | Prism for BucketAlreadyOwnedByYou' errors.
 _BucketAlreadyOwnedByYou :: AsError a => Getting (First ServiceError) a ServiceError
 _BucketAlreadyOwnedByYou
   = _MatchServiceError s3 "BucketAlreadyOwnedByYou"
 
--- | This operation is not allowed against this storage tier
-_ObjectAlreadyInActiveTierError :: AsError a => Getting (First ServiceError) a ServiceError
-_ObjectAlreadyInActiveTierError
-  = _MatchServiceError s3
-      "ObjectAlreadyInActiveTierError"
-
--- | The requested bucket name is not available. The bucket namespace is shared by all users of the system. Please select a different name and try again.
-_BucketAlreadyExists :: AsError a => Getting (First ServiceError) a ServiceError
-_BucketAlreadyExists
-  = _MatchServiceError s3 "BucketAlreadyExists"
+-- | The specified multipart upload does not exist.
+_NoSuchUpload :: AsError a => Getting (First ServiceError) a ServiceError
+_NoSuchUpload = _MatchServiceError s3 "NoSuchUpload"
 
 -- | The source object of the COPY operation is not in the active tier and is only stored in Amazon Glacier.
 _ObjectNotInActiveTierError :: AsError a => Getting (First ServiceError) a ServiceError
 _ObjectNotInActiveTierError
   = _MatchServiceError s3 "ObjectNotInActiveTierError"
 
--- | The specified multipart upload does not exist.
-_NoSuchUpload :: AsError a => Getting (First ServiceError) a ServiceError
-_NoSuchUpload = _MatchServiceError s3 "NoSuchUpload"
-
--- | The specified bucket does not exist.
-_NoSuchBucket :: AsError a => Getting (First ServiceError) a ServiceError
-_NoSuchBucket = _MatchServiceError s3 "NoSuchBucket"
-
 -- | The specified key does not exist.
 _NoSuchKey :: AsError a => Getting (First ServiceError) a ServiceError
 _NoSuchKey = _MatchServiceError s3 "NoSuchKey"
+
+-- | This operation is not allowed against this storage tier
+_ObjectAlreadyInActiveTierError :: AsError a => Getting (First ServiceError) a ServiceError
+_ObjectAlreadyInActiveTierError
+  = _MatchServiceError s3
+      "ObjectAlreadyInActiveTierError"

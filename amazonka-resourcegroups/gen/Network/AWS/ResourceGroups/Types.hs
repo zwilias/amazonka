@@ -16,13 +16,13 @@ module Network.AWS.ResourceGroups.Types
       resourceGroups
 
     -- * Errors
-    , _ForbiddenException
-    , _NotFoundException
-    , _TooManyRequestsException
     , _InternalServerErrorException
-    , _MethodNotAllowedException
-    , _UnauthorizedException
+    , _TooManyRequestsException
+    , _ForbiddenException
     , _BadRequestException
+    , _UnauthorizedException
+    , _MethodNotAllowedException
+    , _NotFoundException
 
     -- * QueryType
     , QueryType (..)
@@ -96,23 +96,14 @@ resourceGroups
           | has (hasStatus 509) e = Just "limit_exceeded"
           | otherwise = Nothing
 
--- | The caller is not authorized to make the request.
+-- | An internal error occurred while processing the request.
 --
 --
-_ForbiddenException :: AsError a => Getting (First ServiceError) a ServiceError
-_ForbiddenException
+_InternalServerErrorException :: AsError a => Getting (First ServiceError) a ServiceError
+_InternalServerErrorException
   = _MatchServiceError resourceGroups
-      "ForbiddenException"
-      . hasStatus 403
-
--- | One or more resources specified in the request do not exist.
---
---
-_NotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
-_NotFoundException
-  = _MatchServiceError resourceGroups
-      "NotFoundException"
-      . hasStatus 404
+      "InternalServerErrorException"
+      . hasStatus 500
 
 -- | The caller has exceeded throttling limits.
 --
@@ -123,23 +114,23 @@ _TooManyRequestsException
       "TooManyRequestsException"
       . hasStatus 429
 
--- | An internal error occurred while processing the request.
+-- | The caller is not authorized to make the request.
 --
 --
-_InternalServerErrorException :: AsError a => Getting (First ServiceError) a ServiceError
-_InternalServerErrorException
+_ForbiddenException :: AsError a => Getting (First ServiceError) a ServiceError
+_ForbiddenException
   = _MatchServiceError resourceGroups
-      "InternalServerErrorException"
-      . hasStatus 500
+      "ForbiddenException"
+      . hasStatus 403
 
--- | The request uses an HTTP method which is not allowed for the specified resource.
+-- | The request does not comply with validation rules that are defined for the request parameters.
 --
 --
-_MethodNotAllowedException :: AsError a => Getting (First ServiceError) a ServiceError
-_MethodNotAllowedException
+_BadRequestException :: AsError a => Getting (First ServiceError) a ServiceError
+_BadRequestException
   = _MatchServiceError resourceGroups
-      "MethodNotAllowedException"
-      . hasStatus 405
+      "BadRequestException"
+      . hasStatus 400
 
 -- | The request has not been applied because it lacks valid authentication credentials for the target resource.
 --
@@ -150,11 +141,20 @@ _UnauthorizedException
       "UnauthorizedException"
       . hasStatus 401
 
--- | The request does not comply with validation rules that are defined for the request parameters.
+-- | The request uses an HTTP method which is not allowed for the specified resource.
 --
 --
-_BadRequestException :: AsError a => Getting (First ServiceError) a ServiceError
-_BadRequestException
+_MethodNotAllowedException :: AsError a => Getting (First ServiceError) a ServiceError
+_MethodNotAllowedException
   = _MatchServiceError resourceGroups
-      "BadRequestException"
-      . hasStatus 400
+      "MethodNotAllowedException"
+      . hasStatus 405
+
+-- | One or more resources specified in the request do not exist.
+--
+--
+_NotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
+_NotFoundException
+  = _MatchServiceError resourceGroups
+      "NotFoundException"
+      . hasStatus 404

@@ -60,23 +60,23 @@ module Network.AWS.ApplicationAutoScaling
     -- * Errors
     -- $errors
 
+    -- ** InternalServiceException
+    , _InternalServiceException
+
     -- ** ValidationException
     , _ValidationException
+
+    -- ** ObjectNotFoundException
+    , _ObjectNotFoundException
+
+    -- ** ConcurrentUpdateException
+    , _ConcurrentUpdateException
 
     -- ** FailedResourceAccessException
     , _FailedResourceAccessException
 
     -- ** InvalidNextTokenException
     , _InvalidNextTokenException
-
-    -- ** ConcurrentUpdateException
-    , _ConcurrentUpdateException
-
-    -- ** InternalServiceException
-    , _InternalServiceException
-
-    -- ** ObjectNotFoundException
-    , _ObjectNotFoundException
 
     -- ** LimitExceededException
     , _LimitExceededException

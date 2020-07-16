@@ -16,12 +16,12 @@ module Network.AWS.MQ.Types
       mq
 
     -- * Errors
-    , _ConflictException
-    , _ForbiddenException
-    , _NotFoundException
     , _InternalServerErrorException
-    , _UnauthorizedException
+    , _ForbiddenException
     , _BadRequestException
+    , _UnauthorizedException
+    , _NotFoundException
+    , _ConflictException
 
     -- * BrokerState
     , BrokerState (..)
@@ -177,10 +177,11 @@ mq
           | otherwise = Nothing
 
 -- | Returns information about an error.
-_ConflictException :: AsError a => Getting (First ServiceError) a ServiceError
-_ConflictException
-  = _MatchServiceError mq "ConflictException" .
-      hasStatus 409
+_InternalServerErrorException :: AsError a => Getting (First ServiceError) a ServiceError
+_InternalServerErrorException
+  = _MatchServiceError mq
+      "InternalServerErrorException"
+      . hasStatus 500
 
 -- | Returns information about an error.
 _ForbiddenException :: AsError a => Getting (First ServiceError) a ServiceError
@@ -189,17 +190,10 @@ _ForbiddenException
       hasStatus 403
 
 -- | Returns information about an error.
-_NotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
-_NotFoundException
-  = _MatchServiceError mq "NotFoundException" .
-      hasStatus 404
-
--- | Returns information about an error.
-_InternalServerErrorException :: AsError a => Getting (First ServiceError) a ServiceError
-_InternalServerErrorException
-  = _MatchServiceError mq
-      "InternalServerErrorException"
-      . hasStatus 500
+_BadRequestException :: AsError a => Getting (First ServiceError) a ServiceError
+_BadRequestException
+  = _MatchServiceError mq "BadRequestException" .
+      hasStatus 400
 
 -- | Returns information about an error.
 _UnauthorizedException :: AsError a => Getting (First ServiceError) a ServiceError
@@ -208,7 +202,13 @@ _UnauthorizedException
       hasStatus 401
 
 -- | Returns information about an error.
-_BadRequestException :: AsError a => Getting (First ServiceError) a ServiceError
-_BadRequestException
-  = _MatchServiceError mq "BadRequestException" .
-      hasStatus 400
+_NotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
+_NotFoundException
+  = _MatchServiceError mq "NotFoundException" .
+      hasStatus 404
+
+-- | Returns information about an error.
+_ConflictException :: AsError a => Getting (First ServiceError) a ServiceError
+_ConflictException
+  = _MatchServiceError mq "ConflictException" .
+      hasStatus 409

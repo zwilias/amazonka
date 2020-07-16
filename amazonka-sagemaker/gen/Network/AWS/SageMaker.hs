@@ -23,11 +23,11 @@ module Network.AWS.SageMaker
     -- ** ResourceLimitExceeded
     , _ResourceLimitExceeded
 
-    -- ** ResourceInUse
-    , _ResourceInUse
-
     -- ** ResourceNotFound
     , _ResourceNotFound
+
+    -- ** ResourceInUse
+    , _ResourceInUse
 
     -- * Waiters
     -- $waiters

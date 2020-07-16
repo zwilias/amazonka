@@ -34,11 +34,11 @@ module Network.AWS.MarketplaceEntitlement
     -- ** InvalidParameterException
     , _InvalidParameterException
 
-    -- ** ThrottlingException
-    , _ThrottlingException
-
     -- ** InternalServiceErrorException
     , _InternalServiceErrorException
+
+    -- ** ThrottlingException
+    , _ThrottlingException
 
     -- * Waiters
     -- $waiters

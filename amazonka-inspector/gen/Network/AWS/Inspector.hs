@@ -23,23 +23,14 @@ module Network.AWS.Inspector
     -- * Errors
     -- $errors
 
-    -- ** AccessDeniedException
-    , _AccessDeniedException
-
-    -- ** AssessmentRunInProgressException
-    , _AssessmentRunInProgressException
-
     -- ** NoSuchEntityException
     , _NoSuchEntityException
 
-    -- ** UnsupportedFeatureException
-    , _UnsupportedFeatureException
-
-    -- ** AgentsAlreadyRunningAssessmentException
-    , _AgentsAlreadyRunningAssessmentException
-
     -- ** InvalidCrossAccountRoleException
     , _InvalidCrossAccountRoleException
+
+    -- ** AccessDeniedException
+    , _AccessDeniedException
 
     -- ** InvalidInputException
     , _InvalidInputException
@@ -47,8 +38,17 @@ module Network.AWS.Inspector
     -- ** InternalException
     , _InternalException
 
+    -- ** AssessmentRunInProgressException
+    , _AssessmentRunInProgressException
+
+    -- ** AgentsAlreadyRunningAssessmentException
+    , _AgentsAlreadyRunningAssessmentException
+
     -- ** LimitExceededException
     , _LimitExceededException
+
+    -- ** UnsupportedFeatureException
+    , _UnsupportedFeatureException
 
     -- * Waiters
     -- $waiters

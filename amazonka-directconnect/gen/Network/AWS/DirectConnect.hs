@@ -22,17 +22,17 @@ module Network.AWS.DirectConnect
     -- * Errors
     -- $errors
 
+    -- ** DirectConnectServerException
+    , _DirectConnectServerException
+
+    -- ** TooManyTagsException
+    , _TooManyTagsException
+
     -- ** DirectConnectClientException
     , _DirectConnectClientException
 
     -- ** DuplicateTagKeysException
     , _DuplicateTagKeysException
-
-    -- ** TooManyTagsException
-    , _TooManyTagsException
-
-    -- ** DirectConnectServerException
-    , _DirectConnectServerException
 
     -- * Waiters
     -- $waiters

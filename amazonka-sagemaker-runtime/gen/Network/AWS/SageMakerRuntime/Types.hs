@@ -16,10 +16,10 @@ module Network.AWS.SageMakerRuntime.Types
       sageMakerRuntime
 
     -- * Errors
-    , _ServiceUnavailable
-    , _ModelError
-    , _InternalFailure
     , _ValidationError
+    , _InternalFailure
+    , _ModelError
+    , _ServiceUnavailable
     ) where
 
 import Network.AWS.Lens
@@ -60,22 +60,14 @@ sageMakerRuntime
           | has (hasStatus 509) e = Just "limit_exceeded"
           | otherwise = Nothing
 
--- | Service is unavailable. Try your call again. 
+-- | Inspect your request and try again. 
 --
 --
-_ServiceUnavailable :: AsError a => Getting (First ServiceError) a ServiceError
-_ServiceUnavailable
+_ValidationError :: AsError a => Getting (First ServiceError) a ServiceError
+_ValidationError
   = _MatchServiceError sageMakerRuntime
-      "ServiceUnavailable"
-      . hasStatus 503
-
--- | Model (owned by the customer in the container) returned an error 500. 
---
---
-_ModelError :: AsError a => Getting (First ServiceError) a ServiceError
-_ModelError
-  = _MatchServiceError sageMakerRuntime "ModelError" .
-      hasStatus 424
+      "ValidationError"
+      . hasStatus 400
 
 -- | Internal failure occurred. 
 --
@@ -86,11 +78,19 @@ _InternalFailure
       "InternalFailure"
       . hasStatus 500
 
--- | Inspect your request and try again. 
+-- | Model (owned by the customer in the container) returned an error 500. 
 --
 --
-_ValidationError :: AsError a => Getting (First ServiceError) a ServiceError
-_ValidationError
+_ModelError :: AsError a => Getting (First ServiceError) a ServiceError
+_ModelError
+  = _MatchServiceError sageMakerRuntime "ModelError" .
+      hasStatus 424
+
+-- | Service is unavailable. Try your call again. 
+--
+--
+_ServiceUnavailable :: AsError a => Getting (First ServiceError) a ServiceError
+_ServiceUnavailable
   = _MatchServiceError sageMakerRuntime
-      "ValidationError"
-      . hasStatus 400
+      "ServiceUnavailable"
+      . hasStatus 503

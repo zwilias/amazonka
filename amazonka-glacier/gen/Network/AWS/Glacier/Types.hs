@@ -18,10 +18,10 @@ module Network.AWS.Glacier.Types
     -- * Errors
     , _PolicyEnforcedException
     , _InvalidParameterValueException
-    , _RequestTimeoutException
-    , _ServiceUnavailableException
     , _InsufficientCapacityException
     , _ResourceNotFoundException
+    , _ServiceUnavailableException
+    , _RequestTimeoutException
     , _LimitExceededException
     , _MissingParameterValueException
 
@@ -347,24 +347,6 @@ _InvalidParameterValueException
       "InvalidParameterValueException"
       . hasStatus 400
 
--- | Returned if, when uploading an archive, Amazon Glacier times out while receiving the upload.
---
---
-_RequestTimeoutException :: AsError a => Getting (First ServiceError) a ServiceError
-_RequestTimeoutException
-  = _MatchServiceError glacier
-      "RequestTimeoutException"
-      . hasStatus 408
-
--- | Returned if the service cannot complete the request.
---
---
-_ServiceUnavailableException :: AsError a => Getting (First ServiceError) a ServiceError
-_ServiceUnavailableException
-  = _MatchServiceError glacier
-      "ServiceUnavailableException"
-      . hasStatus 500
-
 -- | Returned if there is insufficient capacity to process this expedited request. This error only applies to expedited retrievals and not to standard or bulk retrievals.
 --
 --
@@ -382,6 +364,24 @@ _ResourceNotFoundException
   = _MatchServiceError glacier
       "ResourceNotFoundException"
       . hasStatus 404
+
+-- | Returned if the service cannot complete the request.
+--
+--
+_ServiceUnavailableException :: AsError a => Getting (First ServiceError) a ServiceError
+_ServiceUnavailableException
+  = _MatchServiceError glacier
+      "ServiceUnavailableException"
+      . hasStatus 500
+
+-- | Returned if, when uploading an archive, Amazon Glacier times out while receiving the upload.
+--
+--
+_RequestTimeoutException :: AsError a => Getting (First ServiceError) a ServiceError
+_RequestTimeoutException
+  = _MatchServiceError glacier
+      "RequestTimeoutException"
+      . hasStatus 408
 
 -- | Returned if the request results in a vault or account limit being exceeded.
 --

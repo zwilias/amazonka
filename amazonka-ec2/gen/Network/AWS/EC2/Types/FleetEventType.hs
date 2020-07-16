@@ -19,9 +19,9 @@
 module Network.AWS.EC2.Types.FleetEventType (
   FleetEventType (
     ..
-    , FETFleetChange
-    , FETInstanceChange
-    , FETServiceError
+    , FleetEventFleetChange
+    , FleetEventInstanceChange
+    , FleetEventServiceError
     )
   ) where
 
@@ -33,19 +33,19 @@ data FleetEventType = FleetEventType' (CI Text)
                         deriving (Eq, Ord, Read, Show, Data, Typeable,
                                   Generic)
 
-pattern FETFleetChange :: FleetEventType
-pattern FETFleetChange = FleetEventType' "fleet-change"
+pattern FleetEventFleetChange :: FleetEventType
+pattern FleetEventFleetChange = FleetEventType' "fleet-change"
 
-pattern FETInstanceChange :: FleetEventType
-pattern FETInstanceChange = FleetEventType' "instance-change"
+pattern FleetEventInstanceChange :: FleetEventType
+pattern FleetEventInstanceChange = FleetEventType' "instance-change"
 
-pattern FETServiceError :: FleetEventType
-pattern FETServiceError = FleetEventType' "service-error"
+pattern FleetEventServiceError :: FleetEventType
+pattern FleetEventServiceError = FleetEventType' "service-error"
 
 {-# COMPLETE
-  FETFleetChange,
-  FETInstanceChange,
-  FETServiceError,
+  FleetEventFleetChange,
+  FleetEventInstanceChange,
+  FleetEventServiceError,
   FleetEventType' #-}
 
 instance FromText FleetEventType where
@@ -60,22 +60,22 @@ instance ToText FleetEventType where
 --   fromEnum is a partial function, and will error on values unknown at generation time.
 instance Enum FleetEventType where
     toEnum i = case i of
-        0 -> FETFleetChange
-        1 -> FETInstanceChange
-        2 -> FETServiceError
+        0 -> FleetEventFleetChange
+        1 -> FleetEventInstanceChange
+        2 -> FleetEventServiceError
         _ -> (error . showText) $ "Unknown index for FleetEventType: " <> toText i
     fromEnum x = case x of
-        FETFleetChange -> 0
-        FETInstanceChange -> 1
-        FETServiceError -> 2
+        FleetEventFleetChange -> 0
+        FleetEventInstanceChange -> 1
+        FleetEventServiceError -> 2
         FleetEventType' name -> (error . showText) $ "Unknown FleetEventType: " <> original name
 
 -- | Represents the bounds of /known/ $FleetEventType.
 --   AWS may have added more since the source was generated.
 --   This instance exists only for backward compatibility.
 instance Bounded FleetEventType where
-    minBound = FETFleetChange
-    maxBound = FETServiceError
+    minBound = FleetEventFleetChange
+    maxBound = FleetEventServiceError
 
 instance Hashable     FleetEventType
 instance NFData       FleetEventType

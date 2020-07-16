@@ -23,35 +23,35 @@ module Network.AWS.Kinesis
     -- * Errors
     -- $errors
 
-    -- ** KMSInvalidStateException
-    , _KMSInvalidStateException
-
-    -- ** KMSThrottlingException
-    , _KMSThrottlingException
-
-    -- ** ExpiredIteratorException
-    , _ExpiredIteratorException
-
-    -- ** InvalidArgumentException
-    , _InvalidArgumentException
-
-    -- ** KMSOptInRequired
-    , _KMSOptInRequired
-
-    -- ** ProvisionedThroughputExceededException
-    , _ProvisionedThroughputExceededException
+    -- ** KMSDisabledException
+    , _KMSDisabledException
 
     -- ** KMSNotFoundException
     , _KMSNotFoundException
 
-    -- ** ExpiredNextTokenException
-    , _ExpiredNextTokenException
-
-    -- ** KMSDisabledException
-    , _KMSDisabledException
+    -- ** ProvisionedThroughputExceededException
+    , _ProvisionedThroughputExceededException
 
     -- ** ResourceNotFoundException
     , _ResourceNotFoundException
+
+    -- ** KMSOptInRequired
+    , _KMSOptInRequired
+
+    -- ** InvalidArgumentException
+    , _InvalidArgumentException
+
+    -- ** ExpiredIteratorException
+    , _ExpiredIteratorException
+
+    -- ** KMSThrottlingException
+    , _KMSThrottlingException
+
+    -- ** ExpiredNextTokenException
+    , _ExpiredNextTokenException
+
+    -- ** KMSInvalidStateException
+    , _KMSInvalidStateException
 
     -- ** KMSAccessDeniedException
     , _KMSAccessDeniedException

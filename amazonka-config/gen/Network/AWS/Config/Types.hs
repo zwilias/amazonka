@@ -16,57 +16,57 @@ module Network.AWS.Config.Types
       config
 
     -- * Errors
-    , _NoSuchRemediationConfigurationException
-    , _InvalidTimeRangeException
-    , _NoSuchOrganizationConformancePackException
+    , _MaxNumberOfConfigurationRecordersExceededException
+    , _InvalidLimitException
+    , _OrganizationConformancePackTemplateValidationException
+    , _NoSuchRemediationExceptionException
+    , _OversizedConfigurationItemException
+    , _MaxNumberOfConformancePacksExceededException
+    , _InsufficientPermissionsException
+    , _OrganizationAllFeaturesNotEnabledException
+    , _RemediationInProgressException
+    , _ResourceNotDiscoveredException
+    , _OrganizationAccessDeniedException
+    , _NoSuchConformancePackException
     , _InvalidSNSTopicARNException
+    , _InvalidTimeRangeException
+    , _NoSuchRemediationConfigurationException
+    , _NoSuchDeliveryChannelException
+    , _InvalidParameterValueException
+    , _NoSuchConfigRuleInConformancePackException
+    , _ValidationException
+    , _InvalidS3KeyPrefixException
+    , _TooManyTagsException
+    , _MaxNumberOfOrganizationConformancePacksExceededException
+    , _MaxNumberOfOrganizationConfigRulesExceededException
+    , _ResourceNotFoundException
+    , _InsufficientDeliveryPolicyException
+    , _InvalidConfigurationRecorderNameException
+    , _NoRunningConfigurationRecorderException
+    , _NoAvailableDeliveryChannelException
+    , _LastDeliveryChannelDeleteFailedException
+    , _ConformancePackTemplateValidationException
+    , _NoSuchBucketException
+    , _MaxNumberOfConfigRulesExceededException
+    , _MaxActiveResourcesExceededException
+    , _MaxNumberOfRetentionConfigurationsExceededException
+    , _NoAvailableConfigurationRecorderException
+    , _NoSuchConfigurationAggregatorException
+    , _InvalidNextTokenException
+    , _InvalidRoleException
+    , _NoSuchConfigRuleException
+    , _NoSuchRetentionConfigurationException
     , _InvalidRecordingGroupException
     , _InvalidExpressionException
     , _NoAvailableOrganizationException
-    , _ValidationException
-    , _OrganizationAccessDeniedException
-    , _NoSuchConfigurationAggregatorException
-    , _InvalidRoleException
-    , _OversizedConfigurationItemException
-    , _LastDeliveryChannelDeleteFailedException
-    , _ConformancePackTemplateValidationException
-    , _NoSuchRemediationExceptionException
-    , _InvalidLimitException
-    , _MaxNumberOfOrganizationConformancePacksExceededException
-    , _InvalidDeliveryChannelNameException
-    , _TooManyTagsException
-    , _InvalidParameterValueException
-    , _InvalidResultTokenException
-    , _NoSuchConfigRuleInConformancePackException
+    , _NoSuchOrganizationConformancePackException
     , _NoSuchOrganizationConfigRuleException
-    , _NoSuchDeliveryChannelException
-    , _NoSuchConfigRuleException
-    , _NoSuchConformancePackException
-    , _NoSuchRetentionConfigurationException
-    , _RemediationInProgressException
-    , _OrganizationAllFeaturesNotEnabledException
-    , _InsufficientPermissionsException
-    , _ResourceNotDiscoveredException
-    , _InvalidNextTokenException
-    , _MaxNumberOfRetentionConfigurationsExceededException
-    , _MaxNumberOfConformancePacksExceededException
-    , _MaxNumberOfConfigRulesExceededException
-    , _NoAvailableConfigurationRecorderException
-    , _NoSuchBucketException
-    , _MaxActiveResourcesExceededException
-    , _NoAvailableDeliveryChannelException
-    , _OrganizationConformancePackTemplateValidationException
-    , _InvalidConfigurationRecorderNameException
-    , _NoRunningConfigurationRecorderException
-    , _MaxNumberOfConfigurationRecordersExceededException
-    , _InsufficientDeliveryPolicyException
-    , _MaxNumberOfDeliveryChannelsExceededException
-    , _MaxNumberOfOrganizationConfigRulesExceededException
-    , _ResourceNotFoundException
-    , _NoSuchConfigurationRecorderException
-    , _InvalidS3KeyPrefixException
+    , _InvalidResultTokenException
     , _LimitExceededException
     , _ResourceInUseException
+    , _NoSuchConfigurationRecorderException
+    , _InvalidDeliveryChannelNameException
+    , _MaxNumberOfDeliveryChannelsExceededException
 
     -- * AggregatedSourceStatusType
     , AggregatedSourceStatusType (..)
@@ -940,119 +940,28 @@ config
           | has (hasStatus 509) e = Just "limit_exceeded"
           | otherwise = Nothing
 
--- | You specified an AWS Config rule without a remediation configuration.
+-- | You have reached the limit of the number of recorders you can create.
 --
 --
-_NoSuchRemediationConfigurationException :: AsError a => Getting (First ServiceError) a ServiceError
-_NoSuchRemediationConfigurationException
+_MaxNumberOfConfigurationRecordersExceededException :: AsError a => Getting (First ServiceError) a ServiceError
+_MaxNumberOfConfigurationRecordersExceededException
   = _MatchServiceError config
-      "NoSuchRemediationConfigurationException"
+      "MaxNumberOfConfigurationRecordersExceededException"
 
--- | The specified time range is not valid. The earlier time is not chronologically before the later time.
+-- | The specified limit is outside the allowable range.
 --
 --
-_InvalidTimeRangeException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidTimeRangeException
-  = _MatchServiceError config
-      "InvalidTimeRangeException"
-
--- | AWS Config organization conformance pack that you passed in the filter does not exist.
---
---
--- For DeleteOrganizationConformancePack, you tried to delete an organization conformance pack that does not exist.
---
-_NoSuchOrganizationConformancePackException :: AsError a => Getting (First ServiceError) a ServiceError
-_NoSuchOrganizationConformancePackException
-  = _MatchServiceError config
-      "NoSuchOrganizationConformancePackException"
-
--- | The specified Amazon SNS topic does not exist.
---
---
-_InvalidSNSTopicARNException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidSNSTopicARNException
-  = _MatchServiceError config
-      "InvalidSNSTopicARNException"
-
--- | AWS Config throws an exception if the recording group does not contain a valid list of resource types. Invalid values might also be incorrectly formatted.
---
---
-_InvalidRecordingGroupException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidRecordingGroupException
-  = _MatchServiceError config
-      "InvalidRecordingGroupException"
-
--- | The syntax of the query is incorrect.
---
---
-_InvalidExpressionException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidExpressionException
-  = _MatchServiceError config
-      "InvalidExpressionException"
-
--- | Organization is no longer available.
---
---
-_NoAvailableOrganizationException :: AsError a => Getting (First ServiceError) a ServiceError
-_NoAvailableOrganizationException
-  = _MatchServiceError config
-      "NoAvailableOrganizationException"
-
--- | The requested action is not valid.
---
---
-_ValidationException :: AsError a => Getting (First ServiceError) a ServiceError
-_ValidationException
-  = _MatchServiceError config "ValidationException"
-
--- | For PutConfigAggregator API, no permission to call EnableAWSServiceAccess API.
---
---
--- For all OrganizationConfigRule and OrganizationConformancePack APIs, AWS Config throws an exception if APIs are called from member accounts. All APIs must be called from organization master account.
---
-_OrganizationAccessDeniedException :: AsError a => Getting (First ServiceError) a ServiceError
-_OrganizationAccessDeniedException
-  = _MatchServiceError config
-      "OrganizationAccessDeniedException"
-
--- | You have specified a configuration aggregator that does not exist.
---
---
-_NoSuchConfigurationAggregatorException :: AsError a => Getting (First ServiceError) a ServiceError
-_NoSuchConfigurationAggregatorException
-  = _MatchServiceError config
-      "NoSuchConfigurationAggregatorException"
-
--- | You have provided a null or empty role ARN.
---
---
-_InvalidRoleException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidRoleException
-  = _MatchServiceError config "InvalidRoleException"
-
--- | The configuration item size is outside the allowable range.
---
---
-_OversizedConfigurationItemException :: AsError a => Getting (First ServiceError) a ServiceError
-_OversizedConfigurationItemException
-  = _MatchServiceError config
-      "OversizedConfigurationItemException"
-
--- | You cannot delete the delivery channel you specified because the configuration recorder is running.
---
---
-_LastDeliveryChannelDeleteFailedException :: AsError a => Getting (First ServiceError) a ServiceError
-_LastDeliveryChannelDeleteFailedException
-  = _MatchServiceError config
-      "LastDeliveryChannelDeleteFailedException"
+_InvalidLimitException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidLimitException
+  = _MatchServiceError config "InvalidLimitException"
 
 -- | You have specified a template that is not valid or supported.
 --
 --
-_ConformancePackTemplateValidationException :: AsError a => Getting (First ServiceError) a ServiceError
-_ConformancePackTemplateValidationException
+_OrganizationConformancePackTemplateValidationException :: AsError a => Getting (First ServiceError) a ServiceError
+_OrganizationConformancePackTemplateValidationException
   = _MatchServiceError config
-      "ConformancePackTemplateValidationException"
+      "OrganizationConformancePackTemplateValidationException"
 
 -- | You tried to delete a remediation exception that does not exist.
 --
@@ -1062,115 +971,21 @@ _NoSuchRemediationExceptionException
   = _MatchServiceError config
       "NoSuchRemediationExceptionException"
 
--- | The specified limit is outside the allowable range.
+-- | The configuration item size is outside the allowable range.
 --
 --
-_InvalidLimitException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidLimitException
-  = _MatchServiceError config "InvalidLimitException"
-
--- | You have reached the limit (6) of the number of organization conformance packs in an account (6 conformance pack with 25 AWS Config rules per pack per account).
---
---
-_MaxNumberOfOrganizationConformancePacksExceededException :: AsError a => Getting (First ServiceError) a ServiceError
-_MaxNumberOfOrganizationConformancePacksExceededException
+_OversizedConfigurationItemException :: AsError a => Getting (First ServiceError) a ServiceError
+_OversizedConfigurationItemException
   = _MatchServiceError config
-      "MaxNumberOfOrganizationConformancePacksExceededException"
+      "OversizedConfigurationItemException"
 
--- | The specified delivery channel name is not valid.
+-- | You have reached the limit (6) of the number of conformance packs in an account (6 conformance pack with 25 AWS Config rules per pack).
 --
 --
-_InvalidDeliveryChannelNameException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidDeliveryChannelNameException
+_MaxNumberOfConformancePacksExceededException :: AsError a => Getting (First ServiceError) a ServiceError
+_MaxNumberOfConformancePacksExceededException
   = _MatchServiceError config
-      "InvalidDeliveryChannelNameException"
-
--- | You have reached the limit of the number of tags you can use. You have more than 50 tags.
---
---
-_TooManyTagsException :: AsError a => Getting (First ServiceError) a ServiceError
-_TooManyTagsException
-  = _MatchServiceError config "TooManyTagsException"
-
--- | One or more of the specified parameters are invalid. Verify that your parameters are valid and try again.
---
---
-_InvalidParameterValueException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidParameterValueException
-  = _MatchServiceError config
-      "InvalidParameterValueException"
-
--- | The specified @ResultToken@ is invalid.
---
---
-_InvalidResultTokenException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidResultTokenException
-  = _MatchServiceError config
-      "InvalidResultTokenException"
-
--- | AWS Config rule that you passed in the filter does not exist.
---
---
-_NoSuchConfigRuleInConformancePackException :: AsError a => Getting (First ServiceError) a ServiceError
-_NoSuchConfigRuleInConformancePackException
-  = _MatchServiceError config
-      "NoSuchConfigRuleInConformancePackException"
-
--- | You specified one or more organization config rules that do not exist.
---
---
-_NoSuchOrganizationConfigRuleException :: AsError a => Getting (First ServiceError) a ServiceError
-_NoSuchOrganizationConfigRuleException
-  = _MatchServiceError config
-      "NoSuchOrganizationConfigRuleException"
-
--- | You have specified a delivery channel that does not exist.
---
---
-_NoSuchDeliveryChannelException :: AsError a => Getting (First ServiceError) a ServiceError
-_NoSuchDeliveryChannelException
-  = _MatchServiceError config
-      "NoSuchDeliveryChannelException"
-
--- | One or more AWS Config rules in the request are invalid. Verify that the rule names are correct and try again.
---
---
-_NoSuchConfigRuleException :: AsError a => Getting (First ServiceError) a ServiceError
-_NoSuchConfigRuleException
-  = _MatchServiceError config
-      "NoSuchConfigRuleException"
-
--- | You specified one or more conformance packs that do not exist.
---
---
-_NoSuchConformancePackException :: AsError a => Getting (First ServiceError) a ServiceError
-_NoSuchConformancePackException
-  = _MatchServiceError config
-      "NoSuchConformancePackException"
-
--- | You have specified a retention configuration that does not exist.
---
---
-_NoSuchRetentionConfigurationException :: AsError a => Getting (First ServiceError) a ServiceError
-_NoSuchRetentionConfigurationException
-  = _MatchServiceError config
-      "NoSuchRetentionConfigurationException"
-
--- | Remediation action is in progress. You can either cancel execution in AWS Systems Manager or wait and try again later. 
---
---
-_RemediationInProgressException :: AsError a => Getting (First ServiceError) a ServiceError
-_RemediationInProgressException
-  = _MatchServiceError config
-      "RemediationInProgressException"
-
--- | AWS Config resource cannot be created because your organization does not have all features enabled.
---
---
-_OrganizationAllFeaturesNotEnabledException :: AsError a => Getting (First ServiceError) a ServiceError
-_OrganizationAllFeaturesNotEnabledException
-  = _MatchServiceError config
-      "OrganizationAllFeaturesNotEnabledException"
+      "MaxNumberOfConformancePacksExceededException"
 
 -- | Indicates one of the following errors:
 --
@@ -1196,6 +1011,22 @@ _InsufficientPermissionsException
   = _MatchServiceError config
       "InsufficientPermissionsException"
 
+-- | AWS Config resource cannot be created because your organization does not have all features enabled.
+--
+--
+_OrganizationAllFeaturesNotEnabledException :: AsError a => Getting (First ServiceError) a ServiceError
+_OrganizationAllFeaturesNotEnabledException
+  = _MatchServiceError config
+      "OrganizationAllFeaturesNotEnabledException"
+
+-- | Remediation action is in progress. You can either cancel execution in AWS Systems Manager or wait and try again later. 
+--
+--
+_RemediationInProgressException :: AsError a => Getting (First ServiceError) a ServiceError
+_RemediationInProgressException
+  = _MatchServiceError config
+      "RemediationInProgressException"
+
 -- | You have specified a resource that is either unknown or has not been discovered.
 --
 --
@@ -1204,116 +1035,101 @@ _ResourceNotDiscoveredException
   = _MatchServiceError config
       "ResourceNotDiscoveredException"
 
--- | The specified next token is invalid. Specify the @nextToken@ string that was returned in the previous response to get the next page of results.
+-- | For PutConfigAggregator API, no permission to call EnableAWSServiceAccess API.
 --
 --
-_InvalidNextTokenException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidNextTokenException
+-- For all OrganizationConfigRule and OrganizationConformancePack APIs, AWS Config throws an exception if APIs are called from member accounts. All APIs must be called from organization master account.
+--
+_OrganizationAccessDeniedException :: AsError a => Getting (First ServiceError) a ServiceError
+_OrganizationAccessDeniedException
   = _MatchServiceError config
-      "InvalidNextTokenException"
+      "OrganizationAccessDeniedException"
 
--- | Failed to add the retention configuration because a retention configuration with that name already exists.
+-- | You specified one or more conformance packs that do not exist.
 --
 --
-_MaxNumberOfRetentionConfigurationsExceededException :: AsError a => Getting (First ServiceError) a ServiceError
-_MaxNumberOfRetentionConfigurationsExceededException
+_NoSuchConformancePackException :: AsError a => Getting (First ServiceError) a ServiceError
+_NoSuchConformancePackException
   = _MatchServiceError config
-      "MaxNumberOfRetentionConfigurationsExceededException"
+      "NoSuchConformancePackException"
 
--- | You have reached the limit (6) of the number of conformance packs in an account (6 conformance pack with 25 AWS Config rules per pack).
+-- | The specified Amazon SNS topic does not exist.
 --
 --
-_MaxNumberOfConformancePacksExceededException :: AsError a => Getting (First ServiceError) a ServiceError
-_MaxNumberOfConformancePacksExceededException
+_InvalidSNSTopicARNException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidSNSTopicARNException
   = _MatchServiceError config
-      "MaxNumberOfConformancePacksExceededException"
+      "InvalidSNSTopicARNException"
 
--- | Failed to add the AWS Config rule because the account already contains the maximum number of 150 rules. Consider deleting any deactivated rules before you add new rules.
+-- | The specified time range is not valid. The earlier time is not chronologically before the later time.
 --
 --
-_MaxNumberOfConfigRulesExceededException :: AsError a => Getting (First ServiceError) a ServiceError
-_MaxNumberOfConfigRulesExceededException
+_InvalidTimeRangeException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidTimeRangeException
   = _MatchServiceError config
-      "MaxNumberOfConfigRulesExceededException"
+      "InvalidTimeRangeException"
 
--- | There are no configuration recorders available to provide the role needed to describe your resources. Create a configuration recorder.
+-- | You specified an AWS Config rule without a remediation configuration.
 --
 --
-_NoAvailableConfigurationRecorderException :: AsError a => Getting (First ServiceError) a ServiceError
-_NoAvailableConfigurationRecorderException
+_NoSuchRemediationConfigurationException :: AsError a => Getting (First ServiceError) a ServiceError
+_NoSuchRemediationConfigurationException
   = _MatchServiceError config
-      "NoAvailableConfigurationRecorderException"
+      "NoSuchRemediationConfigurationException"
 
--- | The specified Amazon S3 bucket does not exist.
+-- | You have specified a delivery channel that does not exist.
 --
 --
-_NoSuchBucketException :: AsError a => Getting (First ServiceError) a ServiceError
-_NoSuchBucketException
-  = _MatchServiceError config "NoSuchBucketException"
-
--- | You have reached the limit (100,000) of active custom resource types in your account. Delete unused resources using @DeleteResourceConfig@ .
---
---
-_MaxActiveResourcesExceededException :: AsError a => Getting (First ServiceError) a ServiceError
-_MaxActiveResourcesExceededException
+_NoSuchDeliveryChannelException :: AsError a => Getting (First ServiceError) a ServiceError
+_NoSuchDeliveryChannelException
   = _MatchServiceError config
-      "MaxActiveResourcesExceededException"
+      "NoSuchDeliveryChannelException"
 
--- | There is no delivery channel available to record configurations.
+-- | One or more of the specified parameters are invalid. Verify that your parameters are valid and try again.
 --
 --
-_NoAvailableDeliveryChannelException :: AsError a => Getting (First ServiceError) a ServiceError
-_NoAvailableDeliveryChannelException
+_InvalidParameterValueException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidParameterValueException
   = _MatchServiceError config
-      "NoAvailableDeliveryChannelException"
+      "InvalidParameterValueException"
 
--- | You have specified a template that is not valid or supported.
+-- | AWS Config rule that you passed in the filter does not exist.
 --
 --
-_OrganizationConformancePackTemplateValidationException :: AsError a => Getting (First ServiceError) a ServiceError
-_OrganizationConformancePackTemplateValidationException
+_NoSuchConfigRuleInConformancePackException :: AsError a => Getting (First ServiceError) a ServiceError
+_NoSuchConfigRuleInConformancePackException
   = _MatchServiceError config
-      "OrganizationConformancePackTemplateValidationException"
+      "NoSuchConfigRuleInConformancePackException"
 
--- | You have provided a configuration recorder name that is not valid.
+-- | The requested action is not valid.
 --
 --
-_InvalidConfigurationRecorderNameException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidConfigurationRecorderNameException
-  = _MatchServiceError config
-      "InvalidConfigurationRecorderNameException"
+_ValidationException :: AsError a => Getting (First ServiceError) a ServiceError
+_ValidationException
+  = _MatchServiceError config "ValidationException"
 
--- | There is no configuration recorder running.
+-- | The specified Amazon S3 key prefix is not valid.
 --
 --
-_NoRunningConfigurationRecorderException :: AsError a => Getting (First ServiceError) a ServiceError
-_NoRunningConfigurationRecorderException
+_InvalidS3KeyPrefixException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidS3KeyPrefixException
   = _MatchServiceError config
-      "NoRunningConfigurationRecorderException"
+      "InvalidS3KeyPrefixException"
 
--- | You have reached the limit of the number of recorders you can create.
+-- | You have reached the limit of the number of tags you can use. You have more than 50 tags.
 --
 --
-_MaxNumberOfConfigurationRecordersExceededException :: AsError a => Getting (First ServiceError) a ServiceError
-_MaxNumberOfConfigurationRecordersExceededException
-  = _MatchServiceError config
-      "MaxNumberOfConfigurationRecordersExceededException"
+_TooManyTagsException :: AsError a => Getting (First ServiceError) a ServiceError
+_TooManyTagsException
+  = _MatchServiceError config "TooManyTagsException"
 
--- | Your Amazon S3 bucket policy does not permit AWS Config to write to it.
+-- | You have reached the limit (6) of the number of organization conformance packs in an account (6 conformance pack with 25 AWS Config rules per pack per account).
 --
 --
-_InsufficientDeliveryPolicyException :: AsError a => Getting (First ServiceError) a ServiceError
-_InsufficientDeliveryPolicyException
+_MaxNumberOfOrganizationConformancePacksExceededException :: AsError a => Getting (First ServiceError) a ServiceError
+_MaxNumberOfOrganizationConformancePacksExceededException
   = _MatchServiceError config
-      "InsufficientDeliveryPolicyException"
-
--- | You have reached the limit of the number of delivery channels you can create.
---
---
-_MaxNumberOfDeliveryChannelsExceededException :: AsError a => Getting (First ServiceError) a ServiceError
-_MaxNumberOfDeliveryChannelsExceededException
-  = _MatchServiceError config
-      "MaxNumberOfDeliveryChannelsExceededException"
+      "MaxNumberOfOrganizationConformancePacksExceededException"
 
 -- | You have reached the limit of the number of organization config rules you can create.
 --
@@ -1331,21 +1147,181 @@ _ResourceNotFoundException
   = _MatchServiceError config
       "ResourceNotFoundException"
 
--- | You have specified a configuration recorder that does not exist.
+-- | Your Amazon S3 bucket policy does not permit AWS Config to write to it.
 --
 --
-_NoSuchConfigurationRecorderException :: AsError a => Getting (First ServiceError) a ServiceError
-_NoSuchConfigurationRecorderException
+_InsufficientDeliveryPolicyException :: AsError a => Getting (First ServiceError) a ServiceError
+_InsufficientDeliveryPolicyException
   = _MatchServiceError config
-      "NoSuchConfigurationRecorderException"
+      "InsufficientDeliveryPolicyException"
 
--- | The specified Amazon S3 key prefix is not valid.
+-- | You have provided a configuration recorder name that is not valid.
 --
 --
-_InvalidS3KeyPrefixException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidS3KeyPrefixException
+_InvalidConfigurationRecorderNameException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidConfigurationRecorderNameException
   = _MatchServiceError config
-      "InvalidS3KeyPrefixException"
+      "InvalidConfigurationRecorderNameException"
+
+-- | There is no configuration recorder running.
+--
+--
+_NoRunningConfigurationRecorderException :: AsError a => Getting (First ServiceError) a ServiceError
+_NoRunningConfigurationRecorderException
+  = _MatchServiceError config
+      "NoRunningConfigurationRecorderException"
+
+-- | There is no delivery channel available to record configurations.
+--
+--
+_NoAvailableDeliveryChannelException :: AsError a => Getting (First ServiceError) a ServiceError
+_NoAvailableDeliveryChannelException
+  = _MatchServiceError config
+      "NoAvailableDeliveryChannelException"
+
+-- | You cannot delete the delivery channel you specified because the configuration recorder is running.
+--
+--
+_LastDeliveryChannelDeleteFailedException :: AsError a => Getting (First ServiceError) a ServiceError
+_LastDeliveryChannelDeleteFailedException
+  = _MatchServiceError config
+      "LastDeliveryChannelDeleteFailedException"
+
+-- | You have specified a template that is not valid or supported.
+--
+--
+_ConformancePackTemplateValidationException :: AsError a => Getting (First ServiceError) a ServiceError
+_ConformancePackTemplateValidationException
+  = _MatchServiceError config
+      "ConformancePackTemplateValidationException"
+
+-- | The specified Amazon S3 bucket does not exist.
+--
+--
+_NoSuchBucketException :: AsError a => Getting (First ServiceError) a ServiceError
+_NoSuchBucketException
+  = _MatchServiceError config "NoSuchBucketException"
+
+-- | Failed to add the AWS Config rule because the account already contains the maximum number of 150 rules. Consider deleting any deactivated rules before you add new rules.
+--
+--
+_MaxNumberOfConfigRulesExceededException :: AsError a => Getting (First ServiceError) a ServiceError
+_MaxNumberOfConfigRulesExceededException
+  = _MatchServiceError config
+      "MaxNumberOfConfigRulesExceededException"
+
+-- | You have reached the limit (100,000) of active custom resource types in your account. Delete unused resources using @DeleteResourceConfig@ .
+--
+--
+_MaxActiveResourcesExceededException :: AsError a => Getting (First ServiceError) a ServiceError
+_MaxActiveResourcesExceededException
+  = _MatchServiceError config
+      "MaxActiveResourcesExceededException"
+
+-- | Failed to add the retention configuration because a retention configuration with that name already exists.
+--
+--
+_MaxNumberOfRetentionConfigurationsExceededException :: AsError a => Getting (First ServiceError) a ServiceError
+_MaxNumberOfRetentionConfigurationsExceededException
+  = _MatchServiceError config
+      "MaxNumberOfRetentionConfigurationsExceededException"
+
+-- | There are no configuration recorders available to provide the role needed to describe your resources. Create a configuration recorder.
+--
+--
+_NoAvailableConfigurationRecorderException :: AsError a => Getting (First ServiceError) a ServiceError
+_NoAvailableConfigurationRecorderException
+  = _MatchServiceError config
+      "NoAvailableConfigurationRecorderException"
+
+-- | You have specified a configuration aggregator that does not exist.
+--
+--
+_NoSuchConfigurationAggregatorException :: AsError a => Getting (First ServiceError) a ServiceError
+_NoSuchConfigurationAggregatorException
+  = _MatchServiceError config
+      "NoSuchConfigurationAggregatorException"
+
+-- | The specified next token is invalid. Specify the @nextToken@ string that was returned in the previous response to get the next page of results.
+--
+--
+_InvalidNextTokenException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidNextTokenException
+  = _MatchServiceError config
+      "InvalidNextTokenException"
+
+-- | You have provided a null or empty role ARN.
+--
+--
+_InvalidRoleException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidRoleException
+  = _MatchServiceError config "InvalidRoleException"
+
+-- | One or more AWS Config rules in the request are invalid. Verify that the rule names are correct and try again.
+--
+--
+_NoSuchConfigRuleException :: AsError a => Getting (First ServiceError) a ServiceError
+_NoSuchConfigRuleException
+  = _MatchServiceError config
+      "NoSuchConfigRuleException"
+
+-- | You have specified a retention configuration that does not exist.
+--
+--
+_NoSuchRetentionConfigurationException :: AsError a => Getting (First ServiceError) a ServiceError
+_NoSuchRetentionConfigurationException
+  = _MatchServiceError config
+      "NoSuchRetentionConfigurationException"
+
+-- | AWS Config throws an exception if the recording group does not contain a valid list of resource types. Invalid values might also be incorrectly formatted.
+--
+--
+_InvalidRecordingGroupException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidRecordingGroupException
+  = _MatchServiceError config
+      "InvalidRecordingGroupException"
+
+-- | The syntax of the query is incorrect.
+--
+--
+_InvalidExpressionException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidExpressionException
+  = _MatchServiceError config
+      "InvalidExpressionException"
+
+-- | Organization is no longer available.
+--
+--
+_NoAvailableOrganizationException :: AsError a => Getting (First ServiceError) a ServiceError
+_NoAvailableOrganizationException
+  = _MatchServiceError config
+      "NoAvailableOrganizationException"
+
+-- | AWS Config organization conformance pack that you passed in the filter does not exist.
+--
+--
+-- For DeleteOrganizationConformancePack, you tried to delete an organization conformance pack that does not exist.
+--
+_NoSuchOrganizationConformancePackException :: AsError a => Getting (First ServiceError) a ServiceError
+_NoSuchOrganizationConformancePackException
+  = _MatchServiceError config
+      "NoSuchOrganizationConformancePackException"
+
+-- | You specified one or more organization config rules that do not exist.
+--
+--
+_NoSuchOrganizationConfigRuleException :: AsError a => Getting (First ServiceError) a ServiceError
+_NoSuchOrganizationConfigRuleException
+  = _MatchServiceError config
+      "NoSuchOrganizationConfigRuleException"
+
+-- | The specified @ResultToken@ is invalid.
+--
+--
+_InvalidResultTokenException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidResultTokenException
+  = _MatchServiceError config
+      "InvalidResultTokenException"
 
 -- | For @StartConfigRulesEvaluation@ API, this exception is thrown if an evaluation is in progress or if you call the 'StartConfigRulesEvaluation' API more than once per minute.
 --
@@ -1378,3 +1354,27 @@ _LimitExceededException
 _ResourceInUseException :: AsError a => Getting (First ServiceError) a ServiceError
 _ResourceInUseException
   = _MatchServiceError config "ResourceInUseException"
+
+-- | You have specified a configuration recorder that does not exist.
+--
+--
+_NoSuchConfigurationRecorderException :: AsError a => Getting (First ServiceError) a ServiceError
+_NoSuchConfigurationRecorderException
+  = _MatchServiceError config
+      "NoSuchConfigurationRecorderException"
+
+-- | The specified delivery channel name is not valid.
+--
+--
+_InvalidDeliveryChannelNameException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidDeliveryChannelNameException
+  = _MatchServiceError config
+      "InvalidDeliveryChannelNameException"
+
+-- | You have reached the limit of the number of delivery channels you can create.
+--
+--
+_MaxNumberOfDeliveryChannelsExceededException :: AsError a => Getting (First ServiceError) a ServiceError
+_MaxNumberOfDeliveryChannelsExceededException
+  = _MatchServiceError config
+      "MaxNumberOfDeliveryChannelsExceededException"

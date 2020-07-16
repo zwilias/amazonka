@@ -16,10 +16,10 @@ module Network.AWS.Athena.Types
       athena
 
     -- * Errors
-    , _InvalidRequestException
     , _TooManyRequestsException
-    , _InternalServerException
+    , _InvalidRequestException
     , _ResourceNotFoundException
+    , _InternalServerException
 
     -- * ColumnNullable
     , ColumnNullable (..)
@@ -256,13 +256,6 @@ athena
           | has (hasStatus 509) e = Just "limit_exceeded"
           | otherwise = Nothing
 
--- | Indicates that something is wrong with the input to the request. For example, a required parameter may be missing or out of range.
---
---
-_InvalidRequestException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidRequestException
-  = _MatchServiceError athena "InvalidRequestException"
-
 -- | Indicates that the request was throttled.
 --
 --
@@ -271,12 +264,12 @@ _TooManyRequestsException
   = _MatchServiceError athena
       "TooManyRequestsException"
 
--- | Indicates a platform issue, which may be due to a transient condition or outage.
+-- | Indicates that something is wrong with the input to the request. For example, a required parameter may be missing or out of range.
 --
 --
-_InternalServerException :: AsError a => Getting (First ServiceError) a ServiceError
-_InternalServerException
-  = _MatchServiceError athena "InternalServerException"
+_InvalidRequestException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidRequestException
+  = _MatchServiceError athena "InvalidRequestException"
 
 -- | A resource, such as a workgroup, was not found.
 --
@@ -285,3 +278,10 @@ _ResourceNotFoundException :: AsError a => Getting (First ServiceError) a Servic
 _ResourceNotFoundException
   = _MatchServiceError athena
       "ResourceNotFoundException"
+
+-- | Indicates a platform issue, which may be due to a transient condition or outage.
+--
+--
+_InternalServerException :: AsError a => Getting (First ServiceError) a ServiceError
+_InternalServerException
+  = _MatchServiceError athena "InternalServerException"

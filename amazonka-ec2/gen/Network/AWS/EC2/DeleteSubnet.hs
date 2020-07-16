@@ -27,8 +27,8 @@ module Network.AWS.EC2.DeleteSubnet
       deleteSubnet
     , DeleteSubnet
     -- * Request Lenses
-    , ddDryRun
-    , ddSubnetId
+    , dltsbntDryRun
+    , dltsbntSubnetId
 
     -- * Destructuring the Response
     , deleteSubnetResponse
@@ -43,32 +43,32 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteSubnet' smart constructor.
-data DeleteSubnet = DeleteSubnet'{_ddDryRun ::
+data DeleteSubnet = DeleteSubnet'{_dltsbntDryRun ::
                                   !(Maybe Bool),
-                                  _ddSubnetId :: !Text}
+                                  _dltsbntSubnetId :: !Text}
                       deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteSubnet' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ddDryRun' - Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
+-- * 'dltsbntDryRun' - Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 --
--- * 'ddSubnetId' - The ID of the subnet.
+-- * 'dltsbntSubnetId' - The ID of the subnet.
 deleteSubnet
-    :: Text -- ^ 'ddSubnetId'
+    :: Text -- ^ 'dltsbntSubnetId'
     -> DeleteSubnet
 deleteSubnet pSubnetId_
-  = DeleteSubnet'{_ddDryRun = Nothing,
-                  _ddSubnetId = pSubnetId_}
+  = DeleteSubnet'{_dltsbntDryRun = Nothing,
+                  _dltsbntSubnetId = pSubnetId_}
 
 -- | Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
-ddDryRun :: Lens' DeleteSubnet (Maybe Bool)
-ddDryRun = lens _ddDryRun (\ s a -> s{_ddDryRun = a})
+dltsbntDryRun :: Lens' DeleteSubnet (Maybe Bool)
+dltsbntDryRun = lens _dltsbntDryRun (\ s a -> s{_dltsbntDryRun = a})
 
 -- | The ID of the subnet.
-ddSubnetId :: Lens' DeleteSubnet Text
-ddSubnetId = lens _ddSubnetId (\ s a -> s{_ddSubnetId = a})
+dltsbntSubnetId :: Lens' DeleteSubnet Text
+dltsbntSubnetId = lens _dltsbntSubnetId (\ s a -> s{_dltsbntSubnetId = a})
 
 instance AWSRequest DeleteSubnet where
         type Rs DeleteSubnet = DeleteSubnetResponse
@@ -90,7 +90,8 @@ instance ToQuery DeleteSubnet where
           = mconcat
               ["Action" =: ("DeleteSubnet" :: ByteString),
                "Version" =: ("2016-11-15" :: ByteString),
-               "DryRun" =: _ddDryRun, "SubnetId" =: _ddSubnetId]
+               "DryRun" =: _dltsbntDryRun,
+               "SubnetId" =: _dltsbntSubnetId]
 
 -- | /See:/ 'deleteSubnetResponse' smart constructor.
 data DeleteSubnetResponse = DeleteSubnetResponse'

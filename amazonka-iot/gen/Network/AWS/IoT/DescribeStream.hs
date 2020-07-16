@@ -33,8 +33,8 @@ module Network.AWS.IoT.DescribeStream
     , describeStreamResponse
     , DescribeStreamResponse
     -- * Response Lenses
-    , dssrsStreamInfo
-    , dssrsResponseStatus
+    , dscrbstrmrsStreamInfo
+    , dscrbstrmrsResponseStatus
     ) where
 
 import Network.AWS.IoT.Types
@@ -88,10 +88,10 @@ instance ToQuery DescribeStream where
         toQuery = const mempty
 
 -- | /See:/ 'describeStreamResponse' smart constructor.
-data DescribeStreamResponse = DescribeStreamResponse'{_dssrsStreamInfo
+data DescribeStreamResponse = DescribeStreamResponse'{_dscrbstrmrsStreamInfo
                                                       :: !(Maybe StreamInfo),
-                                                      _dssrsResponseStatus ::
-                                                      !Int}
+                                                      _dscrbstrmrsResponseStatus
+                                                      :: !Int}
                                 deriving (Eq, Read, Show, Data, Typeable,
                                           Generic)
 
@@ -99,22 +99,23 @@ data DescribeStreamResponse = DescribeStreamResponse'{_dssrsStreamInfo
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dssrsStreamInfo' - Information about the stream.
+-- * 'dscrbstrmrsStreamInfo' - Information about the stream.
 --
--- * 'dssrsResponseStatus' - -- | The response status code.
+-- * 'dscrbstrmrsResponseStatus' - -- | The response status code.
 describeStreamResponse
-    :: Int -- ^ 'dssrsResponseStatus'
+    :: Int -- ^ 'dscrbstrmrsResponseStatus'
     -> DescribeStreamResponse
 describeStreamResponse pResponseStatus_
-  = DescribeStreamResponse'{_dssrsStreamInfo = Nothing,
-                            _dssrsResponseStatus = pResponseStatus_}
+  = DescribeStreamResponse'{_dscrbstrmrsStreamInfo =
+                              Nothing,
+                            _dscrbstrmrsResponseStatus = pResponseStatus_}
 
 -- | Information about the stream.
-dssrsStreamInfo :: Lens' DescribeStreamResponse (Maybe StreamInfo)
-dssrsStreamInfo = lens _dssrsStreamInfo (\ s a -> s{_dssrsStreamInfo = a})
+dscrbstrmrsStreamInfo :: Lens' DescribeStreamResponse (Maybe StreamInfo)
+dscrbstrmrsStreamInfo = lens _dscrbstrmrsStreamInfo (\ s a -> s{_dscrbstrmrsStreamInfo = a})
 
 -- | -- | The response status code.
-dssrsResponseStatus :: Lens' DescribeStreamResponse Int
-dssrsResponseStatus = lens _dssrsResponseStatus (\ s a -> s{_dssrsResponseStatus = a})
+dscrbstrmrsResponseStatus :: Lens' DescribeStreamResponse Int
+dscrbstrmrsResponseStatus = lens _dscrbstrmrsResponseStatus (\ s a -> s{_dscrbstrmrsResponseStatus = a})
 
 instance NFData DescribeStreamResponse where

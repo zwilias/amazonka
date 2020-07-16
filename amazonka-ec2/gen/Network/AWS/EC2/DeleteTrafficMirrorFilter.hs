@@ -29,8 +29,8 @@ module Network.AWS.EC2.DeleteTrafficMirrorFilter
       deleteTrafficMirrorFilter
     , DeleteTrafficMirrorFilter
     -- * Request Lenses
-    , dtmftDryRun
-    , dtmftTrafficMirrorFilterId
+    , dlttrffcmrrrfltrDryRun
+    , dlttrffcmrrrfltrTrafficMirrorFilterId
 
     -- * Destructuring the Response
     , deleteTrafficMirrorFilterResponse
@@ -48,9 +48,9 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteTrafficMirrorFilter' smart constructor.
-data DeleteTrafficMirrorFilter = DeleteTrafficMirrorFilter'{_dtmftDryRun
+data DeleteTrafficMirrorFilter = DeleteTrafficMirrorFilter'{_dlttrffcmrrrfltrDryRun
                                                             :: !(Maybe Bool),
-                                                            _dtmftTrafficMirrorFilterId
+                                                            _dlttrffcmrrrfltrTrafficMirrorFilterId
                                                             :: !Text}
                                    deriving (Eq, Read, Show, Data, Typeable,
                                              Generic)
@@ -59,24 +59,25 @@ data DeleteTrafficMirrorFilter = DeleteTrafficMirrorFilter'{_dtmftDryRun
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dtmftDryRun' - Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
+-- * 'dlttrffcmrrrfltrDryRun' - Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 --
--- * 'dtmftTrafficMirrorFilterId' - The ID of the Traffic Mirror filter.
+-- * 'dlttrffcmrrrfltrTrafficMirrorFilterId' - The ID of the Traffic Mirror filter.
 deleteTrafficMirrorFilter
-    :: Text -- ^ 'dtmftTrafficMirrorFilterId'
+    :: Text -- ^ 'dlttrffcmrrrfltrTrafficMirrorFilterId'
     -> DeleteTrafficMirrorFilter
 deleteTrafficMirrorFilter pTrafficMirrorFilterId_
-  = DeleteTrafficMirrorFilter'{_dtmftDryRun = Nothing,
-                               _dtmftTrafficMirrorFilterId =
+  = DeleteTrafficMirrorFilter'{_dlttrffcmrrrfltrDryRun
+                                 = Nothing,
+                               _dlttrffcmrrrfltrTrafficMirrorFilterId =
                                  pTrafficMirrorFilterId_}
 
 -- | Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
-dtmftDryRun :: Lens' DeleteTrafficMirrorFilter (Maybe Bool)
-dtmftDryRun = lens _dtmftDryRun (\ s a -> s{_dtmftDryRun = a})
+dlttrffcmrrrfltrDryRun :: Lens' DeleteTrafficMirrorFilter (Maybe Bool)
+dlttrffcmrrrfltrDryRun = lens _dlttrffcmrrrfltrDryRun (\ s a -> s{_dlttrffcmrrrfltrDryRun = a})
 
 -- | The ID of the Traffic Mirror filter.
-dtmftTrafficMirrorFilterId :: Lens' DeleteTrafficMirrorFilter Text
-dtmftTrafficMirrorFilterId = lens _dtmftTrafficMirrorFilterId (\ s a -> s{_dtmftTrafficMirrorFilterId = a})
+dlttrffcmrrrfltrTrafficMirrorFilterId :: Lens' DeleteTrafficMirrorFilter Text
+dlttrffcmrrrfltrTrafficMirrorFilterId = lens _dlttrffcmrrrfltrTrafficMirrorFilterId (\ s a -> s{_dlttrffcmrrrfltrTrafficMirrorFilterId = a})
 
 instance AWSRequest DeleteTrafficMirrorFilter where
         type Rs DeleteTrafficMirrorFilter =
@@ -105,9 +106,9 @@ instance ToQuery DeleteTrafficMirrorFilter where
               ["Action" =:
                  ("DeleteTrafficMirrorFilter" :: ByteString),
                "Version" =: ("2016-11-15" :: ByteString),
-               "DryRun" =: _dtmftDryRun,
+               "DryRun" =: _dlttrffcmrrrfltrDryRun,
                "TrafficMirrorFilterId" =:
-                 _dtmftTrafficMirrorFilterId]
+                 _dlttrffcmrrrfltrTrafficMirrorFilterId]
 
 -- | /See:/ 'deleteTrafficMirrorFilterResponse' smart constructor.
 data DeleteTrafficMirrorFilterResponse = DeleteTrafficMirrorFilterResponse'{_dtmfrsTrafficMirrorFilterId

@@ -22,65 +22,65 @@ module Network.AWS.ECR
     -- * Errors
     -- $errors
 
-    -- ** LayersNotFoundException
-    , _LayersNotFoundException
-
-    -- ** InvalidParameterException
-    , _InvalidParameterException
-
-    -- ** LayerAlreadyExistsException
-    , _LayerAlreadyExistsException
-
-    -- ** ServerException
-    , _ServerException
-
-    -- ** LayerInaccessibleException
-    , _LayerInaccessibleException
-
-    -- ** InvalidLayerException
-    , _InvalidLayerException
-
-    -- ** LayerPartTooSmallException
-    , _LayerPartTooSmallException
+    -- ** RepositoryAlreadyExistsException
+    , _RepositoryAlreadyExistsException
 
     -- ** LifecyclePolicyPreviewNotFoundException
     , _LifecyclePolicyPreviewNotFoundException
 
-    -- ** ImageNotFoundException
-    , _ImageNotFoundException
+    -- ** InvalidLayerException
+    , _InvalidLayerException
 
-    -- ** ImageAlreadyExistsException
-    , _ImageAlreadyExistsException
+    -- ** ServerException
+    , _ServerException
 
-    -- ** RepositoryNotFoundException
-    , _RepositoryNotFoundException
-
-    -- ** LifecyclePolicyPreviewInProgressException
-    , _LifecyclePolicyPreviewInProgressException
-
-    -- ** UploadNotFoundException
-    , _UploadNotFoundException
+    -- ** LayerAlreadyExistsException
+    , _LayerAlreadyExistsException
 
     -- ** LifecyclePolicyNotFoundException
     , _LifecyclePolicyNotFoundException
 
-    -- ** InvalidLayerPartException
-    , _InvalidLayerPartException
+    -- ** InvalidParameterException
+    , _InvalidParameterException
 
-    -- ** RepositoryNotEmptyException
-    , _RepositoryNotEmptyException
-
-    -- ** RepositoryAlreadyExistsException
-    , _RepositoryAlreadyExistsException
+    -- ** LayersNotFoundException
+    , _LayersNotFoundException
 
     -- ** RepositoryPolicyNotFoundException
     , _RepositoryPolicyNotFoundException
 
-    -- ** EmptyUploadException
-    , _EmptyUploadException
+    -- ** ImageNotFoundException
+    , _ImageNotFoundException
+
+    -- ** LayerPartTooSmallException
+    , _LayerPartTooSmallException
+
+    -- ** RepositoryNotEmptyException
+    , _RepositoryNotEmptyException
+
+    -- ** LayerInaccessibleException
+    , _LayerInaccessibleException
+
+    -- ** InvalidLayerPartException
+    , _InvalidLayerPartException
+
+    -- ** UploadNotFoundException
+    , _UploadNotFoundException
 
     -- ** LimitExceededException
     , _LimitExceededException
+
+    -- ** LifecyclePolicyPreviewInProgressException
+    , _LifecyclePolicyPreviewInProgressException
+
+    -- ** EmptyUploadException
+    , _EmptyUploadException
+
+    -- ** RepositoryNotFoundException
+    , _RepositoryNotFoundException
+
+    -- ** ImageAlreadyExistsException
+    , _ImageAlreadyExistsException
 
     -- * Waiters
     -- $waiters

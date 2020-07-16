@@ -16,17 +16,17 @@ module Network.AWS.AppStream.Types
       appStream
 
     -- * Errors
-    , _InvalidRoleException
-    , _ResourceAlreadyExistsException
-    , _IncompatibleImageException
-    , _ConcurrentModificationException
     , _OperationNotPermittedException
-    , _InvalidAccountStatusException
-    , _ResourceNotFoundException
-    , _InvalidParameterCombinationException
+    , _IncompatibleImageException
     , _ResourceNotAvailableException
+    , _ResourceNotFoundException
+    , _ResourceAlreadyExistsException
+    , _InvalidAccountStatusException
+    , _InvalidRoleException
+    , _ConcurrentModificationException
     , _LimitExceededException
     , _ResourceInUseException
+    , _InvalidParameterCombinationException
 
     -- * AccessEndpointType
     , AccessEndpointType (..)
@@ -457,20 +457,13 @@ appStream
           | has (hasStatus 509) e = Just "limit_exceeded"
           | otherwise = Nothing
 
--- | The specified role is invalid.
+-- | The attempted operation is not permitted.
 --
 --
-_InvalidRoleException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidRoleException
-  = _MatchServiceError appStream "InvalidRoleException"
-
--- | The specified resource already exists.
---
---
-_ResourceAlreadyExistsException :: AsError a => Getting (First ServiceError) a ServiceError
-_ResourceAlreadyExistsException
+_OperationNotPermittedException :: AsError a => Getting (First ServiceError) a ServiceError
+_OperationNotPermittedException
   = _MatchServiceError appStream
-      "ResourceAlreadyExistsException"
+      "OperationNotPermittedException"
 
 -- | The image does not support storage connectors.
 --
@@ -480,29 +473,13 @@ _IncompatibleImageException
   = _MatchServiceError appStream
       "IncompatibleImageException"
 
--- | An API error occurred. Wait a few minutes and try again.
+-- | The specified resource exists and is not in use, but isn't available.
 --
 --
-_ConcurrentModificationException :: AsError a => Getting (First ServiceError) a ServiceError
-_ConcurrentModificationException
+_ResourceNotAvailableException :: AsError a => Getting (First ServiceError) a ServiceError
+_ResourceNotAvailableException
   = _MatchServiceError appStream
-      "ConcurrentModificationException"
-
--- | The attempted operation is not permitted.
---
---
-_OperationNotPermittedException :: AsError a => Getting (First ServiceError) a ServiceError
-_OperationNotPermittedException
-  = _MatchServiceError appStream
-      "OperationNotPermittedException"
-
--- | The resource cannot be created because your AWS account is suspended. For assistance, contact AWS Support. 
---
---
-_InvalidAccountStatusException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidAccountStatusException
-  = _MatchServiceError appStream
-      "InvalidAccountStatusException"
+      "ResourceNotAvailableException"
 
 -- | The specified resource was not found.
 --
@@ -512,21 +489,36 @@ _ResourceNotFoundException
   = _MatchServiceError appStream
       "ResourceNotFoundException"
 
--- | Indicates an incorrect combination of parameters, or a missing parameter.
+-- | The specified resource already exists.
 --
 --
-_InvalidParameterCombinationException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidParameterCombinationException
+_ResourceAlreadyExistsException :: AsError a => Getting (First ServiceError) a ServiceError
+_ResourceAlreadyExistsException
   = _MatchServiceError appStream
-      "InvalidParameterCombinationException"
+      "ResourceAlreadyExistsException"
 
--- | The specified resource exists and is not in use, but isn't available.
+-- | The resource cannot be created because your AWS account is suspended. For assistance, contact AWS Support. 
 --
 --
-_ResourceNotAvailableException :: AsError a => Getting (First ServiceError) a ServiceError
-_ResourceNotAvailableException
+_InvalidAccountStatusException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidAccountStatusException
   = _MatchServiceError appStream
-      "ResourceNotAvailableException"
+      "InvalidAccountStatusException"
+
+-- | The specified role is invalid.
+--
+--
+_InvalidRoleException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidRoleException
+  = _MatchServiceError appStream "InvalidRoleException"
+
+-- | An API error occurred. Wait a few minutes and try again.
+--
+--
+_ConcurrentModificationException :: AsError a => Getting (First ServiceError) a ServiceError
+_ConcurrentModificationException
+  = _MatchServiceError appStream
+      "ConcurrentModificationException"
 
 -- | The requested limit exceeds the permitted limit for an account.
 --
@@ -543,3 +535,11 @@ _ResourceInUseException :: AsError a => Getting (First ServiceError) a ServiceEr
 _ResourceInUseException
   = _MatchServiceError appStream
       "ResourceInUseException"
+
+-- | Indicates an incorrect combination of parameters, or a missing parameter.
+--
+--
+_InvalidParameterCombinationException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidParameterCombinationException
+  = _MatchServiceError appStream
+      "InvalidParameterCombinationException"

@@ -23,20 +23,20 @@ module Network.AWS.ServiceCatalog
     -- * Errors
     -- $errors
 
-    -- ** InvalidParametersException
-    , _InvalidParametersException
-
-    -- ** DuplicateResourceException
-    , _DuplicateResourceException
-
-    -- ** TagOptionNotMigratedException
-    , _TagOptionNotMigratedException
+    -- ** InvalidStateException
+    , _InvalidStateException
 
     -- ** ResourceNotFoundException
     , _ResourceNotFoundException
 
-    -- ** InvalidStateException
-    , _InvalidStateException
+    -- ** TagOptionNotMigratedException
+    , _TagOptionNotMigratedException
+
+    -- ** DuplicateResourceException
+    , _DuplicateResourceException
+
+    -- ** InvalidParametersException
+    , _InvalidParametersException
 
     -- ** LimitExceededException
     , _LimitExceededException

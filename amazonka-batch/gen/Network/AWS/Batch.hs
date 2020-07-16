@@ -279,16 +279,16 @@ module Network.AWS.Batch
     -- ** JobDefinition
     , JobDefinition
     , jobDefinition
-    , jddStatus
-    , jddRetryStrategy
-    , jddParameters
-    , jddTimeout
-    , jddContainerProperties
-    , jddNodeProperties
-    , jddJobDefinitionName
-    , jddJobDefinitionARN
-    , jddRevision
-    , jddType
+    , jbdfntnStatus
+    , jbdfntnRetryStrategy
+    , jbdfntnParameters
+    , jbdfntnTimeout
+    , jbdfntnContainerProperties
+    , jbdfntnNodeProperties
+    , jbdfntnJobDefinitionName
+    , jbdfntnJobDefinitionARN
+    , jbdfntnRevision
+    , jbdfntnType
 
     -- ** JobDependency
     , JobDependency

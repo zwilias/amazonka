@@ -20,11 +20,11 @@ module Network.AWS.MechanicalTurk
     -- * Errors
     -- $errors
 
-    -- ** ServiceFault
-    , _ServiceFault
-
     -- ** RequestError
     , _RequestError
+
+    -- ** ServiceFault
+    , _ServiceFault
 
     -- * Waiters
     -- $waiters

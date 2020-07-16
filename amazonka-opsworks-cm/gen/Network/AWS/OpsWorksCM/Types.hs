@@ -17,10 +17,10 @@ module Network.AWS.OpsWorksCM.Types
 
     -- * Errors
     , _ValidationException
+    , _InvalidStateException
+    , _ResourceNotFoundException
     , _ResourceAlreadyExistsException
     , _InvalidNextTokenException
-    , _ResourceNotFoundException
-    , _InvalidStateException
     , _LimitExceededException
 
     -- * BackupStatus
@@ -170,6 +170,22 @@ _ValidationException :: AsError a => Getting (First ServiceError) a ServiceError
 _ValidationException
   = _MatchServiceError opsWorksCM "ValidationException"
 
+-- | The resource is in a state that does not allow you to perform a specified action. 
+--
+--
+_InvalidStateException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidStateException
+  = _MatchServiceError opsWorksCM
+      "InvalidStateException"
+
+-- | The requested resource does not exist, or access was denied. 
+--
+--
+_ResourceNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
+_ResourceNotFoundException
+  = _MatchServiceError opsWorksCM
+      "ResourceNotFoundException"
+
 -- | The requested resource cannot be created because it already exists. 
 --
 --
@@ -185,22 +201,6 @@ _InvalidNextTokenException :: AsError a => Getting (First ServiceError) a Servic
 _InvalidNextTokenException
   = _MatchServiceError opsWorksCM
       "InvalidNextTokenException"
-
--- | The requested resource does not exist, or access was denied. 
---
---
-_ResourceNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
-_ResourceNotFoundException
-  = _MatchServiceError opsWorksCM
-      "ResourceNotFoundException"
-
--- | The resource is in a state that does not allow you to perform a specified action. 
---
---
-_InvalidStateException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidStateException
-  = _MatchServiceError opsWorksCM
-      "InvalidStateException"
 
 -- | The limit of servers or backups has been reached. 
 --

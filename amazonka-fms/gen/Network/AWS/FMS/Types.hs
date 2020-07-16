@@ -16,10 +16,10 @@ module Network.AWS.FMS.Types
       fms
 
     -- * Errors
+    , _ResourceNotFoundException
+    , _InvalidOperationException
     , _InternalErrorException
     , _InvalidInputException
-    , _InvalidOperationException
-    , _ResourceNotFoundException
     , _LimitExceededException
 
     -- * PolicyComplianceStatusType
@@ -147,6 +147,20 @@ fms
           | has (hasStatus 509) e = Just "limit_exceeded"
           | otherwise = Nothing
 
+-- | The specified resource was not found.
+--
+--
+_ResourceNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
+_ResourceNotFoundException
+  = _MatchServiceError fms "ResourceNotFoundException"
+
+-- | The operation failed because there was nothing to do. For example, you might have submitted an @AssociateAdminAccount@ request, but the account ID that you submitted was already set as the AWS Firewall Manager administrator.
+--
+--
+_InvalidOperationException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidOperationException
+  = _MatchServiceError fms "InvalidOperationException"
+
 -- | The operation failed because of a system problem, even though the request was valid. Retry your request.
 --
 --
@@ -160,20 +174,6 @@ _InternalErrorException
 _InvalidInputException :: AsError a => Getting (First ServiceError) a ServiceError
 _InvalidInputException
   = _MatchServiceError fms "InvalidInputException"
-
--- | The operation failed because there was nothing to do. For example, you might have submitted an @AssociateAdminAccount@ request, but the account ID that you submitted was already set as the AWS Firewall Manager administrator.
---
---
-_InvalidOperationException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidOperationException
-  = _MatchServiceError fms "InvalidOperationException"
-
--- | The specified resource was not found.
---
---
-_ResourceNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
-_ResourceNotFoundException
-  = _MatchServiceError fms "ResourceNotFoundException"
 
 -- | The operation exceeds a resource limit, for example, the maximum number of @policy@ objects that you can create for an AWS account. For more information, see <http://docs.aws.amazon.com/waf/latest/developerguide/fms-limits.html Firewall Manager Limits> in the /AWS WAF Developer Guide/ .
 --

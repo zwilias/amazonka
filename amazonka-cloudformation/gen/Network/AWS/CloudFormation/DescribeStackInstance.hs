@@ -37,8 +37,8 @@ module Network.AWS.CloudFormation.DescribeStackInstance
     , describeStackInstanceResponse
     , DescribeStackInstanceResponse
     -- * Response Lenses
-    , dsisrsStackInstance
-    , dsisrsResponseStatus
+    , dscrbstckinstncrsStackInstance
+    , dscrbstckinstncrsResponseStatus
     ) where
 
 import Network.AWS.CloudFormation.Types
@@ -121,11 +121,11 @@ instance ToQuery DescribeStackInstance where
                "StackInstanceRegion" =: _dStackInstanceRegion]
 
 -- | /See:/ 'describeStackInstanceResponse' smart constructor.
-data DescribeStackInstanceResponse = DescribeStackInstanceResponse'{_dsisrsStackInstance
+data DescribeStackInstanceResponse = DescribeStackInstanceResponse'{_dscrbstckinstncrsStackInstance
                                                                     ::
                                                                     !(Maybe
                                                                         StackInstance),
-                                                                    _dsisrsResponseStatus
+                                                                    _dscrbstckinstncrsResponseStatus
                                                                     :: !Int}
                                        deriving (Eq, Read, Show, Data, Typeable,
                                                  Generic)
@@ -134,23 +134,24 @@ data DescribeStackInstanceResponse = DescribeStackInstanceResponse'{_dsisrsStack
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dsisrsStackInstance' - The stack instance that matches the specified request parameters.
+-- * 'dscrbstckinstncrsStackInstance' - The stack instance that matches the specified request parameters.
 --
--- * 'dsisrsResponseStatus' - -- | The response status code.
+-- * 'dscrbstckinstncrsResponseStatus' - -- | The response status code.
 describeStackInstanceResponse
-    :: Int -- ^ 'dsisrsResponseStatus'
+    :: Int -- ^ 'dscrbstckinstncrsResponseStatus'
     -> DescribeStackInstanceResponse
 describeStackInstanceResponse pResponseStatus_
-  = DescribeStackInstanceResponse'{_dsisrsStackInstance
+  = DescribeStackInstanceResponse'{_dscrbstckinstncrsStackInstance
                                      = Nothing,
-                                   _dsisrsResponseStatus = pResponseStatus_}
+                                   _dscrbstckinstncrsResponseStatus =
+                                     pResponseStatus_}
 
 -- | The stack instance that matches the specified request parameters.
-dsisrsStackInstance :: Lens' DescribeStackInstanceResponse (Maybe StackInstance)
-dsisrsStackInstance = lens _dsisrsStackInstance (\ s a -> s{_dsisrsStackInstance = a})
+dscrbstckinstncrsStackInstance :: Lens' DescribeStackInstanceResponse (Maybe StackInstance)
+dscrbstckinstncrsStackInstance = lens _dscrbstckinstncrsStackInstance (\ s a -> s{_dscrbstckinstncrsStackInstance = a})
 
 -- | -- | The response status code.
-dsisrsResponseStatus :: Lens' DescribeStackInstanceResponse Int
-dsisrsResponseStatus = lens _dsisrsResponseStatus (\ s a -> s{_dsisrsResponseStatus = a})
+dscrbstckinstncrsResponseStatus :: Lens' DescribeStackInstanceResponse Int
+dscrbstckinstncrsResponseStatus = lens _dscrbstckinstncrsResponseStatus (\ s a -> s{_dscrbstckinstncrsResponseStatus = a})
 
 instance NFData DescribeStackInstanceResponse where

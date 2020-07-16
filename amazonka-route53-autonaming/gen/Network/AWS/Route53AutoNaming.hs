@@ -22,38 +22,38 @@ module Network.AWS.Route53AutoNaming
     -- * Errors
     -- $errors
 
-    -- ** ResourceLimitExceeded
-    , _ResourceLimitExceeded
-
-    -- ** InvalidInput
-    , _InvalidInput
-
-    -- ** NamespaceAlreadyExists
-    , _NamespaceAlreadyExists
-
     -- ** NamespaceNotFound
     , _NamespaceNotFound
-
-    -- ** ServiceAlreadyExists
-    , _ServiceAlreadyExists
-
-    -- ** ResourceInUse
-    , _ResourceInUse
-
-    -- ** CustomHealthNotFound
-    , _CustomHealthNotFound
 
     -- ** InstanceNotFound
     , _InstanceNotFound
 
-    -- ** DuplicateRequest
-    , _DuplicateRequest
+    -- ** CustomHealthNotFound
+    , _CustomHealthNotFound
+
+    -- ** ResourceLimitExceeded
+    , _ResourceLimitExceeded
+
+    -- ** OperationNotFound
+    , _OperationNotFound
 
     -- ** ServiceNotFound
     , _ServiceNotFound
 
-    -- ** OperationNotFound
-    , _OperationNotFound
+    -- ** ServiceAlreadyExists
+    , _ServiceAlreadyExists
+
+    -- ** NamespaceAlreadyExists
+    , _NamespaceAlreadyExists
+
+    -- ** InvalidInput
+    , _InvalidInput
+
+    -- ** DuplicateRequest
+    , _DuplicateRequest
+
+    -- ** ResourceInUse
+    , _ResourceInUse
 
     -- * Waiters
     -- $waiters

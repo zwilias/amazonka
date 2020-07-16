@@ -29,8 +29,8 @@ module Network.AWS.CloudFormation.DescribeStackResource
       describeStackResource
     , DescribeStackResource
     -- * Request Lenses
-    , dsrsStackName
-    , dsrsLogicalResourceId
+    , dscrbstckrsrcStackName
+    , dscrbstckrsrcLogicalResourceId
 
     -- * Destructuring the Response
     , describeStackResourceResponse
@@ -52,10 +52,10 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'describeStackResource' smart constructor.
-data DescribeStackResource = DescribeStackResource'{_dsrsStackName
+data DescribeStackResource = DescribeStackResource'{_dscrbstckrsrcStackName
                                                     :: !Text,
-                                                    _dsrsLogicalResourceId ::
-                                                    !Text}
+                                                    _dscrbstckrsrcLogicalResourceId
+                                                    :: !Text}
                                deriving (Eq, Read, Show, Data, Typeable,
                                          Generic)
 
@@ -63,25 +63,26 @@ data DescribeStackResource = DescribeStackResource'{_dsrsStackName
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dsrsStackName' - The name or the unique stack ID that is associated with the stack, which are not always interchangeable:     * Running stacks: You can specify either the stack's name or its unique stack ID.     * Deleted stacks: You must specify the unique stack ID. Default: There is no default value.
+-- * 'dscrbstckrsrcStackName' - The name or the unique stack ID that is associated with the stack, which are not always interchangeable:     * Running stacks: You can specify either the stack's name or its unique stack ID.     * Deleted stacks: You must specify the unique stack ID. Default: There is no default value.
 --
--- * 'dsrsLogicalResourceId' - The logical name of the resource as specified in the template. Default: There is no default value.
+-- * 'dscrbstckrsrcLogicalResourceId' - The logical name of the resource as specified in the template. Default: There is no default value.
 describeStackResource
-    :: Text -- ^ 'dsrsStackName'
-    -> Text -- ^ 'dsrsLogicalResourceId'
+    :: Text -- ^ 'dscrbstckrsrcStackName'
+    -> Text -- ^ 'dscrbstckrsrcLogicalResourceId'
     -> DescribeStackResource
 describeStackResource pStackName_ pLogicalResourceId_
-  = DescribeStackResource'{_dsrsStackName =
+  = DescribeStackResource'{_dscrbstckrsrcStackName =
                              pStackName_,
-                           _dsrsLogicalResourceId = pLogicalResourceId_}
+                           _dscrbstckrsrcLogicalResourceId =
+                             pLogicalResourceId_}
 
 -- | The name or the unique stack ID that is associated with the stack, which are not always interchangeable:     * Running stacks: You can specify either the stack's name or its unique stack ID.     * Deleted stacks: You must specify the unique stack ID. Default: There is no default value.
-dsrsStackName :: Lens' DescribeStackResource Text
-dsrsStackName = lens _dsrsStackName (\ s a -> s{_dsrsStackName = a})
+dscrbstckrsrcStackName :: Lens' DescribeStackResource Text
+dscrbstckrsrcStackName = lens _dscrbstckrsrcStackName (\ s a -> s{_dscrbstckrsrcStackName = a})
 
 -- | The logical name of the resource as specified in the template. Default: There is no default value.
-dsrsLogicalResourceId :: Lens' DescribeStackResource Text
-dsrsLogicalResourceId = lens _dsrsLogicalResourceId (\ s a -> s{_dsrsLogicalResourceId = a})
+dscrbstckrsrcLogicalResourceId :: Lens' DescribeStackResource Text
+dscrbstckrsrcLogicalResourceId = lens _dscrbstckrsrcLogicalResourceId (\ s a -> s{_dscrbstckrsrcLogicalResourceId = a})
 
 instance AWSRequest DescribeStackResource where
         type Rs DescribeStackResource =
@@ -109,8 +110,9 @@ instance ToQuery DescribeStackResource where
           = mconcat
               ["Action" =: ("DescribeStackResource" :: ByteString),
                "Version" =: ("2010-05-15" :: ByteString),
-               "StackName" =: _dsrsStackName,
-               "LogicalResourceId" =: _dsrsLogicalResourceId]
+               "StackName" =: _dscrbstckrsrcStackName,
+               "LogicalResourceId" =:
+                 _dscrbstckrsrcLogicalResourceId]
 
 -- | The output for a 'DescribeStackResource' action.
 --

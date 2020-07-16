@@ -16,16 +16,16 @@ module Network.AWS.Connect.Types
       connect
 
     -- * Errors
-    , _OutboundContactNotPermittedException
+    , _UserNotFoundException
+    , _InternalServiceException
     , _InvalidParameterException
     , _InvalidRequestException
-    , _DuplicateResourceException
-    , _UserNotFoundException
-    , _DestinationNotAllowedException
     , _ContactNotFoundException
-    , _ThrottlingException
-    , _InternalServiceException
+    , _DestinationNotAllowedException
     , _ResourceNotFoundException
+    , _DuplicateResourceException
+    , _ThrottlingException
+    , _OutboundContactNotPermittedException
     , _LimitExceededException
 
     -- * Channel
@@ -346,14 +346,22 @@ connect
           | has (hasStatus 509) e = Just "limit_exceeded"
           | otherwise = Nothing
 
--- | The contact is not permitted.
+-- | No user with the specified credentials was found in the Amazon Connect instance.
 --
 --
-_OutboundContactNotPermittedException :: AsError a => Getting (First ServiceError) a ServiceError
-_OutboundContactNotPermittedException
+_UserNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
+_UserNotFoundException
+  = _MatchServiceError connect "UserNotFoundException"
+      . hasStatus 404
+
+-- | Request processing failed due to an error or failure with the service.
+--
+--
+_InternalServiceException :: AsError a => Getting (First ServiceError) a ServiceError
+_InternalServiceException
   = _MatchServiceError connect
-      "OutboundContactNotPermittedException"
-      . hasStatus 403
+      "InternalServiceException"
+      . hasStatus 500
 
 -- | One or more of the specified parameters are not valid.
 --
@@ -373,22 +381,14 @@ _InvalidRequestException
       "InvalidRequestException"
       . hasStatus 400
 
--- | A resource with the specified name already exists.
+-- | The contact with the specified ID is not active or does not exist.
 --
 --
-_DuplicateResourceException :: AsError a => Getting (First ServiceError) a ServiceError
-_DuplicateResourceException
+_ContactNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
+_ContactNotFoundException
   = _MatchServiceError connect
-      "DuplicateResourceException"
-      . hasStatus 409
-
--- | No user with the specified credentials was found in the Amazon Connect instance.
---
---
-_UserNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
-_UserNotFoundException
-  = _MatchServiceError connect "UserNotFoundException"
-      . hasStatus 404
+      "ContactNotFoundException"
+      . hasStatus 410
 
 -- | Outbound calls to the destination number are not allowed.
 --
@@ -399,14 +399,23 @@ _DestinationNotAllowedException
       "DestinationNotAllowedException"
       . hasStatus 403
 
--- | The contact with the specified ID is not active or does not exist.
+-- | The specified resource was not found.
 --
 --
-_ContactNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
-_ContactNotFoundException
+_ResourceNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
+_ResourceNotFoundException
   = _MatchServiceError connect
-      "ContactNotFoundException"
-      . hasStatus 410
+      "ResourceNotFoundException"
+      . hasStatus 404
+
+-- | A resource with the specified name already exists.
+--
+--
+_DuplicateResourceException :: AsError a => Getting (First ServiceError) a ServiceError
+_DuplicateResourceException
+  = _MatchServiceError connect
+      "DuplicateResourceException"
+      . hasStatus 409
 
 -- | The throttling limit has been exceeded.
 --
@@ -416,23 +425,14 @@ _ThrottlingException
   = _MatchServiceError connect "ThrottlingException" .
       hasStatus 429
 
--- | Request processing failed due to an error or failure with the service.
+-- | The contact is not permitted.
 --
 --
-_InternalServiceException :: AsError a => Getting (First ServiceError) a ServiceError
-_InternalServiceException
+_OutboundContactNotPermittedException :: AsError a => Getting (First ServiceError) a ServiceError
+_OutboundContactNotPermittedException
   = _MatchServiceError connect
-      "InternalServiceException"
-      . hasStatus 500
-
--- | The specified resource was not found.
---
---
-_ResourceNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
-_ResourceNotFoundException
-  = _MatchServiceError connect
-      "ResourceNotFoundException"
-      . hasStatus 404
+      "OutboundContactNotPermittedException"
+      . hasStatus 403
 
 -- | The allowed limit for the resource has been exceeded.
 --

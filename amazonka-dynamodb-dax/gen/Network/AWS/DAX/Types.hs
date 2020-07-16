@@ -16,31 +16,31 @@ module Network.AWS.DAX.Types
       dax
 
     -- * Errors
-    , _SubnetQuotaExceededFault
-    , _ParameterGroupNotFoundFault
-    , _InvalidParameterGroupStateFault
+    , _SubnetGroupNotFoundFault
     , _SubnetGroupInUseFault
-    , _ParameterGroupAlreadyExistsFault
+    , _ClusterQuotaForCustomerExceededFault
     , _InvalidSubnet
     , _TagQuotaPerResourceExceeded
-    , _ClusterNotFoundFault
-    , _TagNotFoundFault
-    , _NodeQuotaForClusterExceededFault
-    , _InvalidClusterStateFault
+    , _InvalidParameterGroupStateFault
+    , _ParameterGroupNotFoundFault
+    , _InvalidParameterValueException
     , _ServiceLinkedRoleNotFoundFault
     , _InsufficientClusterCapacityFault
-    , _NodeNotFoundFault
     , _ParameterGroupQuotaExceededFault
-    , _InvalidParameterValueException
+    , _InvalidClusterStateFault
+    , _NodeQuotaForClusterExceededFault
+    , _InvalidARNFault
+    , _ClusterAlreadyExistsFault
+    , _SubnetGroupQuotaExceededFault
+    , _ClusterNotFoundFault
+    , _TagNotFoundFault
+    , _NodeQuotaForCustomerExceededFault
+    , _SubnetGroupAlreadyExistsFault
+    , _ParameterGroupAlreadyExistsFault
     , _InvalidVPCNetworkStateFault
     , _SubnetInUse
-    , _ClusterQuotaForCustomerExceededFault
-    , _SubnetGroupNotFoundFault
-    , _SubnetGroupAlreadyExistsFault
-    , _NodeQuotaForCustomerExceededFault
-    , _SubnetGroupQuotaExceededFault
-    , _ClusterAlreadyExistsFault
-    , _InvalidARNFault
+    , _SubnetQuotaExceededFault
+    , _NodeNotFoundFault
     , _InvalidParameterCombinationException
 
     -- * ChangeType
@@ -242,28 +242,12 @@ dax
           | has (hasStatus 509) e = Just "limit_exceeded"
           | otherwise = Nothing
 
--- | The request cannot be processed because it would exceed the allowed number of subnets in a subnet group.
+-- | The requested subnet group name does not refer to an existing subnet group.
 --
 --
-_SubnetQuotaExceededFault :: AsError a => Getting (First ServiceError) a ServiceError
-_SubnetQuotaExceededFault
-  = _MatchServiceError dax "SubnetQuotaExceededFault"
-
--- | The specified parameter group does not exist.
---
---
-_ParameterGroupNotFoundFault :: AsError a => Getting (First ServiceError) a ServiceError
-_ParameterGroupNotFoundFault
-  = _MatchServiceError dax
-      "ParameterGroupNotFoundFault"
-
--- | One or more parameters in a parameter group are in an invalid state.
---
---
-_InvalidParameterGroupStateFault :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidParameterGroupStateFault
-  = _MatchServiceError dax
-      "InvalidParameterGroupStateFault"
+_SubnetGroupNotFoundFault :: AsError a => Getting (First ServiceError) a ServiceError
+_SubnetGroupNotFoundFault
+  = _MatchServiceError dax "SubnetGroupNotFoundFault"
 
 -- | The specified subnet group is currently in use.
 --
@@ -272,13 +256,13 @@ _SubnetGroupInUseFault :: AsError a => Getting (First ServiceError) a ServiceErr
 _SubnetGroupInUseFault
   = _MatchServiceError dax "SubnetGroupInUseFault"
 
--- | The specified parameter group already exists.
+-- | You have attempted to exceed the maximum number of DAX clusters for your AWS account.
 --
 --
-_ParameterGroupAlreadyExistsFault :: AsError a => Getting (First ServiceError) a ServiceError
-_ParameterGroupAlreadyExistsFault
+_ClusterQuotaForCustomerExceededFault :: AsError a => Getting (First ServiceError) a ServiceError
+_ClusterQuotaForCustomerExceededFault
   = _MatchServiceError dax
-      "ParameterGroupAlreadyExistsFault"
+      "ClusterQuotaForCustomerExceededFault"
 
 -- | An invalid subnet identifier was specified.
 --
@@ -295,34 +279,29 @@ _TagQuotaPerResourceExceeded
   = _MatchServiceError dax
       "TagQuotaPerResourceExceeded"
 
--- | The requested cluster ID does not refer to an existing DAX cluster.
+-- | One or more parameters in a parameter group are in an invalid state.
 --
 --
-_ClusterNotFoundFault :: AsError a => Getting (First ServiceError) a ServiceError
-_ClusterNotFoundFault
-  = _MatchServiceError dax "ClusterNotFoundFault"
-
--- | The tag does not exist.
---
---
-_TagNotFoundFault :: AsError a => Getting (First ServiceError) a ServiceError
-_TagNotFoundFault
-  = _MatchServiceError dax "TagNotFoundFault"
-
--- | You have attempted to exceed the maximum number of nodes for a DAX cluster.
---
---
-_NodeQuotaForClusterExceededFault :: AsError a => Getting (First ServiceError) a ServiceError
-_NodeQuotaForClusterExceededFault
+_InvalidParameterGroupStateFault :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidParameterGroupStateFault
   = _MatchServiceError dax
-      "NodeQuotaForClusterExceededFault"
+      "InvalidParameterGroupStateFault"
 
--- | The requested DAX cluster is not in the /available/ state.
+-- | The specified parameter group does not exist.
 --
 --
-_InvalidClusterStateFault :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidClusterStateFault
-  = _MatchServiceError dax "InvalidClusterStateFault"
+_ParameterGroupNotFoundFault :: AsError a => Getting (First ServiceError) a ServiceError
+_ParameterGroupNotFoundFault
+  = _MatchServiceError dax
+      "ParameterGroupNotFoundFault"
+
+-- | The value for a parameter is invalid.
+--
+--
+_InvalidParameterValueException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidParameterValueException
+  = _MatchServiceError dax
+      "InvalidParameterValueException"
 
 -- | The specified service linked role (SLR) was not found.
 --
@@ -340,13 +319,6 @@ _InsufficientClusterCapacityFault
   = _MatchServiceError dax
       "InsufficientClusterCapacityFault"
 
--- | None of the nodes in the cluster have the given node ID.
---
---
-_NodeNotFoundFault :: AsError a => Getting (First ServiceError) a ServiceError
-_NodeNotFoundFault
-  = _MatchServiceError dax "NodeNotFoundFault"
-
 -- | You have attempted to exceed the maximum number of parameter groups.
 --
 --
@@ -355,13 +327,80 @@ _ParameterGroupQuotaExceededFault
   = _MatchServiceError dax
       "ParameterGroupQuotaExceededFault"
 
--- | The value for a parameter is invalid.
+-- | The requested DAX cluster is not in the /available/ state.
 --
 --
-_InvalidParameterValueException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidParameterValueException
+_InvalidClusterStateFault :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidClusterStateFault
+  = _MatchServiceError dax "InvalidClusterStateFault"
+
+-- | You have attempted to exceed the maximum number of nodes for a DAX cluster.
+--
+--
+_NodeQuotaForClusterExceededFault :: AsError a => Getting (First ServiceError) a ServiceError
+_NodeQuotaForClusterExceededFault
   = _MatchServiceError dax
-      "InvalidParameterValueException"
+      "NodeQuotaForClusterExceededFault"
+
+-- | The Amazon Resource Name (ARN) supplied in the request is not valid.
+--
+--
+_InvalidARNFault :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidARNFault
+  = _MatchServiceError dax "InvalidARNFault"
+
+-- | You already have a DAX cluster with the given identifier.
+--
+--
+_ClusterAlreadyExistsFault :: AsError a => Getting (First ServiceError) a ServiceError
+_ClusterAlreadyExistsFault
+  = _MatchServiceError dax "ClusterAlreadyExistsFault"
+
+-- | The request cannot be processed because it would exceed the allowed number of subnets in a subnet group.
+--
+--
+_SubnetGroupQuotaExceededFault :: AsError a => Getting (First ServiceError) a ServiceError
+_SubnetGroupQuotaExceededFault
+  = _MatchServiceError dax
+      "SubnetGroupQuotaExceededFault"
+
+-- | The requested cluster ID does not refer to an existing DAX cluster.
+--
+--
+_ClusterNotFoundFault :: AsError a => Getting (First ServiceError) a ServiceError
+_ClusterNotFoundFault
+  = _MatchServiceError dax "ClusterNotFoundFault"
+
+-- | The tag does not exist.
+--
+--
+_TagNotFoundFault :: AsError a => Getting (First ServiceError) a ServiceError
+_TagNotFoundFault
+  = _MatchServiceError dax "TagNotFoundFault"
+
+-- | You have attempted to exceed the maximum number of nodes for your AWS account.
+--
+--
+_NodeQuotaForCustomerExceededFault :: AsError a => Getting (First ServiceError) a ServiceError
+_NodeQuotaForCustomerExceededFault
+  = _MatchServiceError dax
+      "NodeQuotaForCustomerExceededFault"
+
+-- | The specified subnet group already exists.
+--
+--
+_SubnetGroupAlreadyExistsFault :: AsError a => Getting (First ServiceError) a ServiceError
+_SubnetGroupAlreadyExistsFault
+  = _MatchServiceError dax
+      "SubnetGroupAlreadyExistsFault"
+
+-- | The specified parameter group already exists.
+--
+--
+_ParameterGroupAlreadyExistsFault :: AsError a => Getting (First ServiceError) a ServiceError
+_ParameterGroupAlreadyExistsFault
+  = _MatchServiceError dax
+      "ParameterGroupAlreadyExistsFault"
 
 -- | The VPC network is in an invalid state.
 --
@@ -377,58 +416,19 @@ _InvalidVPCNetworkStateFault
 _SubnetInUse :: AsError a => Getting (First ServiceError) a ServiceError
 _SubnetInUse = _MatchServiceError dax "SubnetInUse"
 
--- | You have attempted to exceed the maximum number of DAX clusters for your AWS account.
---
---
-_ClusterQuotaForCustomerExceededFault :: AsError a => Getting (First ServiceError) a ServiceError
-_ClusterQuotaForCustomerExceededFault
-  = _MatchServiceError dax
-      "ClusterQuotaForCustomerExceededFault"
-
--- | The requested subnet group name does not refer to an existing subnet group.
---
---
-_SubnetGroupNotFoundFault :: AsError a => Getting (First ServiceError) a ServiceError
-_SubnetGroupNotFoundFault
-  = _MatchServiceError dax "SubnetGroupNotFoundFault"
-
--- | The specified subnet group already exists.
---
---
-_SubnetGroupAlreadyExistsFault :: AsError a => Getting (First ServiceError) a ServiceError
-_SubnetGroupAlreadyExistsFault
-  = _MatchServiceError dax
-      "SubnetGroupAlreadyExistsFault"
-
--- | You have attempted to exceed the maximum number of nodes for your AWS account.
---
---
-_NodeQuotaForCustomerExceededFault :: AsError a => Getting (First ServiceError) a ServiceError
-_NodeQuotaForCustomerExceededFault
-  = _MatchServiceError dax
-      "NodeQuotaForCustomerExceededFault"
-
 -- | The request cannot be processed because it would exceed the allowed number of subnets in a subnet group.
 --
 --
-_SubnetGroupQuotaExceededFault :: AsError a => Getting (First ServiceError) a ServiceError
-_SubnetGroupQuotaExceededFault
-  = _MatchServiceError dax
-      "SubnetGroupQuotaExceededFault"
+_SubnetQuotaExceededFault :: AsError a => Getting (First ServiceError) a ServiceError
+_SubnetQuotaExceededFault
+  = _MatchServiceError dax "SubnetQuotaExceededFault"
 
--- | You already have a DAX cluster with the given identifier.
+-- | None of the nodes in the cluster have the given node ID.
 --
 --
-_ClusterAlreadyExistsFault :: AsError a => Getting (First ServiceError) a ServiceError
-_ClusterAlreadyExistsFault
-  = _MatchServiceError dax "ClusterAlreadyExistsFault"
-
--- | The Amazon Resource Name (ARN) supplied in the request is not valid.
---
---
-_InvalidARNFault :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidARNFault
-  = _MatchServiceError dax "InvalidARNFault"
+_NodeNotFoundFault :: AsError a => Getting (First ServiceError) a ServiceError
+_NodeNotFoundFault
+  = _MatchServiceError dax "NodeNotFoundFault"
 
 -- | Two or more incompatible parameters were specified.
 --

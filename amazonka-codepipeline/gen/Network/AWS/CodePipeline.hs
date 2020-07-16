@@ -119,68 +119,11 @@ module Network.AWS.CodePipeline
     -- * Errors
     -- $errors
 
-    -- ** InvalidClientTokenException
-    , _InvalidClientTokenException
+    -- ** JobNotFoundException
+    , _JobNotFoundException
 
-    -- ** ValidationException
-    , _ValidationException
-
-    -- ** InvalidNonceException
-    , _InvalidNonceException
-
-    -- ** ActionNotFoundException
-    , _ActionNotFoundException
-
-    -- ** InvalidApprovalTokenException
-    , _InvalidApprovalTokenException
-
-    -- ** PipelineExecutionNotStoppableException
-    , _PipelineExecutionNotStoppableException
-
-    -- ** InvalidBlockerDeclarationException
-    , _InvalidBlockerDeclarationException
-
-    -- ** OutputVariablesSizeExceededException
-    , _OutputVariablesSizeExceededException
-
-    -- ** InvalidJobStateException
-    , _InvalidJobStateException
-
-    -- ** TooManyTagsException
-    , _TooManyTagsException
-
-    -- ** InvalidJobException
-    , _InvalidJobException
-
-    -- ** PipelineVersionNotFoundException
-    , _PipelineVersionNotFoundException
-
-    -- ** StageNotRetryableException
-    , _StageNotRetryableException
-
-    -- ** PipelineExecutionNotFoundException
-    , _PipelineExecutionNotFoundException
-
-    -- ** InvalidWebhookAuthenticationParametersException
-    , _InvalidWebhookAuthenticationParametersException
-
-    -- ** WebhookNotFoundException
-    , _WebhookNotFoundException
-
-    -- ** InvalidTagsException
-    , _InvalidTagsException
-
-    -- ** ActionTypeNotFoundException
-    , _ActionTypeNotFoundException
-
-    -- ** ConcurrentModificationException
-    , _ConcurrentModificationException
-
-    -- ** InvalidNextTokenException
-    , _InvalidNextTokenException
-
-    -- ** InvalidStageDeclarationException
-    , _InvalidStageDeclarationException
+    -- ** StageNotFoundException
+    , _StageNotFoundException
 
     -- ** DuplicatedStopRequestException
     , _DuplicatedStopRequestException
@@ -188,38 +131,95 @@ module Network.AWS.CodePipeline
     -- ** InvalidWebhookFilterPatternException
     , _InvalidWebhookFilterPatternException
 
-    -- ** InvalidActionDeclarationException
-    , _InvalidActionDeclarationException
+    -- ** ActionNotFoundException
+    , _ActionNotFoundException
 
-    -- ** StageNotFoundException
-    , _StageNotFoundException
+    -- ** InvalidStageDeclarationException
+    , _InvalidStageDeclarationException
 
-    -- ** InvalidStructureException
-    , _InvalidStructureException
+    -- ** InvalidApprovalTokenException
+    , _InvalidApprovalTokenException
 
-    -- ** JobNotFoundException
-    , _JobNotFoundException
+    -- ** InvalidTagsException
+    , _InvalidTagsException
 
-    -- ** ApprovalAlreadyCompletedException
-    , _ApprovalAlreadyCompletedException
+    -- ** InvalidNonceException
+    , _InvalidNonceException
 
-    -- ** InvalidARNException
-    , _InvalidARNException
+    -- ** WebhookNotFoundException
+    , _WebhookNotFoundException
 
-    -- ** PipelineNameInUseException
-    , _PipelineNameInUseException
+    -- ** StageNotRetryableException
+    , _StageNotRetryableException
+
+    -- ** PipelineVersionNotFoundException
+    , _PipelineVersionNotFoundException
+
+    -- ** InvalidClientTokenException
+    , _InvalidClientTokenException
+
+    -- ** PipelineExecutionNotFoundException
+    , _PipelineExecutionNotFoundException
+
+    -- ** ValidationException
+    , _ValidationException
+
+    -- ** TooManyTagsException
+    , _TooManyTagsException
+
+    -- ** NotLatestPipelineExecutionException
+    , _NotLatestPipelineExecutionException
 
     -- ** PipelineNotFoundException
     , _PipelineNotFoundException
 
+    -- ** InvalidJobStateException
+    , _InvalidJobStateException
+
     -- ** ResourceNotFoundException
     , _ResourceNotFoundException
+
+    -- ** ApprovalAlreadyCompletedException
+    , _ApprovalAlreadyCompletedException
+
+    -- ** InvalidStructureException
+    , _InvalidStructureException
+
+    -- ** OutputVariablesSizeExceededException
+    , _OutputVariablesSizeExceededException
+
+    -- ** InvalidARNException
+    , _InvalidARNException
+
+    -- ** InvalidBlockerDeclarationException
+    , _InvalidBlockerDeclarationException
+
+    -- ** PipelineExecutionNotStoppableException
+    , _PipelineExecutionNotStoppableException
+
+    -- ** InvalidActionDeclarationException
+    , _InvalidActionDeclarationException
+
+    -- ** ActionTypeNotFoundException
+    , _ActionTypeNotFoundException
+
+    -- ** InvalidNextTokenException
+    , _InvalidNextTokenException
+
+    -- ** ConcurrentModificationException
+    , _ConcurrentModificationException
+
+    -- ** InvalidWebhookAuthenticationParametersException
+    , _InvalidWebhookAuthenticationParametersException
 
     -- ** LimitExceededException
     , _LimitExceededException
 
-    -- ** NotLatestPipelineExecutionException
-    , _NotLatestPipelineExecutionException
+    -- ** InvalidJobException
+    , _InvalidJobException
+
+    -- ** PipelineNameInUseException
+    , _PipelineNameInUseException
 
     -- * Waiters
     -- $waiters

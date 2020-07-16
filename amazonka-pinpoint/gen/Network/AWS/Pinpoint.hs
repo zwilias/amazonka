@@ -28,23 +28,23 @@ module Network.AWS.Pinpoint
     -- * Errors
     -- $errors
 
-    -- ** ForbiddenException
-    , _ForbiddenException
-
-    -- ** NotFoundException
-    , _NotFoundException
+    -- ** InternalServerErrorException
+    , _InternalServerErrorException
 
     -- ** TooManyRequestsException
     , _TooManyRequestsException
 
-    -- ** InternalServerErrorException
-    , _InternalServerErrorException
+    -- ** ForbiddenException
+    , _ForbiddenException
+
+    -- ** BadRequestException
+    , _BadRequestException
 
     -- ** MethodNotAllowedException
     , _MethodNotAllowedException
 
-    -- ** BadRequestException
-    , _BadRequestException
+    -- ** NotFoundException
+    , _NotFoundException
 
     -- * Waiters
     -- $waiters

@@ -26,17 +26,17 @@ module Network.AWS.Athena
     -- * Errors
     -- $errors
 
-    -- ** InvalidRequestException
-    , _InvalidRequestException
-
     -- ** TooManyRequestsException
     , _TooManyRequestsException
 
-    -- ** InternalServerException
-    , _InternalServerException
+    -- ** InvalidRequestException
+    , _InvalidRequestException
 
     -- ** ResourceNotFoundException
     , _ResourceNotFoundException
+
+    -- ** InternalServerException
+    , _InternalServerException
 
     -- * Waiters
     -- $waiters

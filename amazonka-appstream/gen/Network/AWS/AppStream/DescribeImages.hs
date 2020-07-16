@@ -39,9 +39,9 @@ module Network.AWS.AppStream.DescribeImages
     , describeImagesResponse
     , DescribeImagesResponse
     -- * Response Lenses
-    , diirsImages
-    , diirsNextToken
-    , diirsResponseStatus
+    , dscrbimgsrsImages
+    , dscrbimgsrsNextToken
+    , dscrbimgsrsResponseStatus
     ) where
 
 import Network.AWS.AppStream.Types
@@ -103,10 +103,10 @@ diMaxResults = lens _diMaxResults (\ s a -> s{_diMaxResults = a}) . mapping _Nat
 
 instance AWSPager DescribeImages where
         page rq rs
-          | stop (rs ^. diirsNextToken) = Nothing
-          | stop (rs ^. diirsImages) = Nothing
+          | stop (rs ^. dscrbimgsrsNextToken) = Nothing
+          | stop (rs ^. dscrbimgsrsImages) = Nothing
           | otherwise =
-            Just $ rq & diNextToken .~ rs ^. diirsNextToken
+            Just $ rq & diNextToken .~ rs ^. dscrbimgsrsNextToken
 
 instance AWSRequest DescribeImages where
         type Rs DescribeImages = DescribeImagesResponse
@@ -148,12 +148,12 @@ instance ToQuery DescribeImages where
         toQuery = const mempty
 
 -- | /See:/ 'describeImagesResponse' smart constructor.
-data DescribeImagesResponse = DescribeImagesResponse'{_diirsImages
+data DescribeImagesResponse = DescribeImagesResponse'{_dscrbimgsrsImages
                                                       :: !(Maybe [Image]),
-                                                      _diirsNextToken ::
+                                                      _dscrbimgsrsNextToken ::
                                                       !(Maybe Text),
-                                                      _diirsResponseStatus ::
-                                                      !Int}
+                                                      _dscrbimgsrsResponseStatus
+                                                      :: !Int}
                                 deriving (Eq, Read, Show, Data, Typeable,
                                           Generic)
 
@@ -161,29 +161,30 @@ data DescribeImagesResponse = DescribeImagesResponse'{_diirsImages
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'diirsImages' - Information about the images.
+-- * 'dscrbimgsrsImages' - Information about the images.
 --
--- * 'diirsNextToken' - The pagination token to use to retrieve the next page of results for this operation. If there are no more pages, this value is null.
+-- * 'dscrbimgsrsNextToken' - The pagination token to use to retrieve the next page of results for this operation. If there are no more pages, this value is null.
 --
--- * 'diirsResponseStatus' - -- | The response status code.
+-- * 'dscrbimgsrsResponseStatus' - -- | The response status code.
 describeImagesResponse
-    :: Int -- ^ 'diirsResponseStatus'
+    :: Int -- ^ 'dscrbimgsrsResponseStatus'
     -> DescribeImagesResponse
 describeImagesResponse pResponseStatus_
-  = DescribeImagesResponse'{_diirsImages = Nothing,
-                            _diirsNextToken = Nothing,
-                            _diirsResponseStatus = pResponseStatus_}
+  = DescribeImagesResponse'{_dscrbimgsrsImages =
+                              Nothing,
+                            _dscrbimgsrsNextToken = Nothing,
+                            _dscrbimgsrsResponseStatus = pResponseStatus_}
 
 -- | Information about the images.
-diirsImages :: Lens' DescribeImagesResponse [Image]
-diirsImages = lens _diirsImages (\ s a -> s{_diirsImages = a}) . _Default . _Coerce
+dscrbimgsrsImages :: Lens' DescribeImagesResponse [Image]
+dscrbimgsrsImages = lens _dscrbimgsrsImages (\ s a -> s{_dscrbimgsrsImages = a}) . _Default . _Coerce
 
 -- | The pagination token to use to retrieve the next page of results for this operation. If there are no more pages, this value is null.
-diirsNextToken :: Lens' DescribeImagesResponse (Maybe Text)
-diirsNextToken = lens _diirsNextToken (\ s a -> s{_diirsNextToken = a})
+dscrbimgsrsNextToken :: Lens' DescribeImagesResponse (Maybe Text)
+dscrbimgsrsNextToken = lens _dscrbimgsrsNextToken (\ s a -> s{_dscrbimgsrsNextToken = a})
 
 -- | -- | The response status code.
-diirsResponseStatus :: Lens' DescribeImagesResponse Int
-diirsResponseStatus = lens _diirsResponseStatus (\ s a -> s{_diirsResponseStatus = a})
+dscrbimgsrsResponseStatus :: Lens' DescribeImagesResponse Int
+dscrbimgsrsResponseStatus = lens _dscrbimgsrsResponseStatus (\ s a -> s{_dscrbimgsrsResponseStatus = a})
 
 instance NFData DescribeImagesResponse where

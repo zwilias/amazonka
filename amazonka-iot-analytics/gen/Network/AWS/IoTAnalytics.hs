@@ -26,23 +26,23 @@ module Network.AWS.IoTAnalytics
     -- * Errors
     -- $errors
 
+    -- ** InternalFailureException
+    , _InternalFailureException
+
     -- ** InvalidRequestException
     , _InvalidRequestException
+
+    -- ** ResourceNotFoundException
+    , _ResourceNotFoundException
 
     -- ** ResourceAlreadyExistsException
     , _ResourceAlreadyExistsException
 
-    -- ** ThrottlingException
-    , _ThrottlingException
-
-    -- ** InternalFailureException
-    , _InternalFailureException
-
     -- ** ServiceUnavailableException
     , _ServiceUnavailableException
 
-    -- ** ResourceNotFoundException
-    , _ResourceNotFoundException
+    -- ** ThrottlingException
+    , _ThrottlingException
 
     -- ** LimitExceededException
     , _LimitExceededException
@@ -234,10 +234,10 @@ module Network.AWS.IoTAnalytics
     -- ** DatasetSummary
     , DatasetSummary
     , datasetSummary
-    , dssCreationTime
-    , dssStatus
-    , dssDatasetName
-    , dssLastUpdateTime
+    , dtstsmmryCreationTime
+    , dtstsmmryStatus
+    , dtstsmmryDatasetName
+    , dtstsmmryLastUpdateTime
 
     -- ** DatasetTrigger
     , DatasetTrigger

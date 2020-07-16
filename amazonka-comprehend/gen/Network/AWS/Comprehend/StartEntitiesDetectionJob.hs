@@ -43,9 +43,9 @@ module Network.AWS.Comprehend.StartEntitiesDetectionJob
     , startEntitiesDetectionJobResponse
     , StartEntitiesDetectionJobResponse
     -- * Response Lenses
-    , sedjersJobId
-    , sedjersJobStatus
-    , sedjersResponseStatus
+    , strtenttsdtctnjbrsJobId
+    , strtenttsdtctnjbrsJobStatus
+    , strtenttsdtctnjbrsResponseStatus
     ) where
 
 import Network.AWS.Comprehend.Types
@@ -201,15 +201,15 @@ instance ToQuery StartEntitiesDetectionJob where
         toQuery = const mempty
 
 -- | /See:/ 'startEntitiesDetectionJobResponse' smart constructor.
-data StartEntitiesDetectionJobResponse = StartEntitiesDetectionJobResponse'{_sedjersJobId
+data StartEntitiesDetectionJobResponse = StartEntitiesDetectionJobResponse'{_strtenttsdtctnjbrsJobId
                                                                             ::
                                                                             !(Maybe
                                                                                 Text),
-                                                                            _sedjersJobStatus
+                                                                            _strtenttsdtctnjbrsJobStatus
                                                                             ::
                                                                             !(Maybe
                                                                                 JobStatus),
-                                                                            _sedjersResponseStatus
+                                                                            _strtenttsdtctnjbrsResponseStatus
                                                                             ::
                                                                             !Int}
                                            deriving (Eq, Read, Show, Data,
@@ -219,32 +219,32 @@ data StartEntitiesDetectionJobResponse = StartEntitiesDetectionJobResponse'{_sed
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'sedjersJobId' - The identifier generated for the job. To get the status of job, use this identifier with the operation.
+-- * 'strtenttsdtctnjbrsJobId' - The identifier generated for the job. To get the status of job, use this identifier with the operation.
 --
--- * 'sedjersJobStatus' - The status of the job.      * SUBMITTED - The job has been received and is queued for processing.     * IN_PROGRESS - Amazon Comprehend is processing the job.     * COMPLETED - The job was successfully completed and the output is available.     * FAILED - The job did not complete. To get details, use the operation.     * STOP_REQUESTED - Amazon Comprehend has received a stop request for the job and is processing the request.     * STOPPED - The job was successfully stopped without completing.
+-- * 'strtenttsdtctnjbrsJobStatus' - The status of the job.      * SUBMITTED - The job has been received and is queued for processing.     * IN_PROGRESS - Amazon Comprehend is processing the job.     * COMPLETED - The job was successfully completed and the output is available.     * FAILED - The job did not complete. To get details, use the operation.     * STOP_REQUESTED - Amazon Comprehend has received a stop request for the job and is processing the request.     * STOPPED - The job was successfully stopped without completing.
 --
--- * 'sedjersResponseStatus' - -- | The response status code.
+-- * 'strtenttsdtctnjbrsResponseStatus' - -- | The response status code.
 startEntitiesDetectionJobResponse
-    :: Int -- ^ 'sedjersResponseStatus'
+    :: Int -- ^ 'strtenttsdtctnjbrsResponseStatus'
     -> StartEntitiesDetectionJobResponse
 startEntitiesDetectionJobResponse pResponseStatus_
-  = StartEntitiesDetectionJobResponse'{_sedjersJobId =
-                                         Nothing,
-                                       _sedjersJobStatus = Nothing,
-                                       _sedjersResponseStatus =
+  = StartEntitiesDetectionJobResponse'{_strtenttsdtctnjbrsJobId
+                                         = Nothing,
+                                       _strtenttsdtctnjbrsJobStatus = Nothing,
+                                       _strtenttsdtctnjbrsResponseStatus =
                                          pResponseStatus_}
 
 -- | The identifier generated for the job. To get the status of job, use this identifier with the operation.
-sedjersJobId :: Lens' StartEntitiesDetectionJobResponse (Maybe Text)
-sedjersJobId = lens _sedjersJobId (\ s a -> s{_sedjersJobId = a})
+strtenttsdtctnjbrsJobId :: Lens' StartEntitiesDetectionJobResponse (Maybe Text)
+strtenttsdtctnjbrsJobId = lens _strtenttsdtctnjbrsJobId (\ s a -> s{_strtenttsdtctnjbrsJobId = a})
 
 -- | The status of the job.      * SUBMITTED - The job has been received and is queued for processing.     * IN_PROGRESS - Amazon Comprehend is processing the job.     * COMPLETED - The job was successfully completed and the output is available.     * FAILED - The job did not complete. To get details, use the operation.     * STOP_REQUESTED - Amazon Comprehend has received a stop request for the job and is processing the request.     * STOPPED - The job was successfully stopped without completing.
-sedjersJobStatus :: Lens' StartEntitiesDetectionJobResponse (Maybe JobStatus)
-sedjersJobStatus = lens _sedjersJobStatus (\ s a -> s{_sedjersJobStatus = a})
+strtenttsdtctnjbrsJobStatus :: Lens' StartEntitiesDetectionJobResponse (Maybe JobStatus)
+strtenttsdtctnjbrsJobStatus = lens _strtenttsdtctnjbrsJobStatus (\ s a -> s{_strtenttsdtctnjbrsJobStatus = a})
 
 -- | -- | The response status code.
-sedjersResponseStatus :: Lens' StartEntitiesDetectionJobResponse Int
-sedjersResponseStatus = lens _sedjersResponseStatus (\ s a -> s{_sedjersResponseStatus = a})
+strtenttsdtctnjbrsResponseStatus :: Lens' StartEntitiesDetectionJobResponse Int
+strtenttsdtctnjbrsResponseStatus = lens _strtenttsdtctnjbrsResponseStatus (\ s a -> s{_strtenttsdtctnjbrsResponseStatus = a})
 
 instance NFData StartEntitiesDetectionJobResponse
          where

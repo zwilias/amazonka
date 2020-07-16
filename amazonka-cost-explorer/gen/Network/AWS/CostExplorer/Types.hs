@@ -16,13 +16,13 @@ module Network.AWS.CostExplorer.Types
       costExplorer
 
     -- * Errors
-    , _BillExpirationException
-    , _RequestChangedException
-    , _UnresolvableUsageUnitException
-    , _ServiceQuotaExceededException
-    , _InvalidNextTokenException
     , _DataUnavailableException
+    , _BillExpirationException
+    , _UnresolvableUsageUnitException
     , _ResourceNotFoundException
+    , _InvalidNextTokenException
+    , _ServiceQuotaExceededException
+    , _RequestChangedException
     , _LimitExceededException
 
     -- * AccountScope
@@ -692,6 +692,14 @@ costExplorer
           | has (hasStatus 509) e = Just "limit_exceeded"
           | otherwise = Nothing
 
+-- | The requested data is unavailable.
+--
+--
+_DataUnavailableException :: AsError a => Getting (First ServiceError) a ServiceError
+_DataUnavailableException
+  = _MatchServiceError costExplorer
+      "DataUnavailableException"
+
 -- | The requested report expired. Update the date interval and try again.
 --
 --
@@ -699,14 +707,6 @@ _BillExpirationException :: AsError a => Getting (First ServiceError) a ServiceE
 _BillExpirationException
   = _MatchServiceError costExplorer
       "BillExpirationException"
-
--- | Your request parameters changed between pages. Try again with the old parameters or without a pagination token.
---
---
-_RequestChangedException :: AsError a => Getting (First ServiceError) a ServiceError
-_RequestChangedException
-  = _MatchServiceError costExplorer
-      "RequestChangedException"
 
 -- | Cost Explorer was unable to identify the usage unit. Provide @UsageType/UsageTypeGroup@ filter selections that contain matching units, for example: @hours@ .
 --
@@ -716,13 +716,13 @@ _UnresolvableUsageUnitException
   = _MatchServiceError costExplorer
       "UnresolvableUsageUnitException"
 
--- | You've reached the limit on the number of resources you can create, or exceeded the size of an individual resources. 
+-- | The specified ARN in the request doesn't exist. 
 --
 --
-_ServiceQuotaExceededException :: AsError a => Getting (First ServiceError) a ServiceError
-_ServiceQuotaExceededException
+_ResourceNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
+_ResourceNotFoundException
   = _MatchServiceError costExplorer
-      "ServiceQuotaExceededException"
+      "ResourceNotFoundException"
 
 -- | The pagination token is invalid. Try again without a pagination token.
 --
@@ -732,21 +732,21 @@ _InvalidNextTokenException
   = _MatchServiceError costExplorer
       "InvalidNextTokenException"
 
--- | The requested data is unavailable.
+-- | You've reached the limit on the number of resources you can create, or exceeded the size of an individual resources. 
 --
 --
-_DataUnavailableException :: AsError a => Getting (First ServiceError) a ServiceError
-_DataUnavailableException
+_ServiceQuotaExceededException :: AsError a => Getting (First ServiceError) a ServiceError
+_ServiceQuotaExceededException
   = _MatchServiceError costExplorer
-      "DataUnavailableException"
+      "ServiceQuotaExceededException"
 
--- | The specified ARN in the request doesn't exist. 
+-- | Your request parameters changed between pages. Try again with the old parameters or without a pagination token.
 --
 --
-_ResourceNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
-_ResourceNotFoundException
+_RequestChangedException :: AsError a => Getting (First ServiceError) a ServiceError
+_RequestChangedException
   = _MatchServiceError costExplorer
-      "ResourceNotFoundException"
+      "RequestChangedException"
 
 -- | You made too many calls in a short period of time. Try again later.
 --

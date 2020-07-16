@@ -16,11 +16,11 @@ module Network.AWS.AutoScalingPlans.Types
       autoScalingPlans
 
     -- * Errors
-    , _ValidationException
-    , _InvalidNextTokenException
-    , _ConcurrentUpdateException
     , _InternalServiceException
+    , _ValidationException
     , _ObjectNotFoundException
+    , _ConcurrentUpdateException
+    , _InvalidNextTokenException
     , _LimitExceededException
 
     -- * ForecastDataType
@@ -237,6 +237,14 @@ autoScalingPlans
           | has (hasStatus 509) e = Just "limit_exceeded"
           | otherwise = Nothing
 
+-- | The service encountered an internal error.
+--
+--
+_InternalServiceException :: AsError a => Getting (First ServiceError) a ServiceError
+_InternalServiceException
+  = _MatchServiceError autoScalingPlans
+      "InternalServiceException"
+
 -- | An exception was thrown for a validation issue. Review the parameters provided.
 --
 --
@@ -245,13 +253,13 @@ _ValidationException
   = _MatchServiceError autoScalingPlans
       "ValidationException"
 
--- | The token provided is not valid.
+-- | The specified object could not be found.
 --
 --
-_InvalidNextTokenException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidNextTokenException
+_ObjectNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
+_ObjectNotFoundException
   = _MatchServiceError autoScalingPlans
-      "InvalidNextTokenException"
+      "ObjectNotFoundException"
 
 -- | Concurrent updates caused an exception, for example, if you request an update to a scaling plan that already has a pending update.
 --
@@ -261,21 +269,13 @@ _ConcurrentUpdateException
   = _MatchServiceError autoScalingPlans
       "ConcurrentUpdateException"
 
--- | The service encountered an internal error.
+-- | The token provided is not valid.
 --
 --
-_InternalServiceException :: AsError a => Getting (First ServiceError) a ServiceError
-_InternalServiceException
+_InvalidNextTokenException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidNextTokenException
   = _MatchServiceError autoScalingPlans
-      "InternalServiceException"
-
--- | The specified object could not be found.
---
---
-_ObjectNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
-_ObjectNotFoundException
-  = _MatchServiceError autoScalingPlans
-      "ObjectNotFoundException"
+      "InvalidNextTokenException"
 
 -- | Your account exceeded a limit. This exception is thrown when a per-account resource limit is exceeded.
 --

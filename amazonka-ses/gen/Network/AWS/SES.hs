@@ -23,35 +23,50 @@ module Network.AWS.SES
     -- * Errors
     -- $errors
 
-    -- ** InvalidConfigurationSetException
-    , _InvalidConfigurationSetException
+    -- ** TrackingOptionsDoesNotExistException
+    , _TrackingOptionsDoesNotExistException
 
-    -- ** InvalidSNSDestinationException
-    , _InvalidSNSDestinationException
+    -- ** InvalidFirehoseDestinationException
+    , _InvalidFirehoseDestinationException
 
-    -- ** TemplateDoesNotExistException
-    , _TemplateDoesNotExistException
-
-    -- ** ConfigurationSetSendingPausedException
-    , _ConfigurationSetSendingPausedException
-
-    -- ** CannotDeleteException
-    , _CannotDeleteException
-
-    -- ** ProductionAccessNotGrantedException
-    , _ProductionAccessNotGrantedException
-
-    -- ** RuleDoesNotExistException
-    , _RuleDoesNotExistException
+    -- ** InvalidLambdaFunctionException
+    , _InvalidLambdaFunctionException
 
     -- ** MessageRejected
     , _MessageRejected
 
-    -- ** InvalidRenderingParameterException
-    , _InvalidRenderingParameterException
+    -- ** RuleDoesNotExistException
+    , _RuleDoesNotExistException
 
-    -- ** MissingRenderingAttributeException
-    , _MissingRenderingAttributeException
+    -- ** ProductionAccessNotGrantedException
+    , _ProductionAccessNotGrantedException
+
+    -- ** CustomVerificationEmailTemplateDoesNotExistException
+    , _CustomVerificationEmailTemplateDoesNotExistException
+
+    -- ** CannotDeleteException
+    , _CannotDeleteException
+
+    -- ** TemplateDoesNotExistException
+    , _TemplateDoesNotExistException
+
+    -- ** CustomVerificationEmailInvalidContentException
+    , _CustomVerificationEmailInvalidContentException
+
+    -- ** ConfigurationSetDoesNotExistException
+    , _ConfigurationSetDoesNotExistException
+
+    -- ** TrackingOptionsAlreadyExistsException
+    , _TrackingOptionsAlreadyExistsException
+
+    -- ** InvalidS3ConfigurationException
+    , _InvalidS3ConfigurationException
+
+    -- ** ConfigurationSetAlreadyExistsException
+    , _ConfigurationSetAlreadyExistsException
+
+    -- ** MailFromDomainNotVerifiedException
+    , _MailFromDomainNotVerifiedException
 
     -- ** FromEmailAddressNotVerifiedException
     , _FromEmailAddressNotVerifiedException
@@ -59,20 +74,20 @@ module Network.AWS.SES
     -- ** RuleSetDoesNotExistException
     , _RuleSetDoesNotExistException
 
-    -- ** MailFromDomainNotVerifiedException
-    , _MailFromDomainNotVerifiedException
+    -- ** MissingRenderingAttributeException
+    , _MissingRenderingAttributeException
 
-    -- ** InvalidFirehoseDestinationException
-    , _InvalidFirehoseDestinationException
+    -- ** InvalidRenderingParameterException
+    , _InvalidRenderingParameterException
 
-    -- ** ConfigurationSetAlreadyExistsException
-    , _ConfigurationSetAlreadyExistsException
+    -- ** InvalidCloudWatchDestinationException
+    , _InvalidCloudWatchDestinationException
 
-    -- ** CustomVerificationEmailInvalidContentException
-    , _CustomVerificationEmailInvalidContentException
+    -- ** CustomVerificationEmailTemplateAlreadyExistsException
+    , _CustomVerificationEmailTemplateAlreadyExistsException
 
-    -- ** InvalidTrackingOptionsException
-    , _InvalidTrackingOptionsException
+    -- ** ConfigurationSetSendingPausedException
+    , _ConfigurationSetSendingPausedException
 
     -- ** AccountSendingPausedException
     , _AccountSendingPausedException
@@ -80,47 +95,32 @@ module Network.AWS.SES
     -- ** EventDestinationDoesNotExistException
     , _EventDestinationDoesNotExistException
 
-    -- ** CustomVerificationEmailTemplateAlreadyExistsException
-    , _CustomVerificationEmailTemplateAlreadyExistsException
+    -- ** InvalidConfigurationSetException
+    , _InvalidConfigurationSetException
 
-    -- ** CustomVerificationEmailTemplateDoesNotExistException
-    , _CustomVerificationEmailTemplateDoesNotExistException
+    -- ** InvalidSNSDestinationException
+    , _InvalidSNSDestinationException
 
-    -- ** InvalidCloudWatchDestinationException
-    , _InvalidCloudWatchDestinationException
-
-    -- ** InvalidLambdaFunctionException
-    , _InvalidLambdaFunctionException
-
-    -- ** TrackingOptionsDoesNotExistException
-    , _TrackingOptionsDoesNotExistException
-
-    -- ** InvalidTemplateException
-    , _InvalidTemplateException
-
-    -- ** ConfigurationSetDoesNotExistException
-    , _ConfigurationSetDoesNotExistException
-
-    -- ** InvalidPolicyException
-    , _InvalidPolicyException
-
-    -- ** InvalidS3ConfigurationException
-    , _InvalidS3ConfigurationException
-
-    -- ** TrackingOptionsAlreadyExistsException
-    , _TrackingOptionsAlreadyExistsException
+    -- ** LimitExceededException
+    , _LimitExceededException
 
     -- ** InvalidSNSTopicException
     , _InvalidSNSTopicException
 
-    -- ** EventDestinationAlreadyExistsException
-    , _EventDestinationAlreadyExistsException
-
     -- ** AlreadyExistsException
     , _AlreadyExistsException
 
-    -- ** LimitExceededException
-    , _LimitExceededException
+    -- ** EventDestinationAlreadyExistsException
+    , _EventDestinationAlreadyExistsException
+
+    -- ** InvalidTrackingOptionsException
+    , _InvalidTrackingOptionsException
+
+    -- ** InvalidTemplateException
+    , _InvalidTemplateException
+
+    -- ** InvalidPolicyException
+    , _InvalidPolicyException
 
     -- * Waiters
     -- $waiters

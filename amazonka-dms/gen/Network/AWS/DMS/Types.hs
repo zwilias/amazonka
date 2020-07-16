@@ -16,26 +16,26 @@ module Network.AWS.DMS.Types
       dms
 
     -- * Errors
-    , _KMSAccessDeniedFault
-    , _KMSDisabledFault
-    , _InvalidSubnet
-    , _KMSKeyNotAccessibleFault
     , _ReplicationSubnetGroupDoesNotCoverEnoughAZs
-    , _InvalidResourceStateFault
-    , _InvalidCertificateFault
-    , _SNSNoAuthorizationFault
-    , _ResourceAlreadyExistsFault
-    , _InsufficientResourceCapacityFault
+    , _ResourceQuotaExceededFault
+    , _InvalidSubnet
+    , _KMSThrottlingFault
     , _SNSInvalidTopicFault
     , _KMSNotFoundFault
-    , _KMSThrottlingFault
-    , _ResourceQuotaExceededFault
-    , _UpgradeDependencyFailureFault
-    , _ResourceNotFoundFault
-    , _StorageQuotaExceededFault
     , _AccessDeniedFault
-    , _SubnetAlreadyInUse
+    , _ResourceAlreadyExistsFault
+    , _StorageQuotaExceededFault
+    , _KMSKeyNotAccessibleFault
+    , _ResourceNotFoundFault
+    , _UpgradeDependencyFailureFault
+    , _KMSDisabledFault
+    , _KMSAccessDeniedFault
+    , _InsufficientResourceCapacityFault
     , _KMSInvalidStateFault
+    , _SubnetAlreadyInUse
+    , _SNSNoAuthorizationFault
+    , _InvalidCertificateFault
+    , _InvalidResourceStateFault
 
     -- * AuthMechanismValue
     , AuthMechanismValue (..)
@@ -589,34 +589,6 @@ dms
           | has (hasStatus 509) e = Just "limit_exceeded"
           | otherwise = Nothing
 
--- | The ciphertext references a key that doesn't exist or that the DMS account doesn't have access to.
---
---
-_KMSAccessDeniedFault :: AsError a => Getting (First ServiceError) a ServiceError
-_KMSAccessDeniedFault
-  = _MatchServiceError dms "KMSAccessDeniedFault"
-
--- | The specified master key (CMK) isn't enabled.
---
---
-_KMSDisabledFault :: AsError a => Getting (First ServiceError) a ServiceError
-_KMSDisabledFault
-  = _MatchServiceError dms "KMSDisabledFault"
-
--- | The subnet provided is invalid.
---
---
-_InvalidSubnet :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidSubnet
-  = _MatchServiceError dms "InvalidSubnet"
-
--- | AWS DMS cannot access the AWS KMS key.
---
---
-_KMSKeyNotAccessibleFault :: AsError a => Getting (First ServiceError) a ServiceError
-_KMSKeyNotAccessibleFault
-  = _MatchServiceError dms "KMSKeyNotAccessibleFault"
-
 -- | The replication subnet group does not cover enough Availability Zones (AZs). Edit the replication subnet group and add more AZs.
 --
 --
@@ -625,41 +597,26 @@ _ReplicationSubnetGroupDoesNotCoverEnoughAZs
   = _MatchServiceError dms
       "ReplicationSubnetGroupDoesNotCoverEnoughAZs"
 
--- | The resource is in a state that prevents it from being used for database migration.
+-- | The quota for this resource quota has been exceeded.
 --
 --
-_InvalidResourceStateFault :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidResourceStateFault
-  = _MatchServiceError dms "InvalidResourceStateFault"
+_ResourceQuotaExceededFault :: AsError a => Getting (First ServiceError) a ServiceError
+_ResourceQuotaExceededFault
+  = _MatchServiceError dms "ResourceQuotaExceededFault"
 
--- | The certificate was not valid.
+-- | The subnet provided is invalid.
 --
 --
-_InvalidCertificateFault :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidCertificateFault
-  = _MatchServiceError dms "InvalidCertificateFault"
+_InvalidSubnet :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidSubnet
+  = _MatchServiceError dms "InvalidSubnet"
 
--- | You are not authorized for the SNS subscription.
+-- | This request triggered AWS KMS request throttling.
 --
 --
-_SNSNoAuthorizationFault :: AsError a => Getting (First ServiceError) a ServiceError
-_SNSNoAuthorizationFault
-  = _MatchServiceError dms "SNSNoAuthorizationFault"
-
--- | The resource you are attempting to create already exists.
---
---
-_ResourceAlreadyExistsFault :: AsError a => Getting (First ServiceError) a ServiceError
-_ResourceAlreadyExistsFault
-  = _MatchServiceError dms "ResourceAlreadyExistsFault"
-
--- | There are not enough resources allocated to the database migration.
---
---
-_InsufficientResourceCapacityFault :: AsError a => Getting (First ServiceError) a ServiceError
-_InsufficientResourceCapacityFault
-  = _MatchServiceError dms
-      "InsufficientResourceCapacityFault"
+_KMSThrottlingFault :: AsError a => Getting (First ServiceError) a ServiceError
+_KMSThrottlingFault
+  = _MatchServiceError dms "KMSThrottlingFault"
 
 -- | The SNS topic is invalid.
 --
@@ -675,19 +632,40 @@ _KMSNotFoundFault :: AsError a => Getting (First ServiceError) a ServiceError
 _KMSNotFoundFault
   = _MatchServiceError dms "KMSNotFoundFault"
 
--- | This request triggered AWS KMS request throttling.
+-- | AWS DMS was denied access to the endpoint. Check that the role is correctly configured.
 --
 --
-_KMSThrottlingFault :: AsError a => Getting (First ServiceError) a ServiceError
-_KMSThrottlingFault
-  = _MatchServiceError dms "KMSThrottlingFault"
+_AccessDeniedFault :: AsError a => Getting (First ServiceError) a ServiceError
+_AccessDeniedFault
+  = _MatchServiceError dms "AccessDeniedFault"
 
--- | The quota for this resource quota has been exceeded.
+-- | The resource you are attempting to create already exists.
 --
 --
-_ResourceQuotaExceededFault :: AsError a => Getting (First ServiceError) a ServiceError
-_ResourceQuotaExceededFault
-  = _MatchServiceError dms "ResourceQuotaExceededFault"
+_ResourceAlreadyExistsFault :: AsError a => Getting (First ServiceError) a ServiceError
+_ResourceAlreadyExistsFault
+  = _MatchServiceError dms "ResourceAlreadyExistsFault"
+
+-- | The storage quota has been exceeded.
+--
+--
+_StorageQuotaExceededFault :: AsError a => Getting (First ServiceError) a ServiceError
+_StorageQuotaExceededFault
+  = _MatchServiceError dms "StorageQuotaExceededFault"
+
+-- | AWS DMS cannot access the AWS KMS key.
+--
+--
+_KMSKeyNotAccessibleFault :: AsError a => Getting (First ServiceError) a ServiceError
+_KMSKeyNotAccessibleFault
+  = _MatchServiceError dms "KMSKeyNotAccessibleFault"
+
+-- | The resource could not be found.
+--
+--
+_ResourceNotFoundFault :: AsError a => Getting (First ServiceError) a ServiceError
+_ResourceNotFoundFault
+  = _MatchServiceError dms "ResourceNotFoundFault"
 
 -- | An upgrade dependency is preventing the database migration.
 --
@@ -697,26 +675,34 @@ _UpgradeDependencyFailureFault
   = _MatchServiceError dms
       "UpgradeDependencyFailureFault"
 
--- | The resource could not be found.
+-- | The specified master key (CMK) isn't enabled.
 --
 --
-_ResourceNotFoundFault :: AsError a => Getting (First ServiceError) a ServiceError
-_ResourceNotFoundFault
-  = _MatchServiceError dms "ResourceNotFoundFault"
+_KMSDisabledFault :: AsError a => Getting (First ServiceError) a ServiceError
+_KMSDisabledFault
+  = _MatchServiceError dms "KMSDisabledFault"
 
--- | The storage quota has been exceeded.
+-- | The ciphertext references a key that doesn't exist or that the DMS account doesn't have access to.
 --
 --
-_StorageQuotaExceededFault :: AsError a => Getting (First ServiceError) a ServiceError
-_StorageQuotaExceededFault
-  = _MatchServiceError dms "StorageQuotaExceededFault"
+_KMSAccessDeniedFault :: AsError a => Getting (First ServiceError) a ServiceError
+_KMSAccessDeniedFault
+  = _MatchServiceError dms "KMSAccessDeniedFault"
 
--- | AWS DMS was denied access to the endpoint. Check that the role is correctly configured.
+-- | There are not enough resources allocated to the database migration.
 --
 --
-_AccessDeniedFault :: AsError a => Getting (First ServiceError) a ServiceError
-_AccessDeniedFault
-  = _MatchServiceError dms "AccessDeniedFault"
+_InsufficientResourceCapacityFault :: AsError a => Getting (First ServiceError) a ServiceError
+_InsufficientResourceCapacityFault
+  = _MatchServiceError dms
+      "InsufficientResourceCapacityFault"
+
+-- | The state of the specified AWS KMS resource isn't valid for this request.
+--
+--
+_KMSInvalidStateFault :: AsError a => Getting (First ServiceError) a ServiceError
+_KMSInvalidStateFault
+  = _MatchServiceError dms "KMSInvalidStateFault"
 
 -- | The specified subnet is already in use.
 --
@@ -725,9 +711,23 @@ _SubnetAlreadyInUse :: AsError a => Getting (First ServiceError) a ServiceError
 _SubnetAlreadyInUse
   = _MatchServiceError dms "SubnetAlreadyInUse"
 
--- | The state of the specified AWS KMS resource isn't valid for this request.
+-- | You are not authorized for the SNS subscription.
 --
 --
-_KMSInvalidStateFault :: AsError a => Getting (First ServiceError) a ServiceError
-_KMSInvalidStateFault
-  = _MatchServiceError dms "KMSInvalidStateFault"
+_SNSNoAuthorizationFault :: AsError a => Getting (First ServiceError) a ServiceError
+_SNSNoAuthorizationFault
+  = _MatchServiceError dms "SNSNoAuthorizationFault"
+
+-- | The certificate was not valid.
+--
+--
+_InvalidCertificateFault :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidCertificateFault
+  = _MatchServiceError dms "InvalidCertificateFault"
+
+-- | The resource is in a state that prevents it from being used for database migration.
+--
+--
+_InvalidResourceStateFault :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidResourceStateFault
+  = _MatchServiceError dms "InvalidResourceStateFault"

@@ -267,44 +267,44 @@ module Network.AWS.GameLift
     -- * Errors
     -- $errors
 
-    -- ** InvalidFleetStatusException
-    , _InvalidFleetStatusException
-
-    -- ** InvalidRequestException
-    , _InvalidRequestException
-
-    -- ** ConflictException
-    , _ConflictException
-
-    -- ** TerminalRoutingStrategyException
-    , _TerminalRoutingStrategyException
-
-    -- ** NotFoundException
-    , _NotFoundException
-
-    -- ** GameSessionFullException
-    , _GameSessionFullException
-
-    -- ** UnsupportedRegionException
-    , _UnsupportedRegionException
-
-    -- ** InvalidGameSessionStatusException
-    , _InvalidGameSessionStatusException
+    -- ** IdempotentParameterMismatchException
+    , _IdempotentParameterMismatchException
 
     -- ** InternalServiceException
     , _InternalServiceException
 
-    -- ** IdempotentParameterMismatchException
-    , _IdempotentParameterMismatchException
+    -- ** UnsupportedRegionException
+    , _UnsupportedRegionException
+
+    -- ** InvalidRequestException
+    , _InvalidRequestException
+
+    -- ** InvalidFleetStatusException
+    , _InvalidFleetStatusException
+
+    -- ** GameSessionFullException
+    , _GameSessionFullException
+
+    -- ** TerminalRoutingStrategyException
+    , _TerminalRoutingStrategyException
 
     -- ** UnauthorizedException
     , _UnauthorizedException
 
-    -- ** FleetCapacityExceededException
-    , _FleetCapacityExceededException
+    -- ** InvalidGameSessionStatusException
+    , _InvalidGameSessionStatusException
+
+    -- ** NotFoundException
+    , _NotFoundException
 
     -- ** LimitExceededException
     , _LimitExceededException
+
+    -- ** ConflictException
+    , _ConflictException
+
+    -- ** FleetCapacityExceededException
+    , _FleetCapacityExceededException
 
     -- * Waiters
     -- $waiters

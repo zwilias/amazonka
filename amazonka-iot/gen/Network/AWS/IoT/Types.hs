@@ -16,31 +16,31 @@ module Network.AWS.IoT.Types
       ioT
 
     -- * Errors
-    , _CertificateConflictException
-    , _SqlParseException
-    , _IndexNotReadyException
-    , _InvalidRequestException
-    , _TransferConflictException
-    , _CertificateStateException
-    , _InvalidResponseException
-    , _RegistrationCodeValidationException
-    , _MalformedPolicyException
-    , _DeleteConflictException
-    , _ResourceAlreadyExistsException
-    , _NotConfiguredException
-    , _CertificateValidationException
-    , _ResourceRegistrationFailureException
-    , _InvalidQueryException
-    , _TransferAlreadyCompletedException
-    , _ThrottlingException
-    , _ConflictingResourceUpdateException
-    , _InternalFailureException
-    , _VersionsLimitExceededException
-    , _ServiceUnavailableException
-    , _InternalException
     , _VersionConflictException
-    , _UnauthorizedException
+    , _VersionsLimitExceededException
+    , _RegistrationCodeValidationException
+    , _DeleteConflictException
+    , _InternalFailureException
+    , _CertificateStateException
+    , _ConflictingResourceUpdateException
+    , _TransferConflictException
+    , _InvalidRequestException
+    , _ResourceRegistrationFailureException
+    , _SqlParseException
+    , _CertificateValidationException
+    , _NotConfiguredException
     , _ResourceNotFoundException
+    , _ResourceAlreadyExistsException
+    , _UnauthorizedException
+    , _ServiceUnavailableException
+    , _MalformedPolicyException
+    , _InternalException
+    , _InvalidResponseException
+    , _ThrottlingException
+    , _TransferAlreadyCompletedException
+    , _IndexNotReadyException
+    , _CertificateConflictException
+    , _InvalidQueryException
     , _LimitExceededException
 
     -- * ActionType
@@ -848,164 +848,13 @@ ioT
           | has (hasStatus 509) e = Just "limit_exceeded"
           | otherwise = Nothing
 
--- | Unable to verify the CA certificate used to sign the device certificate you are attempting to register. This is happens when you have registered more than one CA certificate that has the same subject field and public key.
+-- | An exception thrown when the version of a thing passed to a command is different than the version specified with the --version parameter.
 --
 --
-_CertificateConflictException :: AsError a => Getting (First ServiceError) a ServiceError
-_CertificateConflictException
-  = _MatchServiceError ioT
-      "CertificateConflictException"
-      . hasStatus 409
-
--- | The Rule-SQL expression can't be parsed correctly.
---
---
-_SqlParseException :: AsError a => Getting (First ServiceError) a ServiceError
-_SqlParseException
-  = _MatchServiceError ioT "SqlParseException" .
-      hasStatus 400
-
--- | The index is not ready.
---
---
-_IndexNotReadyException :: AsError a => Getting (First ServiceError) a ServiceError
-_IndexNotReadyException
-  = _MatchServiceError ioT "IndexNotReadyException" .
-      hasStatus 400
-
--- | The request is not valid.
---
---
-_InvalidRequestException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidRequestException
-  = _MatchServiceError ioT "InvalidRequestException" .
-      hasStatus 400
-
--- | You can't transfer the certificate because authorization policies are still attached.
---
---
-_TransferConflictException :: AsError a => Getting (First ServiceError) a ServiceError
-_TransferConflictException
-  = _MatchServiceError ioT "TransferConflictException"
-      . hasStatus 409
-
--- | The certificate operation is not allowed.
---
---
-_CertificateStateException :: AsError a => Getting (First ServiceError) a ServiceError
-_CertificateStateException
-  = _MatchServiceError ioT "CertificateStateException"
-      . hasStatus 406
-
--- | The response is invalid.
---
---
-_InvalidResponseException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidResponseException
-  = _MatchServiceError ioT "InvalidResponseException" .
-      hasStatus 400
-
--- | The registration code is invalid.
---
---
-_RegistrationCodeValidationException :: AsError a => Getting (First ServiceError) a ServiceError
-_RegistrationCodeValidationException
-  = _MatchServiceError ioT
-      "RegistrationCodeValidationException"
-      . hasStatus 400
-
--- | The policy documentation is not valid.
---
---
-_MalformedPolicyException :: AsError a => Getting (First ServiceError) a ServiceError
-_MalformedPolicyException
-  = _MatchServiceError ioT "MalformedPolicyException" .
-      hasStatus 400
-
--- | You can't delete the resource because it is attached to one or more resources.
---
---
-_DeleteConflictException :: AsError a => Getting (First ServiceError) a ServiceError
-_DeleteConflictException
-  = _MatchServiceError ioT "DeleteConflictException" .
+_VersionConflictException :: AsError a => Getting (First ServiceError) a ServiceError
+_VersionConflictException
+  = _MatchServiceError ioT "VersionConflictException" .
       hasStatus 409
-
--- | The resource already exists.
---
---
-_ResourceAlreadyExistsException :: AsError a => Getting (First ServiceError) a ServiceError
-_ResourceAlreadyExistsException
-  = _MatchServiceError ioT
-      "ResourceAlreadyExistsException"
-      . hasStatus 409
-
--- | The resource is not configured.
---
---
-_NotConfiguredException :: AsError a => Getting (First ServiceError) a ServiceError
-_NotConfiguredException
-  = _MatchServiceError ioT "NotConfiguredException" .
-      hasStatus 404
-
--- | The certificate is invalid.
---
---
-_CertificateValidationException :: AsError a => Getting (First ServiceError) a ServiceError
-_CertificateValidationException
-  = _MatchServiceError ioT
-      "CertificateValidationException"
-      . hasStatus 400
-
--- | The resource registration failed.
---
---
-_ResourceRegistrationFailureException :: AsError a => Getting (First ServiceError) a ServiceError
-_ResourceRegistrationFailureException
-  = _MatchServiceError ioT
-      "ResourceRegistrationFailureException"
-      . hasStatus 400
-
--- | The query is invalid.
---
---
-_InvalidQueryException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidQueryException
-  = _MatchServiceError ioT "InvalidQueryException" .
-      hasStatus 400
-
--- | You can't revert the certificate transfer because the transfer is already complete.
---
---
-_TransferAlreadyCompletedException :: AsError a => Getting (First ServiceError) a ServiceError
-_TransferAlreadyCompletedException
-  = _MatchServiceError ioT
-      "TransferAlreadyCompletedException"
-      . hasStatus 410
-
--- | The rate exceeds the limit.
---
---
-_ThrottlingException :: AsError a => Getting (First ServiceError) a ServiceError
-_ThrottlingException
-  = _MatchServiceError ioT "ThrottlingException" .
-      hasStatus 429
-
--- | A conflicting resource update exception. This exception is thrown when two pending updates cause a conflict.
---
---
-_ConflictingResourceUpdateException :: AsError a => Getting (First ServiceError) a ServiceError
-_ConflictingResourceUpdateException
-  = _MatchServiceError ioT
-      "ConflictingResourceUpdateException"
-      . hasStatus 409
-
--- | An unexpected error has occurred.
---
---
-_InternalFailureException :: AsError a => Getting (First ServiceError) a ServiceError
-_InternalFailureException
-  = _MatchServiceError ioT "InternalFailureException" .
-      hasStatus 500
 
 -- | The number of policy versions exceeds the limit.
 --
@@ -1016,30 +865,114 @@ _VersionsLimitExceededException
       "VersionsLimitExceededException"
       . hasStatus 409
 
--- | The service is temporarily unavailable.
+-- | The registration code is invalid.
 --
 --
-_ServiceUnavailableException :: AsError a => Getting (First ServiceError) a ServiceError
-_ServiceUnavailableException
+_RegistrationCodeValidationException :: AsError a => Getting (First ServiceError) a ServiceError
+_RegistrationCodeValidationException
   = _MatchServiceError ioT
-      "ServiceUnavailableException"
-      . hasStatus 503
+      "RegistrationCodeValidationException"
+      . hasStatus 400
+
+-- | You can't delete the resource because it is attached to one or more resources.
+--
+--
+_DeleteConflictException :: AsError a => Getting (First ServiceError) a ServiceError
+_DeleteConflictException
+  = _MatchServiceError ioT "DeleteConflictException" .
+      hasStatus 409
 
 -- | An unexpected error has occurred.
 --
 --
-_InternalException :: AsError a => Getting (First ServiceError) a ServiceError
-_InternalException
-  = _MatchServiceError ioT "InternalException" .
+_InternalFailureException :: AsError a => Getting (First ServiceError) a ServiceError
+_InternalFailureException
+  = _MatchServiceError ioT "InternalFailureException" .
       hasStatus 500
 
--- | An exception thrown when the version of a thing passed to a command is different than the version specified with the --version parameter.
+-- | The certificate operation is not allowed.
 --
 --
-_VersionConflictException :: AsError a => Getting (First ServiceError) a ServiceError
-_VersionConflictException
-  = _MatchServiceError ioT "VersionConflictException" .
-      hasStatus 409
+_CertificateStateException :: AsError a => Getting (First ServiceError) a ServiceError
+_CertificateStateException
+  = _MatchServiceError ioT "CertificateStateException"
+      . hasStatus 406
+
+-- | A conflicting resource update exception. This exception is thrown when two pending updates cause a conflict.
+--
+--
+_ConflictingResourceUpdateException :: AsError a => Getting (First ServiceError) a ServiceError
+_ConflictingResourceUpdateException
+  = _MatchServiceError ioT
+      "ConflictingResourceUpdateException"
+      . hasStatus 409
+
+-- | You can't transfer the certificate because authorization policies are still attached.
+--
+--
+_TransferConflictException :: AsError a => Getting (First ServiceError) a ServiceError
+_TransferConflictException
+  = _MatchServiceError ioT "TransferConflictException"
+      . hasStatus 409
+
+-- | The request is not valid.
+--
+--
+_InvalidRequestException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidRequestException
+  = _MatchServiceError ioT "InvalidRequestException" .
+      hasStatus 400
+
+-- | The resource registration failed.
+--
+--
+_ResourceRegistrationFailureException :: AsError a => Getting (First ServiceError) a ServiceError
+_ResourceRegistrationFailureException
+  = _MatchServiceError ioT
+      "ResourceRegistrationFailureException"
+      . hasStatus 400
+
+-- | The Rule-SQL expression can't be parsed correctly.
+--
+--
+_SqlParseException :: AsError a => Getting (First ServiceError) a ServiceError
+_SqlParseException
+  = _MatchServiceError ioT "SqlParseException" .
+      hasStatus 400
+
+-- | The certificate is invalid.
+--
+--
+_CertificateValidationException :: AsError a => Getting (First ServiceError) a ServiceError
+_CertificateValidationException
+  = _MatchServiceError ioT
+      "CertificateValidationException"
+      . hasStatus 400
+
+-- | The resource is not configured.
+--
+--
+_NotConfiguredException :: AsError a => Getting (First ServiceError) a ServiceError
+_NotConfiguredException
+  = _MatchServiceError ioT "NotConfiguredException" .
+      hasStatus 404
+
+-- | The specified resource does not exist.
+--
+--
+_ResourceNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
+_ResourceNotFoundException
+  = _MatchServiceError ioT "ResourceNotFoundException"
+      . hasStatus 404
+
+-- | The resource already exists.
+--
+--
+_ResourceAlreadyExistsException :: AsError a => Getting (First ServiceError) a ServiceError
+_ResourceAlreadyExistsException
+  = _MatchServiceError ioT
+      "ResourceAlreadyExistsException"
+      . hasStatus 409
 
 -- | You are not authorized to perform this operation.
 --
@@ -1049,13 +982,80 @@ _UnauthorizedException
   = _MatchServiceError ioT "UnauthorizedException" .
       hasStatus 401
 
--- | The specified resource does not exist.
+-- | The service is temporarily unavailable.
 --
 --
-_ResourceNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
-_ResourceNotFoundException
-  = _MatchServiceError ioT "ResourceNotFoundException"
-      . hasStatus 404
+_ServiceUnavailableException :: AsError a => Getting (First ServiceError) a ServiceError
+_ServiceUnavailableException
+  = _MatchServiceError ioT
+      "ServiceUnavailableException"
+      . hasStatus 503
+
+-- | The policy documentation is not valid.
+--
+--
+_MalformedPolicyException :: AsError a => Getting (First ServiceError) a ServiceError
+_MalformedPolicyException
+  = _MatchServiceError ioT "MalformedPolicyException" .
+      hasStatus 400
+
+-- | An unexpected error has occurred.
+--
+--
+_InternalException :: AsError a => Getting (First ServiceError) a ServiceError
+_InternalException
+  = _MatchServiceError ioT "InternalException" .
+      hasStatus 500
+
+-- | The response is invalid.
+--
+--
+_InvalidResponseException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidResponseException
+  = _MatchServiceError ioT "InvalidResponseException" .
+      hasStatus 400
+
+-- | The rate exceeds the limit.
+--
+--
+_ThrottlingException :: AsError a => Getting (First ServiceError) a ServiceError
+_ThrottlingException
+  = _MatchServiceError ioT "ThrottlingException" .
+      hasStatus 429
+
+-- | You can't revert the certificate transfer because the transfer is already complete.
+--
+--
+_TransferAlreadyCompletedException :: AsError a => Getting (First ServiceError) a ServiceError
+_TransferAlreadyCompletedException
+  = _MatchServiceError ioT
+      "TransferAlreadyCompletedException"
+      . hasStatus 410
+
+-- | The index is not ready.
+--
+--
+_IndexNotReadyException :: AsError a => Getting (First ServiceError) a ServiceError
+_IndexNotReadyException
+  = _MatchServiceError ioT "IndexNotReadyException" .
+      hasStatus 400
+
+-- | Unable to verify the CA certificate used to sign the device certificate you are attempting to register. This is happens when you have registered more than one CA certificate that has the same subject field and public key.
+--
+--
+_CertificateConflictException :: AsError a => Getting (First ServiceError) a ServiceError
+_CertificateConflictException
+  = _MatchServiceError ioT
+      "CertificateConflictException"
+      . hasStatus 409
+
+-- | The query is invalid.
+--
+--
+_InvalidQueryException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidQueryException
+  = _MatchServiceError ioT "InvalidQueryException" .
+      hasStatus 400
 
 -- | The number of attached entities exceeds the limit.
 --

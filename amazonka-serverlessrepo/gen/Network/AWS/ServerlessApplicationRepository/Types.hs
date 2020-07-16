@@ -16,12 +16,12 @@ module Network.AWS.ServerlessApplicationRepository.Types
       serverlessApplicationRepository
 
     -- * Errors
-    , _ConflictException
-    , _ForbiddenException
-    , _NotFoundException
-    , _TooManyRequestsException
     , _InternalServerErrorException
+    , _TooManyRequestsException
+    , _ForbiddenException
     , _BadRequestException
+    , _NotFoundException
+    , _ConflictException
 
     -- * ApplicationPolicyStatement
     , ApplicationPolicyStatement
@@ -131,32 +131,14 @@ serverlessApplicationRepository
           | has (hasStatus 509) e = Just "limit_exceeded"
           | otherwise = Nothing
 
--- | The resource already exists.
+-- | The AWS Serverless Application Repository service encountered an internal error.
 --
 --
-_ConflictException :: AsError a => Getting (First ServiceError) a ServiceError
-_ConflictException
+_InternalServerErrorException :: AsError a => Getting (First ServiceError) a ServiceError
+_InternalServerErrorException
   = _MatchServiceError serverlessApplicationRepository
-      "ConflictException"
-      . hasStatus 409
-
--- | The client is not authenticated.
---
---
-_ForbiddenException :: AsError a => Getting (First ServiceError) a ServiceError
-_ForbiddenException
-  = _MatchServiceError serverlessApplicationRepository
-      "ForbiddenException"
-      . hasStatus 403
-
--- | The resource (for example, an access policy statement) specified in the request does not exist.
---
---
-_NotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
-_NotFoundException
-  = _MatchServiceError serverlessApplicationRepository
-      "NotFoundException"
-      . hasStatus 404
+      "InternalServerErrorException"
+      . hasStatus 500
 
 -- | The client is sending more than the allowed number of requests per unit time.
 --
@@ -167,14 +149,14 @@ _TooManyRequestsException
       "TooManyRequestsException"
       . hasStatus 429
 
--- | The AWS Serverless Application Repository service encountered an internal error.
+-- | The client is not authenticated.
 --
 --
-_InternalServerErrorException :: AsError a => Getting (First ServiceError) a ServiceError
-_InternalServerErrorException
+_ForbiddenException :: AsError a => Getting (First ServiceError) a ServiceError
+_ForbiddenException
   = _MatchServiceError serverlessApplicationRepository
-      "InternalServerErrorException"
-      . hasStatus 500
+      "ForbiddenException"
+      . hasStatus 403
 
 -- | One of the parameters in the request is invalid.
 --
@@ -184,3 +166,21 @@ _BadRequestException
   = _MatchServiceError serverlessApplicationRepository
       "BadRequestException"
       . hasStatus 400
+
+-- | The resource (for example, an access policy statement) specified in the request does not exist.
+--
+--
+_NotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
+_NotFoundException
+  = _MatchServiceError serverlessApplicationRepository
+      "NotFoundException"
+      . hasStatus 404
+
+-- | The resource already exists.
+--
+--
+_ConflictException :: AsError a => Getting (First ServiceError) a ServiceError
+_ConflictException
+  = _MatchServiceError serverlessApplicationRepository
+      "ConflictException"
+      . hasStatus 409

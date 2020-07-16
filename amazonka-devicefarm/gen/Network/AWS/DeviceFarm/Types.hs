@@ -16,17 +16,17 @@ module Network.AWS.DeviceFarm.Types
       deviceFarm
 
     -- * Errors
-    , _NotEligibleException
-    , _CannotDeleteException
-    , _IdempotencyException
-    , _TooManyTagsException
-    , _ArgumentException
-    , _NotFoundException
-    , _InternalServiceException
     , _TagPolicyException
-    , _TagOperationException
-    , _ServiceAccountException
+    , _InternalServiceException
+    , _CannotDeleteException
+    , _TooManyTagsException
     , _InvalidOperationException
+    , _ServiceAccountException
+    , _TagOperationException
+    , _IdempotencyException
+    , _NotEligibleException
+    , _NotFoundException
+    , _ArgumentException
     , _LimitExceededException
 
     -- * ArtifactCategory
@@ -709,51 +709,12 @@ deviceFarm
           | has (hasStatus 509) e = Just "limit_exceeded"
           | otherwise = Nothing
 
--- | Exception gets thrown when a user is not eligible to perform the specified transaction.
+-- | The request doesn't comply with the AWS Identity and Access Management (IAM) tag policy. Correct your request and then retry it.
 --
 --
-_NotEligibleException :: AsError a => Getting (First ServiceError) a ServiceError
-_NotEligibleException
-  = _MatchServiceError deviceFarm
-      "NotEligibleException"
-
--- | The requested object could not be deleted.
---
---
-_CannotDeleteException :: AsError a => Getting (First ServiceError) a ServiceError
-_CannotDeleteException
-  = _MatchServiceError deviceFarm
-      "CannotDeleteException"
-
--- | An entity with the same name already exists.
---
---
-_IdempotencyException :: AsError a => Getting (First ServiceError) a ServiceError
-_IdempotencyException
-  = _MatchServiceError deviceFarm
-      "IdempotencyException"
-
--- | The list of tags on the repository is over the limit. The maximum number of tags that can be applied to a repository is 50. 
---
---
-_TooManyTagsException :: AsError a => Getting (First ServiceError) a ServiceError
-_TooManyTagsException
-  = _MatchServiceError deviceFarm
-      "TooManyTagsException"
-
--- | An invalid argument was specified.
---
---
-_ArgumentException :: AsError a => Getting (First ServiceError) a ServiceError
-_ArgumentException
-  = _MatchServiceError deviceFarm "ArgumentException"
-
--- | The specified entity was not found.
---
---
-_NotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
-_NotFoundException
-  = _MatchServiceError deviceFarm "NotFoundException"
+_TagPolicyException :: AsError a => Getting (First ServiceError) a ServiceError
+_TagPolicyException
+  = _MatchServiceError deviceFarm "TagPolicyException"
 
 -- | An internal exception was raised in the service. Contact <mailto:aws-devicefarm-support@amazon.com aws-devicefarm-support@amazon.com> if you see this error. 
 --
@@ -763,20 +724,29 @@ _InternalServiceException
   = _MatchServiceError deviceFarm
       "InternalServiceException"
 
--- | The request doesn't comply with the AWS Identity and Access Management (IAM) tag policy. Correct your request and then retry it.
+-- | The requested object could not be deleted.
 --
 --
-_TagPolicyException :: AsError a => Getting (First ServiceError) a ServiceError
-_TagPolicyException
-  = _MatchServiceError deviceFarm "TagPolicyException"
-
--- | The operation was not successful. Try again.
---
---
-_TagOperationException :: AsError a => Getting (First ServiceError) a ServiceError
-_TagOperationException
+_CannotDeleteException :: AsError a => Getting (First ServiceError) a ServiceError
+_CannotDeleteException
   = _MatchServiceError deviceFarm
-      "TagOperationException"
+      "CannotDeleteException"
+
+-- | The list of tags on the repository is over the limit. The maximum number of tags that can be applied to a repository is 50. 
+--
+--
+_TooManyTagsException :: AsError a => Getting (First ServiceError) a ServiceError
+_TooManyTagsException
+  = _MatchServiceError deviceFarm
+      "TooManyTagsException"
+
+-- | There was an error with the update request, or you do not have sufficient permissions to update this VPC endpoint configuration.
+--
+--
+_InvalidOperationException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidOperationException
+  = _MatchServiceError deviceFarm
+      "InvalidOperationException"
 
 -- | There was a problem with the service account.
 --
@@ -786,13 +756,43 @@ _ServiceAccountException
   = _MatchServiceError deviceFarm
       "ServiceAccountException"
 
--- | There was an error with the update request, or you do not have sufficient permissions to update this VPC endpoint configuration.
+-- | The operation was not successful. Try again.
 --
 --
-_InvalidOperationException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidOperationException
+_TagOperationException :: AsError a => Getting (First ServiceError) a ServiceError
+_TagOperationException
   = _MatchServiceError deviceFarm
-      "InvalidOperationException"
+      "TagOperationException"
+
+-- | An entity with the same name already exists.
+--
+--
+_IdempotencyException :: AsError a => Getting (First ServiceError) a ServiceError
+_IdempotencyException
+  = _MatchServiceError deviceFarm
+      "IdempotencyException"
+
+-- | Exception gets thrown when a user is not eligible to perform the specified transaction.
+--
+--
+_NotEligibleException :: AsError a => Getting (First ServiceError) a ServiceError
+_NotEligibleException
+  = _MatchServiceError deviceFarm
+      "NotEligibleException"
+
+-- | The specified entity was not found.
+--
+--
+_NotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
+_NotFoundException
+  = _MatchServiceError deviceFarm "NotFoundException"
+
+-- | An invalid argument was specified.
+--
+--
+_ArgumentException :: AsError a => Getting (First ServiceError) a ServiceError
+_ArgumentException
+  = _MatchServiceError deviceFarm "ArgumentException"
 
 -- | A limit was exceeded.
 --

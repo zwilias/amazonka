@@ -27,8 +27,8 @@ module Network.AWS.WorkMail.DeleteGroup
       deleteGroup
     , DeleteGroup
     -- * Request Lenses
-    , dggOrganizationId
-    , dggGroupId
+    , dltgrpOrganizationId
+    , dltgrpGroupId
 
     -- * Destructuring the Response
     , deleteGroupResponse
@@ -45,33 +45,34 @@ import Network.AWS.WorkMail.Types
 import Network.AWS.WorkMail.Types.Product
 
 -- | /See:/ 'deleteGroup' smart constructor.
-data DeleteGroup = DeleteGroup'{_dggOrganizationId ::
-                                !Text,
-                                _dggGroupId :: !Text}
+data DeleteGroup = DeleteGroup'{_dltgrpOrganizationId
+                                :: !Text,
+                                _dltgrpGroupId :: !Text}
                      deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteGroup' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dggOrganizationId' - The organization that contains the group.
+-- * 'dltgrpOrganizationId' - The organization that contains the group.
 --
--- * 'dggGroupId' - The identifier of the group to be deleted.
+-- * 'dltgrpGroupId' - The identifier of the group to be deleted.
 deleteGroup
-    :: Text -- ^ 'dggOrganizationId'
-    -> Text -- ^ 'dggGroupId'
+    :: Text -- ^ 'dltgrpOrganizationId'
+    -> Text -- ^ 'dltgrpGroupId'
     -> DeleteGroup
 deleteGroup pOrganizationId_ pGroupId_
-  = DeleteGroup'{_dggOrganizationId = pOrganizationId_,
-                 _dggGroupId = pGroupId_}
+  = DeleteGroup'{_dltgrpOrganizationId =
+                   pOrganizationId_,
+                 _dltgrpGroupId = pGroupId_}
 
 -- | The organization that contains the group.
-dggOrganizationId :: Lens' DeleteGroup Text
-dggOrganizationId = lens _dggOrganizationId (\ s a -> s{_dggOrganizationId = a})
+dltgrpOrganizationId :: Lens' DeleteGroup Text
+dltgrpOrganizationId = lens _dltgrpOrganizationId (\ s a -> s{_dltgrpOrganizationId = a})
 
 -- | The identifier of the group to be deleted.
-dggGroupId :: Lens' DeleteGroup Text
-dggGroupId = lens _dggGroupId (\ s a -> s{_dggGroupId = a})
+dltgrpGroupId :: Lens' DeleteGroup Text
+dltgrpGroupId = lens _dltgrpGroupId (\ s a -> s{_dltgrpGroupId = a})
 
 instance AWSRequest DeleteGroup where
         type Rs DeleteGroup = DeleteGroupResponse
@@ -98,8 +99,8 @@ instance ToJSON DeleteGroup where
         toJSON DeleteGroup'{..}
           = object
               (catMaybes
-                 [Just ("OrganizationId" .= _dggOrganizationId),
-                  Just ("GroupId" .= _dggGroupId)])
+                 [Just ("OrganizationId" .= _dltgrpOrganizationId),
+                  Just ("GroupId" .= _dltgrpGroupId)])
 
 instance ToPath DeleteGroup where
         toPath = const "/"

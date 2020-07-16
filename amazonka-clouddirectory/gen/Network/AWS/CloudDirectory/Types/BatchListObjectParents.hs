@@ -22,12 +22,12 @@ import Network.AWS.Lens
 import Network.AWS.Prelude
 
 -- | /See:/ 'batchListObjectParents' smart constructor.
-data BatchListObjectParents = BatchListObjectParents'{_bloplNextToken
+data BatchListObjectParents = BatchListObjectParents'{_btchlstobjctprntsNextToken
                                                       :: !(Maybe Text),
-                                                      _bloplMaxResults ::
-                                                      !(Maybe Nat),
-                                                      _bloplObjectReference ::
-                                                      !ObjectReference}
+                                                      _btchlstobjctprntsMaxResults
+                                                      :: !(Maybe Nat),
+                                                      _btchlstobjctprntsObjectReference
+                                                      :: !ObjectReference}
                                 deriving (Eq, Read, Show, Data, Typeable,
                                           Generic)
 
@@ -35,30 +35,32 @@ data BatchListObjectParents = BatchListObjectParents'{_bloplNextToken
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'bloplNextToken' - Undocumented member.
+-- * 'btchlstobjctprntsNextToken' - Undocumented member.
 --
--- * 'bloplMaxResults' - Undocumented member.
+-- * 'btchlstobjctprntsMaxResults' - Undocumented member.
 --
--- * 'bloplObjectReference' - Undocumented member.
+-- * 'btchlstobjctprntsObjectReference' - Undocumented member.
 batchListObjectParents
-    :: ObjectReference -- ^ 'bloplObjectReference'
+    :: ObjectReference -- ^ 'btchlstobjctprntsObjectReference'
     -> BatchListObjectParents
 batchListObjectParents pObjectReference_
-  = BatchListObjectParents'{_bloplNextToken = Nothing,
-                            _bloplMaxResults = Nothing,
-                            _bloplObjectReference = pObjectReference_}
+  = BatchListObjectParents'{_btchlstobjctprntsNextToken
+                              = Nothing,
+                            _btchlstobjctprntsMaxResults = Nothing,
+                            _btchlstobjctprntsObjectReference =
+                              pObjectReference_}
 
 -- | Undocumented member.
-bloplNextToken :: Lens' BatchListObjectParents (Maybe Text)
-bloplNextToken = lens _bloplNextToken (\ s a -> s{_bloplNextToken = a})
+btchlstobjctprntsNextToken :: Lens' BatchListObjectParents (Maybe Text)
+btchlstobjctprntsNextToken = lens _btchlstobjctprntsNextToken (\ s a -> s{_btchlstobjctprntsNextToken = a})
 
 -- | Undocumented member.
-bloplMaxResults :: Lens' BatchListObjectParents (Maybe Natural)
-bloplMaxResults = lens _bloplMaxResults (\ s a -> s{_bloplMaxResults = a}) . mapping _Nat
+btchlstobjctprntsMaxResults :: Lens' BatchListObjectParents (Maybe Natural)
+btchlstobjctprntsMaxResults = lens _btchlstobjctprntsMaxResults (\ s a -> s{_btchlstobjctprntsMaxResults = a}) . mapping _Nat
 
 -- | Undocumented member.
-bloplObjectReference :: Lens' BatchListObjectParents ObjectReference
-bloplObjectReference = lens _bloplObjectReference (\ s a -> s{_bloplObjectReference = a})
+btchlstobjctprntsObjectReference :: Lens' BatchListObjectParents ObjectReference
+btchlstobjctprntsObjectReference = lens _btchlstobjctprntsObjectReference (\ s a -> s{_btchlstobjctprntsObjectReference = a})
 
 instance Hashable BatchListObjectParents where
 
@@ -68,6 +70,8 @@ instance ToJSON BatchListObjectParents where
         toJSON BatchListObjectParents'{..}
           = object
               (catMaybes
-                 [("NextToken" .=) <$> _bloplNextToken,
-                  ("MaxResults" .=) <$> _bloplMaxResults,
-                  Just ("ObjectReference" .= _bloplObjectReference)])
+                 [("NextToken" .=) <$> _btchlstobjctprntsNextToken,
+                  ("MaxResults" .=) <$> _btchlstobjctprntsMaxResults,
+                  Just
+                    ("ObjectReference" .=
+                       _btchlstobjctprntsObjectReference)])

@@ -27,7 +27,7 @@ module Network.AWS.CloudWatchEvents.DescribeEventSource
       describeEventSource
     , DescribeEventSource
     -- * Request Lenses
-    , deseName
+    , dscrbevntsrcName
 
     -- * Destructuring the Response
     , describeEventSourceResponse
@@ -50,7 +50,7 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeEventSource' smart constructor.
-newtype DescribeEventSource = DescribeEventSource'{_deseName
+newtype DescribeEventSource = DescribeEventSource'{_dscrbevntsrcName
                                                    :: Text}
                                 deriving (Eq, Read, Show, Data, Typeable,
                                           Generic)
@@ -59,16 +59,16 @@ newtype DescribeEventSource = DescribeEventSource'{_deseName
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'deseName' - The name of the partner event source to display the details of.
+-- * 'dscrbevntsrcName' - The name of the partner event source to display the details of.
 describeEventSource
-    :: Text -- ^ 'deseName'
+    :: Text -- ^ 'dscrbevntsrcName'
     -> DescribeEventSource
 describeEventSource pName_
-  = DescribeEventSource'{_deseName = pName_}
+  = DescribeEventSource'{_dscrbevntsrcName = pName_}
 
 -- | The name of the partner event source to display the details of.
-deseName :: Lens' DescribeEventSource Text
-deseName = lens _deseName (\ s a -> s{_deseName = a})
+dscrbevntsrcName :: Lens' DescribeEventSource Text
+dscrbevntsrcName = lens _dscrbevntsrcName (\ s a -> s{_dscrbevntsrcName = a})
 
 instance AWSRequest DescribeEventSource where
         type Rs DescribeEventSource =
@@ -100,7 +100,8 @@ instance ToHeaders DescribeEventSource where
 
 instance ToJSON DescribeEventSource where
         toJSON DescribeEventSource'{..}
-          = object (catMaybes [Just ("Name" .= _deseName)])
+          = object
+              (catMaybes [Just ("Name" .= _dscrbevntsrcName)])
 
 instance ToPath DescribeEventSource where
         toPath = const "/"

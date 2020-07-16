@@ -27,7 +27,7 @@ module Network.AWS.CloudWatchEvents.DescribePartnerEventSource
       describePartnerEventSource
     , DescribePartnerEventSource
     -- * Request Lenses
-    , dpespName
+    , dscrbprtnrevntsrcName
 
     -- * Destructuring the Response
     , describePartnerEventSourceResponse
@@ -46,7 +46,7 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describePartnerEventSource' smart constructor.
-newtype DescribePartnerEventSource = DescribePartnerEventSource'{_dpespName
+newtype DescribePartnerEventSource = DescribePartnerEventSource'{_dscrbprtnrevntsrcName
                                                                  :: Text}
                                        deriving (Eq, Read, Show, Data, Typeable,
                                                  Generic)
@@ -55,16 +55,17 @@ newtype DescribePartnerEventSource = DescribePartnerEventSource'{_dpespName
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dpespName' - The name of the event source to display.
+-- * 'dscrbprtnrevntsrcName' - The name of the event source to display.
 describePartnerEventSource
-    :: Text -- ^ 'dpespName'
+    :: Text -- ^ 'dscrbprtnrevntsrcName'
     -> DescribePartnerEventSource
 describePartnerEventSource pName_
-  = DescribePartnerEventSource'{_dpespName = pName_}
+  = DescribePartnerEventSource'{_dscrbprtnrevntsrcName
+                                  = pName_}
 
 -- | The name of the event source to display.
-dpespName :: Lens' DescribePartnerEventSource Text
-dpespName = lens _dpespName (\ s a -> s{_dpespName = a})
+dscrbprtnrevntsrcName :: Lens' DescribePartnerEventSource Text
+dscrbprtnrevntsrcName = lens _dscrbprtnrevntsrcName (\ s a -> s{_dscrbprtnrevntsrcName = a})
 
 instance AWSRequest DescribePartnerEventSource where
         type Rs DescribePartnerEventSource =
@@ -93,7 +94,8 @@ instance ToHeaders DescribePartnerEventSource where
 
 instance ToJSON DescribePartnerEventSource where
         toJSON DescribePartnerEventSource'{..}
-          = object (catMaybes [Just ("Name" .= _dpespName)])
+          = object
+              (catMaybes [Just ("Name" .= _dscrbprtnrevntsrcName)])
 
 instance ToPath DescribePartnerEventSource where
         toPath = const "/"

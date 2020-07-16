@@ -16,12 +16,12 @@ module Network.AWS.MediaConvert.Types
       mediaConvert
 
     -- * Errors
-    , _ConflictException
-    , _ForbiddenException
-    , _NotFoundException
-    , _TooManyRequestsException
     , _InternalServerErrorException
+    , _TooManyRequestsException
+    , _ForbiddenException
     , _BadRequestException
+    , _NotFoundException
+    , _ConflictException
 
     -- * AacAudioDescriptionBroadcasterMix
     , AacAudioDescriptionBroadcasterMix (..)
@@ -1915,24 +1915,12 @@ mediaConvert
           | has (hasStatus 509) e = Just "limit_exceeded"
           | otherwise = Nothing
 
--- | The service could not complete your request because there is a conflict with the current state of the resource.
-_ConflictException :: AsError a => Getting (First ServiceError) a ServiceError
-_ConflictException
-  = _MatchServiceError mediaConvert "ConflictException"
-      . hasStatus 409
-
--- | You don't have permissions for this action with the credentials you sent.
-_ForbiddenException :: AsError a => Getting (First ServiceError) a ServiceError
-_ForbiddenException
+-- | The service encountered an unexpected condition and cannot fulfill your request.
+_InternalServerErrorException :: AsError a => Getting (First ServiceError) a ServiceError
+_InternalServerErrorException
   = _MatchServiceError mediaConvert
-      "ForbiddenException"
-      . hasStatus 403
-
--- | The resource you requested does not exist.
-_NotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
-_NotFoundException
-  = _MatchServiceError mediaConvert "NotFoundException"
-      . hasStatus 404
+      "InternalServerErrorException"
+      . hasStatus 500
 
 -- | Too many requests have been sent in too short of a time. The service limits the rate at which it will accept requests.
 _TooManyRequestsException :: AsError a => Getting (First ServiceError) a ServiceError
@@ -1941,12 +1929,12 @@ _TooManyRequestsException
       "TooManyRequestsException"
       . hasStatus 429
 
--- | The service encountered an unexpected condition and cannot fulfill your request.
-_InternalServerErrorException :: AsError a => Getting (First ServiceError) a ServiceError
-_InternalServerErrorException
+-- | You don't have permissions for this action with the credentials you sent.
+_ForbiddenException :: AsError a => Getting (First ServiceError) a ServiceError
+_ForbiddenException
   = _MatchServiceError mediaConvert
-      "InternalServerErrorException"
-      . hasStatus 500
+      "ForbiddenException"
+      . hasStatus 403
 
 -- | The service can't process your request because of a problem in the request. Please check your request form and syntax.
 _BadRequestException :: AsError a => Getting (First ServiceError) a ServiceError
@@ -1954,3 +1942,15 @@ _BadRequestException
   = _MatchServiceError mediaConvert
       "BadRequestException"
       . hasStatus 400
+
+-- | The resource you requested does not exist.
+_NotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
+_NotFoundException
+  = _MatchServiceError mediaConvert "NotFoundException"
+      . hasStatus 404
+
+-- | The service could not complete your request because there is a conflict with the current state of the resource.
+_ConflictException :: AsError a => Getting (First ServiceError) a ServiceError
+_ConflictException
+  = _MatchServiceError mediaConvert "ConflictException"
+      . hasStatus 409

@@ -17,8 +17,8 @@ module Network.AWS.StorageGateway.Types
 
     -- * Errors
     , _InvalidGatewayRequestException
-    , _ServiceUnavailableError
     , _InternalServerError
+    , _ServiceUnavailableError
 
     -- * ObjectACL
     , ObjectACL (..)
@@ -283,14 +283,6 @@ _InvalidGatewayRequestException
   = _MatchServiceError storageGateway
       "InvalidGatewayRequestException"
 
--- | An internal server error has occurred because the service is unavailable. For more information, see the error and message fields.
---
---
-_ServiceUnavailableError :: AsError a => Getting (First ServiceError) a ServiceError
-_ServiceUnavailableError
-  = _MatchServiceError storageGateway
-      "ServiceUnavailableError"
-
 -- | An internal server error has occurred during the request. For more information, see the error and message fields.
 --
 --
@@ -298,3 +290,11 @@ _InternalServerError :: AsError a => Getting (First ServiceError) a ServiceError
 _InternalServerError
   = _MatchServiceError storageGateway
       "InternalServerError"
+
+-- | An internal server error has occurred because the service is unavailable. For more information, see the error and message fields.
+--
+--
+_ServiceUnavailableError :: AsError a => Getting (First ServiceError) a ServiceError
+_ServiceUnavailableError
+  = _MatchServiceError storageGateway
+      "ServiceUnavailableError"

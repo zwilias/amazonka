@@ -16,13 +16,13 @@ module Network.AWS.Lightsail.Types
       lightsail
 
     -- * Errors
-    , _AccessDeniedException
     , _AccountSetupInProgressException
-    , _NotFoundException
-    , _OperationFailureException
-    , _ServiceException
     , _UnauthenticatedException
+    , _ServiceException
+    , _AccessDeniedException
     , _InvalidInputException
+    , _OperationFailureException
+    , _NotFoundException
 
     -- * AccessDirection
     , AccessDirection (..)
@@ -560,14 +560,6 @@ lightsail
           | has (hasStatus 509) e = Just "limit_exceeded"
           | otherwise = Nothing
 
--- | Lightsail throws this exception when the user cannot be authenticated or uses invalid credentials to access a resource.
---
---
-_AccessDeniedException :: AsError a => Getting (First ServiceError) a ServiceError
-_AccessDeniedException
-  = _MatchServiceError lightsail
-      "AccessDeniedException"
-
 -- | Lightsail throws this exception when an account is still in the setup in progress state.
 --
 --
@@ -575,28 +567,6 @@ _AccountSetupInProgressException :: AsError a => Getting (First ServiceError) a 
 _AccountSetupInProgressException
   = _MatchServiceError lightsail
       "AccountSetupInProgressException"
-
--- | Lightsail throws this exception when it cannot find a resource.
---
---
-_NotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
-_NotFoundException
-  = _MatchServiceError lightsail "NotFoundException"
-
--- | Lightsail throws this exception when an operation fails to execute.
---
---
-_OperationFailureException :: AsError a => Getting (First ServiceError) a ServiceError
-_OperationFailureException
-  = _MatchServiceError lightsail
-      "OperationFailureException"
-
--- | A general service exception.
---
---
-_ServiceException :: AsError a => Getting (First ServiceError) a ServiceError
-_ServiceException
-  = _MatchServiceError lightsail "ServiceException"
 
 -- | Lightsail throws this exception when the user has not been authenticated.
 --
@@ -606,6 +576,21 @@ _UnauthenticatedException
   = _MatchServiceError lightsail
       "UnauthenticatedException"
 
+-- | A general service exception.
+--
+--
+_ServiceException :: AsError a => Getting (First ServiceError) a ServiceError
+_ServiceException
+  = _MatchServiceError lightsail "ServiceException"
+
+-- | Lightsail throws this exception when the user cannot be authenticated or uses invalid credentials to access a resource.
+--
+--
+_AccessDeniedException :: AsError a => Getting (First ServiceError) a ServiceError
+_AccessDeniedException
+  = _MatchServiceError lightsail
+      "AccessDeniedException"
+
 -- | Lightsail throws this exception when user input does not conform to the validation rules of an input field.
 --
 --
@@ -613,3 +598,18 @@ _InvalidInputException :: AsError a => Getting (First ServiceError) a ServiceErr
 _InvalidInputException
   = _MatchServiceError lightsail
       "InvalidInputException"
+
+-- | Lightsail throws this exception when an operation fails to execute.
+--
+--
+_OperationFailureException :: AsError a => Getting (First ServiceError) a ServiceError
+_OperationFailureException
+  = _MatchServiceError lightsail
+      "OperationFailureException"
+
+-- | Lightsail throws this exception when it cannot find a resource.
+--
+--
+_NotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
+_NotFoundException
+  = _MatchServiceError lightsail "NotFoundException"

@@ -41,26 +41,26 @@ module Network.AWS.ResourceGroups
     -- * Errors
     -- $errors
 
-    -- ** ForbiddenException
-    , _ForbiddenException
-
-    -- ** NotFoundException
-    , _NotFoundException
+    -- ** InternalServerErrorException
+    , _InternalServerErrorException
 
     -- ** TooManyRequestsException
     , _TooManyRequestsException
 
-    -- ** InternalServerErrorException
-    , _InternalServerErrorException
+    -- ** ForbiddenException
+    , _ForbiddenException
 
-    -- ** MethodNotAllowedException
-    , _MethodNotAllowedException
+    -- ** BadRequestException
+    , _BadRequestException
 
     -- ** UnauthorizedException
     , _UnauthorizedException
 
-    -- ** BadRequestException
-    , _BadRequestException
+    -- ** MethodNotAllowedException
+    , _MethodNotAllowedException
+
+    -- ** NotFoundException
+    , _NotFoundException
 
     -- * Waiters
     -- $waiters

@@ -16,12 +16,12 @@ module Network.AWS.CloudHSMv2.Types
       cloudHSMv2
 
     -- * Errors
-    , _CloudHSMInternalFailureException
-    , _CloudHSMServiceException
-    , _CloudHSMInvalidRequestException
     , _CloudHSMAccessDeniedException
-    , _CloudHSMResourceNotFoundException
+    , _CloudHSMInvalidRequestException
     , _CloudHSMTagException
+    , _CloudHSMServiceException
+    , _CloudHSMInternalFailureException
+    , _CloudHSMResourceNotFoundException
 
     -- * BackupPolicy
     , BackupPolicy (..)
@@ -151,21 +151,13 @@ cloudHSMv2
           | has (hasStatus 509) e = Just "limit_exceeded"
           | otherwise = Nothing
 
--- | The request was rejected because of an AWS CloudHSM internal failure. The request can be retried.
+-- | The request was rejected because the requester does not have permission to perform the requested operation.
 --
 --
-_CloudHSMInternalFailureException :: AsError a => Getting (First ServiceError) a ServiceError
-_CloudHSMInternalFailureException
+_CloudHSMAccessDeniedException :: AsError a => Getting (First ServiceError) a ServiceError
+_CloudHSMAccessDeniedException
   = _MatchServiceError cloudHSMv2
-      "CloudHsmInternalFailureException"
-
--- | The request was rejected because an error occurred.
---
---
-_CloudHSMServiceException :: AsError a => Getting (First ServiceError) a ServiceError
-_CloudHSMServiceException
-  = _MatchServiceError cloudHSMv2
-      "CloudHsmServiceException"
+      "CloudHsmAccessDeniedException"
 
 -- | The request was rejected because it is not a valid request.
 --
@@ -175,13 +167,27 @@ _CloudHSMInvalidRequestException
   = _MatchServiceError cloudHSMv2
       "CloudHsmInvalidRequestException"
 
--- | The request was rejected because the requester does not have permission to perform the requested operation.
---
---
-_CloudHSMAccessDeniedException :: AsError a => Getting (First ServiceError) a ServiceError
-_CloudHSMAccessDeniedException
+-- | Prism for CloudHsmTagException' errors.
+_CloudHSMTagException :: AsError a => Getting (First ServiceError) a ServiceError
+_CloudHSMTagException
   = _MatchServiceError cloudHSMv2
-      "CloudHsmAccessDeniedException"
+      "CloudHsmTagException"
+
+-- | The request was rejected because an error occurred.
+--
+--
+_CloudHSMServiceException :: AsError a => Getting (First ServiceError) a ServiceError
+_CloudHSMServiceException
+  = _MatchServiceError cloudHSMv2
+      "CloudHsmServiceException"
+
+-- | The request was rejected because of an AWS CloudHSM internal failure. The request can be retried.
+--
+--
+_CloudHSMInternalFailureException :: AsError a => Getting (First ServiceError) a ServiceError
+_CloudHSMInternalFailureException
+  = _MatchServiceError cloudHSMv2
+      "CloudHsmInternalFailureException"
 
 -- | The request was rejected because it refers to a resource that cannot be found.
 --
@@ -190,9 +196,3 @@ _CloudHSMResourceNotFoundException :: AsError a => Getting (First ServiceError) 
 _CloudHSMResourceNotFoundException
   = _MatchServiceError cloudHSMv2
       "CloudHsmResourceNotFoundException"
-
--- | Prism for CloudHsmTagException' errors.
-_CloudHSMTagException :: AsError a => Getting (First ServiceError) a ServiceError
-_CloudHSMTagException
-  = _MatchServiceError cloudHSMv2
-      "CloudHsmTagException"

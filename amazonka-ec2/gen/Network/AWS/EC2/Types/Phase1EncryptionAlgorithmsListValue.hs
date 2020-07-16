@@ -26,7 +26,7 @@ import Network.AWS.Prelude
 --
 --
 -- /See:/ 'phase1EncryptionAlgorithmsListValue' smart constructor.
-newtype Phase1EncryptionAlgorithmsListValue = Phase1EncryptionAlgorithmsListValue'{_pealveValue
+newtype Phase1EncryptionAlgorithmsListValue = Phase1EncryptionAlgorithmsListValue'{_phs1encryptnalgrthmslstvlValue
                                                                                    ::
                                                                                    Maybe
                                                                                      Text}
@@ -37,16 +37,16 @@ newtype Phase1EncryptionAlgorithmsListValue = Phase1EncryptionAlgorithmsListValu
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'pealveValue' - The value for the encryption algorithm.
+-- * 'phs1encryptnalgrthmslstvlValue' - The value for the encryption algorithm.
 phase1EncryptionAlgorithmsListValue
     :: Phase1EncryptionAlgorithmsListValue
 phase1EncryptionAlgorithmsListValue
-  = Phase1EncryptionAlgorithmsListValue'{_pealveValue =
-                                           Nothing}
+  = Phase1EncryptionAlgorithmsListValue'{_phs1encryptnalgrthmslstvlValue
+                                           = Nothing}
 
 -- | The value for the encryption algorithm.
-pealveValue :: Lens' Phase1EncryptionAlgorithmsListValue (Maybe Text)
-pealveValue = lens _pealveValue (\ s a -> s{_pealveValue = a})
+phs1encryptnalgrthmslstvlValue :: Lens' Phase1EncryptionAlgorithmsListValue (Maybe Text)
+phs1encryptnalgrthmslstvlValue = lens _phs1encryptnalgrthmslstvlValue (\ s a -> s{_phs1encryptnalgrthmslstvlValue = a})
 
 instance FromXML Phase1EncryptionAlgorithmsListValue
          where

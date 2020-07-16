@@ -24,44 +24,44 @@ module Network.AWS.Polly
     -- * Errors
     -- $errors
 
-    -- ** UnsupportedPlsLanguageException
-    , _UnsupportedPlsLanguageException
-
-    -- ** InvalidSsmlException
-    , _InvalidSsmlException
-
-    -- ** InvalidSampleRateException
-    , _InvalidSampleRateException
-
-    -- ** MaxLexiconsNumberExceededException
-    , _MaxLexiconsNumberExceededException
+    -- ** LexiconSizeExceededException
+    , _LexiconSizeExceededException
 
     -- ** TextLengthExceededException
     , _TextLengthExceededException
 
+    -- ** UnsupportedPlsLanguageException
+    , _UnsupportedPlsLanguageException
+
     -- ** MaxLexemeLengthExceededException
     , _MaxLexemeLengthExceededException
-
-    -- ** InvalidLexiconException
-    , _InvalidLexiconException
-
-    -- ** ServiceFailureException
-    , _ServiceFailureException
-
-    -- ** UnsupportedPlsAlphabetException
-    , _UnsupportedPlsAlphabetException
-
-    -- ** InvalidNextTokenException
-    , _InvalidNextTokenException
-
-    -- ** MarksNotSupportedForFormatException
-    , _MarksNotSupportedForFormatException
 
     -- ** SsmlMarksNotSupportedForTextTypeException
     , _SsmlMarksNotSupportedForTextTypeException
 
-    -- ** LexiconSizeExceededException
-    , _LexiconSizeExceededException
+    -- ** MarksNotSupportedForFormatException
+    , _MarksNotSupportedForFormatException
+
+    -- ** MaxLexiconsNumberExceededException
+    , _MaxLexiconsNumberExceededException
+
+    -- ** InvalidNextTokenException
+    , _InvalidNextTokenException
+
+    -- ** UnsupportedPlsAlphabetException
+    , _UnsupportedPlsAlphabetException
+
+    -- ** ServiceFailureException
+    , _ServiceFailureException
+
+    -- ** InvalidSampleRateException
+    , _InvalidSampleRateException
+
+    -- ** InvalidSsmlException
+    , _InvalidSsmlException
+
+    -- ** InvalidLexiconException
+    , _InvalidLexiconException
 
     -- ** LexiconNotFoundException
     , _LexiconNotFoundException

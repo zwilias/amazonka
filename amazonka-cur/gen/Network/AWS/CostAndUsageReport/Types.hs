@@ -17,8 +17,8 @@ module Network.AWS.CostAndUsageReport.Types
 
     -- * Errors
     , _ValidationException
-    , _InternalErrorException
     , _DuplicateReportNameException
+    , _InternalErrorException
     , _ReportLimitReachedException
 
     -- * AWSRegion
@@ -112,14 +112,6 @@ _ValidationException
   = _MatchServiceError costAndUsageReport
       "ValidationException"
 
--- | An error on the server occurred during the processing of your request. Try again later.
---
---
-_InternalErrorException :: AsError a => Getting (First ServiceError) a ServiceError
-_InternalErrorException
-  = _MatchServiceError costAndUsageReport
-      "InternalErrorException"
-
 -- | A report with the specified name already exists in the account. Specify a different report name.
 --
 --
@@ -127,6 +119,14 @@ _DuplicateReportNameException :: AsError a => Getting (First ServiceError) a Ser
 _DuplicateReportNameException
   = _MatchServiceError costAndUsageReport
       "DuplicateReportNameException"
+
+-- | An error on the server occurred during the processing of your request. Try again later.
+--
+--
+_InternalErrorException :: AsError a => Getting (First ServiceError) a ServiceError
+_InternalErrorException
+  = _MatchServiceError costAndUsageReport
+      "InternalErrorException"
 
 -- | This account already has five reports defined. To define a new report, you must delete an existing report.
 --

@@ -22,35 +22,35 @@ module Network.AWS.KinesisVideo
     -- * Errors
     -- $errors
 
-    -- ** InvalidArgumentException
-    , _InvalidArgumentException
-
     -- ** TagsPerResourceExceededLimitException
     , _TagsPerResourceExceededLimitException
-
-    -- ** NotAuthorizedException
-    , _NotAuthorizedException
-
-    -- ** ClientLimitExceededException
-    , _ClientLimitExceededException
-
-    -- ** InvalidDeviceException
-    , _InvalidDeviceException
-
-    -- ** VersionMismatchException
-    , _VersionMismatchException
-
-    -- ** AccountStreamLimitExceededException
-    , _AccountStreamLimitExceededException
-
-    -- ** InvalidResourceFormatException
-    , _InvalidResourceFormatException
 
     -- ** DeviceStreamLimitExceededException
     , _DeviceStreamLimitExceededException
 
+    -- ** InvalidResourceFormatException
+    , _InvalidResourceFormatException
+
+    -- ** VersionMismatchException
+    , _VersionMismatchException
+
+    -- ** InvalidDeviceException
+    , _InvalidDeviceException
+
     -- ** ResourceNotFoundException
     , _ResourceNotFoundException
+
+    -- ** ClientLimitExceededException
+    , _ClientLimitExceededException
+
+    -- ** InvalidArgumentException
+    , _InvalidArgumentException
+
+    -- ** NotAuthorizedException
+    , _NotAuthorizedException
+
+    -- ** AccountStreamLimitExceededException
+    , _AccountStreamLimitExceededException
 
     -- ** ResourceInUseException
     , _ResourceInUseException

@@ -22,32 +22,20 @@ module Network.AWS.WAF
     -- * Errors
     -- $errors
 
-    -- ** WAFInvalidAccountException
-    , _WAFInvalidAccountException
-
-    -- ** WAFSubscriptionNotFoundException
-    , _WAFSubscriptionNotFoundException
-
-    -- ** WAFReferencedItemException
-    , _WAFReferencedItemException
+    -- ** WAFNonexistentContainerException
+    , _WAFNonexistentContainerException
 
     -- ** WAFInvalidRegexPatternException
     , _WAFInvalidRegexPatternException
 
-    -- ** WAFInvalidOperationException
-    , _WAFInvalidOperationException
-
-    -- ** WAFNonexistentItemException
-    , _WAFNonexistentItemException
+    -- ** WAFLimitsExceededException
+    , _WAFLimitsExceededException
 
     -- ** WAFInvalidParameterException
     , _WAFInvalidParameterException
 
-    -- ** WAFLimitsExceededException
-    , _WAFLimitsExceededException
-
-    -- ** WAFInvalidPermissionPolicyException
-    , _WAFInvalidPermissionPolicyException
+    -- ** WAFInvalidOperationException
+    , _WAFInvalidOperationException
 
     -- ** WAFStaleDataException
     , _WAFStaleDataException
@@ -55,14 +43,26 @@ module Network.AWS.WAF
     -- ** WAFInternalErrorException
     , _WAFInternalErrorException
 
-    -- ** WAFNonexistentContainerException
-    , _WAFNonexistentContainerException
+    -- ** WAFInvalidPermissionPolicyException
+    , _WAFInvalidPermissionPolicyException
 
-    -- ** WAFDisallowedNameException
-    , _WAFDisallowedNameException
+    -- ** WAFReferencedItemException
+    , _WAFReferencedItemException
+
+    -- ** WAFSubscriptionNotFoundException
+    , _WAFSubscriptionNotFoundException
+
+    -- ** WAFInvalidAccountException
+    , _WAFInvalidAccountException
+
+    -- ** WAFNonexistentItemException
+    , _WAFNonexistentItemException
 
     -- ** WAFNonEmptyEntityException
     , _WAFNonEmptyEntityException
+
+    -- ** WAFDisallowedNameException
+    , _WAFDisallowedNameException
 
     -- * Waiters
     -- $waiters

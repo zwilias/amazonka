@@ -22,23 +22,23 @@ module Network.AWS.Mobile
     -- * Errors
     -- $errors
 
-    -- ** NotFoundException
-    , _NotFoundException
+    -- ** InternalFailureException
+    , _InternalFailureException
 
     -- ** TooManyRequestsException
     , _TooManyRequestsException
 
-    -- ** InternalFailureException
-    , _InternalFailureException
-
-    -- ** ServiceUnavailableException
-    , _ServiceUnavailableException
+    -- ** BadRequestException
+    , _BadRequestException
 
     -- ** UnauthorizedException
     , _UnauthorizedException
 
-    -- ** BadRequestException
-    , _BadRequestException
+    -- ** ServiceUnavailableException
+    , _ServiceUnavailableException
+
+    -- ** NotFoundException
+    , _NotFoundException
 
     -- ** LimitExceededException
     , _LimitExceededException

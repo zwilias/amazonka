@@ -27,16 +27,16 @@ module Network.AWS.EC2.DisassociateTransitGatewayRouteTable
       disassociateTransitGatewayRouteTable
     , DisassociateTransitGatewayRouteTable
     -- * Request Lenses
-    , dtgrttDryRun
-    , dtgrttTransitGatewayRouteTableId
-    , dtgrttTransitGatewayAttachmentId
+    , dssscttrnstgtwyrttblDryRun
+    , dssscttrnstgtwyrttblTransitGatewayRouteTableId
+    , dssscttrnstgtwyrttblTransitGatewayAttachmentId
 
     -- * Destructuring the Response
     , disassociateTransitGatewayRouteTableResponse
     , DisassociateTransitGatewayRouteTableResponse
     -- * Response Lenses
-    , dtgrttrsAssociation
-    , dtgrttrsResponseStatus
+    , dssscttrnstgtwyrttblrsAssociation
+    , dssscttrnstgtwyrttblrsResponseStatus
     ) where
 
 import Network.AWS.EC2.Types
@@ -47,14 +47,14 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'disassociateTransitGatewayRouteTable' smart constructor.
-data DisassociateTransitGatewayRouteTable = DisassociateTransitGatewayRouteTable'{_dtgrttDryRun
+data DisassociateTransitGatewayRouteTable = DisassociateTransitGatewayRouteTable'{_dssscttrnstgtwyrttblDryRun
                                                                                   ::
                                                                                   !(Maybe
                                                                                       Bool),
-                                                                                  _dtgrttTransitGatewayRouteTableId
+                                                                                  _dssscttrnstgtwyrttblTransitGatewayRouteTableId
                                                                                   ::
                                                                                   !Text,
-                                                                                  _dtgrttTransitGatewayAttachmentId
+                                                                                  _dssscttrnstgtwyrttblTransitGatewayAttachmentId
                                                                                   ::
                                                                                   !Text}
                                               deriving (Eq, Read, Show, Data,
@@ -64,36 +64,36 @@ data DisassociateTransitGatewayRouteTable = DisassociateTransitGatewayRouteTable
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dtgrttDryRun' - Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
+-- * 'dssscttrnstgtwyrttblDryRun' - Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 --
--- * 'dtgrttTransitGatewayRouteTableId' - The ID of the transit gateway route table.
+-- * 'dssscttrnstgtwyrttblTransitGatewayRouteTableId' - The ID of the transit gateway route table.
 --
--- * 'dtgrttTransitGatewayAttachmentId' - The ID of the attachment.
+-- * 'dssscttrnstgtwyrttblTransitGatewayAttachmentId' - The ID of the attachment.
 disassociateTransitGatewayRouteTable
-    :: Text -- ^ 'dtgrttTransitGatewayRouteTableId'
-    -> Text -- ^ 'dtgrttTransitGatewayAttachmentId'
+    :: Text -- ^ 'dssscttrnstgtwyrttblTransitGatewayRouteTableId'
+    -> Text -- ^ 'dssscttrnstgtwyrttblTransitGatewayAttachmentId'
     -> DisassociateTransitGatewayRouteTable
 disassociateTransitGatewayRouteTable
   pTransitGatewayRouteTableId_
   pTransitGatewayAttachmentId_
-  = DisassociateTransitGatewayRouteTable'{_dtgrttDryRun
+  = DisassociateTransitGatewayRouteTable'{_dssscttrnstgtwyrttblDryRun
                                             = Nothing,
-                                          _dtgrttTransitGatewayRouteTableId =
-                                            pTransitGatewayRouteTableId_,
-                                          _dtgrttTransitGatewayAttachmentId =
-                                            pTransitGatewayAttachmentId_}
+                                          _dssscttrnstgtwyrttblTransitGatewayRouteTableId
+                                            = pTransitGatewayRouteTableId_,
+                                          _dssscttrnstgtwyrttblTransitGatewayAttachmentId
+                                            = pTransitGatewayAttachmentId_}
 
 -- | Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
-dtgrttDryRun :: Lens' DisassociateTransitGatewayRouteTable (Maybe Bool)
-dtgrttDryRun = lens _dtgrttDryRun (\ s a -> s{_dtgrttDryRun = a})
+dssscttrnstgtwyrttblDryRun :: Lens' DisassociateTransitGatewayRouteTable (Maybe Bool)
+dssscttrnstgtwyrttblDryRun = lens _dssscttrnstgtwyrttblDryRun (\ s a -> s{_dssscttrnstgtwyrttblDryRun = a})
 
 -- | The ID of the transit gateway route table.
-dtgrttTransitGatewayRouteTableId :: Lens' DisassociateTransitGatewayRouteTable Text
-dtgrttTransitGatewayRouteTableId = lens _dtgrttTransitGatewayRouteTableId (\ s a -> s{_dtgrttTransitGatewayRouteTableId = a})
+dssscttrnstgtwyrttblTransitGatewayRouteTableId :: Lens' DisassociateTransitGatewayRouteTable Text
+dssscttrnstgtwyrttblTransitGatewayRouteTableId = lens _dssscttrnstgtwyrttblTransitGatewayRouteTableId (\ s a -> s{_dssscttrnstgtwyrttblTransitGatewayRouteTableId = a})
 
 -- | The ID of the attachment.
-dtgrttTransitGatewayAttachmentId :: Lens' DisassociateTransitGatewayRouteTable Text
-dtgrttTransitGatewayAttachmentId = lens _dtgrttTransitGatewayAttachmentId (\ s a -> s{_dtgrttTransitGatewayAttachmentId = a})
+dssscttrnstgtwyrttblTransitGatewayAttachmentId :: Lens' DisassociateTransitGatewayRouteTable Text
+dssscttrnstgtwyrttblTransitGatewayAttachmentId = lens _dssscttrnstgtwyrttblTransitGatewayAttachmentId (\ s a -> s{_dssscttrnstgtwyrttblTransitGatewayAttachmentId = a})
 
 instance AWSRequest
            DisassociateTransitGatewayRouteTable
@@ -131,18 +131,18 @@ instance ToQuery DisassociateTransitGatewayRouteTable
                  ("DisassociateTransitGatewayRouteTable" ::
                     ByteString),
                "Version" =: ("2016-11-15" :: ByteString),
-               "DryRun" =: _dtgrttDryRun,
+               "DryRun" =: _dssscttrnstgtwyrttblDryRun,
                "TransitGatewayRouteTableId" =:
-                 _dtgrttTransitGatewayRouteTableId,
+                 _dssscttrnstgtwyrttblTransitGatewayRouteTableId,
                "TransitGatewayAttachmentId" =:
-                 _dtgrttTransitGatewayAttachmentId]
+                 _dssscttrnstgtwyrttblTransitGatewayAttachmentId]
 
 -- | /See:/ 'disassociateTransitGatewayRouteTableResponse' smart constructor.
-data DisassociateTransitGatewayRouteTableResponse = DisassociateTransitGatewayRouteTableResponse'{_dtgrttrsAssociation
+data DisassociateTransitGatewayRouteTableResponse = DisassociateTransitGatewayRouteTableResponse'{_dssscttrnstgtwyrttblrsAssociation
                                                                                                   ::
                                                                                                   !(Maybe
                                                                                                       TransitGatewayAssociation),
-                                                                                                  _dtgrttrsResponseStatus
+                                                                                                  _dssscttrnstgtwyrttblrsResponseStatus
                                                                                                   ::
                                                                                                   !Int}
                                                       deriving (Eq, Read, Show,
@@ -153,26 +153,26 @@ data DisassociateTransitGatewayRouteTableResponse = DisassociateTransitGatewayRo
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dtgrttrsAssociation' - Information about the association.
+-- * 'dssscttrnstgtwyrttblrsAssociation' - Information about the association.
 --
--- * 'dtgrttrsResponseStatus' - -- | The response status code.
+-- * 'dssscttrnstgtwyrttblrsResponseStatus' - -- | The response status code.
 disassociateTransitGatewayRouteTableResponse
-    :: Int -- ^ 'dtgrttrsResponseStatus'
+    :: Int -- ^ 'dssscttrnstgtwyrttblrsResponseStatus'
     -> DisassociateTransitGatewayRouteTableResponse
 disassociateTransitGatewayRouteTableResponse
   pResponseStatus_
-  = DisassociateTransitGatewayRouteTableResponse'{_dtgrttrsAssociation
+  = DisassociateTransitGatewayRouteTableResponse'{_dssscttrnstgtwyrttblrsAssociation
                                                     = Nothing,
-                                                  _dtgrttrsResponseStatus =
-                                                    pResponseStatus_}
+                                                  _dssscttrnstgtwyrttblrsResponseStatus
+                                                    = pResponseStatus_}
 
 -- | Information about the association.
-dtgrttrsAssociation :: Lens' DisassociateTransitGatewayRouteTableResponse (Maybe TransitGatewayAssociation)
-dtgrttrsAssociation = lens _dtgrttrsAssociation (\ s a -> s{_dtgrttrsAssociation = a})
+dssscttrnstgtwyrttblrsAssociation :: Lens' DisassociateTransitGatewayRouteTableResponse (Maybe TransitGatewayAssociation)
+dssscttrnstgtwyrttblrsAssociation = lens _dssscttrnstgtwyrttblrsAssociation (\ s a -> s{_dssscttrnstgtwyrttblrsAssociation = a})
 
 -- | -- | The response status code.
-dtgrttrsResponseStatus :: Lens' DisassociateTransitGatewayRouteTableResponse Int
-dtgrttrsResponseStatus = lens _dtgrttrsResponseStatus (\ s a -> s{_dtgrttrsResponseStatus = a})
+dssscttrnstgtwyrttblrsResponseStatus :: Lens' DisassociateTransitGatewayRouteTableResponse Int
+dssscttrnstgtwyrttblrsResponseStatus = lens _dssscttrnstgtwyrttblrsResponseStatus (\ s a -> s{_dssscttrnstgtwyrttblrsResponseStatus = a})
 
 instance NFData
            DisassociateTransitGatewayRouteTableResponse

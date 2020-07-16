@@ -22,17 +22,17 @@ module Network.AWS.SageMakerRuntime
     -- * Errors
     -- $errors
 
-    -- ** ServiceUnavailable
-    , _ServiceUnavailable
-
-    -- ** ModelError
-    , _ModelError
+    -- ** ValidationError
+    , _ValidationError
 
     -- ** InternalFailure
     , _InternalFailure
 
-    -- ** ValidationError
-    , _ValidationError
+    -- ** ModelError
+    , _ModelError
+
+    -- ** ServiceUnavailable
+    , _ServiceUnavailable
 
     -- * Waiters
     -- $waiters

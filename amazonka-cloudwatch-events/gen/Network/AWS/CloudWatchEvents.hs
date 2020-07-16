@@ -32,29 +32,29 @@ module Network.AWS.CloudWatchEvents
     -- * Errors
     -- $errors
 
-    -- ** ManagedRuleException
-    , _ManagedRuleException
-
     -- ** PolicyLengthExceededException
     , _PolicyLengthExceededException
-
-    -- ** ResourceAlreadyExistsException
-    , _ResourceAlreadyExistsException
-
-    -- ** ConcurrentModificationException
-    , _ConcurrentModificationException
 
     -- ** InvalidEventPatternException
     , _InvalidEventPatternException
 
-    -- ** InternalException
-    , _InternalException
+    -- ** InvalidStateException
+    , _InvalidStateException
 
     -- ** ResourceNotFoundException
     , _ResourceNotFoundException
 
-    -- ** InvalidStateException
-    , _InvalidStateException
+    -- ** ResourceAlreadyExistsException
+    , _ResourceAlreadyExistsException
+
+    -- ** InternalException
+    , _InternalException
+
+    -- ** ConcurrentModificationException
+    , _ConcurrentModificationException
+
+    -- ** ManagedRuleException
+    , _ManagedRuleException
 
     -- ** LimitExceededException
     , _LimitExceededException

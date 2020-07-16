@@ -16,17 +16,17 @@ module Network.AWS.LexRuntime.Types
       lexRuntime
 
     -- * Errors
-    , _NotAcceptableException
     , _DependencyFailedException
-    , _UnsupportedMediaTypeException
-    , _ConflictException
-    , _NotFoundException
-    , _RequestTimeoutException
-    , _LoopDetectedException
     , _InternalFailureException
-    , _BadGatewayException
     , _BadRequestException
+    , _BadGatewayException
+    , _NotAcceptableException
+    , _LoopDetectedException
+    , _RequestTimeoutException
+    , _NotFoundException
     , _LimitExceededException
+    , _ConflictException
+    , _UnsupportedMediaTypeException
 
     -- * ContentType
     , ContentType (..)
@@ -104,15 +104,6 @@ lexRuntime
           | has (hasStatus 509) e = Just "limit_exceeded"
           | otherwise = Nothing
 
--- | The accept header in the request does not have a valid value.
---
---
-_NotAcceptableException :: AsError a => Getting (First ServiceError) a ServiceError
-_NotAcceptableException
-  = _MatchServiceError lexRuntime
-      "NotAcceptableException"
-      . hasStatus 406
-
 -- | One of the dependencies, such as AWS Lambda or Amazon Polly, threw an exception. For example, 
 --
 --
@@ -130,39 +121,39 @@ _DependencyFailedException
       "DependencyFailedException"
       . hasStatus 424
 
--- | The Content-Type header (@PostContent@ API) has an invalid value. 
+-- | Internal service error. Retry the call.
 --
 --
-_UnsupportedMediaTypeException :: AsError a => Getting (First ServiceError) a ServiceError
-_UnsupportedMediaTypeException
+_InternalFailureException :: AsError a => Getting (First ServiceError) a ServiceError
+_InternalFailureException
   = _MatchServiceError lexRuntime
-      "UnsupportedMediaTypeException"
-      . hasStatus 415
+      "InternalFailureException"
+      . hasStatus 500
 
--- | Two clients are using the same AWS account, Amazon Lex bot, and user ID. 
+-- | Request validation failed, there is no usable message in the context, or the bot build failed, is still in progress, or contains unbuilt changes. 
 --
 --
-_ConflictException :: AsError a => Getting (First ServiceError) a ServiceError
-_ConflictException
-  = _MatchServiceError lexRuntime "ConflictException" .
-      hasStatus 409
+_BadRequestException :: AsError a => Getting (First ServiceError) a ServiceError
+_BadRequestException
+  = _MatchServiceError lexRuntime "BadRequestException"
+      . hasStatus 400
 
--- | The resource (such as the Amazon Lex bot or an alias) that is referred to is not found.
+-- | Either the Amazon Lex bot is still building, or one of the dependent services (Amazon Polly, AWS Lambda) failed with an internal service error.
 --
 --
-_NotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
-_NotFoundException
-  = _MatchServiceError lexRuntime "NotFoundException" .
-      hasStatus 404
+_BadGatewayException :: AsError a => Getting (First ServiceError) a ServiceError
+_BadGatewayException
+  = _MatchServiceError lexRuntime "BadGatewayException"
+      . hasStatus 502
 
--- | The input speech is too long.
+-- | The accept header in the request does not have a valid value.
 --
 --
-_RequestTimeoutException :: AsError a => Getting (First ServiceError) a ServiceError
-_RequestTimeoutException
+_NotAcceptableException :: AsError a => Getting (First ServiceError) a ServiceError
+_NotAcceptableException
   = _MatchServiceError lexRuntime
-      "RequestTimeoutException"
-      . hasStatus 408
+      "NotAcceptableException"
+      . hasStatus 406
 
 -- | This exception is not used.
 --
@@ -173,30 +164,22 @@ _LoopDetectedException
       "LoopDetectedException"
       . hasStatus 508
 
--- | Internal service error. Retry the call.
+-- | The input speech is too long.
 --
 --
-_InternalFailureException :: AsError a => Getting (First ServiceError) a ServiceError
-_InternalFailureException
+_RequestTimeoutException :: AsError a => Getting (First ServiceError) a ServiceError
+_RequestTimeoutException
   = _MatchServiceError lexRuntime
-      "InternalFailureException"
-      . hasStatus 500
+      "RequestTimeoutException"
+      . hasStatus 408
 
--- | Either the Amazon Lex bot is still building, or one of the dependent services (Amazon Polly, AWS Lambda) failed with an internal service error.
+-- | The resource (such as the Amazon Lex bot or an alias) that is referred to is not found.
 --
 --
-_BadGatewayException :: AsError a => Getting (First ServiceError) a ServiceError
-_BadGatewayException
-  = _MatchServiceError lexRuntime "BadGatewayException"
-      . hasStatus 502
-
--- | Request validation failed, there is no usable message in the context, or the bot build failed, is still in progress, or contains unbuilt changes. 
---
---
-_BadRequestException :: AsError a => Getting (First ServiceError) a ServiceError
-_BadRequestException
-  = _MatchServiceError lexRuntime "BadRequestException"
-      . hasStatus 400
+_NotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
+_NotFoundException
+  = _MatchServiceError lexRuntime "NotFoundException" .
+      hasStatus 404
 
 -- | Exceeded a limit.
 --
@@ -206,3 +189,20 @@ _LimitExceededException
   = _MatchServiceError lexRuntime
       "LimitExceededException"
       . hasStatus 429
+
+-- | Two clients are using the same AWS account, Amazon Lex bot, and user ID. 
+--
+--
+_ConflictException :: AsError a => Getting (First ServiceError) a ServiceError
+_ConflictException
+  = _MatchServiceError lexRuntime "ConflictException" .
+      hasStatus 409
+
+-- | The Content-Type header (@PostContent@ API) has an invalid value. 
+--
+--
+_UnsupportedMediaTypeException :: AsError a => Getting (First ServiceError) a ServiceError
+_UnsupportedMediaTypeException
+  = _MatchServiceError lexRuntime
+      "UnsupportedMediaTypeException"
+      . hasStatus 415

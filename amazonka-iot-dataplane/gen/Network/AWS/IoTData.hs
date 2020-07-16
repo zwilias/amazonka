@@ -23,32 +23,32 @@ module Network.AWS.IoTData
     -- * Errors
     -- $errors
 
+    -- ** InternalFailureException
+    , _InternalFailureException
+
     -- ** InvalidRequestException
     , _InvalidRequestException
-
-    -- ** ConflictException
-    , _ConflictException
 
     -- ** RequestEntityTooLargeException
     , _RequestEntityTooLargeException
 
-    -- ** ThrottlingException
-    , _ThrottlingException
-
-    -- ** MethodNotAllowedException
-    , _MethodNotAllowedException
-
-    -- ** InternalFailureException
-    , _InternalFailureException
-
-    -- ** ServiceUnavailableException
-    , _ServiceUnavailableException
+    -- ** ResourceNotFoundException
+    , _ResourceNotFoundException
 
     -- ** UnauthorizedException
     , _UnauthorizedException
 
-    -- ** ResourceNotFoundException
-    , _ResourceNotFoundException
+    -- ** ServiceUnavailableException
+    , _ServiceUnavailableException
+
+    -- ** MethodNotAllowedException
+    , _MethodNotAllowedException
+
+    -- ** ThrottlingException
+    , _ThrottlingException
+
+    -- ** ConflictException
+    , _ConflictException
 
     -- ** UnsupportedDocumentEncodingException
     , _UnsupportedDocumentEncodingException

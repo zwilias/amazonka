@@ -22,41 +22,23 @@ module Network.AWS.Comprehend
     -- * Errors
     -- $errors
 
-    -- ** ResourceUnavailableException
-    , _ResourceUnavailableException
-
-    -- ** InvalidRequestException
-    , _InvalidRequestException
-
-    -- ** ResourceLimitExceededException
-    , _ResourceLimitExceededException
-
-    -- ** TooManyTagsException
-    , _TooManyTagsException
-
-    -- ** TooManyRequestsException
-    , _TooManyRequestsException
-
-    -- ** ConcurrentModificationException
-    , _ConcurrentModificationException
-
-    -- ** InternalServerException
-    , _InternalServerException
-
-    -- ** BatchSizeLimitExceededException
-    , _BatchSizeLimitExceededException
+    -- ** JobNotFoundException
+    , _JobNotFoundException
 
     -- ** UnsupportedLanguageException
     , _UnsupportedLanguageException
 
-    -- ** JobNotFoundException
-    , _JobNotFoundException
+    -- ** TooManyRequestsException
+    , _TooManyRequestsException
+
+    -- ** InvalidRequestException
+    , _InvalidRequestException
+
+    -- ** TooManyTagsException
+    , _TooManyTagsException
 
     -- ** TooManyTagKeysException
     , _TooManyTagKeysException
-
-    -- ** InvalidFilterException
-    , _InvalidFilterException
 
     -- ** KMSKeyValidationException
     , _KMSKeyValidationException
@@ -64,11 +46,29 @@ module Network.AWS.Comprehend
     -- ** ResourceNotFoundException
     , _ResourceNotFoundException
 
+    -- ** ResourceLimitExceededException
+    , _ResourceLimitExceededException
+
+    -- ** BatchSizeLimitExceededException
+    , _BatchSizeLimitExceededException
+
+    -- ** InternalServerException
+    , _InternalServerException
+
+    -- ** ConcurrentModificationException
+    , _ConcurrentModificationException
+
+    -- ** ResourceUnavailableException
+    , _ResourceUnavailableException
+
     -- ** TextSizeLimitExceededException
     , _TextSizeLimitExceededException
 
     -- ** ResourceInUseException
     , _ResourceInUseException
+
+    -- ** InvalidFilterException
+    , _InvalidFilterException
 
     -- * Waiters
     -- $waiters

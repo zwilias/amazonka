@@ -27,7 +27,7 @@ module Network.AWS.CloudSearch.DeleteDomain
       deleteDomain
     , DeleteDomain
     -- * Request Lenses
-    , dddDomainName
+    , ddDomainName
 
     -- * Destructuring the Response
     , deleteDomainResponse
@@ -49,24 +49,24 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'deleteDomain' smart constructor.
-newtype DeleteDomain = DeleteDomain'{_dddDomainName
-                                     :: Text}
+newtype DeleteDomain = DeleteDomain'{_ddDomainName ::
+                                     Text}
                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteDomain' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dddDomainName' - The name of the domain you want to permanently delete.
+-- * 'ddDomainName' - The name of the domain you want to permanently delete.
 deleteDomain
-    :: Text -- ^ 'dddDomainName'
+    :: Text -- ^ 'ddDomainName'
     -> DeleteDomain
 deleteDomain pDomainName_
-  = DeleteDomain'{_dddDomainName = pDomainName_}
+  = DeleteDomain'{_ddDomainName = pDomainName_}
 
 -- | The name of the domain you want to permanently delete.
-dddDomainName :: Lens' DeleteDomain Text
-dddDomainName = lens _dddDomainName (\ s a -> s{_dddDomainName = a})
+ddDomainName :: Lens' DeleteDomain Text
+ddDomainName = lens _ddDomainName (\ s a -> s{_ddDomainName = a})
 
 instance AWSRequest DeleteDomain where
         type Rs DeleteDomain = DeleteDomainResponse
@@ -92,7 +92,7 @@ instance ToQuery DeleteDomain where
           = mconcat
               ["Action" =: ("DeleteDomain" :: ByteString),
                "Version" =: ("2013-01-01" :: ByteString),
-               "DomainName" =: _dddDomainName]
+               "DomainName" =: _ddDomainName]
 
 -- | The result of a @DeleteDomain@ request. Contains the status of a newly deleted domain, or no status if the domain has already been completely deleted.
 --

@@ -20,32 +20,32 @@ module Network.AWS.MediaLive
     -- * Errors
     -- $errors
 
-    -- ** GatewayTimeoutException
-    , _GatewayTimeoutException
-
-    -- ** UnprocessableEntityException
-    , _UnprocessableEntityException
-
-    -- ** ConflictException
-    , _ConflictException
-
-    -- ** ForbiddenException
-    , _ForbiddenException
-
-    -- ** NotFoundException
-    , _NotFoundException
+    -- ** InternalServerErrorException
+    , _InternalServerErrorException
 
     -- ** TooManyRequestsException
     , _TooManyRequestsException
 
-    -- ** InternalServerErrorException
-    , _InternalServerErrorException
+    -- ** GatewayTimeoutException
+    , _GatewayTimeoutException
+
+    -- ** ForbiddenException
+    , _ForbiddenException
+
+    -- ** BadRequestException
+    , _BadRequestException
+
+    -- ** UnprocessableEntityException
+    , _UnprocessableEntityException
 
     -- ** BadGatewayException
     , _BadGatewayException
 
-    -- ** BadRequestException
-    , _BadRequestException
+    -- ** NotFoundException
+    , _NotFoundException
+
+    -- ** ConflictException
+    , _ConflictException
 
     -- * Waiters
     -- $waiters

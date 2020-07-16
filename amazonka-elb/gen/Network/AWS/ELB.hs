@@ -31,50 +31,11 @@ module Network.AWS.ELB
     -- * Errors
     -- $errors
 
-    -- ** PolicyNotFoundException
-    , _PolicyNotFoundException
+    -- ** TooManyAccessPointsException
+    , _TooManyAccessPointsException
 
-    -- ** AccessPointNotFoundException
-    , _AccessPointNotFoundException
-
-    -- ** DuplicatePolicyNameException
-    , _DuplicatePolicyNameException
-
-    -- ** InvalidConfigurationRequestException
-    , _InvalidConfigurationRequestException
-
-    -- ** SubnetNotFoundException
-    , _SubnetNotFoundException
-
-    -- ** LoadBalancerAttributeNotFoundException
-    , _LoadBalancerAttributeNotFoundException
-
-    -- ** InvalidSubnetException
-    , _InvalidSubnetException
-
-    -- ** DuplicateTagKeysException
-    , _DuplicateTagKeysException
-
-    -- ** DuplicateListenerException
-    , _DuplicateListenerException
-
-    -- ** TooManyTagsException
-    , _TooManyTagsException
-
-    -- ** PolicyTypeNotFoundException
-    , _PolicyTypeNotFoundException
-
-    -- ** UnsupportedProtocolException
-    , _UnsupportedProtocolException
-
-    -- ** DuplicateAccessPointNameException
-    , _DuplicateAccessPointNameException
-
-    -- ** InvalidSecurityGroupException
-    , _InvalidSecurityGroupException
-
-    -- ** ListenerNotFoundException
-    , _ListenerNotFoundException
+    -- ** InvalidSchemeException
+    , _InvalidSchemeException
 
     -- ** InvalidEndPointException
     , _InvalidEndPointException
@@ -82,20 +43,59 @@ module Network.AWS.ELB
     -- ** OperationNotPermittedException
     , _OperationNotPermittedException
 
+    -- ** SubnetNotFoundException
+    , _SubnetNotFoundException
+
+    -- ** PolicyNotFoundException
+    , _PolicyNotFoundException
+
+    -- ** UnsupportedProtocolException
+    , _UnsupportedProtocolException
+
+    -- ** TooManyTagsException
+    , _TooManyTagsException
+
+    -- ** DuplicateListenerException
+    , _DuplicateListenerException
+
     -- ** DependencyThrottleException
     , _DependencyThrottleException
 
-    -- ** InvalidSchemeException
-    , _InvalidSchemeException
+    -- ** InvalidSubnetException
+    , _InvalidSubnetException
 
-    -- ** TooManyAccessPointsException
-    , _TooManyAccessPointsException
+    -- ** ListenerNotFoundException
+    , _ListenerNotFoundException
+
+    -- ** LoadBalancerAttributeNotFoundException
+    , _LoadBalancerAttributeNotFoundException
+
+    -- ** DuplicateAccessPointNameException
+    , _DuplicateAccessPointNameException
+
+    -- ** DuplicatePolicyNameException
+    , _DuplicatePolicyNameException
+
+    -- ** InvalidConfigurationRequestException
+    , _InvalidConfigurationRequestException
+
+    -- ** InvalidSecurityGroupException
+    , _InvalidSecurityGroupException
+
+    -- ** AccessPointNotFoundException
+    , _AccessPointNotFoundException
+
+    -- ** PolicyTypeNotFoundException
+    , _PolicyTypeNotFoundException
+
+    -- ** CertificateNotFoundException
+    , _CertificateNotFoundException
 
     -- ** TooManyPoliciesException
     , _TooManyPoliciesException
 
-    -- ** CertificateNotFoundException
-    , _CertificateNotFoundException
+    -- ** DuplicateTagKeysException
+    , _DuplicateTagKeysException
 
     -- * Waiters
     -- $waiters

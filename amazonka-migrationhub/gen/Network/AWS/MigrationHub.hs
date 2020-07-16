@@ -22,29 +22,29 @@ module Network.AWS.MigrationHub
     -- * Errors
     -- $errors
 
-    -- ** AccessDeniedException
-    , _AccessDeniedException
-
     -- ** DryRunOperation
     , _DryRunOperation
 
     -- ** PolicyErrorException
     , _PolicyErrorException
 
-    -- ** InternalServerError
-    , _InternalServerError
+    -- ** AccessDeniedException
+    , _AccessDeniedException
 
-    -- ** InvalidInputException
-    , _InvalidInputException
-
-    -- ** ServiceUnavailableException
-    , _ServiceUnavailableException
+    -- ** UnauthorizedOperation
+    , _UnauthorizedOperation
 
     -- ** ResourceNotFoundException
     , _ResourceNotFoundException
 
-    -- ** UnauthorizedOperation
-    , _UnauthorizedOperation
+    -- ** ServiceUnavailableException
+    , _ServiceUnavailableException
+
+    -- ** InvalidInputException
+    , _InvalidInputException
+
+    -- ** InternalServerError
+    , _InternalServerError
 
     -- * Waiters
     -- $waiters

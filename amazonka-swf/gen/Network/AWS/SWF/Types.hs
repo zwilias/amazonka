@@ -16,15 +16,15 @@ module Network.AWS.SWF.Types
       swf
 
     -- * Errors
-    , _DomainAlreadyExistsFault
-    , _LimitExceededFault
-    , _WorkflowExecutionAlreadyStartedFault
-    , _OperationNotPermittedFault
-    , _UnknownResourceFault
-    , _DefaultUndefinedFault
     , _TypeDeprecatedFault
+    , _DefaultUndefinedFault
     , _TypeAlreadyExistsFault
     , _DomainDeprecatedFault
+    , _UnknownResourceFault
+    , _OperationNotPermittedFault
+    , _WorkflowExecutionAlreadyStartedFault
+    , _LimitExceededFault
+    , _DomainAlreadyExistsFault
 
     -- * ActivityTaskTimeoutType
     , ActivityTaskTimeoutType (..)
@@ -1024,41 +1024,12 @@ swf
           | has (hasStatus 509) e = Just "limit_exceeded"
           | otherwise = Nothing
 
--- | Returned if the specified domain already exists. You get this fault even if the existing domain is in deprecated status.
+-- | Returned when the specified activity or workflow type was already deprecated.
 --
 --
-_DomainAlreadyExistsFault :: AsError a => Getting (First ServiceError) a ServiceError
-_DomainAlreadyExistsFault
-  = _MatchServiceError swf "DomainAlreadyExistsFault"
-
--- | Returned by any operation if a system imposed limitation has been reached. To address this fault you should either clean up unused resources or increase the limit by contacting AWS.
---
---
-_LimitExceededFault :: AsError a => Getting (First ServiceError) a ServiceError
-_LimitExceededFault
-  = _MatchServiceError swf "LimitExceededFault"
-
--- | Returned by 'StartWorkflowExecution' when an open execution with the same workflowId is already running in the specified domain.
---
---
-_WorkflowExecutionAlreadyStartedFault :: AsError a => Getting (First ServiceError) a ServiceError
-_WorkflowExecutionAlreadyStartedFault
-  = _MatchServiceError swf
-      "WorkflowExecutionAlreadyStartedFault"
-
--- | Returned when the caller doesn't have sufficient permissions to invoke the action.
---
---
-_OperationNotPermittedFault :: AsError a => Getting (First ServiceError) a ServiceError
-_OperationNotPermittedFault
-  = _MatchServiceError swf "OperationNotPermittedFault"
-
--- | Returned when the named resource cannot be found with in the scope of this operation (region or domain). This could happen if the named resource was never created or is no longer available for this operation.
---
---
-_UnknownResourceFault :: AsError a => Getting (First ServiceError) a ServiceError
-_UnknownResourceFault
-  = _MatchServiceError swf "UnknownResourceFault"
+_TypeDeprecatedFault :: AsError a => Getting (First ServiceError) a ServiceError
+_TypeDeprecatedFault
+  = _MatchServiceError swf "TypeDeprecatedFault"
 
 -- | The @StartWorkflowExecution@ API action was called without the required parameters set.
 --
@@ -1068,13 +1039,6 @@ _UnknownResourceFault
 _DefaultUndefinedFault :: AsError a => Getting (First ServiceError) a ServiceError
 _DefaultUndefinedFault
   = _MatchServiceError swf "DefaultUndefinedFault"
-
--- | Returned when the specified activity or workflow type was already deprecated.
---
---
-_TypeDeprecatedFault :: AsError a => Getting (First ServiceError) a ServiceError
-_TypeDeprecatedFault
-  = _MatchServiceError swf "TypeDeprecatedFault"
 
 -- | Returned if the type already exists in the specified domain. You get this fault even if the existing type is in deprecated status. You can specify another version if the intent is to create a new distinct version of the type.
 --
@@ -1089,3 +1053,39 @@ _TypeAlreadyExistsFault
 _DomainDeprecatedFault :: AsError a => Getting (First ServiceError) a ServiceError
 _DomainDeprecatedFault
   = _MatchServiceError swf "DomainDeprecatedFault"
+
+-- | Returned when the named resource cannot be found with in the scope of this operation (region or domain). This could happen if the named resource was never created or is no longer available for this operation.
+--
+--
+_UnknownResourceFault :: AsError a => Getting (First ServiceError) a ServiceError
+_UnknownResourceFault
+  = _MatchServiceError swf "UnknownResourceFault"
+
+-- | Returned when the caller doesn't have sufficient permissions to invoke the action.
+--
+--
+_OperationNotPermittedFault :: AsError a => Getting (First ServiceError) a ServiceError
+_OperationNotPermittedFault
+  = _MatchServiceError swf "OperationNotPermittedFault"
+
+-- | Returned by 'StartWorkflowExecution' when an open execution with the same workflowId is already running in the specified domain.
+--
+--
+_WorkflowExecutionAlreadyStartedFault :: AsError a => Getting (First ServiceError) a ServiceError
+_WorkflowExecutionAlreadyStartedFault
+  = _MatchServiceError swf
+      "WorkflowExecutionAlreadyStartedFault"
+
+-- | Returned by any operation if a system imposed limitation has been reached. To address this fault you should either clean up unused resources or increase the limit by contacting AWS.
+--
+--
+_LimitExceededFault :: AsError a => Getting (First ServiceError) a ServiceError
+_LimitExceededFault
+  = _MatchServiceError swf "LimitExceededFault"
+
+-- | Returned if the specified domain already exists. You get this fault even if the existing domain is in deprecated status.
+--
+--
+_DomainAlreadyExistsFault :: AsError a => Getting (First ServiceError) a ServiceError
+_DomainAlreadyExistsFault
+  = _MatchServiceError swf "DomainAlreadyExistsFault"

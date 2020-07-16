@@ -16,14 +16,14 @@ module Network.AWS.Snowball.Types
       snowball
 
     -- * Errors
-    , _InvalidResourceException
-    , _UnsupportedAddressException
     , _KMSRequestFailedException
-    , _InvalidJobStateException
+    , _UnsupportedAddressException
     , _InvalidInputCombinationException
-    , _InvalidNextTokenException
-    , _InvalidAddressException
+    , _InvalidJobStateException
     , _ClusterLimitExceededException
+    , _InvalidAddressException
+    , _InvalidNextTokenException
+    , _InvalidResourceException
 
     -- * ClusterState
     , ClusterState (..)
@@ -241,13 +241,13 @@ snowball
           | has (hasStatus 509) e = Just "limit_exceeded"
           | otherwise = Nothing
 
--- | The specified resource can't be found. Check the information you provided in your last request, and try again.
+-- | The provided AWS Key Management Service key lacks the permissions to perform the specified 'CreateJob' or 'UpdateJob' action.
 --
 --
-_InvalidResourceException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidResourceException
+_KMSRequestFailedException :: AsError a => Getting (First ServiceError) a ServiceError
+_KMSRequestFailedException
   = _MatchServiceError snowball
-      "InvalidResourceException"
+      "KMSRequestFailedException"
 
 -- | The address is either outside the serviceable area for your region, or an error occurred. Check the address with your region's carrier and try again. If the issue persists, contact AWS Support.
 --
@@ -257,13 +257,13 @@ _UnsupportedAddressException
   = _MatchServiceError snowball
       "UnsupportedAddressException"
 
--- | The provided AWS Key Management Service key lacks the permissions to perform the specified 'CreateJob' or 'UpdateJob' action.
+-- | Job or cluster creation failed. One ore more inputs were invalid. Confirm that the 'CreateClusterRequest$SnowballType' value supports your 'CreateJobRequest$JobType' , and try again.
 --
 --
-_KMSRequestFailedException :: AsError a => Getting (First ServiceError) a ServiceError
-_KMSRequestFailedException
+_InvalidInputCombinationException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidInputCombinationException
   = _MatchServiceError snowball
-      "KMSRequestFailedException"
+      "InvalidInputCombinationException"
 
 -- | The action can't be performed because the job's current state doesn't allow that action to be performed.
 --
@@ -273,21 +273,13 @@ _InvalidJobStateException
   = _MatchServiceError snowball
       "InvalidJobStateException"
 
--- | Job or cluster creation failed. One ore more inputs were invalid. Confirm that the 'CreateClusterRequest$SnowballType' value supports your 'CreateJobRequest$JobType' , and try again.
+-- | Job creation failed. Currently, clusters support five nodes. If you have less than five nodes for your cluster and you have more nodes to create for this cluster, try again and create jobs until your cluster has exactly five notes.
 --
 --
-_InvalidInputCombinationException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidInputCombinationException
+_ClusterLimitExceededException :: AsError a => Getting (First ServiceError) a ServiceError
+_ClusterLimitExceededException
   = _MatchServiceError snowball
-      "InvalidInputCombinationException"
-
--- | The @NextToken@ string was altered unexpectedly, and the operation has stopped. Run the operation without changing the @NextToken@ string, and try again.
---
---
-_InvalidNextTokenException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidNextTokenException
-  = _MatchServiceError snowball
-      "InvalidNextTokenException"
+      "ClusterLimitExceededException"
 
 -- | The address provided was invalid. Check the address with your region's carrier, and try again.
 --
@@ -297,10 +289,18 @@ _InvalidAddressException
   = _MatchServiceError snowball
       "InvalidAddressException"
 
--- | Job creation failed. Currently, clusters support five nodes. If you have less than five nodes for your cluster and you have more nodes to create for this cluster, try again and create jobs until your cluster has exactly five notes.
+-- | The @NextToken@ string was altered unexpectedly, and the operation has stopped. Run the operation without changing the @NextToken@ string, and try again.
 --
 --
-_ClusterLimitExceededException :: AsError a => Getting (First ServiceError) a ServiceError
-_ClusterLimitExceededException
+_InvalidNextTokenException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidNextTokenException
   = _MatchServiceError snowball
-      "ClusterLimitExceededException"
+      "InvalidNextTokenException"
+
+-- | The specified resource can't be found. Check the information you provided in your last request, and try again.
+--
+--
+_InvalidResourceException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidResourceException
+  = _MatchServiceError snowball
+      "InvalidResourceException"

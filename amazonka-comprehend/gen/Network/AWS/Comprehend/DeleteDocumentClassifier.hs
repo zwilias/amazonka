@@ -37,7 +37,7 @@ module Network.AWS.Comprehend.DeleteDocumentClassifier
     , deleteDocumentClassifierResponse
     , DeleteDocumentClassifierResponse
     -- * Response Lenses
-    , ddcdrsResponseStatus
+    , dltdcmntclssfrrsResponseStatus
     ) where
 
 import Network.AWS.Comprehend.Types
@@ -108,7 +108,7 @@ instance ToQuery DeleteDocumentClassifier where
         toQuery = const mempty
 
 -- | /See:/ 'deleteDocumentClassifierResponse' smart constructor.
-newtype DeleteDocumentClassifierResponse = DeleteDocumentClassifierResponse'{_ddcdrsResponseStatus
+newtype DeleteDocumentClassifierResponse = DeleteDocumentClassifierResponse'{_dltdcmntclssfrrsResponseStatus
                                                                              ::
                                                                              Int}
                                              deriving (Eq, Read, Show, Data,
@@ -118,17 +118,17 @@ newtype DeleteDocumentClassifierResponse = DeleteDocumentClassifierResponse'{_dd
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ddcdrsResponseStatus' - -- | The response status code.
+-- * 'dltdcmntclssfrrsResponseStatus' - -- | The response status code.
 deleteDocumentClassifierResponse
-    :: Int -- ^ 'ddcdrsResponseStatus'
+    :: Int -- ^ 'dltdcmntclssfrrsResponseStatus'
     -> DeleteDocumentClassifierResponse
 deleteDocumentClassifierResponse pResponseStatus_
-  = DeleteDocumentClassifierResponse'{_ddcdrsResponseStatus
+  = DeleteDocumentClassifierResponse'{_dltdcmntclssfrrsResponseStatus
                                         = pResponseStatus_}
 
 -- | -- | The response status code.
-ddcdrsResponseStatus :: Lens' DeleteDocumentClassifierResponse Int
-ddcdrsResponseStatus = lens _ddcdrsResponseStatus (\ s a -> s{_ddcdrsResponseStatus = a})
+dltdcmntclssfrrsResponseStatus :: Lens' DeleteDocumentClassifierResponse Int
+dltdcmntclssfrrsResponseStatus = lens _dltdcmntclssfrrsResponseStatus (\ s a -> s{_dltdcmntclssfrrsResponseStatus = a})
 
 instance NFData DeleteDocumentClassifierResponse
          where

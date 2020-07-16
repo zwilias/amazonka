@@ -36,8 +36,8 @@ module Network.AWS.SSM.DescribeAssociation
     , describeAssociationResponse
     , DescribeAssociationResponse
     -- * Response Lenses
-    , daarsAssociationDescription
-    , daarsResponseStatus
+    , dscrbassctnrsAssociationDescription
+    , dscrbassctnrsResponseStatus
     ) where
 
 import Network.AWS.Lens
@@ -130,11 +130,11 @@ instance ToQuery DescribeAssociation where
         toQuery = const mempty
 
 -- | /See:/ 'describeAssociationResponse' smart constructor.
-data DescribeAssociationResponse = DescribeAssociationResponse'{_daarsAssociationDescription
+data DescribeAssociationResponse = DescribeAssociationResponse'{_dscrbassctnrsAssociationDescription
                                                                 ::
                                                                 !(Maybe
                                                                     AssociationDescription),
-                                                                _daarsResponseStatus
+                                                                _dscrbassctnrsResponseStatus
                                                                 :: !Int}
                                      deriving (Eq, Read, Show, Data, Typeable,
                                                Generic)
@@ -143,23 +143,24 @@ data DescribeAssociationResponse = DescribeAssociationResponse'{_daarsAssociatio
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'daarsAssociationDescription' - Information about the association.
+-- * 'dscrbassctnrsAssociationDescription' - Information about the association.
 --
--- * 'daarsResponseStatus' - -- | The response status code.
+-- * 'dscrbassctnrsResponseStatus' - -- | The response status code.
 describeAssociationResponse
-    :: Int -- ^ 'daarsResponseStatus'
+    :: Int -- ^ 'dscrbassctnrsResponseStatus'
     -> DescribeAssociationResponse
 describeAssociationResponse pResponseStatus_
-  = DescribeAssociationResponse'{_daarsAssociationDescription
+  = DescribeAssociationResponse'{_dscrbassctnrsAssociationDescription
                                    = Nothing,
-                                 _daarsResponseStatus = pResponseStatus_}
+                                 _dscrbassctnrsResponseStatus =
+                                   pResponseStatus_}
 
 -- | Information about the association.
-daarsAssociationDescription :: Lens' DescribeAssociationResponse (Maybe AssociationDescription)
-daarsAssociationDescription = lens _daarsAssociationDescription (\ s a -> s{_daarsAssociationDescription = a})
+dscrbassctnrsAssociationDescription :: Lens' DescribeAssociationResponse (Maybe AssociationDescription)
+dscrbassctnrsAssociationDescription = lens _dscrbassctnrsAssociationDescription (\ s a -> s{_dscrbassctnrsAssociationDescription = a})
 
 -- | -- | The response status code.
-daarsResponseStatus :: Lens' DescribeAssociationResponse Int
-daarsResponseStatus = lens _daarsResponseStatus (\ s a -> s{_daarsResponseStatus = a})
+dscrbassctnrsResponseStatus :: Lens' DescribeAssociationResponse Int
+dscrbassctnrsResponseStatus = lens _dscrbassctnrsResponseStatus (\ s a -> s{_dscrbassctnrsResponseStatus = a})
 
 instance NFData DescribeAssociationResponse where

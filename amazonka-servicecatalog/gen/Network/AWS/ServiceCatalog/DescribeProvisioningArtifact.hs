@@ -36,10 +36,10 @@ module Network.AWS.ServiceCatalog.DescribeProvisioningArtifact
     , describeProvisioningArtifactResponse
     , DescribeProvisioningArtifactResponse
     -- * Response Lenses
-    , dpaprsStatus
-    , dpaprsInfo
-    , dpaprsProvisioningArtifactDetail
-    , dpaprsResponseStatus
+    , dscrbprvsnngartfctrsStatus
+    , dscrbprvsnngartfctrsInfo
+    , dscrbprvsnngartfctrsProvisioningArtifactDetail
+    , dscrbprvsnngartfctrsResponseStatus
     ) where
 
 import Network.AWS.Lens
@@ -148,21 +148,21 @@ instance ToQuery DescribeProvisioningArtifact where
         toQuery = const mempty
 
 -- | /See:/ 'describeProvisioningArtifactResponse' smart constructor.
-data DescribeProvisioningArtifactResponse = DescribeProvisioningArtifactResponse'{_dpaprsStatus
+data DescribeProvisioningArtifactResponse = DescribeProvisioningArtifactResponse'{_dscrbprvsnngartfctrsStatus
                                                                                   ::
                                                                                   !(Maybe
                                                                                       RequestStatus),
-                                                                                  _dpaprsInfo
+                                                                                  _dscrbprvsnngartfctrsInfo
                                                                                   ::
                                                                                   !(Maybe
                                                                                       (Map
                                                                                          Text
                                                                                          Text)),
-                                                                                  _dpaprsProvisioningArtifactDetail
+                                                                                  _dscrbprvsnngartfctrsProvisioningArtifactDetail
                                                                                   ::
                                                                                   !(Maybe
                                                                                       ProvisioningArtifactDetail),
-                                                                                  _dpaprsResponseStatus
+                                                                                  _dscrbprvsnngartfctrsResponseStatus
                                                                                   ::
                                                                                   !Int}
                                               deriving (Eq, Read, Show, Data,
@@ -172,40 +172,40 @@ data DescribeProvisioningArtifactResponse = DescribeProvisioningArtifactResponse
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dpaprsStatus' - The status of the current request.
+-- * 'dscrbprvsnngartfctrsStatus' - The status of the current request.
 --
--- * 'dpaprsInfo' - The URL of the CloudFormation template in Amazon S3.
+-- * 'dscrbprvsnngartfctrsInfo' - The URL of the CloudFormation template in Amazon S3.
 --
--- * 'dpaprsProvisioningArtifactDetail' - Information about the provisioning artifact.
+-- * 'dscrbprvsnngartfctrsProvisioningArtifactDetail' - Information about the provisioning artifact.
 --
--- * 'dpaprsResponseStatus' - -- | The response status code.
+-- * 'dscrbprvsnngartfctrsResponseStatus' - -- | The response status code.
 describeProvisioningArtifactResponse
-    :: Int -- ^ 'dpaprsResponseStatus'
+    :: Int -- ^ 'dscrbprvsnngartfctrsResponseStatus'
     -> DescribeProvisioningArtifactResponse
 describeProvisioningArtifactResponse pResponseStatus_
-  = DescribeProvisioningArtifactResponse'{_dpaprsStatus
+  = DescribeProvisioningArtifactResponse'{_dscrbprvsnngartfctrsStatus
                                             = Nothing,
-                                          _dpaprsInfo = Nothing,
-                                          _dpaprsProvisioningArtifactDetail =
-                                            Nothing,
-                                          _dpaprsResponseStatus =
+                                          _dscrbprvsnngartfctrsInfo = Nothing,
+                                          _dscrbprvsnngartfctrsProvisioningArtifactDetail
+                                            = Nothing,
+                                          _dscrbprvsnngartfctrsResponseStatus =
                                             pResponseStatus_}
 
 -- | The status of the current request.
-dpaprsStatus :: Lens' DescribeProvisioningArtifactResponse (Maybe RequestStatus)
-dpaprsStatus = lens _dpaprsStatus (\ s a -> s{_dpaprsStatus = a})
+dscrbprvsnngartfctrsStatus :: Lens' DescribeProvisioningArtifactResponse (Maybe RequestStatus)
+dscrbprvsnngartfctrsStatus = lens _dscrbprvsnngartfctrsStatus (\ s a -> s{_dscrbprvsnngartfctrsStatus = a})
 
 -- | The URL of the CloudFormation template in Amazon S3.
-dpaprsInfo :: Lens' DescribeProvisioningArtifactResponse (HashMap Text Text)
-dpaprsInfo = lens _dpaprsInfo (\ s a -> s{_dpaprsInfo = a}) . _Default . _Map
+dscrbprvsnngartfctrsInfo :: Lens' DescribeProvisioningArtifactResponse (HashMap Text Text)
+dscrbprvsnngartfctrsInfo = lens _dscrbprvsnngartfctrsInfo (\ s a -> s{_dscrbprvsnngartfctrsInfo = a}) . _Default . _Map
 
 -- | Information about the provisioning artifact.
-dpaprsProvisioningArtifactDetail :: Lens' DescribeProvisioningArtifactResponse (Maybe ProvisioningArtifactDetail)
-dpaprsProvisioningArtifactDetail = lens _dpaprsProvisioningArtifactDetail (\ s a -> s{_dpaprsProvisioningArtifactDetail = a})
+dscrbprvsnngartfctrsProvisioningArtifactDetail :: Lens' DescribeProvisioningArtifactResponse (Maybe ProvisioningArtifactDetail)
+dscrbprvsnngartfctrsProvisioningArtifactDetail = lens _dscrbprvsnngartfctrsProvisioningArtifactDetail (\ s a -> s{_dscrbprvsnngartfctrsProvisioningArtifactDetail = a})
 
 -- | -- | The response status code.
-dpaprsResponseStatus :: Lens' DescribeProvisioningArtifactResponse Int
-dpaprsResponseStatus = lens _dpaprsResponseStatus (\ s a -> s{_dpaprsResponseStatus = a})
+dscrbprvsnngartfctrsResponseStatus :: Lens' DescribeProvisioningArtifactResponse Int
+dscrbprvsnngartfctrsResponseStatus = lens _dscrbprvsnngartfctrsResponseStatus (\ s a -> s{_dscrbprvsnngartfctrsResponseStatus = a})
 
 instance NFData DescribeProvisioningArtifactResponse
          where

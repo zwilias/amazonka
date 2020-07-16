@@ -16,10 +16,10 @@ module Network.AWS.Firehose.Types
       firehose
 
     -- * Errors
+    , _ResourceNotFoundException
+    , _ServiceUnavailableException
     , _InvalidArgumentException
     , _ConcurrentModificationException
-    , _ServiceUnavailableException
-    , _ResourceNotFoundException
     , _LimitExceededException
     , _ResourceInUseException
 
@@ -581,6 +581,22 @@ firehose
           | has (hasStatus 509) e = Just "limit_exceeded"
           | otherwise = Nothing
 
+-- | The specified resource could not be found.
+--
+--
+_ResourceNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
+_ResourceNotFoundException
+  = _MatchServiceError firehose
+      "ResourceNotFoundException"
+
+-- | The service is unavailable. Back off and retry the operation. If you continue to see the exception, throughput limits for the delivery stream may have been exceeded. For more information about limits and how to request an increase, see <http://docs.aws.amazon.com/firehose/latest/dev/limits.html Amazon Kinesis Data Firehose Limits> .
+--
+--
+_ServiceUnavailableException :: AsError a => Getting (First ServiceError) a ServiceError
+_ServiceUnavailableException
+  = _MatchServiceError firehose
+      "ServiceUnavailableException"
+
 -- | The specified input parameter has a value that is not valid.
 --
 --
@@ -596,22 +612,6 @@ _ConcurrentModificationException :: AsError a => Getting (First ServiceError) a 
 _ConcurrentModificationException
   = _MatchServiceError firehose
       "ConcurrentModificationException"
-
--- | The service is unavailable. Back off and retry the operation. If you continue to see the exception, throughput limits for the delivery stream may have been exceeded. For more information about limits and how to request an increase, see <http://docs.aws.amazon.com/firehose/latest/dev/limits.html Amazon Kinesis Data Firehose Limits> .
---
---
-_ServiceUnavailableException :: AsError a => Getting (First ServiceError) a ServiceError
-_ServiceUnavailableException
-  = _MatchServiceError firehose
-      "ServiceUnavailableException"
-
--- | The specified resource could not be found.
---
---
-_ResourceNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
-_ResourceNotFoundException
-  = _MatchServiceError firehose
-      "ResourceNotFoundException"
 
 -- | You have already reached the limit for a requested resource.
 --

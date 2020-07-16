@@ -16,39 +16,39 @@ module Network.AWS.SES.Types
       ses
 
     -- * Errors
-    , _InvalidConfigurationSetException
-    , _InvalidSNSDestinationException
-    , _TemplateDoesNotExistException
-    , _ConfigurationSetSendingPausedException
-    , _CannotDeleteException
-    , _ProductionAccessNotGrantedException
-    , _RuleDoesNotExistException
+    , _TrackingOptionsDoesNotExistException
+    , _InvalidFirehoseDestinationException
+    , _InvalidLambdaFunctionException
     , _MessageRejected
-    , _InvalidRenderingParameterException
-    , _MissingRenderingAttributeException
+    , _RuleDoesNotExistException
+    , _ProductionAccessNotGrantedException
+    , _CustomVerificationEmailTemplateDoesNotExistException
+    , _CannotDeleteException
+    , _TemplateDoesNotExistException
+    , _CustomVerificationEmailInvalidContentException
+    , _ConfigurationSetDoesNotExistException
+    , _TrackingOptionsAlreadyExistsException
+    , _InvalidS3ConfigurationException
+    , _ConfigurationSetAlreadyExistsException
+    , _MailFromDomainNotVerifiedException
     , _FromEmailAddressNotVerifiedException
     , _RuleSetDoesNotExistException
-    , _MailFromDomainNotVerifiedException
-    , _InvalidFirehoseDestinationException
-    , _ConfigurationSetAlreadyExistsException
-    , _CustomVerificationEmailInvalidContentException
-    , _InvalidTrackingOptionsException
+    , _MissingRenderingAttributeException
+    , _InvalidRenderingParameterException
+    , _InvalidCloudWatchDestinationException
+    , _CustomVerificationEmailTemplateAlreadyExistsException
+    , _ConfigurationSetSendingPausedException
     , _AccountSendingPausedException
     , _EventDestinationDoesNotExistException
-    , _CustomVerificationEmailTemplateAlreadyExistsException
-    , _CustomVerificationEmailTemplateDoesNotExistException
-    , _InvalidCloudWatchDestinationException
-    , _InvalidLambdaFunctionException
-    , _TrackingOptionsDoesNotExistException
-    , _InvalidTemplateException
-    , _ConfigurationSetDoesNotExistException
-    , _InvalidPolicyException
-    , _InvalidS3ConfigurationException
-    , _TrackingOptionsAlreadyExistsException
-    , _InvalidSNSTopicException
-    , _EventDestinationAlreadyExistsException
-    , _AlreadyExistsException
+    , _InvalidConfigurationSetException
+    , _InvalidSNSDestinationException
     , _LimitExceededException
+    , _InvalidSNSTopicException
+    , _AlreadyExistsException
+    , _EventDestinationAlreadyExistsException
+    , _InvalidTrackingOptionsException
+    , _InvalidTemplateException
+    , _InvalidPolicyException
 
     -- * BehaviorOnMXFailure
     , BehaviorOnMXFailure (..)
@@ -473,63 +473,29 @@ ses
           | has (hasStatus 509) e = Just "limit_exceeded"
           | otherwise = Nothing
 
--- | Indicates that the configuration set is invalid. See the error message for details.
+-- | Indicates that the TrackingOptions object you specified does not exist.
 --
 --
-_InvalidConfigurationSetException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidConfigurationSetException
-  = _MatchServiceError ses "InvalidConfigurationSet" .
-      hasStatus 400
-
--- | Indicates that the Amazon Simple Notification Service (Amazon SNS) destination is invalid. See the error message for details.
---
---
-_InvalidSNSDestinationException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidSNSDestinationException
-  = _MatchServiceError ses "InvalidSNSDestination" .
-      hasStatus 400
-
--- | Indicates that the Template object you specified does not exist in your Amazon SES account.
---
---
-_TemplateDoesNotExistException :: AsError a => Getting (First ServiceError) a ServiceError
-_TemplateDoesNotExistException
-  = _MatchServiceError ses "TemplateDoesNotExist" .
-      hasStatus 400
-
--- | Indicates that email sending is disabled for the configuration set.
---
---
--- You can enable or disable email sending for a configuration set using 'UpdateConfigurationSetSendingEnabled' .
---
-_ConfigurationSetSendingPausedException :: AsError a => Getting (First ServiceError) a ServiceError
-_ConfigurationSetSendingPausedException
+_TrackingOptionsDoesNotExistException :: AsError a => Getting (First ServiceError) a ServiceError
+_TrackingOptionsDoesNotExistException
   = _MatchServiceError ses
-      "ConfigurationSetSendingPausedException"
+      "TrackingOptionsDoesNotExistException"
       . hasStatus 400
 
--- | Indicates that the delete operation could not be completed.
+-- | Indicates that the Amazon Kinesis Firehose destination is invalid. See the error message for details.
 --
 --
-_CannotDeleteException :: AsError a => Getting (First ServiceError) a ServiceError
-_CannotDeleteException
-  = _MatchServiceError ses "CannotDelete" .
-      hasStatus 400
-
--- | Indicates that the account has not been granted production access.
---
---
-_ProductionAccessNotGrantedException :: AsError a => Getting (First ServiceError) a ServiceError
-_ProductionAccessNotGrantedException
-  = _MatchServiceError ses "ProductionAccessNotGranted"
+_InvalidFirehoseDestinationException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidFirehoseDestinationException
+  = _MatchServiceError ses "InvalidFirehoseDestination"
       . hasStatus 400
 
--- | Indicates that the provided receipt rule does not exist.
+-- | Indicates that the provided AWS Lambda function is invalid, or that Amazon SES could not execute the provided function, possibly due to permissions issues. For information about giving permissions, see the <http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-permissions.html Amazon SES Developer Guide> .
 --
 --
-_RuleDoesNotExistException :: AsError a => Getting (First ServiceError) a ServiceError
-_RuleDoesNotExistException
-  = _MatchServiceError ses "RuleDoesNotExist" .
+_InvalidLambdaFunctionException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidLambdaFunctionException
+  = _MatchServiceError ses "InvalidLambdaFunction" .
       hasStatus 400
 
 -- | Indicates that the action failed, and the message could not be sent. Check the error stack for more information about what caused the error.
@@ -540,20 +506,98 @@ _MessageRejected
   = _MatchServiceError ses "MessageRejected" .
       hasStatus 400
 
--- | Indicates that one or more of the replacement values you provided is invalid. This error may occur when the TemplateData object contains invalid JSON.
+-- | Indicates that the provided receipt rule does not exist.
 --
 --
-_InvalidRenderingParameterException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidRenderingParameterException
-  = _MatchServiceError ses "InvalidRenderingParameter"
+_RuleDoesNotExistException :: AsError a => Getting (First ServiceError) a ServiceError
+_RuleDoesNotExistException
+  = _MatchServiceError ses "RuleDoesNotExist" .
+      hasStatus 400
+
+-- | Indicates that the account has not been granted production access.
+--
+--
+_ProductionAccessNotGrantedException :: AsError a => Getting (First ServiceError) a ServiceError
+_ProductionAccessNotGrantedException
+  = _MatchServiceError ses "ProductionAccessNotGranted"
       . hasStatus 400
 
--- | Indicates that one or more of the replacement values for the specified template was not specified. Ensure that the TemplateData object contains references to all of the replacement tags in the specified template.
+-- | Indicates that a custom verification email template with the name you specified does not exist.
 --
 --
-_MissingRenderingAttributeException :: AsError a => Getting (First ServiceError) a ServiceError
-_MissingRenderingAttributeException
-  = _MatchServiceError ses "MissingRenderingAttribute"
+_CustomVerificationEmailTemplateDoesNotExistException :: AsError a => Getting (First ServiceError) a ServiceError
+_CustomVerificationEmailTemplateDoesNotExistException
+  = _MatchServiceError ses
+      "CustomVerificationEmailTemplateDoesNotExist"
+      . hasStatus 400
+
+-- | Indicates that the delete operation could not be completed.
+--
+--
+_CannotDeleteException :: AsError a => Getting (First ServiceError) a ServiceError
+_CannotDeleteException
+  = _MatchServiceError ses "CannotDelete" .
+      hasStatus 400
+
+-- | Indicates that the Template object you specified does not exist in your Amazon SES account.
+--
+--
+_TemplateDoesNotExistException :: AsError a => Getting (First ServiceError) a ServiceError
+_TemplateDoesNotExistException
+  = _MatchServiceError ses "TemplateDoesNotExist" .
+      hasStatus 400
+
+-- | Indicates that custom verification email template provided content is invalid.
+--
+--
+_CustomVerificationEmailInvalidContentException :: AsError a => Getting (First ServiceError) a ServiceError
+_CustomVerificationEmailInvalidContentException
+  = _MatchServiceError ses
+      "CustomVerificationEmailInvalidContent"
+      . hasStatus 400
+
+-- | Indicates that the configuration set does not exist.
+--
+--
+_ConfigurationSetDoesNotExistException :: AsError a => Getting (First ServiceError) a ServiceError
+_ConfigurationSetDoesNotExistException
+  = _MatchServiceError ses
+      "ConfigurationSetDoesNotExist"
+      . hasStatus 400
+
+-- | Indicates that the configuration set you specified already contains a TrackingOptions object.
+--
+--
+_TrackingOptionsAlreadyExistsException :: AsError a => Getting (First ServiceError) a ServiceError
+_TrackingOptionsAlreadyExistsException
+  = _MatchServiceError ses
+      "TrackingOptionsAlreadyExistsException"
+      . hasStatus 400
+
+-- | Indicates that the provided Amazon S3 bucket or AWS KMS encryption key is invalid, or that Amazon SES could not publish to the bucket, possibly due to permissions issues. For information about giving permissions, see the <http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-permissions.html Amazon SES Developer Guide> .
+--
+--
+_InvalidS3ConfigurationException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidS3ConfigurationException
+  = _MatchServiceError ses "InvalidS3Configuration" .
+      hasStatus 400
+
+-- | Indicates that the configuration set could not be created because of a naming conflict.
+--
+--
+_ConfigurationSetAlreadyExistsException :: AsError a => Getting (First ServiceError) a ServiceError
+_ConfigurationSetAlreadyExistsException
+  = _MatchServiceError ses
+      "ConfigurationSetAlreadyExists"
+      . hasStatus 400
+
+-- | Indicates that the message could not be sent because Amazon SES could not read the MX record required to use the specified MAIL FROM domain. For information about editing the custom MAIL FROM domain settings for an identity, see the <http://docs.aws.amazon.com/ses/latest/DeveloperGuide/mail-from-edit.html Amazon SES Developer Guide> .
+--
+--
+_MailFromDomainNotVerifiedException :: AsError a => Getting (First ServiceError) a ServiceError
+_MailFromDomainNotVerifiedException
+  = _MatchServiceError ses
+      "MailFromDomainNotVerifiedException"
       . hasStatus 400
 
 -- | Indicates that the sender address specified for a custom verification email is not verified, and is therefore not eligible to send the custom verification email. 
@@ -573,54 +617,50 @@ _RuleSetDoesNotExistException
   = _MatchServiceError ses "RuleSetDoesNotExist" .
       hasStatus 400
 
--- | Indicates that the message could not be sent because Amazon SES could not read the MX record required to use the specified MAIL FROM domain. For information about editing the custom MAIL FROM domain settings for an identity, see the <http://docs.aws.amazon.com/ses/latest/DeveloperGuide/mail-from-edit.html Amazon SES Developer Guide> .
+-- | Indicates that one or more of the replacement values for the specified template was not specified. Ensure that the TemplateData object contains references to all of the replacement tags in the specified template.
 --
 --
-_MailFromDomainNotVerifiedException :: AsError a => Getting (First ServiceError) a ServiceError
-_MailFromDomainNotVerifiedException
+_MissingRenderingAttributeException :: AsError a => Getting (First ServiceError) a ServiceError
+_MissingRenderingAttributeException
+  = _MatchServiceError ses "MissingRenderingAttribute"
+      . hasStatus 400
+
+-- | Indicates that one or more of the replacement values you provided is invalid. This error may occur when the TemplateData object contains invalid JSON.
+--
+--
+_InvalidRenderingParameterException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidRenderingParameterException
+  = _MatchServiceError ses "InvalidRenderingParameter"
+      . hasStatus 400
+
+-- | Indicates that the Amazon CloudWatch destination is invalid. See the error message for details.
+--
+--
+_InvalidCloudWatchDestinationException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidCloudWatchDestinationException
   = _MatchServiceError ses
-      "MailFromDomainNotVerifiedException"
+      "InvalidCloudWatchDestination"
       . hasStatus 400
 
--- | Indicates that the Amazon Kinesis Firehose destination is invalid. See the error message for details.
+-- | Indicates that a custom verification email template with the name you specified already exists.
 --
 --
-_InvalidFirehoseDestinationException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidFirehoseDestinationException
-  = _MatchServiceError ses "InvalidFirehoseDestination"
-      . hasStatus 400
-
--- | Indicates that the configuration set could not be created because of a naming conflict.
---
---
-_ConfigurationSetAlreadyExistsException :: AsError a => Getting (First ServiceError) a ServiceError
-_ConfigurationSetAlreadyExistsException
+_CustomVerificationEmailTemplateAlreadyExistsException :: AsError a => Getting (First ServiceError) a ServiceError
+_CustomVerificationEmailTemplateAlreadyExistsException
   = _MatchServiceError ses
-      "ConfigurationSetAlreadyExists"
+      "CustomVerificationEmailTemplateAlreadyExists"
       . hasStatus 400
 
--- | Indicates that custom verification email template provided content is invalid.
+-- | Indicates that email sending is disabled for the configuration set.
 --
 --
-_CustomVerificationEmailInvalidContentException :: AsError a => Getting (First ServiceError) a ServiceError
-_CustomVerificationEmailInvalidContentException
+-- You can enable or disable email sending for a configuration set using 'UpdateConfigurationSetSendingEnabled' .
+--
+_ConfigurationSetSendingPausedException :: AsError a => Getting (First ServiceError) a ServiceError
+_ConfigurationSetSendingPausedException
   = _MatchServiceError ses
-      "CustomVerificationEmailInvalidContent"
+      "ConfigurationSetSendingPausedException"
       . hasStatus 400
-
--- | Indicates that the custom domain to be used for open and click tracking redirects is invalid. This error appears most often in the following situations:
---
---
---     * When the tracking domain you specified is not verified in Amazon SES.
---
---     * When the tracking domain you specified is not a valid domain or subdomain.
---
---
---
-_InvalidTrackingOptionsException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidTrackingOptionsException
-  = _MatchServiceError ses "InvalidTrackingOptions" .
-      hasStatus 400
 
 -- | Indicates that email sending is disabled for your entire Amazon SES account.
 --
@@ -642,91 +682,29 @@ _EventDestinationDoesNotExistException
       "EventDestinationDoesNotExist"
       . hasStatus 400
 
--- | Indicates that a custom verification email template with the name you specified already exists.
+-- | Indicates that the configuration set is invalid. See the error message for details.
 --
 --
-_CustomVerificationEmailTemplateAlreadyExistsException :: AsError a => Getting (First ServiceError) a ServiceError
-_CustomVerificationEmailTemplateAlreadyExistsException
-  = _MatchServiceError ses
-      "CustomVerificationEmailTemplateAlreadyExists"
-      . hasStatus 400
-
--- | Indicates that a custom verification email template with the name you specified does not exist.
---
---
-_CustomVerificationEmailTemplateDoesNotExistException :: AsError a => Getting (First ServiceError) a ServiceError
-_CustomVerificationEmailTemplateDoesNotExistException
-  = _MatchServiceError ses
-      "CustomVerificationEmailTemplateDoesNotExist"
-      . hasStatus 400
-
--- | Indicates that the Amazon CloudWatch destination is invalid. See the error message for details.
---
---
-_InvalidCloudWatchDestinationException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidCloudWatchDestinationException
-  = _MatchServiceError ses
-      "InvalidCloudWatchDestination"
-      . hasStatus 400
-
--- | Indicates that the provided AWS Lambda function is invalid, or that Amazon SES could not execute the provided function, possibly due to permissions issues. For information about giving permissions, see the <http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-permissions.html Amazon SES Developer Guide> .
---
---
-_InvalidLambdaFunctionException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidLambdaFunctionException
-  = _MatchServiceError ses "InvalidLambdaFunction" .
+_InvalidConfigurationSetException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidConfigurationSetException
+  = _MatchServiceError ses "InvalidConfigurationSet" .
       hasStatus 400
 
--- | Indicates that the TrackingOptions object you specified does not exist.
+-- | Indicates that the Amazon Simple Notification Service (Amazon SNS) destination is invalid. See the error message for details.
 --
 --
-_TrackingOptionsDoesNotExistException :: AsError a => Getting (First ServiceError) a ServiceError
-_TrackingOptionsDoesNotExistException
-  = _MatchServiceError ses
-      "TrackingOptionsDoesNotExistException"
-      . hasStatus 400
-
--- | Indicates that a template could not be created because it contained invalid JSON.
---
---
-_InvalidTemplateException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidTemplateException
-  = _MatchServiceError ses "InvalidTemplate" .
+_InvalidSNSDestinationException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidSNSDestinationException
+  = _MatchServiceError ses "InvalidSNSDestination" .
       hasStatus 400
 
--- | Indicates that the configuration set does not exist.
+-- | Indicates that a resource could not be created because of service limits. For a list of Amazon SES limits, see the <http://docs.aws.amazon.com/ses/latest/DeveloperGuide/limits.html Amazon SES Developer Guide> .
 --
 --
-_ConfigurationSetDoesNotExistException :: AsError a => Getting (First ServiceError) a ServiceError
-_ConfigurationSetDoesNotExistException
-  = _MatchServiceError ses
-      "ConfigurationSetDoesNotExist"
-      . hasStatus 400
-
--- | Indicates that the provided policy is invalid. Check the error stack for more information about what caused the error.
---
---
-_InvalidPolicyException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidPolicyException
-  = _MatchServiceError ses "InvalidPolicy" .
+_LimitExceededException :: AsError a => Getting (First ServiceError) a ServiceError
+_LimitExceededException
+  = _MatchServiceError ses "LimitExceeded" .
       hasStatus 400
-
--- | Indicates that the provided Amazon S3 bucket or AWS KMS encryption key is invalid, or that Amazon SES could not publish to the bucket, possibly due to permissions issues. For information about giving permissions, see the <http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-permissions.html Amazon SES Developer Guide> .
---
---
-_InvalidS3ConfigurationException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidS3ConfigurationException
-  = _MatchServiceError ses "InvalidS3Configuration" .
-      hasStatus 400
-
--- | Indicates that the configuration set you specified already contains a TrackingOptions object.
---
---
-_TrackingOptionsAlreadyExistsException :: AsError a => Getting (First ServiceError) a ServiceError
-_TrackingOptionsAlreadyExistsException
-  = _MatchServiceError ses
-      "TrackingOptionsAlreadyExistsException"
-      . hasStatus 400
 
 -- | Indicates that the provided Amazon SNS topic is invalid, or that Amazon SES could not publish to the topic, possibly due to permissions issues. For information about giving permissions, see the <http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-permissions.html Amazon SES Developer Guide> .
 --
@@ -734,6 +712,14 @@ _TrackingOptionsAlreadyExistsException
 _InvalidSNSTopicException :: AsError a => Getting (First ServiceError) a ServiceError
 _InvalidSNSTopicException
   = _MatchServiceError ses "InvalidSnsTopic" .
+      hasStatus 400
+
+-- | Indicates that a resource could not be created because of a naming conflict.
+--
+--
+_AlreadyExistsException :: AsError a => Getting (First ServiceError) a ServiceError
+_AlreadyExistsException
+  = _MatchServiceError ses "AlreadyExists" .
       hasStatus 400
 
 -- | Indicates that the event destination could not be created because of a naming conflict.
@@ -745,18 +731,32 @@ _EventDestinationAlreadyExistsException
       "EventDestinationAlreadyExists"
       . hasStatus 400
 
--- | Indicates that a resource could not be created because of a naming conflict.
+-- | Indicates that the custom domain to be used for open and click tracking redirects is invalid. This error appears most often in the following situations:
 --
 --
-_AlreadyExistsException :: AsError a => Getting (First ServiceError) a ServiceError
-_AlreadyExistsException
-  = _MatchServiceError ses "AlreadyExists" .
+--     * When the tracking domain you specified is not verified in Amazon SES.
+--
+--     * When the tracking domain you specified is not a valid domain or subdomain.
+--
+--
+--
+_InvalidTrackingOptionsException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidTrackingOptionsException
+  = _MatchServiceError ses "InvalidTrackingOptions" .
       hasStatus 400
 
--- | Indicates that a resource could not be created because of service limits. For a list of Amazon SES limits, see the <http://docs.aws.amazon.com/ses/latest/DeveloperGuide/limits.html Amazon SES Developer Guide> .
+-- | Indicates that a template could not be created because it contained invalid JSON.
 --
 --
-_LimitExceededException :: AsError a => Getting (First ServiceError) a ServiceError
-_LimitExceededException
-  = _MatchServiceError ses "LimitExceeded" .
+_InvalidTemplateException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidTemplateException
+  = _MatchServiceError ses "InvalidTemplate" .
+      hasStatus 400
+
+-- | Indicates that the provided policy is invalid. Check the error stack for more information about what caused the error.
+--
+--
+_InvalidPolicyException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidPolicyException
+  = _MatchServiceError ses "InvalidPolicy" .
       hasStatus 400

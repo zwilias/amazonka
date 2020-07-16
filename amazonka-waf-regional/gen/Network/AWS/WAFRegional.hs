@@ -22,32 +22,23 @@ module Network.AWS.WAFRegional
     -- * Errors
     -- $errors
 
-    -- ** WAFInvalidAccountException
-    , _WAFInvalidAccountException
-
-    -- ** WAFSubscriptionNotFoundException
-    , _WAFSubscriptionNotFoundException
-
-    -- ** WAFReferencedItemException
-    , _WAFReferencedItemException
+    -- ** WAFNonexistentContainerException
+    , _WAFNonexistentContainerException
 
     -- ** WAFInvalidRegexPatternException
     , _WAFInvalidRegexPatternException
 
-    -- ** WAFInvalidOperationException
-    , _WAFInvalidOperationException
-
-    -- ** WAFNonexistentItemException
-    , _WAFNonexistentItemException
+    -- ** WAFLimitsExceededException
+    , _WAFLimitsExceededException
 
     -- ** WAFInvalidParameterException
     , _WAFInvalidParameterException
 
-    -- ** WAFLimitsExceededException
-    , _WAFLimitsExceededException
+    -- ** WAFUnavailableEntityException
+    , _WAFUnavailableEntityException
 
-    -- ** WAFInvalidPermissionPolicyException
-    , _WAFInvalidPermissionPolicyException
+    -- ** WAFInvalidOperationException
+    , _WAFInvalidOperationException
 
     -- ** WAFStaleDataException
     , _WAFStaleDataException
@@ -55,17 +46,26 @@ module Network.AWS.WAFRegional
     -- ** WAFInternalErrorException
     , _WAFInternalErrorException
 
-    -- ** WAFNonexistentContainerException
-    , _WAFNonexistentContainerException
+    -- ** WAFInvalidPermissionPolicyException
+    , _WAFInvalidPermissionPolicyException
 
-    -- ** WAFUnavailableEntityException
-    , _WAFUnavailableEntityException
+    -- ** WAFReferencedItemException
+    , _WAFReferencedItemException
 
-    -- ** WAFDisallowedNameException
-    , _WAFDisallowedNameException
+    -- ** WAFSubscriptionNotFoundException
+    , _WAFSubscriptionNotFoundException
+
+    -- ** WAFInvalidAccountException
+    , _WAFInvalidAccountException
+
+    -- ** WAFNonexistentItemException
+    , _WAFNonexistentItemException
 
     -- ** WAFNonEmptyEntityException
     , _WAFNonEmptyEntityException
+
+    -- ** WAFDisallowedNameException
+    , _WAFDisallowedNameException
 
     -- * Waiters
     -- $waiters

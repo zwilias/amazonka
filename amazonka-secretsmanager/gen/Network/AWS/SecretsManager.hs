@@ -45,8 +45,11 @@ module Network.AWS.SecretsManager
     -- * Errors
     -- $errors
 
-    -- ** MalformedPolicyDocumentException
-    , _MalformedPolicyDocumentException
+    -- ** DecryptionFailure
+    , _DecryptionFailure
+
+    -- ** InternalServiceError
+    , _InternalServiceError
 
     -- ** InvalidParameterException
     , _InvalidParameterException
@@ -54,23 +57,20 @@ module Network.AWS.SecretsManager
     -- ** InvalidRequestException
     , _InvalidRequestException
 
-    -- ** DecryptionFailure
-    , _DecryptionFailure
-
-    -- ** EncryptionFailure
-    , _EncryptionFailure
-
-    -- ** InvalidNextTokenException
-    , _InvalidNextTokenException
-
-    -- ** InternalServiceError
-    , _InternalServiceError
+    -- ** ResourceNotFoundException
+    , _ResourceNotFoundException
 
     -- ** ResourceExistsException
     , _ResourceExistsException
 
-    -- ** ResourceNotFoundException
-    , _ResourceNotFoundException
+    -- ** InvalidNextTokenException
+    , _InvalidNextTokenException
+
+    -- ** MalformedPolicyDocumentException
+    , _MalformedPolicyDocumentException
+
+    -- ** EncryptionFailure
+    , _EncryptionFailure
 
     -- ** LimitExceededException
     , _LimitExceededException

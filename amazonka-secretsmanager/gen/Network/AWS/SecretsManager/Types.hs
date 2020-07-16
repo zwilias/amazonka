@@ -16,15 +16,15 @@ module Network.AWS.SecretsManager.Types
       secretsManager
 
     -- * Errors
-    , _MalformedPolicyDocumentException
+    , _DecryptionFailure
+    , _InternalServiceError
     , _InvalidParameterException
     , _InvalidRequestException
-    , _DecryptionFailure
-    , _EncryptionFailure
-    , _InvalidNextTokenException
-    , _InternalServiceError
-    , _ResourceExistsException
     , _ResourceNotFoundException
+    , _ResourceExistsException
+    , _InvalidNextTokenException
+    , _MalformedPolicyDocumentException
+    , _EncryptionFailure
     , _LimitExceededException
 
     -- * RotationRulesType
@@ -106,13 +106,21 @@ secretsManager
           | has (hasStatus 509) e = Just "limit_exceeded"
           | otherwise = Nothing
 
--- | The policy document that you provided isn't valid.
+-- | Secrets Manager can't decrypt the protected secret text using the provided KMS key. 
 --
 --
-_MalformedPolicyDocumentException :: AsError a => Getting (First ServiceError) a ServiceError
-_MalformedPolicyDocumentException
+_DecryptionFailure :: AsError a => Getting (First ServiceError) a ServiceError
+_DecryptionFailure
   = _MatchServiceError secretsManager
-      "MalformedPolicyDocumentException"
+      "DecryptionFailure"
+
+-- | An error occurred on the server side.
+--
+--
+_InternalServiceError :: AsError a => Getting (First ServiceError) a ServiceError
+_InternalServiceError
+  = _MatchServiceError secretsManager
+      "InternalServiceError"
 
 -- | You provided an invalid value for a parameter.
 --
@@ -130,37 +138,13 @@ _InvalidRequestException
   = _MatchServiceError secretsManager
       "InvalidRequestException"
 
--- | Secrets Manager can't decrypt the protected secret text using the provided KMS key. 
+-- | We can't find the resource that you asked for.
 --
 --
-_DecryptionFailure :: AsError a => Getting (First ServiceError) a ServiceError
-_DecryptionFailure
+_ResourceNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
+_ResourceNotFoundException
   = _MatchServiceError secretsManager
-      "DecryptionFailure"
-
--- | Secrets Manager can't encrypt the protected secret text using the provided KMS key. Check that the customer master key (CMK) is available, enabled, and not in an invalid state. For more information, see <http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html How Key State Affects Use of a Customer Master Key> .
---
---
-_EncryptionFailure :: AsError a => Getting (First ServiceError) a ServiceError
-_EncryptionFailure
-  = _MatchServiceError secretsManager
-      "EncryptionFailure"
-
--- | You provided an invalid @NextToken@ value.
---
---
-_InvalidNextTokenException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidNextTokenException
-  = _MatchServiceError secretsManager
-      "InvalidNextTokenException"
-
--- | An error occurred on the server side.
---
---
-_InternalServiceError :: AsError a => Getting (First ServiceError) a ServiceError
-_InternalServiceError
-  = _MatchServiceError secretsManager
-      "InternalServiceError"
+      "ResourceNotFoundException"
 
 -- | A resource with the ID you requested already exists.
 --
@@ -170,13 +154,29 @@ _ResourceExistsException
   = _MatchServiceError secretsManager
       "ResourceExistsException"
 
--- | We can't find the resource that you asked for.
+-- | You provided an invalid @NextToken@ value.
 --
 --
-_ResourceNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
-_ResourceNotFoundException
+_InvalidNextTokenException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidNextTokenException
   = _MatchServiceError secretsManager
-      "ResourceNotFoundException"
+      "InvalidNextTokenException"
+
+-- | The policy document that you provided isn't valid.
+--
+--
+_MalformedPolicyDocumentException :: AsError a => Getting (First ServiceError) a ServiceError
+_MalformedPolicyDocumentException
+  = _MatchServiceError secretsManager
+      "MalformedPolicyDocumentException"
+
+-- | Secrets Manager can't encrypt the protected secret text using the provided KMS key. Check that the customer master key (CMK) is available, enabled, and not in an invalid state. For more information, see <http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html How Key State Affects Use of a Customer Master Key> .
+--
+--
+_EncryptionFailure :: AsError a => Getting (First ServiceError) a ServiceError
+_EncryptionFailure
+  = _MatchServiceError secretsManager
+      "EncryptionFailure"
 
 -- | The request failed because it would exceed one of the Secrets Manager internal limits.
 --

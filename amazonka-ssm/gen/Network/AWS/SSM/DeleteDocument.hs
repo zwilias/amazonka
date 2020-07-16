@@ -29,7 +29,7 @@ module Network.AWS.SSM.DeleteDocument
       deleteDocument
     , DeleteDocument
     -- * Request Lenses
-    , dddName
+    , dltdcmntName
 
     -- * Destructuring the Response
     , deleteDocumentResponse
@@ -46,24 +46,24 @@ import Network.AWS.SSM.Types
 import Network.AWS.SSM.Types.Product
 
 -- | /See:/ 'deleteDocument' smart constructor.
-newtype DeleteDocument = DeleteDocument'{_dddName ::
-                                         Text}
+newtype DeleteDocument = DeleteDocument'{_dltdcmntName
+                                         :: Text}
                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteDocument' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dddName' - The name of the document.
+-- * 'dltdcmntName' - The name of the document.
 deleteDocument
-    :: Text -- ^ 'dddName'
+    :: Text -- ^ 'dltdcmntName'
     -> DeleteDocument
 deleteDocument pName_
-  = DeleteDocument'{_dddName = pName_}
+  = DeleteDocument'{_dltdcmntName = pName_}
 
 -- | The name of the document.
-dddName :: Lens' DeleteDocument Text
-dddName = lens _dddName (\ s a -> s{_dddName = a})
+dltdcmntName :: Lens' DeleteDocument Text
+dltdcmntName = lens _dltdcmntName (\ s a -> s{_dltdcmntName = a})
 
 instance AWSRequest DeleteDocument where
         type Rs DeleteDocument = DeleteDocumentResponse
@@ -88,7 +88,7 @@ instance ToHeaders DeleteDocument where
 
 instance ToJSON DeleteDocument where
         toJSON DeleteDocument'{..}
-          = object (catMaybes [Just ("Name" .= _dddName)])
+          = object (catMaybes [Just ("Name" .= _dltdcmntName)])
 
 instance ToPath DeleteDocument where
         toPath = const "/"

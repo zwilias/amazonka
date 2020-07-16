@@ -16,22 +16,22 @@ module Network.AWS.CertificateManagerPCA.Types
       certificateManagerPCA
 
     -- * Errors
-    , _InvalidTagException
-    , _MalformedCSRException
-    , _RequestAlreadyProcessedException
     , _MalformedCertificateException
-    , _RequestFailedException
-    , _CertificateMismatchException
+    , _MalformedCSRException
+    , _InvalidTagException
+    , _RequestInProgressException
+    , _InvalidStateException
     , _TooManyTagsException
     , _InvalidArgsException
-    , _RequestInProgressException
-    , _ConcurrentModificationException
-    , _InvalidNextTokenException
-    , _InvalidARNException
-    , _InvalidPolicyException
+    , _CertificateMismatchException
     , _ResourceNotFoundException
-    , _InvalidStateException
+    , _InvalidARNException
+    , _RequestFailedException
+    , _RequestAlreadyProcessedException
+    , _InvalidNextTokenException
+    , _ConcurrentModificationException
     , _LimitExceededException
+    , _InvalidPolicyException
 
     -- * AuditReportResponseFormat
     , AuditReportResponseFormat (..)
@@ -180,13 +180,13 @@ certificateManagerPCA
           | has (hasStatus 509) e = Just "limit_exceeded"
           | otherwise = Nothing
 
--- | The tag associated with the CA is not valid. The invalid argument is contained in the message field.
+-- | One or more fields in the certificate are invalid.
 --
 --
-_InvalidTagException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidTagException
+_MalformedCertificateException :: AsError a => Getting (First ServiceError) a ServiceError
+_MalformedCertificateException
   = _MatchServiceError certificateManagerPCA
-      "InvalidTagException"
+      "MalformedCertificateException"
 
 -- | The certificate signing request is invalid.
 --
@@ -196,37 +196,29 @@ _MalformedCSRException
   = _MatchServiceError certificateManagerPCA
       "MalformedCSRException"
 
--- | Your request has already been completed.
+-- | The tag associated with the CA is not valid. The invalid argument is contained in the message field.
 --
 --
-_RequestAlreadyProcessedException :: AsError a => Getting (First ServiceError) a ServiceError
-_RequestAlreadyProcessedException
+_InvalidTagException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidTagException
   = _MatchServiceError certificateManagerPCA
-      "RequestAlreadyProcessedException"
+      "InvalidTagException"
 
--- | One or more fields in the certificate are invalid.
+-- | Your request is already in progress.
 --
 --
-_MalformedCertificateException :: AsError a => Getting (First ServiceError) a ServiceError
-_MalformedCertificateException
+_RequestInProgressException :: AsError a => Getting (First ServiceError) a ServiceError
+_RequestInProgressException
   = _MatchServiceError certificateManagerPCA
-      "MalformedCertificateException"
+      "RequestInProgressException"
 
--- | The request has failed for an unspecified reason.
+-- | The private CA is in a state during which a report cannot be generated.
 --
 --
-_RequestFailedException :: AsError a => Getting (First ServiceError) a ServiceError
-_RequestFailedException
+_InvalidStateException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidStateException
   = _MatchServiceError certificateManagerPCA
-      "RequestFailedException"
-
--- | The certificate authority certificate you are importing does not comply with conditions specified in the certificate that signed it.
---
---
-_CertificateMismatchException :: AsError a => Getting (First ServiceError) a ServiceError
-_CertificateMismatchException
-  = _MatchServiceError certificateManagerPCA
-      "CertificateMismatchException"
+      "InvalidStateException"
 
 -- | You can associate up to 50 tags with a private CA. Exception information is contained in the exception message field.
 --
@@ -244,45 +236,13 @@ _InvalidArgsException
   = _MatchServiceError certificateManagerPCA
       "InvalidArgsException"
 
--- | Your request is already in progress.
+-- | The certificate authority certificate you are importing does not comply with conditions specified in the certificate that signed it.
 --
 --
-_RequestInProgressException :: AsError a => Getting (First ServiceError) a ServiceError
-_RequestInProgressException
+_CertificateMismatchException :: AsError a => Getting (First ServiceError) a ServiceError
+_CertificateMismatchException
   = _MatchServiceError certificateManagerPCA
-      "RequestInProgressException"
-
--- | A previous update to your private CA is still ongoing.
---
---
-_ConcurrentModificationException :: AsError a => Getting (First ServiceError) a ServiceError
-_ConcurrentModificationException
-  = _MatchServiceError certificateManagerPCA
-      "ConcurrentModificationException"
-
--- | The token specified in the @NextToken@ argument is not valid. Use the token returned from your previous call to 'ListCertificateAuthorities' .
---
---
-_InvalidNextTokenException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidNextTokenException
-  = _MatchServiceError certificateManagerPCA
-      "InvalidNextTokenException"
-
--- | The requested Amazon Resource Name (ARN) does not refer to an existing resource.
---
---
-_InvalidARNException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidARNException
-  = _MatchServiceError certificateManagerPCA
-      "InvalidArnException"
-
--- | The S3 bucket policy is not valid. The policy must give ACM PCA rights to read from and write to the bucket and find the bucket location.
---
---
-_InvalidPolicyException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidPolicyException
-  = _MatchServiceError certificateManagerPCA
-      "InvalidPolicyException"
+      "CertificateMismatchException"
 
 -- | A resource such as a private CA, S3 bucket, certificate, or audit report cannot be found.
 --
@@ -292,13 +252,45 @@ _ResourceNotFoundException
   = _MatchServiceError certificateManagerPCA
       "ResourceNotFoundException"
 
--- | The private CA is in a state during which a report cannot be generated.
+-- | The requested Amazon Resource Name (ARN) does not refer to an existing resource.
 --
 --
-_InvalidStateException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidStateException
+_InvalidARNException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidARNException
   = _MatchServiceError certificateManagerPCA
-      "InvalidStateException"
+      "InvalidArnException"
+
+-- | The request has failed for an unspecified reason.
+--
+--
+_RequestFailedException :: AsError a => Getting (First ServiceError) a ServiceError
+_RequestFailedException
+  = _MatchServiceError certificateManagerPCA
+      "RequestFailedException"
+
+-- | Your request has already been completed.
+--
+--
+_RequestAlreadyProcessedException :: AsError a => Getting (First ServiceError) a ServiceError
+_RequestAlreadyProcessedException
+  = _MatchServiceError certificateManagerPCA
+      "RequestAlreadyProcessedException"
+
+-- | The token specified in the @NextToken@ argument is not valid. Use the token returned from your previous call to 'ListCertificateAuthorities' .
+--
+--
+_InvalidNextTokenException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidNextTokenException
+  = _MatchServiceError certificateManagerPCA
+      "InvalidNextTokenException"
+
+-- | A previous update to your private CA is still ongoing.
+--
+--
+_ConcurrentModificationException :: AsError a => Getting (First ServiceError) a ServiceError
+_ConcurrentModificationException
+  = _MatchServiceError certificateManagerPCA
+      "ConcurrentModificationException"
 
 -- | An ACM PCA limit has been exceeded. See the exception message returned to determine the limit that was exceeded.
 --
@@ -307,3 +299,11 @@ _LimitExceededException :: AsError a => Getting (First ServiceError) a ServiceEr
 _LimitExceededException
   = _MatchServiceError certificateManagerPCA
       "LimitExceededException"
+
+-- | The S3 bucket policy is not valid. The policy must give ACM PCA rights to read from and write to the bucket and find the bucket location.
+--
+--
+_InvalidPolicyException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidPolicyException
+  = _MatchServiceError certificateManagerPCA
+      "InvalidPolicyException"

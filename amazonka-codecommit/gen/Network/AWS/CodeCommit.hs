@@ -217,242 +217,233 @@ module Network.AWS.CodeCommit
     -- * Errors
     -- $errors
 
-    -- ** InvalidRepositoryTriggerRegionException
-    , _InvalidRepositoryTriggerRegionException
-
-    -- ** InvalidContinuationTokenException
-    , _InvalidContinuationTokenException
-
-    -- ** ManualMergeRequiredException
-    , _ManualMergeRequiredException
-
-    -- ** TargetsRequiredException
-    , _TargetsRequiredException
-
-    -- ** InvalidSystemTagUsageException
-    , _InvalidSystemTagUsageException
-
-    -- ** FileEntryRequiredException
-    , _FileEntryRequiredException
-
-    -- ** EncryptionKeyNotFoundException
-    , _EncryptionKeyNotFoundException
-
-    -- ** TipsDivergenceExceededException
-    , _TipsDivergenceExceededException
-
-    -- ** InvalidRepositoryTriggerBranchNameException
-    , _InvalidRepositoryTriggerBranchNameException
-
-    -- ** PullRequestAlreadyClosedException
-    , _PullRequestAlreadyClosedException
-
-    -- ** InvalidRepositoryTriggerCustomDataException
-    , _InvalidRepositoryTriggerCustomDataException
-
-    -- ** DirectoryNameConflictsWithFileNameException
-    , _DirectoryNameConflictsWithFileNameException
-
-    -- ** ReferenceDoesNotExistException
-    , _ReferenceDoesNotExistException
-
-    -- ** ApprovalRuleNameAlreadyExistsException
-    , _ApprovalRuleNameAlreadyExistsException
-
-    -- ** ActorDoesNotExistException
-    , _ActorDoesNotExistException
-
-    -- ** PullRequestIdRequiredException
-    , _PullRequestIdRequiredException
-
-    -- ** OverrideAlreadySetException
-    , _OverrideAlreadySetException
-
-    -- ** InvalidRuleContentSha256Exception
-    , _InvalidRuleContentSha256Exception
-
-    -- ** InvalidEmailException
-    , _InvalidEmailException
-
-    -- ** CommitMessageLengthExceededException
-    , _CommitMessageLengthExceededException
-
-    -- ** BlobIdDoesNotExistException
-    , _BlobIdDoesNotExistException
-
-    -- ** MaximumRepositoryNamesExceededException
-    , _MaximumRepositoryNamesExceededException
-
-    -- ** TagKeysListRequiredException
-    , _TagKeysListRequiredException
-
-    -- ** PutFileEntryConflictException
-    , _PutFileEntryConflictException
-
-    -- ** FolderDoesNotExistException
-    , _FolderDoesNotExistException
-
-    -- ** InvalidRepositoryDescriptionException
-    , _InvalidRepositoryDescriptionException
-
-    -- ** RepositoryNameExistsException
-    , _RepositoryNameExistsException
-
-    -- ** ReferenceNameRequiredException
-    , _ReferenceNameRequiredException
-
-    -- ** MaximumRepositoryTriggersExceededException
-    , _MaximumRepositoryTriggersExceededException
-
-    -- ** ApprovalRuleDoesNotExistException
-    , _ApprovalRuleDoesNotExistException
-
-    -- ** InvalidBranchNameException
-    , _InvalidBranchNameException
-
-    -- ** BranchNameRequiredException
-    , _BranchNameRequiredException
-
-    -- ** MergeOptionRequiredException
-    , _MergeOptionRequiredException
-
-    -- ** InvalidFileLocationException
-    , _InvalidFileLocationException
-
-    -- ** BeforeCommitIdAndAfterCommitIdAreSameException
-    , _BeforeCommitIdAndAfterCommitIdAreSameException
-
-    -- ** RepositoryTriggersListRequiredException
-    , _RepositoryTriggersListRequiredException
-
-    -- ** IdempotencyParameterMismatchException
-    , _IdempotencyParameterMismatchException
-
-    -- ** EncryptionKeyUnavailableException
-    , _EncryptionKeyUnavailableException
-
-    -- ** InvalidRelativeFileVersionEnumException
-    , _InvalidRelativeFileVersionEnumException
-
-    -- ** InvalidRepositoryTriggerDestinationARNException
-    , _InvalidRepositoryTriggerDestinationARNException
-
-    -- ** BlobIdRequiredException
-    , _BlobIdRequiredException
-
-    -- ** RepositoryNamesRequiredException
-    , _RepositoryNamesRequiredException
-
-    -- ** ReplacementTypeRequiredException
-    , _ReplacementTypeRequiredException
-
-    -- ** InvalidActorARNException
-    , _InvalidActorARNException
-
-    -- ** InvalidCommentIdException
-    , _InvalidCommentIdException
-
-    -- ** FilePathConflictsWithSubmodulePathException
-    , _FilePathConflictsWithSubmodulePathException
-
-    -- ** InvalidDescriptionException
-    , _InvalidDescriptionException
-
-    -- ** ApprovalRuleNameRequiredException
-    , _ApprovalRuleNameRequiredException
-
-    -- ** InvalidBlobIdException
-    , _InvalidBlobIdException
-
-    -- ** PullRequestDoesNotExistException
-    , _PullRequestDoesNotExistException
-
-    -- ** NoChangeException
-    , _NoChangeException
-
-    -- ** InvalidOrderException
-    , _InvalidOrderException
-
-    -- ** InvalidApprovalRuleNameException
-    , _InvalidApprovalRuleNameException
-
-    -- ** BranchDoesNotExistException
-    , _BranchDoesNotExistException
-
-    -- ** DefaultBranchCannotBeDeletedException
-    , _DefaultBranchCannotBeDeletedException
-
-    -- ** FolderContentSizeLimitExceededException
-    , _FolderContentSizeLimitExceededException
-
-    -- ** InvalidDeletionParameterException
-    , _InvalidDeletionParameterException
-
-    -- ** InvalidTagsMapException
-    , _InvalidTagsMapException
-
-    -- ** InvalidPathException
-    , _InvalidPathException
-
-    -- ** PathRequiredException
-    , _PathRequiredException
-
-    -- ** InvalidTargetBranchException
-    , _InvalidTargetBranchException
-
-    -- ** RepositoryTriggerNameRequiredException
-    , _RepositoryTriggerNameRequiredException
-
-    -- ** InvalidFileModeException
-    , _InvalidFileModeException
-
-    -- ** NumberOfRuleTemplatesExceededException
-    , _NumberOfRuleTemplatesExceededException
+    -- ** NumberOfRulesExceededException
+    , _NumberOfRulesExceededException
 
     -- ** FileModeRequiredException
     , _FileModeRequiredException
 
-    -- ** InvalidPullRequestStatusException
-    , _InvalidPullRequestStatusException
+    -- ** PathRequiredException
+    , _PathRequiredException
 
-    -- ** ApprovalRuleTemplateContentRequiredException
-    , _ApprovalRuleTemplateContentRequiredException
+    -- ** FolderContentSizeLimitExceededException
+    , _FolderContentSizeLimitExceededException
 
-    -- ** ApprovalStateRequiredException
-    , _ApprovalStateRequiredException
+    -- ** RepositoryLimitExceededException
+    , _RepositoryLimitExceededException
 
-    -- ** ConcurrentReferenceUpdateException
-    , _ConcurrentReferenceUpdateException
+    -- ** InvalidTagsMapException
+    , _InvalidTagsMapException
 
-    -- ** ParentCommitIdRequiredException
-    , _ParentCommitIdRequiredException
+    -- ** DefaultBranchCannotBeDeletedException
+    , _DefaultBranchCannotBeDeletedException
 
-    -- ** InvalidSourceCommitSpecifierException
-    , _InvalidSourceCommitSpecifierException
+    -- ** InvalidDeletionParameterException
+    , _InvalidDeletionParameterException
 
-    -- ** RepositoryDoesNotExistException
-    , _RepositoryDoesNotExistException
+    -- ** CommitIdsListRequiredException
+    , _CommitIdsListRequiredException
 
-    -- ** InvalidApprovalRuleContentException
-    , _InvalidApprovalRuleContentException
+    -- ** TagsMapRequiredException
+    , _TagsMapRequiredException
 
-    -- ** MaximumBranchesExceededException
-    , _MaximumBranchesExceededException
+    -- ** InvalidRepositoryNameException
+    , _InvalidRepositoryNameException
 
-    -- ** InvalidTitleException
-    , _InvalidTitleException
+    -- ** BranchNameIsTagNameException
+    , _BranchNameIsTagNameException
 
-    -- ** CommentContentSizeLimitExceededException
-    , _CommentContentSizeLimitExceededException
+    -- ** InvalidMaxResultsException
+    , _InvalidMaxResultsException
 
-    -- ** PullRequestApprovalRulesNotSatisfiedException
-    , _PullRequestApprovalRulesNotSatisfiedException
+    -- ** CommentIdRequiredException
+    , _CommentIdRequiredException
 
-    -- ** InvalidParentCommitIdException
-    , _InvalidParentCommitIdException
+    -- ** InvalidApprovalRuleTemplateNameException
+    , _InvalidApprovalRuleTemplateNameException
 
-    -- ** InvalidPullRequestEventTypeException
-    , _InvalidPullRequestEventTypeException
+    -- ** PullRequestCannotBeApprovedByAuthorException
+    , _PullRequestCannotBeApprovedByAuthorException
+
+    -- ** InvalidOrderException
+    , _InvalidOrderException
+
+    -- ** MultipleRepositoriesInPullRequestException
+    , _MultipleRepositoriesInPullRequestException
+
+    -- ** ApprovalRuleNameRequiredException
+    , _ApprovalRuleNameRequiredException
+
+    -- ** BranchDoesNotExistException
+    , _BranchDoesNotExistException
+
+    -- ** NoChangeException
+    , _NoChangeException
+
+    -- ** BlobIdRequiredException
+    , _BlobIdRequiredException
+
+    -- ** FilePathConflictsWithSubmodulePathException
+    , _FilePathConflictsWithSubmodulePathException
+
+    -- ** InvalidCommentIdException
+    , _InvalidCommentIdException
+
+    -- ** InvalidDescriptionException
+    , _InvalidDescriptionException
+
+    -- ** InvalidRevisionIdException
+    , _InvalidRevisionIdException
+
+    -- ** IdempotencyParameterMismatchException
+    , _IdempotencyParameterMismatchException
+
+    -- ** RepositoryTriggerBranchNameListRequiredException
+    , _RepositoryTriggerBranchNameListRequiredException
+
+    -- ** InvalidClientRequestTokenException
+    , _InvalidClientRequestTokenException
+
+    -- ** InvalidRelativeFileVersionEnumException
+    , _InvalidRelativeFileVersionEnumException
+
+    -- ** InvalidConflictResolutionStrategyException
+    , _InvalidConflictResolutionStrategyException
+
+    -- ** BranchNameRequiredException
+    , _BranchNameRequiredException
+
+    -- ** TagPolicyException
+    , _TagPolicyException
+
+    -- ** RepositoryTriggersListRequiredException
+    , _RepositoryTriggersListRequiredException
+
+    -- ** EncryptionKeyUnavailableException
+    , _EncryptionKeyUnavailableException
+
+    -- ** InvalidRepositoryTriggerDestinationARNException
+    , _InvalidRepositoryTriggerDestinationARNException
+
+    -- ** RepositoryTriggerDestinationARNRequiredException
+    , _RepositoryTriggerDestinationARNRequiredException
+
+    -- ** ApprovalRuleDoesNotExistException
+    , _ApprovalRuleDoesNotExistException
+
+    -- ** MultipleConflictResolutionEntriesException
+    , _MultipleConflictResolutionEntriesException
+
+    -- ** RepositoryNameExistsException
+    , _RepositoryNameExistsException
+
+    -- ** PutFileEntryConflictException
+    , _PutFileEntryConflictException
+
+    -- ** MaximumRepositoryNamesExceededException
+    , _MaximumRepositoryNamesExceededException
+
+    -- ** InvalidCommitIdException
+    , _InvalidCommitIdException
+
+    -- ** FolderDoesNotExistException
+    , _FolderDoesNotExistException
+
+    -- ** BlobIdDoesNotExistException
+    , _BlobIdDoesNotExistException
+
+    -- ** InvalidRuleContentSha256Exception
+    , _InvalidRuleContentSha256Exception
+
+    -- ** InvalidRepositoryDescriptionException
+    , _InvalidRepositoryDescriptionException
+
+    -- ** SameFileContentException
+    , _SameFileContentException
+
+    -- ** TipOfSourceReferenceIsDifferentException
+    , _TipOfSourceReferenceIsDifferentException
+
+    -- ** InvalidEmailException
+    , _InvalidEmailException
+
+    -- ** FileContentAndSourceFileSpecifiedException
+    , _FileContentAndSourceFileSpecifiedException
+
+    -- ** ApprovalRuleTemplateInUseException
+    , _ApprovalRuleTemplateInUseException
+
+    -- ** OverrideAlreadySetException
+    , _OverrideAlreadySetException
+
+    -- ** PullRequestAlreadyClosedException
+    , _PullRequestAlreadyClosedException
+
+    -- ** CommentDoesNotExistException
+    , _CommentDoesNotExistException
+
+    -- ** InvalidRepositoryTriggerBranchNameException
+    , _InvalidRepositoryTriggerBranchNameException
+
+    -- ** InvalidRepositoryTriggerCustomDataException
+    , _InvalidRepositoryTriggerCustomDataException
+
+    -- ** MaximumOpenPullRequestsExceededException
+    , _MaximumOpenPullRequestsExceededException
+
+    -- ** ApprovalRuleTemplateNameAlreadyExistsException
+    , _ApprovalRuleTemplateNameAlreadyExistsException
+
+    -- ** EncryptionKeyDisabledException
+    , _EncryptionKeyDisabledException
+
+    -- ** InvalidDestinationCommitSpecifierException
+    , _InvalidDestinationCommitSpecifierException
+
+    -- ** InvalidCommitException
+    , _InvalidCommitException
+
+    -- ** InvalidTargetException
+    , _InvalidTargetException
+
+    -- ** ReferenceTypeNotSupportedException
+    , _ReferenceTypeNotSupportedException
+
+    -- ** DirectoryNameConflictsWithFileNameException
+    , _DirectoryNameConflictsWithFileNameException
+
+    -- ** CommentNotCreatedByCallerException
+    , _CommentNotCreatedByCallerException
+
+    -- ** InvalidSortByException
+    , _InvalidSortByException
+
+    -- ** TipsDivergenceExceededException
+    , _TipsDivergenceExceededException
+
+    -- ** InvalidContinuationTokenException
+    , _InvalidContinuationTokenException
+
+    -- ** EncryptionKeyAccessDeniedException
+    , _EncryptionKeyAccessDeniedException
+
+    -- ** InvalidRepositoryTriggerRegionException
+    , _InvalidRepositoryTriggerRegionException
+
+    -- ** CommentDeletedException
+    , _CommentDeletedException
+
+    -- ** EncryptionIntegrityChecksFailedException
+    , _EncryptionIntegrityChecksFailedException
+
+    -- ** ParentCommitDoesNotExistException
+    , _ParentCommitDoesNotExistException
+
+    -- ** InvalidApprovalRuleTemplateDescriptionException
+    , _InvalidApprovalRuleTemplateDescriptionException
+
+    -- ** TooManyTagsException
+    , _TooManyTagsException
 
     -- ** FileContentRequiredException
     , _FileContentRequiredException
@@ -460,8 +451,248 @@ module Network.AWS.CodeCommit
     -- ** SourceAndDestinationAreSameException
     , _SourceAndDestinationAreSameException
 
-    -- ** ReplacementContentRequiredException
-    , _ReplacementContentRequiredException
+    -- ** RepositoryTriggerEventsListRequiredException
+    , _RepositoryTriggerEventsListRequiredException
+
+    -- ** AuthorDoesNotExistException
+    , _AuthorDoesNotExistException
+
+    -- ** SourceFileOrContentRequiredException
+    , _SourceFileOrContentRequiredException
+
+    -- ** InvalidReplacementContentException
+    , _InvalidReplacementContentException
+
+    -- ** SamePathRequestException
+    , _SamePathRequestException
+
+    -- ** CommentContentSizeLimitExceededException
+    , _CommentContentSizeLimitExceededException
+
+    -- ** CommitIdsLimitExceededException
+    , _CommitIdsLimitExceededException
+
+    -- ** MaximumBranchesExceededException
+    , _MaximumBranchesExceededException
+
+    -- ** OverrideStatusRequiredException
+    , _OverrideStatusRequiredException
+
+    -- ** InvalidPullRequestEventTypeException
+    , _InvalidPullRequestEventTypeException
+
+    -- ** MaximumFileContentToLoadExceededException
+    , _MaximumFileContentToLoadExceededException
+
+    -- ** InvalidApprovalStateException
+    , _InvalidApprovalStateException
+
+    -- ** ApprovalStateRequiredException
+    , _ApprovalStateRequiredException
+
+    -- ** ConcurrentReferenceUpdateException
+    , _ConcurrentReferenceUpdateException
+
+    -- ** InvalidParentCommitIdException
+    , _InvalidParentCommitIdException
+
+    -- ** RepositoryNotAssociatedWithPullRequestException
+    , _RepositoryNotAssociatedWithPullRequestException
+
+    -- ** InvalidApprovalRuleTemplateContentException
+    , _InvalidApprovalRuleTemplateContentException
+
+    -- ** MaximumConflictResolutionEntriesExceededException
+    , _MaximumConflictResolutionEntriesExceededException
+
+    -- ** InvalidAuthorARNException
+    , _InvalidAuthorARNException
+
+    -- ** ApprovalRuleTemplateContentRequiredException
+    , _ApprovalRuleTemplateContentRequiredException
+
+    -- ** InvalidTargetBranchException
+    , _InvalidTargetBranchException
+
+    -- ** InvalidRepositoryTriggerNameException
+    , _InvalidRepositoryTriggerNameException
+
+    -- ** InvalidRepositoryTriggerEventsException
+    , _InvalidRepositoryTriggerEventsException
+
+    -- ** InvalidPathException
+    , _InvalidPathException
+
+    -- ** NumberOfRuleTemplatesExceededException
+    , _NumberOfRuleTemplatesExceededException
+
+    -- ** RepositoryNameRequiredException
+    , _RepositoryNameRequiredException
+
+    -- ** RepositoryTriggerNameRequiredException
+    , _RepositoryTriggerNameRequiredException
+
+    -- ** InvalidFileModeException
+    , _InvalidFileModeException
+
+    -- ** FileContentSizeLimitExceededException
+    , _FileContentSizeLimitExceededException
+
+    -- ** RevisionNotCurrentException
+    , _RevisionNotCurrentException
+
+    -- ** InvalidReplacementTypeException
+    , _InvalidReplacementTypeException
+
+    -- ** InvalidActorARNException
+    , _InvalidActorARNException
+
+    -- ** PullRequestDoesNotExistException
+    , _PullRequestDoesNotExistException
+
+    -- ** ApprovalRuleTemplateNameRequiredException
+    , _ApprovalRuleTemplateNameRequiredException
+
+    -- ** CommitIdDoesNotExistException
+    , _CommitIdDoesNotExistException
+
+    -- ** CannotDeleteApprovalRuleFromTemplateException
+    , _CannotDeleteApprovalRuleFromTemplateException
+
+    -- ** RepositoryNamesRequiredException
+    , _RepositoryNamesRequiredException
+
+    -- ** InvalidBlobIdException
+    , _InvalidBlobIdException
+
+    -- ** FileTooLargeException
+    , _FileTooLargeException
+
+    -- ** InvalidApprovalRuleNameException
+    , _InvalidApprovalRuleNameException
+
+    -- ** RevisionIdRequiredException
+    , _RevisionIdRequiredException
+
+    -- ** MaximumFileEntriesExceededException
+    , _MaximumFileEntriesExceededException
+
+    -- ** ReplacementTypeRequiredException
+    , _ReplacementTypeRequiredException
+
+    -- ** MergeOptionRequiredException
+    , _MergeOptionRequiredException
+
+    -- ** CommitDoesNotExistException
+    , _CommitDoesNotExistException
+
+    -- ** ClientRequestTokenRequiredException
+    , _ClientRequestTokenRequiredException
+
+    -- ** InvalidBranchNameException
+    , _InvalidBranchNameException
+
+    -- ** InvalidMergeOptionException
+    , _InvalidMergeOptionException
+
+    -- ** InvalidFileLocationException
+    , _InvalidFileLocationException
+
+    -- ** ApprovalRuleTemplateDoesNotExistException
+    , _ApprovalRuleTemplateDoesNotExistException
+
+    -- ** MaximumRepositoryTriggersExceededException
+    , _MaximumRepositoryTriggersExceededException
+
+    -- ** BeforeCommitIdAndAfterCommitIdAreSameException
+    , _BeforeCommitIdAndAfterCommitIdAreSameException
+
+    -- ** CommitMessageLengthExceededException
+    , _CommitMessageLengthExceededException
+
+    -- ** MaximumNumberOfApprovalsExceededException
+    , _MaximumNumberOfApprovalsExceededException
+
+    -- ** MaximumRuleTemplatesAssociatedWithRepositoryException
+    , _MaximumRuleTemplatesAssociatedWithRepositoryException
+
+    -- ** ReferenceNameRequiredException
+    , _ReferenceNameRequiredException
+
+    -- ** InvalidTagKeysListException
+    , _InvalidTagKeysListException
+
+    -- ** FileDoesNotExistException
+    , _FileDoesNotExistException
+
+    -- ** InvalidReferenceNameException
+    , _InvalidReferenceNameException
+
+    -- ** TagKeysListRequiredException
+    , _TagKeysListRequiredException
+
+    -- ** CommitIdRequiredException
+    , _CommitIdRequiredException
+
+    -- ** ApprovalRuleNameAlreadyExistsException
+    , _ApprovalRuleNameAlreadyExistsException
+
+    -- ** ReferenceDoesNotExistException
+    , _ReferenceDoesNotExistException
+
+    -- ** TargetRequiredException
+    , _TargetRequiredException
+
+    -- ** NameLengthExceededException
+    , _NameLengthExceededException
+
+    -- ** FileNameConflictsWithDirectoryNameException
+    , _FileNameConflictsWithDirectoryNameException
+
+    -- ** InvalidPullRequestStatusUpdateException
+    , _InvalidPullRequestStatusUpdateException
+
+    -- ** CommitRequiredException
+    , _CommitRequiredException
+
+    -- ** ActorDoesNotExistException
+    , _ActorDoesNotExistException
+
+    -- ** InvalidConflictDetailLevelException
+    , _InvalidConflictDetailLevelException
+
+    -- ** PullRequestIdRequiredException
+    , _PullRequestIdRequiredException
+
+    -- ** InvalidPullRequestIdException
+    , _InvalidPullRequestIdException
+
+    -- ** EncryptionKeyNotFoundException
+    , _EncryptionKeyNotFoundException
+
+    -- ** BranchNameExistsException
+    , _BranchNameExistsException
+
+    -- ** InvalidSystemTagUsageException
+    , _InvalidSystemTagUsageException
+
+    -- ** InvalidTargetsException
+    , _InvalidTargetsException
+
+    -- ** FileEntryRequiredException
+    , _FileEntryRequiredException
+
+    -- ** TargetsRequiredException
+    , _TargetsRequiredException
+
+    -- ** ManualMergeRequiredException
+    , _ManualMergeRequiredException
+
+    -- ** CommentContentRequiredException
+    , _CommentContentRequiredException
+
+    -- ** ResourceARNRequiredException
+    , _ResourceARNRequiredException
 
     -- ** RestrictedSourceFileException
     , _RestrictedSourceFileException
@@ -472,293 +703,62 @@ module Network.AWS.CodeCommit
     -- ** InvalidResourceARNException
     , _InvalidResourceARNException
 
-    -- ** TooManyTagsException
-    , _TooManyTagsException
-
-    -- ** EncryptionIntegrityChecksFailedException
-    , _EncryptionIntegrityChecksFailedException
-
-    -- ** SamePathRequestException
-    , _SamePathRequestException
-
-    -- ** SourceFileOrContentRequiredException
-    , _SourceFileOrContentRequiredException
-
-    -- ** InvalidMaxMergeHunksException
-    , _InvalidMaxMergeHunksException
-
     -- ** CannotModifyApprovalRuleFromTemplateException
     , _CannotModifyApprovalRuleFromTemplateException
 
-    -- ** InvalidReplacementContentException
-    , _InvalidReplacementContentException
-
-    -- ** ParentCommitIdOutdatedException
-    , _ParentCommitIdOutdatedException
-
-    -- ** RepositoryTriggerEventsListRequiredException
-    , _RepositoryTriggerEventsListRequiredException
-
-    -- ** CommentContentRequiredException
-    , _CommentContentRequiredException
-
-    -- ** InvalidTargetsException
-    , _InvalidTargetsException
-
-    -- ** EncryptionKeyAccessDeniedException
-    , _EncryptionKeyAccessDeniedException
-
-    -- ** BranchNameExistsException
-    , _BranchNameExistsException
-
-    -- ** InvalidCommitException
-    , _InvalidCommitException
-
-    -- ** TargetRequiredException
-    , _TargetRequiredException
-
-    -- ** InvalidConflictDetailLevelException
-    , _InvalidConflictDetailLevelException
-
-    -- ** InvalidDestinationCommitSpecifierException
-    , _InvalidDestinationCommitSpecifierException
-
-    -- ** CommentDoesNotExistException
-    , _CommentDoesNotExistException
-
-    -- ** ReferenceTypeNotSupportedException
-    , _ReferenceTypeNotSupportedException
-
-    -- ** FileNameConflictsWithDirectoryNameException
-    , _FileNameConflictsWithDirectoryNameException
-
-    -- ** NameLengthExceededException
-    , _NameLengthExceededException
-
-    -- ** InvalidSortByException
-    , _InvalidSortByException
-
-    -- ** EncryptionKeyDisabledException
-    , _EncryptionKeyDisabledException
-
-    -- ** CommitRequiredException
-    , _CommitRequiredException
-
-    -- ** MaximumOpenPullRequestsExceededException
-    , _MaximumOpenPullRequestsExceededException
-
-    -- ** ApprovalRuleTemplateNameAlreadyExistsException
-    , _ApprovalRuleTemplateNameAlreadyExistsException
-
-    -- ** InvalidTargetException
-    , _InvalidTargetException
-
-    -- ** InvalidPullRequestIdException
-    , _InvalidPullRequestIdException
-
-    -- ** CommentNotCreatedByCallerException
-    , _CommentNotCreatedByCallerException
-
-    -- ** InvalidPullRequestStatusUpdateException
-    , _InvalidPullRequestStatusUpdateException
-
-    -- ** InvalidReferenceNameException
-    , _InvalidReferenceNameException
-
-    -- ** MaximumRuleTemplatesAssociatedWithRepositoryException
-    , _MaximumRuleTemplatesAssociatedWithRepositoryException
-
-    -- ** SameFileContentException
-    , _SameFileContentException
-
-    -- ** ApprovalRuleTemplateInUseException
-    , _ApprovalRuleTemplateInUseException
-
-    -- ** MaximumNumberOfApprovalsExceededException
-    , _MaximumNumberOfApprovalsExceededException
-
-    -- ** CommitIdRequiredException
-    , _CommitIdRequiredException
-
-    -- ** FileDoesNotExistException
-    , _FileDoesNotExistException
-
-    -- ** InvalidCommitIdException
-    , _InvalidCommitIdException
-
-    -- ** InvalidTagKeysListException
-    , _InvalidTagKeysListException
-
-    -- ** FileContentAndSourceFileSpecifiedException
-    , _FileContentAndSourceFileSpecifiedException
-
-    -- ** TipOfSourceReferenceIsDifferentException
-    , _TipOfSourceReferenceIsDifferentException
-
-    -- ** RepositoryTriggerDestinationARNRequiredException
-    , _RepositoryTriggerDestinationARNRequiredException
-
-    -- ** InvalidConflictResolutionStrategyException
-    , _InvalidConflictResolutionStrategyException
-
-    -- ** InvalidClientRequestTokenException
-    , _InvalidClientRequestTokenException
-
-    -- ** MultipleConflictResolutionEntriesException
-    , _MultipleConflictResolutionEntriesException
-
-    -- ** CommitDoesNotExistException
-    , _CommitDoesNotExistException
-
-    -- ** RepositoryTriggerBranchNameListRequiredException
-    , _RepositoryTriggerBranchNameListRequiredException
-
-    -- ** ClientRequestTokenRequiredException
-    , _ClientRequestTokenRequiredException
-
-    -- ** ApprovalRuleTemplateDoesNotExistException
-    , _ApprovalRuleTemplateDoesNotExistException
-
-    -- ** TagPolicyException
-    , _TagPolicyException
-
-    -- ** InvalidMergeOptionException
-    , _InvalidMergeOptionException
-
-    -- ** CannotDeleteApprovalRuleFromTemplateException
-    , _CannotDeleteApprovalRuleFromTemplateException
-
-    -- ** CommentIdRequiredException
-    , _CommentIdRequiredException
-
-    -- ** InvalidMaxResultsException
-    , _InvalidMaxResultsException
-
-    -- ** FileTooLargeException
-    , _FileTooLargeException
-
-    -- ** ApprovalRuleTemplateNameRequiredException
-    , _ApprovalRuleTemplateNameRequiredException
-
-    -- ** MaximumFileEntriesExceededException
-    , _MaximumFileEntriesExceededException
-
-    -- ** CommitIdDoesNotExistException
-    , _CommitIdDoesNotExistException
-
-    -- ** InvalidReplacementTypeException
-    , _InvalidReplacementTypeException
-
-    -- ** InvalidRevisionIdException
-    , _InvalidRevisionIdException
-
-    -- ** RevisionNotCurrentException
-    , _RevisionNotCurrentException
-
-    -- ** InvalidApprovalRuleTemplateNameException
-    , _InvalidApprovalRuleTemplateNameException
-
-    -- ** PullRequestCannotBeApprovedByAuthorException
-    , _PullRequestCannotBeApprovedByAuthorException
-
-    -- ** MultipleRepositoriesInPullRequestException
-    , _MultipleRepositoriesInPullRequestException
-
-    -- ** RevisionIdRequiredException
-    , _RevisionIdRequiredException
-
-    -- ** FileContentSizeLimitExceededException
-    , _FileContentSizeLimitExceededException
-
-    -- ** InvalidRepositoryTriggerNameException
-    , _InvalidRepositoryTriggerNameException
-
-    -- ** RepositoryNameRequiredException
-    , _RepositoryNameRequiredException
-
-    -- ** RepositoryLimitExceededException
-    , _RepositoryLimitExceededException
-
-    -- ** TagsMapRequiredException
-    , _TagsMapRequiredException
-
-    -- ** InvalidRepositoryTriggerEventsException
-    , _InvalidRepositoryTriggerEventsException
-
-    -- ** NumberOfRulesExceededException
-    , _NumberOfRulesExceededException
-
-    -- ** BranchNameIsTagNameException
-    , _BranchNameIsTagNameException
-
-    -- ** InvalidRepositoryNameException
-    , _InvalidRepositoryNameException
-
-    -- ** CommitIdsListRequiredException
-    , _CommitIdsListRequiredException
-
-    -- ** CommitIdsLimitExceededException
-    , _CommitIdsLimitExceededException
-
-    -- ** InvalidAuthorARNException
-    , _InvalidAuthorARNException
-
-    -- ** MaximumItemsToCompareExceededException
-    , _MaximumItemsToCompareExceededException
-
-    -- ** OverrideStatusRequiredException
-    , _OverrideStatusRequiredException
-
-    -- ** ApprovalRuleContentRequiredException
-    , _ApprovalRuleContentRequiredException
-
-    -- ** MaximumConflictResolutionEntriesExceededException
-    , _MaximumConflictResolutionEntriesExceededException
-
-    -- ** PullRequestStatusRequiredException
-    , _PullRequestStatusRequiredException
-
-    -- ** InvalidConflictResolutionException
-    , _InvalidConflictResolutionException
-
-    -- ** InvalidApprovalRuleTemplateContentException
-    , _InvalidApprovalRuleTemplateContentException
-
-    -- ** InvalidApprovalStateException
-    , _InvalidApprovalStateException
-
-    -- ** RepositoryNotAssociatedWithPullRequestException
-    , _RepositoryNotAssociatedWithPullRequestException
-
-    -- ** MaximumFileContentToLoadExceededException
-    , _MaximumFileContentToLoadExceededException
-
-    -- ** TitleRequiredException
-    , _TitleRequiredException
-
-    -- ** InvalidOverrideStatusException
-    , _InvalidOverrideStatusException
-
-    -- ** InvalidFilePositionException
-    , _InvalidFilePositionException
-
-    -- ** CommentDeletedException
-    , _CommentDeletedException
-
-    -- ** ParentCommitDoesNotExistException
-    , _ParentCommitDoesNotExistException
-
-    -- ** InvalidApprovalRuleTemplateDescriptionException
-    , _InvalidApprovalRuleTemplateDescriptionException
-
-    -- ** ResourceARNRequiredException
-    , _ResourceARNRequiredException
+    -- ** ReplacementContentRequiredException
+    , _ReplacementContentRequiredException
 
     -- ** InvalidMaxConflictFilesException
     , _InvalidMaxConflictFilesException
 
-    -- ** AuthorDoesNotExistException
-    , _AuthorDoesNotExistException
+    -- ** InvalidFilePositionException
+    , _InvalidFilePositionException
+
+    -- ** ParentCommitIdOutdatedException
+    , _ParentCommitIdOutdatedException
+
+    -- ** InvalidMaxMergeHunksException
+    , _InvalidMaxMergeHunksException
+
+    -- ** PullRequestApprovalRulesNotSatisfiedException
+    , _PullRequestApprovalRulesNotSatisfiedException
+
+    -- ** InvalidApprovalRuleContentException
+    , _InvalidApprovalRuleContentException
+
+    -- ** InvalidSourceCommitSpecifierException
+    , _InvalidSourceCommitSpecifierException
+
+    -- ** PullRequestStatusRequiredException
+    , _PullRequestStatusRequiredException
+
+    -- ** InvalidTitleException
+    , _InvalidTitleException
+
+    -- ** InvalidConflictResolutionException
+    , _InvalidConflictResolutionException
+
+    -- ** ParentCommitIdRequiredException
+    , _ParentCommitIdRequiredException
+
+    -- ** InvalidPullRequestStatusException
+    , _InvalidPullRequestStatusException
+
+    -- ** ApprovalRuleContentRequiredException
+    , _ApprovalRuleContentRequiredException
+
+    -- ** RepositoryDoesNotExistException
+    , _RepositoryDoesNotExistException
+
+    -- ** InvalidOverrideStatusException
+    , _InvalidOverrideStatusException
+
+    -- ** TitleRequiredException
+    , _TitleRequiredException
+
+    -- ** MaximumItemsToCompareExceededException
+    , _MaximumItemsToCompareExceededException
 
     -- * Waiters
     -- $waiters

@@ -16,11 +16,11 @@ module Network.AWS.ElasticTranscoder.Types
       elasticTranscoder
 
     -- * Errors
-    , _IncompatibleVersionException
-    , _ValidationException
-    , _AccessDeniedException
     , _InternalServiceException
+    , _AccessDeniedException
+    , _ValidationException
     , _ResourceNotFoundException
+    , _IncompatibleVersionException
     , _LimitExceededException
     , _ResourceInUseException
 
@@ -411,21 +411,13 @@ elasticTranscoder
           | has (hasStatus 509) e = Just "limit_exceeded"
           | otherwise = Nothing
 
--- | Prism for IncompatibleVersionException' errors.
-_IncompatibleVersionException :: AsError a => Getting (First ServiceError) a ServiceError
-_IncompatibleVersionException
-  = _MatchServiceError elasticTranscoder
-      "IncompatibleVersionException"
-      . hasStatus 400
-
--- | One or more required parameter values were not provided in the request.
+-- | Elastic Transcoder encountered an unexpected exception while trying to fulfill the request.
 --
 --
-_ValidationException :: AsError a => Getting (First ServiceError) a ServiceError
-_ValidationException
+_InternalServiceException :: AsError a => Getting (First ServiceError) a ServiceError
+_InternalServiceException
   = _MatchServiceError elasticTranscoder
-      "ValidationException"
-      . hasStatus 400
+      "InternalServiceException"
 
 -- | General authentication failure. The request was not signed correctly.
 --
@@ -436,13 +428,14 @@ _AccessDeniedException
       "AccessDeniedException"
       . hasStatus 403
 
--- | Elastic Transcoder encountered an unexpected exception while trying to fulfill the request.
+-- | One or more required parameter values were not provided in the request.
 --
 --
-_InternalServiceException :: AsError a => Getting (First ServiceError) a ServiceError
-_InternalServiceException
+_ValidationException :: AsError a => Getting (First ServiceError) a ServiceError
+_ValidationException
   = _MatchServiceError elasticTranscoder
-      "InternalServiceException"
+      "ValidationException"
+      . hasStatus 400
 
 -- | The requested resource does not exist or is not available. For example, the pipeline to which you're trying to add a job doesn't exist or is still being created.
 --
@@ -452,6 +445,13 @@ _ResourceNotFoundException
   = _MatchServiceError elasticTranscoder
       "ResourceNotFoundException"
       . hasStatus 404
+
+-- | Prism for IncompatibleVersionException' errors.
+_IncompatibleVersionException :: AsError a => Getting (First ServiceError) a ServiceError
+_IncompatibleVersionException
+  = _MatchServiceError elasticTranscoder
+      "IncompatibleVersionException"
+      . hasStatus 400
 
 -- | Too many operations for a given AWS account. For example, the number of pipelines exceeds the maximum allowed.
 --

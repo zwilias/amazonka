@@ -16,12 +16,12 @@ module Network.AWS.MediaStore.Types
       mediaStore
 
     -- * Errors
-    , _PolicyNotFoundException
-    , _CORSPolicyNotFoundException
-    , _ContainerInUseException
-    , _InternalServerError
     , _ContainerNotFoundException
+    , _PolicyNotFoundException
+    , _InternalServerError
+    , _ContainerInUseException
     , _LimitExceededException
+    , _CORSPolicyNotFoundException
 
     -- * ContainerStatus
     , ContainerStatus (..)
@@ -90,6 +90,14 @@ mediaStore
           | has (hasStatus 509) e = Just "limit_exceeded"
           | otherwise = Nothing
 
+-- | Could not perform an operation on a container that does not exist.
+--
+--
+_ContainerNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
+_ContainerNotFoundException
+  = _MatchServiceError mediaStore
+      "ContainerNotFoundException"
+
 -- | Could not perform an operation on a policy that does not exist.
 --
 --
@@ -98,13 +106,12 @@ _PolicyNotFoundException
   = _MatchServiceError mediaStore
       "PolicyNotFoundException"
 
--- | Could not perform an operation on a policy that does not exist.
+-- | The service is temporarily unavailable.
 --
 --
-_CORSPolicyNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
-_CORSPolicyNotFoundException
-  = _MatchServiceError mediaStore
-      "CorsPolicyNotFoundException"
+_InternalServerError :: AsError a => Getting (First ServiceError) a ServiceError
+_InternalServerError
+  = _MatchServiceError mediaStore "InternalServerError"
 
 -- | Resource already exists or is being updated.
 --
@@ -114,21 +121,6 @@ _ContainerInUseException
   = _MatchServiceError mediaStore
       "ContainerInUseException"
 
--- | The service is temporarily unavailable.
---
---
-_InternalServerError :: AsError a => Getting (First ServiceError) a ServiceError
-_InternalServerError
-  = _MatchServiceError mediaStore "InternalServerError"
-
--- | Could not perform an operation on a container that does not exist.
---
---
-_ContainerNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
-_ContainerNotFoundException
-  = _MatchServiceError mediaStore
-      "ContainerNotFoundException"
-
 -- | A service limit has been exceeded.
 --
 --
@@ -136,3 +128,11 @@ _LimitExceededException :: AsError a => Getting (First ServiceError) a ServiceEr
 _LimitExceededException
   = _MatchServiceError mediaStore
       "LimitExceededException"
+
+-- | Could not perform an operation on a policy that does not exist.
+--
+--
+_CORSPolicyNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
+_CORSPolicyNotFoundException
+  = _MatchServiceError mediaStore
+      "CorsPolicyNotFoundException"

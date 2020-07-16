@@ -4276,7 +4276,7 @@ module Network.AWS.EC2
     -- ** Phase1EncryptionAlgorithmsListValue
     , Phase1EncryptionAlgorithmsListValue
     , phase1EncryptionAlgorithmsListValue
-    , pealveValue
+    , phs1encryptnalgrthmslstvlValue
 
     -- ** Phase1EncryptionAlgorithmsRequestListValue
     , Phase1EncryptionAlgorithmsRequestListValue
@@ -4291,7 +4291,7 @@ module Network.AWS.EC2
     -- ** Phase1IntegrityAlgorithmsRequestListValue
     , Phase1IntegrityAlgorithmsRequestListValue
     , phase1IntegrityAlgorithmsRequestListValue
-    , piarlviValue
+    , phs1intgrtyalgrthmsrqstlstvlValue
 
     -- ** Phase2DHGroupNumbersListValue
     , Phase2DHGroupNumbersListValue
@@ -4301,7 +4301,7 @@ module Network.AWS.EC2
     -- ** Phase2DHGroupNumbersRequestListValue
     , Phase2DHGroupNumbersRequestListValue
     , phase2DHGroupNumbersRequestListValue
-    , pdhgnrlvdValue
+    , phs2dhgrpnmbrsrqstlstvlValue
 
     -- ** Phase2EncryptionAlgorithmsListValue
     , Phase2EncryptionAlgorithmsListValue
@@ -4311,7 +4311,7 @@ module Network.AWS.EC2
     -- ** Phase2EncryptionAlgorithmsRequestListValue
     , Phase2EncryptionAlgorithmsRequestListValue
     , phase2EncryptionAlgorithmsRequestListValue
-    , pearlveValue
+    , phs2encryptnalgrthmsrqstlstvlValue
 
     -- ** Phase2IntegrityAlgorithmsListValue
     , Phase2IntegrityAlgorithmsListValue

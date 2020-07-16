@@ -34,8 +34,8 @@ module Network.AWS.DirectoryService.DeleteTrust
     , deleteTrustResponse
     , DeleteTrustResponse
     -- * Response Lenses
-    , dttrsTrustId
-    , dttrsResponseStatus
+    , dlttrstrsTrustId
+    , dlttrstrsResponseStatus
     ) where
 
 import Network.AWS.DirectoryService.Types
@@ -120,31 +120,32 @@ instance ToQuery DeleteTrust where
 --
 --
 -- /See:/ 'deleteTrustResponse' smart constructor.
-data DeleteTrustResponse = DeleteTrustResponse'{_dttrsTrustId
+data DeleteTrustResponse = DeleteTrustResponse'{_dlttrstrsTrustId
                                                 :: !(Maybe Text),
-                                                _dttrsResponseStatus :: !Int}
+                                                _dlttrstrsResponseStatus ::
+                                                !Int}
                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteTrustResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dttrsTrustId' - The Trust ID of the trust relationship that was deleted.
+-- * 'dlttrstrsTrustId' - The Trust ID of the trust relationship that was deleted.
 --
--- * 'dttrsResponseStatus' - -- | The response status code.
+-- * 'dlttrstrsResponseStatus' - -- | The response status code.
 deleteTrustResponse
-    :: Int -- ^ 'dttrsResponseStatus'
+    :: Int -- ^ 'dlttrstrsResponseStatus'
     -> DeleteTrustResponse
 deleteTrustResponse pResponseStatus_
-  = DeleteTrustResponse'{_dttrsTrustId = Nothing,
-                         _dttrsResponseStatus = pResponseStatus_}
+  = DeleteTrustResponse'{_dlttrstrsTrustId = Nothing,
+                         _dlttrstrsResponseStatus = pResponseStatus_}
 
 -- | The Trust ID of the trust relationship that was deleted.
-dttrsTrustId :: Lens' DeleteTrustResponse (Maybe Text)
-dttrsTrustId = lens _dttrsTrustId (\ s a -> s{_dttrsTrustId = a})
+dlttrstrsTrustId :: Lens' DeleteTrustResponse (Maybe Text)
+dlttrstrsTrustId = lens _dlttrstrsTrustId (\ s a -> s{_dlttrstrsTrustId = a})
 
 -- | -- | The response status code.
-dttrsResponseStatus :: Lens' DeleteTrustResponse Int
-dttrsResponseStatus = lens _dttrsResponseStatus (\ s a -> s{_dttrsResponseStatus = a})
+dlttrstrsResponseStatus :: Lens' DeleteTrustResponse Int
+dlttrstrsResponseStatus = lens _dlttrstrsResponseStatus (\ s a -> s{_dlttrstrsResponseStatus = a})
 
 instance NFData DeleteTrustResponse where

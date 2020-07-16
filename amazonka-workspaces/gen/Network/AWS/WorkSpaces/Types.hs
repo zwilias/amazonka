@@ -16,18 +16,18 @@ module Network.AWS.WorkSpaces.Types
       workSpaces
 
     -- * Errors
-    , _AccessDeniedException
-    , _ResourceCreationFailedException
-    , _ResourceUnavailableException
-    , _InvalidParameterValuesException
+    , _InvalidResourceStateException
     , _ResourceAssociatedException
-    , _OperationInProgressException
+    , _InvalidParameterValuesException
+    , _UnsupportedWorkspaceConfigurationException
+    , _ResourceCreationFailedException
+    , _AccessDeniedException
+    , _OperationNotSupportedException
+    , _ResourceNotFoundException
     , _ResourceAlreadyExistsException
     , _ResourceLimitExceededException
-    , _InvalidResourceStateException
-    , _OperationNotSupportedException
-    , _UnsupportedWorkspaceConfigurationException
-    , _ResourceNotFoundException
+    , _OperationInProgressException
+    , _ResourceUnavailableException
 
     -- * Compute
     , Compute (..)
@@ -290,37 +290,13 @@ workSpaces
           | has (hasStatus 509) e = Just "limit_exceeded"
           | otherwise = Nothing
 
--- | The user is not authorized to access a resource.
+-- | The state of the resource is not valid for this operation.
 --
 --
-_AccessDeniedException :: AsError a => Getting (First ServiceError) a ServiceError
-_AccessDeniedException
+_InvalidResourceStateException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidResourceStateException
   = _MatchServiceError workSpaces
-      "AccessDeniedException"
-
--- | The resource could not be created.
---
---
-_ResourceCreationFailedException :: AsError a => Getting (First ServiceError) a ServiceError
-_ResourceCreationFailedException
-  = _MatchServiceError workSpaces
-      "ResourceCreationFailedException"
-
--- | The specified resource is not available.
---
---
-_ResourceUnavailableException :: AsError a => Getting (First ServiceError) a ServiceError
-_ResourceUnavailableException
-  = _MatchServiceError workSpaces
-      "ResourceUnavailableException"
-
--- | One or more parameter values are not valid.
---
---
-_InvalidParameterValuesException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidParameterValuesException
-  = _MatchServiceError workSpaces
-      "InvalidParameterValuesException"
+      "InvalidResourceStateException"
 
 -- | The resource is associated with a directory.
 --
@@ -330,13 +306,53 @@ _ResourceAssociatedException
   = _MatchServiceError workSpaces
       "ResourceAssociatedException"
 
--- | The properties of this WorkSpace are currently being modified. Try again in a moment.
+-- | One or more parameter values are not valid.
 --
 --
-_OperationInProgressException :: AsError a => Getting (First ServiceError) a ServiceError
-_OperationInProgressException
+_InvalidParameterValuesException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidParameterValuesException
   = _MatchServiceError workSpaces
-      "OperationInProgressException"
+      "InvalidParameterValuesException"
+
+-- | The configuration of this WorkSpace is not supported for this operation. For more information, see the <http://docs.aws.amazon.com/workspaces/latest/adminguide/ Amazon WorkSpaces Administration Guide> . 
+--
+--
+_UnsupportedWorkspaceConfigurationException :: AsError a => Getting (First ServiceError) a ServiceError
+_UnsupportedWorkspaceConfigurationException
+  = _MatchServiceError workSpaces
+      "UnsupportedWorkspaceConfigurationException"
+
+-- | The resource could not be created.
+--
+--
+_ResourceCreationFailedException :: AsError a => Getting (First ServiceError) a ServiceError
+_ResourceCreationFailedException
+  = _MatchServiceError workSpaces
+      "ResourceCreationFailedException"
+
+-- | The user is not authorized to access a resource.
+--
+--
+_AccessDeniedException :: AsError a => Getting (First ServiceError) a ServiceError
+_AccessDeniedException
+  = _MatchServiceError workSpaces
+      "AccessDeniedException"
+
+-- | This operation is not supported.
+--
+--
+_OperationNotSupportedException :: AsError a => Getting (First ServiceError) a ServiceError
+_OperationNotSupportedException
+  = _MatchServiceError workSpaces
+      "OperationNotSupportedException"
+
+-- | The resource could not be found.
+--
+--
+_ResourceNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
+_ResourceNotFoundException
+  = _MatchServiceError workSpaces
+      "ResourceNotFoundException"
 
 -- | The specified resource already exists.
 --
@@ -354,34 +370,18 @@ _ResourceLimitExceededException
   = _MatchServiceError workSpaces
       "ResourceLimitExceededException"
 
--- | The state of the resource is not valid for this operation.
+-- | The properties of this WorkSpace are currently being modified. Try again in a moment.
 --
 --
-_InvalidResourceStateException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidResourceStateException
+_OperationInProgressException :: AsError a => Getting (First ServiceError) a ServiceError
+_OperationInProgressException
   = _MatchServiceError workSpaces
-      "InvalidResourceStateException"
+      "OperationInProgressException"
 
--- | This operation is not supported.
+-- | The specified resource is not available.
 --
 --
-_OperationNotSupportedException :: AsError a => Getting (First ServiceError) a ServiceError
-_OperationNotSupportedException
+_ResourceUnavailableException :: AsError a => Getting (First ServiceError) a ServiceError
+_ResourceUnavailableException
   = _MatchServiceError workSpaces
-      "OperationNotSupportedException"
-
--- | The configuration of this WorkSpace is not supported for this operation. For more information, see the <http://docs.aws.amazon.com/workspaces/latest/adminguide/ Amazon WorkSpaces Administration Guide> . 
---
---
-_UnsupportedWorkspaceConfigurationException :: AsError a => Getting (First ServiceError) a ServiceError
-_UnsupportedWorkspaceConfigurationException
-  = _MatchServiceError workSpaces
-      "UnsupportedWorkspaceConfigurationException"
-
--- | The resource could not be found.
---
---
-_ResourceNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
-_ResourceNotFoundException
-  = _MatchServiceError workSpaces
-      "ResourceNotFoundException"
+      "ResourceUnavailableException"

@@ -57,155 +57,137 @@ module Network.AWS.CodeDeploy
     -- * Errors
     -- $errors
 
-    -- ** LifecycleHookLimitExceededException
-    , _LifecycleHookLimitExceededException
+    -- ** InvalidDeploymentTargetIdException
+    , _InvalidDeploymentTargetIdException
 
-    -- ** InvalidTimeRangeException
-    , _InvalidTimeRangeException
+    -- ** InvalidDeploymentStatusException
+    , _InvalidDeploymentStatusException
 
-    -- ** InvalidComputePlatformException
-    , _InvalidComputePlatformException
+    -- ** MultipleIAMARNsProvidedException
+    , _MultipleIAMARNsProvidedException
 
-    -- ** InvalidTagException
-    , _InvalidTagException
-
-    -- ** InvalidFileExistsBehaviorException
-    , _InvalidFileExistsBehaviorException
-
-    -- ** InvalidAlarmConfigException
-    , _InvalidAlarmConfigException
-
-    -- ** InstanceNameAlreadyRegisteredException
-    , _InstanceNameAlreadyRegisteredException
-
-    -- ** IAMUserARNRequiredException
-    , _IAMUserARNRequiredException
-
-    -- ** InvalidDeploymentGroupNameException
-    , _InvalidDeploymentGroupNameException
-
-    -- ** InvalidInstanceTypeException
-    , _InvalidInstanceTypeException
-
-    -- ** IAMSessionARNAlreadyRegisteredException
-    , _IAMSessionARNAlreadyRegisteredException
-
-    -- ** InvalidTrafficRoutingConfigurationException
-    , _InvalidTrafficRoutingConfigurationException
-
-    -- ** DescriptionTooLongException
-    , _DescriptionTooLongException
-
-    -- ** InvalidIAMUserARNException
-    , _InvalidIAMUserARNException
-
-    -- ** InvalidOnPremisesTagCombinationException
-    , _InvalidOnPremisesTagCombinationException
-
-    -- ** DeploymentNotStartedException
-    , _DeploymentNotStartedException
-
-    -- ** DeploymentConfigLimitExceededException
-    , _DeploymentConfigLimitExceededException
-
-    -- ** RoleRequiredException
-    , _RoleRequiredException
-
-    -- ** InvalidLoadBalancerInfoException
-    , _InvalidLoadBalancerInfoException
-
-    -- ** InvalidBlueGreenDeploymentConfigurationException
-    , _InvalidBlueGreenDeploymentConfigurationException
-
-    -- ** InvalidRoleException
-    , _InvalidRoleException
-
-    -- ** DeploymentConfigAlreadyExistsException
-    , _DeploymentConfigAlreadyExistsException
-
-    -- ** InvalidTargetInstancesException
-    , _InvalidTargetInstancesException
-
-    -- ** InvalidTagsToAddException
-    , _InvalidTagsToAddException
-
-    -- ** DeploymentLimitExceededException
-    , _DeploymentLimitExceededException
-
-    -- ** IAMUserARNAlreadyRegisteredException
-    , _IAMUserARNAlreadyRegisteredException
-
-    -- ** InvalidIAMSessionARNException
-    , _InvalidIAMSessionARNException
-
-    -- ** InstanceLimitExceededException
-    , _InstanceLimitExceededException
-
-    -- ** InvalidLifecycleEventHookExecutionIdException
-    , _InvalidLifecycleEventHookExecutionIdException
-
-    -- ** InvalidDeploymentStyleException
-    , _InvalidDeploymentStyleException
-
-    -- ** InvalidTargetFilterNameException
-    , _InvalidTargetFilterNameException
-
-    -- ** DeploymentTargetListSizeExceededException
-    , _DeploymentTargetListSizeExceededException
-
-    -- ** InvalidDeployedStateFilterException
-    , _InvalidDeployedStateFilterException
-
-    -- ** InvalidAutoScalingGroupException
-    , _InvalidAutoScalingGroupException
-
-    -- ** InvalidApplicationNameException
-    , _InvalidApplicationNameException
+    -- ** TagSetListLimitExceededException
+    , _TagSetListLimitExceededException
 
     -- ** GitHubAccountTokenDoesNotExistException
     , _GitHubAccountTokenDoesNotExistException
 
-    -- ** ApplicationDoesNotExistException
-    , _ApplicationDoesNotExistException
+    -- ** InvalidDeployedStateFilterException
+    , _InvalidDeployedStateFilterException
 
-    -- ** InvalidMinimumHealthyHostValueException
-    , _InvalidMinimumHealthyHostValueException
+    -- ** TriggerTargetsLimitExceededException
+    , _TriggerTargetsLimitExceededException
 
-    -- ** UnsupportedActionForDeploymentTypeException
-    , _UnsupportedActionForDeploymentTypeException
+    -- ** InvalidInstanceStatusException
+    , _InvalidInstanceStatusException
 
-    -- ** ResourceValidationException
-    , _ResourceValidationException
+    -- ** InvalidRegistrationStatusException
+    , _InvalidRegistrationStatusException
 
-    -- ** ARNNotSupportedException
-    , _ARNNotSupportedException
+    -- ** InstanceNotRegisteredException
+    , _InstanceNotRegisteredException
 
-    -- ** InvalidGitHubAccountTokenException
-    , _InvalidGitHubAccountTokenException
+    -- ** ApplicationNameRequiredException
+    , _ApplicationNameRequiredException
 
-    -- ** InvalidEC2TagCombinationException
-    , _InvalidEC2TagCombinationException
+    -- ** DeploymentTargetListSizeExceededException
+    , _DeploymentTargetListSizeExceededException
 
-    -- ** InvalidLifecycleEventHookExecutionStatusException
-    , _InvalidLifecycleEventHookExecutionStatusException
+    -- ** InvalidApplicationNameException
+    , _InvalidApplicationNameException
 
-    -- ** AlarmsLimitExceededException
-    , _AlarmsLimitExceededException
+    -- ** InvalidIAMSessionARNException
+    , _InvalidIAMSessionARNException
 
-    -- ** OperationNotSupportedException
-    , _OperationNotSupportedException
+    -- ** InvalidInstanceNameException
+    , _InvalidInstanceNameException
 
-    -- ** DeploymentTargetDoesNotExistException
-    , _DeploymentTargetDoesNotExistException
+    -- ** InvalidLifecycleEventHookExecutionIdException
+    , _InvalidLifecycleEventHookExecutionIdException
 
-    -- ** InvalidTagFilterException
-    , _InvalidTagFilterException
+    -- ** InvalidDeploymentConfigIdException
+    , _InvalidDeploymentConfigIdException
 
-    -- ** InvalidTriggerConfigException
-    , _InvalidTriggerConfigException
+    -- ** InvalidEC2TagException
+    , _InvalidEC2TagException
 
-    -- ** InvalidDeploymentWaitTypeException
-    , _InvalidDeploymentWaitTypeException
+    -- ** DeploymentConfigInUseException
+    , _DeploymentConfigInUseException
+
+    -- ** InvalidDeploymentStyleException
+    , _InvalidDeploymentStyleException
+
+    -- ** InvalidAutoRollbackConfigException
+    , _InvalidAutoRollbackConfigException
+
+    -- ** InvalidTagsToAddException
+    , _InvalidTagsToAddException
+
+    -- ** InvalidTargetInstancesException
+    , _InvalidTargetInstancesException
+
+    -- ** InvalidRevisionException
+    , _InvalidRevisionException
+
+    -- ** InvalidInstanceIdException
+    , _InvalidInstanceIdException
+
+    -- ** DeploymentGroupDoesNotExistException
+    , _DeploymentGroupDoesNotExistException
+
+    -- ** DeploymentIsNotInReadyStateException
+    , _DeploymentIsNotInReadyStateException
+
+    -- ** RoleRequiredException
+    , _RoleRequiredException
+
+    -- ** InvalidDeploymentIdException
+    , _InvalidDeploymentIdException
+
+    -- ** InvalidDeploymentConfigNameException
+    , _InvalidDeploymentConfigNameException
+
+    -- ** DeploymentNotStartedException
+    , _DeploymentNotStartedException
+
+    -- ** InvalidBucketNameFilterException
+    , _InvalidBucketNameFilterException
+
+    -- ** DeploymentGroupNameRequiredException
+    , _DeploymentGroupNameRequiredException
+
+    -- ** InvalidDeploymentGroupNameException
+    , _InvalidDeploymentGroupNameException
+
+    -- ** InvalidAlarmConfigException
+    , _InvalidAlarmConfigException
+
+    -- ** IAMSessionARNAlreadyRegisteredException
+    , _IAMSessionARNAlreadyRegisteredException
+
+    -- ** IAMUserARNRequiredException
+    , _IAMUserARNRequiredException
+
+    -- ** InvalidTargetException
+    , _InvalidTargetException
+
+    -- ** DescriptionTooLongException
+    , _DescriptionTooLongException
+
+    -- ** InvalidTrafficRoutingConfigurationException
+    , _InvalidTrafficRoutingConfigurationException
+
+    -- ** InvalidSortByException
+    , _InvalidSortByException
+
+    -- ** InvalidTimeRangeException
+    , _InvalidTimeRangeException
+
+    -- ** TagRequiredException
+    , _TagRequiredException
+
+    -- ** LifecycleHookLimitExceededException
+    , _LifecycleHookLimitExceededException
 
     -- ** InvalidIgnoreApplicationStopFailuresValueException
     , _InvalidIgnoreApplicationStopFailuresValueException
@@ -213,89 +195,86 @@ module Network.AWS.CodeDeploy
     -- ** InvalidUpdateOutdatedInstancesOnlyValueException
     , _InvalidUpdateOutdatedInstancesOnlyValueException
 
-    -- ** TagRequiredException
-    , _TagRequiredException
+    -- ** InvalidComputePlatformException
+    , _InvalidComputePlatformException
 
-    -- ** DeploymentGroupNameRequiredException
-    , _DeploymentGroupNameRequiredException
+    -- ** InvalidTagException
+    , _InvalidTagException
 
-    -- ** BucketNameFilterRequiredException
-    , _BucketNameFilterRequiredException
+    -- ** InvalidDeploymentWaitTypeException
+    , _InvalidDeploymentWaitTypeException
 
-    -- ** DeploymentConfigDoesNotExistException
-    , _DeploymentConfigDoesNotExistException
+    -- ** AlarmsLimitExceededException
+    , _AlarmsLimitExceededException
 
-    -- ** InvalidBucketNameFilterException
-    , _InvalidBucketNameFilterException
+    -- ** DeploymentAlreadyStartedException
+    , _DeploymentAlreadyStartedException
 
-    -- ** DeploymentGroupAlreadyExistsException
-    , _DeploymentGroupAlreadyExistsException
+    -- ** ARNNotSupportedException
+    , _ARNNotSupportedException
 
-    -- ** InvalidSortByException
-    , _InvalidSortByException
+    -- ** InvalidGitHubAccountTokenException
+    , _InvalidGitHubAccountTokenException
 
-    -- ** RevisionDoesNotExistException
-    , _RevisionDoesNotExistException
+    -- ** InvalidKeyPrefixFilterException
+    , _InvalidKeyPrefixFilterException
 
-    -- ** InvalidTargetException
-    , _InvalidTargetException
+    -- ** OperationNotSupportedException
+    , _OperationNotSupportedException
 
-    -- ** DeploymentGroupLimitExceededException
-    , _DeploymentGroupLimitExceededException
+    -- ** IAMARNRequiredException
+    , _IAMARNRequiredException
 
-    -- ** DeploymentGroupDoesNotExistException
-    , _DeploymentGroupDoesNotExistException
+    -- ** GitHubAccountTokenNameRequiredException
+    , _GitHubAccountTokenNameRequiredException
 
-    -- ** ThrottlingException
-    , _ThrottlingException
+    -- ** LifecycleEventAlreadyCompletedException
+    , _LifecycleEventAlreadyCompletedException
 
-    -- ** InvalidDeploymentConfigNameException
-    , _InvalidDeploymentConfigNameException
+    -- ** ApplicationDoesNotExistException
+    , _ApplicationDoesNotExistException
 
-    -- ** DeploymentConfigNameRequiredException
-    , _DeploymentConfigNameRequiredException
+    -- ** ApplicationAlreadyExistsException
+    , _ApplicationAlreadyExistsException
 
-    -- ** DeploymentIdRequiredException
-    , _DeploymentIdRequiredException
+    -- ** ApplicationLimitExceededException
+    , _ApplicationLimitExceededException
 
-    -- ** InvalidInstanceIdException
-    , _InvalidInstanceIdException
+    -- ** InvalidOperationException
+    , _InvalidOperationException
 
-    -- ** DeploymentIsNotInReadyStateException
-    , _DeploymentIsNotInReadyStateException
+    -- ** InvalidARNException
+    , _InvalidARNException
 
-    -- ** InvalidTargetGroupPairException
-    , _InvalidTargetGroupPairException
+    -- ** DeploymentTargetIdRequiredException
+    , _DeploymentTargetIdRequiredException
 
-    -- ** InvalidNextTokenException
-    , _InvalidNextTokenException
+    -- ** InvalidAutoScalingGroupException
+    , _InvalidAutoScalingGroupException
 
-    -- ** InstanceIdRequiredException
-    , _InstanceIdRequiredException
+    -- ** TagLimitExceededException
+    , _TagLimitExceededException
 
-    -- ** InvalidDeploymentIdException
-    , _InvalidDeploymentIdException
+    -- ** DeploymentLimitExceededException
+    , _DeploymentLimitExceededException
 
-    -- ** InvalidSortOrderException
-    , _InvalidSortOrderException
+    -- ** InstanceNameRequiredException
+    , _InstanceNameRequiredException
 
-    -- ** InvalidAutoRollbackConfigException
-    , _InvalidAutoRollbackConfigException
+    -- ** IAMUserARNAlreadyRegisteredException
+    , _IAMUserARNAlreadyRegisteredException
 
-    -- ** DeploymentAlreadyCompletedException
-    , _DeploymentAlreadyCompletedException
+    -- ** InvalidInputException
+    , _InvalidInputException
 
-    -- ** ECSServiceMappingLimitExceededException
-    , _ECSServiceMappingLimitExceededException
+    -- ** InvalidTargetFilterNameException
+    , _InvalidTargetFilterNameException
+
+    -- ** InstanceLimitExceededException
+    , _InstanceLimitExceededException
 
     -- ** DeploymentDoesNotExistException
     , _DeploymentDoesNotExistException
-
-    -- ** BatchLimitExceededException
-    , _BatchLimitExceededException
-
-    -- ** InvalidRevisionException
-    , _InvalidRevisionException
 
     -- ** RevisionRequiredException
     , _RevisionRequiredException
@@ -303,95 +282,116 @@ module Network.AWS.CodeDeploy
     -- ** InstanceDoesNotExistException
     , _InstanceDoesNotExistException
 
-    -- ** DeploymentConfigInUseException
-    , _DeploymentConfigInUseException
+    -- ** DeploymentAlreadyCompletedException
+    , _DeploymentAlreadyCompletedException
 
-    -- ** InvalidDeploymentConfigIdException
-    , _InvalidDeploymentConfigIdException
+    -- ** BatchLimitExceededException
+    , _BatchLimitExceededException
 
-    -- ** InvalidInputException
-    , _InvalidInputException
+    -- ** ECSServiceMappingLimitExceededException
+    , _ECSServiceMappingLimitExceededException
 
-    -- ** InvalidEC2TagException
-    , _InvalidEC2TagException
+    -- ** InvalidOnPremisesTagCombinationException
+    , _InvalidOnPremisesTagCombinationException
 
-    -- ** InvalidInstanceNameException
-    , _InvalidInstanceNameException
+    -- ** DeploymentConfigNameRequiredException
+    , _DeploymentConfigNameRequiredException
 
-    -- ** InstanceNameRequiredException
-    , _InstanceNameRequiredException
+    -- ** DeploymentConfigLimitExceededException
+    , _DeploymentConfigLimitExceededException
 
-    -- ** MultipleIAMARNsProvidedException
-    , _MultipleIAMARNsProvidedException
+    -- ** InvalidBlueGreenDeploymentConfigurationException
+    , _InvalidBlueGreenDeploymentConfigurationException
 
-    -- ** TriggerTargetsLimitExceededException
-    , _TriggerTargetsLimitExceededException
+    -- ** DeploymentIdRequiredException
+    , _DeploymentIdRequiredException
 
-    -- ** InvalidDeploymentStatusException
-    , _InvalidDeploymentStatusException
+    -- ** ThrottlingException
+    , _ThrottlingException
 
-    -- ** InvalidRegistrationStatusException
-    , _InvalidRegistrationStatusException
+    -- ** InvalidLoadBalancerInfoException
+    , _InvalidLoadBalancerInfoException
 
-    -- ** ApplicationNameRequiredException
-    , _ApplicationNameRequiredException
+    -- ** DeploymentConfigAlreadyExistsException
+    , _DeploymentConfigAlreadyExistsException
 
-    -- ** InstanceNotRegisteredException
-    , _InstanceNotRegisteredException
+    -- ** InvalidNextTokenException
+    , _InvalidNextTokenException
 
-    -- ** ApplicationAlreadyExistsException
-    , _ApplicationAlreadyExistsException
+    -- ** InstanceIdRequiredException
+    , _InstanceIdRequiredException
 
-    -- ** InvalidInstanceStatusException
-    , _InvalidInstanceStatusException
+    -- ** InvalidTargetGroupPairException
+    , _InvalidTargetGroupPairException
 
-    -- ** InvalidDeploymentTargetIdException
-    , _InvalidDeploymentTargetIdException
+    -- ** InvalidRoleException
+    , _InvalidRoleException
 
-    -- ** TagLimitExceededException
-    , _TagLimitExceededException
+    -- ** InvalidSortOrderException
+    , _InvalidSortOrderException
 
-    -- ** ApplicationLimitExceededException
-    , _ApplicationLimitExceededException
+    -- ** DeploymentConfigDoesNotExistException
+    , _DeploymentConfigDoesNotExistException
 
-    -- ** TagSetListLimitExceededException
-    , _TagSetListLimitExceededException
+    -- ** RevisionDoesNotExistException
+    , _RevisionDoesNotExistException
 
-    -- ** InvalidARNException
-    , _InvalidARNException
+    -- ** DeploymentGroupAlreadyExistsException
+    , _DeploymentGroupAlreadyExistsException
 
-    -- ** InvalidOperationException
-    , _InvalidOperationException
+    -- ** DeploymentGroupLimitExceededException
+    , _DeploymentGroupLimitExceededException
 
-    -- ** DeploymentTargetIdRequiredException
-    , _DeploymentTargetIdRequiredException
+    -- ** InvalidInstanceTypeException
+    , _InvalidInstanceTypeException
 
-    -- ** GitHubAccountTokenNameRequiredException
-    , _GitHubAccountTokenNameRequiredException
+    -- ** BucketNameFilterRequiredException
+    , _BucketNameFilterRequiredException
 
-    -- ** InvalidECSServiceException
-    , _InvalidECSServiceException
+    -- ** InvalidIAMUserARNException
+    , _InvalidIAMUserARNException
 
-    -- ** InvalidDeploymentInstanceTypeException
-    , _InvalidDeploymentInstanceTypeException
+    -- ** InstanceNameAlreadyRegisteredException
+    , _InstanceNameAlreadyRegisteredException
 
-    -- ** IAMARNRequiredException
-    , _IAMARNRequiredException
+    -- ** InvalidTriggerConfigException
+    , _InvalidTriggerConfigException
 
-    -- ** InvalidGitHubAccountTokenNameException
-    , _InvalidGitHubAccountTokenNameException
+    -- ** DeploymentTargetDoesNotExistException
+    , _DeploymentTargetDoesNotExistException
 
-    -- ** LifecycleEventAlreadyCompletedException
-    , _LifecycleEventAlreadyCompletedException
+    -- ** InvalidTagFilterException
+    , _InvalidTagFilterException
 
-    -- ** InvalidKeyPrefixFilterException
-    , _InvalidKeyPrefixFilterException
+    -- ** InvalidFileExistsBehaviorException
+    , _InvalidFileExistsBehaviorException
 
     -- ** ResourceARNRequiredException
     , _ResourceARNRequiredException
 
-    -- ** DeploymentAlreadyStartedException
-    , _DeploymentAlreadyStartedException
+    -- ** InvalidEC2TagCombinationException
+    , _InvalidEC2TagCombinationException
+
+    -- ** InvalidLifecycleEventHookExecutionStatusException
+    , _InvalidLifecycleEventHookExecutionStatusException
+
+    -- ** InvalidDeploymentInstanceTypeException
+    , _InvalidDeploymentInstanceTypeException
+
+    -- ** InvalidGitHubAccountTokenNameException
+    , _InvalidGitHubAccountTokenNameException
+
+    -- ** InvalidECSServiceException
+    , _InvalidECSServiceException
+
+    -- ** ResourceValidationException
+    , _ResourceValidationException
+
+    -- ** InvalidMinimumHealthyHostValueException
+    , _InvalidMinimumHealthyHostValueException
+
+    -- ** UnsupportedActionForDeploymentTypeException
+    , _UnsupportedActionForDeploymentTypeException
 
     -- * Waiters
     -- $waiters

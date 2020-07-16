@@ -26,7 +26,7 @@ import Network.AWS.Prelude
 --
 --
 -- /See:/ 'phase2EncryptionAlgorithmsRequestListValue' smart constructor.
-newtype Phase2EncryptionAlgorithmsRequestListValue = Phase2EncryptionAlgorithmsRequestListValue'{_pearlveValue
+newtype Phase2EncryptionAlgorithmsRequestListValue = Phase2EncryptionAlgorithmsRequestListValue'{_phs2encryptnalgrthmsrqstlstvlValue
                                                                                                  ::
                                                                                                  Maybe
                                                                                                    Text}
@@ -38,16 +38,16 @@ newtype Phase2EncryptionAlgorithmsRequestListValue = Phase2EncryptionAlgorithmsR
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'pearlveValue' - The encryption algorithm.
+-- * 'phs2encryptnalgrthmsrqstlstvlValue' - The encryption algorithm.
 phase2EncryptionAlgorithmsRequestListValue
     :: Phase2EncryptionAlgorithmsRequestListValue
 phase2EncryptionAlgorithmsRequestListValue
-  = Phase2EncryptionAlgorithmsRequestListValue'{_pearlveValue
+  = Phase2EncryptionAlgorithmsRequestListValue'{_phs2encryptnalgrthmsrqstlstvlValue
                                                   = Nothing}
 
 -- | The encryption algorithm.
-pearlveValue :: Lens' Phase2EncryptionAlgorithmsRequestListValue (Maybe Text)
-pearlveValue = lens _pearlveValue (\ s a -> s{_pearlveValue = a})
+phs2encryptnalgrthmsrqstlstvlValue :: Lens' Phase2EncryptionAlgorithmsRequestListValue (Maybe Text)
+phs2encryptnalgrthmsrqstlstvlValue = lens _phs2encryptnalgrthmsrqstlstvlValue (\ s a -> s{_phs2encryptnalgrthmsrqstlstvlValue = a})
 
 instance Hashable
            Phase2EncryptionAlgorithmsRequestListValue
@@ -62,4 +62,5 @@ instance ToQuery
          where
         toQuery
           Phase2EncryptionAlgorithmsRequestListValue'{..}
-          = mconcat ["Value" =: _pearlveValue]
+          = mconcat
+              ["Value" =: _phs2encryptnalgrthmsrqstlstvlValue]

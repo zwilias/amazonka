@@ -32,38 +32,38 @@ module Network.AWS.DeviceFarm
     -- * Errors
     -- $errors
 
-    -- ** NotEligibleException
-    , _NotEligibleException
-
-    -- ** CannotDeleteException
-    , _CannotDeleteException
-
-    -- ** IdempotencyException
-    , _IdempotencyException
-
-    -- ** TooManyTagsException
-    , _TooManyTagsException
-
-    -- ** ArgumentException
-    , _ArgumentException
-
-    -- ** NotFoundException
-    , _NotFoundException
+    -- ** TagPolicyException
+    , _TagPolicyException
 
     -- ** InternalServiceException
     , _InternalServiceException
 
-    -- ** TagPolicyException
-    , _TagPolicyException
+    -- ** CannotDeleteException
+    , _CannotDeleteException
 
-    -- ** TagOperationException
-    , _TagOperationException
+    -- ** TooManyTagsException
+    , _TooManyTagsException
+
+    -- ** InvalidOperationException
+    , _InvalidOperationException
 
     -- ** ServiceAccountException
     , _ServiceAccountException
 
-    -- ** InvalidOperationException
-    , _InvalidOperationException
+    -- ** TagOperationException
+    , _TagOperationException
+
+    -- ** IdempotencyException
+    , _IdempotencyException
+
+    -- ** NotEligibleException
+    , _NotEligibleException
+
+    -- ** NotFoundException
+    , _NotFoundException
+
+    -- ** ArgumentException
+    , _ArgumentException
 
     -- ** LimitExceededException
     , _LimitExceededException

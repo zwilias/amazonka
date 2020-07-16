@@ -20,23 +20,23 @@ module Network.AWS.MediaConvert
     -- * Errors
     -- $errors
 
-    -- ** ConflictException
-    , _ConflictException
-
-    -- ** ForbiddenException
-    , _ForbiddenException
-
-    -- ** NotFoundException
-    , _NotFoundException
+    -- ** InternalServerErrorException
+    , _InternalServerErrorException
 
     -- ** TooManyRequestsException
     , _TooManyRequestsException
 
-    -- ** InternalServerErrorException
-    , _InternalServerErrorException
+    -- ** ForbiddenException
+    , _ForbiddenException
 
     -- ** BadRequestException
     , _BadRequestException
+
+    -- ** NotFoundException
+    , _NotFoundException
+
+    -- ** ConflictException
+    , _ConflictException
 
     -- * Waiters
     -- $waiters

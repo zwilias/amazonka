@@ -20,29 +20,29 @@ module Network.AWS.MachineLearning
     -- * Errors
     -- $errors
 
-    -- ** InvalidTagException
-    , _InvalidTagException
-
-    -- ** InternalServerException
-    , _InternalServerException
-
-    -- ** InvalidInputException
-    , _InvalidInputException
-
     -- ** IdempotentParameterMismatchException
     , _IdempotentParameterMismatchException
 
-    -- ** TagLimitExceededException
-    , _TagLimitExceededException
-
-    -- ** PredictorNotMountedException
-    , _PredictorNotMountedException
+    -- ** InvalidTagException
+    , _InvalidTagException
 
     -- ** ResourceNotFoundException
     , _ResourceNotFoundException
 
+    -- ** TagLimitExceededException
+    , _TagLimitExceededException
+
+    -- ** InvalidInputException
+    , _InvalidInputException
+
+    -- ** InternalServerException
+    , _InternalServerException
+
     -- ** LimitExceededException
     , _LimitExceededException
+
+    -- ** PredictorNotMountedException
+    , _PredictorNotMountedException
 
     -- * Waiters
     -- $waiters

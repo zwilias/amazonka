@@ -26,20 +26,20 @@ module Network.AWS.LexModels
     -- ** PreconditionFailedException
     , _PreconditionFailedException
 
-    -- ** ConflictException
-    , _ConflictException
-
-    -- ** NotFoundException
-    , _NotFoundException
-
     -- ** InternalFailureException
     , _InternalFailureException
 
     -- ** BadRequestException
     , _BadRequestException
 
+    -- ** NotFoundException
+    , _NotFoundException
+
     -- ** LimitExceededException
     , _LimitExceededException
+
+    -- ** ConflictException
+    , _ConflictException
 
     -- ** ResourceInUseException
     , _ResourceInUseException

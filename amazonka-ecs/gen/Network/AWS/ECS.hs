@@ -26,29 +26,29 @@ module Network.AWS.ECS
     -- * Errors
     -- $errors
 
-    -- ** AccessDeniedException
-    , _AccessDeniedException
-
-    -- ** InvalidParameterException
-    , _InvalidParameterException
-
-    -- ** ServerException
-    , _ServerException
+    -- ** ServiceNotActiveException
+    , _ServiceNotActiveException
 
     -- ** ClusterContainsTasksException
     , _ClusterContainsTasksException
 
-    -- ** PlatformUnknownException
-    , _PlatformUnknownException
+    -- ** ServerException
+    , _ServerException
 
-    -- ** ClusterContainsServicesException
-    , _ClusterContainsServicesException
+    -- ** InvalidParameterException
+    , _InvalidParameterException
 
-    -- ** ClusterContainsContainerInstancesException
-    , _ClusterContainsContainerInstancesException
+    -- ** BlockedException
+    , _BlockedException
 
-    -- ** ServiceNotActiveException
-    , _ServiceNotActiveException
+    -- ** AccessDeniedException
+    , _AccessDeniedException
+
+    -- ** PlatformTaskDefinitionIncompatibilityException
+    , _PlatformTaskDefinitionIncompatibilityException
+
+    -- ** ServiceNotFoundException
+    , _ServiceNotFoundException
 
     -- ** ClusterNotFoundException
     , _ClusterNotFoundException
@@ -56,32 +56,32 @@ module Network.AWS.ECS
     -- ** NoUpdateAvailableException
     , _NoUpdateAvailableException
 
-    -- ** UnsupportedFeatureException
-    , _UnsupportedFeatureException
+    -- ** ClientException
+    , _ClientException
 
-    -- ** ServiceNotFoundException
-    , _ServiceNotFoundException
+    -- ** ClusterContainsContainerInstancesException
+    , _ClusterContainsContainerInstancesException
 
-    -- ** PlatformTaskDefinitionIncompatibilityException
-    , _PlatformTaskDefinitionIncompatibilityException
+    -- ** ClusterContainsServicesException
+    , _ClusterContainsServicesException
 
-    -- ** MissingVersionException
-    , _MissingVersionException
-
-    -- ** UpdateInProgressException
-    , _UpdateInProgressException
-
-    -- ** BlockedException
-    , _BlockedException
-
-    -- ** TargetNotFoundException
-    , _TargetNotFoundException
+    -- ** PlatformUnknownException
+    , _PlatformUnknownException
 
     -- ** AttributeLimitExceededException
     , _AttributeLimitExceededException
 
-    -- ** ClientException
-    , _ClientException
+    -- ** TargetNotFoundException
+    , _TargetNotFoundException
+
+    -- ** UpdateInProgressException
+    , _UpdateInProgressException
+
+    -- ** MissingVersionException
+    , _MissingVersionException
+
+    -- ** UnsupportedFeatureException
+    , _UnsupportedFeatureException
 
     -- * Waiters
     -- $waiters

@@ -23,17 +23,17 @@ module Network.AWS.DynamoDBStreams
     -- * Errors
     -- $errors
 
-    -- ** ExpiredIteratorException
-    , _ExpiredIteratorException
-
-    -- ** InternalServerError
-    , _InternalServerError
-
     -- ** TrimmedDataAccessException
     , _TrimmedDataAccessException
 
     -- ** ResourceNotFoundException
     , _ResourceNotFoundException
+
+    -- ** InternalServerError
+    , _InternalServerError
+
+    -- ** ExpiredIteratorException
+    , _ExpiredIteratorException
 
     -- ** LimitExceededException
     , _LimitExceededException

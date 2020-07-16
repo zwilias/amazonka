@@ -22,11 +22,11 @@ module Network.AWS.APIGatewayManagementAPI
     -- * Errors
     -- $errors
 
-    -- ** PayloadTooLargeException
-    , _PayloadTooLargeException
-
     -- ** ForbiddenException
     , _ForbiddenException
+
+    -- ** PayloadTooLargeException
+    , _PayloadTooLargeException
 
     -- ** GoneException
     , _GoneException

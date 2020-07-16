@@ -16,16 +16,16 @@ module Network.AWS.AppSync.Types
       appSync
 
     -- * Errors
-    , _APIKeyValidityOutOfBoundsException
-    , _AccessDeniedException
-    , _APIKeyLimitExceededException
-    , _APILimitExceededException
-    , _NotFoundException
-    , _GraphQLSchemaException
-    , _ConcurrentModificationException
     , _InternalFailureException
-    , _UnauthorizedException
+    , _GraphQLSchemaException
+    , _AccessDeniedException
     , _BadRequestException
+    , _APIKeyLimitExceededException
+    , _UnauthorizedException
+    , _ConcurrentModificationException
+    , _NotFoundException
+    , _APIKeyValidityOutOfBoundsException
+    , _APILimitExceededException
     , _LimitExceededException
 
     -- * APICacheStatus
@@ -352,13 +352,21 @@ appSync
           | has (hasStatus 509) e = Just "limit_exceeded"
           | otherwise = Nothing
 
--- | The API key expiration must be set to a value between 1 and 365 days from creation (for @CreateApiKey@ ) or from update (for @UpdateApiKey@ ).
+-- | An internal AWS AppSync error occurred. Try your request again.
 --
 --
-_APIKeyValidityOutOfBoundsException :: AsError a => Getting (First ServiceError) a ServiceError
-_APIKeyValidityOutOfBoundsException
+_InternalFailureException :: AsError a => Getting (First ServiceError) a ServiceError
+_InternalFailureException
   = _MatchServiceError appSync
-      "ApiKeyValidityOutOfBoundsException"
+      "InternalFailureException"
+      . hasStatus 500
+
+-- | The GraphQL schema is not valid.
+--
+--
+_GraphQLSchemaException :: AsError a => Getting (First ServiceError) a ServiceError
+_GraphQLSchemaException
+  = _MatchServiceError appSync "GraphQLSchemaException"
       . hasStatus 400
 
 -- | You do not have access to perform this operation on this resource.
@@ -369,6 +377,14 @@ _AccessDeniedException
   = _MatchServiceError appSync "AccessDeniedException"
       . hasStatus 403
 
+-- | The request is not well formed. For example, a value is invalid or a required field is missing. Check the field values, and then try again. 
+--
+--
+_BadRequestException :: AsError a => Getting (First ServiceError) a ServiceError
+_BadRequestException
+  = _MatchServiceError appSync "BadRequestException" .
+      hasStatus 400
+
 -- | The API key exceeded a limit. Try your request again.
 --
 --
@@ -378,30 +394,13 @@ _APIKeyLimitExceededException
       "ApiKeyLimitExceededException"
       . hasStatus 400
 
--- | The GraphQL API exceeded a limit. Try your request again.
+-- | You are not authorized to perform this operation.
 --
 --
-_APILimitExceededException :: AsError a => Getting (First ServiceError) a ServiceError
-_APILimitExceededException
-  = _MatchServiceError appSync
-      "ApiLimitExceededException"
-      . hasStatus 400
-
--- | The resource specified in the request was not found. Check the resource, and then try again.
---
---
-_NotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
-_NotFoundException
-  = _MatchServiceError appSync "NotFoundException" .
-      hasStatus 404
-
--- | The GraphQL schema is not valid.
---
---
-_GraphQLSchemaException :: AsError a => Getting (First ServiceError) a ServiceError
-_GraphQLSchemaException
-  = _MatchServiceError appSync "GraphQLSchemaException"
-      . hasStatus 400
+_UnauthorizedException :: AsError a => Getting (First ServiceError) a ServiceError
+_UnauthorizedException
+  = _MatchServiceError appSync "UnauthorizedException"
+      . hasStatus 401
 
 -- | Another modification is in progress at this time and it must complete before you can make your change. 
 --
@@ -412,30 +411,31 @@ _ConcurrentModificationException
       "ConcurrentModificationException"
       . hasStatus 409
 
--- | An internal AWS AppSync error occurred. Try your request again.
+-- | The resource specified in the request was not found. Check the resource, and then try again.
 --
 --
-_InternalFailureException :: AsError a => Getting (First ServiceError) a ServiceError
-_InternalFailureException
+_NotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
+_NotFoundException
+  = _MatchServiceError appSync "NotFoundException" .
+      hasStatus 404
+
+-- | The API key expiration must be set to a value between 1 and 365 days from creation (for @CreateApiKey@ ) or from update (for @UpdateApiKey@ ).
+--
+--
+_APIKeyValidityOutOfBoundsException :: AsError a => Getting (First ServiceError) a ServiceError
+_APIKeyValidityOutOfBoundsException
   = _MatchServiceError appSync
-      "InternalFailureException"
-      . hasStatus 500
+      "ApiKeyValidityOutOfBoundsException"
+      . hasStatus 400
 
--- | You are not authorized to perform this operation.
+-- | The GraphQL API exceeded a limit. Try your request again.
 --
 --
-_UnauthorizedException :: AsError a => Getting (First ServiceError) a ServiceError
-_UnauthorizedException
-  = _MatchServiceError appSync "UnauthorizedException"
-      . hasStatus 401
-
--- | The request is not well formed. For example, a value is invalid or a required field is missing. Check the field values, and then try again. 
---
---
-_BadRequestException :: AsError a => Getting (First ServiceError) a ServiceError
-_BadRequestException
-  = _MatchServiceError appSync "BadRequestException" .
-      hasStatus 400
+_APILimitExceededException :: AsError a => Getting (First ServiceError) a ServiceError
+_APILimitExceededException
+  = _MatchServiceError appSync
+      "ApiLimitExceededException"
+      . hasStatus 400
 
 -- | The request exceeded a limit. Try your request again.
 --

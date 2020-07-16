@@ -22,38 +22,38 @@ module Network.AWS.LexRuntime
     -- * Errors
     -- $errors
 
-    -- ** NotAcceptableException
-    , _NotAcceptableException
-
     -- ** DependencyFailedException
     , _DependencyFailedException
-
-    -- ** UnsupportedMediaTypeException
-    , _UnsupportedMediaTypeException
-
-    -- ** ConflictException
-    , _ConflictException
-
-    -- ** NotFoundException
-    , _NotFoundException
-
-    -- ** RequestTimeoutException
-    , _RequestTimeoutException
-
-    -- ** LoopDetectedException
-    , _LoopDetectedException
 
     -- ** InternalFailureException
     , _InternalFailureException
 
-    -- ** BadGatewayException
-    , _BadGatewayException
-
     -- ** BadRequestException
     , _BadRequestException
 
+    -- ** BadGatewayException
+    , _BadGatewayException
+
+    -- ** NotAcceptableException
+    , _NotAcceptableException
+
+    -- ** LoopDetectedException
+    , _LoopDetectedException
+
+    -- ** RequestTimeoutException
+    , _RequestTimeoutException
+
+    -- ** NotFoundException
+    , _NotFoundException
+
     -- ** LimitExceededException
     , _LimitExceededException
+
+    -- ** ConflictException
+    , _ConflictException
+
+    -- ** UnsupportedMediaTypeException
+    , _UnsupportedMediaTypeException
 
     -- * Waiters
     -- $waiters

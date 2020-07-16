@@ -23,26 +23,26 @@ module Network.AWS.APIGateway
     -- * Errors
     -- $errors
 
-    -- ** ConflictException
-    , _ConflictException
-
-    -- ** NotFoundException
-    , _NotFoundException
-
     -- ** TooManyRequestsException
     , _TooManyRequestsException
-
-    -- ** ServiceUnavailableException
-    , _ServiceUnavailableException
-
-    -- ** UnauthorizedException
-    , _UnauthorizedException
 
     -- ** BadRequestException
     , _BadRequestException
 
+    -- ** UnauthorizedException
+    , _UnauthorizedException
+
+    -- ** ServiceUnavailableException
+    , _ServiceUnavailableException
+
+    -- ** NotFoundException
+    , _NotFoundException
+
     -- ** LimitExceededException
     , _LimitExceededException
+
+    -- ** ConflictException
+    , _ConflictException
 
     -- * Waiters
     -- $waiters

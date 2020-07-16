@@ -42,7 +42,7 @@ module Network.AWS.Glue.UpdateCrawler
     , updateCrawlerResponse
     , UpdateCrawlerResponse
     -- * Response Lenses
-    , uccrsResponseStatus
+    , updtcrwlrrsResponseStatus
     ) where
 
 import Network.AWS.Glue.Types
@@ -182,7 +182,7 @@ instance ToQuery UpdateCrawler where
         toQuery = const mempty
 
 -- | /See:/ 'updateCrawlerResponse' smart constructor.
-newtype UpdateCrawlerResponse = UpdateCrawlerResponse'{_uccrsResponseStatus
+newtype UpdateCrawlerResponse = UpdateCrawlerResponse'{_updtcrwlrrsResponseStatus
                                                        :: Int}
                                   deriving (Eq, Read, Show, Data, Typeable,
                                             Generic)
@@ -191,16 +191,16 @@ newtype UpdateCrawlerResponse = UpdateCrawlerResponse'{_uccrsResponseStatus
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'uccrsResponseStatus' - -- | The response status code.
+-- * 'updtcrwlrrsResponseStatus' - -- | The response status code.
 updateCrawlerResponse
-    :: Int -- ^ 'uccrsResponseStatus'
+    :: Int -- ^ 'updtcrwlrrsResponseStatus'
     -> UpdateCrawlerResponse
 updateCrawlerResponse pResponseStatus_
-  = UpdateCrawlerResponse'{_uccrsResponseStatus =
+  = UpdateCrawlerResponse'{_updtcrwlrrsResponseStatus =
                              pResponseStatus_}
 
 -- | -- | The response status code.
-uccrsResponseStatus :: Lens' UpdateCrawlerResponse Int
-uccrsResponseStatus = lens _uccrsResponseStatus (\ s a -> s{_uccrsResponseStatus = a})
+updtcrwlrrsResponseStatus :: Lens' UpdateCrawlerResponse Int
+updtcrwlrrsResponseStatus = lens _updtcrwlrrsResponseStatus (\ s a -> s{_updtcrwlrrsResponseStatus = a})
 
 instance NFData UpdateCrawlerResponse where

@@ -16,19 +16,19 @@ module Network.AWS.Rekognition.Types
       rekognition
 
     -- * Errors
-    , _AccessDeniedException
-    , _VideoTooLargeException
-    , _InvalidParameterException
-    , _InvalidImageFormatException
-    , _ResourceAlreadyExistsException
-    , _InvalidS3ObjectException
-    , _ProvisionedThroughputExceededException
-    , _ImageTooLargeException
-    , _ThrottlingException
-    , _InternalServerError
     , _IdempotentParameterMismatchException
-    , _ResourceNotFoundException
+    , _InvalidImageFormatException
+    , _InvalidParameterException
+    , _AccessDeniedException
+    , _ImageTooLargeException
     , _InvalidPaginationTokenException
+    , _ProvisionedThroughputExceededException
+    , _ResourceNotFoundException
+    , _InvalidS3ObjectException
+    , _ResourceAlreadyExistsException
+    , _InternalServerError
+    , _ThrottlingException
+    , _VideoTooLargeException
     , _LimitExceededException
     , _ResourceInUseException
 
@@ -492,29 +492,13 @@ rekognition
           | has (hasStatus 509) e = Just "limit_exceeded"
           | otherwise = Nothing
 
--- | You are not authorized to perform the action.
+-- | A @ClientRequestToken@ input parameter was reused with an operation, but at least one of the other input parameters is different from the previous call to the operation.
 --
 --
-_AccessDeniedException :: AsError a => Getting (First ServiceError) a ServiceError
-_AccessDeniedException
+_IdempotentParameterMismatchException :: AsError a => Getting (First ServiceError) a ServiceError
+_IdempotentParameterMismatchException
   = _MatchServiceError rekognition
-      "AccessDeniedException"
-
--- | The file size or duration of the supplied media is too large. The maximum file size is 8GB. The maximum duration is 2 hours. 
---
---
-_VideoTooLargeException :: AsError a => Getting (First ServiceError) a ServiceError
-_VideoTooLargeException
-  = _MatchServiceError rekognition
-      "VideoTooLargeException"
-
--- | Input parameter violated a constraint. Validate your parameter before calling the API operation again.
---
---
-_InvalidParameterException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidParameterException
-  = _MatchServiceError rekognition
-      "InvalidParameterException"
+      "IdempotentParameterMismatchException"
 
 -- | The provided image format is not supported. 
 --
@@ -524,29 +508,21 @@ _InvalidImageFormatException
   = _MatchServiceError rekognition
       "InvalidImageFormatException"
 
--- | A collection with the specified ID already exists.
+-- | Input parameter violated a constraint. Validate your parameter before calling the API operation again.
 --
 --
-_ResourceAlreadyExistsException :: AsError a => Getting (First ServiceError) a ServiceError
-_ResourceAlreadyExistsException
+_InvalidParameterException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidParameterException
   = _MatchServiceError rekognition
-      "ResourceAlreadyExistsException"
+      "InvalidParameterException"
 
--- | Amazon Rekognition is unable to access the S3 object specified in the request.
+-- | You are not authorized to perform the action.
 --
 --
-_InvalidS3ObjectException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidS3ObjectException
+_AccessDeniedException :: AsError a => Getting (First ServiceError) a ServiceError
+_AccessDeniedException
   = _MatchServiceError rekognition
-      "InvalidS3ObjectException"
-
--- | The number of requests exceeded your throughput limit. If you want to increase this limit, contact Amazon Rekognition.
---
---
-_ProvisionedThroughputExceededException :: AsError a => Getting (First ServiceError) a ServiceError
-_ProvisionedThroughputExceededException
-  = _MatchServiceError rekognition
-      "ProvisionedThroughputExceededException"
+      "AccessDeniedException"
 
 -- | The input image size exceeds the allowed limit. For more information, see 'limits' . 
 --
@@ -556,29 +532,21 @@ _ImageTooLargeException
   = _MatchServiceError rekognition
       "ImageTooLargeException"
 
--- | Amazon Rekognition is temporarily unable to process the request. Try your call again.
+-- | Pagination token in the request is not valid.
 --
 --
-_ThrottlingException :: AsError a => Getting (First ServiceError) a ServiceError
-_ThrottlingException
+_InvalidPaginationTokenException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidPaginationTokenException
   = _MatchServiceError rekognition
-      "ThrottlingException"
+      "InvalidPaginationTokenException"
 
--- | Amazon Rekognition experienced a service issue. Try your call again.
+-- | The number of requests exceeded your throughput limit. If you want to increase this limit, contact Amazon Rekognition.
 --
 --
-_InternalServerError :: AsError a => Getting (First ServiceError) a ServiceError
-_InternalServerError
+_ProvisionedThroughputExceededException :: AsError a => Getting (First ServiceError) a ServiceError
+_ProvisionedThroughputExceededException
   = _MatchServiceError rekognition
-      "InternalServerError"
-
--- | A @ClientRequestToken@ input parameter was reused with an operation, but at least one of the other input parameters is different from the previous call to the operation.
---
---
-_IdempotentParameterMismatchException :: AsError a => Getting (First ServiceError) a ServiceError
-_IdempotentParameterMismatchException
-  = _MatchServiceError rekognition
-      "IdempotentParameterMismatchException"
+      "ProvisionedThroughputExceededException"
 
 -- | The collection specified in the request cannot be found.
 --
@@ -588,13 +556,45 @@ _ResourceNotFoundException
   = _MatchServiceError rekognition
       "ResourceNotFoundException"
 
--- | Pagination token in the request is not valid.
+-- | Amazon Rekognition is unable to access the S3 object specified in the request.
 --
 --
-_InvalidPaginationTokenException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidPaginationTokenException
+_InvalidS3ObjectException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidS3ObjectException
   = _MatchServiceError rekognition
-      "InvalidPaginationTokenException"
+      "InvalidS3ObjectException"
+
+-- | A collection with the specified ID already exists.
+--
+--
+_ResourceAlreadyExistsException :: AsError a => Getting (First ServiceError) a ServiceError
+_ResourceAlreadyExistsException
+  = _MatchServiceError rekognition
+      "ResourceAlreadyExistsException"
+
+-- | Amazon Rekognition experienced a service issue. Try your call again.
+--
+--
+_InternalServerError :: AsError a => Getting (First ServiceError) a ServiceError
+_InternalServerError
+  = _MatchServiceError rekognition
+      "InternalServerError"
+
+-- | Amazon Rekognition is temporarily unable to process the request. Try your call again.
+--
+--
+_ThrottlingException :: AsError a => Getting (First ServiceError) a ServiceError
+_ThrottlingException
+  = _MatchServiceError rekognition
+      "ThrottlingException"
+
+-- | The file size or duration of the supplied media is too large. The maximum file size is 8GB. The maximum duration is 2 hours. 
+--
+--
+_VideoTooLargeException :: AsError a => Getting (First ServiceError) a ServiceError
+_VideoTooLargeException
+  = _MatchServiceError rekognition
+      "VideoTooLargeException"
 
 -- | An Amazon Rekognition service limit was exceeded. For example, if you start too many Rekognition Video jobs concurrently, calls to start operations (@StartLabelDetection@ , for example) will raise a @LimitExceededException@ exception (HTTP status code: 400) until the number of concurrently running jobs is below the Amazon Rekognition service limit. 
 --

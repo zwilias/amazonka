@@ -16,12 +16,12 @@ module Network.AWS.MediaPackage.Types
       mediaPackage
 
     -- * Errors
-    , _UnprocessableEntityException
-    , _ForbiddenException
-    , _NotFoundException
-    , _TooManyRequestsException
     , _InternalServerErrorException
+    , _TooManyRequestsException
+    , _ForbiddenException
+    , _UnprocessableEntityException
     , _ServiceUnavailableException
+    , _NotFoundException
 
     -- * AdMarkers
     , AdMarkers (..)
@@ -251,25 +251,12 @@ mediaPackage
           | has (hasStatus 509) e = Just "limit_exceeded"
           | otherwise = Nothing
 
--- | The parameters sent in the request are not valid.
-_UnprocessableEntityException :: AsError a => Getting (First ServiceError) a ServiceError
-_UnprocessableEntityException
+-- | An unexpected error occurred.
+_InternalServerErrorException :: AsError a => Getting (First ServiceError) a ServiceError
+_InternalServerErrorException
   = _MatchServiceError mediaPackage
-      "UnprocessableEntityException"
-      . hasStatus 422
-
--- | The client is not authorized to access the requested resource.
-_ForbiddenException :: AsError a => Getting (First ServiceError) a ServiceError
-_ForbiddenException
-  = _MatchServiceError mediaPackage
-      "ForbiddenException"
-      . hasStatus 403
-
--- | The requested resource does not exist.
-_NotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
-_NotFoundException
-  = _MatchServiceError mediaPackage "NotFoundException"
-      . hasStatus 404
+      "InternalServerErrorException"
+      . hasStatus 500
 
 -- | The client has exceeded their resource or throttling limits.
 _TooManyRequestsException :: AsError a => Getting (First ServiceError) a ServiceError
@@ -278,12 +265,19 @@ _TooManyRequestsException
       "TooManyRequestsException"
       . hasStatus 429
 
--- | An unexpected error occurred.
-_InternalServerErrorException :: AsError a => Getting (First ServiceError) a ServiceError
-_InternalServerErrorException
+-- | The client is not authorized to access the requested resource.
+_ForbiddenException :: AsError a => Getting (First ServiceError) a ServiceError
+_ForbiddenException
   = _MatchServiceError mediaPackage
-      "InternalServerErrorException"
-      . hasStatus 500
+      "ForbiddenException"
+      . hasStatus 403
+
+-- | The parameters sent in the request are not valid.
+_UnprocessableEntityException :: AsError a => Getting (First ServiceError) a ServiceError
+_UnprocessableEntityException
+  = _MatchServiceError mediaPackage
+      "UnprocessableEntityException"
+      . hasStatus 422
 
 -- | An unexpected error occurred.
 _ServiceUnavailableException :: AsError a => Getting (First ServiceError) a ServiceError
@@ -291,3 +285,9 @@ _ServiceUnavailableException
   = _MatchServiceError mediaPackage
       "ServiceUnavailableException"
       . hasStatus 503
+
+-- | The requested resource does not exist.
+_NotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
+_NotFoundException
+  = _MatchServiceError mediaPackage "NotFoundException"
+      . hasStatus 404

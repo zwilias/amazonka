@@ -27,8 +27,8 @@ module Network.AWS.EC2.DeleteInternetGateway
       deleteInternetGateway
     , DeleteInternetGateway
     -- * Request Lenses
-    , digiDryRun
-    , digiInternetGatewayId
+    , dltintrntgtwyDryRun
+    , dltintrntgtwyInternetGatewayId
 
     -- * Destructuring the Response
     , deleteInternetGatewayResponse
@@ -43,10 +43,10 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteInternetGateway' smart constructor.
-data DeleteInternetGateway = DeleteInternetGateway'{_digiDryRun
+data DeleteInternetGateway = DeleteInternetGateway'{_dltintrntgtwyDryRun
                                                     :: !(Maybe Bool),
-                                                    _digiInternetGatewayId ::
-                                                    !Text}
+                                                    _dltintrntgtwyInternetGatewayId
+                                                    :: !Text}
                                deriving (Eq, Read, Show, Data, Typeable,
                                          Generic)
 
@@ -54,23 +54,25 @@ data DeleteInternetGateway = DeleteInternetGateway'{_digiDryRun
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'digiDryRun' - Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
+-- * 'dltintrntgtwyDryRun' - Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 --
--- * 'digiInternetGatewayId' - The ID of the internet gateway.
+-- * 'dltintrntgtwyInternetGatewayId' - The ID of the internet gateway.
 deleteInternetGateway
-    :: Text -- ^ 'digiInternetGatewayId'
+    :: Text -- ^ 'dltintrntgtwyInternetGatewayId'
     -> DeleteInternetGateway
 deleteInternetGateway pInternetGatewayId_
-  = DeleteInternetGateway'{_digiDryRun = Nothing,
-                           _digiInternetGatewayId = pInternetGatewayId_}
+  = DeleteInternetGateway'{_dltintrntgtwyDryRun =
+                             Nothing,
+                           _dltintrntgtwyInternetGatewayId =
+                             pInternetGatewayId_}
 
 -- | Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
-digiDryRun :: Lens' DeleteInternetGateway (Maybe Bool)
-digiDryRun = lens _digiDryRun (\ s a -> s{_digiDryRun = a})
+dltintrntgtwyDryRun :: Lens' DeleteInternetGateway (Maybe Bool)
+dltintrntgtwyDryRun = lens _dltintrntgtwyDryRun (\ s a -> s{_dltintrntgtwyDryRun = a})
 
 -- | The ID of the internet gateway.
-digiInternetGatewayId :: Lens' DeleteInternetGateway Text
-digiInternetGatewayId = lens _digiInternetGatewayId (\ s a -> s{_digiInternetGatewayId = a})
+dltintrntgtwyInternetGatewayId :: Lens' DeleteInternetGateway Text
+dltintrntgtwyInternetGatewayId = lens _dltintrntgtwyInternetGatewayId (\ s a -> s{_dltintrntgtwyInternetGatewayId = a})
 
 instance AWSRequest DeleteInternetGateway where
         type Rs DeleteInternetGateway =
@@ -93,8 +95,9 @@ instance ToQuery DeleteInternetGateway where
           = mconcat
               ["Action" =: ("DeleteInternetGateway" :: ByteString),
                "Version" =: ("2016-11-15" :: ByteString),
-               "DryRun" =: _digiDryRun,
-               "InternetGatewayId" =: _digiInternetGatewayId]
+               "DryRun" =: _dltintrntgtwyDryRun,
+               "InternetGatewayId" =:
+                 _dltintrntgtwyInternetGatewayId]
 
 -- | /See:/ 'deleteInternetGatewayResponse' smart constructor.
 data DeleteInternetGatewayResponse = DeleteInternetGatewayResponse'

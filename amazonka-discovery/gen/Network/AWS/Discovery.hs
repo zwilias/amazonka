@@ -43,20 +43,20 @@ module Network.AWS.Discovery
     -- * Errors
     -- $errors
 
-    -- ** AuthorizationErrorException
-    , _AuthorizationErrorException
-
-    -- ** InvalidParameterException
-    , _InvalidParameterException
-
-    -- ** InvalidParameterValueException
-    , _InvalidParameterValueException
-
     -- ** ServerInternalErrorException
     , _ServerInternalErrorException
 
     -- ** OperationNotPermittedException
     , _OperationNotPermittedException
+
+    -- ** InvalidParameterException
+    , _InvalidParameterException
+
+    -- ** AuthorizationErrorException
+    , _AuthorizationErrorException
+
+    -- ** InvalidParameterValueException
+    , _InvalidParameterValueException
 
     -- ** ResourceNotFoundException
     , _ResourceNotFoundException

@@ -17,8 +17,8 @@ module Network.AWS.SageMaker.Types
 
     -- * Errors
     , _ResourceLimitExceeded
-    , _ResourceInUse
     , _ResourceNotFound
+    , _ResourceInUse
 
     -- * CompressionType
     , CompressionType (..)
@@ -333,16 +333,16 @@ _ResourceLimitExceeded
   = _MatchServiceError sageMaker
       "ResourceLimitExceeded"
 
--- | Resource being accessed is in use.
---
---
-_ResourceInUse :: AsError a => Getting (First ServiceError) a ServiceError
-_ResourceInUse
-  = _MatchServiceError sageMaker "ResourceInUse"
-
 -- | Resource being access is not found.
 --
 --
 _ResourceNotFound :: AsError a => Getting (First ServiceError) a ServiceError
 _ResourceNotFound
   = _MatchServiceError sageMaker "ResourceNotFound"
+
+-- | Resource being accessed is in use.
+--
+--
+_ResourceInUse :: AsError a => Getting (First ServiceError) a ServiceError
+_ResourceInUse
+  = _MatchServiceError sageMaker "ResourceInUse"

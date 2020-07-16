@@ -38,9 +38,9 @@ module Network.AWS.Glue.GetConnections
     , getConnectionsResponse
     , GetConnectionsResponse
     -- * Response Lenses
-    , gccrsNextToken
-    , gccrsConnectionList
-    , gccrsResponseStatus
+    , gtcnnctnsrsNextToken
+    , gtcnnctnsrsConnectionList
+    , gtcnnctnsrsResponseStatus
     ) where
 
 import Network.AWS.Glue.Types
@@ -96,10 +96,11 @@ gcsMaxResults = lens _gcsMaxResults (\ s a -> s{_gcsMaxResults = a}) . mapping _
 
 instance AWSPager GetConnections where
         page rq rs
-          | stop (rs ^. gccrsNextToken) = Nothing
-          | stop (rs ^. gccrsConnectionList) = Nothing
+          | stop (rs ^. gtcnnctnsrsNextToken) = Nothing
+          | stop (rs ^. gtcnnctnsrsConnectionList) = Nothing
           | otherwise =
-            Just $ rq & gcsNextToken .~ rs ^. gccrsNextToken
+            Just $ rq &
+              gcsNextToken .~ rs ^. gtcnnctnsrsNextToken
 
 instance AWSRequest GetConnections where
         type Rs GetConnections = GetConnectionsResponse
@@ -141,12 +142,12 @@ instance ToQuery GetConnections where
         toQuery = const mempty
 
 -- | /See:/ 'getConnectionsResponse' smart constructor.
-data GetConnectionsResponse = GetConnectionsResponse'{_gccrsNextToken
+data GetConnectionsResponse = GetConnectionsResponse'{_gtcnnctnsrsNextToken
                                                       :: !(Maybe Text),
-                                                      _gccrsConnectionList ::
-                                                      !(Maybe [Connection]),
-                                                      _gccrsResponseStatus ::
-                                                      !Int}
+                                                      _gtcnnctnsrsConnectionList
+                                                      :: !(Maybe [Connection]),
+                                                      _gtcnnctnsrsResponseStatus
+                                                      :: !Int}
                                 deriving (Eq, Read, Show, Data, Typeable,
                                           Generic)
 
@@ -154,29 +155,30 @@ data GetConnectionsResponse = GetConnectionsResponse'{_gccrsNextToken
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'gccrsNextToken' - A continuation token, if the list of connections returned does not include the last of the filtered connections.
+-- * 'gtcnnctnsrsNextToken' - A continuation token, if the list of connections returned does not include the last of the filtered connections.
 --
--- * 'gccrsConnectionList' - A list of requested connection definitions.
+-- * 'gtcnnctnsrsConnectionList' - A list of requested connection definitions.
 --
--- * 'gccrsResponseStatus' - -- | The response status code.
+-- * 'gtcnnctnsrsResponseStatus' - -- | The response status code.
 getConnectionsResponse
-    :: Int -- ^ 'gccrsResponseStatus'
+    :: Int -- ^ 'gtcnnctnsrsResponseStatus'
     -> GetConnectionsResponse
 getConnectionsResponse pResponseStatus_
-  = GetConnectionsResponse'{_gccrsNextToken = Nothing,
-                            _gccrsConnectionList = Nothing,
-                            _gccrsResponseStatus = pResponseStatus_}
+  = GetConnectionsResponse'{_gtcnnctnsrsNextToken =
+                              Nothing,
+                            _gtcnnctnsrsConnectionList = Nothing,
+                            _gtcnnctnsrsResponseStatus = pResponseStatus_}
 
 -- | A continuation token, if the list of connections returned does not include the last of the filtered connections.
-gccrsNextToken :: Lens' GetConnectionsResponse (Maybe Text)
-gccrsNextToken = lens _gccrsNextToken (\ s a -> s{_gccrsNextToken = a})
+gtcnnctnsrsNextToken :: Lens' GetConnectionsResponse (Maybe Text)
+gtcnnctnsrsNextToken = lens _gtcnnctnsrsNextToken (\ s a -> s{_gtcnnctnsrsNextToken = a})
 
 -- | A list of requested connection definitions.
-gccrsConnectionList :: Lens' GetConnectionsResponse [Connection]
-gccrsConnectionList = lens _gccrsConnectionList (\ s a -> s{_gccrsConnectionList = a}) . _Default . _Coerce
+gtcnnctnsrsConnectionList :: Lens' GetConnectionsResponse [Connection]
+gtcnnctnsrsConnectionList = lens _gtcnnctnsrsConnectionList (\ s a -> s{_gtcnnctnsrsConnectionList = a}) . _Default . _Coerce
 
 -- | -- | The response status code.
-gccrsResponseStatus :: Lens' GetConnectionsResponse Int
-gccrsResponseStatus = lens _gccrsResponseStatus (\ s a -> s{_gccrsResponseStatus = a})
+gtcnnctnsrsResponseStatus :: Lens' GetConnectionsResponse Int
+gtcnnctnsrsResponseStatus = lens _gtcnnctnsrsResponseStatus (\ s a -> s{_gtcnnctnsrsResponseStatus = a})
 
 instance NFData GetConnectionsResponse where

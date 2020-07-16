@@ -25,14 +25,26 @@ module Network.AWS.SNS
     -- * Errors
     -- $errors
 
-    -- ** EndpointDisabledException
-    , _EndpointDisabledException
+    -- ** InvalidParameterException
+    , _InvalidParameterException
 
     -- ** AuthorizationErrorException
     , _AuthorizationErrorException
 
-    -- ** InvalidParameterException
-    , _InvalidParameterException
+    -- ** InvalidParameterValueException
+    , _InvalidParameterValueException
+
+    -- ** EndpointDisabledException
+    , _EndpointDisabledException
+
+    -- ** ThrottledException
+    , _ThrottledException
+
+    -- ** TopicLimitExceededException
+    , _TopicLimitExceededException
+
+    -- ** InternalErrorException
+    , _InternalErrorException
 
     -- ** SubscriptionLimitExceededException
     , _SubscriptionLimitExceededException
@@ -40,20 +52,8 @@ module Network.AWS.SNS
     -- ** PlatformApplicationDisabledException
     , _PlatformApplicationDisabledException
 
-    -- ** InternalErrorException
-    , _InternalErrorException
-
-    -- ** ThrottledException
-    , _ThrottledException
-
-    -- ** InvalidParameterValueException
-    , _InvalidParameterValueException
-
     -- ** NotFoundException
     , _NotFoundException
-
-    -- ** TopicLimitExceededException
-    , _TopicLimitExceededException
 
     -- * Waiters
     -- $waiters

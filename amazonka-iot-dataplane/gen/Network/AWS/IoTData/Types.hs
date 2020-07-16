@@ -16,15 +16,15 @@ module Network.AWS.IoTData.Types
       ioTData
 
     -- * Errors
-    , _InvalidRequestException
-    , _ConflictException
-    , _RequestEntityTooLargeException
-    , _ThrottlingException
-    , _MethodNotAllowedException
     , _InternalFailureException
-    , _ServiceUnavailableException
-    , _UnauthorizedException
+    , _InvalidRequestException
+    , _RequestEntityTooLargeException
     , _ResourceNotFoundException
+    , _UnauthorizedException
+    , _ServiceUnavailableException
+    , _MethodNotAllowedException
+    , _ThrottlingException
+    , _ConflictException
     , _UnsupportedDocumentEncodingException
     ) where
 
@@ -65,6 +65,15 @@ ioTData
           | has (hasStatus 509) e = Just "limit_exceeded"
           | otherwise = Nothing
 
+-- | An unexpected error has occurred.
+--
+--
+_InternalFailureException :: AsError a => Getting (First ServiceError) a ServiceError
+_InternalFailureException
+  = _MatchServiceError ioTData
+      "InternalFailureException"
+      . hasStatus 500
+
 -- | The request is not valid.
 --
 --
@@ -73,14 +82,6 @@ _InvalidRequestException
   = _MatchServiceError ioTData
       "InvalidRequestException"
       . hasStatus 400
-
--- | The specified version does not match the version of the document.
---
---
-_ConflictException :: AsError a => Getting (First ServiceError) a ServiceError
-_ConflictException
-  = _MatchServiceError ioTData "ConflictException" .
-      hasStatus 409
 
 -- | The payload exceeds the maximum size allowed.
 --
@@ -91,31 +92,22 @@ _RequestEntityTooLargeException
       "RequestEntityTooLargeException"
       . hasStatus 413
 
--- | The rate exceeds the limit.
+-- | The specified resource does not exist.
 --
 --
-_ThrottlingException :: AsError a => Getting (First ServiceError) a ServiceError
-_ThrottlingException
-  = _MatchServiceError ioTData "ThrottlingException" .
-      hasStatus 429
-
--- | The specified combination of HTTP verb and URI is not supported.
---
---
-_MethodNotAllowedException :: AsError a => Getting (First ServiceError) a ServiceError
-_MethodNotAllowedException
+_ResourceNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
+_ResourceNotFoundException
   = _MatchServiceError ioTData
-      "MethodNotAllowedException"
-      . hasStatus 405
+      "ResourceNotFoundException"
+      . hasStatus 404
 
--- | An unexpected error has occurred.
+-- | You are not authorized to perform this operation.
 --
 --
-_InternalFailureException :: AsError a => Getting (First ServiceError) a ServiceError
-_InternalFailureException
-  = _MatchServiceError ioTData
-      "InternalFailureException"
-      . hasStatus 500
+_UnauthorizedException :: AsError a => Getting (First ServiceError) a ServiceError
+_UnauthorizedException
+  = _MatchServiceError ioTData "UnauthorizedException"
+      . hasStatus 401
 
 -- | The service is temporarily unavailable.
 --
@@ -126,22 +118,30 @@ _ServiceUnavailableException
       "ServiceUnavailableException"
       . hasStatus 503
 
--- | You are not authorized to perform this operation.
+-- | The specified combination of HTTP verb and URI is not supported.
 --
 --
-_UnauthorizedException :: AsError a => Getting (First ServiceError) a ServiceError
-_UnauthorizedException
-  = _MatchServiceError ioTData "UnauthorizedException"
-      . hasStatus 401
-
--- | The specified resource does not exist.
---
---
-_ResourceNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
-_ResourceNotFoundException
+_MethodNotAllowedException :: AsError a => Getting (First ServiceError) a ServiceError
+_MethodNotAllowedException
   = _MatchServiceError ioTData
-      "ResourceNotFoundException"
-      . hasStatus 404
+      "MethodNotAllowedException"
+      . hasStatus 405
+
+-- | The rate exceeds the limit.
+--
+--
+_ThrottlingException :: AsError a => Getting (First ServiceError) a ServiceError
+_ThrottlingException
+  = _MatchServiceError ioTData "ThrottlingException" .
+      hasStatus 429
+
+-- | The specified version does not match the version of the document.
+--
+--
+_ConflictException :: AsError a => Getting (First ServiceError) a ServiceError
+_ConflictException
+  = _MatchServiceError ioTData "ConflictException" .
+      hasStatus 409
 
 -- | The document encoding is not supported.
 --

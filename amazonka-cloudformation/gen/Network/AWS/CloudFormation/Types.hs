@@ -16,22 +16,22 @@ module Network.AWS.CloudFormation.Types
       cloudFormation
 
     -- * Errors
-    , _CreatedButModifiedException
-    , _ChangeSetNotFoundException
-    , _OperationInProgressException
-    , _InvalidChangeSetStatusException
-    , _OperationNotFoundException
-    , _OperationIdAlreadyExistsException
-    , _InsufficientCapabilitiesException
-    , _TokenAlreadyExistsException
-    , _StackSetNotFoundException
     , _StackInstanceNotFoundException
-    , _StackSetNotEmptyException
-    , _InvalidOperationException
-    , _NameAlreadyExistsException
+    , _CreatedButModifiedException
     , _StaleRequestException
-    , _AlreadyExistsException
+    , _OperationNotFoundException
+    , _InvalidOperationException
+    , _StackSetNotEmptyException
+    , _OperationInProgressException
+    , _ChangeSetNotFoundException
+    , _StackSetNotFoundException
+    , _TokenAlreadyExistsException
+    , _InsufficientCapabilitiesException
     , _LimitExceededException
+    , _AlreadyExistsException
+    , _OperationIdAlreadyExistsException
+    , _NameAlreadyExistsException
+    , _InvalidChangeSetStatusException
 
     -- * AccountGateStatus
     , AccountGateStatus (..)
@@ -485,87 +485,6 @@ cloudFormation
           | has (hasStatus 509) e = Just "limit_exceeded"
           | otherwise = Nothing
 
--- | The specified resource exists, but has been changed.
---
---
-_CreatedButModifiedException :: AsError a => Getting (First ServiceError) a ServiceError
-_CreatedButModifiedException
-  = _MatchServiceError cloudFormation
-      "CreatedButModifiedException"
-      . hasStatus 409
-
--- | The specified change set name or ID doesn't exit. To view valid change sets for a stack, use the @ListChangeSets@ action.
---
---
-_ChangeSetNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
-_ChangeSetNotFoundException
-  = _MatchServiceError cloudFormation
-      "ChangeSetNotFound"
-      . hasStatus 404
-
--- | Another operation is currently in progress for this stack set. Only one operation can be performed for a stack set at a given time.
---
---
-_OperationInProgressException :: AsError a => Getting (First ServiceError) a ServiceError
-_OperationInProgressException
-  = _MatchServiceError cloudFormation
-      "OperationInProgressException"
-      . hasStatus 409
-
--- | The specified change set can't be used to update the stack. For example, the change set status might be @CREATE_IN_PROGRESS@ , or the stack status might be @UPDATE_IN_PROGRESS@ .
---
---
-_InvalidChangeSetStatusException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidChangeSetStatusException
-  = _MatchServiceError cloudFormation
-      "InvalidChangeSetStatus"
-      . hasStatus 400
-
--- | The specified ID refers to an operation that doesn't exist.
---
---
-_OperationNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
-_OperationNotFoundException
-  = _MatchServiceError cloudFormation
-      "OperationNotFoundException"
-      . hasStatus 404
-
--- | The specified operation ID already exists.
---
---
-_OperationIdAlreadyExistsException :: AsError a => Getting (First ServiceError) a ServiceError
-_OperationIdAlreadyExistsException
-  = _MatchServiceError cloudFormation
-      "OperationIdAlreadyExistsException"
-      . hasStatus 409
-
--- | The template contains resources with capabilities that weren't specified in the Capabilities parameter.
---
---
-_InsufficientCapabilitiesException :: AsError a => Getting (First ServiceError) a ServiceError
-_InsufficientCapabilitiesException
-  = _MatchServiceError cloudFormation
-      "InsufficientCapabilitiesException"
-      . hasStatus 400
-
--- | A client request token already exists.
---
---
-_TokenAlreadyExistsException :: AsError a => Getting (First ServiceError) a ServiceError
-_TokenAlreadyExistsException
-  = _MatchServiceError cloudFormation
-      "TokenAlreadyExistsException"
-      . hasStatus 400
-
--- | The specified stack set doesn't exist.
---
---
-_StackSetNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
-_StackSetNotFoundException
-  = _MatchServiceError cloudFormation
-      "StackSetNotFoundException"
-      . hasStatus 404
-
 -- | The specified stack instance doesn't exist.
 --
 --
@@ -575,31 +494,13 @@ _StackInstanceNotFoundException
       "StackInstanceNotFoundException"
       . hasStatus 404
 
--- | You can't yet delete this stack set, because it still contains one or more stack instances. Delete all stack instances from the stack set before deleting the stack set.
+-- | The specified resource exists, but has been changed.
 --
 --
-_StackSetNotEmptyException :: AsError a => Getting (First ServiceError) a ServiceError
-_StackSetNotEmptyException
+_CreatedButModifiedException :: AsError a => Getting (First ServiceError) a ServiceError
+_CreatedButModifiedException
   = _MatchServiceError cloudFormation
-      "StackSetNotEmptyException"
-      . hasStatus 409
-
--- | The specified operation isn't valid.
---
---
-_InvalidOperationException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidOperationException
-  = _MatchServiceError cloudFormation
-      "InvalidOperationException"
-      . hasStatus 400
-
--- | The specified name is already in use.
---
---
-_NameAlreadyExistsException :: AsError a => Getting (First ServiceError) a ServiceError
-_NameAlreadyExistsException
-  = _MatchServiceError cloudFormation
-      "NameAlreadyExistsException"
+      "CreatedButModifiedException"
       . hasStatus 409
 
 -- | Another operation has been performed on this stack set since the specified operation was performed. 
@@ -611,13 +512,76 @@ _StaleRequestException
       "StaleRequestException"
       . hasStatus 409
 
--- | The resource with the name requested already exists.
+-- | The specified ID refers to an operation that doesn't exist.
 --
 --
-_AlreadyExistsException :: AsError a => Getting (First ServiceError) a ServiceError
-_AlreadyExistsException
+_OperationNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
+_OperationNotFoundException
   = _MatchServiceError cloudFormation
-      "AlreadyExistsException"
+      "OperationNotFoundException"
+      . hasStatus 404
+
+-- | The specified operation isn't valid.
+--
+--
+_InvalidOperationException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidOperationException
+  = _MatchServiceError cloudFormation
+      "InvalidOperationException"
+      . hasStatus 400
+
+-- | You can't yet delete this stack set, because it still contains one or more stack instances. Delete all stack instances from the stack set before deleting the stack set.
+--
+--
+_StackSetNotEmptyException :: AsError a => Getting (First ServiceError) a ServiceError
+_StackSetNotEmptyException
+  = _MatchServiceError cloudFormation
+      "StackSetNotEmptyException"
+      . hasStatus 409
+
+-- | Another operation is currently in progress for this stack set. Only one operation can be performed for a stack set at a given time.
+--
+--
+_OperationInProgressException :: AsError a => Getting (First ServiceError) a ServiceError
+_OperationInProgressException
+  = _MatchServiceError cloudFormation
+      "OperationInProgressException"
+      . hasStatus 409
+
+-- | The specified change set name or ID doesn't exit. To view valid change sets for a stack, use the @ListChangeSets@ action.
+--
+--
+_ChangeSetNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
+_ChangeSetNotFoundException
+  = _MatchServiceError cloudFormation
+      "ChangeSetNotFound"
+      . hasStatus 404
+
+-- | The specified stack set doesn't exist.
+--
+--
+_StackSetNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
+_StackSetNotFoundException
+  = _MatchServiceError cloudFormation
+      "StackSetNotFoundException"
+      . hasStatus 404
+
+-- | A client request token already exists.
+--
+--
+_TokenAlreadyExistsException :: AsError a => Getting (First ServiceError) a ServiceError
+_TokenAlreadyExistsException
+  = _MatchServiceError cloudFormation
+      "TokenAlreadyExistsException"
+      . hasStatus 400
+
+-- | The template contains resources with capabilities that weren't specified in the Capabilities parameter.
+--
+--
+_InsufficientCapabilitiesException :: AsError a => Getting (First ServiceError) a ServiceError
+_InsufficientCapabilitiesException
+  = _MatchServiceError cloudFormation
+      "InsufficientCapabilitiesException"
       . hasStatus 400
 
 -- | The quota for the resource has already been reached.
@@ -629,4 +593,40 @@ _LimitExceededException :: AsError a => Getting (First ServiceError) a ServiceEr
 _LimitExceededException
   = _MatchServiceError cloudFormation
       "LimitExceededException"
+      . hasStatus 400
+
+-- | The resource with the name requested already exists.
+--
+--
+_AlreadyExistsException :: AsError a => Getting (First ServiceError) a ServiceError
+_AlreadyExistsException
+  = _MatchServiceError cloudFormation
+      "AlreadyExistsException"
+      . hasStatus 400
+
+-- | The specified operation ID already exists.
+--
+--
+_OperationIdAlreadyExistsException :: AsError a => Getting (First ServiceError) a ServiceError
+_OperationIdAlreadyExistsException
+  = _MatchServiceError cloudFormation
+      "OperationIdAlreadyExistsException"
+      . hasStatus 409
+
+-- | The specified name is already in use.
+--
+--
+_NameAlreadyExistsException :: AsError a => Getting (First ServiceError) a ServiceError
+_NameAlreadyExistsException
+  = _MatchServiceError cloudFormation
+      "NameAlreadyExistsException"
+      . hasStatus 409
+
+-- | The specified change set can't be used to update the stack. For example, the change set status might be @CREATE_IN_PROGRESS@ , or the stack status might be @UPDATE_IN_PROGRESS@ .
+--
+--
+_InvalidChangeSetStatusException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidChangeSetStatusException
+  = _MatchServiceError cloudFormation
+      "InvalidChangeSetStatus"
       . hasStatus 400

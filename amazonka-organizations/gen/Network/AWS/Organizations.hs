@@ -73,74 +73,80 @@ module Network.AWS.Organizations
     -- * Errors
     -- $errors
 
-    -- ** PolicyNotFoundException
-    , _PolicyNotFoundException
+    -- ** FinalizingOrganizationException
+    , _FinalizingOrganizationException
 
-    -- ** PolicyTypeAlreadyEnabledException
-    , _PolicyTypeAlreadyEnabledException
+    -- ** PolicyInUseException
+    , _PolicyInUseException
 
-    -- ** HandshakeConstraintViolationException
-    , _HandshakeConstraintViolationException
+    -- ** DuplicateOrganizationalUnitException
+    , _DuplicateOrganizationalUnitException
 
-    -- ** AccessDeniedException
-    , _AccessDeniedException
+    -- ** AccessDeniedForDependencyException
+    , _AccessDeniedForDependencyException
 
-    -- ** MalformedPolicyDocumentException
-    , _MalformedPolicyDocumentException
+    -- ** PolicyNotAttachedException
+    , _PolicyNotAttachedException
+
+    -- ** AlreadyInOrganizationException
+    , _AlreadyInOrganizationException
+
+    -- ** CreateAccountStatusNotFoundException
+    , _CreateAccountStatusNotFoundException
 
     -- ** RootNotFoundException
     , _RootNotFoundException
 
-    -- ** MasterCannotLeaveOrganizationException
-    , _MasterCannotLeaveOrganizationException
+    -- ** TooManyRequestsException
+    , _TooManyRequestsException
 
-    -- ** AccountNotFoundException
-    , _AccountNotFoundException
+    -- ** ServiceException
+    , _ServiceException
 
-    -- ** DuplicatePolicyException
-    , _DuplicatePolicyException
+    -- ** HandshakeConstraintViolationException
+    , _HandshakeConstraintViolationException
 
-    -- ** ConstraintViolationException
-    , _ConstraintViolationException
+    -- ** PolicyNotFoundException
+    , _PolicyNotFoundException
 
-    -- ** FinalizingOrganizationException
-    , _FinalizingOrganizationException
+    -- ** AccessDeniedException
+    , _AccessDeniedException
 
-    -- ** HandshakeNotFoundException
-    , _HandshakeNotFoundException
-
-    -- ** PolicyTypeNotAvailableForOrganizationException
-    , _PolicyTypeNotAvailableForOrganizationException
-
-    -- ** ChildNotFoundException
-    , _ChildNotFoundException
-
-    -- ** OrganizationalUnitNotFoundException
-    , _OrganizationalUnitNotFoundException
+    -- ** PolicyTypeAlreadyEnabledException
+    , _PolicyTypeAlreadyEnabledException
 
     -- ** DestinationParentNotFoundException
     , _DestinationParentNotFoundException
 
-    -- ** OrganizationNotEmptyException
-    , _OrganizationNotEmptyException
+    -- ** DuplicateAccountException
+    , _DuplicateAccountException
 
-    -- ** PolicyTypeNotEnabledException
-    , _PolicyTypeNotEnabledException
+    -- ** ChildNotFoundException
+    , _ChildNotFoundException
 
-    -- ** DuplicateHandshakeException
-    , _DuplicateHandshakeException
+    -- ** InvalidHandshakeTransitionException
+    , _InvalidHandshakeTransitionException
 
-    -- ** OrganizationalUnitNotEmptyException
-    , _OrganizationalUnitNotEmptyException
+    -- ** ConstraintViolationException
+    , _ConstraintViolationException
 
-    -- ** TooManyRequestsException
-    , _TooManyRequestsException
+    -- ** PolicyTypeNotAvailableForOrganizationException
+    , _PolicyTypeNotAvailableForOrganizationException
 
-    -- ** ConcurrentModificationException
-    , _ConcurrentModificationException
+    -- ** HandshakeNotFoundException
+    , _HandshakeNotFoundException
 
-    -- ** ServiceException
-    , _ServiceException
+    -- ** AWSOrganizationsNotInUseException
+    , _AWSOrganizationsNotInUseException
+
+    -- ** ParentNotFoundException
+    , _ParentNotFoundException
+
+    -- ** DuplicatePolicyException
+    , _DuplicatePolicyException
+
+    -- ** InvalidInputException
+    , _InvalidInputException
 
     -- ** SourceParentNotFoundException
     , _SourceParentNotFoundException
@@ -148,44 +154,38 @@ module Network.AWS.Organizations
     -- ** TargetNotFoundException
     , _TargetNotFoundException
 
-    -- ** CreateAccountStatusNotFoundException
-    , _CreateAccountStatusNotFoundException
+    -- ** AccountNotFoundException
+    , _AccountNotFoundException
 
-    -- ** AlreadyInOrganizationException
-    , _AlreadyInOrganizationException
+    -- ** MasterCannotLeaveOrganizationException
+    , _MasterCannotLeaveOrganizationException
 
-    -- ** DuplicateOrganizationalUnitException
-    , _DuplicateOrganizationalUnitException
+    -- ** ConcurrentModificationException
+    , _ConcurrentModificationException
 
-    -- ** InvalidInputException
-    , _InvalidInputException
+    -- ** DuplicateHandshakeException
+    , _DuplicateHandshakeException
 
-    -- ** PolicyNotAttachedException
-    , _PolicyNotAttachedException
+    -- ** OrganizationalUnitNotEmptyException
+    , _OrganizationalUnitNotEmptyException
 
-    -- ** ParentNotFoundException
-    , _ParentNotFoundException
+    -- ** MalformedPolicyDocumentException
+    , _MalformedPolicyDocumentException
 
-    -- ** AccessDeniedForDependencyException
-    , _AccessDeniedForDependencyException
+    -- ** PolicyTypeNotEnabledException
+    , _PolicyTypeNotEnabledException
 
-    -- ** AWSOrganizationsNotInUseException
-    , _AWSOrganizationsNotInUseException
+    -- ** OrganizationNotEmptyException
+    , _OrganizationNotEmptyException
 
-    -- ** PolicyInUseException
-    , _PolicyInUseException
-
-    -- ** InvalidHandshakeTransitionException
-    , _InvalidHandshakeTransitionException
-
-    -- ** HandshakeAlreadyInStateException
-    , _HandshakeAlreadyInStateException
-
-    -- ** DuplicateAccountException
-    , _DuplicateAccountException
+    -- ** OrganizationalUnitNotFoundException
+    , _OrganizationalUnitNotFoundException
 
     -- ** DuplicatePolicyAttachmentException
     , _DuplicatePolicyAttachmentException
+
+    -- ** HandshakeAlreadyInStateException
+    , _HandshakeAlreadyInStateException
 
     -- * Waiters
     -- $waiters

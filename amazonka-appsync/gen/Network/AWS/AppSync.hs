@@ -22,35 +22,35 @@ module Network.AWS.AppSync
     -- * Errors
     -- $errors
 
-    -- ** APIKeyValidityOutOfBoundsException
-    , _APIKeyValidityOutOfBoundsException
-
-    -- ** AccessDeniedException
-    , _AccessDeniedException
-
-    -- ** APIKeyLimitExceededException
-    , _APIKeyLimitExceededException
-
-    -- ** APILimitExceededException
-    , _APILimitExceededException
-
-    -- ** NotFoundException
-    , _NotFoundException
+    -- ** InternalFailureException
+    , _InternalFailureException
 
     -- ** GraphQLSchemaException
     , _GraphQLSchemaException
 
-    -- ** ConcurrentModificationException
-    , _ConcurrentModificationException
+    -- ** AccessDeniedException
+    , _AccessDeniedException
 
-    -- ** InternalFailureException
-    , _InternalFailureException
+    -- ** BadRequestException
+    , _BadRequestException
+
+    -- ** APIKeyLimitExceededException
+    , _APIKeyLimitExceededException
 
     -- ** UnauthorizedException
     , _UnauthorizedException
 
-    -- ** BadRequestException
-    , _BadRequestException
+    -- ** ConcurrentModificationException
+    , _ConcurrentModificationException
+
+    -- ** NotFoundException
+    , _NotFoundException
+
+    -- ** APIKeyValidityOutOfBoundsException
+    , _APIKeyValidityOutOfBoundsException
+
+    -- ** APILimitExceededException
+    , _APILimitExceededException
 
     -- ** LimitExceededException
     , _LimitExceededException

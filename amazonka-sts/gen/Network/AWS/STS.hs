@@ -37,29 +37,29 @@ module Network.AWS.STS
     -- * Errors
     -- $errors
 
-    -- ** MalformedPolicyDocumentException
-    , _MalformedPolicyDocumentException
+    -- ** IdPCommunicationErrorException
+    , _IdPCommunicationErrorException
+
+    -- ** IdPRejectedClaimException
+    , _IdPRejectedClaimException
 
     -- ** InvalidAuthorizationMessageException
     , _InvalidAuthorizationMessageException
 
-    -- ** PackedPolicyTooLargeException
-    , _PackedPolicyTooLargeException
-
-    -- ** RegionDisabledException
-    , _RegionDisabledException
-
-    -- ** IdPCommunicationErrorException
-    , _IdPCommunicationErrorException
+    -- ** ExpiredTokenException
+    , _ExpiredTokenException
 
     -- ** InvalidIdentityTokenException
     , _InvalidIdentityTokenException
 
-    -- ** ExpiredTokenException
-    , _ExpiredTokenException
+    -- ** MalformedPolicyDocumentException
+    , _MalformedPolicyDocumentException
 
-    -- ** IdPRejectedClaimException
-    , _IdPRejectedClaimException
+    -- ** RegionDisabledException
+    , _RegionDisabledException
+
+    -- ** PackedPolicyTooLargeException
+    , _PackedPolicyTooLargeException
 
     -- * Waiters
     -- $waiters

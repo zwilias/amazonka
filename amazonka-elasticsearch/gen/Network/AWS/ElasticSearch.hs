@@ -25,29 +25,29 @@ module Network.AWS.ElasticSearch
     -- * Errors
     -- $errors
 
-    -- ** ValidationException
-    , _ValidationException
-
-    -- ** ResourceAlreadyExistsException
-    , _ResourceAlreadyExistsException
-
-    -- ** BaseException
-    , _BaseException
-
     -- ** DisabledOperationException
     , _DisabledOperationException
 
-    -- ** InternalException
-    , _InternalException
-
-    -- ** InvalidTypeException
-    , _InvalidTypeException
+    -- ** ValidationException
+    , _ValidationException
 
     -- ** ResourceNotFoundException
     , _ResourceNotFoundException
 
+    -- ** ResourceAlreadyExistsException
+    , _ResourceAlreadyExistsException
+
+    -- ** InternalException
+    , _InternalException
+
+    -- ** BaseException
+    , _BaseException
+
     -- ** LimitExceededException
     , _LimitExceededException
+
+    -- ** InvalidTypeException
+    , _InvalidTypeException
 
     -- * Waiters
     -- $waiters

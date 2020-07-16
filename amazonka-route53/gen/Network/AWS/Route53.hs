@@ -20,32 +20,95 @@ module Network.AWS.Route53
     -- * Errors
     -- $errors
 
-    -- ** HealthCheckVersionMismatch
-    , _HealthCheckVersionMismatch
+    -- ** TooManyHostedZones
+    , _TooManyHostedZones
 
-    -- ** NoSuchQueryLoggingConfig
-    , _NoSuchQueryLoggingConfig
+    -- ** TooManyVPCAssociationAuthorizations
+    , _TooManyVPCAssociationAuthorizations
 
-    -- ** HostedZoneNotPrivate
-    , _HostedZoneNotPrivate
+    -- ** NoSuchHostedZone
+    , _NoSuchHostedZone
 
-    -- ** InvalidInput
-    , _InvalidInput
+    -- ** PublicZoneVPCAssociation
+    , _PublicZoneVPCAssociation
 
-    -- ** HostedZoneNotEmpty
-    , _HostedZoneNotEmpty
+    -- ** PriorRequestNotComplete
+    , _PriorRequestNotComplete
+
+    -- ** LimitsExceeded
+    , _LimitsExceeded
+
+    -- ** QueryLoggingConfigAlreadyExists
+    , _QueryLoggingConfigAlreadyExists
 
     -- ** InvalidArgument
     , _InvalidArgument
 
-    -- ** TrafficPolicyInstanceAlreadyExists
-    , _TrafficPolicyInstanceAlreadyExists
+    -- ** NoSuchChange
+    , _NoSuchChange
+
+    -- ** VPCAssociationNotFound
+    , _VPCAssociationNotFound
+
+    -- ** TooManyTrafficPolicies
+    , _TooManyTrafficPolicies
+
+    -- ** HostedZoneNotFound
+    , _HostedZoneNotFound
+
+    -- ** DelegationSetInUse
+    , _DelegationSetInUse
+
+    -- ** HealthCheckAlreadyExists
+    , _HealthCheckAlreadyExists
+
+    -- ** HostedZoneAlreadyExists
+    , _HostedZoneAlreadyExists
+
+    -- ** InvalidPaginationToken
+    , _InvalidPaginationToken
+
+    -- ** TooManyHealthChecks
+    , _TooManyHealthChecks
+
+    -- ** ConflictingDomainExists
+    , _ConflictingDomainExists
+
+    -- ** DelegationSetNotReusable
+    , _DelegationSetNotReusable
+
+    -- ** DelegationSetAlreadyCreated
+    , _DelegationSetAlreadyCreated
+
+    -- ** NoSuchHealthCheck
+    , _NoSuchHealthCheck
+
+    -- ** TrafficPolicyAlreadyExists
+    , _TrafficPolicyAlreadyExists
+
+    -- ** InvalidChangeBatch
+    , _InvalidChangeBatch
+
+    -- ** InvalidTrafficPolicyDocument
+    , _InvalidTrafficPolicyDocument
+
+    -- ** IncompatibleVersion
+    , _IncompatibleVersion
+
+    -- ** NoSuchTrafficPolicyInstance
+    , _NoSuchTrafficPolicyInstance
+
+    -- ** TooManyTrafficPolicyInstances
+    , _TooManyTrafficPolicyInstances
+
+    -- ** NoSuchCloudWatchLogsLogGroup
+    , _NoSuchCloudWatchLogsLogGroup
+
+    -- ** InsufficientCloudWatchLogsResourcePolicy
+    , _InsufficientCloudWatchLogsResourcePolicy
 
     -- ** ConflictingTypes
     , _ConflictingTypes
-
-    -- ** QueryLoggingConfigAlreadyExists
-    , _QueryLoggingConfigAlreadyExists
 
     -- ** ConcurrentModification
     , _ConcurrentModification
@@ -56,110 +119,38 @@ module Network.AWS.Route53
     -- ** NotAuthorizedException
     , _NotAuthorizedException
 
-    -- ** InsufficientCloudWatchLogsResourcePolicy
-    , _InsufficientCloudWatchLogsResourcePolicy
+    -- ** ThrottlingException
+    , _ThrottlingException
 
-    -- ** NoSuchCloudWatchLogsLogGroup
-    , _NoSuchCloudWatchLogsLogGroup
+    -- ** TrafficPolicyInstanceAlreadyExists
+    , _TrafficPolicyInstanceAlreadyExists
 
-    -- ** PriorRequestNotComplete
-    , _PriorRequestNotComplete
+    -- ** NoSuchQueryLoggingConfig
+    , _NoSuchQueryLoggingConfig
 
-    -- ** InvalidChangeBatch
-    , _InvalidChangeBatch
+    -- ** HostedZoneNotPrivate
+    , _HostedZoneNotPrivate
 
-    -- ** TooManyVPCAssociationAuthorizations
-    , _TooManyVPCAssociationAuthorizations
+    -- ** HostedZoneNotEmpty
+    , _HostedZoneNotEmpty
 
-    -- ** TrafficPolicyAlreadyExists
-    , _TrafficPolicyAlreadyExists
-
-    -- ** InvalidTrafficPolicyDocument
-    , _InvalidTrafficPolicyDocument
-
-    -- ** InvalidPaginationToken
-    , _InvalidPaginationToken
-
-    -- ** DelegationSetNotReusable
-    , _DelegationSetNotReusable
-
-    -- ** InvalidDomainName
-    , _InvalidDomainName
-
-    -- ** NoSuchTrafficPolicy
-    , _NoSuchTrafficPolicy
-
-    -- ** HostedZoneNotFound
-    , _HostedZoneNotFound
-
-    -- ** DelegationSetInUse
-    , _DelegationSetInUse
-
-    -- ** NoSuchDelegationSet
-    , _NoSuchDelegationSet
-
-    -- ** HealthCheckAlreadyExists
-    , _HealthCheckAlreadyExists
-
-    -- ** TooManyTrafficPolicies
-    , _TooManyTrafficPolicies
-
-    -- ** VPCAssociationAuthorizationNotFound
-    , _VPCAssociationAuthorizationNotFound
-
-    -- ** NoSuchGeoLocation
-    , _NoSuchGeoLocation
+    -- ** InvalidInput
+    , _InvalidInput
 
     -- ** DelegationSetNotAvailable
     , _DelegationSetNotAvailable
 
-    -- ** VPCAssociationNotFound
-    , _VPCAssociationNotFound
+    -- ** HealthCheckVersionMismatch
+    , _HealthCheckVersionMismatch
 
-    -- ** ThrottlingException
-    , _ThrottlingException
+    -- ** NoSuchGeoLocation
+    , _NoSuchGeoLocation
 
-    -- ** NoSuchChange
-    , _NoSuchChange
+    -- ** VPCAssociationAuthorizationNotFound
+    , _VPCAssociationAuthorizationNotFound
 
-    -- ** LimitsExceeded
-    , _LimitsExceeded
-
-    -- ** TooManyTrafficPolicyInstances
-    , _TooManyTrafficPolicyInstances
-
-    -- ** NoSuchTrafficPolicyInstance
-    , _NoSuchTrafficPolicyInstance
-
-    -- ** IncompatibleVersion
-    , _IncompatibleVersion
-
-    -- ** PublicZoneVPCAssociation
-    , _PublicZoneVPCAssociation
-
-    -- ** NoSuchHostedZone
-    , _NoSuchHostedZone
-
-    -- ** TooManyHostedZones
-    , _TooManyHostedZones
-
-    -- ** HealthCheckInUse
-    , _HealthCheckInUse
-
-    -- ** DelegationSetAlreadyCreated
-    , _DelegationSetAlreadyCreated
-
-    -- ** ConflictingDomainExists
-    , _ConflictingDomainExists
-
-    -- ** LastVPCAssociation
-    , _LastVPCAssociation
-
-    -- ** TooManyHealthChecks
-    , _TooManyHealthChecks
-
-    -- ** NoSuchHealthCheck
-    , _NoSuchHealthCheck
+    -- ** NoSuchDelegationSet
+    , _NoSuchDelegationSet
 
     -- ** TrafficPolicyInUse
     , _TrafficPolicyInUse
@@ -167,11 +158,20 @@ module Network.AWS.Route53
     -- ** InvalidVPCId
     , _InvalidVPCId
 
-    -- ** HostedZoneAlreadyExists
-    , _HostedZoneAlreadyExists
+    -- ** NoSuchTrafficPolicy
+    , _NoSuchTrafficPolicy
 
     -- ** TooManyTrafficPolicyVersionsForCurrentPolicy
     , _TooManyTrafficPolicyVersionsForCurrentPolicy
+
+    -- ** HealthCheckInUse
+    , _HealthCheckInUse
+
+    -- ** LastVPCAssociation
+    , _LastVPCAssociation
+
+    -- ** InvalidDomainName
+    , _InvalidDomainName
 
     -- * Waiters
     -- $waiters

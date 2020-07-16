@@ -29,35 +29,35 @@ module Network.AWS.CognitoIdentity
     -- * Errors
     -- $errors
 
-    -- ** InvalidIdentityPoolConfigurationException
-    , _InvalidIdentityPoolConfigurationException
+    -- ** TooManyRequestsException
+    , _TooManyRequestsException
 
     -- ** InvalidParameterException
     , _InvalidParameterException
 
-    -- ** NotAuthorizedException
-    , _NotAuthorizedException
-
-    -- ** InternalErrorException
-    , _InternalErrorException
-
     -- ** ExternalServiceException
     , _ExternalServiceException
 
-    -- ** TooManyRequestsException
-    , _TooManyRequestsException
-
-    -- ** ConcurrentModificationException
-    , _ConcurrentModificationException
-
-    -- ** ResourceConflictException
-    , _ResourceConflictException
+    -- ** InvalidIdentityPoolConfigurationException
+    , _InvalidIdentityPoolConfigurationException
 
     -- ** DeveloperUserAlreadyRegisteredException
     , _DeveloperUserAlreadyRegisteredException
 
     -- ** ResourceNotFoundException
     , _ResourceNotFoundException
+
+    -- ** ResourceConflictException
+    , _ResourceConflictException
+
+    -- ** InternalErrorException
+    , _InternalErrorException
+
+    -- ** NotAuthorizedException
+    , _NotAuthorizedException
+
+    -- ** ConcurrentModificationException
+    , _ConcurrentModificationException
 
     -- ** LimitExceededException
     , _LimitExceededException

@@ -16,25 +16,25 @@ module Network.AWS.ECS.Types
       ecs
 
     -- * Errors
-    , _AccessDeniedException
-    , _InvalidParameterException
-    , _ServerException
-    , _ClusterContainsTasksException
-    , _PlatformUnknownException
-    , _ClusterContainsServicesException
-    , _ClusterContainsContainerInstancesException
     , _ServiceNotActiveException
+    , _ClusterContainsTasksException
+    , _ServerException
+    , _InvalidParameterException
+    , _BlockedException
+    , _AccessDeniedException
+    , _PlatformTaskDefinitionIncompatibilityException
+    , _ServiceNotFoundException
     , _ClusterNotFoundException
     , _NoUpdateAvailableException
-    , _UnsupportedFeatureException
-    , _ServiceNotFoundException
-    , _PlatformTaskDefinitionIncompatibilityException
-    , _MissingVersionException
-    , _UpdateInProgressException
-    , _BlockedException
-    , _TargetNotFoundException
-    , _AttributeLimitExceededException
     , _ClientException
+    , _ClusterContainsContainerInstancesException
+    , _ClusterContainsServicesException
+    , _PlatformUnknownException
+    , _AttributeLimitExceededException
+    , _TargetNotFoundException
+    , _UpdateInProgressException
+    , _MissingVersionException
+    , _UnsupportedFeatureException
 
     -- * AgentUpdateStatus
     , AgentUpdateStatus (..)
@@ -601,26 +601,12 @@ ecs
           | has (hasStatus 509) e = Just "limit_exceeded"
           | otherwise = Nothing
 
--- | You do not have authorization to perform the requested action.
+-- | The specified service is not active. You can't update a service that is inactive. If you have previously deleted a service, you can re-create it with 'CreateService' .
 --
 --
-_AccessDeniedException :: AsError a => Getting (First ServiceError) a ServiceError
-_AccessDeniedException
-  = _MatchServiceError ecs "AccessDeniedException"
-
--- | The specified parameter is invalid. Review the available parameters for the API request.
---
---
-_InvalidParameterException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidParameterException
-  = _MatchServiceError ecs "InvalidParameterException"
-
--- | These errors are usually caused by a server issue.
---
---
-_ServerException :: AsError a => Getting (First ServiceError) a ServiceError
-_ServerException
-  = _MatchServiceError ecs "ServerException"
+_ServiceNotActiveException :: AsError a => Getting (First ServiceError) a ServiceError
+_ServiceNotActiveException
+  = _MatchServiceError ecs "ServiceNotActiveException"
 
 -- | You cannot delete a cluster that has active tasks.
 --
@@ -630,35 +616,48 @@ _ClusterContainsTasksException
   = _MatchServiceError ecs
       "ClusterContainsTasksException"
 
--- | The specified platform version does not exist.
+-- | These errors are usually caused by a server issue.
 --
 --
-_PlatformUnknownException :: AsError a => Getting (First ServiceError) a ServiceError
-_PlatformUnknownException
-  = _MatchServiceError ecs "PlatformUnknownException"
+_ServerException :: AsError a => Getting (First ServiceError) a ServiceError
+_ServerException
+  = _MatchServiceError ecs "ServerException"
 
--- | You cannot delete a cluster that contains services. You must first update the service to reduce its desired task count to 0 and then delete the service. For more information, see 'UpdateService' and 'DeleteService' .
+-- | The specified parameter is invalid. Review the available parameters for the API request.
 --
 --
-_ClusterContainsServicesException :: AsError a => Getting (First ServiceError) a ServiceError
-_ClusterContainsServicesException
+_InvalidParameterException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidParameterException
+  = _MatchServiceError ecs "InvalidParameterException"
+
+-- | Your AWS account has been blocked. <http://aws.amazon.com/contact-us/ Contact AWS Support> for more information.
+--
+--
+_BlockedException :: AsError a => Getting (First ServiceError) a ServiceError
+_BlockedException
+  = _MatchServiceError ecs "BlockedException"
+
+-- | You do not have authorization to perform the requested action.
+--
+--
+_AccessDeniedException :: AsError a => Getting (First ServiceError) a ServiceError
+_AccessDeniedException
+  = _MatchServiceError ecs "AccessDeniedException"
+
+-- | The specified platform version does not satisfy the task definition’s required capabilities.
+--
+--
+_PlatformTaskDefinitionIncompatibilityException :: AsError a => Getting (First ServiceError) a ServiceError
+_PlatformTaskDefinitionIncompatibilityException
   = _MatchServiceError ecs
-      "ClusterContainsServicesException"
+      "PlatformTaskDefinitionIncompatibilityException"
 
--- | You cannot delete a cluster that has registered container instances. You must first deregister the container instances before you can delete the cluster. For more information, see 'DeregisterContainerInstance' .
+-- | The specified service could not be found. You can view your available services with 'ListServices' . Amazon ECS services are cluster-specific and region-specific.
 --
 --
-_ClusterContainsContainerInstancesException :: AsError a => Getting (First ServiceError) a ServiceError
-_ClusterContainsContainerInstancesException
-  = _MatchServiceError ecs
-      "ClusterContainsContainerInstancesException"
-
--- | The specified service is not active. You can't update a service that is inactive. If you have previously deleted a service, you can re-create it with 'CreateService' .
---
---
-_ServiceNotActiveException :: AsError a => Getting (First ServiceError) a ServiceError
-_ServiceNotActiveException
-  = _MatchServiceError ecs "ServiceNotActiveException"
+_ServiceNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
+_ServiceNotFoundException
+  = _MatchServiceError ecs "ServiceNotFoundException"
 
 -- | The specified cluster could not be found. You can view your available clusters with 'ListClusters' . Amazon ECS clusters are region-specific.
 --
@@ -674,56 +673,35 @@ _NoUpdateAvailableException :: AsError a => Getting (First ServiceError) a Servi
 _NoUpdateAvailableException
   = _MatchServiceError ecs "NoUpdateAvailableException"
 
--- | The specified task is not supported in this region.
+-- | These errors are usually caused by a client action, such as using an action or resource on behalf of a user that doesn't have permissions to use the action or resource, or specifying an identifier that is not valid.
 --
 --
-_UnsupportedFeatureException :: AsError a => Getting (First ServiceError) a ServiceError
-_UnsupportedFeatureException
+_ClientException :: AsError a => Getting (First ServiceError) a ServiceError
+_ClientException
+  = _MatchServiceError ecs "ClientException"
+
+-- | You cannot delete a cluster that has registered container instances. You must first deregister the container instances before you can delete the cluster. For more information, see 'DeregisterContainerInstance' .
+--
+--
+_ClusterContainsContainerInstancesException :: AsError a => Getting (First ServiceError) a ServiceError
+_ClusterContainsContainerInstancesException
   = _MatchServiceError ecs
-      "UnsupportedFeatureException"
+      "ClusterContainsContainerInstancesException"
 
--- | The specified service could not be found. You can view your available services with 'ListServices' . Amazon ECS services are cluster-specific and region-specific.
+-- | You cannot delete a cluster that contains services. You must first update the service to reduce its desired task count to 0 and then delete the service. For more information, see 'UpdateService' and 'DeleteService' .
 --
 --
-_ServiceNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
-_ServiceNotFoundException
-  = _MatchServiceError ecs "ServiceNotFoundException"
-
--- | The specified platform version does not satisfy the task definition’s required capabilities.
---
---
-_PlatformTaskDefinitionIncompatibilityException :: AsError a => Getting (First ServiceError) a ServiceError
-_PlatformTaskDefinitionIncompatibilityException
+_ClusterContainsServicesException :: AsError a => Getting (First ServiceError) a ServiceError
+_ClusterContainsServicesException
   = _MatchServiceError ecs
-      "PlatformTaskDefinitionIncompatibilityException"
+      "ClusterContainsServicesException"
 
--- | Amazon ECS is unable to determine the current version of the Amazon ECS container agent on the container instance and does not have enough information to proceed with an update. This could be because the agent running on the container instance is an older or custom version that does not use our version information.
+-- | The specified platform version does not exist.
 --
 --
-_MissingVersionException :: AsError a => Getting (First ServiceError) a ServiceError
-_MissingVersionException
-  = _MatchServiceError ecs "MissingVersionException"
-
--- | There is already a current Amazon ECS container agent update in progress on the specified container instance. If the container agent becomes disconnected while it is in a transitional stage, such as @PENDING@ or @STAGING@ , the update process can get stuck in that state. However, when the agent reconnects, it resumes where it stopped previously.
---
---
-_UpdateInProgressException :: AsError a => Getting (First ServiceError) a ServiceError
-_UpdateInProgressException
-  = _MatchServiceError ecs "UpdateInProgressException"
-
--- | Your AWS account has been blocked. <http://aws.amazon.com/contact-us/ Contact AWS Support> for more information.
---
---
-_BlockedException :: AsError a => Getting (First ServiceError) a ServiceError
-_BlockedException
-  = _MatchServiceError ecs "BlockedException"
-
--- | The specified target could not be found. You can view your available container instances with 'ListContainerInstances' . Amazon ECS container instances are cluster-specific and region-specific.
---
---
-_TargetNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
-_TargetNotFoundException
-  = _MatchServiceError ecs "TargetNotFoundException"
+_PlatformUnknownException :: AsError a => Getting (First ServiceError) a ServiceError
+_PlatformUnknownException
+  = _MatchServiceError ecs "PlatformUnknownException"
 
 -- | You can apply up to 10 custom attributes per resource. You can view the attributes of a resource with 'ListAttributes' . You can remove existing attributes on a resource with 'DeleteAttributes' .
 --
@@ -733,9 +711,31 @@ _AttributeLimitExceededException
   = _MatchServiceError ecs
       "AttributeLimitExceededException"
 
--- | These errors are usually caused by a client action, such as using an action or resource on behalf of a user that doesn't have permissions to use the action or resource, or specifying an identifier that is not valid.
+-- | The specified target could not be found. You can view your available container instances with 'ListContainerInstances' . Amazon ECS container instances are cluster-specific and region-specific.
 --
 --
-_ClientException :: AsError a => Getting (First ServiceError) a ServiceError
-_ClientException
-  = _MatchServiceError ecs "ClientException"
+_TargetNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
+_TargetNotFoundException
+  = _MatchServiceError ecs "TargetNotFoundException"
+
+-- | There is already a current Amazon ECS container agent update in progress on the specified container instance. If the container agent becomes disconnected while it is in a transitional stage, such as @PENDING@ or @STAGING@ , the update process can get stuck in that state. However, when the agent reconnects, it resumes where it stopped previously.
+--
+--
+_UpdateInProgressException :: AsError a => Getting (First ServiceError) a ServiceError
+_UpdateInProgressException
+  = _MatchServiceError ecs "UpdateInProgressException"
+
+-- | Amazon ECS is unable to determine the current version of the Amazon ECS container agent on the container instance and does not have enough information to proceed with an update. This could be because the agent running on the container instance is an older or custom version that does not use our version information.
+--
+--
+_MissingVersionException :: AsError a => Getting (First ServiceError) a ServiceError
+_MissingVersionException
+  = _MatchServiceError ecs "MissingVersionException"
+
+-- | The specified task is not supported in this region.
+--
+--
+_UnsupportedFeatureException :: AsError a => Getting (First ServiceError) a ServiceError
+_UnsupportedFeatureException
+  = _MatchServiceError ecs
+      "UnsupportedFeatureException"

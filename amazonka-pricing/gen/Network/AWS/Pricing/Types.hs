@@ -18,9 +18,9 @@ module Network.AWS.Pricing.Types
     -- * Errors
     , _InvalidParameterException
     , _InternalErrorException
-    , _ExpiredNextTokenException
-    , _NotFoundException
     , _InvalidNextTokenException
+    , _NotFoundException
+    , _ExpiredNextTokenException
 
     -- * FilterType
     , FilterType (..)
@@ -101,13 +101,13 @@ _InternalErrorException :: AsError a => Getting (First ServiceError) a ServiceEr
 _InternalErrorException
   = _MatchServiceError pricing "InternalErrorException"
 
--- | The pagination token expired. Try again without a pagination token.
+-- | The pagination token is invalid. Try again without a pagination token.
 --
 --
-_ExpiredNextTokenException :: AsError a => Getting (First ServiceError) a ServiceError
-_ExpiredNextTokenException
+_InvalidNextTokenException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidNextTokenException
   = _MatchServiceError pricing
-      "ExpiredNextTokenException"
+      "InvalidNextTokenException"
 
 -- | The requested resource can't be found.
 --
@@ -116,10 +116,10 @@ _NotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
 _NotFoundException
   = _MatchServiceError pricing "NotFoundException"
 
--- | The pagination token is invalid. Try again without a pagination token.
+-- | The pagination token expired. Try again without a pagination token.
 --
 --
-_InvalidNextTokenException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidNextTokenException
+_ExpiredNextTokenException :: AsError a => Getting (First ServiceError) a ServiceError
+_ExpiredNextTokenException
   = _MatchServiceError pricing
-      "InvalidNextTokenException"
+      "ExpiredNextTokenException"

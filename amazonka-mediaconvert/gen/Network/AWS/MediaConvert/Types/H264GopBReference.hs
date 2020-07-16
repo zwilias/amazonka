@@ -19,8 +19,8 @@
 module Network.AWS.MediaConvert.Types.H264GopBReference (
   H264GopBReference (
     ..
-    , HGBRGDisabled
-    , HGBRGEnabled
+    , H264GpBRfrncDisabled
+    , H264GpBRfrncEnabled
     )
   ) where
 
@@ -32,15 +32,15 @@ data H264GopBReference = H264GopBReference' (CI Text)
                            deriving (Eq, Ord, Read, Show, Data, Typeable,
                                      Generic)
 
-pattern HGBRGDisabled :: H264GopBReference
-pattern HGBRGDisabled = H264GopBReference' "DISABLED"
+pattern H264GpBRfrncDisabled :: H264GopBReference
+pattern H264GpBRfrncDisabled = H264GopBReference' "DISABLED"
 
-pattern HGBRGEnabled :: H264GopBReference
-pattern HGBRGEnabled = H264GopBReference' "ENABLED"
+pattern H264GpBRfrncEnabled :: H264GopBReference
+pattern H264GpBRfrncEnabled = H264GopBReference' "ENABLED"
 
 {-# COMPLETE
-  HGBRGDisabled,
-  HGBRGEnabled,
+  H264GpBRfrncDisabled,
+  H264GpBRfrncEnabled,
   H264GopBReference' #-}
 
 instance FromText H264GopBReference where
@@ -55,20 +55,20 @@ instance ToText H264GopBReference where
 --   fromEnum is a partial function, and will error on values unknown at generation time.
 instance Enum H264GopBReference where
     toEnum i = case i of
-        0 -> HGBRGDisabled
-        1 -> HGBRGEnabled
+        0 -> H264GpBRfrncDisabled
+        1 -> H264GpBRfrncEnabled
         _ -> (error . showText) $ "Unknown index for H264GopBReference: " <> toText i
     fromEnum x = case x of
-        HGBRGDisabled -> 0
-        HGBRGEnabled -> 1
+        H264GpBRfrncDisabled -> 0
+        H264GpBRfrncEnabled -> 1
         H264GopBReference' name -> (error . showText) $ "Unknown H264GopBReference: " <> original name
 
 -- | Represents the bounds of /known/ $H264GopBReference.
 --   AWS may have added more since the source was generated.
 --   This instance exists only for backward compatibility.
 instance Bounded H264GopBReference where
-    minBound = HGBRGDisabled
-    maxBound = HGBRGEnabled
+    minBound = H264GpBRfrncDisabled
+    maxBound = H264GpBRfrncEnabled
 
 instance Hashable     H264GopBReference
 instance NFData       H264GopBReference

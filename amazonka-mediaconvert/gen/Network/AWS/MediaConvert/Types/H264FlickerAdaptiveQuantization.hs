@@ -19,8 +19,8 @@
 module Network.AWS.MediaConvert.Types.H264FlickerAdaptiveQuantization (
   H264FlickerAdaptiveQuantization (
     ..
-    , HFAQFDisabled
-    , HFAQFEnabled
+    , H264FlckrAdptvQntztnDisabled
+    , H264FlckrAdptvQntztnEnabled
     )
   ) where
 
@@ -33,15 +33,15 @@ data H264FlickerAdaptiveQuantization = H264FlickerAdaptiveQuantization' (CI
                                          deriving (Eq, Ord, Read, Show, Data,
                                                    Typeable, Generic)
 
-pattern HFAQFDisabled :: H264FlickerAdaptiveQuantization
-pattern HFAQFDisabled = H264FlickerAdaptiveQuantization' "DISABLED"
+pattern H264FlckrAdptvQntztnDisabled :: H264FlickerAdaptiveQuantization
+pattern H264FlckrAdptvQntztnDisabled = H264FlickerAdaptiveQuantization' "DISABLED"
 
-pattern HFAQFEnabled :: H264FlickerAdaptiveQuantization
-pattern HFAQFEnabled = H264FlickerAdaptiveQuantization' "ENABLED"
+pattern H264FlckrAdptvQntztnEnabled :: H264FlickerAdaptiveQuantization
+pattern H264FlckrAdptvQntztnEnabled = H264FlickerAdaptiveQuantization' "ENABLED"
 
 {-# COMPLETE
-  HFAQFDisabled,
-  HFAQFEnabled,
+  H264FlckrAdptvQntztnDisabled,
+  H264FlckrAdptvQntztnEnabled,
   H264FlickerAdaptiveQuantization' #-}
 
 instance FromText H264FlickerAdaptiveQuantization where
@@ -56,20 +56,20 @@ instance ToText H264FlickerAdaptiveQuantization where
 --   fromEnum is a partial function, and will error on values unknown at generation time.
 instance Enum H264FlickerAdaptiveQuantization where
     toEnum i = case i of
-        0 -> HFAQFDisabled
-        1 -> HFAQFEnabled
+        0 -> H264FlckrAdptvQntztnDisabled
+        1 -> H264FlckrAdptvQntztnEnabled
         _ -> (error . showText) $ "Unknown index for H264FlickerAdaptiveQuantization: " <> toText i
     fromEnum x = case x of
-        HFAQFDisabled -> 0
-        HFAQFEnabled -> 1
+        H264FlckrAdptvQntztnDisabled -> 0
+        H264FlckrAdptvQntztnEnabled -> 1
         H264FlickerAdaptiveQuantization' name -> (error . showText) $ "Unknown H264FlickerAdaptiveQuantization: " <> original name
 
 -- | Represents the bounds of /known/ $H264FlickerAdaptiveQuantization.
 --   AWS may have added more since the source was generated.
 --   This instance exists only for backward compatibility.
 instance Bounded H264FlickerAdaptiveQuantization where
-    minBound = HFAQFDisabled
-    maxBound = HFAQFEnabled
+    minBound = H264FlckrAdptvQntztnDisabled
+    maxBound = H264FlckrAdptvQntztnEnabled
 
 instance Hashable     H264FlickerAdaptiveQuantization
 instance NFData       H264FlickerAdaptiveQuantization

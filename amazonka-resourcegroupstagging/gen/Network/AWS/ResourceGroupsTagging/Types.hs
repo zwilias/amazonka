@@ -16,10 +16,10 @@ module Network.AWS.ResourceGroupsTagging.Types
       resourceGroupsTagging
 
     -- * Errors
+    , _InternalServiceException
     , _InvalidParameterException
     , _ThrottledException
     , _PaginationTokenExpiredException
-    , _InternalServiceException
 
     -- * ResourceErrorCode
     , ResourceErrorCode (..)
@@ -93,6 +93,14 @@ resourceGroupsTagging
           | has (hasStatus 509) e = Just "limit_exceeded"
           | otherwise = Nothing
 
+-- | The request processing failed because of an unknown error, exception, or failure. You can retry the request.
+--
+--
+_InternalServiceException :: AsError a => Getting (First ServiceError) a ServiceError
+_InternalServiceException
+  = _MatchServiceError resourceGroupsTagging
+      "InternalServiceException"
+
 -- | A parameter is missing or a malformed string or invalid or out-of-range value was supplied for the request parameter.
 --
 --
@@ -116,11 +124,3 @@ _PaginationTokenExpiredException :: AsError a => Getting (First ServiceError) a 
 _PaginationTokenExpiredException
   = _MatchServiceError resourceGroupsTagging
       "PaginationTokenExpiredException"
-
--- | The request processing failed because of an unknown error, exception, or failure. You can retry the request.
---
---
-_InternalServiceException :: AsError a => Getting (First ServiceError) a ServiceError
-_InternalServiceException
-  = _MatchServiceError resourceGroupsTagging
-      "InternalServiceException"

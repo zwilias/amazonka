@@ -33,7 +33,7 @@ module Network.AWS.AppStream.DeleteDirectoryConfig
     , deleteDirectoryConfigResponse
     , DeleteDirectoryConfigResponse
     -- * Response Lenses
-    , ddcdrsResponseStatus
+    , dltdrctrycnfgrsResponseStatus
     ) where
 
 import Network.AWS.AppStream.Types
@@ -102,7 +102,7 @@ instance ToQuery DeleteDirectoryConfig where
         toQuery = const mempty
 
 -- | /See:/ 'deleteDirectoryConfigResponse' smart constructor.
-newtype DeleteDirectoryConfigResponse = DeleteDirectoryConfigResponse'{_ddcdrsResponseStatus
+newtype DeleteDirectoryConfigResponse = DeleteDirectoryConfigResponse'{_dltdrctrycnfgrsResponseStatus
                                                                        :: Int}
                                           deriving (Eq, Read, Show, Data,
                                                     Typeable, Generic)
@@ -111,16 +111,16 @@ newtype DeleteDirectoryConfigResponse = DeleteDirectoryConfigResponse'{_ddcdrsRe
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ddcdrsResponseStatus' - -- | The response status code.
+-- * 'dltdrctrycnfgrsResponseStatus' - -- | The response status code.
 deleteDirectoryConfigResponse
-    :: Int -- ^ 'ddcdrsResponseStatus'
+    :: Int -- ^ 'dltdrctrycnfgrsResponseStatus'
     -> DeleteDirectoryConfigResponse
 deleteDirectoryConfigResponse pResponseStatus_
-  = DeleteDirectoryConfigResponse'{_ddcdrsResponseStatus
+  = DeleteDirectoryConfigResponse'{_dltdrctrycnfgrsResponseStatus
                                      = pResponseStatus_}
 
 -- | -- | The response status code.
-ddcdrsResponseStatus :: Lens' DeleteDirectoryConfigResponse Int
-ddcdrsResponseStatus = lens _ddcdrsResponseStatus (\ s a -> s{_ddcdrsResponseStatus = a})
+dltdrctrycnfgrsResponseStatus :: Lens' DeleteDirectoryConfigResponse Int
+dltdrctrycnfgrsResponseStatus = lens _dltdrctrycnfgrsResponseStatus (\ s a -> s{_dltdrctrycnfgrsResponseStatus = a})
 
 instance NFData DeleteDirectoryConfigResponse where

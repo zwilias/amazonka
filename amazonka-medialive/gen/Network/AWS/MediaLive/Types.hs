@@ -16,15 +16,15 @@ module Network.AWS.MediaLive.Types
       mediaLive
 
     -- * Errors
-    , _GatewayTimeoutException
-    , _UnprocessableEntityException
-    , _ConflictException
-    , _ForbiddenException
-    , _NotFoundException
-    , _TooManyRequestsException
     , _InternalServerErrorException
-    , _BadGatewayException
+    , _TooManyRequestsException
+    , _GatewayTimeoutException
+    , _ForbiddenException
     , _BadRequestException
+    , _UnprocessableEntityException
+    , _BadGatewayException
+    , _NotFoundException
+    , _ConflictException
 
     -- * AacCodingMode
     , AacCodingMode (..)
@@ -1743,37 +1743,12 @@ mediaLive
           | has (hasStatus 509) e = Just "limit_exceeded"
           | otherwise = Nothing
 
--- | Placeholder documentation for GatewayTimeoutException
-_GatewayTimeoutException :: AsError a => Getting (First ServiceError) a ServiceError
-_GatewayTimeoutException
+-- | Placeholder documentation for InternalServerErrorException
+_InternalServerErrorException :: AsError a => Getting (First ServiceError) a ServiceError
+_InternalServerErrorException
   = _MatchServiceError mediaLive
-      "GatewayTimeoutException"
-      . hasStatus 504
-
--- | Placeholder documentation for UnprocessableEntityException
-_UnprocessableEntityException :: AsError a => Getting (First ServiceError) a ServiceError
-_UnprocessableEntityException
-  = _MatchServiceError mediaLive
-      "UnprocessableEntityException"
-      . hasStatus 422
-
--- | Placeholder documentation for ConflictException
-_ConflictException :: AsError a => Getting (First ServiceError) a ServiceError
-_ConflictException
-  = _MatchServiceError mediaLive "ConflictException" .
-      hasStatus 409
-
--- | Placeholder documentation for ForbiddenException
-_ForbiddenException :: AsError a => Getting (First ServiceError) a ServiceError
-_ForbiddenException
-  = _MatchServiceError mediaLive "ForbiddenException" .
-      hasStatus 403
-
--- | Placeholder documentation for NotFoundException
-_NotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
-_NotFoundException
-  = _MatchServiceError mediaLive "NotFoundException" .
-      hasStatus 404
+      "InternalServerErrorException"
+      . hasStatus 500
 
 -- | Placeholder documentation for TooManyRequestsException
 _TooManyRequestsException :: AsError a => Getting (First ServiceError) a ServiceError
@@ -1782,12 +1757,31 @@ _TooManyRequestsException
       "TooManyRequestsException"
       . hasStatus 429
 
--- | Placeholder documentation for InternalServerErrorException
-_InternalServerErrorException :: AsError a => Getting (First ServiceError) a ServiceError
-_InternalServerErrorException
+-- | Placeholder documentation for GatewayTimeoutException
+_GatewayTimeoutException :: AsError a => Getting (First ServiceError) a ServiceError
+_GatewayTimeoutException
   = _MatchServiceError mediaLive
-      "InternalServerErrorException"
-      . hasStatus 500
+      "GatewayTimeoutException"
+      . hasStatus 504
+
+-- | Placeholder documentation for ForbiddenException
+_ForbiddenException :: AsError a => Getting (First ServiceError) a ServiceError
+_ForbiddenException
+  = _MatchServiceError mediaLive "ForbiddenException" .
+      hasStatus 403
+
+-- | Placeholder documentation for BadRequestException
+_BadRequestException :: AsError a => Getting (First ServiceError) a ServiceError
+_BadRequestException
+  = _MatchServiceError mediaLive "BadRequestException"
+      . hasStatus 400
+
+-- | Placeholder documentation for UnprocessableEntityException
+_UnprocessableEntityException :: AsError a => Getting (First ServiceError) a ServiceError
+_UnprocessableEntityException
+  = _MatchServiceError mediaLive
+      "UnprocessableEntityException"
+      . hasStatus 422
 
 -- | Placeholder documentation for BadGatewayException
 _BadGatewayException :: AsError a => Getting (First ServiceError) a ServiceError
@@ -1795,8 +1789,14 @@ _BadGatewayException
   = _MatchServiceError mediaLive "BadGatewayException"
       . hasStatus 502
 
--- | Placeholder documentation for BadRequestException
-_BadRequestException :: AsError a => Getting (First ServiceError) a ServiceError
-_BadRequestException
-  = _MatchServiceError mediaLive "BadRequestException"
-      . hasStatus 400
+-- | Placeholder documentation for NotFoundException
+_NotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
+_NotFoundException
+  = _MatchServiceError mediaLive "NotFoundException" .
+      hasStatus 404
+
+-- | Placeholder documentation for ConflictException
+_ConflictException :: AsError a => Getting (First ServiceError) a ServiceError
+_ConflictException
+  = _MatchServiceError mediaLive "ConflictException" .
+      hasStatus 409

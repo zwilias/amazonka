@@ -16,10 +16,10 @@ module Network.AWS.DirectConnect.Types
       directConnect
 
     -- * Errors
+    , _DirectConnectServerException
+    , _TooManyTagsException
     , _DirectConnectClientException
     , _DuplicateTagKeysException
-    , _TooManyTagsException
-    , _DirectConnectServerException
 
     -- * AddressFamily
     , AddressFamily (..)
@@ -425,6 +425,22 @@ directConnect
           | has (hasStatus 509) e = Just "limit_exceeded"
           | otherwise = Nothing
 
+-- | A server-side error occurred.
+--
+--
+_DirectConnectServerException :: AsError a => Getting (First ServiceError) a ServiceError
+_DirectConnectServerException
+  = _MatchServiceError directConnect
+      "DirectConnectServerException"
+
+-- | You have reached the limit on the number of tags that can be assigned.
+--
+--
+_TooManyTagsException :: AsError a => Getting (First ServiceError) a ServiceError
+_TooManyTagsException
+  = _MatchServiceError directConnect
+      "TooManyTagsException"
+
 -- | One or more parameters are not valid.
 --
 --
@@ -440,19 +456,3 @@ _DuplicateTagKeysException :: AsError a => Getting (First ServiceError) a Servic
 _DuplicateTagKeysException
   = _MatchServiceError directConnect
       "DuplicateTagKeysException"
-
--- | You have reached the limit on the number of tags that can be assigned.
---
---
-_TooManyTagsException :: AsError a => Getting (First ServiceError) a ServiceError
-_TooManyTagsException
-  = _MatchServiceError directConnect
-      "TooManyTagsException"
-
--- | A server-side error occurred.
---
---
-_DirectConnectServerException :: AsError a => Getting (First ServiceError) a ServiceError
-_DirectConnectServerException
-  = _MatchServiceError directConnect
-      "DirectConnectServerException"

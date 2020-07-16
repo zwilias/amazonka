@@ -27,8 +27,8 @@ module Network.AWS.EC2.DeleteNetworkInterface
       deleteNetworkInterface
     , DeleteNetworkInterface
     -- * Request Lenses
-    , dninDryRun
-    , dninNetworkInterfaceId
+    , dltntwrkintrfcDryRun
+    , dltntwrkintrfcNetworkInterfaceId
 
     -- * Destructuring the Response
     , deleteNetworkInterfaceResponse
@@ -47,10 +47,10 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'deleteNetworkInterface' smart constructor.
-data DeleteNetworkInterface = DeleteNetworkInterface'{_dninDryRun
+data DeleteNetworkInterface = DeleteNetworkInterface'{_dltntwrkintrfcDryRun
                                                       :: !(Maybe Bool),
-                                                      _dninNetworkInterfaceId ::
-                                                      !Text}
+                                                      _dltntwrkintrfcNetworkInterfaceId
+                                                      :: !Text}
                                 deriving (Eq, Read, Show, Data, Typeable,
                                           Generic)
 
@@ -58,23 +58,25 @@ data DeleteNetworkInterface = DeleteNetworkInterface'{_dninDryRun
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dninDryRun' - Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
+-- * 'dltntwrkintrfcDryRun' - Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 --
--- * 'dninNetworkInterfaceId' - The ID of the network interface.
+-- * 'dltntwrkintrfcNetworkInterfaceId' - The ID of the network interface.
 deleteNetworkInterface
-    :: Text -- ^ 'dninNetworkInterfaceId'
+    :: Text -- ^ 'dltntwrkintrfcNetworkInterfaceId'
     -> DeleteNetworkInterface
 deleteNetworkInterface pNetworkInterfaceId_
-  = DeleteNetworkInterface'{_dninDryRun = Nothing,
-                            _dninNetworkInterfaceId = pNetworkInterfaceId_}
+  = DeleteNetworkInterface'{_dltntwrkintrfcDryRun =
+                              Nothing,
+                            _dltntwrkintrfcNetworkInterfaceId =
+                              pNetworkInterfaceId_}
 
 -- | Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
-dninDryRun :: Lens' DeleteNetworkInterface (Maybe Bool)
-dninDryRun = lens _dninDryRun (\ s a -> s{_dninDryRun = a})
+dltntwrkintrfcDryRun :: Lens' DeleteNetworkInterface (Maybe Bool)
+dltntwrkintrfcDryRun = lens _dltntwrkintrfcDryRun (\ s a -> s{_dltntwrkintrfcDryRun = a})
 
 -- | The ID of the network interface.
-dninNetworkInterfaceId :: Lens' DeleteNetworkInterface Text
-dninNetworkInterfaceId = lens _dninNetworkInterfaceId (\ s a -> s{_dninNetworkInterfaceId = a})
+dltntwrkintrfcNetworkInterfaceId :: Lens' DeleteNetworkInterface Text
+dltntwrkintrfcNetworkInterfaceId = lens _dltntwrkintrfcNetworkInterfaceId (\ s a -> s{_dltntwrkintrfcNetworkInterfaceId = a})
 
 instance AWSRequest DeleteNetworkInterface where
         type Rs DeleteNetworkInterface =
@@ -99,8 +101,9 @@ instance ToQuery DeleteNetworkInterface where
               ["Action" =:
                  ("DeleteNetworkInterface" :: ByteString),
                "Version" =: ("2016-11-15" :: ByteString),
-               "DryRun" =: _dninDryRun,
-               "NetworkInterfaceId" =: _dninNetworkInterfaceId]
+               "DryRun" =: _dltntwrkintrfcDryRun,
+               "NetworkInterfaceId" =:
+                 _dltntwrkintrfcNetworkInterfaceId]
 
 -- | /See:/ 'deleteNetworkInterfaceResponse' smart constructor.
 data DeleteNetworkInterfaceResponse = DeleteNetworkInterfaceResponse'

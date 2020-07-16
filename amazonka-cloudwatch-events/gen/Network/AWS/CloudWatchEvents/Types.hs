@@ -16,14 +16,14 @@ module Network.AWS.CloudWatchEvents.Types
       cloudWatchEvents
 
     -- * Errors
-    , _ManagedRuleException
     , _PolicyLengthExceededException
-    , _ResourceAlreadyExistsException
-    , _ConcurrentModificationException
     , _InvalidEventPatternException
-    , _InternalException
-    , _ResourceNotFoundException
     , _InvalidStateException
+    , _ResourceNotFoundException
+    , _ResourceAlreadyExistsException
+    , _InternalException
+    , _ConcurrentModificationException
+    , _ManagedRuleException
     , _LimitExceededException
 
     -- * AssignPublicIP
@@ -292,14 +292,6 @@ cloudWatchEvents
           | has (hasStatus 509) e = Just "limit_exceeded"
           | otherwise = Nothing
 
--- | An AWS service created this rule on behalf of your account. That service manages it. If you see this error in response to @DeleteRule@ or @RemoveTargets@ , you can use the @Force@ parameter in those calls to delete the rule or remove targets from the rule. You can't modify these managed rules by using @DisableRule@ , @EnableRule@ , @PutTargets@ , @PutRule@ , @TagResource@ , or @UntagResource@ . 
---
---
-_ManagedRuleException :: AsError a => Getting (First ServiceError) a ServiceError
-_ManagedRuleException
-  = _MatchServiceError cloudWatchEvents
-      "ManagedRuleException"
-
 -- | The event bus policy is too long. For more information, see the limits.
 --
 --
@@ -307,22 +299,6 @@ _PolicyLengthExceededException :: AsError a => Getting (First ServiceError) a Se
 _PolicyLengthExceededException
   = _MatchServiceError cloudWatchEvents
       "PolicyLengthExceededException"
-
--- | The resource that you're trying to create already exists.
---
---
-_ResourceAlreadyExistsException :: AsError a => Getting (First ServiceError) a ServiceError
-_ResourceAlreadyExistsException
-  = _MatchServiceError cloudWatchEvents
-      "ResourceAlreadyExistsException"
-
--- | There is concurrent modification on a resource.
---
---
-_ConcurrentModificationException :: AsError a => Getting (First ServiceError) a ServiceError
-_ConcurrentModificationException
-  = _MatchServiceError cloudWatchEvents
-      "ConcurrentModificationException"
 
 -- | The event pattern isn't valid.
 --
@@ -332,13 +308,13 @@ _InvalidEventPatternException
   = _MatchServiceError cloudWatchEvents
       "InvalidEventPatternException"
 
--- | This exception occurs due to unexpected causes.
+-- | The specified state isn't a valid state for an event source.
 --
 --
-_InternalException :: AsError a => Getting (First ServiceError) a ServiceError
-_InternalException
+_InvalidStateException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidStateException
   = _MatchServiceError cloudWatchEvents
-      "InternalException"
+      "InvalidStateException"
 
 -- | An entity that you specified doesn't exist.
 --
@@ -348,13 +324,37 @@ _ResourceNotFoundException
   = _MatchServiceError cloudWatchEvents
       "ResourceNotFoundException"
 
--- | The specified state isn't a valid state for an event source.
+-- | The resource that you're trying to create already exists.
 --
 --
-_InvalidStateException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidStateException
+_ResourceAlreadyExistsException :: AsError a => Getting (First ServiceError) a ServiceError
+_ResourceAlreadyExistsException
   = _MatchServiceError cloudWatchEvents
-      "InvalidStateException"
+      "ResourceAlreadyExistsException"
+
+-- | This exception occurs due to unexpected causes.
+--
+--
+_InternalException :: AsError a => Getting (First ServiceError) a ServiceError
+_InternalException
+  = _MatchServiceError cloudWatchEvents
+      "InternalException"
+
+-- | There is concurrent modification on a resource.
+--
+--
+_ConcurrentModificationException :: AsError a => Getting (First ServiceError) a ServiceError
+_ConcurrentModificationException
+  = _MatchServiceError cloudWatchEvents
+      "ConcurrentModificationException"
+
+-- | An AWS service created this rule on behalf of your account. That service manages it. If you see this error in response to @DeleteRule@ or @RemoveTargets@ , you can use the @Force@ parameter in those calls to delete the rule or remove targets from the rule. You can't modify these managed rules by using @DisableRule@ , @EnableRule@ , @PutTargets@ , @PutRule@ , @TagResource@ , or @UntagResource@ . 
+--
+--
+_ManagedRuleException :: AsError a => Getting (First ServiceError) a ServiceError
+_ManagedRuleException
+  = _MatchServiceError cloudWatchEvents
+      "ManagedRuleException"
 
 -- | You tried to create more resources than is allowed.
 --

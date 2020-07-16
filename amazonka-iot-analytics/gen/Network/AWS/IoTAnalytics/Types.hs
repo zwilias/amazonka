@@ -16,12 +16,12 @@ module Network.AWS.IoTAnalytics.Types
       ioTAnalytics
 
     -- * Errors
-    , _InvalidRequestException
-    , _ResourceAlreadyExistsException
-    , _ThrottlingException
     , _InternalFailureException
-    , _ServiceUnavailableException
+    , _InvalidRequestException
     , _ResourceNotFoundException
+    , _ResourceAlreadyExistsException
+    , _ServiceUnavailableException
+    , _ThrottlingException
     , _LimitExceededException
 
     -- * ChannelStatus
@@ -113,10 +113,10 @@ module Network.AWS.IoTAnalytics.Types
     -- * DatasetSummary
     , DatasetSummary
     , datasetSummary
-    , dssCreationTime
-    , dssStatus
-    , dssDatasetName
-    , dssLastUpdateTime
+    , dtstsmmryCreationTime
+    , dtstsmmryStatus
+    , dtstsmmryDatasetName
+    , dtstsmmryLastUpdateTime
 
     -- * DatasetTrigger
     , DatasetTrigger
@@ -345,6 +345,15 @@ ioTAnalytics
           | has (hasStatus 509) e = Just "limit_exceeded"
           | otherwise = Nothing
 
+-- | There was an internal failure.
+--
+--
+_InternalFailureException :: AsError a => Getting (First ServiceError) a ServiceError
+_InternalFailureException
+  = _MatchServiceError ioTAnalytics
+      "InternalFailureException"
+      . hasStatus 500
+
 -- | The request was not valid.
 --
 --
@@ -353,6 +362,15 @@ _InvalidRequestException
   = _MatchServiceError ioTAnalytics
       "InvalidRequestException"
       . hasStatus 400
+
+-- | A resource with the specified name could not be found.
+--
+--
+_ResourceNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
+_ResourceNotFoundException
+  = _MatchServiceError ioTAnalytics
+      "ResourceNotFoundException"
+      . hasStatus 404
 
 -- | A resource with the same name already exists.
 --
@@ -363,24 +381,6 @@ _ResourceAlreadyExistsException
       "ResourceAlreadyExistsException"
       . hasStatus 409
 
--- | The request was denied due to request throttling.
---
---
-_ThrottlingException :: AsError a => Getting (First ServiceError) a ServiceError
-_ThrottlingException
-  = _MatchServiceError ioTAnalytics
-      "ThrottlingException"
-      . hasStatus 429
-
--- | There was an internal failure.
---
---
-_InternalFailureException :: AsError a => Getting (First ServiceError) a ServiceError
-_InternalFailureException
-  = _MatchServiceError ioTAnalytics
-      "InternalFailureException"
-      . hasStatus 500
-
 -- | The service is temporarily unavailable.
 --
 --
@@ -390,14 +390,14 @@ _ServiceUnavailableException
       "ServiceUnavailableException"
       . hasStatus 503
 
--- | A resource with the specified name could not be found.
+-- | The request was denied due to request throttling.
 --
 --
-_ResourceNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
-_ResourceNotFoundException
+_ThrottlingException :: AsError a => Getting (First ServiceError) a ServiceError
+_ThrottlingException
   = _MatchServiceError ioTAnalytics
-      "ResourceNotFoundException"
-      . hasStatus 404
+      "ThrottlingException"
+      . hasStatus 429
 
 -- | The command caused an internal limit to be exceeded.
 --

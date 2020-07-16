@@ -29,53 +29,53 @@ module Network.AWS.CloudFormation
     -- * Errors
     -- $errors
 
-    -- ** CreatedButModifiedException
-    , _CreatedButModifiedException
-
-    -- ** ChangeSetNotFoundException
-    , _ChangeSetNotFoundException
-
-    -- ** OperationInProgressException
-    , _OperationInProgressException
-
-    -- ** InvalidChangeSetStatusException
-    , _InvalidChangeSetStatusException
-
-    -- ** OperationNotFoundException
-    , _OperationNotFoundException
-
-    -- ** OperationIdAlreadyExistsException
-    , _OperationIdAlreadyExistsException
-
-    -- ** InsufficientCapabilitiesException
-    , _InsufficientCapabilitiesException
-
-    -- ** TokenAlreadyExistsException
-    , _TokenAlreadyExistsException
-
-    -- ** StackSetNotFoundException
-    , _StackSetNotFoundException
-
     -- ** StackInstanceNotFoundException
     , _StackInstanceNotFoundException
 
-    -- ** StackSetNotEmptyException
-    , _StackSetNotEmptyException
-
-    -- ** InvalidOperationException
-    , _InvalidOperationException
-
-    -- ** NameAlreadyExistsException
-    , _NameAlreadyExistsException
+    -- ** CreatedButModifiedException
+    , _CreatedButModifiedException
 
     -- ** StaleRequestException
     , _StaleRequestException
 
-    -- ** AlreadyExistsException
-    , _AlreadyExistsException
+    -- ** OperationNotFoundException
+    , _OperationNotFoundException
+
+    -- ** InvalidOperationException
+    , _InvalidOperationException
+
+    -- ** StackSetNotEmptyException
+    , _StackSetNotEmptyException
+
+    -- ** OperationInProgressException
+    , _OperationInProgressException
+
+    -- ** ChangeSetNotFoundException
+    , _ChangeSetNotFoundException
+
+    -- ** StackSetNotFoundException
+    , _StackSetNotFoundException
+
+    -- ** TokenAlreadyExistsException
+    , _TokenAlreadyExistsException
+
+    -- ** InsufficientCapabilitiesException
+    , _InsufficientCapabilitiesException
 
     -- ** LimitExceededException
     , _LimitExceededException
+
+    -- ** AlreadyExistsException
+    , _AlreadyExistsException
+
+    -- ** OperationIdAlreadyExistsException
+    , _OperationIdAlreadyExistsException
+
+    -- ** NameAlreadyExistsException
+    , _NameAlreadyExistsException
+
+    -- ** InvalidChangeSetStatusException
+    , _InvalidChangeSetStatusException
 
     -- * Waiters
     -- $waiters

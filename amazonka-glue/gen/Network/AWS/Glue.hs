@@ -23,14 +23,26 @@ module Network.AWS.Glue
     -- * Errors
     -- $errors
 
-    -- ** ValidationException
-    , _ValidationException
+    -- ** NoScheduleException
+    , _NoScheduleException
 
-    -- ** AccessDeniedException
-    , _AccessDeniedException
+    -- ** IdempotentParameterMismatchException
+    , _IdempotentParameterMismatchException
 
-    -- ** CrawlerRunningException
-    , _CrawlerRunningException
+    -- ** CrawlerStoppingException
+    , _CrawlerStoppingException
+
+    -- ** ResourceNumberLimitExceededException
+    , _ResourceNumberLimitExceededException
+
+    -- ** ConcurrentRunsExceededException
+    , _ConcurrentRunsExceededException
+
+    -- ** InternalServiceException
+    , _InternalServiceException
+
+    -- ** SchedulerNotRunningException
+    , _SchedulerNotRunningException
 
     -- ** SchedulerTransitioningException
     , _SchedulerTransitioningException
@@ -38,14 +50,14 @@ module Network.AWS.Glue
     -- ** SchedulerRunningException
     , _SchedulerRunningException
 
-    -- ** ConcurrentRunsExceededException
-    , _ConcurrentRunsExceededException
+    -- ** AccessDeniedException
+    , _AccessDeniedException
 
-    -- ** NoScheduleException
-    , _NoScheduleException
+    -- ** CrawlerRunningException
+    , _CrawlerRunningException
 
-    -- ** OperationTimeoutException
-    , _OperationTimeoutException
+    -- ** ValidationException
+    , _ValidationException
 
     -- ** CrawlerNotRunningException
     , _CrawlerNotRunningException
@@ -53,29 +65,17 @@ module Network.AWS.Glue
     -- ** VersionMismatchException
     , _VersionMismatchException
 
-    -- ** EntityNotFoundException
-    , _EntityNotFoundException
+    -- ** InvalidInputException
+    , _InvalidInputException
 
     -- ** ConcurrentModificationException
     , _ConcurrentModificationException
 
-    -- ** SchedulerNotRunningException
-    , _SchedulerNotRunningException
+    -- ** EntityNotFoundException
+    , _EntityNotFoundException
 
-    -- ** InternalServiceException
-    , _InternalServiceException
-
-    -- ** InvalidInputException
-    , _InvalidInputException
-
-    -- ** ResourceNumberLimitExceededException
-    , _ResourceNumberLimitExceededException
-
-    -- ** IdempotentParameterMismatchException
-    , _IdempotentParameterMismatchException
-
-    -- ** CrawlerStoppingException
-    , _CrawlerStoppingException
+    -- ** OperationTimeoutException
+    , _OperationTimeoutException
 
     -- ** AlreadyExistsException
     , _AlreadyExistsException

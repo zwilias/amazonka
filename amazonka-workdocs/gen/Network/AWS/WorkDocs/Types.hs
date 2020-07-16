@@ -16,28 +16,28 @@ module Network.AWS.WorkDocs.Types
       workDocs
 
     -- * Errors
-    , _CustomMetadataLimitExceededException
-    , _EntityAlreadyExistsException
-    , _ResourceAlreadyCheckedOutException
-    , _ProhibitedStateException
+    , _FailedDependencyException
+    , _TooManySubscriptionsException
+    , _UnauthorizedResourceAccessException
+    , _DocumentLockedForCommentsException
+    , _DraftUploadOutOfSyncException
+    , _EntityNotExistsException
+    , _InvalidOperationException
+    , _ServiceUnavailableException
+    , _StorageLimitExceededException
     , _TooManyLabelsException
     , _InvalidArgumentException
-    , _UnauthorizedResourceAccessException
-    , _TooManySubscriptionsException
-    , _FailedDependencyException
-    , _DocumentLockedForCommentsException
-    , _EntityNotExistsException
-    , _DeactivatingLastSystemUserException
-    , _IllegalUserStateException
-    , _StorageLimitWillExceedException
+    , _ProhibitedStateException
+    , _EntityAlreadyExistsException
+    , _ResourceAlreadyCheckedOutException
     , _ConcurrentModificationException
-    , _StorageLimitExceededException
-    , _ServiceUnavailableException
-    , _InvalidOperationException
-    , _UnauthorizedOperationException
-    , _DraftUploadOutOfSyncException
+    , _StorageLimitWillExceedException
+    , _CustomMetadataLimitExceededException
+    , _IllegalUserStateException
+    , _DeactivatingLastSystemUserException
     , _LimitExceededException
     , _InvalidPasswordException
+    , _UnauthorizedOperationException
 
     -- * ActivityType
     , ActivityType (..)
@@ -399,40 +399,85 @@ workDocs
           | has (hasStatus 509) e = Just "limit_exceeded"
           | otherwise = Nothing
 
--- | The limit has been reached on the number of custom properties for the specified resource.
+-- | The AWS Directory Service cannot reach an on-premises instance. Or a dependency under the control of the organization is failing, such as a connected Active Directory.
 --
 --
-_CustomMetadataLimitExceededException :: AsError a => Getting (First ServiceError) a ServiceError
-_CustomMetadataLimitExceededException
+_FailedDependencyException :: AsError a => Getting (First ServiceError) a ServiceError
+_FailedDependencyException
   = _MatchServiceError workDocs
-      "CustomMetadataLimitExceededException"
+      "FailedDependencyException"
+      . hasStatus 424
+
+-- | You've reached the limit on the number of subscriptions for the WorkDocs instance.
+--
+--
+_TooManySubscriptionsException :: AsError a => Getting (First ServiceError) a ServiceError
+_TooManySubscriptionsException
+  = _MatchServiceError workDocs
+      "TooManySubscriptionsException"
       . hasStatus 429
 
--- | The resource already exists.
+-- | The caller does not have access to perform the action on the resource.
 --
 --
-_EntityAlreadyExistsException :: AsError a => Getting (First ServiceError) a ServiceError
-_EntityAlreadyExistsException
+_UnauthorizedResourceAccessException :: AsError a => Getting (First ServiceError) a ServiceError
+_UnauthorizedResourceAccessException
   = _MatchServiceError workDocs
-      "EntityAlreadyExistsException"
+      "UnauthorizedResourceAccessException"
+      . hasStatus 404
+
+-- | This exception is thrown when the document is locked for comments and user tries to create or delete a comment on that document.
+--
+--
+_DocumentLockedForCommentsException :: AsError a => Getting (First ServiceError) a ServiceError
+_DocumentLockedForCommentsException
+  = _MatchServiceError workDocs
+      "DocumentLockedForCommentsException"
       . hasStatus 409
 
--- | The resource is already checked out.
+-- | This exception is thrown when a valid checkout ID is not presented on document version upload calls for a document that has been checked out from Web client.
 --
 --
-_ResourceAlreadyCheckedOutException :: AsError a => Getting (First ServiceError) a ServiceError
-_ResourceAlreadyCheckedOutException
+_DraftUploadOutOfSyncException :: AsError a => Getting (First ServiceError) a ServiceError
+_DraftUploadOutOfSyncException
   = _MatchServiceError workDocs
-      "ResourceAlreadyCheckedOutException"
+      "DraftUploadOutOfSyncException"
       . hasStatus 409
 
--- | The specified document version is not in the INITIALIZED state.
+-- | The resource does not exist.
 --
 --
-_ProhibitedStateException :: AsError a => Getting (First ServiceError) a ServiceError
-_ProhibitedStateException
+_EntityNotExistsException :: AsError a => Getting (First ServiceError) a ServiceError
+_EntityNotExistsException
   = _MatchServiceError workDocs
-      "ProhibitedStateException"
+      "EntityNotExistsException"
+      . hasStatus 404
+
+-- | The operation is invalid.
+--
+--
+_InvalidOperationException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidOperationException
+  = _MatchServiceError workDocs
+      "InvalidOperationException"
+      . hasStatus 405
+
+-- | One or more of the dependencies is unavailable.
+--
+--
+_ServiceUnavailableException :: AsError a => Getting (First ServiceError) a ServiceError
+_ServiceUnavailableException
+  = _MatchServiceError workDocs
+      "ServiceUnavailableException"
+      . hasStatus 503
+
+-- | The storage limit has been exceeded.
+--
+--
+_StorageLimitExceededException :: AsError a => Getting (First ServiceError) a ServiceError
+_StorageLimitExceededException
+  = _MatchServiceError workDocs
+      "StorageLimitExceededException"
       . hasStatus 409
 
 -- | The limit has been reached on the number of labels for the specified resource.
@@ -453,67 +498,40 @@ _InvalidArgumentException
       "InvalidArgumentException"
       . hasStatus 400
 
--- | The caller does not have access to perform the action on the resource.
+-- | The specified document version is not in the INITIALIZED state.
 --
 --
-_UnauthorizedResourceAccessException :: AsError a => Getting (First ServiceError) a ServiceError
-_UnauthorizedResourceAccessException
+_ProhibitedStateException :: AsError a => Getting (First ServiceError) a ServiceError
+_ProhibitedStateException
   = _MatchServiceError workDocs
-      "UnauthorizedResourceAccessException"
-      . hasStatus 404
-
--- | You've reached the limit on the number of subscriptions for the WorkDocs instance.
---
---
-_TooManySubscriptionsException :: AsError a => Getting (First ServiceError) a ServiceError
-_TooManySubscriptionsException
-  = _MatchServiceError workDocs
-      "TooManySubscriptionsException"
-      . hasStatus 429
-
--- | The AWS Directory Service cannot reach an on-premises instance. Or a dependency under the control of the organization is failing, such as a connected Active Directory.
---
---
-_FailedDependencyException :: AsError a => Getting (First ServiceError) a ServiceError
-_FailedDependencyException
-  = _MatchServiceError workDocs
-      "FailedDependencyException"
-      . hasStatus 424
-
--- | This exception is thrown when the document is locked for comments and user tries to create or delete a comment on that document.
---
---
-_DocumentLockedForCommentsException :: AsError a => Getting (First ServiceError) a ServiceError
-_DocumentLockedForCommentsException
-  = _MatchServiceError workDocs
-      "DocumentLockedForCommentsException"
+      "ProhibitedStateException"
       . hasStatus 409
 
--- | The resource does not exist.
+-- | The resource already exists.
 --
 --
-_EntityNotExistsException :: AsError a => Getting (First ServiceError) a ServiceError
-_EntityNotExistsException
+_EntityAlreadyExistsException :: AsError a => Getting (First ServiceError) a ServiceError
+_EntityAlreadyExistsException
   = _MatchServiceError workDocs
-      "EntityNotExistsException"
-      . hasStatus 404
-
--- | The last user in the organization is being deactivated.
---
---
-_DeactivatingLastSystemUserException :: AsError a => Getting (First ServiceError) a ServiceError
-_DeactivatingLastSystemUserException
-  = _MatchServiceError workDocs
-      "DeactivatingLastSystemUserException"
+      "EntityAlreadyExistsException"
       . hasStatus 409
 
--- | The user is undergoing transfer of ownership.
+-- | The resource is already checked out.
 --
 --
-_IllegalUserStateException :: AsError a => Getting (First ServiceError) a ServiceError
-_IllegalUserStateException
+_ResourceAlreadyCheckedOutException :: AsError a => Getting (First ServiceError) a ServiceError
+_ResourceAlreadyCheckedOutException
   = _MatchServiceError workDocs
-      "IllegalUserStateException"
+      "ResourceAlreadyCheckedOutException"
+      . hasStatus 409
+
+-- | The resource hierarchy is changing.
+--
+--
+_ConcurrentModificationException :: AsError a => Getting (First ServiceError) a ServiceError
+_ConcurrentModificationException
+  = _MatchServiceError workDocs
+      "ConcurrentModificationException"
       . hasStatus 409
 
 -- | The storage limit will be exceeded.
@@ -525,58 +543,31 @@ _StorageLimitWillExceedException
       "StorageLimitWillExceedException"
       . hasStatus 413
 
--- | The resource hierarchy is changing.
+-- | The limit has been reached on the number of custom properties for the specified resource.
 --
 --
-_ConcurrentModificationException :: AsError a => Getting (First ServiceError) a ServiceError
-_ConcurrentModificationException
+_CustomMetadataLimitExceededException :: AsError a => Getting (First ServiceError) a ServiceError
+_CustomMetadataLimitExceededException
   = _MatchServiceError workDocs
-      "ConcurrentModificationException"
+      "CustomMetadataLimitExceededException"
+      . hasStatus 429
+
+-- | The user is undergoing transfer of ownership.
+--
+--
+_IllegalUserStateException :: AsError a => Getting (First ServiceError) a ServiceError
+_IllegalUserStateException
+  = _MatchServiceError workDocs
+      "IllegalUserStateException"
       . hasStatus 409
 
--- | The storage limit has been exceeded.
+-- | The last user in the organization is being deactivated.
 --
 --
-_StorageLimitExceededException :: AsError a => Getting (First ServiceError) a ServiceError
-_StorageLimitExceededException
+_DeactivatingLastSystemUserException :: AsError a => Getting (First ServiceError) a ServiceError
+_DeactivatingLastSystemUserException
   = _MatchServiceError workDocs
-      "StorageLimitExceededException"
-      . hasStatus 409
-
--- | One or more of the dependencies is unavailable.
---
---
-_ServiceUnavailableException :: AsError a => Getting (First ServiceError) a ServiceError
-_ServiceUnavailableException
-  = _MatchServiceError workDocs
-      "ServiceUnavailableException"
-      . hasStatus 503
-
--- | The operation is invalid.
---
---
-_InvalidOperationException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidOperationException
-  = _MatchServiceError workDocs
-      "InvalidOperationException"
-      . hasStatus 405
-
--- | The operation is not permitted.
---
---
-_UnauthorizedOperationException :: AsError a => Getting (First ServiceError) a ServiceError
-_UnauthorizedOperationException
-  = _MatchServiceError workDocs
-      "UnauthorizedOperationException"
-      . hasStatus 403
-
--- | This exception is thrown when a valid checkout ID is not presented on document version upload calls for a document that has been checked out from Web client.
---
---
-_DraftUploadOutOfSyncException :: AsError a => Getting (First ServiceError) a ServiceError
-_DraftUploadOutOfSyncException
-  = _MatchServiceError workDocs
-      "DraftUploadOutOfSyncException"
+      "DeactivatingLastSystemUserException"
       . hasStatus 409
 
 -- | The maximum of 100,000 folders under the parent folder has been exceeded.
@@ -596,3 +587,12 @@ _InvalidPasswordException
   = _MatchServiceError workDocs
       "InvalidPasswordException"
       . hasStatus 401
+
+-- | The operation is not permitted.
+--
+--
+_UnauthorizedOperationException :: AsError a => Getting (First ServiceError) a ServiceError
+_UnauthorizedOperationException
+  = _MatchServiceError workDocs
+      "UnauthorizedOperationException"
+      . hasStatus 403

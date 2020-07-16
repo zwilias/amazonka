@@ -16,12 +16,12 @@ module Network.AWS.Mobile.Types
       mobile
 
     -- * Errors
-    , _NotFoundException
-    , _TooManyRequestsException
     , _InternalFailureException
-    , _ServiceUnavailableException
-    , _UnauthorizedException
+    , _TooManyRequestsException
     , _BadRequestException
+    , _UnauthorizedException
+    , _ServiceUnavailableException
+    , _NotFoundException
     , _LimitExceededException
     , _AccountActionRequiredException
 
@@ -112,13 +112,14 @@ mobile
           | has (hasStatus 509) e = Just "limit_exceeded"
           | otherwise = Nothing
 
--- | No entity can be found with the specified identifier. 
+-- | The service has encountered an unexpected error condition which prevents it from servicing the request. 
 --
 --
-_NotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
-_NotFoundException
-  = _MatchServiceError mobile "NotFoundException" .
-      hasStatus 404
+_InternalFailureException :: AsError a => Getting (First ServiceError) a ServiceError
+_InternalFailureException
+  = _MatchServiceError mobile
+      "InternalFailureException"
+      . hasStatus 500
 
 -- | Too many requests have been received for this AWS account in too short a time. The request should be retried after some time delay. 
 --
@@ -129,14 +130,21 @@ _TooManyRequestsException
       "TooManyRequestsException"
       . hasStatus 429
 
--- | The service has encountered an unexpected error condition which prevents it from servicing the request. 
+-- | The request cannot be processed because some parameter is not valid or the project state prevents the operation from being performed. 
 --
 --
-_InternalFailureException :: AsError a => Getting (First ServiceError) a ServiceError
-_InternalFailureException
-  = _MatchServiceError mobile
-      "InternalFailureException"
-      . hasStatus 500
+_BadRequestException :: AsError a => Getting (First ServiceError) a ServiceError
+_BadRequestException
+  = _MatchServiceError mobile "BadRequestException" .
+      hasStatus 400
+
+-- | Credentials of the caller are insufficient to authorize the request. 
+--
+--
+_UnauthorizedException :: AsError a => Getting (First ServiceError) a ServiceError
+_UnauthorizedException
+  = _MatchServiceError mobile "UnauthorizedException" .
+      hasStatus 401
 
 -- | The service is temporarily unavailable. The request should be retried after some time delay. 
 --
@@ -147,21 +155,13 @@ _ServiceUnavailableException
       "ServiceUnavailableException"
       . hasStatus 503
 
--- | Credentials of the caller are insufficient to authorize the request. 
+-- | No entity can be found with the specified identifier. 
 --
 --
-_UnauthorizedException :: AsError a => Getting (First ServiceError) a ServiceError
-_UnauthorizedException
-  = _MatchServiceError mobile "UnauthorizedException" .
-      hasStatus 401
-
--- | The request cannot be processed because some parameter is not valid or the project state prevents the operation from being performed. 
---
---
-_BadRequestException :: AsError a => Getting (First ServiceError) a ServiceError
-_BadRequestException
-  = _MatchServiceError mobile "BadRequestException" .
-      hasStatus 400
+_NotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
+_NotFoundException
+  = _MatchServiceError mobile "NotFoundException" .
+      hasStatus 404
 
 -- | There are too many AWS Mobile Hub projects in the account or the account has exceeded the maximum number of resources in some AWS service. You should create another sub-account using AWS Organizations or remove some resources and retry your request. 
 --

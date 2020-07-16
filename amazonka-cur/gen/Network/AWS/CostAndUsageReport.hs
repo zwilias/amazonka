@@ -35,11 +35,11 @@ module Network.AWS.CostAndUsageReport
     -- ** ValidationException
     , _ValidationException
 
-    -- ** InternalErrorException
-    , _InternalErrorException
-
     -- ** DuplicateReportNameException
     , _DuplicateReportNameException
+
+    -- ** InternalErrorException
+    , _InternalErrorException
 
     -- ** ReportLimitReachedException
     , _ReportLimitReachedException

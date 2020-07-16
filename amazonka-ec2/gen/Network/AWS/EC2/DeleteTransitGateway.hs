@@ -34,8 +34,8 @@ module Network.AWS.EC2.DeleteTransitGateway
     , deleteTransitGatewayResponse
     , DeleteTransitGatewayResponse
     -- * Response Lenses
-    , dtgtrsTransitGateway
-    , dtgtrsResponseStatus
+    , dlttrnstgtwyrsTransitGateway
+    , dlttrnstgtwyrsResponseStatus
     ) where
 
 import Network.AWS.EC2.Types
@@ -102,11 +102,11 @@ instance ToQuery DeleteTransitGateway where
                "TransitGatewayId" =: _dtgTransitGatewayId]
 
 -- | /See:/ 'deleteTransitGatewayResponse' smart constructor.
-data DeleteTransitGatewayResponse = DeleteTransitGatewayResponse'{_dtgtrsTransitGateway
+data DeleteTransitGatewayResponse = DeleteTransitGatewayResponse'{_dlttrnstgtwyrsTransitGateway
                                                                   ::
                                                                   !(Maybe
                                                                       TransitGateway),
-                                                                  _dtgtrsResponseStatus
+                                                                  _dlttrnstgtwyrsResponseStatus
                                                                   :: !Int}
                                       deriving (Eq, Read, Show, Data, Typeable,
                                                 Generic)
@@ -115,23 +115,24 @@ data DeleteTransitGatewayResponse = DeleteTransitGatewayResponse'{_dtgtrsTransit
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dtgtrsTransitGateway' - Information about the deleted transit gateway.
+-- * 'dlttrnstgtwyrsTransitGateway' - Information about the deleted transit gateway.
 --
--- * 'dtgtrsResponseStatus' - -- | The response status code.
+-- * 'dlttrnstgtwyrsResponseStatus' - -- | The response status code.
 deleteTransitGatewayResponse
-    :: Int -- ^ 'dtgtrsResponseStatus'
+    :: Int -- ^ 'dlttrnstgtwyrsResponseStatus'
     -> DeleteTransitGatewayResponse
 deleteTransitGatewayResponse pResponseStatus_
-  = DeleteTransitGatewayResponse'{_dtgtrsTransitGateway
+  = DeleteTransitGatewayResponse'{_dlttrnstgtwyrsTransitGateway
                                     = Nothing,
-                                  _dtgtrsResponseStatus = pResponseStatus_}
+                                  _dlttrnstgtwyrsResponseStatus =
+                                    pResponseStatus_}
 
 -- | Information about the deleted transit gateway.
-dtgtrsTransitGateway :: Lens' DeleteTransitGatewayResponse (Maybe TransitGateway)
-dtgtrsTransitGateway = lens _dtgtrsTransitGateway (\ s a -> s{_dtgtrsTransitGateway = a})
+dlttrnstgtwyrsTransitGateway :: Lens' DeleteTransitGatewayResponse (Maybe TransitGateway)
+dlttrnstgtwyrsTransitGateway = lens _dlttrnstgtwyrsTransitGateway (\ s a -> s{_dlttrnstgtwyrsTransitGateway = a})
 
 -- | -- | The response status code.
-dtgtrsResponseStatus :: Lens' DeleteTransitGatewayResponse Int
-dtgtrsResponseStatus = lens _dtgtrsResponseStatus (\ s a -> s{_dtgtrsResponseStatus = a})
+dlttrnstgtwyrsResponseStatus :: Lens' DeleteTransitGatewayResponse Int
+dlttrnstgtwyrsResponseStatus = lens _dlttrnstgtwyrsResponseStatus (\ s a -> s{_dlttrnstgtwyrsResponseStatus = a})
 
 instance NFData DeleteTransitGatewayResponse where

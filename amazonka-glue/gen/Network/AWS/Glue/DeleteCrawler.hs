@@ -33,7 +33,7 @@ module Network.AWS.Glue.DeleteCrawler
     , deleteCrawlerResponse
     , DeleteCrawlerResponse
     -- * Response Lenses
-    , dccrsResponseStatus
+    , dltcrwlrrsResponseStatus
     ) where
 
 import Network.AWS.Glue.Types
@@ -95,7 +95,7 @@ instance ToQuery DeleteCrawler where
         toQuery = const mempty
 
 -- | /See:/ 'deleteCrawlerResponse' smart constructor.
-newtype DeleteCrawlerResponse = DeleteCrawlerResponse'{_dccrsResponseStatus
+newtype DeleteCrawlerResponse = DeleteCrawlerResponse'{_dltcrwlrrsResponseStatus
                                                        :: Int}
                                   deriving (Eq, Read, Show, Data, Typeable,
                                             Generic)
@@ -104,16 +104,16 @@ newtype DeleteCrawlerResponse = DeleteCrawlerResponse'{_dccrsResponseStatus
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dccrsResponseStatus' - -- | The response status code.
+-- * 'dltcrwlrrsResponseStatus' - -- | The response status code.
 deleteCrawlerResponse
-    :: Int -- ^ 'dccrsResponseStatus'
+    :: Int -- ^ 'dltcrwlrrsResponseStatus'
     -> DeleteCrawlerResponse
 deleteCrawlerResponse pResponseStatus_
-  = DeleteCrawlerResponse'{_dccrsResponseStatus =
+  = DeleteCrawlerResponse'{_dltcrwlrrsResponseStatus =
                              pResponseStatus_}
 
 -- | -- | The response status code.
-dccrsResponseStatus :: Lens' DeleteCrawlerResponse Int
-dccrsResponseStatus = lens _dccrsResponseStatus (\ s a -> s{_dccrsResponseStatus = a})
+dltcrwlrrsResponseStatus :: Lens' DeleteCrawlerResponse Int
+dltcrwlrrsResponseStatus = lens _dltcrwlrrsResponseStatus (\ s a -> s{_dltcrwlrrsResponseStatus = a})
 
 instance NFData DeleteCrawlerResponse where

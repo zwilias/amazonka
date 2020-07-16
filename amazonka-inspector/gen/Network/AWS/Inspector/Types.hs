@@ -16,15 +16,15 @@ module Network.AWS.Inspector.Types
       inspector
 
     -- * Errors
-    , _AccessDeniedException
-    , _AssessmentRunInProgressException
     , _NoSuchEntityException
-    , _UnsupportedFeatureException
-    , _AgentsAlreadyRunningAssessmentException
     , _InvalidCrossAccountRoleException
+    , _AccessDeniedException
     , _InvalidInputException
     , _InternalException
+    , _AssessmentRunInProgressException
+    , _AgentsAlreadyRunningAssessmentException
     , _LimitExceededException
+    , _UnsupportedFeatureException
 
     -- * AgentHealth
     , AgentHealth (..)
@@ -374,22 +374,6 @@ inspector
           | has (hasStatus 509) e = Just "limit_exceeded"
           | otherwise = Nothing
 
--- | You do not have required permissions to access the requested resource.
---
---
-_AccessDeniedException :: AsError a => Getting (First ServiceError) a ServiceError
-_AccessDeniedException
-  = _MatchServiceError inspector
-      "AccessDeniedException"
-
--- | You cannot perform a specified action if an assessment run is currently in progress.
---
---
-_AssessmentRunInProgressException :: AsError a => Getting (First ServiceError) a ServiceError
-_AssessmentRunInProgressException
-  = _MatchServiceError inspector
-      "AssessmentRunInProgressException"
-
 -- | The request was rejected because it referenced an entity that does not exist. The error code describes the entity.
 --
 --
@@ -398,22 +382,6 @@ _NoSuchEntityException
   = _MatchServiceError inspector
       "NoSuchEntityException"
 
--- | Used by the 'GetAssessmentReport' API. The request was rejected because you tried to generate a report for an assessment run that existed before reporting was supported in Amazon Inspector. You can only generate reports for assessment runs that took place or will take place after generating reports in Amazon Inspector became available.
---
---
-_UnsupportedFeatureException :: AsError a => Getting (First ServiceError) a ServiceError
-_UnsupportedFeatureException
-  = _MatchServiceError inspector
-      "UnsupportedFeatureException"
-
--- | You started an assessment run, but one of the instances is already participating in another assessment run.
---
---
-_AgentsAlreadyRunningAssessmentException :: AsError a => Getting (First ServiceError) a ServiceError
-_AgentsAlreadyRunningAssessmentException
-  = _MatchServiceError inspector
-      "AgentsAlreadyRunningAssessmentException"
-
 -- | Amazon Inspector cannot assume the cross-account role that it needs to list your EC2 instances during the assessment run.
 --
 --
@@ -421,6 +389,14 @@ _InvalidCrossAccountRoleException :: AsError a => Getting (First ServiceError) a
 _InvalidCrossAccountRoleException
   = _MatchServiceError inspector
       "InvalidCrossAccountRoleException"
+
+-- | You do not have required permissions to access the requested resource.
+--
+--
+_AccessDeniedException :: AsError a => Getting (First ServiceError) a ServiceError
+_AccessDeniedException
+  = _MatchServiceError inspector
+      "AccessDeniedException"
 
 -- | The request was rejected because an invalid or out-of-range value was supplied for an input parameter.
 --
@@ -437,6 +413,22 @@ _InternalException :: AsError a => Getting (First ServiceError) a ServiceError
 _InternalException
   = _MatchServiceError inspector "InternalException"
 
+-- | You cannot perform a specified action if an assessment run is currently in progress.
+--
+--
+_AssessmentRunInProgressException :: AsError a => Getting (First ServiceError) a ServiceError
+_AssessmentRunInProgressException
+  = _MatchServiceError inspector
+      "AssessmentRunInProgressException"
+
+-- | You started an assessment run, but one of the instances is already participating in another assessment run.
+--
+--
+_AgentsAlreadyRunningAssessmentException :: AsError a => Getting (First ServiceError) a ServiceError
+_AgentsAlreadyRunningAssessmentException
+  = _MatchServiceError inspector
+      "AgentsAlreadyRunningAssessmentException"
+
 -- | The request was rejected because it attempted to create resources beyond the current AWS account limits. The error code describes the limit exceeded.
 --
 --
@@ -444,3 +436,11 @@ _LimitExceededException :: AsError a => Getting (First ServiceError) a ServiceEr
 _LimitExceededException
   = _MatchServiceError inspector
       "LimitExceededException"
+
+-- | Used by the 'GetAssessmentReport' API. The request was rejected because you tried to generate a report for an assessment run that existed before reporting was supported in Amazon Inspector. You can only generate reports for assessment runs that took place or will take place after generating reports in Amazon Inspector became available.
+--
+--
+_UnsupportedFeatureException :: AsError a => Getting (First ServiceError) a ServiceError
+_UnsupportedFeatureException
+  = _MatchServiceError inspector
+      "UnsupportedFeatureException"

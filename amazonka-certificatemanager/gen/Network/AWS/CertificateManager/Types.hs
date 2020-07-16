@@ -16,13 +16,13 @@ module Network.AWS.CertificateManager.Types
       certificateManager
 
     -- * Errors
-    , _InvalidTagException
     , _InvalidDomainValidationOptionsException
-    , _TooManyTagsException
+    , _InvalidTagException
     , _RequestInProgressException
-    , _InvalidARNException
-    , _ResourceNotFoundException
     , _InvalidStateException
+    , _TooManyTagsException
+    , _ResourceNotFoundException
+    , _InvalidARNException
     , _LimitExceededException
     , _ResourceInUseException
 
@@ -222,14 +222,6 @@ certificateManager
           | has (hasStatus 509) e = Just "limit_exceeded"
           | otherwise = Nothing
 
--- | One or both of the values that make up the key-value pair is not valid. For example, you cannot specify a tag value that begins with @aws:@ .
---
---
-_InvalidTagException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidTagException
-  = _MatchServiceError certificateManager
-      "InvalidTagException"
-
 -- | One or more values in the 'DomainValidationOption' structure is incorrect.
 --
 --
@@ -238,13 +230,13 @@ _InvalidDomainValidationOptionsException
   = _MatchServiceError certificateManager
       "InvalidDomainValidationOptionsException"
 
--- | The request contains too many tags. Try the request again with fewer tags.
+-- | One or both of the values that make up the key-value pair is not valid. For example, you cannot specify a tag value that begins with @aws:@ .
 --
 --
-_TooManyTagsException :: AsError a => Getting (First ServiceError) a ServiceError
-_TooManyTagsException
+_InvalidTagException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidTagException
   = _MatchServiceError certificateManager
-      "TooManyTagsException"
+      "InvalidTagException"
 
 -- | The certificate request is in process and the certificate in your account has not yet been issued.
 --
@@ -254,13 +246,21 @@ _RequestInProgressException
   = _MatchServiceError certificateManager
       "RequestInProgressException"
 
--- | The requested Amazon Resource Name (ARN) does not refer to an existing resource.
+-- | Processing has reached an invalid state.
 --
 --
-_InvalidARNException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidARNException
+_InvalidStateException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidStateException
   = _MatchServiceError certificateManager
-      "InvalidArnException"
+      "InvalidStateException"
+
+-- | The request contains too many tags. Try the request again with fewer tags.
+--
+--
+_TooManyTagsException :: AsError a => Getting (First ServiceError) a ServiceError
+_TooManyTagsException
+  = _MatchServiceError certificateManager
+      "TooManyTagsException"
 
 -- | The specified certificate cannot be found in the caller's account or the caller's account cannot be found.
 --
@@ -270,13 +270,13 @@ _ResourceNotFoundException
   = _MatchServiceError certificateManager
       "ResourceNotFoundException"
 
--- | Processing has reached an invalid state.
+-- | The requested Amazon Resource Name (ARN) does not refer to an existing resource.
 --
 --
-_InvalidStateException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidStateException
+_InvalidARNException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidARNException
   = _MatchServiceError certificateManager
-      "InvalidStateException"
+      "InvalidArnException"
 
 -- | An ACM limit has been exceeded.
 --

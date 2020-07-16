@@ -53,80 +53,17 @@ module Network.AWS.ELBv2
     -- * Errors
     -- $errors
 
-    -- ** InvalidConfigurationRequestException
-    , _InvalidConfigurationRequestException
+    -- ** InvalidSchemeException
+    , _InvalidSchemeException
 
-    -- ** SubnetNotFoundException
-    , _SubnetNotFoundException
-
-    -- ** TooManyTargetsException
-    , _TooManyTargetsException
-
-    -- ** RuleNotFoundException
-    , _RuleNotFoundException
-
-    -- ** InvalidSubnetException
-    , _InvalidSubnetException
-
-    -- ** TooManyRulesException
-    , _TooManyRulesException
-
-    -- ** TooManyTargetGroupsException
-    , _TooManyTargetGroupsException
-
-    -- ** DuplicateLoadBalancerNameException
-    , _DuplicateLoadBalancerNameException
-
-    -- ** IncompatibleProtocolsException
-    , _IncompatibleProtocolsException
-
-    -- ** TooManyCertificatesException
-    , _TooManyCertificatesException
-
-    -- ** DuplicateTagKeysException
-    , _DuplicateTagKeysException
-
-    -- ** DuplicateListenerException
-    , _DuplicateListenerException
-
-    -- ** TooManyTagsException
-    , _TooManyTagsException
-
-    -- ** DuplicateTargetGroupNameException
-    , _DuplicateTargetGroupNameException
-
-    -- ** HealthUnavailableException
-    , _HealthUnavailableException
-
-    -- ** AllocationIdNotFoundException
-    , _AllocationIdNotFoundException
-
-    -- ** PriorityInUseException
-    , _PriorityInUseException
-
-    -- ** TooManyLoadBalancersException
-    , _TooManyLoadBalancersException
-
-    -- ** UnsupportedProtocolException
-    , _UnsupportedProtocolException
-
-    -- ** InvalidTargetException
-    , _InvalidTargetException
-
-    -- ** InvalidSecurityGroupException
-    , _InvalidSecurityGroupException
-
-    -- ** TargetGroupNotFoundException
-    , _TargetGroupNotFoundException
-
-    -- ** ListenerNotFoundException
-    , _ListenerNotFoundException
+    -- ** SSLPolicyNotFoundException
+    , _SSLPolicyNotFoundException
 
     -- ** TooManyRegistrationsForTargetIdException
     , _TooManyRegistrationsForTargetIdException
 
-    -- ** TooManyListenersException
-    , _TooManyListenersException
+    -- ** TooManyRulesException
+    , _TooManyRulesException
 
     -- ** TargetGroupAssociationLimitException
     , _TargetGroupAssociationLimitException
@@ -134,23 +71,86 @@ module Network.AWS.ELBv2
     -- ** OperationNotPermittedException
     , _OperationNotPermittedException
 
-    -- ** SSLPolicyNotFoundException
-    , _SSLPolicyNotFoundException
+    -- ** TargetGroupNotFoundException
+    , _TargetGroupNotFoundException
 
-    -- ** InvalidSchemeException
-    , _InvalidSchemeException
+    -- ** RuleNotFoundException
+    , _RuleNotFoundException
 
-    -- ** AvailabilityZoneNotSupportedException
-    , _AvailabilityZoneNotSupportedException
+    -- ** TooManyTargetsException
+    , _TooManyTargetsException
+
+    -- ** SubnetNotFoundException
+    , _SubnetNotFoundException
+
+    -- ** InvalidTargetException
+    , _InvalidTargetException
+
+    -- ** UnsupportedProtocolException
+    , _UnsupportedProtocolException
+
+    -- ** PriorityInUseException
+    , _PriorityInUseException
+
+    -- ** TooManyTagsException
+    , _TooManyTagsException
+
+    -- ** HealthUnavailableException
+    , _HealthUnavailableException
+
+    -- ** TooManyCertificatesException
+    , _TooManyCertificatesException
+
+    -- ** DuplicateListenerException
+    , _DuplicateListenerException
 
     -- ** LoadBalancerNotFoundException
     , _LoadBalancerNotFoundException
 
-    -- ** ResourceInUseException
-    , _ResourceInUseException
+    -- ** AvailabilityZoneNotSupportedException
+    , _AvailabilityZoneNotSupportedException
+
+    -- ** IncompatibleProtocolsException
+    , _IncompatibleProtocolsException
+
+    -- ** InvalidSubnetException
+    , _InvalidSubnetException
+
+    -- ** TooManyListenersException
+    , _TooManyListenersException
+
+    -- ** DuplicateLoadBalancerNameException
+    , _DuplicateLoadBalancerNameException
+
+    -- ** TooManyTargetGroupsException
+    , _TooManyTargetGroupsException
+
+    -- ** ListenerNotFoundException
+    , _ListenerNotFoundException
+
+    -- ** InvalidConfigurationRequestException
+    , _InvalidConfigurationRequestException
+
+    -- ** InvalidSecurityGroupException
+    , _InvalidSecurityGroupException
 
     -- ** CertificateNotFoundException
     , _CertificateNotFoundException
+
+    -- ** DuplicateTargetGroupNameException
+    , _DuplicateTargetGroupNameException
+
+    -- ** ResourceInUseException
+    , _ResourceInUseException
+
+    -- ** TooManyLoadBalancersException
+    , _TooManyLoadBalancersException
+
+    -- ** AllocationIdNotFoundException
+    , _AllocationIdNotFoundException
+
+    -- ** DuplicateTagKeysException
+    , _DuplicateTagKeysException
 
     -- * Waiters
     -- $waiters

@@ -39,35 +39,35 @@ module Network.AWS.MarketplaceMetering
     -- * Errors
     -- $errors
 
-    -- ** InvalidEndpointRegionException
-    , _InvalidEndpointRegionException
-
     -- ** InvalidProductCodeException
     , _InvalidProductCodeException
-
-    -- ** InvalidUsageDimensionException
-    , _InvalidUsageDimensionException
-
-    -- ** DuplicateRequestException
-    , _DuplicateRequestException
-
-    -- ** TimestampOutOfBoundsException
-    , _TimestampOutOfBoundsException
-
-    -- ** ThrottlingException
-    , _ThrottlingException
-
-    -- ** InternalServiceErrorException
-    , _InternalServiceErrorException
-
-    -- ** InvalidTokenException
-    , _InvalidTokenException
 
     -- ** ExpiredTokenException
     , _ExpiredTokenException
 
+    -- ** InvalidUsageDimensionException
+    , _InvalidUsageDimensionException
+
+    -- ** InvalidTokenException
+    , _InvalidTokenException
+
+    -- ** InvalidEndpointRegionException
+    , _InvalidEndpointRegionException
+
+    -- ** InternalServiceErrorException
+    , _InternalServiceErrorException
+
+    -- ** ThrottlingException
+    , _ThrottlingException
+
+    -- ** TimestampOutOfBoundsException
+    , _TimestampOutOfBoundsException
+
     -- ** InvalidCustomerIdentifierException
     , _InvalidCustomerIdentifierException
+
+    -- ** DuplicateRequestException
+    , _DuplicateRequestException
 
     -- * Waiters
     -- $waiters

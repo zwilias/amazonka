@@ -43,6 +43,9 @@ module Network.AWS.ResourceGroupsTagging
     -- * Errors
     -- $errors
 
+    -- ** InternalServiceException
+    , _InternalServiceException
+
     -- ** InvalidParameterException
     , _InvalidParameterException
 
@@ -51,9 +54,6 @@ module Network.AWS.ResourceGroupsTagging
 
     -- ** PaginationTokenExpiredException
     , _PaginationTokenExpiredException
-
-    -- ** InternalServiceException
-    , _InternalServiceException
 
     -- * Waiters
     -- $waiters

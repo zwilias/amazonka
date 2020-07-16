@@ -44,8 +44,8 @@ module Network.AWS.EC2.CopyImage
     , copyImageResponse
     , CopyImageResponse
     -- * Response Lenses
-    , ciirsImageId
-    , ciirsResponseStatus
+    , cpyimgrsImageId
+    , cpyimgrsResponseStatus
     ) where
 
 import Network.AWS.EC2.Types
@@ -169,31 +169,31 @@ instance ToQuery CopyImage where
 --
 --
 -- /See:/ 'copyImageResponse' smart constructor.
-data CopyImageResponse = CopyImageResponse'{_ciirsImageId
+data CopyImageResponse = CopyImageResponse'{_cpyimgrsImageId
                                             :: !(Maybe Text),
-                                            _ciirsResponseStatus :: !Int}
+                                            _cpyimgrsResponseStatus :: !Int}
                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CopyImageResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ciirsImageId' - The ID of the new AMI.
+-- * 'cpyimgrsImageId' - The ID of the new AMI.
 --
--- * 'ciirsResponseStatus' - -- | The response status code.
+-- * 'cpyimgrsResponseStatus' - -- | The response status code.
 copyImageResponse
-    :: Int -- ^ 'ciirsResponseStatus'
+    :: Int -- ^ 'cpyimgrsResponseStatus'
     -> CopyImageResponse
 copyImageResponse pResponseStatus_
-  = CopyImageResponse'{_ciirsImageId = Nothing,
-                       _ciirsResponseStatus = pResponseStatus_}
+  = CopyImageResponse'{_cpyimgrsImageId = Nothing,
+                       _cpyimgrsResponseStatus = pResponseStatus_}
 
 -- | The ID of the new AMI.
-ciirsImageId :: Lens' CopyImageResponse (Maybe Text)
-ciirsImageId = lens _ciirsImageId (\ s a -> s{_ciirsImageId = a})
+cpyimgrsImageId :: Lens' CopyImageResponse (Maybe Text)
+cpyimgrsImageId = lens _cpyimgrsImageId (\ s a -> s{_cpyimgrsImageId = a})
 
 -- | -- | The response status code.
-ciirsResponseStatus :: Lens' CopyImageResponse Int
-ciirsResponseStatus = lens _ciirsResponseStatus (\ s a -> s{_ciirsResponseStatus = a})
+cpyimgrsResponseStatus :: Lens' CopyImageResponse Int
+cpyimgrsResponseStatus = lens _cpyimgrsResponseStatus (\ s a -> s{_cpyimgrsResponseStatus = a})
 
 instance NFData CopyImageResponse where

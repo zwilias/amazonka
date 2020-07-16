@@ -22,17 +22,17 @@ module Network.AWS.KinesisVideoArchivedMedia
     -- * Errors
     -- $errors
 
+    -- ** ResourceNotFoundException
+    , _ResourceNotFoundException
+
+    -- ** ClientLimitExceededException
+    , _ClientLimitExceededException
+
     -- ** InvalidArgumentException
     , _InvalidArgumentException
 
     -- ** NotAuthorizedException
     , _NotAuthorizedException
-
-    -- ** ClientLimitExceededException
-    , _ClientLimitExceededException
-
-    -- ** ResourceNotFoundException
-    , _ResourceNotFoundException
 
     -- * Waiters
     -- $waiters

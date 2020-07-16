@@ -16,13 +16,13 @@ module Network.AWS.APIGateway.Types
       apiGateway
 
     -- * Errors
-    , _ConflictException
-    , _NotFoundException
     , _TooManyRequestsException
-    , _ServiceUnavailableException
-    , _UnauthorizedException
     , _BadRequestException
+    , _UnauthorizedException
+    , _ServiceUnavailableException
+    , _NotFoundException
     , _LimitExceededException
+    , _ConflictException
 
     -- * APIKeySourceType
     , APIKeySourceType (..)
@@ -538,22 +538,6 @@ apiGateway
           | has (hasStatus 509) e = Just "limit_exceeded"
           | otherwise = Nothing
 
--- | The request configuration has conflicts. For details, see the accompanying error message.
---
---
-_ConflictException :: AsError a => Getting (First ServiceError) a ServiceError
-_ConflictException
-  = _MatchServiceError apiGateway "ConflictException" .
-      hasStatus 409
-
--- | The requested resource is not found. Make sure that the request URI is correct.
---
---
-_NotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
-_NotFoundException
-  = _MatchServiceError apiGateway "NotFoundException" .
-      hasStatus 404
-
 -- | The request has reached its throttling limit. Retry after the specified time period.
 --
 --
@@ -563,14 +547,13 @@ _TooManyRequestsException
       "TooManyRequestsException"
       . hasStatus 429
 
--- | The requested service is not available. For details see the accompanying error message. Retry after the specified time period.
+-- | The submitted request is not valid, for example, the input is incomplete or incorrect. See the accompanying error message for details.
 --
 --
-_ServiceUnavailableException :: AsError a => Getting (First ServiceError) a ServiceError
-_ServiceUnavailableException
-  = _MatchServiceError apiGateway
-      "ServiceUnavailableException"
-      . hasStatus 503
+_BadRequestException :: AsError a => Getting (First ServiceError) a ServiceError
+_BadRequestException
+  = _MatchServiceError apiGateway "BadRequestException"
+      . hasStatus 400
 
 -- | The request is denied because the caller has insufficient permissions.
 --
@@ -581,13 +564,22 @@ _UnauthorizedException
       "UnauthorizedException"
       . hasStatus 401
 
--- | The submitted request is not valid, for example, the input is incomplete or incorrect. See the accompanying error message for details.
+-- | The requested service is not available. For details see the accompanying error message. Retry after the specified time period.
 --
 --
-_BadRequestException :: AsError a => Getting (First ServiceError) a ServiceError
-_BadRequestException
-  = _MatchServiceError apiGateway "BadRequestException"
-      . hasStatus 400
+_ServiceUnavailableException :: AsError a => Getting (First ServiceError) a ServiceError
+_ServiceUnavailableException
+  = _MatchServiceError apiGateway
+      "ServiceUnavailableException"
+      . hasStatus 503
+
+-- | The requested resource is not found. Make sure that the request URI is correct.
+--
+--
+_NotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
+_NotFoundException
+  = _MatchServiceError apiGateway "NotFoundException" .
+      hasStatus 404
 
 -- | The request exceeded the rate limit. Retry after the specified time period.
 --
@@ -597,3 +589,11 @@ _LimitExceededException
   = _MatchServiceError apiGateway
       "LimitExceededException"
       . hasStatus 429
+
+-- | The request configuration has conflicts. For details, see the accompanying error message.
+--
+--
+_ConflictException :: AsError a => Getting (First ServiceError) a ServiceError
+_ConflictException
+  = _MatchServiceError apiGateway "ConflictException" .
+      hasStatus 409

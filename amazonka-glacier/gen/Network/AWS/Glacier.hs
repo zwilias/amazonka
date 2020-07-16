@@ -42,17 +42,17 @@ module Network.AWS.Glacier
     -- ** InvalidParameterValueException
     , _InvalidParameterValueException
 
-    -- ** RequestTimeoutException
-    , _RequestTimeoutException
-
-    -- ** ServiceUnavailableException
-    , _ServiceUnavailableException
-
     -- ** InsufficientCapacityException
     , _InsufficientCapacityException
 
     -- ** ResourceNotFoundException
     , _ResourceNotFoundException
+
+    -- ** ServiceUnavailableException
+    , _ServiceUnavailableException
+
+    -- ** RequestTimeoutException
+    , _RequestTimeoutException
 
     -- ** LimitExceededException
     , _LimitExceededException

@@ -16,10 +16,10 @@ module Network.AWS.MediaStoreData.Types
       mediaStoreData
 
     -- * Errors
-    , _RequestedRangeNotSatisfiableException
-    , _InternalServerError
     , _ContainerNotFoundException
     , _ObjectNotFoundException
+    , _InternalServerError
+    , _RequestedRangeNotSatisfiableException
 
     -- * ItemType
     , ItemType (..)
@@ -79,23 +79,6 @@ mediaStoreData
           | has (hasStatus 509) e = Just "limit_exceeded"
           | otherwise = Nothing
 
--- | The requested content range is not valid.
---
---
-_RequestedRangeNotSatisfiableException :: AsError a => Getting (First ServiceError) a ServiceError
-_RequestedRangeNotSatisfiableException
-  = _MatchServiceError mediaStoreData
-      "RequestedRangeNotSatisfiableException"
-      . hasStatus 416
-
--- | The service is temporarily unavailable.
---
---
-_InternalServerError :: AsError a => Getting (First ServiceError) a ServiceError
-_InternalServerError
-  = _MatchServiceError mediaStoreData
-      "InternalServerError"
-
 -- | The specified container was not found for the specified account.
 --
 --
@@ -113,3 +96,20 @@ _ObjectNotFoundException
   = _MatchServiceError mediaStoreData
       "ObjectNotFoundException"
       . hasStatus 404
+
+-- | The service is temporarily unavailable.
+--
+--
+_InternalServerError :: AsError a => Getting (First ServiceError) a ServiceError
+_InternalServerError
+  = _MatchServiceError mediaStoreData
+      "InternalServerError"
+
+-- | The requested content range is not valid.
+--
+--
+_RequestedRangeNotSatisfiableException :: AsError a => Getting (First ServiceError) a ServiceError
+_RequestedRangeNotSatisfiableException
+  = _MatchServiceError mediaStoreData
+      "RequestedRangeNotSatisfiableException"
+      . hasStatus 416

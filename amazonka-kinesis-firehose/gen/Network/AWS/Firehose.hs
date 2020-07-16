@@ -23,17 +23,17 @@ module Network.AWS.Firehose
     -- * Errors
     -- $errors
 
+    -- ** ResourceNotFoundException
+    , _ResourceNotFoundException
+
+    -- ** ServiceUnavailableException
+    , _ServiceUnavailableException
+
     -- ** InvalidArgumentException
     , _InvalidArgumentException
 
     -- ** ConcurrentModificationException
     , _ConcurrentModificationException
-
-    -- ** ServiceUnavailableException
-    , _ServiceUnavailableException
-
-    -- ** ResourceNotFoundException
-    , _ResourceNotFoundException
 
     -- ** LimitExceededException
     , _LimitExceededException

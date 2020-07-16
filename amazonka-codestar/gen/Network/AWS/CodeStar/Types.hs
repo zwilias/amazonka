@@ -16,19 +16,19 @@ module Network.AWS.CodeStar.Types
       codeStar
 
     -- * Errors
-    , _TeamMemberAlreadyAssociatedException
-    , _ValidationException
-    , _InvalidServiceRoleException
-    , _ProjectCreationFailedException
     , _UserProfileAlreadyExistsException
+    , _InvalidServiceRoleException
+    , _ValidationException
     , _ProjectNotFoundException
-    , _TeamMemberNotFoundException
-    , _ProjectAlreadyExistsException
+    , _ProjectCreationFailedException
+    , _InvalidNextTokenException
     , _ProjectConfigurationException
     , _ConcurrentModificationException
-    , _InvalidNextTokenException
-    , _UserProfileNotFoundException
+    , _ProjectAlreadyExistsException
+    , _TeamMemberAlreadyAssociatedException
+    , _TeamMemberNotFoundException
     , _LimitExceededException
+    , _UserProfileNotFoundException
 
     -- * Code
     , Code
@@ -164,20 +164,13 @@ codeStar
           | has (hasStatus 509) e = Just "limit_exceeded"
           | otherwise = Nothing
 
--- | The team member is already associated with a role in this project.
+-- | A user profile with that name already exists in this region for the AWS account. AWS CodeStar user profile names must be unique within a region for the AWS account. 
 --
 --
-_TeamMemberAlreadyAssociatedException :: AsError a => Getting (First ServiceError) a ServiceError
-_TeamMemberAlreadyAssociatedException
+_UserProfileAlreadyExistsException :: AsError a => Getting (First ServiceError) a ServiceError
+_UserProfileAlreadyExistsException
   = _MatchServiceError codeStar
-      "TeamMemberAlreadyAssociatedException"
-
--- | The specified input is either not valid, or it could not be validated.
---
---
-_ValidationException :: AsError a => Getting (First ServiceError) a ServiceError
-_ValidationException
-  = _MatchServiceError codeStar "ValidationException"
+      "UserProfileAlreadyExistsException"
 
 -- | The service role is not valid.
 --
@@ -187,21 +180,12 @@ _InvalidServiceRoleException
   = _MatchServiceError codeStar
       "InvalidServiceRoleException"
 
--- | The project creation request was valid, but a nonspecific exception or error occurred during project creation. The project could not be created in AWS CodeStar.
+-- | The specified input is either not valid, or it could not be validated.
 --
 --
-_ProjectCreationFailedException :: AsError a => Getting (First ServiceError) a ServiceError
-_ProjectCreationFailedException
-  = _MatchServiceError codeStar
-      "ProjectCreationFailedException"
-
--- | A user profile with that name already exists in this region for the AWS account. AWS CodeStar user profile names must be unique within a region for the AWS account. 
---
---
-_UserProfileAlreadyExistsException :: AsError a => Getting (First ServiceError) a ServiceError
-_UserProfileAlreadyExistsException
-  = _MatchServiceError codeStar
-      "UserProfileAlreadyExistsException"
+_ValidationException :: AsError a => Getting (First ServiceError) a ServiceError
+_ValidationException
+  = _MatchServiceError codeStar "ValidationException"
 
 -- | The specified AWS CodeStar project was not found.
 --
@@ -211,21 +195,21 @@ _ProjectNotFoundException
   = _MatchServiceError codeStar
       "ProjectNotFoundException"
 
--- | The specified team member was not found.
+-- | The project creation request was valid, but a nonspecific exception or error occurred during project creation. The project could not be created in AWS CodeStar.
 --
 --
-_TeamMemberNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
-_TeamMemberNotFoundException
+_ProjectCreationFailedException :: AsError a => Getting (First ServiceError) a ServiceError
+_ProjectCreationFailedException
   = _MatchServiceError codeStar
-      "TeamMemberNotFoundException"
+      "ProjectCreationFailedException"
 
--- | An AWS CodeStar project with the same ID already exists in this region for the AWS account. AWS CodeStar project IDs must be unique within a region for the AWS account.
+-- | The next token is not valid.
 --
 --
-_ProjectAlreadyExistsException :: AsError a => Getting (First ServiceError) a ServiceError
-_ProjectAlreadyExistsException
+_InvalidNextTokenException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidNextTokenException
   = _MatchServiceError codeStar
-      "ProjectAlreadyExistsException"
+      "InvalidNextTokenException"
 
 -- | Project configuration information is required but not specified.
 --
@@ -243,21 +227,29 @@ _ConcurrentModificationException
   = _MatchServiceError codeStar
       "ConcurrentModificationException"
 
--- | The next token is not valid.
+-- | An AWS CodeStar project with the same ID already exists in this region for the AWS account. AWS CodeStar project IDs must be unique within a region for the AWS account.
 --
 --
-_InvalidNextTokenException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidNextTokenException
+_ProjectAlreadyExistsException :: AsError a => Getting (First ServiceError) a ServiceError
+_ProjectAlreadyExistsException
   = _MatchServiceError codeStar
-      "InvalidNextTokenException"
+      "ProjectAlreadyExistsException"
 
--- | The user profile was not found.
+-- | The team member is already associated with a role in this project.
 --
 --
-_UserProfileNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
-_UserProfileNotFoundException
+_TeamMemberAlreadyAssociatedException :: AsError a => Getting (First ServiceError) a ServiceError
+_TeamMemberAlreadyAssociatedException
   = _MatchServiceError codeStar
-      "UserProfileNotFoundException"
+      "TeamMemberAlreadyAssociatedException"
+
+-- | The specified team member was not found.
+--
+--
+_TeamMemberNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
+_TeamMemberNotFoundException
+  = _MatchServiceError codeStar
+      "TeamMemberNotFoundException"
 
 -- | A resource limit has been exceeded.
 --
@@ -266,3 +258,11 @@ _LimitExceededException :: AsError a => Getting (First ServiceError) a ServiceEr
 _LimitExceededException
   = _MatchServiceError codeStar
       "LimitExceededException"
+
+-- | The user profile was not found.
+--
+--
+_UserProfileNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
+_UserProfileNotFoundException
+  = _MatchServiceError codeStar
+      "UserProfileNotFoundException"

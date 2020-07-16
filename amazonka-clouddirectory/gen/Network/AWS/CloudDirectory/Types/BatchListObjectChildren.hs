@@ -26,12 +26,12 @@ import Network.AWS.Prelude
 --
 --
 -- /See:/ 'batchListObjectChildren' smart constructor.
-data BatchListObjectChildren = BatchListObjectChildren'{_bloclNextToken
+data BatchListObjectChildren = BatchListObjectChildren'{_btchlstobjctchldrnNextToken
                                                         :: !(Maybe Text),
-                                                        _bloclMaxResults ::
-                                                        !(Maybe Nat),
-                                                        _bloclObjectReference ::
-                                                        !ObjectReference}
+                                                        _btchlstobjctchldrnMaxResults
+                                                        :: !(Maybe Nat),
+                                                        _btchlstobjctchldrnObjectReference
+                                                        :: !ObjectReference}
                                  deriving (Eq, Read, Show, Data, Typeable,
                                            Generic)
 
@@ -39,30 +39,32 @@ data BatchListObjectChildren = BatchListObjectChildren'{_bloclNextToken
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'bloclNextToken' - The pagination token.
+-- * 'btchlstobjctchldrnNextToken' - The pagination token.
 --
--- * 'bloclMaxResults' - Maximum number of items to be retrieved in a single call. This is an approximate number.
+-- * 'btchlstobjctchldrnMaxResults' - Maximum number of items to be retrieved in a single call. This is an approximate number.
 --
--- * 'bloclObjectReference' - Reference of the object for which child objects are being listed.
+-- * 'btchlstobjctchldrnObjectReference' - Reference of the object for which child objects are being listed.
 batchListObjectChildren
-    :: ObjectReference -- ^ 'bloclObjectReference'
+    :: ObjectReference -- ^ 'btchlstobjctchldrnObjectReference'
     -> BatchListObjectChildren
 batchListObjectChildren pObjectReference_
-  = BatchListObjectChildren'{_bloclNextToken = Nothing,
-                             _bloclMaxResults = Nothing,
-                             _bloclObjectReference = pObjectReference_}
+  = BatchListObjectChildren'{_btchlstobjctchldrnNextToken
+                               = Nothing,
+                             _btchlstobjctchldrnMaxResults = Nothing,
+                             _btchlstobjctchldrnObjectReference =
+                               pObjectReference_}
 
 -- | The pagination token.
-bloclNextToken :: Lens' BatchListObjectChildren (Maybe Text)
-bloclNextToken = lens _bloclNextToken (\ s a -> s{_bloclNextToken = a})
+btchlstobjctchldrnNextToken :: Lens' BatchListObjectChildren (Maybe Text)
+btchlstobjctchldrnNextToken = lens _btchlstobjctchldrnNextToken (\ s a -> s{_btchlstobjctchldrnNextToken = a})
 
 -- | Maximum number of items to be retrieved in a single call. This is an approximate number.
-bloclMaxResults :: Lens' BatchListObjectChildren (Maybe Natural)
-bloclMaxResults = lens _bloclMaxResults (\ s a -> s{_bloclMaxResults = a}) . mapping _Nat
+btchlstobjctchldrnMaxResults :: Lens' BatchListObjectChildren (Maybe Natural)
+btchlstobjctchldrnMaxResults = lens _btchlstobjctchldrnMaxResults (\ s a -> s{_btchlstobjctchldrnMaxResults = a}) . mapping _Nat
 
 -- | Reference of the object for which child objects are being listed.
-bloclObjectReference :: Lens' BatchListObjectChildren ObjectReference
-bloclObjectReference = lens _bloclObjectReference (\ s a -> s{_bloclObjectReference = a})
+btchlstobjctchldrnObjectReference :: Lens' BatchListObjectChildren ObjectReference
+btchlstobjctchldrnObjectReference = lens _btchlstobjctchldrnObjectReference (\ s a -> s{_btchlstobjctchldrnObjectReference = a})
 
 instance Hashable BatchListObjectChildren where
 
@@ -72,6 +74,8 @@ instance ToJSON BatchListObjectChildren where
         toJSON BatchListObjectChildren'{..}
           = object
               (catMaybes
-                 [("NextToken" .=) <$> _bloclNextToken,
-                  ("MaxResults" .=) <$> _bloclMaxResults,
-                  Just ("ObjectReference" .= _bloclObjectReference)])
+                 [("NextToken" .=) <$> _btchlstobjctchldrnNextToken,
+                  ("MaxResults" .=) <$> _btchlstobjctchldrnMaxResults,
+                  Just
+                    ("ObjectReference" .=
+                       _btchlstobjctchldrnObjectReference)])

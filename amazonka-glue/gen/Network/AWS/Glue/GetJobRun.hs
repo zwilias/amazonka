@@ -35,8 +35,8 @@ module Network.AWS.Glue.GetJobRun
     , getJobRunResponse
     , GetJobRunResponse
     -- * Response Lenses
-    , gjrjrsJobRun
-    , gjrjrsResponseStatus
+    , gtjbrnrsJobRun
+    , gtjbrnrsResponseStatus
     ) where
 
 import Network.AWS.Glue.Types
@@ -119,31 +119,31 @@ instance ToQuery GetJobRun where
         toQuery = const mempty
 
 -- | /See:/ 'getJobRunResponse' smart constructor.
-data GetJobRunResponse = GetJobRunResponse'{_gjrjrsJobRun
+data GetJobRunResponse = GetJobRunResponse'{_gtjbrnrsJobRun
                                             :: !(Maybe JobRun),
-                                            _gjrjrsResponseStatus :: !Int}
+                                            _gtjbrnrsResponseStatus :: !Int}
                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetJobRunResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'gjrjrsJobRun' - The requested job-run metadata.
+-- * 'gtjbrnrsJobRun' - The requested job-run metadata.
 --
--- * 'gjrjrsResponseStatus' - -- | The response status code.
+-- * 'gtjbrnrsResponseStatus' - -- | The response status code.
 getJobRunResponse
-    :: Int -- ^ 'gjrjrsResponseStatus'
+    :: Int -- ^ 'gtjbrnrsResponseStatus'
     -> GetJobRunResponse
 getJobRunResponse pResponseStatus_
-  = GetJobRunResponse'{_gjrjrsJobRun = Nothing,
-                       _gjrjrsResponseStatus = pResponseStatus_}
+  = GetJobRunResponse'{_gtjbrnrsJobRun = Nothing,
+                       _gtjbrnrsResponseStatus = pResponseStatus_}
 
 -- | The requested job-run metadata.
-gjrjrsJobRun :: Lens' GetJobRunResponse (Maybe JobRun)
-gjrjrsJobRun = lens _gjrjrsJobRun (\ s a -> s{_gjrjrsJobRun = a})
+gtjbrnrsJobRun :: Lens' GetJobRunResponse (Maybe JobRun)
+gtjbrnrsJobRun = lens _gtjbrnrsJobRun (\ s a -> s{_gtjbrnrsJobRun = a})
 
 -- | -- | The response status code.
-gjrjrsResponseStatus :: Lens' GetJobRunResponse Int
-gjrjrsResponseStatus = lens _gjrjrsResponseStatus (\ s a -> s{_gjrjrsResponseStatus = a})
+gtjbrnrsResponseStatus :: Lens' GetJobRunResponse Int
+gtjbrnrsResponseStatus = lens _gtjbrnrsResponseStatus (\ s a -> s{_gtjbrnrsResponseStatus = a})
 
 instance NFData GetJobRunResponse where

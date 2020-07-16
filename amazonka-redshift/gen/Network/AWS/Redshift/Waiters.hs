@@ -31,12 +31,12 @@ clusterRestored
          _waitAttempts = 30, _waitDelay = 60,
          _waitAcceptors =
            [matchAll "completed" AcceptSuccess
-              (folding (concatOf dcrsClusters) .
+              (folding (concatOf (dcrsClusters . to toList)) .
                  cRestoreStatus . _Just
                  . rsStatus . _Just
                  . to toTextCI),
             matchAny "deleting" AcceptFailure
-              (folding (concatOf dcrsClusters) .
+              (folding (concatOf (dcrsClusters . to toList)) .
                  cClusterStatus . _Just
                  . to toTextCI)]}
 
@@ -48,11 +48,11 @@ clusterDeleted
          _waitAcceptors =
            [matchError "ClusterNotFound" AcceptSuccess,
             matchAny "creating" AcceptFailure
-              (folding (concatOf dcrsClusters) .
+              (folding (concatOf (dcrsClusters . to toList)) .
                  cClusterStatus . _Just
                  . to toTextCI),
             matchAny "modifying" AcceptFailure
-              (folding (concatOf dcrsClusters) .
+              (folding (concatOf (dcrsClusters . to toList)) .
                  cClusterStatus . _Just
                  . to toTextCI)]}
 
@@ -63,13 +63,16 @@ snapshotAvailable
          _waitAttempts = 20, _waitDelay = 15,
          _waitAcceptors =
            [matchAll "available" AcceptSuccess
-              (folding (concatOf dcssrsSnapshots) . sStatus . _Just
+              (folding (concatOf (dcssrsSnapshots . to toList)) .
+                 sStatus . _Just
                  . to toTextCI),
             matchAny "failed" AcceptFailure
-              (folding (concatOf dcssrsSnapshots) . sStatus . _Just
+              (folding (concatOf (dcssrsSnapshots . to toList)) .
+                 sStatus . _Just
                  . to toTextCI),
             matchAny "deleted" AcceptFailure
-              (folding (concatOf dcssrsSnapshots) . sStatus . _Just
+              (folding (concatOf (dcssrsSnapshots . to toList)) .
+                 sStatus . _Just
                  . to toTextCI)]}
 
 -- | Polls 'Network.AWS.Redshift.DescribeClusters' every 60 seconds until a successful state is reached. An error is returned after 30 failed checks.
@@ -79,11 +82,11 @@ clusterAvailable
          _waitAttempts = 30, _waitDelay = 60,
          _waitAcceptors =
            [matchAll "available" AcceptSuccess
-              (folding (concatOf dcrsClusters) .
+              (folding (concatOf (dcrsClusters . to toList)) .
                  cClusterStatus . _Just
                  . to toTextCI),
             matchAny "deleting" AcceptFailure
-              (folding (concatOf dcrsClusters) .
+              (folding (concatOf (dcrsClusters . to toList)) .
                  cClusterStatus . _Just
                  . to toTextCI),
             matchError "ClusterNotFound" AcceptRetry]}

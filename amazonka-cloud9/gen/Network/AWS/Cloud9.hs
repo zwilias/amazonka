@@ -55,26 +55,26 @@ module Network.AWS.Cloud9
     -- * Errors
     -- $errors
 
-    -- ** ConflictException
-    , _ConflictException
-
-    -- ** ForbiddenException
-    , _ForbiddenException
-
-    -- ** NotFoundException
-    , _NotFoundException
+    -- ** InternalServerErrorException
+    , _InternalServerErrorException
 
     -- ** TooManyRequestsException
     , _TooManyRequestsException
 
-    -- ** InternalServerErrorException
-    , _InternalServerErrorException
+    -- ** ForbiddenException
+    , _ForbiddenException
 
     -- ** BadRequestException
     , _BadRequestException
 
+    -- ** NotFoundException
+    , _NotFoundException
+
     -- ** LimitExceededException
     , _LimitExceededException
+
+    -- ** ConflictException
+    , _ConflictException
 
     -- * Waiters
     -- $waiters

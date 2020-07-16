@@ -16,16 +16,16 @@ module Network.AWS.KinesisVideo.Types
       kinesisVideo
 
     -- * Errors
-    , _InvalidArgumentException
     , _TagsPerResourceExceededLimitException
-    , _NotAuthorizedException
-    , _ClientLimitExceededException
-    , _InvalidDeviceException
-    , _VersionMismatchException
-    , _AccountStreamLimitExceededException
-    , _InvalidResourceFormatException
     , _DeviceStreamLimitExceededException
+    , _InvalidResourceFormatException
+    , _VersionMismatchException
+    , _InvalidDeviceException
     , _ResourceNotFoundException
+    , _ClientLimitExceededException
+    , _InvalidArgumentException
+    , _NotAuthorizedException
+    , _AccountStreamLimitExceededException
     , _ResourceInUseException
 
     -- * APIName
@@ -104,15 +104,6 @@ kinesisVideo
           | has (hasStatus 509) e = Just "limit_exceeded"
           | otherwise = Nothing
 
--- | The value for this input parameter is invalid.
---
---
-_InvalidArgumentException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidArgumentException
-  = _MatchServiceError kinesisVideo
-      "InvalidArgumentException"
-      . hasStatus 400
-
 -- | You have exceeded the limit of tags that you can associate with the resource. Kinesis video streams support up to 50 tags. 
 --
 --
@@ -120,60 +111,6 @@ _TagsPerResourceExceededLimitException :: AsError a => Getting (First ServiceErr
 _TagsPerResourceExceededLimitException
   = _MatchServiceError kinesisVideo
       "TagsPerResourceExceededLimitException"
-      . hasStatus 400
-
--- | The caller is not authorized to perform this operation.
---
---
-_NotAuthorizedException :: AsError a => Getting (First ServiceError) a ServiceError
-_NotAuthorizedException
-  = _MatchServiceError kinesisVideo
-      "NotAuthorizedException"
-      . hasStatus 401
-
--- | Kinesis Video Streams has throttled the request because you have exceeded the limit of allowed client calls. Try making the call later.
---
---
-_ClientLimitExceededException :: AsError a => Getting (First ServiceError) a ServiceError
-_ClientLimitExceededException
-  = _MatchServiceError kinesisVideo
-      "ClientLimitExceededException"
-      . hasStatus 400
-
--- | Not implemented.
---
---
-_InvalidDeviceException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidDeviceException
-  = _MatchServiceError kinesisVideo
-      "InvalidDeviceException"
-      . hasStatus 400
-
--- | The stream version that you specified is not the latest version. To get the latest version, use the <http://docs.aws.amazon.com/kinesisvideo/latest/dg/API_DescribeStream.html DescribeStream> API.
---
---
-_VersionMismatchException :: AsError a => Getting (First ServiceError) a ServiceError
-_VersionMismatchException
-  = _MatchServiceError kinesisVideo
-      "VersionMismatchException"
-      . hasStatus 400
-
--- | The number of streams created for the account is too high.
---
---
-_AccountStreamLimitExceededException :: AsError a => Getting (First ServiceError) a ServiceError
-_AccountStreamLimitExceededException
-  = _MatchServiceError kinesisVideo
-      "AccountStreamLimitExceededException"
-      . hasStatus 400
-
--- | The format of the @StreamARN@ is invalid.
---
---
-_InvalidResourceFormatException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidResourceFormatException
-  = _MatchServiceError kinesisVideo
-      "InvalidResourceFormatException"
       . hasStatus 400
 
 -- | Not implemented. 
@@ -185,6 +122,33 @@ _DeviceStreamLimitExceededException
       "DeviceStreamLimitExceededException"
       . hasStatus 400
 
+-- | The format of the @StreamARN@ is invalid.
+--
+--
+_InvalidResourceFormatException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidResourceFormatException
+  = _MatchServiceError kinesisVideo
+      "InvalidResourceFormatException"
+      . hasStatus 400
+
+-- | The stream version that you specified is not the latest version. To get the latest version, use the <http://docs.aws.amazon.com/kinesisvideo/latest/dg/API_DescribeStream.html DescribeStream> API.
+--
+--
+_VersionMismatchException :: AsError a => Getting (First ServiceError) a ServiceError
+_VersionMismatchException
+  = _MatchServiceError kinesisVideo
+      "VersionMismatchException"
+      . hasStatus 400
+
+-- | Not implemented.
+--
+--
+_InvalidDeviceException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidDeviceException
+  = _MatchServiceError kinesisVideo
+      "InvalidDeviceException"
+      . hasStatus 400
+
 -- | Amazon Kinesis Video Streams can't find the stream that you specified.
 --
 --
@@ -193,6 +157,42 @@ _ResourceNotFoundException
   = _MatchServiceError kinesisVideo
       "ResourceNotFoundException"
       . hasStatus 404
+
+-- | Kinesis Video Streams has throttled the request because you have exceeded the limit of allowed client calls. Try making the call later.
+--
+--
+_ClientLimitExceededException :: AsError a => Getting (First ServiceError) a ServiceError
+_ClientLimitExceededException
+  = _MatchServiceError kinesisVideo
+      "ClientLimitExceededException"
+      . hasStatus 400
+
+-- | The value for this input parameter is invalid.
+--
+--
+_InvalidArgumentException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidArgumentException
+  = _MatchServiceError kinesisVideo
+      "InvalidArgumentException"
+      . hasStatus 400
+
+-- | The caller is not authorized to perform this operation.
+--
+--
+_NotAuthorizedException :: AsError a => Getting (First ServiceError) a ServiceError
+_NotAuthorizedException
+  = _MatchServiceError kinesisVideo
+      "NotAuthorizedException"
+      . hasStatus 401
+
+-- | The number of streams created for the account is too high.
+--
+--
+_AccountStreamLimitExceededException :: AsError a => Getting (First ServiceError) a ServiceError
+_AccountStreamLimitExceededException
+  = _MatchServiceError kinesisVideo
+      "AccountStreamLimitExceededException"
+      . hasStatus 400
 
 -- | The stream is currently not available for this operation.
 --

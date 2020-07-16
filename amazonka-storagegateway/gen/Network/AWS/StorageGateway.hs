@@ -50,11 +50,11 @@ module Network.AWS.StorageGateway
     -- ** InvalidGatewayRequestException
     , _InvalidGatewayRequestException
 
-    -- ** ServiceUnavailableError
-    , _ServiceUnavailableError
-
     -- ** InternalServerError
     , _InternalServerError
+
+    -- ** ServiceUnavailableError
+    , _ServiceUnavailableError
 
     -- * Waiters
     -- $waiters

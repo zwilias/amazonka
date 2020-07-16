@@ -39,10 +39,10 @@ module Network.AWS.EC2.CreateSnapshot
       createSnapshot
     , CreateSnapshot
     -- * Request Lenses
-    , ccTagSpecifications
-    , ccDescription
-    , ccDryRun
-    , ccVolumeId
+    , crtsnpshtTagSpecifications
+    , crtsnpshtDescription
+    , crtsnpshtDryRun
+    , crtsnpshtVolumeId
 
     -- * Destructuring the Response
     , snapshot
@@ -72,47 +72,49 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createSnapshot' smart constructor.
-data CreateSnapshot = CreateSnapshot'{_ccTagSpecifications
+data CreateSnapshot = CreateSnapshot'{_crtsnpshtTagSpecifications
                                       :: !(Maybe [TagSpecification]),
-                                      _ccDescription :: !(Maybe Text),
-                                      _ccDryRun :: !(Maybe Bool),
-                                      _ccVolumeId :: !Text}
+                                      _crtsnpshtDescription :: !(Maybe Text),
+                                      _crtsnpshtDryRun :: !(Maybe Bool),
+                                      _crtsnpshtVolumeId :: !Text}
                         deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateSnapshot' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ccTagSpecifications' - The tags to apply to the snapshot during creation.
+-- * 'crtsnpshtTagSpecifications' - The tags to apply to the snapshot during creation.
 --
--- * 'ccDescription' - A description for the snapshot.
+-- * 'crtsnpshtDescription' - A description for the snapshot.
 --
--- * 'ccDryRun' - Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
+-- * 'crtsnpshtDryRun' - Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 --
--- * 'ccVolumeId' - The ID of the EBS volume.
+-- * 'crtsnpshtVolumeId' - The ID of the EBS volume.
 createSnapshot
-    :: Text -- ^ 'ccVolumeId'
+    :: Text -- ^ 'crtsnpshtVolumeId'
     -> CreateSnapshot
 createSnapshot pVolumeId_
-  = CreateSnapshot'{_ccTagSpecifications = Nothing,
-                    _ccDescription = Nothing, _ccDryRun = Nothing,
-                    _ccVolumeId = pVolumeId_}
+  = CreateSnapshot'{_crtsnpshtTagSpecifications =
+                      Nothing,
+                    _crtsnpshtDescription = Nothing,
+                    _crtsnpshtDryRun = Nothing,
+                    _crtsnpshtVolumeId = pVolumeId_}
 
 -- | The tags to apply to the snapshot during creation.
-ccTagSpecifications :: Lens' CreateSnapshot [TagSpecification]
-ccTagSpecifications = lens _ccTagSpecifications (\ s a -> s{_ccTagSpecifications = a}) . _Default . _Coerce
+crtsnpshtTagSpecifications :: Lens' CreateSnapshot [TagSpecification]
+crtsnpshtTagSpecifications = lens _crtsnpshtTagSpecifications (\ s a -> s{_crtsnpshtTagSpecifications = a}) . _Default . _Coerce
 
 -- | A description for the snapshot.
-ccDescription :: Lens' CreateSnapshot (Maybe Text)
-ccDescription = lens _ccDescription (\ s a -> s{_ccDescription = a})
+crtsnpshtDescription :: Lens' CreateSnapshot (Maybe Text)
+crtsnpshtDescription = lens _crtsnpshtDescription (\ s a -> s{_crtsnpshtDescription = a})
 
 -- | Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
-ccDryRun :: Lens' CreateSnapshot (Maybe Bool)
-ccDryRun = lens _ccDryRun (\ s a -> s{_ccDryRun = a})
+crtsnpshtDryRun :: Lens' CreateSnapshot (Maybe Bool)
+crtsnpshtDryRun = lens _crtsnpshtDryRun (\ s a -> s{_crtsnpshtDryRun = a})
 
 -- | The ID of the EBS volume.
-ccVolumeId :: Lens' CreateSnapshot Text
-ccVolumeId = lens _ccVolumeId (\ s a -> s{_ccVolumeId = a})
+crtsnpshtVolumeId :: Lens' CreateSnapshot Text
+crtsnpshtVolumeId = lens _crtsnpshtVolumeId (\ s a -> s{_crtsnpshtVolumeId = a})
 
 instance AWSRequest CreateSnapshot where
         type Rs CreateSnapshot = Snapshot
@@ -136,6 +138,7 @@ instance ToQuery CreateSnapshot where
                "Version" =: ("2016-11-15" :: ByteString),
                toQuery
                  (toQueryList "TagSpecification" <$>
-                    _ccTagSpecifications),
-               "Description" =: _ccDescription,
-               "DryRun" =: _ccDryRun, "VolumeId" =: _ccVolumeId]
+                    _crtsnpshtTagSpecifications),
+               "Description" =: _crtsnpshtDescription,
+               "DryRun" =: _crtsnpshtDryRun,
+               "VolumeId" =: _crtsnpshtVolumeId]

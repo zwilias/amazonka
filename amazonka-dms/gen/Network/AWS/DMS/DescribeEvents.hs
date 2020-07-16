@@ -43,9 +43,9 @@ module Network.AWS.DMS.DescribeEvents
     , describeEventsResponse
     , DescribeEventsResponse
     -- * Response Lenses
-    , deersEvents
-    , deersMarker
-    , deersResponseStatus
+    , dscrbevntsrsEvents
+    , dscrbevntsrsMarker
+    , dscrbevntsrsResponseStatus
     ) where
 
 import Network.AWS.DMS.Types
@@ -142,10 +142,10 @@ deDuration = lens _deDuration (\ s a -> s{_deDuration = a})
 
 instance AWSPager DescribeEvents where
         page rq rs
-          | stop (rs ^. deersMarker) = Nothing
-          | stop (rs ^. deersEvents) = Nothing
+          | stop (rs ^. dscrbevntsrsMarker) = Nothing
+          | stop (rs ^. dscrbevntsrsEvents) = Nothing
           | otherwise =
-            Just $ rq & deMarker .~ rs ^. deersMarker
+            Just $ rq & deMarker .~ rs ^. dscrbevntsrsMarker
 
 instance AWSRequest DescribeEvents where
         type Rs DescribeEvents = DescribeEventsResponse
@@ -195,12 +195,12 @@ instance ToQuery DescribeEvents where
 --
 --
 -- /See:/ 'describeEventsResponse' smart constructor.
-data DescribeEventsResponse = DescribeEventsResponse'{_deersEvents
+data DescribeEventsResponse = DescribeEventsResponse'{_dscrbevntsrsEvents
                                                       :: !(Maybe [Event]),
-                                                      _deersMarker ::
+                                                      _dscrbevntsrsMarker ::
                                                       !(Maybe Text),
-                                                      _deersResponseStatus ::
-                                                      !Int}
+                                                      _dscrbevntsrsResponseStatus
+                                                      :: !Int}
                                 deriving (Eq, Read, Show, Data, Typeable,
                                           Generic)
 
@@ -208,29 +208,30 @@ data DescribeEventsResponse = DescribeEventsResponse'{_deersEvents
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'deersEvents' - The events described.
+-- * 'dscrbevntsrsEvents' - The events described.
 --
--- * 'deersMarker' - An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by @MaxRecords@ . 
+-- * 'dscrbevntsrsMarker' - An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by @MaxRecords@ . 
 --
--- * 'deersResponseStatus' - -- | The response status code.
+-- * 'dscrbevntsrsResponseStatus' - -- | The response status code.
 describeEventsResponse
-    :: Int -- ^ 'deersResponseStatus'
+    :: Int -- ^ 'dscrbevntsrsResponseStatus'
     -> DescribeEventsResponse
 describeEventsResponse pResponseStatus_
-  = DescribeEventsResponse'{_deersEvents = Nothing,
-                            _deersMarker = Nothing,
-                            _deersResponseStatus = pResponseStatus_}
+  = DescribeEventsResponse'{_dscrbevntsrsEvents =
+                              Nothing,
+                            _dscrbevntsrsMarker = Nothing,
+                            _dscrbevntsrsResponseStatus = pResponseStatus_}
 
 -- | The events described.
-deersEvents :: Lens' DescribeEventsResponse [Event]
-deersEvents = lens _deersEvents (\ s a -> s{_deersEvents = a}) . _Default . _Coerce
+dscrbevntsrsEvents :: Lens' DescribeEventsResponse [Event]
+dscrbevntsrsEvents = lens _dscrbevntsrsEvents (\ s a -> s{_dscrbevntsrsEvents = a}) . _Default . _Coerce
 
 -- | An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by @MaxRecords@ . 
-deersMarker :: Lens' DescribeEventsResponse (Maybe Text)
-deersMarker = lens _deersMarker (\ s a -> s{_deersMarker = a})
+dscrbevntsrsMarker :: Lens' DescribeEventsResponse (Maybe Text)
+dscrbevntsrsMarker = lens _dscrbevntsrsMarker (\ s a -> s{_dscrbevntsrsMarker = a})
 
 -- | -- | The response status code.
-deersResponseStatus :: Lens' DescribeEventsResponse Int
-deersResponseStatus = lens _deersResponseStatus (\ s a -> s{_deersResponseStatus = a})
+dscrbevntsrsResponseStatus :: Lens' DescribeEventsResponse Int
+dscrbevntsrsResponseStatus = lens _dscrbevntsrsResponseStatus (\ s a -> s{_dscrbevntsrsResponseStatus = a})
 
 instance NFData DescribeEventsResponse where

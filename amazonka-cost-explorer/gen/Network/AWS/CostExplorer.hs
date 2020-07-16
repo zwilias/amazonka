@@ -32,26 +32,26 @@ module Network.AWS.CostExplorer
     -- * Errors
     -- $errors
 
+    -- ** DataUnavailableException
+    , _DataUnavailableException
+
     -- ** BillExpirationException
     , _BillExpirationException
-
-    -- ** RequestChangedException
-    , _RequestChangedException
 
     -- ** UnresolvableUsageUnitException
     , _UnresolvableUsageUnitException
 
-    -- ** ServiceQuotaExceededException
-    , _ServiceQuotaExceededException
+    -- ** ResourceNotFoundException
+    , _ResourceNotFoundException
 
     -- ** InvalidNextTokenException
     , _InvalidNextTokenException
 
-    -- ** DataUnavailableException
-    , _DataUnavailableException
+    -- ** ServiceQuotaExceededException
+    , _ServiceQuotaExceededException
 
-    -- ** ResourceNotFoundException
-    , _ResourceNotFoundException
+    -- ** RequestChangedException
+    , _RequestChangedException
 
     -- ** LimitExceededException
     , _LimitExceededException

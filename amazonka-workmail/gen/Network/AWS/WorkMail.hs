@@ -42,8 +42,11 @@ module Network.AWS.WorkMail
     -- * Errors
     -- $errors
 
-    -- ** DirectoryUnavailableException
-    , _DirectoryUnavailableException
+    -- ** DirectoryServiceAuthenticationFailedException
+    , _DirectoryServiceAuthenticationFailedException
+
+    -- ** EntityAlreadyRegisteredException
+    , _EntityAlreadyRegisteredException
 
     -- ** InvalidParameterException
     , _InvalidParameterException
@@ -51,8 +54,14 @@ module Network.AWS.WorkMail
     -- ** UnsupportedOperationException
     , _UnsupportedOperationException
 
-    -- ** DirectoryServiceAuthenticationFailedException
-    , _DirectoryServiceAuthenticationFailedException
+    -- ** DirectoryUnavailableException
+    , _DirectoryUnavailableException
+
+    -- ** MailDomainStateException
+    , _MailDomainStateException
+
+    -- ** NameAvailabilityException
+    , _NameAvailabilityException
 
     -- ** OrganizationStateException
     , _OrganizationStateException
@@ -60,35 +69,26 @@ module Network.AWS.WorkMail
     -- ** EntityStateException
     , _EntityStateException
 
-    -- ** InvalidConfigurationException
-    , _InvalidConfigurationException
-
-    -- ** MailDomainStateException
-    , _MailDomainStateException
-
-    -- ** ReservedNameException
-    , _ReservedNameException
-
-    -- ** OrganizationNotFoundException
-    , _OrganizationNotFoundException
+    -- ** MailDomainNotFoundException
+    , _MailDomainNotFoundException
 
     -- ** EntityNotFoundException
     , _EntityNotFoundException
 
-    -- ** EntityAlreadyRegisteredException
-    , _EntityAlreadyRegisteredException
+    -- ** OrganizationNotFoundException
+    , _OrganizationNotFoundException
 
-    -- ** MailDomainNotFoundException
-    , _MailDomainNotFoundException
+    -- ** ReservedNameException
+    , _ReservedNameException
 
     -- ** EmailAddressInUseException
     , _EmailAddressInUseException
 
-    -- ** NameAvailabilityException
-    , _NameAvailabilityException
-
     -- ** InvalidPasswordException
     , _InvalidPasswordException
+
+    -- ** InvalidConfigurationException
+    , _InvalidConfigurationException
 
     -- * Waiters
     -- $waiters

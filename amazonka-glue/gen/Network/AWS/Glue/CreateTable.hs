@@ -35,7 +35,7 @@ module Network.AWS.Glue.CreateTable
     , createTableResponse
     , CreateTableResponse
     -- * Response Lenses
-    , cttrsResponseStatus
+    , crttblrsResponseStatus
     ) where
 
 import Network.AWS.Glue.Types
@@ -118,7 +118,7 @@ instance ToQuery CreateTable where
         toQuery = const mempty
 
 -- | /See:/ 'createTableResponse' smart constructor.
-newtype CreateTableResponse = CreateTableResponse'{_cttrsResponseStatus
+newtype CreateTableResponse = CreateTableResponse'{_crttblrsResponseStatus
                                                    :: Int}
                                 deriving (Eq, Read, Show, Data, Typeable,
                                           Generic)
@@ -127,16 +127,16 @@ newtype CreateTableResponse = CreateTableResponse'{_cttrsResponseStatus
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'cttrsResponseStatus' - -- | The response status code.
+-- * 'crttblrsResponseStatus' - -- | The response status code.
 createTableResponse
-    :: Int -- ^ 'cttrsResponseStatus'
+    :: Int -- ^ 'crttblrsResponseStatus'
     -> CreateTableResponse
 createTableResponse pResponseStatus_
-  = CreateTableResponse'{_cttrsResponseStatus =
+  = CreateTableResponse'{_crttblrsResponseStatus =
                            pResponseStatus_}
 
 -- | -- | The response status code.
-cttrsResponseStatus :: Lens' CreateTableResponse Int
-cttrsResponseStatus = lens _cttrsResponseStatus (\ s a -> s{_cttrsResponseStatus = a})
+crttblrsResponseStatus :: Lens' CreateTableResponse Int
+crttblrsResponseStatus = lens _crttblrsResponseStatus (\ s a -> s{_crttblrsResponseStatus = a})
 
 instance NFData CreateTableResponse where

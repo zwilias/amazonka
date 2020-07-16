@@ -34,9 +34,9 @@ module Network.AWS.ServiceCatalog.DescribeProduct
     , describeProductResponse
     , DescribeProductResponse
     -- * Response Lenses
-    , ddrsProductViewSummary
-    , ddrsProvisioningArtifacts
-    , ddrsResponseStatus
+    , dscrbprdctrsProductViewSummary
+    , dscrbprdctrsProvisioningArtifacts
+    , dscrbprdctrsResponseStatus
     ) where
 
 import Network.AWS.Lens
@@ -113,16 +113,16 @@ instance ToQuery DescribeProduct where
         toQuery = const mempty
 
 -- | /See:/ 'describeProductResponse' smart constructor.
-data DescribeProductResponse = DescribeProductResponse'{_ddrsProductViewSummary
+data DescribeProductResponse = DescribeProductResponse'{_dscrbprdctrsProductViewSummary
                                                         ::
                                                         !(Maybe
                                                             ProductViewSummary),
-                                                        _ddrsProvisioningArtifacts
+                                                        _dscrbprdctrsProvisioningArtifacts
                                                         ::
                                                         !(Maybe
                                                             [ProvisioningArtifact]),
-                                                        _ddrsResponseStatus ::
-                                                        !Int}
+                                                        _dscrbprdctrsResponseStatus
+                                                        :: !Int}
                                  deriving (Eq, Read, Show, Data, Typeable,
                                            Generic)
 
@@ -130,30 +130,30 @@ data DescribeProductResponse = DescribeProductResponse'{_ddrsProductViewSummary
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ddrsProductViewSummary' - Summary information about the product view.
+-- * 'dscrbprdctrsProductViewSummary' - Summary information about the product view.
 --
--- * 'ddrsProvisioningArtifacts' - Information about the provisioning artifacts for the specified product.
+-- * 'dscrbprdctrsProvisioningArtifacts' - Information about the provisioning artifacts for the specified product.
 --
--- * 'ddrsResponseStatus' - -- | The response status code.
+-- * 'dscrbprdctrsResponseStatus' - -- | The response status code.
 describeProductResponse
-    :: Int -- ^ 'ddrsResponseStatus'
+    :: Int -- ^ 'dscrbprdctrsResponseStatus'
     -> DescribeProductResponse
 describeProductResponse pResponseStatus_
-  = DescribeProductResponse'{_ddrsProductViewSummary =
-                               Nothing,
-                             _ddrsProvisioningArtifacts = Nothing,
-                             _ddrsResponseStatus = pResponseStatus_}
+  = DescribeProductResponse'{_dscrbprdctrsProductViewSummary
+                               = Nothing,
+                             _dscrbprdctrsProvisioningArtifacts = Nothing,
+                             _dscrbprdctrsResponseStatus = pResponseStatus_}
 
 -- | Summary information about the product view.
-ddrsProductViewSummary :: Lens' DescribeProductResponse (Maybe ProductViewSummary)
-ddrsProductViewSummary = lens _ddrsProductViewSummary (\ s a -> s{_ddrsProductViewSummary = a})
+dscrbprdctrsProductViewSummary :: Lens' DescribeProductResponse (Maybe ProductViewSummary)
+dscrbprdctrsProductViewSummary = lens _dscrbprdctrsProductViewSummary (\ s a -> s{_dscrbprdctrsProductViewSummary = a})
 
 -- | Information about the provisioning artifacts for the specified product.
-ddrsProvisioningArtifacts :: Lens' DescribeProductResponse [ProvisioningArtifact]
-ddrsProvisioningArtifacts = lens _ddrsProvisioningArtifacts (\ s a -> s{_ddrsProvisioningArtifacts = a}) . _Default . _Coerce
+dscrbprdctrsProvisioningArtifacts :: Lens' DescribeProductResponse [ProvisioningArtifact]
+dscrbprdctrsProvisioningArtifacts = lens _dscrbprdctrsProvisioningArtifacts (\ s a -> s{_dscrbprdctrsProvisioningArtifacts = a}) . _Default . _Coerce
 
 -- | -- | The response status code.
-ddrsResponseStatus :: Lens' DescribeProductResponse Int
-ddrsResponseStatus = lens _ddrsResponseStatus (\ s a -> s{_ddrsResponseStatus = a})
+dscrbprdctrsResponseStatus :: Lens' DescribeProductResponse Int
+dscrbprdctrsResponseStatus = lens _dscrbprdctrsResponseStatus (\ s a -> s{_dscrbprdctrsResponseStatus = a})
 
 instance NFData DescribeProductResponse where

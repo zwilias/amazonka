@@ -34,7 +34,7 @@ module Network.AWS.IoT.DeleteThingGroup
     , deleteThingGroupResponse
     , DeleteThingGroupResponse
     -- * Response Lenses
-    , dtgtrsResponseStatus
+    , dltthnggrprsResponseStatus
     ) where
 
 import Network.AWS.IoT.Types
@@ -96,7 +96,7 @@ instance ToQuery DeleteThingGroup where
           = mconcat ["expectedVersion" =: _dExpectedVersion]
 
 -- | /See:/ 'deleteThingGroupResponse' smart constructor.
-newtype DeleteThingGroupResponse = DeleteThingGroupResponse'{_dtgtrsResponseStatus
+newtype DeleteThingGroupResponse = DeleteThingGroupResponse'{_dltthnggrprsResponseStatus
                                                              :: Int}
                                      deriving (Eq, Read, Show, Data, Typeable,
                                                Generic)
@@ -105,16 +105,16 @@ newtype DeleteThingGroupResponse = DeleteThingGroupResponse'{_dtgtrsResponseStat
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dtgtrsResponseStatus' - -- | The response status code.
+-- * 'dltthnggrprsResponseStatus' - -- | The response status code.
 deleteThingGroupResponse
-    :: Int -- ^ 'dtgtrsResponseStatus'
+    :: Int -- ^ 'dltthnggrprsResponseStatus'
     -> DeleteThingGroupResponse
 deleteThingGroupResponse pResponseStatus_
-  = DeleteThingGroupResponse'{_dtgtrsResponseStatus =
-                                pResponseStatus_}
+  = DeleteThingGroupResponse'{_dltthnggrprsResponseStatus
+                                = pResponseStatus_}
 
 -- | -- | The response status code.
-dtgtrsResponseStatus :: Lens' DeleteThingGroupResponse Int
-dtgtrsResponseStatus = lens _dtgtrsResponseStatus (\ s a -> s{_dtgtrsResponseStatus = a})
+dltthnggrprsResponseStatus :: Lens' DeleteThingGroupResponse Int
+dltthnggrprsResponseStatus = lens _dltthnggrprsResponseStatus (\ s a -> s{_dltthnggrprsResponseStatus = a})
 
 instance NFData DeleteThingGroupResponse where

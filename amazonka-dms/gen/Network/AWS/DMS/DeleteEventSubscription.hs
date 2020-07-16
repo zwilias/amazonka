@@ -33,8 +33,8 @@ module Network.AWS.DMS.DeleteEventSubscription
     , deleteEventSubscriptionResponse
     , DeleteEventSubscriptionResponse
     -- * Response Lenses
-    , desersEventSubscription
-    , desersResponseStatus
+    , dltevntsbscrptnrsEventSubscription
+    , dltevntsbscrptnrsResponseStatus
     ) where
 
 import Network.AWS.DMS.Types
@@ -111,11 +111,11 @@ instance ToQuery DeleteEventSubscription where
 --
 --
 -- /See:/ 'deleteEventSubscriptionResponse' smart constructor.
-data DeleteEventSubscriptionResponse = DeleteEventSubscriptionResponse'{_desersEventSubscription
+data DeleteEventSubscriptionResponse = DeleteEventSubscriptionResponse'{_dltevntsbscrptnrsEventSubscription
                                                                         ::
                                                                         !(Maybe
                                                                             EventSubscription),
-                                                                        _desersResponseStatus
+                                                                        _dltevntsbscrptnrsResponseStatus
                                                                         :: !Int}
                                          deriving (Eq, Read, Show, Data,
                                                    Typeable, Generic)
@@ -124,23 +124,24 @@ data DeleteEventSubscriptionResponse = DeleteEventSubscriptionResponse'{_desersE
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'desersEventSubscription' - The event subscription that was deleted.
+-- * 'dltevntsbscrptnrsEventSubscription' - The event subscription that was deleted.
 --
--- * 'desersResponseStatus' - -- | The response status code.
+-- * 'dltevntsbscrptnrsResponseStatus' - -- | The response status code.
 deleteEventSubscriptionResponse
-    :: Int -- ^ 'desersResponseStatus'
+    :: Int -- ^ 'dltevntsbscrptnrsResponseStatus'
     -> DeleteEventSubscriptionResponse
 deleteEventSubscriptionResponse pResponseStatus_
-  = DeleteEventSubscriptionResponse'{_desersEventSubscription
+  = DeleteEventSubscriptionResponse'{_dltevntsbscrptnrsEventSubscription
                                        = Nothing,
-                                     _desersResponseStatus = pResponseStatus_}
+                                     _dltevntsbscrptnrsResponseStatus =
+                                       pResponseStatus_}
 
 -- | The event subscription that was deleted.
-desersEventSubscription :: Lens' DeleteEventSubscriptionResponse (Maybe EventSubscription)
-desersEventSubscription = lens _desersEventSubscription (\ s a -> s{_desersEventSubscription = a})
+dltevntsbscrptnrsEventSubscription :: Lens' DeleteEventSubscriptionResponse (Maybe EventSubscription)
+dltevntsbscrptnrsEventSubscription = lens _dltevntsbscrptnrsEventSubscription (\ s a -> s{_dltevntsbscrptnrsEventSubscription = a})
 
 -- | -- | The response status code.
-desersResponseStatus :: Lens' DeleteEventSubscriptionResponse Int
-desersResponseStatus = lens _desersResponseStatus (\ s a -> s{_desersResponseStatus = a})
+dltevntsbscrptnrsResponseStatus :: Lens' DeleteEventSubscriptionResponse Int
+dltevntsbscrptnrsResponseStatus = lens _dltevntsbscrptnrsResponseStatus (\ s a -> s{_dltevntsbscrptnrsResponseStatus = a})
 
 instance NFData DeleteEventSubscriptionResponse where

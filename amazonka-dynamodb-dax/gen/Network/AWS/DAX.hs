@@ -22,20 +22,14 @@ module Network.AWS.DAX
     -- * Errors
     -- $errors
 
-    -- ** SubnetQuotaExceededFault
-    , _SubnetQuotaExceededFault
-
-    -- ** ParameterGroupNotFoundFault
-    , _ParameterGroupNotFoundFault
-
-    -- ** InvalidParameterGroupStateFault
-    , _InvalidParameterGroupStateFault
+    -- ** SubnetGroupNotFoundFault
+    , _SubnetGroupNotFoundFault
 
     -- ** SubnetGroupInUseFault
     , _SubnetGroupInUseFault
 
-    -- ** ParameterGroupAlreadyExistsFault
-    , _ParameterGroupAlreadyExistsFault
+    -- ** ClusterQuotaForCustomerExceededFault
+    , _ClusterQuotaForCustomerExceededFault
 
     -- ** InvalidSubnet
     , _InvalidSubnet
@@ -43,17 +37,14 @@ module Network.AWS.DAX
     -- ** TagQuotaPerResourceExceeded
     , _TagQuotaPerResourceExceeded
 
-    -- ** ClusterNotFoundFault
-    , _ClusterNotFoundFault
+    -- ** InvalidParameterGroupStateFault
+    , _InvalidParameterGroupStateFault
 
-    -- ** TagNotFoundFault
-    , _TagNotFoundFault
+    -- ** ParameterGroupNotFoundFault
+    , _ParameterGroupNotFoundFault
 
-    -- ** NodeQuotaForClusterExceededFault
-    , _NodeQuotaForClusterExceededFault
-
-    -- ** InvalidClusterStateFault
-    , _InvalidClusterStateFault
+    -- ** InvalidParameterValueException
+    , _InvalidParameterValueException
 
     -- ** ServiceLinkedRoleNotFoundFault
     , _ServiceLinkedRoleNotFoundFault
@@ -61,14 +52,38 @@ module Network.AWS.DAX
     -- ** InsufficientClusterCapacityFault
     , _InsufficientClusterCapacityFault
 
-    -- ** NodeNotFoundFault
-    , _NodeNotFoundFault
-
     -- ** ParameterGroupQuotaExceededFault
     , _ParameterGroupQuotaExceededFault
 
-    -- ** InvalidParameterValueException
-    , _InvalidParameterValueException
+    -- ** InvalidClusterStateFault
+    , _InvalidClusterStateFault
+
+    -- ** NodeQuotaForClusterExceededFault
+    , _NodeQuotaForClusterExceededFault
+
+    -- ** InvalidARNFault
+    , _InvalidARNFault
+
+    -- ** ClusterAlreadyExistsFault
+    , _ClusterAlreadyExistsFault
+
+    -- ** SubnetGroupQuotaExceededFault
+    , _SubnetGroupQuotaExceededFault
+
+    -- ** ClusterNotFoundFault
+    , _ClusterNotFoundFault
+
+    -- ** TagNotFoundFault
+    , _TagNotFoundFault
+
+    -- ** NodeQuotaForCustomerExceededFault
+    , _NodeQuotaForCustomerExceededFault
+
+    -- ** SubnetGroupAlreadyExistsFault
+    , _SubnetGroupAlreadyExistsFault
+
+    -- ** ParameterGroupAlreadyExistsFault
+    , _ParameterGroupAlreadyExistsFault
 
     -- ** InvalidVPCNetworkStateFault
     , _InvalidVPCNetworkStateFault
@@ -76,26 +91,11 @@ module Network.AWS.DAX
     -- ** SubnetInUse
     , _SubnetInUse
 
-    -- ** ClusterQuotaForCustomerExceededFault
-    , _ClusterQuotaForCustomerExceededFault
+    -- ** SubnetQuotaExceededFault
+    , _SubnetQuotaExceededFault
 
-    -- ** SubnetGroupNotFoundFault
-    , _SubnetGroupNotFoundFault
-
-    -- ** SubnetGroupAlreadyExistsFault
-    , _SubnetGroupAlreadyExistsFault
-
-    -- ** NodeQuotaForCustomerExceededFault
-    , _NodeQuotaForCustomerExceededFault
-
-    -- ** SubnetGroupQuotaExceededFault
-    , _SubnetGroupQuotaExceededFault
-
-    -- ** ClusterAlreadyExistsFault
-    , _ClusterAlreadyExistsFault
-
-    -- ** InvalidARNFault
-    , _InvalidARNFault
+    -- ** NodeNotFoundFault
+    , _NodeNotFoundFault
 
     -- ** InvalidParameterCombinationException
     , _InvalidParameterCombinationException

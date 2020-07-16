@@ -25,9 +25,9 @@ module Network.AWS.S3.GetObjectTagging
       getObjectTagging
     , GetObjectTagging
     -- * Request Lenses
-    , gotoVersionId
-    , gotoBucket
-    , gotoKey
+    , gtobjcttggngVersionId
+    , gtobjcttggngBucket
+    , gtobjcttggngKey
 
     -- * Destructuring the Response
     , getObjectTaggingResponse
@@ -46,40 +46,41 @@ import Network.AWS.S3.Types
 import Network.AWS.S3.Types.Product
 
 -- | /See:/ 'getObjectTagging' smart constructor.
-data GetObjectTagging = GetObjectTagging'{_gotoVersionId
+data GetObjectTagging = GetObjectTagging'{_gtobjcttggngVersionId
                                           :: !(Maybe ObjectVersionId),
-                                          _gotoBucket :: !BucketName,
-                                          _gotoKey :: !ObjectKey}
+                                          _gtobjcttggngBucket :: !BucketName,
+                                          _gtobjcttggngKey :: !ObjectKey}
                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetObjectTagging' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'gotoVersionId' - Undocumented member.
+-- * 'gtobjcttggngVersionId' - Undocumented member.
 --
--- * 'gotoBucket' - Undocumented member.
+-- * 'gtobjcttggngBucket' - Undocumented member.
 --
--- * 'gotoKey' - Undocumented member.
+-- * 'gtobjcttggngKey' - Undocumented member.
 getObjectTagging
-    :: BucketName -- ^ 'gotoBucket'
-    -> ObjectKey -- ^ 'gotoKey'
+    :: BucketName -- ^ 'gtobjcttggngBucket'
+    -> ObjectKey -- ^ 'gtobjcttggngKey'
     -> GetObjectTagging
 getObjectTagging pBucket_ pKey_
-  = GetObjectTagging'{_gotoVersionId = Nothing,
-                      _gotoBucket = pBucket_, _gotoKey = pKey_}
+  = GetObjectTagging'{_gtobjcttggngVersionId = Nothing,
+                      _gtobjcttggngBucket = pBucket_,
+                      _gtobjcttggngKey = pKey_}
 
 -- | Undocumented member.
-gotoVersionId :: Lens' GetObjectTagging (Maybe ObjectVersionId)
-gotoVersionId = lens _gotoVersionId (\ s a -> s{_gotoVersionId = a})
+gtobjcttggngVersionId :: Lens' GetObjectTagging (Maybe ObjectVersionId)
+gtobjcttggngVersionId = lens _gtobjcttggngVersionId (\ s a -> s{_gtobjcttggngVersionId = a})
 
 -- | Undocumented member.
-gotoBucket :: Lens' GetObjectTagging BucketName
-gotoBucket = lens _gotoBucket (\ s a -> s{_gotoBucket = a})
+gtobjcttggngBucket :: Lens' GetObjectTagging BucketName
+gtobjcttggngBucket = lens _gtobjcttggngBucket (\ s a -> s{_gtobjcttggngBucket = a})
 
 -- | Undocumented member.
-gotoKey :: Lens' GetObjectTagging ObjectKey
-gotoKey = lens _gotoKey (\ s a -> s{_gotoKey = a})
+gtobjcttggngKey :: Lens' GetObjectTagging ObjectKey
+gtobjcttggngKey = lens _gtobjcttggngKey (\ s a -> s{_gtobjcttggngKey = a})
 
 instance AWSRequest GetObjectTagging where
         type Rs GetObjectTagging = GetObjectTaggingResponse
@@ -101,11 +102,14 @@ instance ToHeaders GetObjectTagging where
 
 instance ToPath GetObjectTagging where
         toPath GetObjectTagging'{..}
-          = mconcat ["/", toBS _gotoBucket, "/", toBS _gotoKey]
+          = mconcat
+              ["/", toBS _gtobjcttggngBucket, "/",
+               toBS _gtobjcttggngKey]
 
 instance ToQuery GetObjectTagging where
         toQuery GetObjectTagging'{..}
-          = mconcat ["versionId" =: _gotoVersionId, "tagging"]
+          = mconcat
+              ["versionId" =: _gtobjcttggngVersionId, "tagging"]
 
 -- | /See:/ 'getObjectTaggingResponse' smart constructor.
 data GetObjectTaggingResponse = GetObjectTaggingResponse'{_gotrsVersionId

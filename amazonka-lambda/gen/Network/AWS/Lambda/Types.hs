@@ -16,30 +16,30 @@ module Network.AWS.Lambda.Types
       lambda
 
     -- * Errors
-    , _KMSInvalidStateException
-    , _EC2ThrottledException
-    , _InvalidRuntimeException
     , _PolicyLengthExceededException
+    , _CodeStorageExceededException
     , _PreconditionFailedException
-    , _EC2AccessDeniedException
-    , _InvalidSubnetIdException
-    , _UnsupportedMediaTypeException
-    , _InvalidRequestContentException
-    , _KMSNotFoundException
-    , _ENILimitReachedException
-    , _InvalidParameterValueException
-    , _RequestTooLargeException
-    , _TooManyRequestsException
-    , _InvalidSecurityGroupIdException
     , _KMSDisabledException
     , _SubnetIPAddressLimitReachedException
+    , _TooManyRequestsException
     , _ServiceException
-    , _CodeStorageExceededException
+    , _InvalidRuntimeException
+    , _EC2ThrottledException
+    , _RequestTooLargeException
+    , _ENILimitReachedException
+    , _InvalidParameterValueException
+    , _KMSNotFoundException
+    , _InvalidRequestContentException
+    , _ResourceNotFoundException
     , _InvalidZipFileException
     , _ResourceConflictException
-    , _EC2UnexpectedException
-    , _ResourceNotFoundException
+    , _EC2AccessDeniedException
+    , _InvalidSubnetIdException
+    , _InvalidSecurityGroupIdException
+    , _KMSInvalidStateException
     , _KMSAccessDeniedException
+    , _EC2UnexpectedException
+    , _UnsupportedMediaTypeException
 
     -- * EventSourcePosition
     , EventSourcePosition (..)
@@ -249,31 +249,6 @@ lambda
           | has (hasStatus 509) e = Just "limit_exceeded"
           | otherwise = Nothing
 
--- | Lambda was unable to decrypt the environment variables because the KMS key used is in an invalid state for Decrypt. Check the function's KMS key settings.
---
---
-_KMSInvalidStateException :: AsError a => Getting (First ServiceError) a ServiceError
-_KMSInvalidStateException
-  = _MatchServiceError lambda
-      "KMSInvalidStateException"
-      . hasStatus 502
-
--- | AWS Lambda was throttled by Amazon EC2 during Lambda function initialization using the execution role provided for the Lambda function.
---
---
-_EC2ThrottledException :: AsError a => Getting (First ServiceError) a ServiceError
-_EC2ThrottledException
-  = _MatchServiceError lambda "EC2ThrottledException" .
-      hasStatus 502
-
--- | The runtime or runtime version specified is not supported.
---
---
-_InvalidRuntimeException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidRuntimeException
-  = _MatchServiceError lambda "InvalidRuntimeException"
-      . hasStatus 502
-
 -- | Lambda function access policy is limited to 20 KB.
 --
 --
@@ -281,6 +256,15 @@ _PolicyLengthExceededException :: AsError a => Getting (First ServiceError) a Se
 _PolicyLengthExceededException
   = _MatchServiceError lambda
       "PolicyLengthExceededException"
+      . hasStatus 400
+
+-- | You have exceeded your maximum total code size per account. <http://docs.aws.amazon.com/lambda/latest/dg/limits.html Limits> 
+--
+--
+_CodeStorageExceededException :: AsError a => Getting (First ServiceError) a ServiceError
+_CodeStorageExceededException
+  = _MatchServiceError lambda
+      "CodeStorageExceededException"
       . hasStatus 400
 
 -- | The RevisionId provided does not match the latest RevisionId for the Lambda function or alias. Call the @GetFunction@ or the @GetAlias@ API to retrieve the latest RevisionId for your resource.
@@ -292,49 +276,64 @@ _PreconditionFailedException
       "PreconditionFailedException"
       . hasStatus 412
 
+-- | Lambda was unable to decrypt the environment variables because the KMS key used is disabled. Check the Lambda function's KMS key settings.
+--
+--
+_KMSDisabledException :: AsError a => Getting (First ServiceError) a ServiceError
+_KMSDisabledException
+  = _MatchServiceError lambda "KMSDisabledException" .
+      hasStatus 502
+
+-- | AWS Lambda was not able to set up VPC access for the Lambda function because one or more configured subnets has no available IP addresses.
+--
+--
+_SubnetIPAddressLimitReachedException :: AsError a => Getting (First ServiceError) a ServiceError
+_SubnetIPAddressLimitReachedException
+  = _MatchServiceError lambda
+      "SubnetIPAddressLimitReachedException"
+      . hasStatus 502
+
 -- | 
 --
 --
-_EC2AccessDeniedException :: AsError a => Getting (First ServiceError) a ServiceError
-_EC2AccessDeniedException
+_TooManyRequestsException :: AsError a => Getting (First ServiceError) a ServiceError
+_TooManyRequestsException
   = _MatchServiceError lambda
-      "EC2AccessDeniedException"
+      "TooManyRequestsException"
+      . hasStatus 429
+
+-- | The AWS Lambda service encountered an internal error.
+--
+--
+_ServiceException :: AsError a => Getting (First ServiceError) a ServiceError
+_ServiceException
+  = _MatchServiceError lambda "ServiceException" .
+      hasStatus 500
+
+-- | The runtime or runtime version specified is not supported.
+--
+--
+_InvalidRuntimeException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidRuntimeException
+  = _MatchServiceError lambda "InvalidRuntimeException"
       . hasStatus 502
 
--- | The Subnet ID provided in the Lambda function VPC configuration is invalid.
+-- | AWS Lambda was throttled by Amazon EC2 during Lambda function initialization using the execution role provided for the Lambda function.
 --
 --
-_InvalidSubnetIdException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidSubnetIdException
-  = _MatchServiceError lambda
-      "InvalidSubnetIDException"
-      . hasStatus 502
-
--- | The content type of the @Invoke@ request body is not JSON.
---
---
-_UnsupportedMediaTypeException :: AsError a => Getting (First ServiceError) a ServiceError
-_UnsupportedMediaTypeException
-  = _MatchServiceError lambda
-      "UnsupportedMediaTypeException"
-      . hasStatus 415
-
--- | The request body could not be parsed as JSON.
---
---
-_InvalidRequestContentException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidRequestContentException
-  = _MatchServiceError lambda
-      "InvalidRequestContentException"
-      . hasStatus 400
-
--- | Lambda was unable to decrypt the environment variables because the KMS key was not found. Check the function's KMS key settings. 
---
---
-_KMSNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
-_KMSNotFoundException
-  = _MatchServiceError lambda "KMSNotFoundException" .
+_EC2ThrottledException :: AsError a => Getting (First ServiceError) a ServiceError
+_EC2ThrottledException
+  = _MatchServiceError lambda "EC2ThrottledException" .
       hasStatus 502
+
+-- | The request payload exceeded the @Invoke@ request body JSON input limit. For more information, see <http://docs.aws.amazon.com/lambda/latest/dg/limits.html Limits> . 
+--
+--
+_RequestTooLargeException :: AsError a => Getting (First ServiceError) a ServiceError
+_RequestTooLargeException
+  = _MatchServiceError lambda
+      "RequestTooLargeException"
+      . hasStatus 413
 
 -- | AWS Lambda was not able to create an Elastic Network Interface (ENI) in the VPC, specified as part of Lambda function configuration, because the limit for network interfaces has been reached.
 --
@@ -354,66 +353,31 @@ _InvalidParameterValueException
       "InvalidParameterValueException"
       . hasStatus 400
 
--- | The request payload exceeded the @Invoke@ request body JSON input limit. For more information, see <http://docs.aws.amazon.com/lambda/latest/dg/limits.html Limits> . 
+-- | Lambda was unable to decrypt the environment variables because the KMS key was not found. Check the function's KMS key settings. 
 --
 --
-_RequestTooLargeException :: AsError a => Getting (First ServiceError) a ServiceError
-_RequestTooLargeException
-  = _MatchServiceError lambda
-      "RequestTooLargeException"
-      . hasStatus 413
-
--- | 
---
---
-_TooManyRequestsException :: AsError a => Getting (First ServiceError) a ServiceError
-_TooManyRequestsException
-  = _MatchServiceError lambda
-      "TooManyRequestsException"
-      . hasStatus 429
-
--- | The Security Group ID provided in the Lambda function VPC configuration is invalid.
---
---
-_InvalidSecurityGroupIdException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidSecurityGroupIdException
-  = _MatchServiceError lambda
-      "InvalidSecurityGroupIDException"
-      . hasStatus 502
-
--- | Lambda was unable to decrypt the environment variables because the KMS key used is disabled. Check the Lambda function's KMS key settings.
---
---
-_KMSDisabledException :: AsError a => Getting (First ServiceError) a ServiceError
-_KMSDisabledException
-  = _MatchServiceError lambda "KMSDisabledException" .
+_KMSNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
+_KMSNotFoundException
+  = _MatchServiceError lambda "KMSNotFoundException" .
       hasStatus 502
 
--- | AWS Lambda was not able to set up VPC access for the Lambda function because one or more configured subnets has no available IP addresses.
+-- | The request body could not be parsed as JSON.
 --
 --
-_SubnetIPAddressLimitReachedException :: AsError a => Getting (First ServiceError) a ServiceError
-_SubnetIPAddressLimitReachedException
+_InvalidRequestContentException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidRequestContentException
   = _MatchServiceError lambda
-      "SubnetIPAddressLimitReachedException"
-      . hasStatus 502
-
--- | The AWS Lambda service encountered an internal error.
---
---
-_ServiceException :: AsError a => Getting (First ServiceError) a ServiceError
-_ServiceException
-  = _MatchServiceError lambda "ServiceException" .
-      hasStatus 500
-
--- | You have exceeded your maximum total code size per account. <http://docs.aws.amazon.com/lambda/latest/dg/limits.html Limits> 
---
---
-_CodeStorageExceededException :: AsError a => Getting (First ServiceError) a ServiceError
-_CodeStorageExceededException
-  = _MatchServiceError lambda
-      "CodeStorageExceededException"
+      "InvalidRequestContentException"
       . hasStatus 400
+
+-- | The resource (for example, a Lambda function or access policy statement) specified in the request does not exist.
+--
+--
+_ResourceNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
+_ResourceNotFoundException
+  = _MatchServiceError lambda
+      "ResourceNotFoundException"
+      . hasStatus 404
 
 -- | AWS Lambda could not unzip the function zip file.
 --
@@ -432,22 +396,41 @@ _ResourceConflictException
       "ResourceConflictException"
       . hasStatus 409
 
--- | AWS Lambda received an unexpected EC2 client exception while setting up for the Lambda function.
+-- | 
 --
 --
-_EC2UnexpectedException :: AsError a => Getting (First ServiceError) a ServiceError
-_EC2UnexpectedException
-  = _MatchServiceError lambda "EC2UnexpectedException"
+_EC2AccessDeniedException :: AsError a => Getting (First ServiceError) a ServiceError
+_EC2AccessDeniedException
+  = _MatchServiceError lambda
+      "EC2AccessDeniedException"
       . hasStatus 502
 
--- | The resource (for example, a Lambda function or access policy statement) specified in the request does not exist.
+-- | The Subnet ID provided in the Lambda function VPC configuration is invalid.
 --
 --
-_ResourceNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
-_ResourceNotFoundException
+_InvalidSubnetIdException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidSubnetIdException
   = _MatchServiceError lambda
-      "ResourceNotFoundException"
-      . hasStatus 404
+      "InvalidSubnetIDException"
+      . hasStatus 502
+
+-- | The Security Group ID provided in the Lambda function VPC configuration is invalid.
+--
+--
+_InvalidSecurityGroupIdException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidSecurityGroupIdException
+  = _MatchServiceError lambda
+      "InvalidSecurityGroupIDException"
+      . hasStatus 502
+
+-- | Lambda was unable to decrypt the environment variables because the KMS key used is in an invalid state for Decrypt. Check the function's KMS key settings.
+--
+--
+_KMSInvalidStateException :: AsError a => Getting (First ServiceError) a ServiceError
+_KMSInvalidStateException
+  = _MatchServiceError lambda
+      "KMSInvalidStateException"
+      . hasStatus 502
 
 -- | Lambda was unable to decrypt the environment variables because KMS access was denied. Check the Lambda function's KMS permissions.
 --
@@ -457,3 +440,20 @@ _KMSAccessDeniedException
   = _MatchServiceError lambda
       "KMSAccessDeniedException"
       . hasStatus 502
+
+-- | AWS Lambda received an unexpected EC2 client exception while setting up for the Lambda function.
+--
+--
+_EC2UnexpectedException :: AsError a => Getting (First ServiceError) a ServiceError
+_EC2UnexpectedException
+  = _MatchServiceError lambda "EC2UnexpectedException"
+      . hasStatus 502
+
+-- | The content type of the @Invoke@ request body is not JSON.
+--
+--
+_UnsupportedMediaTypeException :: AsError a => Getting (First ServiceError) a ServiceError
+_UnsupportedMediaTypeException
+  = _MatchServiceError lambda
+      "UnsupportedMediaTypeException"
+      . hasStatus 415

@@ -16,10 +16,10 @@ module Network.AWS.DynamoDBStreams.Types
       dynamoDBStreams
 
     -- * Errors
-    , _ExpiredIteratorException
-    , _InternalServerError
     , _TrimmedDataAccessException
     , _ResourceNotFoundException
+    , _InternalServerError
+    , _ExpiredIteratorException
     , _LimitExceededException
 
     -- * KeyType
@@ -171,22 +171,6 @@ dynamoDBStreams
           | has (hasStatus 509) e = Just "limit_exceeded"
           | otherwise = Nothing
 
--- | The shard iterator has expired and can no longer be used to retrieve stream records. A shard iterator expires 15 minutes after it is retrieved using the @GetShardIterator@ action.
---
---
-_ExpiredIteratorException :: AsError a => Getting (First ServiceError) a ServiceError
-_ExpiredIteratorException
-  = _MatchServiceError dynamoDBStreams
-      "ExpiredIteratorException"
-
--- | An error occurred on the server side.
---
---
-_InternalServerError :: AsError a => Getting (First ServiceError) a ServiceError
-_InternalServerError
-  = _MatchServiceError dynamoDBStreams
-      "InternalServerError"
-
 -- | The operation attempted to read past the oldest stream record in a shard.
 --
 --
@@ -210,6 +194,22 @@ _ResourceNotFoundException :: AsError a => Getting (First ServiceError) a Servic
 _ResourceNotFoundException
   = _MatchServiceError dynamoDBStreams
       "ResourceNotFoundException"
+
+-- | An error occurred on the server side.
+--
+--
+_InternalServerError :: AsError a => Getting (First ServiceError) a ServiceError
+_InternalServerError
+  = _MatchServiceError dynamoDBStreams
+      "InternalServerError"
+
+-- | The shard iterator has expired and can no longer be used to retrieve stream records. A shard iterator expires 15 minutes after it is retrieved using the @GetShardIterator@ action.
+--
+--
+_ExpiredIteratorException :: AsError a => Getting (First ServiceError) a ServiceError
+_ExpiredIteratorException
+  = _MatchServiceError dynamoDBStreams
+      "ExpiredIteratorException"
 
 -- | Your request rate is too high. The AWS SDKs for DynamoDB automatically retry requests that receive this exception. Your request is eventually successful, unless your retry queue is too large to finish. Reduce the frequency of requests and use exponential backoff. For more information, go to <http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ErrorHandling.html#APIRetries Error Retries and Exponential Backoff> in the /Amazon DynamoDB Developer Guide/ .
 --

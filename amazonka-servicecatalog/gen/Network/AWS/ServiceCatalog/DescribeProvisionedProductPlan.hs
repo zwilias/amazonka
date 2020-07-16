@@ -36,10 +36,10 @@ module Network.AWS.ServiceCatalog.DescribeProvisionedProductPlan
     , describeProvisionedProductPlanResponse
     , DescribeProvisionedProductPlanResponse
     -- * Response Lenses
-    , dpppprsNextPageToken
-    , dpppprsProvisionedProductPlanDetails
-    , dpppprsResourceChanges
-    , dpppprsResponseStatus
+    , dscrbprvsndprdctplnrsNextPageToken
+    , dscrbprvsndprdctplnrsProvisionedProductPlanDetails
+    , dscrbprvsndprdctplnrsResourceChanges
+    , dscrbprvsndprdctplnrsResponseStatus
     ) where
 
 import Network.AWS.Lens
@@ -150,19 +150,19 @@ instance ToQuery DescribeProvisionedProductPlan where
         toQuery = const mempty
 
 -- | /See:/ 'describeProvisionedProductPlanResponse' smart constructor.
-data DescribeProvisionedProductPlanResponse = DescribeProvisionedProductPlanResponse'{_dpppprsNextPageToken
+data DescribeProvisionedProductPlanResponse = DescribeProvisionedProductPlanResponse'{_dscrbprvsndprdctplnrsNextPageToken
                                                                                       ::
                                                                                       !(Maybe
                                                                                           Text),
-                                                                                      _dpppprsProvisionedProductPlanDetails
+                                                                                      _dscrbprvsndprdctplnrsProvisionedProductPlanDetails
                                                                                       ::
                                                                                       !(Maybe
                                                                                           ProvisionedProductPlanDetails),
-                                                                                      _dpppprsResourceChanges
+                                                                                      _dscrbprvsndprdctplnrsResourceChanges
                                                                                       ::
                                                                                       !(Maybe
                                                                                           [ResourceChange]),
-                                                                                      _dpppprsResponseStatus
+                                                                                      _dscrbprvsndprdctplnrsResponseStatus
                                                                                       ::
                                                                                       !Int}
                                                 deriving (Eq, Read, Show, Data,
@@ -172,41 +172,42 @@ data DescribeProvisionedProductPlanResponse = DescribeProvisionedProductPlanResp
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dpppprsNextPageToken' - The page token to use to retrieve the next set of results. If there are no additional results, this value is null.
+-- * 'dscrbprvsndprdctplnrsNextPageToken' - The page token to use to retrieve the next set of results. If there are no additional results, this value is null.
 --
--- * 'dpppprsProvisionedProductPlanDetails' - Information about the plan.
+-- * 'dscrbprvsndprdctplnrsProvisionedProductPlanDetails' - Information about the plan.
 --
--- * 'dpppprsResourceChanges' - Information about the resource changes that will occur when the plan is executed.
+-- * 'dscrbprvsndprdctplnrsResourceChanges' - Information about the resource changes that will occur when the plan is executed.
 --
--- * 'dpppprsResponseStatus' - -- | The response status code.
+-- * 'dscrbprvsndprdctplnrsResponseStatus' - -- | The response status code.
 describeProvisionedProductPlanResponse
-    :: Int -- ^ 'dpppprsResponseStatus'
+    :: Int -- ^ 'dscrbprvsndprdctplnrsResponseStatus'
     -> DescribeProvisionedProductPlanResponse
 describeProvisionedProductPlanResponse
   pResponseStatus_
-  = DescribeProvisionedProductPlanResponse'{_dpppprsNextPageToken
+  = DescribeProvisionedProductPlanResponse'{_dscrbprvsndprdctplnrsNextPageToken
                                               = Nothing,
-                                            _dpppprsProvisionedProductPlanDetails
+                                            _dscrbprvsndprdctplnrsProvisionedProductPlanDetails
                                               = Nothing,
-                                            _dpppprsResourceChanges = Nothing,
-                                            _dpppprsResponseStatus =
-                                              pResponseStatus_}
+                                            _dscrbprvsndprdctplnrsResourceChanges
+                                              = Nothing,
+                                            _dscrbprvsndprdctplnrsResponseStatus
+                                              = pResponseStatus_}
 
 -- | The page token to use to retrieve the next set of results. If there are no additional results, this value is null.
-dpppprsNextPageToken :: Lens' DescribeProvisionedProductPlanResponse (Maybe Text)
-dpppprsNextPageToken = lens _dpppprsNextPageToken (\ s a -> s{_dpppprsNextPageToken = a})
+dscrbprvsndprdctplnrsNextPageToken :: Lens' DescribeProvisionedProductPlanResponse (Maybe Text)
+dscrbprvsndprdctplnrsNextPageToken = lens _dscrbprvsndprdctplnrsNextPageToken (\ s a -> s{_dscrbprvsndprdctplnrsNextPageToken = a})
 
 -- | Information about the plan.
-dpppprsProvisionedProductPlanDetails :: Lens' DescribeProvisionedProductPlanResponse (Maybe ProvisionedProductPlanDetails)
-dpppprsProvisionedProductPlanDetails = lens _dpppprsProvisionedProductPlanDetails (\ s a -> s{_dpppprsProvisionedProductPlanDetails = a})
+dscrbprvsndprdctplnrsProvisionedProductPlanDetails :: Lens' DescribeProvisionedProductPlanResponse (Maybe ProvisionedProductPlanDetails)
+dscrbprvsndprdctplnrsProvisionedProductPlanDetails = lens _dscrbprvsndprdctplnrsProvisionedProductPlanDetails (\ s a -> s{_dscrbprvsndprdctplnrsProvisionedProductPlanDetails = a})
 
 -- | Information about the resource changes that will occur when the plan is executed.
-dpppprsResourceChanges :: Lens' DescribeProvisionedProductPlanResponse [ResourceChange]
-dpppprsResourceChanges = lens _dpppprsResourceChanges (\ s a -> s{_dpppprsResourceChanges = a}) . _Default . _Coerce
+dscrbprvsndprdctplnrsResourceChanges :: Lens' DescribeProvisionedProductPlanResponse [ResourceChange]
+dscrbprvsndprdctplnrsResourceChanges = lens _dscrbprvsndprdctplnrsResourceChanges (\ s a -> s{_dscrbprvsndprdctplnrsResourceChanges = a}) . _Default . _Coerce
 
 -- | -- | The response status code.
-dpppprsResponseStatus :: Lens' DescribeProvisionedProductPlanResponse Int
-dpppprsResponseStatus = lens _dpppprsResponseStatus (\ s a -> s{_dpppprsResponseStatus = a})
+dscrbprvsndprdctplnrsResponseStatus :: Lens' DescribeProvisionedProductPlanResponse Int
+dscrbprvsndprdctplnrsResponseStatus = lens _dscrbprvsndprdctplnrsResponseStatus (\ s a -> s{_dscrbprvsndprdctplnrsResponseStatus = a})
 
 instance NFData
            DescribeProvisionedProductPlanResponse

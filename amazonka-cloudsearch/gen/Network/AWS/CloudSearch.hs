@@ -25,26 +25,26 @@ module Network.AWS.CloudSearch
     -- * Errors
     -- $errors
 
-    -- ** ValidationException
-    , _ValidationException
-
-    -- ** BaseException
-    , _BaseException
-
     -- ** DisabledOperationException
     , _DisabledOperationException
 
-    -- ** InternalException
-    , _InternalException
-
-    -- ** InvalidTypeException
-    , _InvalidTypeException
+    -- ** ValidationException
+    , _ValidationException
 
     -- ** ResourceNotFoundException
     , _ResourceNotFoundException
 
+    -- ** InternalException
+    , _InternalException
+
+    -- ** BaseException
+    , _BaseException
+
     -- ** LimitExceededException
     , _LimitExceededException
+
+    -- ** InvalidTypeException
+    , _InvalidTypeException
 
     -- * Waiters
     -- $waiters

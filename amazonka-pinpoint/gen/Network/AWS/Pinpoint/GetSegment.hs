@@ -32,8 +32,8 @@ module Network.AWS.Pinpoint.GetSegment
     , getSegmentResponse
     , GetSegmentResponse
     -- * Response Lenses
-    , gssrsResponseStatus
-    , gssrsSegmentResponse
+    , gtsgmntrsResponseStatus
+    , gtsgmntrsSegmentResponse
     ) where
 
 import Network.AWS.Lens
@@ -101,9 +101,9 @@ instance ToQuery GetSegment where
         toQuery = const mempty
 
 -- | /See:/ 'getSegmentResponse' smart constructor.
-data GetSegmentResponse = GetSegmentResponse'{_gssrsResponseStatus
+data GetSegmentResponse = GetSegmentResponse'{_gtsgmntrsResponseStatus
                                               :: !Int,
-                                              _gssrsSegmentResponse ::
+                                              _gtsgmntrsSegmentResponse ::
                                               !SegmentResponse}
                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -111,24 +111,24 @@ data GetSegmentResponse = GetSegmentResponse'{_gssrsResponseStatus
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'gssrsResponseStatus' - -- | The response status code.
+-- * 'gtsgmntrsResponseStatus' - -- | The response status code.
 --
--- * 'gssrsSegmentResponse' - Undocumented member.
+-- * 'gtsgmntrsSegmentResponse' - Undocumented member.
 getSegmentResponse
-    :: Int -- ^ 'gssrsResponseStatus'
-    -> SegmentResponse -- ^ 'gssrsSegmentResponse'
+    :: Int -- ^ 'gtsgmntrsResponseStatus'
+    -> SegmentResponse -- ^ 'gtsgmntrsSegmentResponse'
     -> GetSegmentResponse
 getSegmentResponse pResponseStatus_ pSegmentResponse_
-  = GetSegmentResponse'{_gssrsResponseStatus =
+  = GetSegmentResponse'{_gtsgmntrsResponseStatus =
                           pResponseStatus_,
-                        _gssrsSegmentResponse = pSegmentResponse_}
+                        _gtsgmntrsSegmentResponse = pSegmentResponse_}
 
 -- | -- | The response status code.
-gssrsResponseStatus :: Lens' GetSegmentResponse Int
-gssrsResponseStatus = lens _gssrsResponseStatus (\ s a -> s{_gssrsResponseStatus = a})
+gtsgmntrsResponseStatus :: Lens' GetSegmentResponse Int
+gtsgmntrsResponseStatus = lens _gtsgmntrsResponseStatus (\ s a -> s{_gtsgmntrsResponseStatus = a})
 
 -- | Undocumented member.
-gssrsSegmentResponse :: Lens' GetSegmentResponse SegmentResponse
-gssrsSegmentResponse = lens _gssrsSegmentResponse (\ s a -> s{_gssrsSegmentResponse = a})
+gtsgmntrsSegmentResponse :: Lens' GetSegmentResponse SegmentResponse
+gtsgmntrsSegmentResponse = lens _gtsgmntrsSegmentResponse (\ s a -> s{_gtsgmntrsSegmentResponse = a})
 
 instance NFData GetSegmentResponse where

@@ -23,6 +23,48 @@ module Network.AWS.CloudDirectory
     -- * Errors
     -- $errors
 
+    -- ** DirectoryNotDisabledException
+    , _DirectoryNotDisabledException
+
+    -- ** RetryableConflictException
+    , _RetryableConflictException
+
+    -- ** DirectoryAlreadyExistsException
+    , _DirectoryAlreadyExistsException
+
+    -- ** SchemaAlreadyExistsException
+    , _SchemaAlreadyExistsException
+
+    -- ** SchemaAlreadyPublishedException
+    , _SchemaAlreadyPublishedException
+
+    -- ** IndexedAttributeMissingException
+    , _IndexedAttributeMissingException
+
+    -- ** InternalServiceException
+    , _InternalServiceException
+
+    -- ** NotNodeException
+    , _NotNodeException
+
+    -- ** ObjectAlreadyDetachedException
+    , _ObjectAlreadyDetachedException
+
+    -- ** InvalidFacetUpdateException
+    , _InvalidFacetUpdateException
+
+    -- ** CannotListParentOfRootException
+    , _CannotListParentOfRootException
+
+    -- ** InvalidSchemaDocException
+    , _InvalidSchemaDocException
+
+    -- ** FacetAlreadyExistsException
+    , _FacetAlreadyExistsException
+
+    -- ** AccessDeniedException
+    , _AccessDeniedException
+
     -- ** UnsupportedIndexTypeException
     , _UnsupportedIndexTypeException
 
@@ -32,92 +74,41 @@ module Network.AWS.CloudDirectory
     -- ** ValidationException
     , _ValidationException
 
-    -- ** AccessDeniedException
-    , _AccessDeniedException
-
-    -- ** FacetAlreadyExistsException
-    , _FacetAlreadyExistsException
-
-    -- ** InvalidSchemaDocException
-    , _InvalidSchemaDocException
-
-    -- ** InvalidAttachmentException
-    , _InvalidAttachmentException
-
-    -- ** CannotListParentOfRootException
-    , _CannotListParentOfRootException
-
-    -- ** NotPolicyException
-    , _NotPolicyException
-
-    -- ** InvalidTaggingRequestException
-    , _InvalidTaggingRequestException
-
-    -- ** InvalidFacetUpdateException
-    , _InvalidFacetUpdateException
-
-    -- ** InvalidRuleException
-    , _InvalidRuleException
-
-    -- ** SchemaAlreadyPublishedException
-    , _SchemaAlreadyPublishedException
-
-    -- ** DirectoryAlreadyExistsException
-    , _DirectoryAlreadyExistsException
-
-    -- ** DirectoryNotDisabledException
-    , _DirectoryNotDisabledException
-
-    -- ** BatchWriteException
-    , _BatchWriteException
+    -- ** FacetValidationException
+    , _FacetValidationException
 
     -- ** DirectoryNotEnabledException
     , _DirectoryNotEnabledException
 
-    -- ** FacetInUseException
-    , _FacetInUseException
-
-    -- ** FacetValidationException
-    , _FacetValidationException
-
-    -- ** StillContainsLinksException
-    , _StillContainsLinksException
-
-    -- ** IncompatibleSchemaException
-    , _IncompatibleSchemaException
-
-    -- ** NotNodeException
-    , _NotNodeException
-
-    -- ** InvalidNextTokenException
-    , _InvalidNextTokenException
-
-    -- ** ObjectAlreadyDetachedException
-    , _ObjectAlreadyDetachedException
-
-    -- ** LinkNameAlreadyInUseException
-    , _LinkNameAlreadyInUseException
-
-    -- ** InternalServiceException
-    , _InternalServiceException
-
-    -- ** SchemaAlreadyExistsException
-    , _SchemaAlreadyExistsException
-
-    -- ** IndexedAttributeMissingException
-    , _IndexedAttributeMissingException
+    -- ** ResourceNotFoundException
+    , _ResourceNotFoundException
 
     -- ** DirectoryDeletedException
     , _DirectoryDeletedException
 
-    -- ** RetryableConflictException
-    , _RetryableConflictException
-
     -- ** InvalidARNException
     , _InvalidARNException
 
-    -- ** ResourceNotFoundException
-    , _ResourceNotFoundException
+    -- ** InvalidRuleException
+    , _InvalidRuleException
+
+    -- ** InvalidTaggingRequestException
+    , _InvalidTaggingRequestException
+
+    -- ** NotPolicyException
+    , _NotPolicyException
+
+    -- ** LinkNameAlreadyInUseException
+    , _LinkNameAlreadyInUseException
+
+    -- ** InvalidNextTokenException
+    , _InvalidNextTokenException
+
+    -- ** IncompatibleSchemaException
+    , _IncompatibleSchemaException
+
+    -- ** InvalidAttachmentException
+    , _InvalidAttachmentException
 
     -- ** FacetNotFoundException
     , _FacetNotFoundException
@@ -127,6 +118,15 @@ module Network.AWS.CloudDirectory
 
     -- ** ObjectNotDetachedException
     , _ObjectNotDetachedException
+
+    -- ** StillContainsLinksException
+    , _StillContainsLinksException
+
+    -- ** FacetInUseException
+    , _FacetInUseException
+
+    -- ** BatchWriteException
+    , _BatchWriteException
 
     -- * Waiters
     -- $waiters
@@ -612,9 +612,9 @@ module Network.AWS.CloudDirectory
     -- ** BatchListObjectChildren
     , BatchListObjectChildren
     , batchListObjectChildren
-    , bloclNextToken
-    , bloclMaxResults
-    , bloclObjectReference
+    , btchlstobjctchldrnNextToken
+    , btchlstobjctchldrnMaxResults
+    , btchlstobjctchldrnObjectReference
 
     -- ** BatchListObjectChildrenResponse
     , BatchListObjectChildrenResponse
@@ -638,9 +638,9 @@ module Network.AWS.CloudDirectory
     -- ** BatchListObjectParents
     , BatchListObjectParents
     , batchListObjectParents
-    , bloplNextToken
-    , bloplMaxResults
-    , bloplObjectReference
+    , btchlstobjctprntsNextToken
+    , btchlstobjctprntsMaxResults
+    , btchlstobjctprntsObjectReference
 
     -- ** BatchListObjectParentsResponse
     , BatchListObjectParentsResponse
@@ -651,9 +651,9 @@ module Network.AWS.CloudDirectory
     -- ** BatchListObjectPolicies
     , BatchListObjectPolicies
     , batchListObjectPolicies
-    , bbNextToken
-    , bbMaxResults
-    , bbObjectReference
+    , btchlstobjctplcsNextToken
+    , btchlstobjctplcsMaxResults
+    , btchlstobjctplcsObjectReference
 
     -- ** BatchListObjectPoliciesResponse
     , BatchListObjectPoliciesResponse
@@ -692,9 +692,9 @@ module Network.AWS.CloudDirectory
     -- ** BatchLookupPolicy
     , BatchLookupPolicy
     , batchLookupPolicy
-    , blplNextToken
-    , blplMaxResults
-    , blplObjectReference
+    , btchlkpplcyNextToken
+    , btchlkpplcyMaxResults
+    , btchlkpplcyObjectReference
 
     -- ** BatchLookupPolicyResponse
     , BatchLookupPolicyResponse

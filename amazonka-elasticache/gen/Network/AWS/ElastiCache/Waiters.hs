@@ -31,23 +31,23 @@ cacheClusterAvailable
          _waitAttempts = 40, _waitDelay = 15,
          _waitAcceptors =
            [matchAll "available" AcceptSuccess
-              (folding (concatOf drsCacheClusters) .
+              (folding (concatOf (drsCacheClusters . to toList)) .
                  ccCacheClusterStatus . _Just
                  . to toTextCI),
             matchAny "deleted" AcceptFailure
-              (folding (concatOf drsCacheClusters) .
+              (folding (concatOf (drsCacheClusters . to toList)) .
                  ccCacheClusterStatus . _Just
                  . to toTextCI),
             matchAny "deleting" AcceptFailure
-              (folding (concatOf drsCacheClusters) .
+              (folding (concatOf (drsCacheClusters . to toList)) .
                  ccCacheClusterStatus . _Just
                  . to toTextCI),
             matchAny "incompatible-network" AcceptFailure
-              (folding (concatOf drsCacheClusters) .
+              (folding (concatOf (drsCacheClusters . to toList)) .
                  ccCacheClusterStatus . _Just
                  . to toTextCI),
             matchAny "restore-failed" AcceptFailure
-              (folding (concatOf drsCacheClusters) .
+              (folding (concatOf (drsCacheClusters . to toList)) .
                  ccCacheClusterStatus . _Just
                  . to toTextCI)]}
 
@@ -58,32 +58,32 @@ cacheClusterDeleted
          _waitAttempts = 40, _waitDelay = 15,
          _waitAcceptors =
            [matchAll "deleted" AcceptSuccess
-              (folding (concatOf drsCacheClusters) .
+              (folding (concatOf (drsCacheClusters . to toList)) .
                  ccCacheClusterStatus . _Just
                  . to toTextCI),
             matchError "CacheClusterNotFound" AcceptSuccess,
             matchAny "available" AcceptFailure
-              (folding (concatOf drsCacheClusters) .
+              (folding (concatOf (drsCacheClusters . to toList)) .
                  ccCacheClusterStatus . _Just
                  . to toTextCI),
             matchAny "creating" AcceptFailure
-              (folding (concatOf drsCacheClusters) .
+              (folding (concatOf (drsCacheClusters . to toList)) .
                  ccCacheClusterStatus . _Just
                  . to toTextCI),
             matchAny "incompatible-network" AcceptFailure
-              (folding (concatOf drsCacheClusters) .
+              (folding (concatOf (drsCacheClusters . to toList)) .
                  ccCacheClusterStatus . _Just
                  . to toTextCI),
             matchAny "modifying" AcceptFailure
-              (folding (concatOf drsCacheClusters) .
+              (folding (concatOf (drsCacheClusters . to toList)) .
                  ccCacheClusterStatus . _Just
                  . to toTextCI),
             matchAny "restore-failed" AcceptFailure
-              (folding (concatOf drsCacheClusters) .
+              (folding (concatOf (drsCacheClusters . to toList)) .
                  ccCacheClusterStatus . _Just
                  . to toTextCI),
             matchAny "snapshotting" AcceptFailure
-              (folding (concatOf drsCacheClusters) .
+              (folding (concatOf (drsCacheClusters . to toList)) .
                  ccCacheClusterStatus . _Just
                  . to toTextCI)]}
 
@@ -94,12 +94,14 @@ replicationGroupDeleted
          _waitAttempts = 40, _waitDelay = 15,
          _waitAcceptors =
            [matchAll "deleted" AcceptSuccess
-              (folding (concatOf drgrsReplicationGroups) .
-                 rgStatus . _Just
+              (folding
+                 (concatOf (drgrsReplicationGroups . to toList))
+                 . rgStatus . _Just
                  . to toTextCI),
             matchAny "available" AcceptFailure
-              (folding (concatOf drgrsReplicationGroups) .
-                 rgStatus . _Just
+              (folding
+                 (concatOf (drgrsReplicationGroups . to toList))
+                 . rgStatus . _Just
                  . to toTextCI),
             matchError "ReplicationGroupNotFoundFault"
               AcceptSuccess]}
@@ -111,10 +113,12 @@ replicationGroupAvailable
          _waitAttempts = 40, _waitDelay = 15,
          _waitAcceptors =
            [matchAll "available" AcceptSuccess
-              (folding (concatOf drgrsReplicationGroups) .
-                 rgStatus . _Just
+              (folding
+                 (concatOf (drgrsReplicationGroups . to toList))
+                 . rgStatus . _Just
                  . to toTextCI),
             matchAny "deleted" AcceptFailure
-              (folding (concatOf drgrsReplicationGroups) .
-                 rgStatus . _Just
+              (folding
+                 (concatOf (drgrsReplicationGroups . to toList))
+                 . rgStatus . _Just
                  . to toTextCI)]}

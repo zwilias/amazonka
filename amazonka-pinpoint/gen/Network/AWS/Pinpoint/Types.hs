@@ -16,12 +16,12 @@ module Network.AWS.Pinpoint.Types
       pinpoint
 
     -- * Errors
-    , _ForbiddenException
-    , _NotFoundException
-    , _TooManyRequestsException
     , _InternalServerErrorException
-    , _MethodNotAllowedException
+    , _TooManyRequestsException
+    , _ForbiddenException
     , _BadRequestException
+    , _MethodNotAllowedException
+    , _NotFoundException
 
     -- * Action
     , Action (..)
@@ -1078,16 +1078,11 @@ pinpoint
           | otherwise = Nothing
 
 -- | Simple message object.
-_ForbiddenException :: AsError a => Getting (First ServiceError) a ServiceError
-_ForbiddenException
-  = _MatchServiceError pinpoint "ForbiddenException" .
-      hasStatus 403
-
--- | Simple message object.
-_NotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
-_NotFoundException
-  = _MatchServiceError pinpoint "NotFoundException" .
-      hasStatus 404
+_InternalServerErrorException :: AsError a => Getting (First ServiceError) a ServiceError
+_InternalServerErrorException
+  = _MatchServiceError pinpoint
+      "InternalServerErrorException"
+      . hasStatus 500
 
 -- | Simple message object.
 _TooManyRequestsException :: AsError a => Getting (First ServiceError) a ServiceError
@@ -1097,11 +1092,16 @@ _TooManyRequestsException
       . hasStatus 429
 
 -- | Simple message object.
-_InternalServerErrorException :: AsError a => Getting (First ServiceError) a ServiceError
-_InternalServerErrorException
-  = _MatchServiceError pinpoint
-      "InternalServerErrorException"
-      . hasStatus 500
+_ForbiddenException :: AsError a => Getting (First ServiceError) a ServiceError
+_ForbiddenException
+  = _MatchServiceError pinpoint "ForbiddenException" .
+      hasStatus 403
+
+-- | Simple message object.
+_BadRequestException :: AsError a => Getting (First ServiceError) a ServiceError
+_BadRequestException
+  = _MatchServiceError pinpoint "BadRequestException" .
+      hasStatus 400
 
 -- | Simple message object.
 _MethodNotAllowedException :: AsError a => Getting (First ServiceError) a ServiceError
@@ -1111,7 +1111,7 @@ _MethodNotAllowedException
       . hasStatus 405
 
 -- | Simple message object.
-_BadRequestException :: AsError a => Getting (First ServiceError) a ServiceError
-_BadRequestException
-  = _MatchServiceError pinpoint "BadRequestException" .
-      hasStatus 400
+_NotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
+_NotFoundException
+  = _MatchServiceError pinpoint "NotFoundException" .
+      hasStatus 404

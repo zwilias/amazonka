@@ -16,11 +16,11 @@ module Network.AWS.AlexaBusiness.Types
       alexaBusiness
 
     -- * Errors
+    , _NameInUseException
     , _InvalidUserStatusException
     , _NotFoundException
-    , _NameInUseException
-    , _AlreadyExistsException
     , _LimitExceededException
+    , _AlreadyExistsException
     , _ResourceInUseException
 
     -- * ConnectionStatus
@@ -299,6 +299,14 @@ alexaBusiness
           | has (hasStatus 509) e = Just "limit_exceeded"
           | otherwise = Nothing
 
+-- | The name sent in the request is already in use. HTTP Status Code: 400
+--
+--
+_NameInUseException :: AsError a => Getting (First ServiceError) a ServiceError
+_NameInUseException
+  = _MatchServiceError alexaBusiness
+      "NameInUseException"
+
 -- | The attempt to update a user is invalid due to the user's current status. HTTP Status Code: 400
 --
 --
@@ -315,13 +323,13 @@ _NotFoundException
   = _MatchServiceError alexaBusiness
       "NotFoundException"
 
--- | The name sent in the request is already in use. HTTP Status Code: 400
+-- | You are performing an action that would put you beyond your account's limits. HTTP Status Code: 400
 --
 --
-_NameInUseException :: AsError a => Getting (First ServiceError) a ServiceError
-_NameInUseException
+_LimitExceededException :: AsError a => Getting (First ServiceError) a ServiceError
+_LimitExceededException
   = _MatchServiceError alexaBusiness
-      "NameInUseException"
+      "LimitExceededException"
 
 -- | The resource being created already exists. HTTP Status Code: 400
 --
@@ -330,14 +338,6 @@ _AlreadyExistsException :: AsError a => Getting (First ServiceError) a ServiceEr
 _AlreadyExistsException
   = _MatchServiceError alexaBusiness
       "AlreadyExistsException"
-
--- | You are performing an action that would put you beyond your account's limits. HTTP Status Code: 400
---
---
-_LimitExceededException :: AsError a => Getting (First ServiceError) a ServiceError
-_LimitExceededException
-  = _MatchServiceError alexaBusiness
-      "LimitExceededException"
 
 -- | The resource in the request is already in use. HTTP Status Code: 400
 --

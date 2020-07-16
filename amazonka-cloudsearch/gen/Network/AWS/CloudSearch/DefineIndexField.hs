@@ -27,8 +27,8 @@ module Network.AWS.CloudSearch.DefineIndexField
       defineIndexField
     , DefineIndexField
     -- * Request Lenses
-    , defeDomainName
-    , defeIndexField
+    , dfnindxfldDomainName
+    , dfnindxfldIndexField
 
     -- * Destructuring the Response
     , defineIndexFieldResponse
@@ -50,33 +50,34 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'defineIndexField' smart constructor.
-data DefineIndexField = DefineIndexField'{_defeDomainName
+data DefineIndexField = DefineIndexField'{_dfnindxfldDomainName
                                           :: !Text,
-                                          _defeIndexField :: !IndexField}
+                                          _dfnindxfldIndexField :: !IndexField}
                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DefineIndexField' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'defeDomainName' - Undocumented member.
+-- * 'dfnindxfldDomainName' - Undocumented member.
 --
--- * 'defeIndexField' - The index field and field options you want to configure. 
+-- * 'dfnindxfldIndexField' - The index field and field options you want to configure. 
 defineIndexField
-    :: Text -- ^ 'defeDomainName'
-    -> IndexField -- ^ 'defeIndexField'
+    :: Text -- ^ 'dfnindxfldDomainName'
+    -> IndexField -- ^ 'dfnindxfldIndexField'
     -> DefineIndexField
 defineIndexField pDomainName_ pIndexField_
-  = DefineIndexField'{_defeDomainName = pDomainName_,
-                      _defeIndexField = pIndexField_}
+  = DefineIndexField'{_dfnindxfldDomainName =
+                        pDomainName_,
+                      _dfnindxfldIndexField = pIndexField_}
 
 -- | Undocumented member.
-defeDomainName :: Lens' DefineIndexField Text
-defeDomainName = lens _defeDomainName (\ s a -> s{_defeDomainName = a})
+dfnindxfldDomainName :: Lens' DefineIndexField Text
+dfnindxfldDomainName = lens _dfnindxfldDomainName (\ s a -> s{_dfnindxfldDomainName = a})
 
 -- | The index field and field options you want to configure. 
-defeIndexField :: Lens' DefineIndexField IndexField
-defeIndexField = lens _defeIndexField (\ s a -> s{_defeIndexField = a})
+dfnindxfldIndexField :: Lens' DefineIndexField IndexField
+dfnindxfldIndexField = lens _dfnindxfldIndexField (\ s a -> s{_dfnindxfldIndexField = a})
 
 instance AWSRequest DefineIndexField where
         type Rs DefineIndexField = DefineIndexFieldResponse
@@ -102,8 +103,8 @@ instance ToQuery DefineIndexField where
           = mconcat
               ["Action" =: ("DefineIndexField" :: ByteString),
                "Version" =: ("2013-01-01" :: ByteString),
-               "DomainName" =: _defeDomainName,
-               "IndexField" =: _defeIndexField]
+               "DomainName" =: _dfnindxfldDomainName,
+               "IndexField" =: _dfnindxfldIndexField]
 
 -- | The result of a @'DefineIndexField' @ request. Contains the status of the newly-configured index field.
 --

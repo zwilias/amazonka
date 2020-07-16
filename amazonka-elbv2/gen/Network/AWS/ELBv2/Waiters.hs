@@ -32,8 +32,8 @@ loadBalancersDeleted
          _waitAttempts = 40, _waitDelay = 15,
          _waitAcceptors =
            [matchAll "active" AcceptRetry
-              (folding (concatOf dlbrsLoadBalancers) .
-                 lbState . _Just
+              (folding (concatOf (dlbrsLoadBalancers . to toList))
+                 . lbState . _Just
                  . lbsCode . _Just
                  . to toTextCI),
             matchError "LoadBalancerNotFound" AcceptSuccess]}
@@ -46,8 +46,10 @@ targetDeregistered
          _waitAcceptors =
            [matchError "InvalidTarget" AcceptSuccess,
             matchAll "unused" AcceptSuccess
-              (folding (concatOf dthrsTargetHealthDescriptions) .
-                 thdTargetHealth . _Just
+              (folding
+                 (concatOf
+                    (dthrsTargetHealthDescriptions . to toList))
+                 . thdTargetHealth . _Just
                  . thState . _Just
                  . to toTextCI)]}
 
@@ -58,13 +60,13 @@ loadBalancerAvailable
          _waitAttempts = 40, _waitDelay = 15,
          _waitAcceptors =
            [matchAll "active" AcceptSuccess
-              (folding (concatOf dlbrsLoadBalancers) .
-                 lbState . _Just
+              (folding (concatOf (dlbrsLoadBalancers . to toList))
+                 . lbState . _Just
                  . lbsCode . _Just
                  . to toTextCI),
             matchAny "provisioning" AcceptRetry
-              (folding (concatOf dlbrsLoadBalancers) .
-                 lbState . _Just
+              (folding (concatOf (dlbrsLoadBalancers . to toList))
+                 . lbState . _Just
                  . lbsCode . _Just
                  . to toTextCI),
             matchError "LoadBalancerNotFound" AcceptRetry]}
@@ -76,8 +78,10 @@ targetInService
          _waitAttempts = 40, _waitDelay = 15,
          _waitAcceptors =
            [matchAll "healthy" AcceptSuccess
-              (folding (concatOf dthrsTargetHealthDescriptions) .
-                 thdTargetHealth . _Just
+              (folding
+                 (concatOf
+                    (dthrsTargetHealthDescriptions . to toList))
+                 . thdTargetHealth . _Just
                  . thState . _Just
                  . to toTextCI),
             matchError "InvalidInstance" AcceptRetry]}

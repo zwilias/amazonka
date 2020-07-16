@@ -23,17 +23,17 @@ module Network.AWS.FMS
     -- * Errors
     -- $errors
 
+    -- ** ResourceNotFoundException
+    , _ResourceNotFoundException
+
+    -- ** InvalidOperationException
+    , _InvalidOperationException
+
     -- ** InternalErrorException
     , _InternalErrorException
 
     -- ** InvalidInputException
     , _InvalidInputException
-
-    -- ** InvalidOperationException
-    , _InvalidOperationException
-
-    -- ** ResourceNotFoundException
-    , _ResourceNotFoundException
 
     -- ** LimitExceededException
     , _LimitExceededException

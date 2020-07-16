@@ -16,22 +16,22 @@ module Network.AWS.Comprehend.Types
       comprehend
 
     -- * Errors
-    , _ResourceUnavailableException
-    , _InvalidRequestException
-    , _ResourceLimitExceededException
-    , _TooManyTagsException
-    , _TooManyRequestsException
-    , _ConcurrentModificationException
-    , _InternalServerException
-    , _BatchSizeLimitExceededException
-    , _UnsupportedLanguageException
     , _JobNotFoundException
+    , _UnsupportedLanguageException
+    , _TooManyRequestsException
+    , _InvalidRequestException
+    , _TooManyTagsException
     , _TooManyTagKeysException
-    , _InvalidFilterException
     , _KMSKeyValidationException
     , _ResourceNotFoundException
+    , _ResourceLimitExceededException
+    , _BatchSizeLimitExceededException
+    , _InternalServerException
+    , _ConcurrentModificationException
+    , _ResourceUnavailableException
     , _TextSizeLimitExceededException
     , _ResourceInUseException
+    , _InvalidFilterException
 
     -- * DocumentClassifierMode
     , DocumentClassifierMode (..)
@@ -584,69 +584,13 @@ comprehend
           | has (hasStatus 509) e = Just "limit_exceeded"
           | otherwise = Nothing
 
--- | The specified resource is not available. Check to see if the resource is in the @TRAINED@ state and try your request again.
+-- | The specified job was not found. Check the job ID and try again.
 --
 --
-_ResourceUnavailableException :: AsError a => Getting (First ServiceError) a ServiceError
-_ResourceUnavailableException
+_JobNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
+_JobNotFoundException
   = _MatchServiceError comprehend
-      "ResourceUnavailableException"
-
--- | The request is invalid.
---
---
-_InvalidRequestException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidRequestException
-  = _MatchServiceError comprehend
-      "InvalidRequestException"
-
--- | The maximum number of recognizers per account has been exceeded. Review the recognizers, perform cleanup, and then try your request again.
---
---
-_ResourceLimitExceededException :: AsError a => Getting (First ServiceError) a ServiceError
-_ResourceLimitExceededException
-  = _MatchServiceError comprehend
-      "ResourceLimitExceededException"
-
--- | The request contains more tags than can be associated with a resource (50 tags per resource). The maximum number of tags includes both existing tags and those included in your current request. 
---
---
-_TooManyTagsException :: AsError a => Getting (First ServiceError) a ServiceError
-_TooManyTagsException
-  = _MatchServiceError comprehend
-      "TooManyTagsException"
-
--- | The number of requests exceeds the limit. Resubmit your request later.
---
---
-_TooManyRequestsException :: AsError a => Getting (First ServiceError) a ServiceError
-_TooManyRequestsException
-  = _MatchServiceError comprehend
-      "TooManyRequestsException"
-
--- | Concurrent modification of the tags associated with an Amazon Comprehend resource is not supported. 
---
---
-_ConcurrentModificationException :: AsError a => Getting (First ServiceError) a ServiceError
-_ConcurrentModificationException
-  = _MatchServiceError comprehend
-      "ConcurrentModificationException"
-
--- | An internal server error occurred. Retry your request.
---
---
-_InternalServerException :: AsError a => Getting (First ServiceError) a ServiceError
-_InternalServerException
-  = _MatchServiceError comprehend
-      "InternalServerException"
-
--- | The number of documents in the request exceeds the limit of 25. Try your request again with fewer documents.
---
---
-_BatchSizeLimitExceededException :: AsError a => Getting (First ServiceError) a ServiceError
-_BatchSizeLimitExceededException
-  = _MatchServiceError comprehend
-      "BatchSizeLimitExceededException"
+      "JobNotFoundException"
 
 -- | Amazon Comprehend can't process the language of the input text. For all custom entity recognition APIs (such as @CreateEntityRecognizer@ ), only English is accepted. For most other APIs, such as those for Custom Classification, Amazon Comprehend accepts text in all supported languages. For a list of supported languages, see 'supported-languages' . 
 --
@@ -656,13 +600,29 @@ _UnsupportedLanguageException
   = _MatchServiceError comprehend
       "UnsupportedLanguageException"
 
--- | The specified job was not found. Check the job ID and try again.
+-- | The number of requests exceeds the limit. Resubmit your request later.
 --
 --
-_JobNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
-_JobNotFoundException
+_TooManyRequestsException :: AsError a => Getting (First ServiceError) a ServiceError
+_TooManyRequestsException
   = _MatchServiceError comprehend
-      "JobNotFoundException"
+      "TooManyRequestsException"
+
+-- | The request is invalid.
+--
+--
+_InvalidRequestException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidRequestException
+  = _MatchServiceError comprehend
+      "InvalidRequestException"
+
+-- | The request contains more tags than can be associated with a resource (50 tags per resource). The maximum number of tags includes both existing tags and those included in your current request. 
+--
+--
+_TooManyTagsException :: AsError a => Getting (First ServiceError) a ServiceError
+_TooManyTagsException
+  = _MatchServiceError comprehend
+      "TooManyTagsException"
 
 -- | The request contains more tag keys than can be associated with a resource (50 tag keys per resource).
 --
@@ -671,14 +631,6 @@ _TooManyTagKeysException :: AsError a => Getting (First ServiceError) a ServiceE
 _TooManyTagKeysException
   = _MatchServiceError comprehend
       "TooManyTagKeysException"
-
--- | The filter specified for the operation is invalid. Specify a different filter.
---
---
-_InvalidFilterException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidFilterException
-  = _MatchServiceError comprehend
-      "InvalidFilterException"
 
 -- | The KMS customer managed key (CMK) entered cannot be validated. Verify the key and re-enter it.
 --
@@ -696,6 +648,46 @@ _ResourceNotFoundException
   = _MatchServiceError comprehend
       "ResourceNotFoundException"
 
+-- | The maximum number of recognizers per account has been exceeded. Review the recognizers, perform cleanup, and then try your request again.
+--
+--
+_ResourceLimitExceededException :: AsError a => Getting (First ServiceError) a ServiceError
+_ResourceLimitExceededException
+  = _MatchServiceError comprehend
+      "ResourceLimitExceededException"
+
+-- | The number of documents in the request exceeds the limit of 25. Try your request again with fewer documents.
+--
+--
+_BatchSizeLimitExceededException :: AsError a => Getting (First ServiceError) a ServiceError
+_BatchSizeLimitExceededException
+  = _MatchServiceError comprehend
+      "BatchSizeLimitExceededException"
+
+-- | An internal server error occurred. Retry your request.
+--
+--
+_InternalServerException :: AsError a => Getting (First ServiceError) a ServiceError
+_InternalServerException
+  = _MatchServiceError comprehend
+      "InternalServerException"
+
+-- | Concurrent modification of the tags associated with an Amazon Comprehend resource is not supported. 
+--
+--
+_ConcurrentModificationException :: AsError a => Getting (First ServiceError) a ServiceError
+_ConcurrentModificationException
+  = _MatchServiceError comprehend
+      "ConcurrentModificationException"
+
+-- | The specified resource is not available. Check to see if the resource is in the @TRAINED@ state and try your request again.
+--
+--
+_ResourceUnavailableException :: AsError a => Getting (First ServiceError) a ServiceError
+_ResourceUnavailableException
+  = _MatchServiceError comprehend
+      "ResourceUnavailableException"
+
 -- | The size of the input text exceeds the limit. Use a smaller document.
 --
 --
@@ -711,3 +703,11 @@ _ResourceInUseException :: AsError a => Getting (First ServiceError) a ServiceEr
 _ResourceInUseException
   = _MatchServiceError comprehend
       "ResourceInUseException"
+
+-- | The filter specified for the operation is invalid. Specify a different filter.
+--
+--
+_InvalidFilterException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidFilterException
+  = _MatchServiceError comprehend
+      "InvalidFilterException"

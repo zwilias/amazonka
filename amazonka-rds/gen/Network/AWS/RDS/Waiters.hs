@@ -32,27 +32,27 @@ dbInstanceAvailable
          _waitAttempts = 60, _waitDelay = 30,
          _waitAcceptors =
            [matchAll "available" AcceptSuccess
-              (folding (concatOf ddbirsDBInstances) .
+              (folding (concatOf (ddbirsDBInstances . to toList)) .
                  diDBInstanceStatus . _Just
                  . to toTextCI),
             matchAny "deleted" AcceptFailure
-              (folding (concatOf ddbirsDBInstances) .
+              (folding (concatOf (ddbirsDBInstances . to toList)) .
                  diDBInstanceStatus . _Just
                  . to toTextCI),
             matchAny "deleting" AcceptFailure
-              (folding (concatOf ddbirsDBInstances) .
+              (folding (concatOf (ddbirsDBInstances . to toList)) .
                  diDBInstanceStatus . _Just
                  . to toTextCI),
             matchAny "failed" AcceptFailure
-              (folding (concatOf ddbirsDBInstances) .
+              (folding (concatOf (ddbirsDBInstances . to toList)) .
                  diDBInstanceStatus . _Just
                  . to toTextCI),
             matchAny "incompatible-restore" AcceptFailure
-              (folding (concatOf ddbirsDBInstances) .
+              (folding (concatOf (ddbirsDBInstances . to toList)) .
                  diDBInstanceStatus . _Just
                  . to toTextCI),
             matchAny "incompatible-parameters" AcceptFailure
-              (folding (concatOf ddbirsDBInstances) .
+              (folding (concatOf (ddbirsDBInstances . to toList)) .
                  diDBInstanceStatus . _Just
                  . to toTextCI)]}
 
@@ -64,7 +64,7 @@ dbSnapshotCompleted
          _waitAcceptors =
            [matchError "DBSnapshotNotFound" AcceptSuccess,
             matchAll "available" AcceptSuccess
-              (folding (concatOf ddsrsDBSnapshots) .
+              (folding (concatOf (ddsrsDBSnapshots . to toList)) .
                  dsStatus . _Just
                  . to toTextCI)]}
 
@@ -74,25 +74,23 @@ dbSnapshotDeleted
   = Wait{_waitName = "DBSnapshotDeleted",
          _waitAttempts = 60, _waitDelay = 30,
          _waitAcceptors =
-           [matchAll "deleted" AcceptSuccess
-              (folding (concatOf ddsrsDBSnapshots) .
-                 dsStatus . _Just
-                 . to toTextCI),
+           [matchEmpty True AcceptSuccess
+              (folding (concatOf (ddsrsDBSnapshots . to toList))),
             matchError "DBSnapshotNotFound" AcceptSuccess,
             matchAny "creating" AcceptFailure
-              (folding (concatOf ddsrsDBSnapshots) .
+              (folding (concatOf (ddsrsDBSnapshots . to toList)) .
                  dsStatus . _Just
                  . to toTextCI),
             matchAny "modifying" AcceptFailure
-              (folding (concatOf ddsrsDBSnapshots) .
+              (folding (concatOf (ddsrsDBSnapshots . to toList)) .
                  dsStatus . _Just
                  . to toTextCI),
             matchAny "rebooting" AcceptFailure
-              (folding (concatOf ddsrsDBSnapshots) .
+              (folding (concatOf (ddsrsDBSnapshots . to toList)) .
                  dsStatus . _Just
                  . to toTextCI),
             matchAny "resetting-master-credentials" AcceptFailure
-              (folding (concatOf ddsrsDBSnapshots) .
+              (folding (concatOf (ddsrsDBSnapshots . to toList)) .
                  dsStatus . _Just
                  . to toTextCI)]}
 
@@ -102,25 +100,23 @@ dbInstanceDeleted
   = Wait{_waitName = "DBInstanceDeleted",
          _waitAttempts = 60, _waitDelay = 30,
          _waitAcceptors =
-           [matchAll "deleted" AcceptSuccess
-              (folding (concatOf ddbirsDBInstances) .
-                 diDBInstanceStatus . _Just
-                 . to toTextCI),
+           [matchEmpty True AcceptSuccess
+              (folding (concatOf (ddbirsDBInstances . to toList))),
             matchError "DBInstanceNotFound" AcceptSuccess,
             matchAny "creating" AcceptFailure
-              (folding (concatOf ddbirsDBInstances) .
+              (folding (concatOf (ddbirsDBInstances . to toList)) .
                  diDBInstanceStatus . _Just
                  . to toTextCI),
             matchAny "modifying" AcceptFailure
-              (folding (concatOf ddbirsDBInstances) .
+              (folding (concatOf (ddbirsDBInstances . to toList)) .
                  diDBInstanceStatus . _Just
                  . to toTextCI),
             matchAny "rebooting" AcceptFailure
-              (folding (concatOf ddbirsDBInstances) .
+              (folding (concatOf (ddbirsDBInstances . to toList)) .
                  diDBInstanceStatus . _Just
                  . to toTextCI),
             matchAny "resetting-master-credentials" AcceptFailure
-              (folding (concatOf ddbirsDBInstances) .
+              (folding (concatOf (ddbirsDBInstances . to toList)) .
                  diDBInstanceStatus . _Just
                  . to toTextCI)]}
 
@@ -131,26 +127,26 @@ dbSnapshotAvailable
          _waitAttempts = 60, _waitDelay = 30,
          _waitAcceptors =
            [matchAll "available" AcceptSuccess
-              (folding (concatOf ddsrsDBSnapshots) .
+              (folding (concatOf (ddsrsDBSnapshots . to toList)) .
                  dsStatus . _Just
                  . to toTextCI),
             matchAny "deleted" AcceptFailure
-              (folding (concatOf ddsrsDBSnapshots) .
+              (folding (concatOf (ddsrsDBSnapshots . to toList)) .
                  dsStatus . _Just
                  . to toTextCI),
             matchAny "deleting" AcceptFailure
-              (folding (concatOf ddsrsDBSnapshots) .
+              (folding (concatOf (ddsrsDBSnapshots . to toList)) .
                  dsStatus . _Just
                  . to toTextCI),
             matchAny "failed" AcceptFailure
-              (folding (concatOf ddsrsDBSnapshots) .
+              (folding (concatOf (ddsrsDBSnapshots . to toList)) .
                  dsStatus . _Just
                  . to toTextCI),
             matchAny "incompatible-restore" AcceptFailure
-              (folding (concatOf ddsrsDBSnapshots) .
+              (folding (concatOf (ddsrsDBSnapshots . to toList)) .
                  dsStatus . _Just
                  . to toTextCI),
             matchAny "incompatible-parameters" AcceptFailure
-              (folding (concatOf ddsrsDBSnapshots) .
+              (folding (concatOf (ddsrsDBSnapshots . to toList)) .
                  dsStatus . _Just
                  . to toTextCI)]}

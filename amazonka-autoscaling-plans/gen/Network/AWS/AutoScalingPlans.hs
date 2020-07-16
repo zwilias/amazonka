@@ -27,20 +27,20 @@ module Network.AWS.AutoScalingPlans
     -- * Errors
     -- $errors
 
+    -- ** InternalServiceException
+    , _InternalServiceException
+
     -- ** ValidationException
     , _ValidationException
 
-    -- ** InvalidNextTokenException
-    , _InvalidNextTokenException
+    -- ** ObjectNotFoundException
+    , _ObjectNotFoundException
 
     -- ** ConcurrentUpdateException
     , _ConcurrentUpdateException
 
-    -- ** InternalServiceException
-    , _InternalServiceException
-
-    -- ** ObjectNotFoundException
-    , _ObjectNotFoundException
+    -- ** InvalidNextTokenException
+    , _InvalidNextTokenException
 
     -- ** LimitExceededException
     , _LimitExceededException

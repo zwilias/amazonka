@@ -25,11 +25,11 @@ module Network.AWS.EMR
     -- ** InvalidRequestException
     , _InvalidRequestException
 
-    -- ** InternalServerError
-    , _InternalServerError
-
     -- ** InternalServerException
     , _InternalServerException
+
+    -- ** InternalServerError
+    , _InternalServerError
 
     -- * Waiters
     -- $waiters

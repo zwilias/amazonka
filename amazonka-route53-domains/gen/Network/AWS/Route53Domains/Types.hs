@@ -16,12 +16,12 @@ module Network.AWS.Route53Domains.Types
       route53Domains
 
     -- * Errors
-    , _InvalidInput
-    , _OperationLimitExceeded
-    , _DomainLimitExceeded
     , _UnsupportedTLD
+    , _OperationLimitExceeded
     , _TLDRulesViolation
+    , _InvalidInput
     , _DuplicateRequest
+    , _DomainLimitExceeded
 
     -- * ContactType
     , ContactType (..)
@@ -175,12 +175,12 @@ route53Domains
           | has (hasStatus 509) e = Just "limit_exceeded"
           | otherwise = Nothing
 
--- | The requested item is not acceptable. For example, for an OperationId it might refer to the ID of an operation that is already completed. For a domain name, it might not be a valid domain name or belong to the requester account.
+-- | Amazon Route 53 does not support this top-level domain (TLD).
 --
 --
-_InvalidInput :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidInput
-  = _MatchServiceError route53Domains "InvalidInput"
+_UnsupportedTLD :: AsError a => Getting (First ServiceError) a ServiceError
+_UnsupportedTLD
+  = _MatchServiceError route53Domains "UnsupportedTLD"
 
 -- | The number of operations or jobs running exceeded the allowed threshold for the account.
 --
@@ -190,21 +190,6 @@ _OperationLimitExceeded
   = _MatchServiceError route53Domains
       "OperationLimitExceeded"
 
--- | The number of domains has exceeded the allowed threshold for the account.
---
---
-_DomainLimitExceeded :: AsError a => Getting (First ServiceError) a ServiceError
-_DomainLimitExceeded
-  = _MatchServiceError route53Domains
-      "DomainLimitExceeded"
-
--- | Amazon Route 53 does not support this top-level domain (TLD).
---
---
-_UnsupportedTLD :: AsError a => Getting (First ServiceError) a ServiceError
-_UnsupportedTLD
-  = _MatchServiceError route53Domains "UnsupportedTLD"
-
 -- | The top-level domain does not support this operation.
 --
 --
@@ -213,6 +198,13 @@ _TLDRulesViolation
   = _MatchServiceError route53Domains
       "TLDRulesViolation"
 
+-- | The requested item is not acceptable. For example, for an OperationId it might refer to the ID of an operation that is already completed. For a domain name, it might not be a valid domain name or belong to the requester account.
+--
+--
+_InvalidInput :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidInput
+  = _MatchServiceError route53Domains "InvalidInput"
+
 -- | The request is already in progress for the domain.
 --
 --
@@ -220,3 +212,11 @@ _DuplicateRequest :: AsError a => Getting (First ServiceError) a ServiceError
 _DuplicateRequest
   = _MatchServiceError route53Domains
       "DuplicateRequest"
+
+-- | The number of domains has exceeded the allowed threshold for the account.
+--
+--
+_DomainLimitExceeded :: AsError a => Getting (First ServiceError) a ServiceError
+_DomainLimitExceeded
+  = _MatchServiceError route53Domains
+      "DomainLimitExceeded"

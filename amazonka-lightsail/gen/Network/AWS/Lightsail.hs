@@ -26,26 +26,26 @@ module Network.AWS.Lightsail
     -- * Errors
     -- $errors
 
-    -- ** AccessDeniedException
-    , _AccessDeniedException
-
     -- ** AccountSetupInProgressException
     , _AccountSetupInProgressException
-
-    -- ** NotFoundException
-    , _NotFoundException
-
-    -- ** OperationFailureException
-    , _OperationFailureException
-
-    -- ** ServiceException
-    , _ServiceException
 
     -- ** UnauthenticatedException
     , _UnauthenticatedException
 
+    -- ** ServiceException
+    , _ServiceException
+
+    -- ** AccessDeniedException
+    , _AccessDeniedException
+
     -- ** InvalidInputException
     , _InvalidInputException
+
+    -- ** OperationFailureException
+    , _OperationFailureException
+
+    -- ** NotFoundException
+    , _NotFoundException
 
     -- * Waiters
     -- $waiters

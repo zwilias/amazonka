@@ -23,35 +23,8 @@ module Network.AWS.DirectoryService
     -- * Errors
     -- $errors
 
-    -- ** CertificateLimitExceededException
-    , _CertificateLimitExceededException
-
-    -- ** CertificateAlreadyExistsException
-    , _CertificateAlreadyExistsException
-
-    -- ** AccessDeniedException
-    , _AccessDeniedException
-
-    -- ** DirectoryUnavailableException
-    , _DirectoryUnavailableException
-
-    -- ** AuthenticationFailedException
-    , _AuthenticationFailedException
-
-    -- ** InvalidParameterException
-    , _InvalidParameterException
-
-    -- ** UnsupportedOperationException
-    , _UnsupportedOperationException
-
-    -- ** EntityAlreadyExistsException
-    , _EntityAlreadyExistsException
-
-    -- ** NoAvailableCertificateException
-    , _NoAvailableCertificateException
-
-    -- ** UserDoesNotExistException
-    , _UserDoesNotExistException
+    -- ** InvalidCertificateException
+    , _InvalidCertificateException
 
     -- ** DirectoryLimitExceededException
     , _DirectoryLimitExceededException
@@ -59,38 +32,8 @@ module Network.AWS.DirectoryService
     -- ** InvalidLDAPSStatusException
     , _InvalidLDAPSStatusException
 
-    -- ** InvalidCertificateException
-    , _InvalidCertificateException
-
-    -- ** CertificateInUseException
-    , _CertificateInUseException
-
-    -- ** IPRouteLimitExceededException
-    , _IPRouteLimitExceededException
-
-    -- ** ShareLimitExceededException
-    , _ShareLimitExceededException
-
-    -- ** EntityDoesNotExistException
-    , _EntityDoesNotExistException
-
-    -- ** OrganizationsException
-    , _OrganizationsException
-
-    -- ** InvalidTargetException
-    , _InvalidTargetException
-
-    -- ** InsufficientPermissionsException
-    , _InsufficientPermissionsException
-
-    -- ** DirectoryNotSharedException
-    , _DirectoryNotSharedException
-
-    -- ** InvalidNextTokenException
-    , _InvalidNextTokenException
-
-    -- ** ServiceException
-    , _ServiceException
+    -- ** DirectoryDoesNotExistException
+    , _DirectoryDoesNotExistException
 
     -- ** SnapshotLimitExceededException
     , _SnapshotLimitExceededException
@@ -98,23 +41,80 @@ module Network.AWS.DirectoryService
     -- ** DomainControllerLimitExceededException
     , _DomainControllerLimitExceededException
 
-    -- ** DirectoryDoesNotExistException
-    , _DirectoryDoesNotExistException
+    -- ** UserDoesNotExistException
+    , _UserDoesNotExistException
 
-    -- ** TagLimitExceededException
-    , _TagLimitExceededException
+    -- ** InsufficientPermissionsException
+    , _InsufficientPermissionsException
 
-    -- ** ClientException
-    , _ClientException
+    -- ** ServiceException
+    , _ServiceException
+
+    -- ** NoAvailableCertificateException
+    , _NoAvailableCertificateException
+
+    -- ** InvalidParameterException
+    , _InvalidParameterException
+
+    -- ** OrganizationsException
+    , _OrganizationsException
+
+    -- ** UnsupportedOperationException
+    , _UnsupportedOperationException
+
+    -- ** InvalidTargetException
+    , _InvalidTargetException
+
+    -- ** CertificateAlreadyExistsException
+    , _CertificateAlreadyExistsException
+
+    -- ** CertificateLimitExceededException
+    , _CertificateLimitExceededException
+
+    -- ** DirectoryUnavailableException
+    , _DirectoryUnavailableException
+
+    -- ** AccessDeniedException
+    , _AccessDeniedException
+
+    -- ** AuthenticationFailedException
+    , _AuthenticationFailedException
 
     -- ** DirectoryAlreadySharedException
     , _DirectoryAlreadySharedException
 
-    -- ** CertificateDoesNotExistException
-    , _CertificateDoesNotExistException
+    -- ** ClientException
+    , _ClientException
+
+    -- ** TagLimitExceededException
+    , _TagLimitExceededException
+
+    -- ** DirectoryNotSharedException
+    , _DirectoryNotSharedException
+
+    -- ** EntityAlreadyExistsException
+    , _EntityAlreadyExistsException
+
+    -- ** InvalidNextTokenException
+    , _InvalidNextTokenException
+
+    -- ** EntityDoesNotExistException
+    , _EntityDoesNotExistException
+
+    -- ** ShareLimitExceededException
+    , _ShareLimitExceededException
+
+    -- ** IPRouteLimitExceededException
+    , _IPRouteLimitExceededException
 
     -- ** InvalidPasswordException
     , _InvalidPasswordException
+
+    -- ** CertificateDoesNotExistException
+    , _CertificateDoesNotExistException
+
+    -- ** CertificateInUseException
+    , _CertificateInUseException
 
     -- * Waiters
     -- $waiters

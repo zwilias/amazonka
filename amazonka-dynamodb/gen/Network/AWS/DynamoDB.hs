@@ -27,17 +27,44 @@ module Network.AWS.DynamoDB
     -- * Errors
     -- $errors
 
-    -- ** BackupNotFoundException
-    , _BackupNotFoundException
+    -- ** IdempotentParameterMismatchException
+    , _IdempotentParameterMismatchException
 
-    -- ** TableInUseException
-    , _TableInUseException
+    -- ** TransactionConflictException
+    , _TransactionConflictException
 
     -- ** ContinuousBackupsUnavailableException
     , _ContinuousBackupsUnavailableException
 
-    -- ** ProvisionedThroughputExceededException
-    , _ProvisionedThroughputExceededException
+    -- ** BackupInUseException
+    , _BackupInUseException
+
+    -- ** TableInUseException
+    , _TableInUseException
+
+    -- ** IndexNotFoundException
+    , _IndexNotFoundException
+
+    -- ** TableNotFoundException
+    , _TableNotFoundException
+
+    -- ** BackupNotFoundException
+    , _BackupNotFoundException
+
+    -- ** ItemCollectionSizeLimitExceededException
+    , _ItemCollectionSizeLimitExceededException
+
+    -- ** RequestLimitExceeded
+    , _RequestLimitExceeded
+
+    -- ** TransactionCanceledException
+    , _TransactionCanceledException
+
+    -- ** ReplicaNotFoundException
+    , _ReplicaNotFoundException
+
+    -- ** ReplicaAlreadyExistsException
+    , _ReplicaAlreadyExistsException
 
     -- ** GlobalTableNotFoundException
     , _GlobalTableNotFoundException
@@ -45,56 +72,29 @@ module Network.AWS.DynamoDB
     -- ** TransactionInProgressException
     , _TransactionInProgressException
 
-    -- ** TransactionCanceledException
-    , _TransactionCanceledException
-
-    -- ** ConditionalCheckFailedException
-    , _ConditionalCheckFailedException
-
-    -- ** GlobalTableAlreadyExistsException
-    , _GlobalTableAlreadyExistsException
-
-    -- ** ReplicaNotFoundException
-    , _ReplicaNotFoundException
-
-    -- ** TableAlreadyExistsException
-    , _TableAlreadyExistsException
-
-    -- ** RequestLimitExceeded
-    , _RequestLimitExceeded
-
-    -- ** ItemCollectionSizeLimitExceededException
-    , _ItemCollectionSizeLimitExceededException
-
-    -- ** InternalServerError
-    , _InternalServerError
-
-    -- ** TableNotFoundException
-    , _TableNotFoundException
-
-    -- ** IndexNotFoundException
-    , _IndexNotFoundException
-
-    -- ** TransactionConflictException
-    , _TransactionConflictException
-
-    -- ** BackupInUseException
-    , _BackupInUseException
-
-    -- ** PointInTimeRecoveryUnavailableException
-    , _PointInTimeRecoveryUnavailableException
-
-    -- ** IdempotentParameterMismatchException
-    , _IdempotentParameterMismatchException
-
-    -- ** InvalidRestoreTimeException
-    , _InvalidRestoreTimeException
+    -- ** ProvisionedThroughputExceededException
+    , _ProvisionedThroughputExceededException
 
     -- ** ResourceNotFoundException
     , _ResourceNotFoundException
 
-    -- ** ReplicaAlreadyExistsException
-    , _ReplicaAlreadyExistsException
+    -- ** InvalidRestoreTimeException
+    , _InvalidRestoreTimeException
+
+    -- ** PointInTimeRecoveryUnavailableException
+    , _PointInTimeRecoveryUnavailableException
+
+    -- ** InternalServerError
+    , _InternalServerError
+
+    -- ** TableAlreadyExistsException
+    , _TableAlreadyExistsException
+
+    -- ** GlobalTableAlreadyExistsException
+    , _GlobalTableAlreadyExistsException
+
+    -- ** ConditionalCheckFailedException
+    , _ConditionalCheckFailedException
 
     -- ** LimitExceededException
     , _LimitExceededException

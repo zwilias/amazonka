@@ -19,8 +19,8 @@
 module Network.AWS.MediaConvert.Types.H264SlowPal (
   H264SlowPal (
     ..
-    , HSPSDisabled
-    , HSPSEnabled
+    , H264SlwPlDisabled
+    , H264SlwPlEnabled
     )
   ) where
 
@@ -32,15 +32,15 @@ data H264SlowPal = H264SlowPal' (CI Text)
                      deriving (Eq, Ord, Read, Show, Data, Typeable,
                                Generic)
 
-pattern HSPSDisabled :: H264SlowPal
-pattern HSPSDisabled = H264SlowPal' "DISABLED"
+pattern H264SlwPlDisabled :: H264SlowPal
+pattern H264SlwPlDisabled = H264SlowPal' "DISABLED"
 
-pattern HSPSEnabled :: H264SlowPal
-pattern HSPSEnabled = H264SlowPal' "ENABLED"
+pattern H264SlwPlEnabled :: H264SlowPal
+pattern H264SlwPlEnabled = H264SlowPal' "ENABLED"
 
 {-# COMPLETE
-  HSPSDisabled,
-  HSPSEnabled,
+  H264SlwPlDisabled,
+  H264SlwPlEnabled,
   H264SlowPal' #-}
 
 instance FromText H264SlowPal where
@@ -55,20 +55,20 @@ instance ToText H264SlowPal where
 --   fromEnum is a partial function, and will error on values unknown at generation time.
 instance Enum H264SlowPal where
     toEnum i = case i of
-        0 -> HSPSDisabled
-        1 -> HSPSEnabled
+        0 -> H264SlwPlDisabled
+        1 -> H264SlwPlEnabled
         _ -> (error . showText) $ "Unknown index for H264SlowPal: " <> toText i
     fromEnum x = case x of
-        HSPSDisabled -> 0
-        HSPSEnabled -> 1
+        H264SlwPlDisabled -> 0
+        H264SlwPlEnabled -> 1
         H264SlowPal' name -> (error . showText) $ "Unknown H264SlowPal: " <> original name
 
 -- | Represents the bounds of /known/ $H264SlowPal.
 --   AWS may have added more since the source was generated.
 --   This instance exists only for backward compatibility.
 instance Bounded H264SlowPal where
-    minBound = HSPSDisabled
-    maxBound = HSPSEnabled
+    minBound = H264SlwPlDisabled
+    maxBound = H264SlwPlEnabled
 
 instance Hashable     H264SlowPal
 instance NFData       H264SlowPal

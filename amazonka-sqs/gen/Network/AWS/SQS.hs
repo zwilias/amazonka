@@ -56,53 +56,53 @@ module Network.AWS.SQS
     -- * Errors
     -- $errors
 
-    -- ** InvalidBatchEntryId
-    , _InvalidBatchEntryId
-
-    -- ** TooManyEntriesInBatchRequest
-    , _TooManyEntriesInBatchRequest
-
-    -- ** QueueDeletedRecently
-    , _QueueDeletedRecently
-
-    -- ** QueueDoesNotExist
-    , _QueueDoesNotExist
-
-    -- ** InvalidAttributeName
-    , _InvalidAttributeName
-
-    -- ** UnsupportedOperation
-    , _UnsupportedOperation
-
-    -- ** InvalidMessageContents
-    , _InvalidMessageContents
+    -- ** OverLimit
+    , _OverLimit
 
     -- ** BatchRequestTooLong
     , _BatchRequestTooLong
 
-    -- ** OverLimit
-    , _OverLimit
+    -- ** ReceiptHandleIsInvalid
+    , _ReceiptHandleIsInvalid
 
-    -- ** QueueNameExists
-    , _QueueNameExists
+    -- ** QueueDoesNotExist
+    , _QueueDoesNotExist
+
+    -- ** InvalidBatchEntryId
+    , _InvalidBatchEntryId
 
     -- ** PurgeQueueInProgress
     , _PurgeQueueInProgress
 
-    -- ** InvalidIdFormat
-    , _InvalidIdFormat
-
-    -- ** ReceiptHandleIsInvalid
-    , _ReceiptHandleIsInvalid
+    -- ** InvalidMessageContents
+    , _InvalidMessageContents
 
     -- ** EmptyBatchRequest
     , _EmptyBatchRequest
+
+    -- ** UnsupportedOperation
+    , _UnsupportedOperation
+
+    -- ** QueueDeletedRecently
+    , _QueueDeletedRecently
+
+    -- ** InvalidAttributeName
+    , _InvalidAttributeName
+
+    -- ** InvalidIdFormat
+    , _InvalidIdFormat
+
+    -- ** TooManyEntriesInBatchRequest
+    , _TooManyEntriesInBatchRequest
 
     -- ** BatchEntryIdsNotDistinct
     , _BatchEntryIdsNotDistinct
 
     -- ** MessageNotInflight
     , _MessageNotInflight
+
+    -- ** QueueNameExists
+    , _QueueNameExists
 
     -- * Waiters
     -- $waiters

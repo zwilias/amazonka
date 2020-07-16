@@ -16,11 +16,11 @@ module Network.AWS.CodeBuild.Types
       codeBuild
 
     -- * Errors
-    , _ResourceAlreadyExistsException
     , _OAuthProviderException
+    , _ResourceNotFoundException
+    , _ResourceAlreadyExistsException
     , _AccountLimitExceededException
     , _InvalidInputException
-    , _ResourceNotFoundException
 
     -- * ArtifactNamespace
     , ArtifactNamespace (..)
@@ -567,14 +567,6 @@ codeBuild
           | has (hasStatus 509) e = Just "limit_exceeded"
           | otherwise = Nothing
 
--- | The specified AWS resource cannot be created, because an AWS resource with the same settings already exists.
---
---
-_ResourceAlreadyExistsException :: AsError a => Getting (First ServiceError) a ServiceError
-_ResourceAlreadyExistsException
-  = _MatchServiceError codeBuild
-      "ResourceAlreadyExistsException"
-
 -- | There was a problem with the underlying OAuth provider.
 --
 --
@@ -582,6 +574,22 @@ _OAuthProviderException :: AsError a => Getting (First ServiceError) a ServiceEr
 _OAuthProviderException
   = _MatchServiceError codeBuild
       "OAuthProviderException"
+
+-- | The specified AWS resource cannot be found.
+--
+--
+_ResourceNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
+_ResourceNotFoundException
+  = _MatchServiceError codeBuild
+      "ResourceNotFoundException"
+
+-- | The specified AWS resource cannot be created, because an AWS resource with the same settings already exists.
+--
+--
+_ResourceAlreadyExistsException :: AsError a => Getting (First ServiceError) a ServiceError
+_ResourceAlreadyExistsException
+  = _MatchServiceError codeBuild
+      "ResourceAlreadyExistsException"
 
 -- | An AWS service limit was exceeded for the calling AWS account.
 --
@@ -598,11 +606,3 @@ _InvalidInputException :: AsError a => Getting (First ServiceError) a ServiceErr
 _InvalidInputException
   = _MatchServiceError codeBuild
       "InvalidInputException"
-
--- | The specified AWS resource cannot be found.
---
---
-_ResourceNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
-_ResourceNotFoundException
-  = _MatchServiceError codeBuild
-      "ResourceNotFoundException"

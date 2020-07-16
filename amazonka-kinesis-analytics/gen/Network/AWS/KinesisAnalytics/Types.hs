@@ -16,16 +16,16 @@ module Network.AWS.KinesisAnalytics.Types
       kinesisAnalytics
 
     -- * Errors
+    , _ResourceNotFoundException
+    , _UnableToDetectSchemaException
+    , _ServiceUnavailableException
+    , _InvalidArgumentException
+    , _ConcurrentModificationException
     , _InvalidApplicationConfigurationException
     , _ResourceProvisionedThroughputExceededException
-    , _InvalidArgumentException
-    , _CodeValidationException
-    , _ConcurrentModificationException
-    , _ServiceUnavailableException
-    , _UnableToDetectSchemaException
-    , _ResourceNotFoundException
     , _LimitExceededException
     , _ResourceInUseException
+    , _CodeValidationException
 
     -- * ApplicationStatus
     , ApplicationStatus (..)
@@ -489,6 +489,46 @@ kinesisAnalytics
           | has (hasStatus 509) e = Just "limit_exceeded"
           | otherwise = Nothing
 
+-- | Specified application can't be found.
+--
+--
+_ResourceNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
+_ResourceNotFoundException
+  = _MatchServiceError kinesisAnalytics
+      "ResourceNotFoundException"
+
+-- | Data format is not valid, Amazon Kinesis Analytics is not able to detect schema for the given streaming source.
+--
+--
+_UnableToDetectSchemaException :: AsError a => Getting (First ServiceError) a ServiceError
+_UnableToDetectSchemaException
+  = _MatchServiceError kinesisAnalytics
+      "UnableToDetectSchemaException"
+
+-- | The service is unavailable, back off and retry the operation. 
+--
+--
+_ServiceUnavailableException :: AsError a => Getting (First ServiceError) a ServiceError
+_ServiceUnavailableException
+  = _MatchServiceError kinesisAnalytics
+      "ServiceUnavailableException"
+
+-- | Specified input parameter value is invalid.
+--
+--
+_InvalidArgumentException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidArgumentException
+  = _MatchServiceError kinesisAnalytics
+      "InvalidArgumentException"
+
+-- | Exception thrown as a result of concurrent modification to an application. For example, two individuals attempting to edit the same application at the same time.
+--
+--
+_ConcurrentModificationException :: AsError a => Getting (First ServiceError) a ServiceError
+_ConcurrentModificationException
+  = _MatchServiceError kinesisAnalytics
+      "ConcurrentModificationException"
+
 -- | User-provided application configuration is not valid.
 --
 --
@@ -505,54 +545,6 @@ _ResourceProvisionedThroughputExceededException
   = _MatchServiceError kinesisAnalytics
       "ResourceProvisionedThroughputExceededException"
 
--- | Specified input parameter value is invalid.
---
---
-_InvalidArgumentException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidArgumentException
-  = _MatchServiceError kinesisAnalytics
-      "InvalidArgumentException"
-
--- | User-provided application code (query) is invalid. This can be a simple syntax error.
---
---
-_CodeValidationException :: AsError a => Getting (First ServiceError) a ServiceError
-_CodeValidationException
-  = _MatchServiceError kinesisAnalytics
-      "CodeValidationException"
-
--- | Exception thrown as a result of concurrent modification to an application. For example, two individuals attempting to edit the same application at the same time.
---
---
-_ConcurrentModificationException :: AsError a => Getting (First ServiceError) a ServiceError
-_ConcurrentModificationException
-  = _MatchServiceError kinesisAnalytics
-      "ConcurrentModificationException"
-
--- | The service is unavailable, back off and retry the operation. 
---
---
-_ServiceUnavailableException :: AsError a => Getting (First ServiceError) a ServiceError
-_ServiceUnavailableException
-  = _MatchServiceError kinesisAnalytics
-      "ServiceUnavailableException"
-
--- | Data format is not valid, Amazon Kinesis Analytics is not able to detect schema for the given streaming source.
---
---
-_UnableToDetectSchemaException :: AsError a => Getting (First ServiceError) a ServiceError
-_UnableToDetectSchemaException
-  = _MatchServiceError kinesisAnalytics
-      "UnableToDetectSchemaException"
-
--- | Specified application can't be found.
---
---
-_ResourceNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
-_ResourceNotFoundException
-  = _MatchServiceError kinesisAnalytics
-      "ResourceNotFoundException"
-
 -- | Exceeded the number of applications allowed.
 --
 --
@@ -568,3 +560,11 @@ _ResourceInUseException :: AsError a => Getting (First ServiceError) a ServiceEr
 _ResourceInUseException
   = _MatchServiceError kinesisAnalytics
       "ResourceInUseException"
+
+-- | User-provided application code (query) is invalid. This can be a simple syntax error.
+--
+--
+_CodeValidationException :: AsError a => Getting (First ServiceError) a ServiceError
+_CodeValidationException
+  = _MatchServiceError kinesisAnalytics
+      "CodeValidationException"

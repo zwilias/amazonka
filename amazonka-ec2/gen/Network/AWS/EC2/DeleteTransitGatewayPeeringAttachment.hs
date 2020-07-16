@@ -27,8 +27,8 @@ module Network.AWS.EC2.DeleteTransitGatewayPeeringAttachment
       deleteTransitGatewayPeeringAttachment
     , DeleteTransitGatewayPeeringAttachment
     -- * Request Lenses
-    , dtgpatDryRun
-    , dtgpatTransitGatewayAttachmentId
+    , dlttrnstgtwyprngattchmntDryRun
+    , dlttrnstgtwyprngattchmntTransitGatewayAttachmentId
 
     -- * Destructuring the Response
     , deleteTransitGatewayPeeringAttachmentResponse
@@ -46,11 +46,11 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteTransitGatewayPeeringAttachment' smart constructor.
-data DeleteTransitGatewayPeeringAttachment = DeleteTransitGatewayPeeringAttachment'{_dtgpatDryRun
+data DeleteTransitGatewayPeeringAttachment = DeleteTransitGatewayPeeringAttachment'{_dlttrnstgtwyprngattchmntDryRun
                                                                                     ::
                                                                                     !(Maybe
                                                                                         Bool),
-                                                                                    _dtgpatTransitGatewayAttachmentId
+                                                                                    _dlttrnstgtwyprngattchmntTransitGatewayAttachmentId
                                                                                     ::
                                                                                     !Text}
                                                deriving (Eq, Read, Show, Data,
@@ -60,26 +60,26 @@ data DeleteTransitGatewayPeeringAttachment = DeleteTransitGatewayPeeringAttachme
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dtgpatDryRun' - Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
+-- * 'dlttrnstgtwyprngattchmntDryRun' - Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 --
--- * 'dtgpatTransitGatewayAttachmentId' - The ID of the transit gateway peering attachment.
+-- * 'dlttrnstgtwyprngattchmntTransitGatewayAttachmentId' - The ID of the transit gateway peering attachment.
 deleteTransitGatewayPeeringAttachment
-    :: Text -- ^ 'dtgpatTransitGatewayAttachmentId'
+    :: Text -- ^ 'dlttrnstgtwyprngattchmntTransitGatewayAttachmentId'
     -> DeleteTransitGatewayPeeringAttachment
 deleteTransitGatewayPeeringAttachment
   pTransitGatewayAttachmentId_
-  = DeleteTransitGatewayPeeringAttachment'{_dtgpatDryRun
+  = DeleteTransitGatewayPeeringAttachment'{_dlttrnstgtwyprngattchmntDryRun
                                              = Nothing,
-                                           _dtgpatTransitGatewayAttachmentId =
-                                             pTransitGatewayAttachmentId_}
+                                           _dlttrnstgtwyprngattchmntTransitGatewayAttachmentId
+                                             = pTransitGatewayAttachmentId_}
 
 -- | Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
-dtgpatDryRun :: Lens' DeleteTransitGatewayPeeringAttachment (Maybe Bool)
-dtgpatDryRun = lens _dtgpatDryRun (\ s a -> s{_dtgpatDryRun = a})
+dlttrnstgtwyprngattchmntDryRun :: Lens' DeleteTransitGatewayPeeringAttachment (Maybe Bool)
+dlttrnstgtwyprngattchmntDryRun = lens _dlttrnstgtwyprngattchmntDryRun (\ s a -> s{_dlttrnstgtwyprngattchmntDryRun = a})
 
 -- | The ID of the transit gateway peering attachment.
-dtgpatTransitGatewayAttachmentId :: Lens' DeleteTransitGatewayPeeringAttachment Text
-dtgpatTransitGatewayAttachmentId = lens _dtgpatTransitGatewayAttachmentId (\ s a -> s{_dtgpatTransitGatewayAttachmentId = a})
+dlttrnstgtwyprngattchmntTransitGatewayAttachmentId :: Lens' DeleteTransitGatewayPeeringAttachment Text
+dlttrnstgtwyprngattchmntTransitGatewayAttachmentId = lens _dlttrnstgtwyprngattchmntTransitGatewayAttachmentId (\ s a -> s{_dlttrnstgtwyprngattchmntTransitGatewayAttachmentId = a})
 
 instance AWSRequest
            DeleteTransitGatewayPeeringAttachment
@@ -119,9 +119,9 @@ instance ToQuery
                  ("DeleteTransitGatewayPeeringAttachment" ::
                     ByteString),
                "Version" =: ("2016-11-15" :: ByteString),
-               "DryRun" =: _dtgpatDryRun,
+               "DryRun" =: _dlttrnstgtwyprngattchmntDryRun,
                "TransitGatewayAttachmentId" =:
-                 _dtgpatTransitGatewayAttachmentId]
+                 _dlttrnstgtwyprngattchmntTransitGatewayAttachmentId]
 
 -- | /See:/ 'deleteTransitGatewayPeeringAttachmentResponse' smart constructor.
 data DeleteTransitGatewayPeeringAttachmentResponse = DeleteTransitGatewayPeeringAttachmentResponse'{_dtgparsTransitGatewayPeeringAttachment

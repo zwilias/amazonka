@@ -33,8 +33,8 @@ module Network.AWS.StorageGateway.DeleteTapeArchive
     , deleteTapeArchiveResponse
     , DeleteTapeArchiveResponse
     -- * Response Lenses
-    , dtatrsTapeARN
-    , dtatrsResponseStatus
+    , dlttparchvrsTapeARN
+    , dlttparchvrsResponseStatus
     ) where
 
 import Network.AWS.Lens
@@ -107,9 +107,9 @@ instance ToQuery DeleteTapeArchive where
 --
 --
 -- /See:/ 'deleteTapeArchiveResponse' smart constructor.
-data DeleteTapeArchiveResponse = DeleteTapeArchiveResponse'{_dtatrsTapeARN
+data DeleteTapeArchiveResponse = DeleteTapeArchiveResponse'{_dlttparchvrsTapeARN
                                                             :: !(Maybe Text),
-                                                            _dtatrsResponseStatus
+                                                            _dlttparchvrsResponseStatus
                                                             :: !Int}
                                    deriving (Eq, Read, Show, Data, Typeable,
                                              Generic)
@@ -118,23 +118,23 @@ data DeleteTapeArchiveResponse = DeleteTapeArchiveResponse'{_dtatrsTapeARN
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dtatrsTapeARN' - The Amazon Resource Name (ARN) of the virtual tape that was deleted from the virtual tape shelf (VTS).
+-- * 'dlttparchvrsTapeARN' - The Amazon Resource Name (ARN) of the virtual tape that was deleted from the virtual tape shelf (VTS).
 --
--- * 'dtatrsResponseStatus' - -- | The response status code.
+-- * 'dlttparchvrsResponseStatus' - -- | The response status code.
 deleteTapeArchiveResponse
-    :: Int -- ^ 'dtatrsResponseStatus'
+    :: Int -- ^ 'dlttparchvrsResponseStatus'
     -> DeleteTapeArchiveResponse
 deleteTapeArchiveResponse pResponseStatus_
-  = DeleteTapeArchiveResponse'{_dtatrsTapeARN =
+  = DeleteTapeArchiveResponse'{_dlttparchvrsTapeARN =
                                  Nothing,
-                               _dtatrsResponseStatus = pResponseStatus_}
+                               _dlttparchvrsResponseStatus = pResponseStatus_}
 
 -- | The Amazon Resource Name (ARN) of the virtual tape that was deleted from the virtual tape shelf (VTS).
-dtatrsTapeARN :: Lens' DeleteTapeArchiveResponse (Maybe Text)
-dtatrsTapeARN = lens _dtatrsTapeARN (\ s a -> s{_dtatrsTapeARN = a})
+dlttparchvrsTapeARN :: Lens' DeleteTapeArchiveResponse (Maybe Text)
+dlttparchvrsTapeARN = lens _dlttparchvrsTapeARN (\ s a -> s{_dlttparchvrsTapeARN = a})
 
 -- | -- | The response status code.
-dtatrsResponseStatus :: Lens' DeleteTapeArchiveResponse Int
-dtatrsResponseStatus = lens _dtatrsResponseStatus (\ s a -> s{_dtatrsResponseStatus = a})
+dlttparchvrsResponseStatus :: Lens' DeleteTapeArchiveResponse Int
+dlttparchvrsResponseStatus = lens _dlttparchvrsResponseStatus (\ s a -> s{_dlttparchvrsResponseStatus = a})
 
 instance NFData DeleteTapeArchiveResponse where

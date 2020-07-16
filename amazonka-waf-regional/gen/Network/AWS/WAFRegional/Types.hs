@@ -16,21 +16,21 @@ module Network.AWS.WAFRegional.Types
       wAFRegional
 
     -- * Errors
-    , _WAFInvalidAccountException
-    , _WAFSubscriptionNotFoundException
-    , _WAFReferencedItemException
+    , _WAFNonexistentContainerException
     , _WAFInvalidRegexPatternException
-    , _WAFInvalidOperationException
-    , _WAFNonexistentItemException
-    , _WAFInvalidParameterException
     , _WAFLimitsExceededException
-    , _WAFInvalidPermissionPolicyException
+    , _WAFInvalidParameterException
+    , _WAFUnavailableEntityException
+    , _WAFInvalidOperationException
     , _WAFStaleDataException
     , _WAFInternalErrorException
-    , _WAFNonexistentContainerException
-    , _WAFUnavailableEntityException
-    , _WAFDisallowedNameException
+    , _WAFInvalidPermissionPolicyException
+    , _WAFReferencedItemException
+    , _WAFSubscriptionNotFoundException
+    , _WAFInvalidAccountException
+    , _WAFNonexistentItemException
     , _WAFNonEmptyEntityException
+    , _WAFDisallowedNameException
 
     -- * ChangeAction
     , ChangeAction (..)
@@ -517,35 +517,23 @@ wAFRegional
           | has (hasStatus 509) e = Just "limit_exceeded"
           | otherwise = Nothing
 
--- | The operation failed because you tried to create, update, or delete an object by using an invalid account identifier.
+-- | The operation failed because you tried to add an object to or delete an object from another object that doesn't exist. For example:
 --
 --
-_WAFInvalidAccountException :: AsError a => Getting (First ServiceError) a ServiceError
-_WAFInvalidAccountException
+--     * You tried to add a @Rule@ to or delete a @Rule@ from a @WebACL@ that doesn't exist.
+--
+--     * You tried to add a @ByteMatchSet@ to or delete a @ByteMatchSet@ from a @Rule@ that doesn't exist.
+--
+--     * You tried to add an IP address to or delete an IP address from an @IPSet@ that doesn't exist.
+--
+--     * You tried to add a @ByteMatchTuple@ to or delete a @ByteMatchTuple@ from a @ByteMatchSet@ that doesn't exist.
+--
+--
+--
+_WAFNonexistentContainerException :: AsError a => Getting (First ServiceError) a ServiceError
+_WAFNonexistentContainerException
   = _MatchServiceError wAFRegional
-      "WAFInvalidAccountException"
-
--- | The specified subscription does not exist.
---
---
-_WAFSubscriptionNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
-_WAFSubscriptionNotFoundException
-  = _MatchServiceError wAFRegional
-      "WAFSubscriptionNotFoundException"
-
--- | The operation failed because you tried to delete an object that is still in use. For example:
---
---
---     * You tried to delete a @ByteMatchSet@ that is still referenced by a @Rule@ .
---
---     * You tried to delete a @Rule@ that is still referenced by a @WebACL@ .
---
---
---
-_WAFReferencedItemException :: AsError a => Getting (First ServiceError) a ServiceError
-_WAFReferencedItemException
-  = _MatchServiceError wAFRegional
-      "WAFReferencedItemException"
+      "WAFNonexistentContainerException"
 
 -- | The regular expression (regex) you specified in @RegexPatternString@ is invalid.
 --
@@ -555,35 +543,13 @@ _WAFInvalidRegexPatternException
   = _MatchServiceError wAFRegional
       "WAFInvalidRegexPatternException"
 
--- | The operation failed because there was nothing to do. For example:
+-- | The operation exceeds a resource limit, for example, the maximum number of @WebACL@ objects that you can create for an AWS account. For more information, see <http://docs.aws.amazon.com/waf/latest/developerguide/limits.html Limits> in the /AWS WAF Developer Guide/ .
 --
 --
---     * You tried to remove a @Rule@ from a @WebACL@ , but the @Rule@ isn't in the specified @WebACL@ .
---
---     * You tried to remove an IP address from an @IPSet@ , but the IP address isn't in the specified @IPSet@ .
---
---     * You tried to remove a @ByteMatchTuple@ from a @ByteMatchSet@ , but the @ByteMatchTuple@ isn't in the specified @WebACL@ .
---
---     * You tried to add a @Rule@ to a @WebACL@ , but the @Rule@ already exists in the specified @WebACL@ .
---
---     * You tried to add an IP address to an @IPSet@ , but the IP address already exists in the specified @IPSet@ .
---
---     * You tried to add a @ByteMatchTuple@ to a @ByteMatchSet@ , but the @ByteMatchTuple@ already exists in the specified @WebACL@ .
---
---
---
-_WAFInvalidOperationException :: AsError a => Getting (First ServiceError) a ServiceError
-_WAFInvalidOperationException
+_WAFLimitsExceededException :: AsError a => Getting (First ServiceError) a ServiceError
+_WAFLimitsExceededException
   = _MatchServiceError wAFRegional
-      "WAFInvalidOperationException"
-
--- | The operation failed because the referenced object doesn't exist.
---
---
-_WAFNonexistentItemException :: AsError a => Getting (First ServiceError) a ServiceError
-_WAFNonexistentItemException
-  = _MatchServiceError wAFRegional
-      "WAFNonexistentItemException"
+      "WAFLimitsExceededException"
 
 -- | The operation failed because AWS WAF didn't recognize a parameter in the request. For example:
 --
@@ -613,13 +579,51 @@ _WAFInvalidParameterException
   = _MatchServiceError wAFRegional
       "WAFInvalidParameterException"
 
--- | The operation exceeds a resource limit, for example, the maximum number of @WebACL@ objects that you can create for an AWS account. For more information, see <http://docs.aws.amazon.com/waf/latest/developerguide/limits.html Limits> in the /AWS WAF Developer Guide/ .
+-- | The operation failed because the entity referenced is temporarily unavailable. Retry your request.
 --
 --
-_WAFLimitsExceededException :: AsError a => Getting (First ServiceError) a ServiceError
-_WAFLimitsExceededException
+_WAFUnavailableEntityException :: AsError a => Getting (First ServiceError) a ServiceError
+_WAFUnavailableEntityException
   = _MatchServiceError wAFRegional
-      "WAFLimitsExceededException"
+      "WAFUnavailableEntityException"
+
+-- | The operation failed because there was nothing to do. For example:
+--
+--
+--     * You tried to remove a @Rule@ from a @WebACL@ , but the @Rule@ isn't in the specified @WebACL@ .
+--
+--     * You tried to remove an IP address from an @IPSet@ , but the IP address isn't in the specified @IPSet@ .
+--
+--     * You tried to remove a @ByteMatchTuple@ from a @ByteMatchSet@ , but the @ByteMatchTuple@ isn't in the specified @WebACL@ .
+--
+--     * You tried to add a @Rule@ to a @WebACL@ , but the @Rule@ already exists in the specified @WebACL@ .
+--
+--     * You tried to add an IP address to an @IPSet@ , but the IP address already exists in the specified @IPSet@ .
+--
+--     * You tried to add a @ByteMatchTuple@ to a @ByteMatchSet@ , but the @ByteMatchTuple@ already exists in the specified @WebACL@ .
+--
+--
+--
+_WAFInvalidOperationException :: AsError a => Getting (First ServiceError) a ServiceError
+_WAFInvalidOperationException
+  = _MatchServiceError wAFRegional
+      "WAFInvalidOperationException"
+
+-- | The operation failed because you tried to create, update, or delete an object by using a change token that has already been used.
+--
+--
+_WAFStaleDataException :: AsError a => Getting (First ServiceError) a ServiceError
+_WAFStaleDataException
+  = _MatchServiceError wAFRegional
+      "WAFStaleDataException"
+
+-- | The operation failed because of a system problem, even though the request was valid. Retry your request.
+--
+--
+_WAFInternalErrorException :: AsError a => Getting (First ServiceError) a ServiceError
+_WAFInternalErrorException
+  = _MatchServiceError wAFRegional
+      "WAFInternalErrorException"
 
 -- | The operation failed because the specified policy is not in the proper format. 
 --
@@ -649,55 +653,43 @@ _WAFInvalidPermissionPolicyException
   = _MatchServiceError wAFRegional
       "WAFInvalidPermissionPolicyException"
 
--- | The operation failed because you tried to create, update, or delete an object by using a change token that has already been used.
+-- | The operation failed because you tried to delete an object that is still in use. For example:
 --
 --
-_WAFStaleDataException :: AsError a => Getting (First ServiceError) a ServiceError
-_WAFStaleDataException
+--     * You tried to delete a @ByteMatchSet@ that is still referenced by a @Rule@ .
+--
+--     * You tried to delete a @Rule@ that is still referenced by a @WebACL@ .
+--
+--
+--
+_WAFReferencedItemException :: AsError a => Getting (First ServiceError) a ServiceError
+_WAFReferencedItemException
   = _MatchServiceError wAFRegional
-      "WAFStaleDataException"
+      "WAFReferencedItemException"
 
--- | The operation failed because of a system problem, even though the request was valid. Retry your request.
+-- | The specified subscription does not exist.
 --
 --
-_WAFInternalErrorException :: AsError a => Getting (First ServiceError) a ServiceError
-_WAFInternalErrorException
+_WAFSubscriptionNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
+_WAFSubscriptionNotFoundException
   = _MatchServiceError wAFRegional
-      "WAFInternalErrorException"
+      "WAFSubscriptionNotFoundException"
 
--- | The operation failed because you tried to add an object to or delete an object from another object that doesn't exist. For example:
+-- | The operation failed because you tried to create, update, or delete an object by using an invalid account identifier.
 --
 --
---     * You tried to add a @Rule@ to or delete a @Rule@ from a @WebACL@ that doesn't exist.
---
---     * You tried to add a @ByteMatchSet@ to or delete a @ByteMatchSet@ from a @Rule@ that doesn't exist.
---
---     * You tried to add an IP address to or delete an IP address from an @IPSet@ that doesn't exist.
---
---     * You tried to add a @ByteMatchTuple@ to or delete a @ByteMatchTuple@ from a @ByteMatchSet@ that doesn't exist.
---
---
---
-_WAFNonexistentContainerException :: AsError a => Getting (First ServiceError) a ServiceError
-_WAFNonexistentContainerException
+_WAFInvalidAccountException :: AsError a => Getting (First ServiceError) a ServiceError
+_WAFInvalidAccountException
   = _MatchServiceError wAFRegional
-      "WAFNonexistentContainerException"
+      "WAFInvalidAccountException"
 
--- | The operation failed because the entity referenced is temporarily unavailable. Retry your request.
+-- | The operation failed because the referenced object doesn't exist.
 --
 --
-_WAFUnavailableEntityException :: AsError a => Getting (First ServiceError) a ServiceError
-_WAFUnavailableEntityException
+_WAFNonexistentItemException :: AsError a => Getting (First ServiceError) a ServiceError
+_WAFNonexistentItemException
   = _MatchServiceError wAFRegional
-      "WAFUnavailableEntityException"
-
--- | The name specified is invalid.
---
---
-_WAFDisallowedNameException :: AsError a => Getting (First ServiceError) a ServiceError
-_WAFDisallowedNameException
-  = _MatchServiceError wAFRegional
-      "WAFDisallowedNameException"
+      "WAFNonexistentItemException"
 
 -- | The operation failed because you tried to delete an object that isn't empty. For example:
 --
@@ -716,3 +708,11 @@ _WAFNonEmptyEntityException :: AsError a => Getting (First ServiceError) a Servi
 _WAFNonEmptyEntityException
   = _MatchServiceError wAFRegional
       "WAFNonEmptyEntityException"
+
+-- | The name specified is invalid.
+--
+--
+_WAFDisallowedNameException :: AsError a => Getting (First ServiceError) a ServiceError
+_WAFDisallowedNameException
+  = _MatchServiceError wAFRegional
+      "WAFDisallowedNameException"

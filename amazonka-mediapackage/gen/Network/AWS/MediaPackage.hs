@@ -20,23 +20,23 @@ module Network.AWS.MediaPackage
     -- * Errors
     -- $errors
 
-    -- ** UnprocessableEntityException
-    , _UnprocessableEntityException
-
-    -- ** ForbiddenException
-    , _ForbiddenException
-
-    -- ** NotFoundException
-    , _NotFoundException
+    -- ** InternalServerErrorException
+    , _InternalServerErrorException
 
     -- ** TooManyRequestsException
     , _TooManyRequestsException
 
-    -- ** InternalServerErrorException
-    , _InternalServerErrorException
+    -- ** ForbiddenException
+    , _ForbiddenException
+
+    -- ** UnprocessableEntityException
+    , _UnprocessableEntityException
 
     -- ** ServiceUnavailableException
     , _ServiceUnavailableException
+
+    -- ** NotFoundException
+    , _NotFoundException
 
     -- * Waiters
     -- $waiters

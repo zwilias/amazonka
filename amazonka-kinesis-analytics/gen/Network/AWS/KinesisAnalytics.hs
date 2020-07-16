@@ -23,35 +23,35 @@ module Network.AWS.KinesisAnalytics
     -- * Errors
     -- $errors
 
+    -- ** ResourceNotFoundException
+    , _ResourceNotFoundException
+
+    -- ** UnableToDetectSchemaException
+    , _UnableToDetectSchemaException
+
+    -- ** ServiceUnavailableException
+    , _ServiceUnavailableException
+
+    -- ** InvalidArgumentException
+    , _InvalidArgumentException
+
+    -- ** ConcurrentModificationException
+    , _ConcurrentModificationException
+
     -- ** InvalidApplicationConfigurationException
     , _InvalidApplicationConfigurationException
 
     -- ** ResourceProvisionedThroughputExceededException
     , _ResourceProvisionedThroughputExceededException
 
-    -- ** InvalidArgumentException
-    , _InvalidArgumentException
-
-    -- ** CodeValidationException
-    , _CodeValidationException
-
-    -- ** ConcurrentModificationException
-    , _ConcurrentModificationException
-
-    -- ** ServiceUnavailableException
-    , _ServiceUnavailableException
-
-    -- ** UnableToDetectSchemaException
-    , _UnableToDetectSchemaException
-
-    -- ** ResourceNotFoundException
-    , _ResourceNotFoundException
-
     -- ** LimitExceededException
     , _LimitExceededException
 
     -- ** ResourceInUseException
     , _ResourceInUseException
+
+    -- ** CodeValidationException
+    , _CodeValidationException
 
     -- * Waiters
     -- $waiters

@@ -16,11 +16,11 @@ module Network.AWS.ServiceCatalog.Types
       serviceCatalog
 
     -- * Errors
-    , _InvalidParametersException
-    , _DuplicateResourceException
-    , _TagOptionNotMigratedException
-    , _ResourceNotFoundException
     , _InvalidStateException
+    , _ResourceNotFoundException
+    , _TagOptionNotMigratedException
+    , _DuplicateResourceException
+    , _InvalidParametersException
     , _LimitExceededException
     , _ResourceInUseException
 
@@ -498,29 +498,13 @@ serviceCatalog
           | has (hasStatus 509) e = Just "limit_exceeded"
           | otherwise = Nothing
 
--- | One or more parameters provided to the operation are not valid.
+-- | An attempt was made to modify a resource that is in a state that is not valid. Check your resources to ensure that they are in valid states before retrying the operation.
 --
 --
-_InvalidParametersException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidParametersException
+_InvalidStateException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidStateException
   = _MatchServiceError serviceCatalog
-      "InvalidParametersException"
-
--- | The specified resource is a duplicate.
---
---
-_DuplicateResourceException :: AsError a => Getting (First ServiceError) a ServiceError
-_DuplicateResourceException
-  = _MatchServiceError serviceCatalog
-      "DuplicateResourceException"
-
--- | An operation requiring TagOptions failed because the TagOptions migration process has not been performed for this account. Please use the AWS console to perform the migration process before retrying the operation.
---
---
-_TagOptionNotMigratedException :: AsError a => Getting (First ServiceError) a ServiceError
-_TagOptionNotMigratedException
-  = _MatchServiceError serviceCatalog
-      "TagOptionNotMigratedException"
+      "InvalidStateException"
 
 -- | The specified resource was not found.
 --
@@ -530,13 +514,29 @@ _ResourceNotFoundException
   = _MatchServiceError serviceCatalog
       "ResourceNotFoundException"
 
--- | An attempt was made to modify a resource that is in a state that is not valid. Check your resources to ensure that they are in valid states before retrying the operation.
+-- | An operation requiring TagOptions failed because the TagOptions migration process has not been performed for this account. Please use the AWS console to perform the migration process before retrying the operation.
 --
 --
-_InvalidStateException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidStateException
+_TagOptionNotMigratedException :: AsError a => Getting (First ServiceError) a ServiceError
+_TagOptionNotMigratedException
   = _MatchServiceError serviceCatalog
-      "InvalidStateException"
+      "TagOptionNotMigratedException"
+
+-- | The specified resource is a duplicate.
+--
+--
+_DuplicateResourceException :: AsError a => Getting (First ServiceError) a ServiceError
+_DuplicateResourceException
+  = _MatchServiceError serviceCatalog
+      "DuplicateResourceException"
+
+-- | One or more parameters provided to the operation are not valid.
+--
+--
+_InvalidParametersException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidParametersException
+  = _MatchServiceError serviceCatalog
+      "InvalidParametersException"
 
 -- | The current limits of the service would have been exceeded by this operation. Decrease your resource use or increase your service limits and retry the operation.
 --

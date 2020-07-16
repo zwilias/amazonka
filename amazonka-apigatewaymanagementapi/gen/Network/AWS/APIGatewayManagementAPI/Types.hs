@@ -16,8 +16,8 @@ module Network.AWS.APIGatewayManagementAPI.Types
       apiGatewayManagementAPI
 
     -- * Errors
-    , _PayloadTooLargeException
     , _ForbiddenException
+    , _PayloadTooLargeException
     , _GoneException
     , _LimitExceededException
 
@@ -68,15 +68,6 @@ apiGatewayManagementAPI
           | has (hasStatus 509) e = Just "limit_exceeded"
           | otherwise = Nothing
 
--- | The data has exceeded the maximum size allowed.
---
---
-_PayloadTooLargeException :: AsError a => Getting (First ServiceError) a ServiceError
-_PayloadTooLargeException
-  = _MatchServiceError apiGatewayManagementAPI
-      "PayloadTooLargeException"
-      . hasStatus 413
-
 -- | The caller is not authorized to invoke this operation.
 --
 --
@@ -85,6 +76,15 @@ _ForbiddenException
   = _MatchServiceError apiGatewayManagementAPI
       "ForbiddenException"
       . hasStatus 403
+
+-- | The data has exceeded the maximum size allowed.
+--
+--
+_PayloadTooLargeException :: AsError a => Getting (First ServiceError) a ServiceError
+_PayloadTooLargeException
+  = _MatchServiceError apiGatewayManagementAPI
+      "PayloadTooLargeException"
+      . hasStatus 413
 
 -- | The connection with the provided id no longer exists.
 --

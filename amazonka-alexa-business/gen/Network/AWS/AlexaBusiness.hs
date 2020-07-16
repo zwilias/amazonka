@@ -22,20 +22,20 @@ module Network.AWS.AlexaBusiness
     -- * Errors
     -- $errors
 
+    -- ** NameInUseException
+    , _NameInUseException
+
     -- ** InvalidUserStatusException
     , _InvalidUserStatusException
 
     -- ** NotFoundException
     , _NotFoundException
 
-    -- ** NameInUseException
-    , _NameInUseException
+    -- ** LimitExceededException
+    , _LimitExceededException
 
     -- ** AlreadyExistsException
     , _AlreadyExistsException
-
-    -- ** LimitExceededException
-    , _LimitExceededException
 
     -- ** ResourceInUseException
     , _ResourceInUseException

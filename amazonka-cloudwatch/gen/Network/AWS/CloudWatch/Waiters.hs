@@ -29,7 +29,8 @@ compositeAlarmExists
          _waitAttempts = 40, _waitDelay = 5,
          _waitAcceptors =
            [matchNonEmpty True AcceptSuccess
-              (folding (concatOf darsCompositeAlarms))]}
+              (folding
+                 (concatOf (darsCompositeAlarms . to toList)))]}
 
 -- | Polls 'Network.AWS.CloudWatch.DescribeAlarms' every 5 seconds until a successful state is reached. An error is returned after 40 failed checks.
 alarmExists :: Wait DescribeAlarms
@@ -38,4 +39,4 @@ alarmExists
          _waitDelay = 5,
          _waitAcceptors =
            [matchNonEmpty True AcceptSuccess
-              (folding (concatOf darsMetricAlarms))]}
+              (folding (concatOf (darsMetricAlarms . to toList)))]}

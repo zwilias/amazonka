@@ -26,7 +26,7 @@ import Network.AWS.Prelude
 --
 --
 -- /See:/ 'phase2DHGroupNumbersRequestListValue' smart constructor.
-newtype Phase2DHGroupNumbersRequestListValue = Phase2DHGroupNumbersRequestListValue'{_pdhgnrlvdValue
+newtype Phase2DHGroupNumbersRequestListValue = Phase2DHGroupNumbersRequestListValue'{_phs2dhgrpnmbrsrqstlstvlValue
                                                                                      ::
                                                                                      Maybe
                                                                                        Int}
@@ -37,16 +37,16 @@ newtype Phase2DHGroupNumbersRequestListValue = Phase2DHGroupNumbersRequestListVa
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'pdhgnrlvdValue' - The Diffie-Hellmann group number.
+-- * 'phs2dhgrpnmbrsrqstlstvlValue' - The Diffie-Hellmann group number.
 phase2DHGroupNumbersRequestListValue
     :: Phase2DHGroupNumbersRequestListValue
 phase2DHGroupNumbersRequestListValue
-  = Phase2DHGroupNumbersRequestListValue'{_pdhgnrlvdValue
+  = Phase2DHGroupNumbersRequestListValue'{_phs2dhgrpnmbrsrqstlstvlValue
                                             = Nothing}
 
 -- | The Diffie-Hellmann group number.
-pdhgnrlvdValue :: Lens' Phase2DHGroupNumbersRequestListValue (Maybe Int)
-pdhgnrlvdValue = lens _pdhgnrlvdValue (\ s a -> s{_pdhgnrlvdValue = a})
+phs2dhgrpnmbrsrqstlstvlValue :: Lens' Phase2DHGroupNumbersRequestListValue (Maybe Int)
+phs2dhgrpnmbrsrqstlstvlValue = lens _phs2dhgrpnmbrsrqstlstvlValue (\ s a -> s{_phs2dhgrpnmbrsrqstlstvlValue = a})
 
 instance Hashable
            Phase2DHGroupNumbersRequestListValue
@@ -58,4 +58,4 @@ instance NFData Phase2DHGroupNumbersRequestListValue
 instance ToQuery Phase2DHGroupNumbersRequestListValue
          where
         toQuery Phase2DHGroupNumbersRequestListValue'{..}
-          = mconcat ["Value" =: _pdhgnrlvdValue]
+          = mconcat ["Value" =: _phs2dhgrpnmbrsrqstlstvlValue]

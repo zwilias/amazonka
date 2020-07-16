@@ -20,215 +20,14 @@ module Network.AWS.CloudFront
     -- * Errors
     -- $errors
 
-    -- ** TooManyOriginCustomHeaders
-    , _TooManyOriginCustomHeaders
-
-    -- ** InvalidTagging
-    , _InvalidTagging
-
-    -- ** InvalidErrorCode
-    , _InvalidErrorCode
-
-    -- ** NoSuchFieldLevelEncryptionProfile
-    , _NoSuchFieldLevelEncryptionProfile
-
-    -- ** FieldLevelEncryptionProfileInUse
-    , _FieldLevelEncryptionProfileInUse
-
-    -- ** InvalidOriginReadTimeout
-    , _InvalidOriginReadTimeout
-
-    -- ** TooManyFieldLevelEncryptionProfiles
-    , _TooManyFieldLevelEncryptionProfiles
-
-    -- ** TooManyCacheBehaviors
-    , _TooManyCacheBehaviors
-
-    -- ** TooManyCloudFrontOriginAccessIdentities
-    , _TooManyCloudFrontOriginAccessIdentities
-
-    -- ** InvalidOriginAccessIdentity
-    , _InvalidOriginAccessIdentity
-
-    -- ** DistributionNotDisabled
-    , _DistributionNotDisabled
-
-    -- ** NoSuchStreamingDistribution
-    , _NoSuchStreamingDistribution
-
-    -- ** InconsistentQuantities
-    , _InconsistentQuantities
-
-    -- ** InvalidArgument
-    , _InvalidArgument
-
-    -- ** InvalidOriginKeepaliveTimeout
-    , _InvalidOriginKeepaliveTimeout
-
-    -- ** TooManyInvalidationsInProgress
-    , _TooManyInvalidationsInProgress
-
-    -- ** InvalidWebACLId
-    , _InvalidWebACLId
-
-    -- ** TooManyQueryStringParameters
-    , _TooManyQueryStringParameters
-
-    -- ** TooManyFieldLevelEncryptionQueryArgProfiles
-    , _TooManyFieldLevelEncryptionQueryArgProfiles
-
-    -- ** TooManyDistributionCNAMEs
-    , _TooManyDistributionCNAMEs
-
-    -- ** NoSuchCloudFrontOriginAccessIdentity
-    , _NoSuchCloudFrontOriginAccessIdentity
-
-    -- ** CloudFrontOriginAccessIdentityInUse
-    , _CloudFrontOriginAccessIdentityInUse
-
-    -- ** TooManyStreamingDistributions
-    , _TooManyStreamingDistributions
-
-    -- ** CannotChangeImmutablePublicKeyFields
-    , _CannotChangeImmutablePublicKeyFields
-
-    -- ** BatchTooLarge
-    , _BatchTooLarge
-
-    -- ** TooManyCookieNamesInWhiteList
-    , _TooManyCookieNamesInWhiteList
-
-    -- ** InvalidLambdaFunctionAssociation
-    , _InvalidLambdaFunctionAssociation
-
-    -- ** InvalidForwardCookies
-    , _InvalidForwardCookies
-
-    -- ** FieldLevelEncryptionConfigInUse
-    , _FieldLevelEncryptionConfigInUse
-
-    -- ** TooManyTrustedSigners
-    , _TooManyTrustedSigners
-
-    -- ** InvalidOrigin
-    , _InvalidOrigin
-
-    -- ** NoSuchInvalidation
-    , _NoSuchInvalidation
-
-    -- ** PublicKeyAlreadyExists
-    , _PublicKeyAlreadyExists
-
-    -- ** NoSuchOrigin
-    , _NoSuchOrigin
-
     -- ** InvalidTTLOrder
     , _InvalidTTLOrder
 
-    -- ** StreamingDistributionNotDisabled
-    , _StreamingDistributionNotDisabled
-
-    -- ** TooManyHeadersInForwardedValues
-    , _TooManyHeadersInForwardedValues
-
-    -- ** NoSuchResource
-    , _NoSuchResource
-
-    -- ** TooManyFieldLevelEncryptionEncryptionEntities
-    , _TooManyFieldLevelEncryptionEncryptionEntities
-
-    -- ** TooManyStreamingDistributionCNAMEs
-    , _TooManyStreamingDistributionCNAMEs
-
-    -- ** FieldLevelEncryptionProfileAlreadyExists
-    , _FieldLevelEncryptionProfileAlreadyExists
-
-    -- ** InvalidRequiredProtocol
-    , _InvalidRequiredProtocol
-
-    -- ** TooManyDistributions
-    , _TooManyDistributions
-
-    -- ** TooManyCertificates
-    , _TooManyCertificates
-
-    -- ** DistributionAlreadyExists
-    , _DistributionAlreadyExists
-
-    -- ** TooManyDistributionsAssociatedToFieldLevelEncryptionConfig
-    , _TooManyDistributionsAssociatedToFieldLevelEncryptionConfig
-
-    -- ** InvalidQueryStringParameters
-    , _InvalidQueryStringParameters
-
-    -- ** MissingBody
-    , _MissingBody
-
-    -- ** IllegalFieldLevelEncryptionConfigAssociationWithCacheBehavior
-    , _IllegalFieldLevelEncryptionConfigAssociationWithCacheBehavior
-
-    -- ** IllegalUpdate
-    , _IllegalUpdate
-
-    -- ** InvalidIfMatchVersion
-    , _InvalidIfMatchVersion
-
-    -- ** FieldLevelEncryptionConfigAlreadyExists
-    , _FieldLevelEncryptionConfigAlreadyExists
-
-    -- ** PreconditionFailed
-    , _PreconditionFailed
-
-    -- ** InvalidResponseCode
-    , _InvalidResponseCode
-
-    -- ** InvalidHeadersForS3Origin
-    , _InvalidHeadersForS3Origin
-
-    -- ** CNAMEAlreadyExists
-    , _CNAMEAlreadyExists
-
-    -- ** NoSuchPublicKey
-    , _NoSuchPublicKey
-
-    -- ** PublicKeyInUse
-    , _PublicKeyInUse
-
-    -- ** TrustedSignerDoesNotExist
-    , _TrustedSignerDoesNotExist
-
-    -- ** InvalidProtocolSettings
-    , _InvalidProtocolSettings
-
-    -- ** TooManyOriginGroupsPerDistribution
-    , _TooManyOriginGroupsPerDistribution
-
-    -- ** TooManyPublicKeys
-    , _TooManyPublicKeys
-
-    -- ** NoSuchFieldLevelEncryptionConfig
-    , _NoSuchFieldLevelEncryptionConfig
-
-    -- ** TooManyFieldLevelEncryptionContentTypeProfiles
-    , _TooManyFieldLevelEncryptionContentTypeProfiles
-
-    -- ** TooManyFieldLevelEncryptionFieldPatterns
-    , _TooManyFieldLevelEncryptionFieldPatterns
-
-    -- ** TooManyFieldLevelEncryptionConfigs
-    , _TooManyFieldLevelEncryptionConfigs
-
-    -- ** TooManyLambdaFunctionAssociations
-    , _TooManyLambdaFunctionAssociations
-
-    -- ** CloudFrontOriginAccessIdentityAlreadyExists
-    , _CloudFrontOriginAccessIdentityAlreadyExists
+    -- ** AccessDenied
+    , _AccessDenied
 
     -- ** TooManyOrigins
     , _TooManyOrigins
-
-    -- ** InvalidRelativePath
-    , _InvalidRelativePath
 
     -- ** StreamingDistributionAlreadyExists
     , _StreamingDistributionAlreadyExists
@@ -236,20 +35,206 @@ module Network.AWS.CloudFront
     -- ** QueryArgProfileEmpty
     , _QueryArgProfileEmpty
 
-    -- ** InvalidMinimumProtocolVersion
-    , _InvalidMinimumProtocolVersion
+    -- ** BatchTooLarge
+    , _BatchTooLarge
 
-    -- ** AccessDenied
-    , _AccessDenied
+    -- ** TooManyCookieNamesInWhiteList
+    , _TooManyCookieNamesInWhiteList
 
-    -- ** InvalidViewerCertificate
-    , _InvalidViewerCertificate
+    -- ** TooManyFieldLevelEncryptionFieldPatterns
+    , _TooManyFieldLevelEncryptionFieldPatterns
 
-    -- ** NoSuchDistribution
-    , _NoSuchDistribution
+    -- ** InvalidForwardCookies
+    , _InvalidForwardCookies
+
+    -- ** InvalidOrigin
+    , _InvalidOrigin
+
+    -- ** FieldLevelEncryptionConfigInUse
+    , _FieldLevelEncryptionConfigInUse
+
+    -- ** TooManyFieldLevelEncryptionConfigs
+    , _TooManyFieldLevelEncryptionConfigs
+
+    -- ** TooManyTrustedSigners
+    , _TooManyTrustedSigners
+
+    -- ** TooManyFieldLevelEncryptionContentTypeProfiles
+    , _TooManyFieldLevelEncryptionContentTypeProfiles
+
+    -- ** NoSuchFieldLevelEncryptionConfig
+    , _NoSuchFieldLevelEncryptionConfig
+
+    -- ** InvalidArgument
+    , _InvalidArgument
+
+    -- ** TooManyDistributionCNAMEs
+    , _TooManyDistributionCNAMEs
+
+    -- ** InvalidWebACLId
+    , _InvalidWebACLId
+
+    -- ** TooManyOriginGroupsPerDistribution
+    , _TooManyOriginGroupsPerDistribution
+
+    -- ** InvalidOriginKeepaliveTimeout
+    , _InvalidOriginKeepaliveTimeout
+
+    -- ** NoSuchStreamingDistribution
+    , _NoSuchStreamingDistribution
+
+    -- ** CNAMEAlreadyExists
+    , _CNAMEAlreadyExists
+
+    -- ** CloudFrontOriginAccessIdentityInUse
+    , _CloudFrontOriginAccessIdentityInUse
+
+    -- ** PublicKeyInUse
+    , _PublicKeyInUse
+
+    -- ** TooManyFieldLevelEncryptionQueryArgProfiles
+    , _TooManyFieldLevelEncryptionQueryArgProfiles
+
+    -- ** TooManyStreamingDistributions
+    , _TooManyStreamingDistributions
+
+    -- ** InvalidOriginAccessIdentity
+    , _InvalidOriginAccessIdentity
+
+    -- ** PreconditionFailed
+    , _PreconditionFailed
+
+    -- ** DistributionNotDisabled
+    , _DistributionNotDisabled
+
+    -- ** TooManyCloudFrontOriginAccessIdentities
+    , _TooManyCloudFrontOriginAccessIdentities
+
+    -- ** TooManyFieldLevelEncryptionProfiles
+    , _TooManyFieldLevelEncryptionProfiles
+
+    -- ** TooManyDistributionsAssociatedToFieldLevelEncryptionConfig
+    , _TooManyDistributionsAssociatedToFieldLevelEncryptionConfig
+
+    -- ** TooManyCacheBehaviors
+    , _TooManyCacheBehaviors
+
+    -- ** NoSuchFieldLevelEncryptionProfile
+    , _NoSuchFieldLevelEncryptionProfile
+
+    -- ** InvalidQueryStringParameters
+    , _InvalidQueryStringParameters
+
+    -- ** InvalidLocationCode
+    , _InvalidLocationCode
+
+    -- ** NoSuchResource
+    , _NoSuchResource
+
+    -- ** TooManyStreamingDistributionCNAMEs
+    , _TooManyStreamingDistributionCNAMEs
+
+    -- ** FieldLevelEncryptionProfileAlreadyExists
+    , _FieldLevelEncryptionProfileAlreadyExists
+
+    -- ** TooManyDistributions
+    , _TooManyDistributions
 
     -- ** FieldLevelEncryptionProfileSizeExceeded
     , _FieldLevelEncryptionProfileSizeExceeded
+
+    -- ** StreamingDistributionNotDisabled
+    , _StreamingDistributionNotDisabled
+
+    -- ** InvalidMinimumProtocolVersion
+    , _InvalidMinimumProtocolVersion
+
+    -- ** NoSuchOrigin
+    , _NoSuchOrigin
+
+    -- ** PublicKeyAlreadyExists
+    , _PublicKeyAlreadyExists
+
+    -- ** CloudFrontOriginAccessIdentityAlreadyExists
+    , _CloudFrontOriginAccessIdentityAlreadyExists
+
+    -- ** InvalidRelativePath
+    , _InvalidRelativePath
+
+    -- ** TooManyLambdaFunctionAssociations
+    , _TooManyLambdaFunctionAssociations
+
+    -- ** NoSuchInvalidation
+    , _NoSuchInvalidation
+
+    -- ** InvalidLambdaFunctionAssociation
+    , _InvalidLambdaFunctionAssociation
+
+    -- ** CannotChangeImmutablePublicKeyFields
+    , _CannotChangeImmutablePublicKeyFields
+
+    -- ** TooManyQueryStringParameters
+    , _TooManyQueryStringParameters
+
+    -- ** TrustedSignerDoesNotExist
+    , _TrustedSignerDoesNotExist
+
+    -- ** InvalidProtocolSettings
+    , _InvalidProtocolSettings
+
+    -- ** InconsistentQuantities
+    , _InconsistentQuantities
+
+    -- ** NoSuchCloudFrontOriginAccessIdentity
+    , _NoSuchCloudFrontOriginAccessIdentity
+
+    -- ** NoSuchPublicKey
+    , _NoSuchPublicKey
+
+    -- ** InvalidHeadersForS3Origin
+    , _InvalidHeadersForS3Origin
+
+    -- ** TooManyPublicKeys
+    , _TooManyPublicKeys
+
+    -- ** TooManyInvalidationsInProgress
+    , _TooManyInvalidationsInProgress
+
+    -- ** InvalidIfMatchVersion
+    , _InvalidIfMatchVersion
+
+    -- ** InvalidResponseCode
+    , _InvalidResponseCode
+
+    -- ** IllegalUpdate
+    , _IllegalUpdate
+
+    -- ** FieldLevelEncryptionConfigAlreadyExists
+    , _FieldLevelEncryptionConfigAlreadyExists
+
+    -- ** FieldLevelEncryptionProfileInUse
+    , _FieldLevelEncryptionProfileInUse
+
+    -- ** TooManyOriginCustomHeaders
+    , _TooManyOriginCustomHeaders
+
+    -- ** DistributionAlreadyExists
+    , _DistributionAlreadyExists
+
+    -- ** InvalidErrorCode
+    , _InvalidErrorCode
+
+    -- ** InvalidTagging
+    , _InvalidTagging
+
+    -- ** InvalidOriginReadTimeout
+    , _InvalidOriginReadTimeout
+
+    -- ** MissingBody
+    , _MissingBody
+
+    -- ** IllegalFieldLevelEncryptionConfigAssociationWithCacheBehavior
+    , _IllegalFieldLevelEncryptionConfigAssociationWithCacheBehavior
 
     -- ** InvalidDefaultRootObject
     , _InvalidDefaultRootObject
@@ -257,11 +242,26 @@ module Network.AWS.CloudFront
     -- ** TooManyDistributionsWithLambdaAssociations
     , _TooManyDistributionsWithLambdaAssociations
 
+    -- ** TooManyCertificates
+    , _TooManyCertificates
+
     -- ** InvalidGeoRestrictionParameter
     , _InvalidGeoRestrictionParameter
 
-    -- ** InvalidLocationCode
-    , _InvalidLocationCode
+    -- ** TooManyFieldLevelEncryptionEncryptionEntities
+    , _TooManyFieldLevelEncryptionEncryptionEntities
+
+    -- ** InvalidRequiredProtocol
+    , _InvalidRequiredProtocol
+
+    -- ** NoSuchDistribution
+    , _NoSuchDistribution
+
+    -- ** TooManyHeadersInForwardedValues
+    , _TooManyHeadersInForwardedValues
+
+    -- ** InvalidViewerCertificate
+    , _InvalidViewerCertificate
 
     -- * Waiters
     -- $waiters

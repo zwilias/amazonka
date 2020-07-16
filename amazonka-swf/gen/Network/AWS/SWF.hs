@@ -27,32 +27,32 @@ module Network.AWS.SWF
     -- * Errors
     -- $errors
 
-    -- ** DomainAlreadyExistsFault
-    , _DomainAlreadyExistsFault
-
-    -- ** LimitExceededFault
-    , _LimitExceededFault
-
-    -- ** WorkflowExecutionAlreadyStartedFault
-    , _WorkflowExecutionAlreadyStartedFault
-
-    -- ** OperationNotPermittedFault
-    , _OperationNotPermittedFault
-
-    -- ** UnknownResourceFault
-    , _UnknownResourceFault
+    -- ** TypeDeprecatedFault
+    , _TypeDeprecatedFault
 
     -- ** DefaultUndefinedFault
     , _DefaultUndefinedFault
-
-    -- ** TypeDeprecatedFault
-    , _TypeDeprecatedFault
 
     -- ** TypeAlreadyExistsFault
     , _TypeAlreadyExistsFault
 
     -- ** DomainDeprecatedFault
     , _DomainDeprecatedFault
+
+    -- ** UnknownResourceFault
+    , _UnknownResourceFault
+
+    -- ** OperationNotPermittedFault
+    , _OperationNotPermittedFault
+
+    -- ** WorkflowExecutionAlreadyStartedFault
+    , _WorkflowExecutionAlreadyStartedFault
+
+    -- ** LimitExceededFault
+    , _LimitExceededFault
+
+    -- ** DomainAlreadyExistsFault
+    , _DomainAlreadyExistsFault
 
     -- * Waiters
     -- $waiters

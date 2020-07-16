@@ -35,25 +35,30 @@ replicationInstanceAvailable
          _waitAttempts = 60, _waitDelay = 60,
          _waitAcceptors =
            [matchAll "available" AcceptSuccess
-              (folding (concatOf drisrsReplicationInstances) .
-                 riReplicationInstanceStatus . _Just
+              (folding
+                 (concatOf (drisrsReplicationInstances . to toList))
+                 . riReplicationInstanceStatus . _Just
                  . to toTextCI),
             matchAny "deleting" AcceptFailure
-              (folding (concatOf drisrsReplicationInstances) .
-                 riReplicationInstanceStatus . _Just
+              (folding
+                 (concatOf (drisrsReplicationInstances . to toList))
+                 . riReplicationInstanceStatus . _Just
                  . to toTextCI),
             matchAny "incompatible-credentials" AcceptFailure
-              (folding (concatOf drisrsReplicationInstances) .
-                 riReplicationInstanceStatus . _Just
+              (folding
+                 (concatOf (drisrsReplicationInstances . to toList))
+                 . riReplicationInstanceStatus . _Just
                  . to toTextCI),
             matchAny "incompatible-network" AcceptFailure
-              (folding (concatOf drisrsReplicationInstances) .
-                 riReplicationInstanceStatus . _Just
+              (folding
+                 (concatOf (drisrsReplicationInstances . to toList))
+                 . riReplicationInstanceStatus . _Just
                  . to toTextCI),
             matchAny "inaccessible-encryption-credentials"
               AcceptFailure
-              (folding (concatOf drisrsReplicationInstances) .
-                 riReplicationInstanceStatus . _Just
+              (folding
+                 (concatOf (drisrsReplicationInstances . to toList))
+                 . riReplicationInstanceStatus . _Just
                  . to toTextCI)]}
 
 -- | Polls 'Network.AWS.DMS.DescribeReplicationTasks' every 15 seconds until a successful state is reached. An error is returned after 60 failed checks.
@@ -63,24 +68,29 @@ replicationTaskDeleted
          _waitAttempts = 60, _waitDelay = 15,
          _waitAcceptors =
            [matchAny "ready" AcceptFailure
-              (folding (concatOf drtsrsReplicationTasks) .
-                 rStatus . _Just
+              (folding
+                 (concatOf (drtsrsReplicationTasks . to toList))
+                 . rStatus . _Just
                  . to toTextCI),
             matchAny "creating" AcceptFailure
-              (folding (concatOf drtsrsReplicationTasks) .
-                 rStatus . _Just
+              (folding
+                 (concatOf (drtsrsReplicationTasks . to toList))
+                 . rStatus . _Just
                  . to toTextCI),
             matchAny "stopped" AcceptFailure
-              (folding (concatOf drtsrsReplicationTasks) .
-                 rStatus . _Just
+              (folding
+                 (concatOf (drtsrsReplicationTasks . to toList))
+                 . rStatus . _Just
                  . to toTextCI),
             matchAny "running" AcceptFailure
-              (folding (concatOf drtsrsReplicationTasks) .
-                 rStatus . _Just
+              (folding
+                 (concatOf (drtsrsReplicationTasks . to toList))
+                 . rStatus . _Just
                  . to toTextCI),
             matchAny "failed" AcceptFailure
-              (folding (concatOf drtsrsReplicationTasks) .
-                 rStatus . _Just
+              (folding
+                 (concatOf (drtsrsReplicationTasks . to toList))
+                 . rStatus . _Just
                  . to toTextCI),
             matchError "ResourceNotFoundFault" AcceptSuccess]}
 
@@ -91,40 +101,49 @@ replicationTaskReady
          _waitAttempts = 60, _waitDelay = 15,
          _waitAcceptors =
            [matchAll "ready" AcceptSuccess
-              (folding (concatOf drtsrsReplicationTasks) .
-                 rStatus . _Just
+              (folding
+                 (concatOf (drtsrsReplicationTasks . to toList))
+                 . rStatus . _Just
                  . to toTextCI),
             matchAny "starting" AcceptFailure
-              (folding (concatOf drtsrsReplicationTasks) .
-                 rStatus . _Just
+              (folding
+                 (concatOf (drtsrsReplicationTasks . to toList))
+                 . rStatus . _Just
                  . to toTextCI),
             matchAny "running" AcceptFailure
-              (folding (concatOf drtsrsReplicationTasks) .
-                 rStatus . _Just
+              (folding
+                 (concatOf (drtsrsReplicationTasks . to toList))
+                 . rStatus . _Just
                  . to toTextCI),
             matchAny "stopping" AcceptFailure
-              (folding (concatOf drtsrsReplicationTasks) .
-                 rStatus . _Just
+              (folding
+                 (concatOf (drtsrsReplicationTasks . to toList))
+                 . rStatus . _Just
                  . to toTextCI),
             matchAny "stopped" AcceptFailure
-              (folding (concatOf drtsrsReplicationTasks) .
-                 rStatus . _Just
+              (folding
+                 (concatOf (drtsrsReplicationTasks . to toList))
+                 . rStatus . _Just
                  . to toTextCI),
             matchAny "failed" AcceptFailure
-              (folding (concatOf drtsrsReplicationTasks) .
-                 rStatus . _Just
+              (folding
+                 (concatOf (drtsrsReplicationTasks . to toList))
+                 . rStatus . _Just
                  . to toTextCI),
             matchAny "modifying" AcceptFailure
-              (folding (concatOf drtsrsReplicationTasks) .
-                 rStatus . _Just
+              (folding
+                 (concatOf (drtsrsReplicationTasks . to toList))
+                 . rStatus . _Just
                  . to toTextCI),
             matchAny "testing" AcceptFailure
-              (folding (concatOf drtsrsReplicationTasks) .
-                 rStatus . _Just
+              (folding
+                 (concatOf (drtsrsReplicationTasks . to toList))
+                 . rStatus . _Just
                  . to toTextCI),
             matchAny "deleting" AcceptFailure
-              (folding (concatOf drtsrsReplicationTasks) .
-                 rStatus . _Just
+              (folding
+                 (concatOf (drtsrsReplicationTasks . to toList))
+                 . rStatus . _Just
                  . to toTextCI)]}
 
 -- | Polls 'Network.AWS.DMS.DescribeReplicationInstances' every 15 seconds until a successful state is reached. An error is returned after 60 failed checks.
@@ -134,8 +153,9 @@ replicationInstanceDeleted
          _waitAttempts = 60, _waitDelay = 15,
          _waitAcceptors =
            [matchAny "available" AcceptFailure
-              (folding (concatOf drisrsReplicationInstances) .
-                 riReplicationInstanceStatus . _Just
+              (folding
+                 (concatOf (drisrsReplicationInstances . to toList))
+                 . riReplicationInstanceStatus . _Just
                  . to toTextCI),
             matchError "ResourceNotFoundFault" AcceptSuccess]}
 
@@ -147,11 +167,13 @@ endpointDeleted
          _waitAcceptors =
            [matchError "ResourceNotFoundFault" AcceptSuccess,
             matchAny "active" AcceptFailure
-              (folding (concatOf dersEndpoints) . eStatus . _Just .
-                 to toTextCI),
+              (folding (concatOf (dersEndpoints . to toList)) .
+                 eStatus . _Just
+                 . to toTextCI),
             matchAny "creating" AcceptFailure
-              (folding (concatOf dersEndpoints) . eStatus . _Just .
-                 to toTextCI)]}
+              (folding (concatOf (dersEndpoints . to toList)) .
+                 eStatus . _Just
+                 . to toTextCI)]}
 
 -- | Polls 'Network.AWS.DMS.DescribeReplicationTasks' every 15 seconds until a successful state is reached. An error is returned after 60 failed checks.
 replicationTaskStopped :: Wait DescribeReplicationTasks
@@ -160,40 +182,49 @@ replicationTaskStopped
          _waitAttempts = 60, _waitDelay = 15,
          _waitAcceptors =
            [matchAll "stopped" AcceptSuccess
-              (folding (concatOf drtsrsReplicationTasks) .
-                 rStatus . _Just
+              (folding
+                 (concatOf (drtsrsReplicationTasks . to toList))
+                 . rStatus . _Just
                  . to toTextCI),
             matchAny "ready" AcceptFailure
-              (folding (concatOf drtsrsReplicationTasks) .
-                 rStatus . _Just
+              (folding
+                 (concatOf (drtsrsReplicationTasks . to toList))
+                 . rStatus . _Just
                  . to toTextCI),
             matchAny "creating" AcceptFailure
-              (folding (concatOf drtsrsReplicationTasks) .
-                 rStatus . _Just
+              (folding
+                 (concatOf (drtsrsReplicationTasks . to toList))
+                 . rStatus . _Just
                  . to toTextCI),
             matchAny "starting" AcceptFailure
-              (folding (concatOf drtsrsReplicationTasks) .
-                 rStatus . _Just
+              (folding
+                 (concatOf (drtsrsReplicationTasks . to toList))
+                 . rStatus . _Just
                  . to toTextCI),
             matchAny "running" AcceptFailure
-              (folding (concatOf drtsrsReplicationTasks) .
-                 rStatus . _Just
+              (folding
+                 (concatOf (drtsrsReplicationTasks . to toList))
+                 . rStatus . _Just
                  . to toTextCI),
             matchAny "failed" AcceptFailure
-              (folding (concatOf drtsrsReplicationTasks) .
-                 rStatus . _Just
+              (folding
+                 (concatOf (drtsrsReplicationTasks . to toList))
+                 . rStatus . _Just
                  . to toTextCI),
             matchAny "modifying" AcceptFailure
-              (folding (concatOf drtsrsReplicationTasks) .
-                 rStatus . _Just
+              (folding
+                 (concatOf (drtsrsReplicationTasks . to toList))
+                 . rStatus . _Just
                  . to toTextCI),
             matchAny "testing" AcceptFailure
-              (folding (concatOf drtsrsReplicationTasks) .
-                 rStatus . _Just
+              (folding
+                 (concatOf (drtsrsReplicationTasks . to toList))
+                 . rStatus . _Just
                  . to toTextCI),
             matchAny "deleting" AcceptFailure
-              (folding (concatOf drtsrsReplicationTasks) .
-                 rStatus . _Just
+              (folding
+                 (concatOf (drtsrsReplicationTasks . to toList))
+                 . rStatus . _Just
                  . to toTextCI)]}
 
 -- | Polls 'Network.AWS.DMS.DescribeReplicationTasks' every 15 seconds until a successful state is reached. An error is returned after 60 failed checks.
@@ -203,40 +234,49 @@ replicationTaskRunning
          _waitAttempts = 60, _waitDelay = 15,
          _waitAcceptors =
            [matchAll "running" AcceptSuccess
-              (folding (concatOf drtsrsReplicationTasks) .
-                 rStatus . _Just
+              (folding
+                 (concatOf (drtsrsReplicationTasks . to toList))
+                 . rStatus . _Just
                  . to toTextCI),
             matchAny "ready" AcceptFailure
-              (folding (concatOf drtsrsReplicationTasks) .
-                 rStatus . _Just
+              (folding
+                 (concatOf (drtsrsReplicationTasks . to toList))
+                 . rStatus . _Just
                  . to toTextCI),
             matchAny "creating" AcceptFailure
-              (folding (concatOf drtsrsReplicationTasks) .
-                 rStatus . _Just
+              (folding
+                 (concatOf (drtsrsReplicationTasks . to toList))
+                 . rStatus . _Just
                  . to toTextCI),
             matchAny "stopping" AcceptFailure
-              (folding (concatOf drtsrsReplicationTasks) .
-                 rStatus . _Just
+              (folding
+                 (concatOf (drtsrsReplicationTasks . to toList))
+                 . rStatus . _Just
                  . to toTextCI),
             matchAny "stopped" AcceptFailure
-              (folding (concatOf drtsrsReplicationTasks) .
-                 rStatus . _Just
+              (folding
+                 (concatOf (drtsrsReplicationTasks . to toList))
+                 . rStatus . _Just
                  . to toTextCI),
             matchAny "failed" AcceptFailure
-              (folding (concatOf drtsrsReplicationTasks) .
-                 rStatus . _Just
+              (folding
+                 (concatOf (drtsrsReplicationTasks . to toList))
+                 . rStatus . _Just
                  . to toTextCI),
             matchAny "modifying" AcceptFailure
-              (folding (concatOf drtsrsReplicationTasks) .
-                 rStatus . _Just
+              (folding
+                 (concatOf (drtsrsReplicationTasks . to toList))
+                 . rStatus . _Just
                  . to toTextCI),
             matchAny "testing" AcceptFailure
-              (folding (concatOf drtsrsReplicationTasks) .
-                 rStatus . _Just
+              (folding
+                 (concatOf (drtsrsReplicationTasks . to toList))
+                 . rStatus . _Just
                  . to toTextCI),
             matchAny "deleting" AcceptFailure
-              (folding (concatOf drtsrsReplicationTasks) .
-                 rStatus . _Just
+              (folding
+                 (concatOf (drtsrsReplicationTasks . to toList))
+                 . rStatus . _Just
                  . to toTextCI)]}
 
 -- | Polls 'Network.AWS.DMS.DescribeConnections' every 5 seconds until a successful state is reached. An error is returned after 60 failed checks.
@@ -246,10 +286,10 @@ testConnectionSucceeds
          _waitAttempts = 60, _waitDelay = 5,
          _waitAcceptors =
            [matchAll "successful" AcceptSuccess
-              (folding (concatOf dcsrsConnections) .
+              (folding (concatOf (dcsrsConnections . to toList)) .
                  cStatus . _Just
                  . to toTextCI),
             matchAny "failed" AcceptFailure
-              (folding (concatOf dcsrsConnections) .
+              (folding (concatOf (dcsrsConnections . to toList)) .
                  cStatus . _Just
                  . to toTextCI)]}

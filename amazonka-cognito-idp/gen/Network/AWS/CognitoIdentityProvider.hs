@@ -26,116 +26,116 @@ module Network.AWS.CognitoIdentityProvider
     -- * Errors
     -- $errors
 
-    -- ** UnsupportedUserStateException
-    , _UnsupportedUserStateException
-
-    -- ** PasswordResetRequiredException
-    , _PasswordResetRequiredException
-
-    -- ** InvalidParameterException
-    , _InvalidParameterException
-
-    -- ** InvalidLambdaResponseException
-    , _InvalidLambdaResponseException
-
-    -- ** InvalidEmailRoleAccessPolicyException
-    , _InvalidEmailRoleAccessPolicyException
-
-    -- ** UnsupportedIdentityProviderException
-    , _UnsupportedIdentityProviderException
-
-    -- ** UserNotFoundException
-    , _UserNotFoundException
-
-    -- ** UnexpectedLambdaException
-    , _UnexpectedLambdaException
-
-    -- ** NotAuthorizedException
-    , _NotAuthorizedException
-
-    -- ** InternalErrorException
-    , _InternalErrorException
-
-    -- ** InvalidUserPoolConfigurationException
-    , _InvalidUserPoolConfigurationException
+    -- ** InvalidOAuthFlowException
+    , _InvalidOAuthFlowException
 
     -- ** InvalidSmsRoleAccessPolicyException
     , _InvalidSmsRoleAccessPolicyException
 
-    -- ** InvalidOAuthFlowException
-    , _InvalidOAuthFlowException
-
-    -- ** CodeMismatchException
-    , _CodeMismatchException
-
-    -- ** UserImportInProgressException
-    , _UserImportInProgressException
-
-    -- ** InvalidSmsRoleTrustRelationshipException
-    , _InvalidSmsRoleTrustRelationshipException
-
-    -- ** UserPoolTaggingException
-    , _UserPoolTaggingException
-
-    -- ** SoftwareTokenMFANotFoundException
-    , _SoftwareTokenMFANotFoundException
-
-    -- ** TooManyRequestsException
-    , _TooManyRequestsException
-
-    -- ** ConcurrentModificationException
-    , _ConcurrentModificationException
-
-    -- ** UserPoolAddOnNotEnabledException
-    , _UserPoolAddOnNotEnabledException
-
-    -- ** UserLambdaValidationException
-    , _UserLambdaValidationException
-
-    -- ** PreconditionNotMetException
-    , _PreconditionNotMetException
-
-    -- ** ExpiredCodeException
-    , _ExpiredCodeException
-
-    -- ** TooManyFailedAttemptsException
-    , _TooManyFailedAttemptsException
-
-    -- ** EnableSoftwareTokenMFAException
-    , _EnableSoftwareTokenMFAException
-
-    -- ** UserNotConfirmedException
-    , _UserNotConfirmedException
+    -- ** InvalidUserPoolConfigurationException
+    , _InvalidUserPoolConfigurationException
 
     -- ** GroupExistsException
     , _GroupExistsException
 
-    -- ** CodeDeliveryFailureException
-    , _CodeDeliveryFailureException
+    -- ** ExpiredCodeException
+    , _ExpiredCodeException
 
-    -- ** ScopeDoesNotExistException
-    , _ScopeDoesNotExistException
+    -- ** UnexpectedLambdaException
+    , _UnexpectedLambdaException
+
+    -- ** UserNotFoundException
+    , _UserNotFoundException
+
+    -- ** TooManyFailedAttemptsException
+    , _TooManyFailedAttemptsException
+
+    -- ** UserPoolAddOnNotEnabledException
+    , _UserPoolAddOnNotEnabledException
+
+    -- ** InvalidEmailRoleAccessPolicyException
+    , _InvalidEmailRoleAccessPolicyException
+
+    -- ** TooManyRequestsException
+    , _TooManyRequestsException
+
+    -- ** InvalidParameterException
+    , _InvalidParameterException
+
+    -- ** UserPoolTaggingException
+    , _UserPoolTaggingException
+
+    -- ** InvalidSmsRoleTrustRelationshipException
+    , _InvalidSmsRoleTrustRelationshipException
+
+    -- ** UnsupportedUserStateException
+    , _UnsupportedUserStateException
+
+    -- ** UsernameExistsException
+    , _UsernameExistsException
 
     -- ** ResourceNotFoundException
     , _ResourceNotFoundException
 
-    -- ** MFAMethodNotFoundException
-    , _MFAMethodNotFoundException
+    -- ** InternalErrorException
+    , _InternalErrorException
 
-    -- ** AliasExistsException
-    , _AliasExistsException
+    -- ** UserNotConfirmedException
+    , _UserNotConfirmedException
 
-    -- ** DuplicateProviderException
-    , _DuplicateProviderException
+    -- ** EnableSoftwareTokenMFAException
+    , _EnableSoftwareTokenMFAException
+
+    -- ** UnsupportedIdentityProviderException
+    , _UnsupportedIdentityProviderException
+
+    -- ** NotAuthorizedException
+    , _NotAuthorizedException
+
+    -- ** PreconditionNotMetException
+    , _PreconditionNotMetException
+
+    -- ** InvalidLambdaResponseException
+    , _InvalidLambdaResponseException
+
+    -- ** SoftwareTokenMFANotFoundException
+    , _SoftwareTokenMFANotFoundException
+
+    -- ** UserLambdaValidationException
+    , _UserLambdaValidationException
+
+    -- ** ConcurrentModificationException
+    , _ConcurrentModificationException
+
+    -- ** PasswordResetRequiredException
+    , _PasswordResetRequiredException
 
     -- ** LimitExceededException
     , _LimitExceededException
 
+    -- ** MFAMethodNotFoundException
+    , _MFAMethodNotFoundException
+
     -- ** InvalidPasswordException
     , _InvalidPasswordException
 
-    -- ** UsernameExistsException
-    , _UsernameExistsException
+    -- ** DuplicateProviderException
+    , _DuplicateProviderException
+
+    -- ** AliasExistsException
+    , _AliasExistsException
+
+    -- ** UserImportInProgressException
+    , _UserImportInProgressException
+
+    -- ** CodeMismatchException
+    , _CodeMismatchException
+
+    -- ** ScopeDoesNotExistException
+    , _ScopeDoesNotExistException
+
+    -- ** CodeDeliveryFailureException
+    , _CodeDeliveryFailureException
 
     -- * Waiters
     -- $waiters

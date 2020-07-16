@@ -16,13 +16,13 @@ module Network.AWS.CloudSearch.Types
       cloudSearch
 
     -- * Errors
-    , _ValidationException
-    , _BaseException
     , _DisabledOperationException
-    , _InternalException
-    , _InvalidTypeException
+    , _ValidationException
     , _ResourceNotFoundException
+    , _InternalException
+    , _BaseException
     , _LimitExceededException
+    , _InvalidTypeException
 
     -- * AlgorithmicStemming
     , AlgorithmicStemming (..)
@@ -381,6 +381,14 @@ cloudSearch
           | has (hasStatus 509) e = Just "limit_exceeded"
           | otherwise = Nothing
 
+-- | The request was rejected because it attempted an operation which is not enabled.
+--
+--
+_DisabledOperationException :: AsError a => Getting (First ServiceError) a ServiceError
+_DisabledOperationException
+  = _MatchServiceError cloudSearch "DisabledAction" .
+      hasStatus 409
+
 -- | The request was rejected because it has invalid parameters.
 --
 --
@@ -389,19 +397,12 @@ _ValidationException
   = _MatchServiceError cloudSearch
       "ValidationException"
 
--- | An error occurred while processing the request.
+-- | The request was rejected because it attempted to reference a resource that does not exist.
 --
 --
-_BaseException :: AsError a => Getting (First ServiceError) a ServiceError
-_BaseException
-  = _MatchServiceError cloudSearch "BaseException"
-
--- | The request was rejected because it attempted an operation which is not enabled.
---
---
-_DisabledOperationException :: AsError a => Getting (First ServiceError) a ServiceError
-_DisabledOperationException
-  = _MatchServiceError cloudSearch "DisabledAction" .
+_ResourceNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
+_ResourceNotFoundException
+  = _MatchServiceError cloudSearch "ResourceNotFound" .
       hasStatus 409
 
 -- | An internal error occurred while processing the request. If this problem persists, report an issue from the <http://status.aws.amazon.com/ Service Health Dashboard> .
@@ -412,21 +413,12 @@ _InternalException
   = _MatchServiceError cloudSearch "InternalException"
       . hasStatus 500
 
--- | The request was rejected because it specified an invalid type definition.
+-- | An error occurred while processing the request.
 --
 --
-_InvalidTypeException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidTypeException
-  = _MatchServiceError cloudSearch "InvalidType" .
-      hasStatus 409
-
--- | The request was rejected because it attempted to reference a resource that does not exist.
---
---
-_ResourceNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
-_ResourceNotFoundException
-  = _MatchServiceError cloudSearch "ResourceNotFound" .
-      hasStatus 409
+_BaseException :: AsError a => Getting (First ServiceError) a ServiceError
+_BaseException
+  = _MatchServiceError cloudSearch "BaseException"
 
 -- | The request was rejected because a resource limit has already been met.
 --
@@ -434,4 +426,12 @@ _ResourceNotFoundException
 _LimitExceededException :: AsError a => Getting (First ServiceError) a ServiceError
 _LimitExceededException
   = _MatchServiceError cloudSearch "LimitExceeded" .
+      hasStatus 409
+
+-- | The request was rejected because it specified an invalid type definition.
+--
+--
+_InvalidTypeException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidTypeException
+  = _MatchServiceError cloudSearch "InvalidType" .
       hasStatus 409

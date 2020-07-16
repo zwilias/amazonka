@@ -16,11 +16,11 @@ module Network.AWS.DataPipeline.Types
       dataPipeline
 
     -- * Errors
-    , _InvalidRequestException
-    , _InternalServiceError
     , _PipelineDeletedException
-    , _PipelineNotFoundException
+    , _InternalServiceError
+    , _InvalidRequestException
     , _TaskNotFoundException
+    , _PipelineNotFoundException
 
     -- * OperatorType
     , OperatorType (..)
@@ -180,13 +180,13 @@ dataPipeline
           | has (hasStatus 509) e = Just "limit_exceeded"
           | otherwise = Nothing
 
--- | The request was not valid. Verify that your request was properly formatted, that the signature was generated with the correct credentials, and that you haven't exceeded any of the service limits for your account.
+-- | The specified pipeline has been deleted.
 --
 --
-_InvalidRequestException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidRequestException
+_PipelineDeletedException :: AsError a => Getting (First ServiceError) a ServiceError
+_PipelineDeletedException
   = _MatchServiceError dataPipeline
-      "InvalidRequestException"
+      "PipelineDeletedException"
 
 -- | An internal service error occurred.
 --
@@ -196,21 +196,13 @@ _InternalServiceError
   = _MatchServiceError dataPipeline
       "InternalServiceError"
 
--- | The specified pipeline has been deleted.
+-- | The request was not valid. Verify that your request was properly formatted, that the signature was generated with the correct credentials, and that you haven't exceeded any of the service limits for your account.
 --
 --
-_PipelineDeletedException :: AsError a => Getting (First ServiceError) a ServiceError
-_PipelineDeletedException
+_InvalidRequestException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidRequestException
   = _MatchServiceError dataPipeline
-      "PipelineDeletedException"
-
--- | The specified pipeline was not found. Verify that you used the correct user and account identifiers.
---
---
-_PipelineNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
-_PipelineNotFoundException
-  = _MatchServiceError dataPipeline
-      "PipelineNotFoundException"
+      "InvalidRequestException"
 
 -- | The specified task was not found. 
 --
@@ -219,3 +211,11 @@ _TaskNotFoundException :: AsError a => Getting (First ServiceError) a ServiceErr
 _TaskNotFoundException
   = _MatchServiceError dataPipeline
       "TaskNotFoundException"
+
+-- | The specified pipeline was not found. Verify that you used the correct user and account identifiers.
+--
+--
+_PipelineNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
+_PipelineNotFoundException
+  = _MatchServiceError dataPipeline
+      "PipelineNotFoundException"

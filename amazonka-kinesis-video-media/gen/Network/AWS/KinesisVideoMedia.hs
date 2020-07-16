@@ -22,8 +22,14 @@ module Network.AWS.KinesisVideoMedia
     -- * Errors
     -- $errors
 
-    -- ** ConnectionLimitExceededException
-    , _ConnectionLimitExceededException
+    -- ** InvalidEndpointException
+    , _InvalidEndpointException
+
+    -- ** ResourceNotFoundException
+    , _ResourceNotFoundException
+
+    -- ** ClientLimitExceededException
+    , _ClientLimitExceededException
 
     -- ** InvalidArgumentException
     , _InvalidArgumentException
@@ -31,14 +37,8 @@ module Network.AWS.KinesisVideoMedia
     -- ** NotAuthorizedException
     , _NotAuthorizedException
 
-    -- ** ClientLimitExceededException
-    , _ClientLimitExceededException
-
-    -- ** InvalidEndpointException
-    , _InvalidEndpointException
-
-    -- ** ResourceNotFoundException
-    , _ResourceNotFoundException
+    -- ** ConnectionLimitExceededException
+    , _ConnectionLimitExceededException
 
     -- * Waiters
     -- $waiters

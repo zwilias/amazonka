@@ -33,8 +33,8 @@ module Network.AWS.CodeCommit.GetComment
     , getCommentResponse
     , GetCommentResponse
     -- * Response Lenses
-    , gccrsComment
-    , gccrsResponseStatus
+    , gtcmmntrsComment
+    , gtcmmntrsResponseStatus
     ) where
 
 import Network.AWS.CodeCommit.Types
@@ -98,31 +98,31 @@ instance ToQuery GetComment where
         toQuery = const mempty
 
 -- | /See:/ 'getCommentResponse' smart constructor.
-data GetCommentResponse = GetCommentResponse'{_gccrsComment
+data GetCommentResponse = GetCommentResponse'{_gtcmmntrsComment
                                               :: !(Maybe Comment),
-                                              _gccrsResponseStatus :: !Int}
+                                              _gtcmmntrsResponseStatus :: !Int}
                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetCommentResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'gccrsComment' - The contents of the comment.
+-- * 'gtcmmntrsComment' - The contents of the comment.
 --
--- * 'gccrsResponseStatus' - -- | The response status code.
+-- * 'gtcmmntrsResponseStatus' - -- | The response status code.
 getCommentResponse
-    :: Int -- ^ 'gccrsResponseStatus'
+    :: Int -- ^ 'gtcmmntrsResponseStatus'
     -> GetCommentResponse
 getCommentResponse pResponseStatus_
-  = GetCommentResponse'{_gccrsComment = Nothing,
-                        _gccrsResponseStatus = pResponseStatus_}
+  = GetCommentResponse'{_gtcmmntrsComment = Nothing,
+                        _gtcmmntrsResponseStatus = pResponseStatus_}
 
 -- | The contents of the comment.
-gccrsComment :: Lens' GetCommentResponse (Maybe Comment)
-gccrsComment = lens _gccrsComment (\ s a -> s{_gccrsComment = a})
+gtcmmntrsComment :: Lens' GetCommentResponse (Maybe Comment)
+gtcmmntrsComment = lens _gtcmmntrsComment (\ s a -> s{_gtcmmntrsComment = a})
 
 -- | -- | The response status code.
-gccrsResponseStatus :: Lens' GetCommentResponse Int
-gccrsResponseStatus = lens _gccrsResponseStatus (\ s a -> s{_gccrsResponseStatus = a})
+gtcmmntrsResponseStatus :: Lens' GetCommentResponse Int
+gtcmmntrsResponseStatus = lens _gtcmmntrsResponseStatus (\ s a -> s{_gtcmmntrsResponseStatus = a})
 
 instance NFData GetCommentResponse where

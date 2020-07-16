@@ -16,87 +16,87 @@ module Network.AWS.CloudFront.Types
       cloudFront
 
     -- * Errors
-    , _TooManyOriginCustomHeaders
-    , _InvalidTagging
-    , _InvalidErrorCode
-    , _NoSuchFieldLevelEncryptionProfile
-    , _FieldLevelEncryptionProfileInUse
-    , _InvalidOriginReadTimeout
-    , _TooManyFieldLevelEncryptionProfiles
-    , _TooManyCacheBehaviors
-    , _TooManyCloudFrontOriginAccessIdentities
-    , _InvalidOriginAccessIdentity
-    , _DistributionNotDisabled
-    , _NoSuchStreamingDistribution
-    , _InconsistentQuantities
-    , _InvalidArgument
-    , _InvalidOriginKeepaliveTimeout
-    , _TooManyInvalidationsInProgress
-    , _InvalidWebACLId
-    , _TooManyQueryStringParameters
-    , _TooManyFieldLevelEncryptionQueryArgProfiles
-    , _TooManyDistributionCNAMEs
-    , _NoSuchCloudFrontOriginAccessIdentity
-    , _CloudFrontOriginAccessIdentityInUse
-    , _TooManyStreamingDistributions
-    , _CannotChangeImmutablePublicKeyFields
-    , _BatchTooLarge
-    , _TooManyCookieNamesInWhiteList
-    , _InvalidLambdaFunctionAssociation
-    , _InvalidForwardCookies
-    , _FieldLevelEncryptionConfigInUse
-    , _TooManyTrustedSigners
-    , _InvalidOrigin
-    , _NoSuchInvalidation
-    , _PublicKeyAlreadyExists
-    , _NoSuchOrigin
     , _InvalidTTLOrder
-    , _StreamingDistributionNotDisabled
-    , _TooManyHeadersInForwardedValues
-    , _NoSuchResource
-    , _TooManyFieldLevelEncryptionEncryptionEntities
-    , _TooManyStreamingDistributionCNAMEs
-    , _FieldLevelEncryptionProfileAlreadyExists
-    , _InvalidRequiredProtocol
-    , _TooManyDistributions
-    , _TooManyCertificates
-    , _DistributionAlreadyExists
-    , _TooManyDistributionsAssociatedToFieldLevelEncryptionConfig
-    , _InvalidQueryStringParameters
-    , _MissingBody
-    , _IllegalFieldLevelEncryptionConfigAssociationWithCacheBehavior
-    , _IllegalUpdate
-    , _InvalidIfMatchVersion
-    , _FieldLevelEncryptionConfigAlreadyExists
-    , _PreconditionFailed
-    , _InvalidResponseCode
-    , _InvalidHeadersForS3Origin
-    , _CNAMEAlreadyExists
-    , _NoSuchPublicKey
-    , _PublicKeyInUse
-    , _TrustedSignerDoesNotExist
-    , _InvalidProtocolSettings
-    , _TooManyOriginGroupsPerDistribution
-    , _TooManyPublicKeys
-    , _NoSuchFieldLevelEncryptionConfig
-    , _TooManyFieldLevelEncryptionContentTypeProfiles
-    , _TooManyFieldLevelEncryptionFieldPatterns
-    , _TooManyFieldLevelEncryptionConfigs
-    , _TooManyLambdaFunctionAssociations
-    , _CloudFrontOriginAccessIdentityAlreadyExists
+    , _AccessDenied
     , _TooManyOrigins
-    , _InvalidRelativePath
     , _StreamingDistributionAlreadyExists
     , _QueryArgProfileEmpty
-    , _InvalidMinimumProtocolVersion
-    , _AccessDenied
-    , _InvalidViewerCertificate
-    , _NoSuchDistribution
+    , _BatchTooLarge
+    , _TooManyCookieNamesInWhiteList
+    , _TooManyFieldLevelEncryptionFieldPatterns
+    , _InvalidForwardCookies
+    , _InvalidOrigin
+    , _FieldLevelEncryptionConfigInUse
+    , _TooManyFieldLevelEncryptionConfigs
+    , _TooManyTrustedSigners
+    , _TooManyFieldLevelEncryptionContentTypeProfiles
+    , _NoSuchFieldLevelEncryptionConfig
+    , _InvalidArgument
+    , _TooManyDistributionCNAMEs
+    , _InvalidWebACLId
+    , _TooManyOriginGroupsPerDistribution
+    , _InvalidOriginKeepaliveTimeout
+    , _NoSuchStreamingDistribution
+    , _CNAMEAlreadyExists
+    , _CloudFrontOriginAccessIdentityInUse
+    , _PublicKeyInUse
+    , _TooManyFieldLevelEncryptionQueryArgProfiles
+    , _TooManyStreamingDistributions
+    , _InvalidOriginAccessIdentity
+    , _PreconditionFailed
+    , _DistributionNotDisabled
+    , _TooManyCloudFrontOriginAccessIdentities
+    , _TooManyFieldLevelEncryptionProfiles
+    , _TooManyDistributionsAssociatedToFieldLevelEncryptionConfig
+    , _TooManyCacheBehaviors
+    , _NoSuchFieldLevelEncryptionProfile
+    , _InvalidQueryStringParameters
+    , _InvalidLocationCode
+    , _NoSuchResource
+    , _TooManyStreamingDistributionCNAMEs
+    , _FieldLevelEncryptionProfileAlreadyExists
+    , _TooManyDistributions
     , _FieldLevelEncryptionProfileSizeExceeded
+    , _StreamingDistributionNotDisabled
+    , _InvalidMinimumProtocolVersion
+    , _NoSuchOrigin
+    , _PublicKeyAlreadyExists
+    , _CloudFrontOriginAccessIdentityAlreadyExists
+    , _InvalidRelativePath
+    , _TooManyLambdaFunctionAssociations
+    , _NoSuchInvalidation
+    , _InvalidLambdaFunctionAssociation
+    , _CannotChangeImmutablePublicKeyFields
+    , _TooManyQueryStringParameters
+    , _TrustedSignerDoesNotExist
+    , _InvalidProtocolSettings
+    , _InconsistentQuantities
+    , _NoSuchCloudFrontOriginAccessIdentity
+    , _NoSuchPublicKey
+    , _InvalidHeadersForS3Origin
+    , _TooManyPublicKeys
+    , _TooManyInvalidationsInProgress
+    , _InvalidIfMatchVersion
+    , _InvalidResponseCode
+    , _IllegalUpdate
+    , _FieldLevelEncryptionConfigAlreadyExists
+    , _FieldLevelEncryptionProfileInUse
+    , _TooManyOriginCustomHeaders
+    , _DistributionAlreadyExists
+    , _InvalidErrorCode
+    , _InvalidTagging
+    , _InvalidOriginReadTimeout
+    , _MissingBody
+    , _IllegalFieldLevelEncryptionConfigAssociationWithCacheBehavior
     , _InvalidDefaultRootObject
     , _TooManyDistributionsWithLambdaAssociations
+    , _TooManyCertificates
     , _InvalidGeoRestrictionParameter
-    , _InvalidLocationCode
+    , _TooManyFieldLevelEncryptionEncryptionEntities
+    , _InvalidRequiredProtocol
+    , _NoSuchDistribution
+    , _TooManyHeadersInForwardedValues
+    , _InvalidViewerCertificate
 
     -- * CertificateSource
     , CertificateSource (..)
@@ -915,304 +915,6 @@ cloudFront
           | has (hasStatus 509) e = Just "limit_exceeded"
           | otherwise = Nothing
 
--- | Your request contains too many origin custom headers.
---
---
-_TooManyOriginCustomHeaders :: AsError a => Getting (First ServiceError) a ServiceError
-_TooManyOriginCustomHeaders
-  = _MatchServiceError cloudFront
-      "TooManyOriginCustomHeaders"
-      . hasStatus 400
-
--- | The tagging specified is not valid.
---
---
-_InvalidTagging :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidTagging
-  = _MatchServiceError cloudFront "InvalidTagging" .
-      hasStatus 400
-
--- | An invalid error code was specified.
---
---
-_InvalidErrorCode :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidErrorCode
-  = _MatchServiceError cloudFront "InvalidErrorCode" .
-      hasStatus 400
-
--- | The specified profile for field-level encryption doesn't exist.
---
---
-_NoSuchFieldLevelEncryptionProfile :: AsError a => Getting (First ServiceError) a ServiceError
-_NoSuchFieldLevelEncryptionProfile
-  = _MatchServiceError cloudFront
-      "NoSuchFieldLevelEncryptionProfile"
-      . hasStatus 404
-
--- | The specified profile for field-level encryption is in use.
---
---
-_FieldLevelEncryptionProfileInUse :: AsError a => Getting (First ServiceError) a ServiceError
-_FieldLevelEncryptionProfileInUse
-  = _MatchServiceError cloudFront
-      "FieldLevelEncryptionProfileInUse"
-      . hasStatus 409
-
--- | The read timeout specified for the origin is not valid.
---
---
-_InvalidOriginReadTimeout :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidOriginReadTimeout
-  = _MatchServiceError cloudFront
-      "InvalidOriginReadTimeout"
-      . hasStatus 400
-
--- | The maximum number of profiles for field-level encryption have been created.
---
---
-_TooManyFieldLevelEncryptionProfiles :: AsError a => Getting (First ServiceError) a ServiceError
-_TooManyFieldLevelEncryptionProfiles
-  = _MatchServiceError cloudFront
-      "TooManyFieldLevelEncryptionProfiles"
-      . hasStatus 400
-
--- | You cannot create more cache behaviors for the distribution.
---
---
-_TooManyCacheBehaviors :: AsError a => Getting (First ServiceError) a ServiceError
-_TooManyCacheBehaviors
-  = _MatchServiceError cloudFront
-      "TooManyCacheBehaviors"
-      . hasStatus 400
-
--- | Processing your request would cause you to exceed the maximum number of origin access identities allowed.
---
---
-_TooManyCloudFrontOriginAccessIdentities :: AsError a => Getting (First ServiceError) a ServiceError
-_TooManyCloudFrontOriginAccessIdentities
-  = _MatchServiceError cloudFront
-      "TooManyCloudFrontOriginAccessIdentities"
-      . hasStatus 400
-
--- | The origin access identity is not valid or doesn't exist.
---
---
-_InvalidOriginAccessIdentity :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidOriginAccessIdentity
-  = _MatchServiceError cloudFront
-      "InvalidOriginAccessIdentity"
-      . hasStatus 400
-
--- | The specified CloudFront distribution is not disabled. You must disable the distribution before you can delete it.
---
---
-_DistributionNotDisabled :: AsError a => Getting (First ServiceError) a ServiceError
-_DistributionNotDisabled
-  = _MatchServiceError cloudFront
-      "DistributionNotDisabled"
-      . hasStatus 409
-
--- | The specified streaming distribution does not exist.
---
---
-_NoSuchStreamingDistribution :: AsError a => Getting (First ServiceError) a ServiceError
-_NoSuchStreamingDistribution
-  = _MatchServiceError cloudFront
-      "NoSuchStreamingDistribution"
-      . hasStatus 404
-
--- | The value of @Quantity@ and the size of @Items@ don't match.
---
---
-_InconsistentQuantities :: AsError a => Getting (First ServiceError) a ServiceError
-_InconsistentQuantities
-  = _MatchServiceError cloudFront
-      "InconsistentQuantities"
-      . hasStatus 400
-
--- | The argument is invalid.
---
---
-_InvalidArgument :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidArgument
-  = _MatchServiceError cloudFront "InvalidArgument" .
-      hasStatus 400
-
--- | The keep alive timeout specified for the origin is not valid.
---
---
-_InvalidOriginKeepaliveTimeout :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidOriginKeepaliveTimeout
-  = _MatchServiceError cloudFront
-      "InvalidOriginKeepaliveTimeout"
-      . hasStatus 400
-
--- | You have exceeded the maximum number of allowable InProgress invalidation batch requests, or invalidation objects.
---
---
-_TooManyInvalidationsInProgress :: AsError a => Getting (First ServiceError) a ServiceError
-_TooManyInvalidationsInProgress
-  = _MatchServiceError cloudFront
-      "TooManyInvalidationsInProgress"
-      . hasStatus 400
-
--- | A web ACL ID specified is not valid. To specify a web ACL created using the latest version of AWS WAF, use the ACL ARN, for example @arn:aws:wafv2:us-east-1:123456789012:global/webacl/ExampleWebACL/473e64fd-f30b-4765-81a0-62ad96dd167a@ . To specify a web ACL created using AWS WAF Classic, use the ACL ID, for example @473e64fd-f30b-4765-81a0-62ad96dd167a@ .
---
---
-_InvalidWebACLId :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidWebACLId
-  = _MatchServiceError cloudFront "InvalidWebACLId" .
-      hasStatus 400
-
--- | Your request contains too many query string parameters.
---
---
-_TooManyQueryStringParameters :: AsError a => Getting (First ServiceError) a ServiceError
-_TooManyQueryStringParameters
-  = _MatchServiceError cloudFront
-      "TooManyQueryStringParameters"
-      . hasStatus 400
-
--- | The maximum number of query arg profiles for field-level encryption have been created.
---
---
-_TooManyFieldLevelEncryptionQueryArgProfiles :: AsError a => Getting (First ServiceError) a ServiceError
-_TooManyFieldLevelEncryptionQueryArgProfiles
-  = _MatchServiceError cloudFront
-      "TooManyFieldLevelEncryptionQueryArgProfiles"
-      . hasStatus 400
-
--- | Your request contains more CNAMEs than are allowed per distribution.
---
---
-_TooManyDistributionCNAMEs :: AsError a => Getting (First ServiceError) a ServiceError
-_TooManyDistributionCNAMEs
-  = _MatchServiceError cloudFront
-      "TooManyDistributionCNAMEs"
-      . hasStatus 400
-
--- | The specified origin access identity does not exist.
---
---
-_NoSuchCloudFrontOriginAccessIdentity :: AsError a => Getting (First ServiceError) a ServiceError
-_NoSuchCloudFrontOriginAccessIdentity
-  = _MatchServiceError cloudFront
-      "NoSuchCloudFrontOriginAccessIdentity"
-      . hasStatus 404
-
--- | The Origin Access Identity specified is already in use.
---
---
-_CloudFrontOriginAccessIdentityInUse :: AsError a => Getting (First ServiceError) a ServiceError
-_CloudFrontOriginAccessIdentityInUse
-  = _MatchServiceError cloudFront
-      "CloudFrontOriginAccessIdentityInUse"
-      . hasStatus 409
-
--- | Processing your request would cause you to exceed the maximum number of streaming distributions allowed.
---
---
-_TooManyStreamingDistributions :: AsError a => Getting (First ServiceError) a ServiceError
-_TooManyStreamingDistributions
-  = _MatchServiceError cloudFront
-      "TooManyStreamingDistributions"
-      . hasStatus 400
-
--- | You can't change the value of a public key.
---
---
-_CannotChangeImmutablePublicKeyFields :: AsError a => Getting (First ServiceError) a ServiceError
-_CannotChangeImmutablePublicKeyFields
-  = _MatchServiceError cloudFront
-      "CannotChangeImmutablePublicKeyFields"
-      . hasStatus 400
-
--- | Invalidation batch specified is too large.
---
---
-_BatchTooLarge :: AsError a => Getting (First ServiceError) a ServiceError
-_BatchTooLarge
-  = _MatchServiceError cloudFront "BatchTooLarge" .
-      hasStatus 413
-
--- | Your request contains more cookie names in the whitelist than are allowed per cache behavior.
---
---
-_TooManyCookieNamesInWhiteList :: AsError a => Getting (First ServiceError) a ServiceError
-_TooManyCookieNamesInWhiteList
-  = _MatchServiceError cloudFront
-      "TooManyCookieNamesInWhiteList"
-      . hasStatus 400
-
--- | The specified Lambda function association is invalid.
---
---
-_InvalidLambdaFunctionAssociation :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidLambdaFunctionAssociation
-  = _MatchServiceError cloudFront
-      "InvalidLambdaFunctionAssociation"
-      . hasStatus 400
-
--- | Your request contains forward cookies option which doesn't match with the expectation for the @whitelisted@ list of cookie names. Either list of cookie names has been specified when not allowed or list of cookie names is missing when expected.
---
---
-_InvalidForwardCookies :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidForwardCookies
-  = _MatchServiceError cloudFront
-      "InvalidForwardCookies"
-      . hasStatus 400
-
--- | The specified configuration for field-level encryption is in use.
---
---
-_FieldLevelEncryptionConfigInUse :: AsError a => Getting (First ServiceError) a ServiceError
-_FieldLevelEncryptionConfigInUse
-  = _MatchServiceError cloudFront
-      "FieldLevelEncryptionConfigInUse"
-      . hasStatus 409
-
--- | Your request contains more trusted signers than are allowed per distribution.
---
---
-_TooManyTrustedSigners :: AsError a => Getting (First ServiceError) a ServiceError
-_TooManyTrustedSigners
-  = _MatchServiceError cloudFront
-      "TooManyTrustedSigners"
-      . hasStatus 400
-
--- | The Amazon S3 origin server specified does not refer to a valid Amazon S3 bucket.
---
---
-_InvalidOrigin :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidOrigin
-  = _MatchServiceError cloudFront "InvalidOrigin" .
-      hasStatus 400
-
--- | The specified invalidation does not exist.
---
---
-_NoSuchInvalidation :: AsError a => Getting (First ServiceError) a ServiceError
-_NoSuchInvalidation
-  = _MatchServiceError cloudFront "NoSuchInvalidation"
-      . hasStatus 404
-
--- | The specified public key already exists.
---
---
-_PublicKeyAlreadyExists :: AsError a => Getting (First ServiceError) a ServiceError
-_PublicKeyAlreadyExists
-  = _MatchServiceError cloudFront
-      "PublicKeyAlreadyExists"
-      . hasStatus 409
-
--- | No origin exists with the specified @Origin Id@ . 
---
---
-_NoSuchOrigin :: AsError a => Getting (First ServiceError) a ServiceError
-_NoSuchOrigin
-  = _MatchServiceError cloudFront "NoSuchOrigin" .
-      hasStatus 404
-
 -- | The TTL order specified is not valid.
 --
 --
@@ -1221,292 +923,13 @@ _InvalidTTLOrder
   = _MatchServiceError cloudFront "InvalidTTLOrder" .
       hasStatus 400
 
--- | The specified CloudFront distribution is not disabled. You must disable the distribution before you can delete it.
+-- | Access denied.
 --
 --
-_StreamingDistributionNotDisabled :: AsError a => Getting (First ServiceError) a ServiceError
-_StreamingDistributionNotDisabled
-  = _MatchServiceError cloudFront
-      "StreamingDistributionNotDisabled"
-      . hasStatus 409
-
--- | Your request contains too many headers in forwarded values.
---
---
-_TooManyHeadersInForwardedValues :: AsError a => Getting (First ServiceError) a ServiceError
-_TooManyHeadersInForwardedValues
-  = _MatchServiceError cloudFront
-      "TooManyHeadersInForwardedValues"
-      . hasStatus 400
-
--- | A resource that was specified is not valid.
---
---
-_NoSuchResource :: AsError a => Getting (First ServiceError) a ServiceError
-_NoSuchResource
-  = _MatchServiceError cloudFront "NoSuchResource" .
-      hasStatus 404
-
--- | The maximum number of encryption entities for field-level encryption have been created.
---
---
-_TooManyFieldLevelEncryptionEncryptionEntities :: AsError a => Getting (First ServiceError) a ServiceError
-_TooManyFieldLevelEncryptionEncryptionEntities
-  = _MatchServiceError cloudFront
-      "TooManyFieldLevelEncryptionEncryptionEntities"
-      . hasStatus 400
-
--- | Your request contains more CNAMEs than are allowed per distribution.
---
---
-_TooManyStreamingDistributionCNAMEs :: AsError a => Getting (First ServiceError) a ServiceError
-_TooManyStreamingDistributionCNAMEs
-  = _MatchServiceError cloudFront
-      "TooManyStreamingDistributionCNAMEs"
-      . hasStatus 400
-
--- | The specified profile for field-level encryption already exists.
---
---
-_FieldLevelEncryptionProfileAlreadyExists :: AsError a => Getting (First ServiceError) a ServiceError
-_FieldLevelEncryptionProfileAlreadyExists
-  = _MatchServiceError cloudFront
-      "FieldLevelEncryptionProfileAlreadyExists"
-      . hasStatus 409
-
--- | This operation requires the HTTPS protocol. Ensure that you specify the HTTPS protocol in your request, or omit the @RequiredProtocols@ element from your distribution configuration.
---
---
-_InvalidRequiredProtocol :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidRequiredProtocol
-  = _MatchServiceError cloudFront
-      "InvalidRequiredProtocol"
-      . hasStatus 400
-
--- | Processing your request would cause you to exceed the maximum number of distributions allowed.
---
---
-_TooManyDistributions :: AsError a => Getting (First ServiceError) a ServiceError
-_TooManyDistributions
-  = _MatchServiceError cloudFront
-      "TooManyDistributions"
-      . hasStatus 400
-
--- | You cannot create anymore custom SSL/TLS certificates.
---
---
-_TooManyCertificates :: AsError a => Getting (First ServiceError) a ServiceError
-_TooManyCertificates
-  = _MatchServiceError cloudFront "TooManyCertificates"
-      . hasStatus 400
-
--- | The caller reference you attempted to create the distribution with is associated with another distribution.
---
---
-_DistributionAlreadyExists :: AsError a => Getting (First ServiceError) a ServiceError
-_DistributionAlreadyExists
-  = _MatchServiceError cloudFront
-      "DistributionAlreadyExists"
-      . hasStatus 409
-
--- | The maximum number of distributions have been associated with the specified configuration for field-level encryption.
---
---
-_TooManyDistributionsAssociatedToFieldLevelEncryptionConfig :: AsError a => Getting (First ServiceError) a ServiceError
-_TooManyDistributionsAssociatedToFieldLevelEncryptionConfig
-  = _MatchServiceError cloudFront
-      "TooManyDistributionsAssociatedToFieldLevelEncryptionConfig"
-      . hasStatus 400
-
--- | The query string parameters specified are not valid.
---
---
-_InvalidQueryStringParameters :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidQueryStringParameters
-  = _MatchServiceError cloudFront
-      "InvalidQueryStringParameters"
-      . hasStatus 400
-
--- | This operation requires a body. Ensure that the body is present and the @Content-Type@ header is set.
---
---
-_MissingBody :: AsError a => Getting (First ServiceError) a ServiceError
-_MissingBody
-  = _MatchServiceError cloudFront "MissingBody" .
-      hasStatus 400
-
--- | The specified configuration for field-level encryption can't be associated with the specified cache behavior.
---
---
-_IllegalFieldLevelEncryptionConfigAssociationWithCacheBehavior :: AsError a => Getting (First ServiceError) a ServiceError
-_IllegalFieldLevelEncryptionConfigAssociationWithCacheBehavior
-  = _MatchServiceError cloudFront
-      "IllegalFieldLevelEncryptionConfigAssociationWithCacheBehavior"
-      . hasStatus 400
-
--- | Origin and @CallerReference@ cannot be updated. 
---
---
-_IllegalUpdate :: AsError a => Getting (First ServiceError) a ServiceError
-_IllegalUpdate
-  = _MatchServiceError cloudFront "IllegalUpdate" .
-      hasStatus 400
-
--- | The @If-Match@ version is missing or not valid for the distribution.
---
---
-_InvalidIfMatchVersion :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidIfMatchVersion
-  = _MatchServiceError cloudFront
-      "InvalidIfMatchVersion"
-      . hasStatus 400
-
--- | The specified configuration for field-level encryption already exists.
---
---
-_FieldLevelEncryptionConfigAlreadyExists :: AsError a => Getting (First ServiceError) a ServiceError
-_FieldLevelEncryptionConfigAlreadyExists
-  = _MatchServiceError cloudFront
-      "FieldLevelEncryptionConfigAlreadyExists"
-      . hasStatus 409
-
--- | The precondition given in one or more of the request-header fields evaluated to @false@ . 
---
---
-_PreconditionFailed :: AsError a => Getting (First ServiceError) a ServiceError
-_PreconditionFailed
-  = _MatchServiceError cloudFront "PreconditionFailed"
-      . hasStatus 412
-
--- | A response code is not valid.
---
---
-_InvalidResponseCode :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidResponseCode
-  = _MatchServiceError cloudFront "InvalidResponseCode"
-      . hasStatus 400
-
--- | The headers specified are not valid for an Amazon S3 origin.
---
---
-_InvalidHeadersForS3Origin :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidHeadersForS3Origin
-  = _MatchServiceError cloudFront
-      "InvalidHeadersForS3Origin"
-      . hasStatus 400
-
--- | The CNAME specified is already defined for CloudFront.
---
---
-_CNAMEAlreadyExists :: AsError a => Getting (First ServiceError) a ServiceError
-_CNAMEAlreadyExists
-  = _MatchServiceError cloudFront "CNAMEAlreadyExists"
-      . hasStatus 409
-
--- | The specified public key doesn't exist.
---
---
-_NoSuchPublicKey :: AsError a => Getting (First ServiceError) a ServiceError
-_NoSuchPublicKey
-  = _MatchServiceError cloudFront "NoSuchPublicKey" .
-      hasStatus 404
-
--- | The specified public key is in use. 
---
---
-_PublicKeyInUse :: AsError a => Getting (First ServiceError) a ServiceError
-_PublicKeyInUse
-  = _MatchServiceError cloudFront "PublicKeyInUse" .
-      hasStatus 409
-
--- | One or more of your trusted signers don't exist.
---
---
-_TrustedSignerDoesNotExist :: AsError a => Getting (First ServiceError) a ServiceError
-_TrustedSignerDoesNotExist
-  = _MatchServiceError cloudFront
-      "TrustedSignerDoesNotExist"
-      . hasStatus 400
-
--- | You cannot specify SSLv3 as the minimum protocol version if you only want to support only clients that support Server Name Indication (SNI).
---
---
-_InvalidProtocolSettings :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidProtocolSettings
-  = _MatchServiceError cloudFront
-      "InvalidProtocolSettings"
-      . hasStatus 400
-
--- | Processing your request would cause you to exceed the maximum number of origin groups allowed.
---
---
-_TooManyOriginGroupsPerDistribution :: AsError a => Getting (First ServiceError) a ServiceError
-_TooManyOriginGroupsPerDistribution
-  = _MatchServiceError cloudFront
-      "TooManyOriginGroupsPerDistribution"
-      . hasStatus 400
-
--- | The maximum number of public keys for field-level encryption have been created. To create a new public key, delete one of the existing keys.
---
---
-_TooManyPublicKeys :: AsError a => Getting (First ServiceError) a ServiceError
-_TooManyPublicKeys
-  = _MatchServiceError cloudFront "TooManyPublicKeys" .
-      hasStatus 400
-
--- | The specified configuration for field-level encryption doesn't exist.
---
---
-_NoSuchFieldLevelEncryptionConfig :: AsError a => Getting (First ServiceError) a ServiceError
-_NoSuchFieldLevelEncryptionConfig
-  = _MatchServiceError cloudFront
-      "NoSuchFieldLevelEncryptionConfig"
-      . hasStatus 404
-
--- | The maximum number of content type profiles for field-level encryption have been created.
---
---
-_TooManyFieldLevelEncryptionContentTypeProfiles :: AsError a => Getting (First ServiceError) a ServiceError
-_TooManyFieldLevelEncryptionContentTypeProfiles
-  = _MatchServiceError cloudFront
-      "TooManyFieldLevelEncryptionContentTypeProfiles"
-      . hasStatus 400
-
--- | The maximum number of field patterns for field-level encryption have been created.
---
---
-_TooManyFieldLevelEncryptionFieldPatterns :: AsError a => Getting (First ServiceError) a ServiceError
-_TooManyFieldLevelEncryptionFieldPatterns
-  = _MatchServiceError cloudFront
-      "TooManyFieldLevelEncryptionFieldPatterns"
-      . hasStatus 400
-
--- | The maximum number of configurations for field-level encryption have been created.
---
---
-_TooManyFieldLevelEncryptionConfigs :: AsError a => Getting (First ServiceError) a ServiceError
-_TooManyFieldLevelEncryptionConfigs
-  = _MatchServiceError cloudFront
-      "TooManyFieldLevelEncryptionConfigs"
-      . hasStatus 400
-
--- | Your request contains more Lambda function associations than are allowed per distribution.
---
---
-_TooManyLambdaFunctionAssociations :: AsError a => Getting (First ServiceError) a ServiceError
-_TooManyLambdaFunctionAssociations
-  = _MatchServiceError cloudFront
-      "TooManyLambdaFunctionAssociations"
-      . hasStatus 400
-
--- | If the @CallerReference@ is a value you already sent in a previous request to create an identity but the content of the @CloudFrontOriginAccessIdentityConfig@ is different from the original request, CloudFront returns a @CloudFrontOriginAccessIdentityAlreadyExists@ error. 
---
---
-_CloudFrontOriginAccessIdentityAlreadyExists :: AsError a => Getting (First ServiceError) a ServiceError
-_CloudFrontOriginAccessIdentityAlreadyExists
-  = _MatchServiceError cloudFront
-      "CloudFrontOriginAccessIdentityAlreadyExists"
-      . hasStatus 409
+_AccessDenied :: AsError a => Getting (First ServiceError) a ServiceError
+_AccessDenied
+  = _MatchServiceError cloudFront "AccessDenied" .
+      hasStatus 403
 
 -- | You cannot create more origins for the distribution.
 --
@@ -1515,14 +938,6 @@ _TooManyOrigins :: AsError a => Getting (First ServiceError) a ServiceError
 _TooManyOrigins
   = _MatchServiceError cloudFront "TooManyOrigins" .
       hasStatus 400
-
--- | The relative path is too big, is not URL-encoded, or does not begin with a slash (/).
---
---
-_InvalidRelativePath :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidRelativePath
-  = _MatchServiceError cloudFront "InvalidRelativePath"
-      . hasStatus 400
 
 -- | The caller reference you attempted to create the streaming distribution with is associated with another distribution
 --
@@ -1542,6 +957,330 @@ _QueryArgProfileEmpty
       "QueryArgProfileEmpty"
       . hasStatus 400
 
+-- | Invalidation batch specified is too large.
+--
+--
+_BatchTooLarge :: AsError a => Getting (First ServiceError) a ServiceError
+_BatchTooLarge
+  = _MatchServiceError cloudFront "BatchTooLarge" .
+      hasStatus 413
+
+-- | Your request contains more cookie names in the whitelist than are allowed per cache behavior.
+--
+--
+_TooManyCookieNamesInWhiteList :: AsError a => Getting (First ServiceError) a ServiceError
+_TooManyCookieNamesInWhiteList
+  = _MatchServiceError cloudFront
+      "TooManyCookieNamesInWhiteList"
+      . hasStatus 400
+
+-- | The maximum number of field patterns for field-level encryption have been created.
+--
+--
+_TooManyFieldLevelEncryptionFieldPatterns :: AsError a => Getting (First ServiceError) a ServiceError
+_TooManyFieldLevelEncryptionFieldPatterns
+  = _MatchServiceError cloudFront
+      "TooManyFieldLevelEncryptionFieldPatterns"
+      . hasStatus 400
+
+-- | Your request contains forward cookies option which doesn't match with the expectation for the @whitelisted@ list of cookie names. Either list of cookie names has been specified when not allowed or list of cookie names is missing when expected.
+--
+--
+_InvalidForwardCookies :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidForwardCookies
+  = _MatchServiceError cloudFront
+      "InvalidForwardCookies"
+      . hasStatus 400
+
+-- | The Amazon S3 origin server specified does not refer to a valid Amazon S3 bucket.
+--
+--
+_InvalidOrigin :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidOrigin
+  = _MatchServiceError cloudFront "InvalidOrigin" .
+      hasStatus 400
+
+-- | The specified configuration for field-level encryption is in use.
+--
+--
+_FieldLevelEncryptionConfigInUse :: AsError a => Getting (First ServiceError) a ServiceError
+_FieldLevelEncryptionConfigInUse
+  = _MatchServiceError cloudFront
+      "FieldLevelEncryptionConfigInUse"
+      . hasStatus 409
+
+-- | The maximum number of configurations for field-level encryption have been created.
+--
+--
+_TooManyFieldLevelEncryptionConfigs :: AsError a => Getting (First ServiceError) a ServiceError
+_TooManyFieldLevelEncryptionConfigs
+  = _MatchServiceError cloudFront
+      "TooManyFieldLevelEncryptionConfigs"
+      . hasStatus 400
+
+-- | Your request contains more trusted signers than are allowed per distribution.
+--
+--
+_TooManyTrustedSigners :: AsError a => Getting (First ServiceError) a ServiceError
+_TooManyTrustedSigners
+  = _MatchServiceError cloudFront
+      "TooManyTrustedSigners"
+      . hasStatus 400
+
+-- | The maximum number of content type profiles for field-level encryption have been created.
+--
+--
+_TooManyFieldLevelEncryptionContentTypeProfiles :: AsError a => Getting (First ServiceError) a ServiceError
+_TooManyFieldLevelEncryptionContentTypeProfiles
+  = _MatchServiceError cloudFront
+      "TooManyFieldLevelEncryptionContentTypeProfiles"
+      . hasStatus 400
+
+-- | The specified configuration for field-level encryption doesn't exist.
+--
+--
+_NoSuchFieldLevelEncryptionConfig :: AsError a => Getting (First ServiceError) a ServiceError
+_NoSuchFieldLevelEncryptionConfig
+  = _MatchServiceError cloudFront
+      "NoSuchFieldLevelEncryptionConfig"
+      . hasStatus 404
+
+-- | The argument is invalid.
+--
+--
+_InvalidArgument :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidArgument
+  = _MatchServiceError cloudFront "InvalidArgument" .
+      hasStatus 400
+
+-- | Your request contains more CNAMEs than are allowed per distribution.
+--
+--
+_TooManyDistributionCNAMEs :: AsError a => Getting (First ServiceError) a ServiceError
+_TooManyDistributionCNAMEs
+  = _MatchServiceError cloudFront
+      "TooManyDistributionCNAMEs"
+      . hasStatus 400
+
+-- | A web ACL ID specified is not valid. To specify a web ACL created using the latest version of AWS WAF, use the ACL ARN, for example @arn:aws:wafv2:us-east-1:123456789012:global/webacl/ExampleWebACL/473e64fd-f30b-4765-81a0-62ad96dd167a@ . To specify a web ACL created using AWS WAF Classic, use the ACL ID, for example @473e64fd-f30b-4765-81a0-62ad96dd167a@ .
+--
+--
+_InvalidWebACLId :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidWebACLId
+  = _MatchServiceError cloudFront "InvalidWebACLId" .
+      hasStatus 400
+
+-- | Processing your request would cause you to exceed the maximum number of origin groups allowed.
+--
+--
+_TooManyOriginGroupsPerDistribution :: AsError a => Getting (First ServiceError) a ServiceError
+_TooManyOriginGroupsPerDistribution
+  = _MatchServiceError cloudFront
+      "TooManyOriginGroupsPerDistribution"
+      . hasStatus 400
+
+-- | The keep alive timeout specified for the origin is not valid.
+--
+--
+_InvalidOriginKeepaliveTimeout :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidOriginKeepaliveTimeout
+  = _MatchServiceError cloudFront
+      "InvalidOriginKeepaliveTimeout"
+      . hasStatus 400
+
+-- | The specified streaming distribution does not exist.
+--
+--
+_NoSuchStreamingDistribution :: AsError a => Getting (First ServiceError) a ServiceError
+_NoSuchStreamingDistribution
+  = _MatchServiceError cloudFront
+      "NoSuchStreamingDistribution"
+      . hasStatus 404
+
+-- | The CNAME specified is already defined for CloudFront.
+--
+--
+_CNAMEAlreadyExists :: AsError a => Getting (First ServiceError) a ServiceError
+_CNAMEAlreadyExists
+  = _MatchServiceError cloudFront "CNAMEAlreadyExists"
+      . hasStatus 409
+
+-- | The Origin Access Identity specified is already in use.
+--
+--
+_CloudFrontOriginAccessIdentityInUse :: AsError a => Getting (First ServiceError) a ServiceError
+_CloudFrontOriginAccessIdentityInUse
+  = _MatchServiceError cloudFront
+      "CloudFrontOriginAccessIdentityInUse"
+      . hasStatus 409
+
+-- | The specified public key is in use. 
+--
+--
+_PublicKeyInUse :: AsError a => Getting (First ServiceError) a ServiceError
+_PublicKeyInUse
+  = _MatchServiceError cloudFront "PublicKeyInUse" .
+      hasStatus 409
+
+-- | The maximum number of query arg profiles for field-level encryption have been created.
+--
+--
+_TooManyFieldLevelEncryptionQueryArgProfiles :: AsError a => Getting (First ServiceError) a ServiceError
+_TooManyFieldLevelEncryptionQueryArgProfiles
+  = _MatchServiceError cloudFront
+      "TooManyFieldLevelEncryptionQueryArgProfiles"
+      . hasStatus 400
+
+-- | Processing your request would cause you to exceed the maximum number of streaming distributions allowed.
+--
+--
+_TooManyStreamingDistributions :: AsError a => Getting (First ServiceError) a ServiceError
+_TooManyStreamingDistributions
+  = _MatchServiceError cloudFront
+      "TooManyStreamingDistributions"
+      . hasStatus 400
+
+-- | The origin access identity is not valid or doesn't exist.
+--
+--
+_InvalidOriginAccessIdentity :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidOriginAccessIdentity
+  = _MatchServiceError cloudFront
+      "InvalidOriginAccessIdentity"
+      . hasStatus 400
+
+-- | The precondition given in one or more of the request-header fields evaluated to @false@ . 
+--
+--
+_PreconditionFailed :: AsError a => Getting (First ServiceError) a ServiceError
+_PreconditionFailed
+  = _MatchServiceError cloudFront "PreconditionFailed"
+      . hasStatus 412
+
+-- | The specified CloudFront distribution is not disabled. You must disable the distribution before you can delete it.
+--
+--
+_DistributionNotDisabled :: AsError a => Getting (First ServiceError) a ServiceError
+_DistributionNotDisabled
+  = _MatchServiceError cloudFront
+      "DistributionNotDisabled"
+      . hasStatus 409
+
+-- | Processing your request would cause you to exceed the maximum number of origin access identities allowed.
+--
+--
+_TooManyCloudFrontOriginAccessIdentities :: AsError a => Getting (First ServiceError) a ServiceError
+_TooManyCloudFrontOriginAccessIdentities
+  = _MatchServiceError cloudFront
+      "TooManyCloudFrontOriginAccessIdentities"
+      . hasStatus 400
+
+-- | The maximum number of profiles for field-level encryption have been created.
+--
+--
+_TooManyFieldLevelEncryptionProfiles :: AsError a => Getting (First ServiceError) a ServiceError
+_TooManyFieldLevelEncryptionProfiles
+  = _MatchServiceError cloudFront
+      "TooManyFieldLevelEncryptionProfiles"
+      . hasStatus 400
+
+-- | The maximum number of distributions have been associated with the specified configuration for field-level encryption.
+--
+--
+_TooManyDistributionsAssociatedToFieldLevelEncryptionConfig :: AsError a => Getting (First ServiceError) a ServiceError
+_TooManyDistributionsAssociatedToFieldLevelEncryptionConfig
+  = _MatchServiceError cloudFront
+      "TooManyDistributionsAssociatedToFieldLevelEncryptionConfig"
+      . hasStatus 400
+
+-- | You cannot create more cache behaviors for the distribution.
+--
+--
+_TooManyCacheBehaviors :: AsError a => Getting (First ServiceError) a ServiceError
+_TooManyCacheBehaviors
+  = _MatchServiceError cloudFront
+      "TooManyCacheBehaviors"
+      . hasStatus 400
+
+-- | The specified profile for field-level encryption doesn't exist.
+--
+--
+_NoSuchFieldLevelEncryptionProfile :: AsError a => Getting (First ServiceError) a ServiceError
+_NoSuchFieldLevelEncryptionProfile
+  = _MatchServiceError cloudFront
+      "NoSuchFieldLevelEncryptionProfile"
+      . hasStatus 404
+
+-- | The query string parameters specified are not valid.
+--
+--
+_InvalidQueryStringParameters :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidQueryStringParameters
+  = _MatchServiceError cloudFront
+      "InvalidQueryStringParameters"
+      . hasStatus 400
+
+-- | The location code specified is not valid.
+--
+--
+_InvalidLocationCode :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidLocationCode
+  = _MatchServiceError cloudFront "InvalidLocationCode"
+      . hasStatus 400
+
+-- | A resource that was specified is not valid.
+--
+--
+_NoSuchResource :: AsError a => Getting (First ServiceError) a ServiceError
+_NoSuchResource
+  = _MatchServiceError cloudFront "NoSuchResource" .
+      hasStatus 404
+
+-- | Your request contains more CNAMEs than are allowed per distribution.
+--
+--
+_TooManyStreamingDistributionCNAMEs :: AsError a => Getting (First ServiceError) a ServiceError
+_TooManyStreamingDistributionCNAMEs
+  = _MatchServiceError cloudFront
+      "TooManyStreamingDistributionCNAMEs"
+      . hasStatus 400
+
+-- | The specified profile for field-level encryption already exists.
+--
+--
+_FieldLevelEncryptionProfileAlreadyExists :: AsError a => Getting (First ServiceError) a ServiceError
+_FieldLevelEncryptionProfileAlreadyExists
+  = _MatchServiceError cloudFront
+      "FieldLevelEncryptionProfileAlreadyExists"
+      . hasStatus 409
+
+-- | Processing your request would cause you to exceed the maximum number of distributions allowed.
+--
+--
+_TooManyDistributions :: AsError a => Getting (First ServiceError) a ServiceError
+_TooManyDistributions
+  = _MatchServiceError cloudFront
+      "TooManyDistributions"
+      . hasStatus 400
+
+-- | The maximum size of a profile for field-level encryption was exceeded.
+--
+--
+_FieldLevelEncryptionProfileSizeExceeded :: AsError a => Getting (First ServiceError) a ServiceError
+_FieldLevelEncryptionProfileSizeExceeded
+  = _MatchServiceError cloudFront
+      "FieldLevelEncryptionProfileSizeExceeded"
+      . hasStatus 400
+
+-- | The specified CloudFront distribution is not disabled. You must disable the distribution before you can delete it.
+--
+--
+_StreamingDistributionNotDisabled :: AsError a => Getting (First ServiceError) a ServiceError
+_StreamingDistributionNotDisabled
+  = _MatchServiceError cloudFront
+      "StreamingDistributionNotDisabled"
+      . hasStatus 409
+
 -- | The minimum protocol version specified is not valid.
 --
 --
@@ -1551,38 +1290,255 @@ _InvalidMinimumProtocolVersion
       "InvalidMinimumProtocolVersion"
       . hasStatus 400
 
--- | Access denied.
+-- | No origin exists with the specified @Origin Id@ . 
 --
 --
-_AccessDenied :: AsError a => Getting (First ServiceError) a ServiceError
-_AccessDenied
-  = _MatchServiceError cloudFront "AccessDenied" .
-      hasStatus 403
+_NoSuchOrigin :: AsError a => Getting (First ServiceError) a ServiceError
+_NoSuchOrigin
+  = _MatchServiceError cloudFront "NoSuchOrigin" .
+      hasStatus 404
 
--- | A viewer certificate specified is not valid.
+-- | The specified public key already exists.
 --
 --
-_InvalidViewerCertificate :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidViewerCertificate
+_PublicKeyAlreadyExists :: AsError a => Getting (First ServiceError) a ServiceError
+_PublicKeyAlreadyExists
   = _MatchServiceError cloudFront
-      "InvalidViewerCertificate"
+      "PublicKeyAlreadyExists"
+      . hasStatus 409
+
+-- | If the @CallerReference@ is a value you already sent in a previous request to create an identity but the content of the @CloudFrontOriginAccessIdentityConfig@ is different from the original request, CloudFront returns a @CloudFrontOriginAccessIdentityAlreadyExists@ error. 
+--
+--
+_CloudFrontOriginAccessIdentityAlreadyExists :: AsError a => Getting (First ServiceError) a ServiceError
+_CloudFrontOriginAccessIdentityAlreadyExists
+  = _MatchServiceError cloudFront
+      "CloudFrontOriginAccessIdentityAlreadyExists"
+      . hasStatus 409
+
+-- | The relative path is too big, is not URL-encoded, or does not begin with a slash (/).
+--
+--
+_InvalidRelativePath :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidRelativePath
+  = _MatchServiceError cloudFront "InvalidRelativePath"
       . hasStatus 400
 
--- | The specified distribution does not exist.
+-- | Your request contains more Lambda function associations than are allowed per distribution.
 --
 --
-_NoSuchDistribution :: AsError a => Getting (First ServiceError) a ServiceError
-_NoSuchDistribution
-  = _MatchServiceError cloudFront "NoSuchDistribution"
+_TooManyLambdaFunctionAssociations :: AsError a => Getting (First ServiceError) a ServiceError
+_TooManyLambdaFunctionAssociations
+  = _MatchServiceError cloudFront
+      "TooManyLambdaFunctionAssociations"
+      . hasStatus 400
+
+-- | The specified invalidation does not exist.
+--
+--
+_NoSuchInvalidation :: AsError a => Getting (First ServiceError) a ServiceError
+_NoSuchInvalidation
+  = _MatchServiceError cloudFront "NoSuchInvalidation"
       . hasStatus 404
 
--- | The maximum size of a profile for field-level encryption was exceeded.
+-- | The specified Lambda function association is invalid.
 --
 --
-_FieldLevelEncryptionProfileSizeExceeded :: AsError a => Getting (First ServiceError) a ServiceError
-_FieldLevelEncryptionProfileSizeExceeded
+_InvalidLambdaFunctionAssociation :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidLambdaFunctionAssociation
   = _MatchServiceError cloudFront
-      "FieldLevelEncryptionProfileSizeExceeded"
+      "InvalidLambdaFunctionAssociation"
+      . hasStatus 400
+
+-- | You can't change the value of a public key.
+--
+--
+_CannotChangeImmutablePublicKeyFields :: AsError a => Getting (First ServiceError) a ServiceError
+_CannotChangeImmutablePublicKeyFields
+  = _MatchServiceError cloudFront
+      "CannotChangeImmutablePublicKeyFields"
+      . hasStatus 400
+
+-- | Your request contains too many query string parameters.
+--
+--
+_TooManyQueryStringParameters :: AsError a => Getting (First ServiceError) a ServiceError
+_TooManyQueryStringParameters
+  = _MatchServiceError cloudFront
+      "TooManyQueryStringParameters"
+      . hasStatus 400
+
+-- | One or more of your trusted signers don't exist.
+--
+--
+_TrustedSignerDoesNotExist :: AsError a => Getting (First ServiceError) a ServiceError
+_TrustedSignerDoesNotExist
+  = _MatchServiceError cloudFront
+      "TrustedSignerDoesNotExist"
+      . hasStatus 400
+
+-- | You cannot specify SSLv3 as the minimum protocol version if you only want to support only clients that support Server Name Indication (SNI).
+--
+--
+_InvalidProtocolSettings :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidProtocolSettings
+  = _MatchServiceError cloudFront
+      "InvalidProtocolSettings"
+      . hasStatus 400
+
+-- | The value of @Quantity@ and the size of @Items@ don't match.
+--
+--
+_InconsistentQuantities :: AsError a => Getting (First ServiceError) a ServiceError
+_InconsistentQuantities
+  = _MatchServiceError cloudFront
+      "InconsistentQuantities"
+      . hasStatus 400
+
+-- | The specified origin access identity does not exist.
+--
+--
+_NoSuchCloudFrontOriginAccessIdentity :: AsError a => Getting (First ServiceError) a ServiceError
+_NoSuchCloudFrontOriginAccessIdentity
+  = _MatchServiceError cloudFront
+      "NoSuchCloudFrontOriginAccessIdentity"
+      . hasStatus 404
+
+-- | The specified public key doesn't exist.
+--
+--
+_NoSuchPublicKey :: AsError a => Getting (First ServiceError) a ServiceError
+_NoSuchPublicKey
+  = _MatchServiceError cloudFront "NoSuchPublicKey" .
+      hasStatus 404
+
+-- | The headers specified are not valid for an Amazon S3 origin.
+--
+--
+_InvalidHeadersForS3Origin :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidHeadersForS3Origin
+  = _MatchServiceError cloudFront
+      "InvalidHeadersForS3Origin"
+      . hasStatus 400
+
+-- | The maximum number of public keys for field-level encryption have been created. To create a new public key, delete one of the existing keys.
+--
+--
+_TooManyPublicKeys :: AsError a => Getting (First ServiceError) a ServiceError
+_TooManyPublicKeys
+  = _MatchServiceError cloudFront "TooManyPublicKeys" .
+      hasStatus 400
+
+-- | You have exceeded the maximum number of allowable InProgress invalidation batch requests, or invalidation objects.
+--
+--
+_TooManyInvalidationsInProgress :: AsError a => Getting (First ServiceError) a ServiceError
+_TooManyInvalidationsInProgress
+  = _MatchServiceError cloudFront
+      "TooManyInvalidationsInProgress"
+      . hasStatus 400
+
+-- | The @If-Match@ version is missing or not valid for the distribution.
+--
+--
+_InvalidIfMatchVersion :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidIfMatchVersion
+  = _MatchServiceError cloudFront
+      "InvalidIfMatchVersion"
+      . hasStatus 400
+
+-- | A response code is not valid.
+--
+--
+_InvalidResponseCode :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidResponseCode
+  = _MatchServiceError cloudFront "InvalidResponseCode"
+      . hasStatus 400
+
+-- | Origin and @CallerReference@ cannot be updated. 
+--
+--
+_IllegalUpdate :: AsError a => Getting (First ServiceError) a ServiceError
+_IllegalUpdate
+  = _MatchServiceError cloudFront "IllegalUpdate" .
+      hasStatus 400
+
+-- | The specified configuration for field-level encryption already exists.
+--
+--
+_FieldLevelEncryptionConfigAlreadyExists :: AsError a => Getting (First ServiceError) a ServiceError
+_FieldLevelEncryptionConfigAlreadyExists
+  = _MatchServiceError cloudFront
+      "FieldLevelEncryptionConfigAlreadyExists"
+      . hasStatus 409
+
+-- | The specified profile for field-level encryption is in use.
+--
+--
+_FieldLevelEncryptionProfileInUse :: AsError a => Getting (First ServiceError) a ServiceError
+_FieldLevelEncryptionProfileInUse
+  = _MatchServiceError cloudFront
+      "FieldLevelEncryptionProfileInUse"
+      . hasStatus 409
+
+-- | Your request contains too many origin custom headers.
+--
+--
+_TooManyOriginCustomHeaders :: AsError a => Getting (First ServiceError) a ServiceError
+_TooManyOriginCustomHeaders
+  = _MatchServiceError cloudFront
+      "TooManyOriginCustomHeaders"
+      . hasStatus 400
+
+-- | The caller reference you attempted to create the distribution with is associated with another distribution.
+--
+--
+_DistributionAlreadyExists :: AsError a => Getting (First ServiceError) a ServiceError
+_DistributionAlreadyExists
+  = _MatchServiceError cloudFront
+      "DistributionAlreadyExists"
+      . hasStatus 409
+
+-- | An invalid error code was specified.
+--
+--
+_InvalidErrorCode :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidErrorCode
+  = _MatchServiceError cloudFront "InvalidErrorCode" .
+      hasStatus 400
+
+-- | The tagging specified is not valid.
+--
+--
+_InvalidTagging :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidTagging
+  = _MatchServiceError cloudFront "InvalidTagging" .
+      hasStatus 400
+
+-- | The read timeout specified for the origin is not valid.
+--
+--
+_InvalidOriginReadTimeout :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidOriginReadTimeout
+  = _MatchServiceError cloudFront
+      "InvalidOriginReadTimeout"
+      . hasStatus 400
+
+-- | This operation requires a body. Ensure that the body is present and the @Content-Type@ header is set.
+--
+--
+_MissingBody :: AsError a => Getting (First ServiceError) a ServiceError
+_MissingBody
+  = _MatchServiceError cloudFront "MissingBody" .
+      hasStatus 400
+
+-- | The specified configuration for field-level encryption can't be associated with the specified cache behavior.
+--
+--
+_IllegalFieldLevelEncryptionConfigAssociationWithCacheBehavior :: AsError a => Getting (First ServiceError) a ServiceError
+_IllegalFieldLevelEncryptionConfigAssociationWithCacheBehavior
+  = _MatchServiceError cloudFront
+      "IllegalFieldLevelEncryptionConfigAssociationWithCacheBehavior"
       . hasStatus 400
 
 -- | The default root object file name is too big or contains an invalid character.
@@ -1603,6 +1559,14 @@ _TooManyDistributionsWithLambdaAssociations
       "TooManyDistributionsWithLambdaAssociations"
       . hasStatus 400
 
+-- | You cannot create anymore custom SSL/TLS certificates.
+--
+--
+_TooManyCertificates :: AsError a => Getting (First ServiceError) a ServiceError
+_TooManyCertificates
+  = _MatchServiceError cloudFront "TooManyCertificates"
+      . hasStatus 400
+
 -- | The specified geo restriction parameter is not valid.
 --
 --
@@ -1612,10 +1576,46 @@ _InvalidGeoRestrictionParameter
       "InvalidGeoRestrictionParameter"
       . hasStatus 400
 
--- | The location code specified is not valid.
+-- | The maximum number of encryption entities for field-level encryption have been created.
 --
 --
-_InvalidLocationCode :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidLocationCode
-  = _MatchServiceError cloudFront "InvalidLocationCode"
+_TooManyFieldLevelEncryptionEncryptionEntities :: AsError a => Getting (First ServiceError) a ServiceError
+_TooManyFieldLevelEncryptionEncryptionEntities
+  = _MatchServiceError cloudFront
+      "TooManyFieldLevelEncryptionEncryptionEntities"
+      . hasStatus 400
+
+-- | This operation requires the HTTPS protocol. Ensure that you specify the HTTPS protocol in your request, or omit the @RequiredProtocols@ element from your distribution configuration.
+--
+--
+_InvalidRequiredProtocol :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidRequiredProtocol
+  = _MatchServiceError cloudFront
+      "InvalidRequiredProtocol"
+      . hasStatus 400
+
+-- | The specified distribution does not exist.
+--
+--
+_NoSuchDistribution :: AsError a => Getting (First ServiceError) a ServiceError
+_NoSuchDistribution
+  = _MatchServiceError cloudFront "NoSuchDistribution"
+      . hasStatus 404
+
+-- | Your request contains too many headers in forwarded values.
+--
+--
+_TooManyHeadersInForwardedValues :: AsError a => Getting (First ServiceError) a ServiceError
+_TooManyHeadersInForwardedValues
+  = _MatchServiceError cloudFront
+      "TooManyHeadersInForwardedValues"
+      . hasStatus 400
+
+-- | A viewer certificate specified is not valid.
+--
+--
+_InvalidViewerCertificate :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidViewerCertificate
+  = _MatchServiceError cloudFront
+      "InvalidViewerCertificate"
       . hasStatus 400

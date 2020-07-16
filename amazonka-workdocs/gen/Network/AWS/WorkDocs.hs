@@ -32,17 +32,32 @@ module Network.AWS.WorkDocs
     -- * Errors
     -- $errors
 
-    -- ** CustomMetadataLimitExceededException
-    , _CustomMetadataLimitExceededException
+    -- ** FailedDependencyException
+    , _FailedDependencyException
 
-    -- ** EntityAlreadyExistsException
-    , _EntityAlreadyExistsException
+    -- ** TooManySubscriptionsException
+    , _TooManySubscriptionsException
 
-    -- ** ResourceAlreadyCheckedOutException
-    , _ResourceAlreadyCheckedOutException
+    -- ** UnauthorizedResourceAccessException
+    , _UnauthorizedResourceAccessException
 
-    -- ** ProhibitedStateException
-    , _ProhibitedStateException
+    -- ** DocumentLockedForCommentsException
+    , _DocumentLockedForCommentsException
+
+    -- ** DraftUploadOutOfSyncException
+    , _DraftUploadOutOfSyncException
+
+    -- ** EntityNotExistsException
+    , _EntityNotExistsException
+
+    -- ** InvalidOperationException
+    , _InvalidOperationException
+
+    -- ** ServiceUnavailableException
+    , _ServiceUnavailableException
+
+    -- ** StorageLimitExceededException
+    , _StorageLimitExceededException
 
     -- ** TooManyLabelsException
     , _TooManyLabelsException
@@ -50,53 +65,38 @@ module Network.AWS.WorkDocs
     -- ** InvalidArgumentException
     , _InvalidArgumentException
 
-    -- ** UnauthorizedResourceAccessException
-    , _UnauthorizedResourceAccessException
+    -- ** ProhibitedStateException
+    , _ProhibitedStateException
 
-    -- ** TooManySubscriptionsException
-    , _TooManySubscriptionsException
+    -- ** EntityAlreadyExistsException
+    , _EntityAlreadyExistsException
 
-    -- ** FailedDependencyException
-    , _FailedDependencyException
-
-    -- ** DocumentLockedForCommentsException
-    , _DocumentLockedForCommentsException
-
-    -- ** EntityNotExistsException
-    , _EntityNotExistsException
-
-    -- ** DeactivatingLastSystemUserException
-    , _DeactivatingLastSystemUserException
-
-    -- ** IllegalUserStateException
-    , _IllegalUserStateException
-
-    -- ** StorageLimitWillExceedException
-    , _StorageLimitWillExceedException
+    -- ** ResourceAlreadyCheckedOutException
+    , _ResourceAlreadyCheckedOutException
 
     -- ** ConcurrentModificationException
     , _ConcurrentModificationException
 
-    -- ** StorageLimitExceededException
-    , _StorageLimitExceededException
+    -- ** StorageLimitWillExceedException
+    , _StorageLimitWillExceedException
 
-    -- ** ServiceUnavailableException
-    , _ServiceUnavailableException
+    -- ** CustomMetadataLimitExceededException
+    , _CustomMetadataLimitExceededException
 
-    -- ** InvalidOperationException
-    , _InvalidOperationException
+    -- ** IllegalUserStateException
+    , _IllegalUserStateException
 
-    -- ** UnauthorizedOperationException
-    , _UnauthorizedOperationException
-
-    -- ** DraftUploadOutOfSyncException
-    , _DraftUploadOutOfSyncException
+    -- ** DeactivatingLastSystemUserException
+    , _DeactivatingLastSystemUserException
 
     -- ** LimitExceededException
     , _LimitExceededException
 
     -- ** InvalidPasswordException
     , _InvalidPasswordException
+
+    -- ** UnauthorizedOperationException
+    , _UnauthorizedOperationException
 
     -- * Waiters
     -- $waiters

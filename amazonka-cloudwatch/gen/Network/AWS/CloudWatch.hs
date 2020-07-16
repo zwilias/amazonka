@@ -26,44 +26,44 @@ module Network.AWS.CloudWatch
     -- * Errors
     -- $errors
 
-    -- ** LimitExceededFault
-    , _LimitExceededFault
-
-    -- ** DashboardNotFoundError
-    , _DashboardNotFoundError
-
-    -- ** InvalidNextToken
-    , _InvalidNextToken
-
-    -- ** InternalServiceFault
-    , _InternalServiceFault
-
-    -- ** DashboardInvalidInputError
-    , _DashboardInvalidInputError
+    -- ** InvalidFormatFault
+    , _InvalidFormatFault
 
     -- ** InvalidParameterValueException
     , _InvalidParameterValueException
 
-    -- ** ConcurrentModificationException
-    , _ConcurrentModificationException
-
-    -- ** InvalidFormatFault
-    , _InvalidFormatFault
+    -- ** ResourceNotFoundException
+    , _ResourceNotFoundException
 
     -- ** MissingRequiredParameterException
     , _MissingRequiredParameterException
 
-    -- ** ResourceNotFoundException
-    , _ResourceNotFoundException
+    -- ** DashboardInvalidInputError
+    , _DashboardInvalidInputError
 
-    -- ** InvalidParameterCombinationException
-    , _InvalidParameterCombinationException
+    -- ** InternalServiceFault
+    , _InternalServiceFault
+
+    -- ** InvalidNextToken
+    , _InvalidNextToken
+
+    -- ** ConcurrentModificationException
+    , _ConcurrentModificationException
+
+    -- ** DashboardNotFoundError
+    , _DashboardNotFoundError
+
+    -- ** LimitExceededFault
+    , _LimitExceededFault
 
     -- ** LimitExceededException
     , _LimitExceededException
 
     -- ** ResourceNotFound
     , _ResourceNotFound
+
+    -- ** InvalidParameterCombinationException
+    , _InvalidParameterCombinationException
 
     -- * Waiters
     -- $waiters

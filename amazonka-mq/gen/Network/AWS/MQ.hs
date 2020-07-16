@@ -20,23 +20,23 @@ module Network.AWS.MQ
     -- * Errors
     -- $errors
 
-    -- ** ConflictException
-    , _ConflictException
+    -- ** InternalServerErrorException
+    , _InternalServerErrorException
 
     -- ** ForbiddenException
     , _ForbiddenException
 
-    -- ** NotFoundException
-    , _NotFoundException
-
-    -- ** InternalServerErrorException
-    , _InternalServerErrorException
+    -- ** BadRequestException
+    , _BadRequestException
 
     -- ** UnauthorizedException
     , _UnauthorizedException
 
-    -- ** BadRequestException
-    , _BadRequestException
+    -- ** NotFoundException
+    , _NotFoundException
+
+    -- ** ConflictException
+    , _ConflictException
 
     -- * Waiters
     -- $waiters

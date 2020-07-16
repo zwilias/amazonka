@@ -16,10 +16,10 @@ module Network.AWS.KinesisVideoArchivedMedia.Types
       kinesisVideoArchivedMedia
 
     -- * Errors
+    , _ResourceNotFoundException
+    , _ClientLimitExceededException
     , _InvalidArgumentException
     , _NotAuthorizedException
-    , _ClientLimitExceededException
-    , _ResourceNotFoundException
 
     -- * FragmentSelectorType
     , FragmentSelectorType (..)
@@ -90,6 +90,24 @@ kinesisVideoArchivedMedia
           | has (hasStatus 509) e = Just "limit_exceeded"
           | otherwise = Nothing
 
+-- | Kinesis Video Streams can't find the stream that you specified.
+--
+--
+_ResourceNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
+_ResourceNotFoundException
+  = _MatchServiceError kinesisVideoArchivedMedia
+      "ResourceNotFoundException"
+      . hasStatus 404
+
+-- | Kinesis Video Streams has throttled the request because you have exceeded the limit of allowed client calls. Try making the call later.
+--
+--
+_ClientLimitExceededException :: AsError a => Getting (First ServiceError) a ServiceError
+_ClientLimitExceededException
+  = _MatchServiceError kinesisVideoArchivedMedia
+      "ClientLimitExceededException"
+      . hasStatus 400
+
 -- | A specified parameter exceeds its restrictions, is not supported, or can't be used.
 --
 --
@@ -107,21 +125,3 @@ _NotAuthorizedException
   = _MatchServiceError kinesisVideoArchivedMedia
       "NotAuthorizedException"
       . hasStatus 401
-
--- | Kinesis Video Streams has throttled the request because you have exceeded the limit of allowed client calls. Try making the call later.
---
---
-_ClientLimitExceededException :: AsError a => Getting (First ServiceError) a ServiceError
-_ClientLimitExceededException
-  = _MatchServiceError kinesisVideoArchivedMedia
-      "ClientLimitExceededException"
-      . hasStatus 400
-
--- | Kinesis Video Streams can't find the stream that you specified.
---
---
-_ResourceNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
-_ResourceNotFoundException
-  = _MatchServiceError kinesisVideoArchivedMedia
-      "ResourceNotFoundException"
-      . hasStatus 404

@@ -35,8 +35,8 @@ module Network.AWS.StorageGateway.DeleteSnapshotSchedule
     , deleteSnapshotScheduleResponse
     , DeleteSnapshotScheduleResponse
     -- * Response Lenses
-    , dsssrsVolumeARN
-    , dsssrsResponseStatus
+    , dltsnpshtschdlrsVolumeARN
+    , dltsnpshtschdlrsResponseStatus
     ) where
 
 import Network.AWS.Lens
@@ -103,11 +103,11 @@ instance ToQuery DeleteSnapshotSchedule where
         toQuery = const mempty
 
 -- | /See:/ 'deleteSnapshotScheduleResponse' smart constructor.
-data DeleteSnapshotScheduleResponse = DeleteSnapshotScheduleResponse'{_dsssrsVolumeARN
+data DeleteSnapshotScheduleResponse = DeleteSnapshotScheduleResponse'{_dltsnpshtschdlrsVolumeARN
                                                                       ::
                                                                       !(Maybe
                                                                           Text),
-                                                                      _dsssrsResponseStatus
+                                                                      _dltsnpshtschdlrsResponseStatus
                                                                       :: !Int}
                                         deriving (Eq, Read, Show, Data,
                                                   Typeable, Generic)
@@ -116,23 +116,24 @@ data DeleteSnapshotScheduleResponse = DeleteSnapshotScheduleResponse'{_dsssrsVol
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dsssrsVolumeARN' - Undocumented member.
+-- * 'dltsnpshtschdlrsVolumeARN' - Undocumented member.
 --
--- * 'dsssrsResponseStatus' - -- | The response status code.
+-- * 'dltsnpshtschdlrsResponseStatus' - -- | The response status code.
 deleteSnapshotScheduleResponse
-    :: Int -- ^ 'dsssrsResponseStatus'
+    :: Int -- ^ 'dltsnpshtschdlrsResponseStatus'
     -> DeleteSnapshotScheduleResponse
 deleteSnapshotScheduleResponse pResponseStatus_
-  = DeleteSnapshotScheduleResponse'{_dsssrsVolumeARN =
-                                      Nothing,
-                                    _dsssrsResponseStatus = pResponseStatus_}
+  = DeleteSnapshotScheduleResponse'{_dltsnpshtschdlrsVolumeARN
+                                      = Nothing,
+                                    _dltsnpshtschdlrsResponseStatus =
+                                      pResponseStatus_}
 
 -- | Undocumented member.
-dsssrsVolumeARN :: Lens' DeleteSnapshotScheduleResponse (Maybe Text)
-dsssrsVolumeARN = lens _dsssrsVolumeARN (\ s a -> s{_dsssrsVolumeARN = a})
+dltsnpshtschdlrsVolumeARN :: Lens' DeleteSnapshotScheduleResponse (Maybe Text)
+dltsnpshtschdlrsVolumeARN = lens _dltsnpshtschdlrsVolumeARN (\ s a -> s{_dltsnpshtschdlrsVolumeARN = a})
 
 -- | -- | The response status code.
-dsssrsResponseStatus :: Lens' DeleteSnapshotScheduleResponse Int
-dsssrsResponseStatus = lens _dsssrsResponseStatus (\ s a -> s{_dsssrsResponseStatus = a})
+dltsnpshtschdlrsResponseStatus :: Lens' DeleteSnapshotScheduleResponse Int
+dltsnpshtschdlrsResponseStatus = lens _dltsnpshtschdlrsResponseStatus (\ s a -> s{_dltsnpshtschdlrsResponseStatus = a})
 
 instance NFData DeleteSnapshotScheduleResponse where

@@ -23,32 +23,32 @@ module Network.AWS.Shield
     -- * Errors
     -- $errors
 
-    -- ** InvalidResourceException
-    , _InvalidResourceException
+    -- ** LimitsExceededException
+    , _LimitsExceededException
 
     -- ** InvalidParameterException
     , _InvalidParameterException
 
-    -- ** LimitsExceededException
-    , _LimitsExceededException
-
-    -- ** InternalErrorException
-    , _InternalErrorException
-
-    -- ** ResourceAlreadyExistsException
-    , _ResourceAlreadyExistsException
-
-    -- ** OptimisticLockException
-    , _OptimisticLockException
-
-    -- ** InvalidOperationException
-    , _InvalidOperationException
+    -- ** ResourceNotFoundException
+    , _ResourceNotFoundException
 
     -- ** LockedSubscriptionException
     , _LockedSubscriptionException
 
-    -- ** ResourceNotFoundException
-    , _ResourceNotFoundException
+    -- ** ResourceAlreadyExistsException
+    , _ResourceAlreadyExistsException
+
+    -- ** InvalidOperationException
+    , _InvalidOperationException
+
+    -- ** InternalErrorException
+    , _InternalErrorException
+
+    -- ** OptimisticLockException
+    , _OptimisticLockException
+
+    -- ** InvalidResourceException
+    , _InvalidResourceException
 
     -- * Waiters
     -- $waiters

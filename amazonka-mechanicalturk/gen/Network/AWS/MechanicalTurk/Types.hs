@@ -16,8 +16,8 @@ module Network.AWS.MechanicalTurk.Types
       mechanicalTurk
 
     -- * Errors
-    , _ServiceFault
     , _RequestError
+    , _ServiceFault
 
     -- * AssignmentStatus
     , AssignmentStatus (..)
@@ -305,16 +305,16 @@ mechanicalTurk
           | has (hasStatus 509) e = Just "limit_exceeded"
           | otherwise = Nothing
 
--- | Amazon Mechanical Turk is temporarily unable to process your request. Try your call again.
---
---
-_ServiceFault :: AsError a => Getting (First ServiceError) a ServiceError
-_ServiceFault
-  = _MatchServiceError mechanicalTurk "ServiceFault"
-
 -- | Your request is invalid.
 --
 --
 _RequestError :: AsError a => Getting (First ServiceError) a ServiceError
 _RequestError
   = _MatchServiceError mechanicalTurk "RequestError"
+
+-- | Amazon Mechanical Turk is temporarily unable to process your request. Try your call again.
+--
+--
+_ServiceFault :: AsError a => Getting (First ServiceError) a ServiceError
+_ServiceFault
+  = _MatchServiceError mechanicalTurk "ServiceFault"

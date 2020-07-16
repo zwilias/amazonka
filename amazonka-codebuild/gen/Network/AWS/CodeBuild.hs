@@ -95,20 +95,20 @@ module Network.AWS.CodeBuild
     -- * Errors
     -- $errors
 
-    -- ** ResourceAlreadyExistsException
-    , _ResourceAlreadyExistsException
-
     -- ** OAuthProviderException
     , _OAuthProviderException
+
+    -- ** ResourceNotFoundException
+    , _ResourceNotFoundException
+
+    -- ** ResourceAlreadyExistsException
+    , _ResourceAlreadyExistsException
 
     -- ** AccountLimitExceededException
     , _AccountLimitExceededException
 
     -- ** InvalidInputException
     , _InvalidInputException
-
-    -- ** ResourceNotFoundException
-    , _ResourceNotFoundException
 
     -- * Waiters
     -- $waiters

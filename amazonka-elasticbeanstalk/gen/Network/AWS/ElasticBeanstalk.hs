@@ -29,62 +29,62 @@ module Network.AWS.ElasticBeanstalk
     -- * Errors
     -- $errors
 
-    -- ** InvalidRequestException
-    , _InvalidRequestException
-
-    -- ** TooManyBucketsException
-    , _TooManyBucketsException
-
-    -- ** S3SubscriptionRequiredException
-    , _S3SubscriptionRequiredException
-
-    -- ** OperationInProgressException
-    , _OperationInProgressException
-
     -- ** PlatformVersionStillReferencedException
     , _PlatformVersionStillReferencedException
 
     -- ** TooManyApplicationVersionsException
     , _TooManyApplicationVersionsException
 
-    -- ** TooManyConfigurationTemplatesException
-    , _TooManyConfigurationTemplatesException
+    -- ** CodeBuildNotInServiceRegionException
+    , _CodeBuildNotInServiceRegionException
 
-    -- ** ResourceTypeNotSupportedException
-    , _ResourceTypeNotSupportedException
+    -- ** S3SubscriptionRequiredException
+    , _S3SubscriptionRequiredException
 
-    -- ** InsufficientPrivilegesException
-    , _InsufficientPrivilegesException
-
-    -- ** ElasticBeanstalkServiceException
-    , _ElasticBeanstalkServiceException
-
-    -- ** TooManyTagsException
-    , _TooManyTagsException
-
-    -- ** TooManyApplicationsException
-    , _TooManyApplicationsException
-
-    -- ** TooManyPlatformsException
-    , _TooManyPlatformsException
+    -- ** TooManyBucketsException
+    , _TooManyBucketsException
 
     -- ** ManagedActionInvalidStateException
     , _ManagedActionInvalidStateException
 
-    -- ** SourceBundleDeletionException
-    , _SourceBundleDeletionException
+    -- ** InvalidRequestException
+    , _InvalidRequestException
+
+    -- ** TooManyApplicationsException
+    , _TooManyApplicationsException
+
+    -- ** TooManyTagsException
+    , _TooManyTagsException
+
+    -- ** ElasticBeanstalkServiceException
+    , _ElasticBeanstalkServiceException
+
+    -- ** ResourceNotFoundException
+    , _ResourceNotFoundException
+
+    -- ** TooManyConfigurationTemplatesException
+    , _TooManyConfigurationTemplatesException
+
+    -- ** OperationInProgressException
+    , _OperationInProgressException
 
     -- ** S3LocationNotInServiceRegionException
     , _S3LocationNotInServiceRegionException
 
-    -- ** CodeBuildNotInServiceRegionException
-    , _CodeBuildNotInServiceRegionException
+    -- ** SourceBundleDeletionException
+    , _SourceBundleDeletionException
+
+    -- ** TooManyPlatformsException
+    , _TooManyPlatformsException
 
     -- ** TooManyEnvironmentsException
     , _TooManyEnvironmentsException
 
-    -- ** ResourceNotFoundException
-    , _ResourceNotFoundException
+    -- ** InsufficientPrivilegesException
+    , _InsufficientPrivilegesException
+
+    -- ** ResourceTypeNotSupportedException
+    , _ResourceTypeNotSupportedException
 
     -- * Waiters
     -- $waiters

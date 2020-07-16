@@ -16,12 +16,12 @@ module Network.AWS.KinesisVideoMedia.Types
       kinesisVideoMedia
 
     -- * Errors
-    , _ConnectionLimitExceededException
-    , _InvalidArgumentException
-    , _NotAuthorizedException
-    , _ClientLimitExceededException
     , _InvalidEndpointException
     , _ResourceNotFoundException
+    , _ClientLimitExceededException
+    , _InvalidArgumentException
+    , _NotAuthorizedException
+    , _ConnectionLimitExceededException
 
     -- * StartSelectorType
     , StartSelectorType (..)
@@ -75,13 +75,31 @@ kinesisVideoMedia
           | has (hasStatus 509) e = Just "limit_exceeded"
           | otherwise = Nothing
 
--- | Kinesis Video Streams has throttled the request because you have exceeded the limit of allowed client connections.
+-- | Status Code: 400, Caller used wrong endpoint to write data to a stream. On receiving such an exception, the user must call @GetDataEndpoint@ with @AccessMode@ set to "READ" and use the endpoint Kinesis Video returns in the next @GetMedia@ call. 
 --
 --
-_ConnectionLimitExceededException :: AsError a => Getting (First ServiceError) a ServiceError
-_ConnectionLimitExceededException
+_InvalidEndpointException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidEndpointException
   = _MatchServiceError kinesisVideoMedia
-      "ConnectionLimitExceededException"
+      "InvalidEndpointException"
+      . hasStatus 400
+
+-- | Status Code: 404, The stream with the given name does not exist.
+--
+--
+_ResourceNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
+_ResourceNotFoundException
+  = _MatchServiceError kinesisVideoMedia
+      "ResourceNotFoundException"
+      . hasStatus 404
+
+-- | Kinesis Video Streams has throttled the request because you have exceeded the limit of allowed client calls. Try making the call later.
+--
+--
+_ClientLimitExceededException :: AsError a => Getting (First ServiceError) a ServiceError
+_ClientLimitExceededException
+  = _MatchServiceError kinesisVideoMedia
+      "ClientLimitExceededException"
       . hasStatus 400
 
 -- | The value for this input parameter is invalid.
@@ -102,29 +120,11 @@ _NotAuthorizedException
       "NotAuthorizedException"
       . hasStatus 401
 
--- | Kinesis Video Streams has throttled the request because you have exceeded the limit of allowed client calls. Try making the call later.
+-- | Kinesis Video Streams has throttled the request because you have exceeded the limit of allowed client connections.
 --
 --
-_ClientLimitExceededException :: AsError a => Getting (First ServiceError) a ServiceError
-_ClientLimitExceededException
+_ConnectionLimitExceededException :: AsError a => Getting (First ServiceError) a ServiceError
+_ConnectionLimitExceededException
   = _MatchServiceError kinesisVideoMedia
-      "ClientLimitExceededException"
+      "ConnectionLimitExceededException"
       . hasStatus 400
-
--- | Status Code: 400, Caller used wrong endpoint to write data to a stream. On receiving such an exception, the user must call @GetDataEndpoint@ with @AccessMode@ set to "READ" and use the endpoint Kinesis Video returns in the next @GetMedia@ call. 
---
---
-_InvalidEndpointException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidEndpointException
-  = _MatchServiceError kinesisVideoMedia
-      "InvalidEndpointException"
-      . hasStatus 400
-
--- | Status Code: 404, The stream with the given name does not exist.
---
---
-_ResourceNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
-_ResourceNotFoundException
-  = _MatchServiceError kinesisVideoMedia
-      "ResourceNotFoundException"
-      . hasStatus 404

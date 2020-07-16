@@ -29,59 +29,44 @@ module Network.AWS.SSM
     -- * Errors
     -- $errors
 
-    -- ** AutomationDefinitionVersionNotFoundException
-    , _AutomationDefinitionVersionNotFoundException
+    -- ** InvalidResourceType
+    , _InvalidResourceType
 
-    -- ** InvalidDocumentVersion
-    , _InvalidDocumentVersion
+    -- ** InvalidDocumentOperation
+    , _InvalidDocumentOperation
 
-    -- ** HierarchyTypeMismatchException
-    , _HierarchyTypeMismatchException
+    -- ** InvalidKeyId
+    , _InvalidKeyId
 
-    -- ** InvalidSchedule
-    , _InvalidSchedule
+    -- ** DuplicateInstanceId
+    , _DuplicateInstanceId
 
-    -- ** UnsupportedParameterType
-    , _UnsupportedParameterType
+    -- ** ResourceDataSyncInvalidConfigurationException
+    , _ResourceDataSyncInvalidConfigurationException
 
-    -- ** InvalidAutomationStatusUpdateException
-    , _InvalidAutomationStatusUpdateException
+    -- ** InvalidResultAttributeException
+    , _InvalidResultAttributeException
 
-    -- ** InvalidPluginName
-    , _InvalidPluginName
+    -- ** InvocationDoesNotExist
+    , _InvocationDoesNotExist
 
-    -- ** FeatureNotAvailableException
-    , _FeatureNotAvailableException
+    -- ** DocumentVersionLimitExceeded
+    , _DocumentVersionLimitExceeded
 
-    -- ** InvalidAutomationSignalException
-    , _InvalidAutomationSignalException
+    -- ** ParameterVersionNotFound
+    , _ParameterVersionNotFound
 
-    -- ** ResourceDataSyncCountExceededException
-    , _ResourceDataSyncCountExceededException
+    -- ** InvalidActivationId
+    , _InvalidActivationId
 
-    -- ** UnsupportedPlatformType
-    , _UnsupportedPlatformType
+    -- ** InvalidOutputFolder
+    , _InvalidOutputFolder
 
-    -- ** InvalidFilterValue
-    , _InvalidFilterValue
+    -- ** HierarchyLevelLimitExceededException
+    , _HierarchyLevelLimitExceededException
 
-    -- ** InvalidItemContentException
-    , _InvalidItemContentException
-
-    -- ** InvalidFilterOption
-    , _InvalidFilterOption
-
-    -- ** ParameterPatternMismatchException
-    , _ParameterPatternMismatchException
-
-    -- ** InvalidPermissionType
-    , _InvalidPermissionType
-
-    -- ** AssociatedInstances
-    , _AssociatedInstances
-
-    -- ** UnsupportedOperatingSystem
-    , _UnsupportedOperatingSystem
+    -- ** InvalidOptionException
+    , _InvalidOptionException
 
     -- ** InvalidInstanceId
     , _InvalidInstanceId
@@ -89,80 +74,35 @@ module Network.AWS.SSM
     -- ** StatusUnchanged
     , _StatusUnchanged
 
-    -- ** InvalidNextToken
-    , _InvalidNextToken
+    -- ** TooManyUpdates
+    , _TooManyUpdates
 
-    -- ** InvalidInventoryRequestException
-    , _InvalidInventoryRequestException
+    -- ** InvalidDocumentSchemaVersion
+    , _InvalidDocumentSchemaVersion
 
-    -- ** InvalidOutputFolder
-    , _InvalidOutputFolder
+    -- ** UnsupportedPlatformType
+    , _UnsupportedPlatformType
 
-    -- ** InvalidActivationId
-    , _InvalidActivationId
+    -- ** InvalidPermissionType
+    , _InvalidPermissionType
 
-    -- ** InvalidResultAttributeException
-    , _InvalidResultAttributeException
+    -- ** InvalidFilterOption
+    , _InvalidFilterOption
 
-    -- ** ResourceLimitExceededException
-    , _ResourceLimitExceededException
+    -- ** ParameterPatternMismatchException
+    , _ParameterPatternMismatchException
 
-    -- ** ResourceDataSyncInvalidConfigurationException
-    , _ResourceDataSyncInvalidConfigurationException
+    -- ** UnsupportedInventoryItemContextException
+    , _UnsupportedInventoryItemContextException
 
-    -- ** InvalidCommandId
-    , _InvalidCommandId
+    -- ** InvalidItemContentException
+    , _InvalidItemContentException
 
-    -- ** DuplicateInstanceId
-    , _DuplicateInstanceId
+    -- ** TargetInUseException
+    , _TargetInUseException
 
-    -- ** InvalidResourceType
-    , _InvalidResourceType
-
-    -- ** UnsupportedInventorySchemaVersionException
-    , _UnsupportedInventorySchemaVersionException
-
-    -- ** InvalidDocument
-    , _InvalidDocument
-
-    -- ** AutomationDefinitionNotFoundException
-    , _AutomationDefinitionNotFoundException
-
-    -- ** InvalidFilterKey
-    , _InvalidFilterKey
-
-    -- ** InvalidAutomationExecutionParametersException
-    , _InvalidAutomationExecutionParametersException
-
-    -- ** AutomationExecutionNotFoundException
-    , _AutomationExecutionNotFoundException
-
-    -- ** InvalidTypeNameException
-    , _InvalidTypeNameException
-
-    -- ** ResourceDataSyncNotFoundException
-    , _ResourceDataSyncNotFoundException
-
-    -- ** ParameterMaxVersionLimitExceeded
-    , _ParameterMaxVersionLimitExceeded
-
-    -- ** ItemSizeLimitExceededException
-    , _ItemSizeLimitExceededException
-
-    -- ** ResourceDataSyncAlreadyExistsException
-    , _ResourceDataSyncAlreadyExistsException
-
-    -- ** DoesNotExistException
-    , _DoesNotExistException
-
-    -- ** AutomationExecutionLimitExceededException
-    , _AutomationExecutionLimitExceededException
-
-    -- ** IdempotentParameterMismatch
-    , _IdempotentParameterMismatch
-
-    -- ** InvalidInstanceInformationFilterValue
-    , _InvalidInstanceInformationFilterValue
+    -- ** AssociatedInstances
+    , _AssociatedInstances
 
     -- ** ItemContentMismatchException
     , _ItemContentMismatchException
@@ -173,14 +113,8 @@ module Network.AWS.SSM
     -- ** AssociationAlreadyExists
     , _AssociationAlreadyExists
 
-    -- ** ComplianceTypeCountLimitExceededException
-    , _ComplianceTypeCountLimitExceededException
-
-    -- ** InvalidDeleteInventoryParametersException
-    , _InvalidDeleteInventoryParametersException
-
-    -- ** InvalidDeletionIdException
-    , _InvalidDeletionIdException
+    -- ** InvalidPluginName
+    , _InvalidPluginName
 
     -- ** InvalidDocumentContent
     , _InvalidDocumentContent
@@ -191,8 +125,104 @@ module Network.AWS.SSM
     -- ** AssociationLimitExceeded
     , _AssociationLimitExceeded
 
-    -- ** InvalidAssociationVersion
-    , _InvalidAssociationVersion
+    -- ** InvalidDeletionIdException
+    , _InvalidDeletionIdException
+
+    -- ** ResourceDataSyncAlreadyExistsException
+    , _ResourceDataSyncAlreadyExistsException
+
+    -- ** InvalidSchedule
+    , _InvalidSchedule
+
+    -- ** ItemSizeLimitExceededException
+    , _ItemSizeLimitExceededException
+
+    -- ** InvalidFilter
+    , _InvalidFilter
+
+    -- ** DocumentLimitExceeded
+    , _DocumentLimitExceeded
+
+    -- ** DocumentPermissionLimit
+    , _DocumentPermissionLimit
+
+    -- ** InvalidTypeNameException
+    , _InvalidTypeNameException
+
+    -- ** AutomationExecutionNotFoundException
+    , _AutomationExecutionNotFoundException
+
+    -- ** AutomationStepNotFoundException
+    , _AutomationStepNotFoundException
+
+    -- ** ParameterMaxVersionLimitExceeded
+    , _ParameterMaxVersionLimitExceeded
+
+    -- ** DocumentAlreadyExists
+    , _DocumentAlreadyExists
+
+    -- ** InvalidFilterKey
+    , _InvalidFilterKey
+
+    -- ** InvalidNotificationConfig
+    , _InvalidNotificationConfig
+
+    -- ** InvalidResourceId
+    , _InvalidResourceId
+
+    -- ** TotalSizeLimitExceededException
+    , _TotalSizeLimitExceededException
+
+    -- ** InvalidCommandId
+    , _InvalidCommandId
+
+    -- ** InvalidParameters
+    , _InvalidParameters
+
+    -- ** UnsupportedInventorySchemaVersionException
+    , _UnsupportedInventorySchemaVersionException
+
+    -- ** InvalidOutputLocation
+    , _InvalidOutputLocation
+
+    -- ** ResourceLimitExceededException
+    , _ResourceLimitExceededException
+
+    -- ** CustomSchemaCountLimitExceededException
+    , _CustomSchemaCountLimitExceededException
+
+    -- ** InvalidUpdate
+    , _InvalidUpdate
+
+    -- ** InvalidTarget
+    , _InvalidTarget
+
+    -- ** InvalidActivation
+    , _InvalidActivation
+
+    -- ** InvalidNextToken
+    , _InvalidNextToken
+
+    -- ** InvalidRole
+    , _InvalidRole
+
+    -- ** AssociationVersionLimitExceeded
+    , _AssociationVersionLimitExceeded
+
+    -- ** InvalidInventoryRequestException
+    , _InvalidInventoryRequestException
+
+    -- ** MaxDocumentSizeExceeded
+    , _MaxDocumentSizeExceeded
+
+    -- ** UnsupportedOperatingSystem
+    , _UnsupportedOperatingSystem
+
+    -- ** InternalServerError
+    , _InternalServerError
+
+    -- ** ResourceDataSyncCountExceededException
+    , _ResourceDataSyncCountExceededException
 
     -- ** AssociationDoesNotExist
     , _AssociationDoesNotExist
@@ -200,83 +230,68 @@ module Network.AWS.SSM
     -- ** ParameterNotFound
     , _ParameterNotFound
 
-    -- ** TargetInUseException
-    , _TargetInUseException
+    -- ** InvalidAssociationVersion
+    , _InvalidAssociationVersion
 
-    -- ** InternalServerError
-    , _InternalServerError
+    -- ** InvalidFilterValue
+    , _InvalidFilterValue
 
-    -- ** UnsupportedInventoryItemContextException
-    , _UnsupportedInventoryItemContextException
+    -- ** FeatureNotAvailableException
+    , _FeatureNotAvailableException
 
-    -- ** AssociationVersionLimitExceeded
-    , _AssociationVersionLimitExceeded
+    -- ** InvalidAutomationSignalException
+    , _InvalidAutomationSignalException
 
-    -- ** InvalidRole
-    , _InvalidRole
+    -- ** ComplianceTypeCountLimitExceededException
+    , _ComplianceTypeCountLimitExceededException
 
-    -- ** TooManyUpdates
-    , _TooManyUpdates
+    -- ** InvalidDeleteInventoryParametersException
+    , _InvalidDeleteInventoryParametersException
 
-    -- ** InvalidActivation
-    , _InvalidActivation
+    -- ** InvalidInstanceInformationFilterValue
+    , _InvalidInstanceInformationFilterValue
 
-    -- ** InvalidOptionException
-    , _InvalidOptionException
+    -- ** UnsupportedParameterType
+    , _UnsupportedParameterType
 
-    -- ** InvalidDocumentSchemaVersion
-    , _InvalidDocumentSchemaVersion
+    -- ** IdempotentParameterMismatch
+    , _IdempotentParameterMismatch
 
-    -- ** MaxDocumentSizeExceeded
-    , _MaxDocumentSizeExceeded
+    -- ** InvalidAutomationStatusUpdateException
+    , _InvalidAutomationStatusUpdateException
 
-    -- ** ParameterVersionNotFound
-    , _ParameterVersionNotFound
+    -- ** InvalidDocumentVersion
+    , _InvalidDocumentVersion
 
-    -- ** InvalidUpdate
-    , _InvalidUpdate
+    -- ** AutomationDefinitionVersionNotFoundException
+    , _AutomationDefinitionVersionNotFoundException
 
-    -- ** CustomSchemaCountLimitExceededException
-    , _CustomSchemaCountLimitExceededException
+    -- ** AutomationExecutionLimitExceededException
+    , _AutomationExecutionLimitExceededException
 
-    -- ** InvalidTarget
-    , _InvalidTarget
+    -- ** HierarchyTypeMismatchException
+    , _HierarchyTypeMismatchException
 
-    -- ** HierarchyLevelLimitExceededException
-    , _HierarchyLevelLimitExceededException
+    -- ** DoesNotExistException
+    , _DoesNotExistException
 
-    -- ** InvalidDocumentOperation
-    , _InvalidDocumentOperation
+    -- ** DuplicateDocumentContent
+    , _DuplicateDocumentContent
 
-    -- ** InvocationDoesNotExist
-    , _InvocationDoesNotExist
+    -- ** AlreadyExistsException
+    , _AlreadyExistsException
 
-    -- ** DocumentVersionLimitExceeded
-    , _DocumentVersionLimitExceeded
+    -- ** InvalidAutomationExecutionParametersException
+    , _InvalidAutomationExecutionParametersException
 
-    -- ** InvalidOutputLocation
-    , _InvalidOutputLocation
+    -- ** ResourceDataSyncNotFoundException
+    , _ResourceDataSyncNotFoundException
 
-    -- ** InvalidKeyId
-    , _InvalidKeyId
-
-    -- ** InvalidParameters
-    , _InvalidParameters
-
-    -- ** InvalidResourceId
-    , _InvalidResourceId
+    -- ** ResourceInUseException
+    , _ResourceInUseException
 
     -- ** InvalidAllowedPatternException
     , _InvalidAllowedPatternException
-
-    -- ** InvalidNotificationConfig
-    , _InvalidNotificationConfig
-
-    -- ** InvalidInventoryItemContextException
-    , _InvalidInventoryItemContextException
-
-    -- ** TotalSizeLimitExceededException
-    , _TotalSizeLimitExceededException
 
     -- ** SubTypeCountLimitExceededException
     , _SubTypeCountLimitExceededException
@@ -284,29 +299,14 @@ module Network.AWS.SSM
     -- ** TooManyTagsError
     , _TooManyTagsError
 
-    -- ** DocumentPermissionLimit
-    , _DocumentPermissionLimit
+    -- ** AutomationDefinitionNotFoundException
+    , _AutomationDefinitionNotFoundException
 
-    -- ** AutomationStepNotFoundException
-    , _AutomationStepNotFoundException
+    -- ** InvalidInventoryItemContextException
+    , _InvalidInventoryItemContextException
 
-    -- ** DuplicateDocumentContent
-    , _DuplicateDocumentContent
-
-    -- ** DocumentAlreadyExists
-    , _DocumentAlreadyExists
-
-    -- ** DocumentLimitExceeded
-    , _DocumentLimitExceeded
-
-    -- ** AlreadyExistsException
-    , _AlreadyExistsException
-
-    -- ** InvalidFilter
-    , _InvalidFilter
-
-    -- ** ResourceInUseException
-    , _ResourceInUseException
+    -- ** InvalidDocument
+    , _InvalidDocument
 
     -- * Waiters
     -- $waiters

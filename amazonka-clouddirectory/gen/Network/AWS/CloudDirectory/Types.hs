@@ -16,41 +16,41 @@ module Network.AWS.CloudDirectory.Types
       cloudDirectory
 
     -- * Errors
+    , _DirectoryNotDisabledException
+    , _RetryableConflictException
+    , _DirectoryAlreadyExistsException
+    , _SchemaAlreadyExistsException
+    , _SchemaAlreadyPublishedException
+    , _IndexedAttributeMissingException
+    , _InternalServiceException
+    , _NotNodeException
+    , _ObjectAlreadyDetachedException
+    , _InvalidFacetUpdateException
+    , _CannotListParentOfRootException
+    , _InvalidSchemaDocException
+    , _FacetAlreadyExistsException
+    , _AccessDeniedException
     , _UnsupportedIndexTypeException
     , _NotIndexException
     , _ValidationException
-    , _AccessDeniedException
-    , _FacetAlreadyExistsException
-    , _InvalidSchemaDocException
-    , _InvalidAttachmentException
-    , _CannotListParentOfRootException
-    , _NotPolicyException
-    , _InvalidTaggingRequestException
-    , _InvalidFacetUpdateException
-    , _InvalidRuleException
-    , _SchemaAlreadyPublishedException
-    , _DirectoryAlreadyExistsException
-    , _DirectoryNotDisabledException
-    , _BatchWriteException
-    , _DirectoryNotEnabledException
-    , _FacetInUseException
     , _FacetValidationException
-    , _StillContainsLinksException
-    , _IncompatibleSchemaException
-    , _NotNodeException
-    , _InvalidNextTokenException
-    , _ObjectAlreadyDetachedException
-    , _LinkNameAlreadyInUseException
-    , _InternalServiceException
-    , _SchemaAlreadyExistsException
-    , _IndexedAttributeMissingException
-    , _DirectoryDeletedException
-    , _RetryableConflictException
-    , _InvalidARNException
+    , _DirectoryNotEnabledException
     , _ResourceNotFoundException
+    , _DirectoryDeletedException
+    , _InvalidARNException
+    , _InvalidRuleException
+    , _InvalidTaggingRequestException
+    , _NotPolicyException
+    , _LinkNameAlreadyInUseException
+    , _InvalidNextTokenException
+    , _IncompatibleSchemaException
+    , _InvalidAttachmentException
     , _FacetNotFoundException
     , _LimitExceededException
     , _ObjectNotDetachedException
+    , _StillContainsLinksException
+    , _FacetInUseException
+    , _BatchWriteException
 
     -- * BatchReadExceptionType
     , BatchReadExceptionType (..)
@@ -330,9 +330,9 @@ module Network.AWS.CloudDirectory.Types
     -- * BatchListObjectChildren
     , BatchListObjectChildren
     , batchListObjectChildren
-    , bloclNextToken
-    , bloclMaxResults
-    , bloclObjectReference
+    , btchlstobjctchldrnNextToken
+    , btchlstobjctchldrnMaxResults
+    , btchlstobjctchldrnObjectReference
 
     -- * BatchListObjectChildrenResponse
     , BatchListObjectChildrenResponse
@@ -356,9 +356,9 @@ module Network.AWS.CloudDirectory.Types
     -- * BatchListObjectParents
     , BatchListObjectParents
     , batchListObjectParents
-    , bloplNextToken
-    , bloplMaxResults
-    , bloplObjectReference
+    , btchlstobjctprntsNextToken
+    , btchlstobjctprntsMaxResults
+    , btchlstobjctprntsObjectReference
 
     -- * BatchListObjectParentsResponse
     , BatchListObjectParentsResponse
@@ -369,9 +369,9 @@ module Network.AWS.CloudDirectory.Types
     -- * BatchListObjectPolicies
     , BatchListObjectPolicies
     , batchListObjectPolicies
-    , bbNextToken
-    , bbMaxResults
-    , bbObjectReference
+    , btchlstobjctplcsNextToken
+    , btchlstobjctplcsMaxResults
+    , btchlstobjctplcsObjectReference
 
     -- * BatchListObjectPoliciesResponse
     , BatchListObjectPoliciesResponse
@@ -410,9 +410,9 @@ module Network.AWS.CloudDirectory.Types
     -- * BatchLookupPolicy
     , BatchLookupPolicy
     , batchLookupPolicy
-    , blplNextToken
-    , blplMaxResults
-    , blplObjectReference
+    , btchlkpplcyNextToken
+    , btchlkpplcyMaxResults
+    , btchlkpplcyObjectReference
 
     -- * BatchLookupPolicyResponse
     , BatchLookupPolicyResponse
@@ -868,6 +868,132 @@ cloudDirectory
           | has (hasStatus 509) e = Just "limit_exceeded"
           | otherwise = Nothing
 
+-- | An operation can only operate on a disabled directory.
+--
+--
+_DirectoryNotDisabledException :: AsError a => Getting (First ServiceError) a ServiceError
+_DirectoryNotDisabledException
+  = _MatchServiceError cloudDirectory
+      "DirectoryNotDisabledException"
+      . hasStatus 400
+
+-- | Occurs when a conflict with a previous successful write is detected. For example, if a write operation occurs on an object and then an attempt is made to read the object using “SERIALIZABLE” consistency, this exception may result. This generally occurs when the previous write did not have time to propagate to the host serving the current request. A retry (with appropriate backoff logic) is the recommended response to this exception.
+--
+--
+_RetryableConflictException :: AsError a => Getting (First ServiceError) a ServiceError
+_RetryableConflictException
+  = _MatchServiceError cloudDirectory
+      "RetryableConflictException"
+      . hasStatus 409
+
+-- | Indicates that a 'Directory' could not be created due to a naming conflict. Choose a different name and try again.
+--
+--
+_DirectoryAlreadyExistsException :: AsError a => Getting (First ServiceError) a ServiceError
+_DirectoryAlreadyExistsException
+  = _MatchServiceError cloudDirectory
+      "DirectoryAlreadyExistsException"
+      . hasStatus 400
+
+-- | Indicates that a schema could not be created due to a naming conflict. Please select a different name and then try again.
+--
+--
+_SchemaAlreadyExistsException :: AsError a => Getting (First ServiceError) a ServiceError
+_SchemaAlreadyExistsException
+  = _MatchServiceError cloudDirectory
+      "SchemaAlreadyExistsException"
+      . hasStatus 400
+
+-- | Indicates that a schema is already published.
+--
+--
+_SchemaAlreadyPublishedException :: AsError a => Getting (First ServiceError) a ServiceError
+_SchemaAlreadyPublishedException
+  = _MatchServiceError cloudDirectory
+      "SchemaAlreadyPublishedException"
+      . hasStatus 400
+
+-- | An object has been attempted to be attached to an object that does not have the appropriate attribute value.
+--
+--
+_IndexedAttributeMissingException :: AsError a => Getting (First ServiceError) a ServiceError
+_IndexedAttributeMissingException
+  = _MatchServiceError cloudDirectory
+      "IndexedAttributeMissingException"
+      . hasStatus 400
+
+-- | Indicates a problem that must be resolved by Amazon Web Services. This might be a transient error in which case you can retry your request until it succeeds. Otherwise, go to the <http://status.aws.amazon.com/ AWS Service Health Dashboard> site to see if there are any operational issues with the service.
+--
+--
+_InternalServiceException :: AsError a => Getting (First ServiceError) a ServiceError
+_InternalServiceException
+  = _MatchServiceError cloudDirectory
+      "InternalServiceException"
+      . hasStatus 500
+
+-- | Occurs when any invalid operations are performed on an object that is not a node, such as calling @ListObjectChildren@ for a leaf node object.
+--
+--
+_NotNodeException :: AsError a => Getting (First ServiceError) a ServiceError
+_NotNodeException
+  = _MatchServiceError cloudDirectory
+      "NotNodeException"
+      . hasStatus 400
+
+-- | Indicates that the object is not attached to the index.
+--
+--
+_ObjectAlreadyDetachedException :: AsError a => Getting (First ServiceError) a ServiceError
+_ObjectAlreadyDetachedException
+  = _MatchServiceError cloudDirectory
+      "ObjectAlreadyDetachedException"
+      . hasStatus 400
+
+-- | An attempt to modify a 'Facet' resulted in an invalid schema exception.
+--
+--
+_InvalidFacetUpdateException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidFacetUpdateException
+  = _MatchServiceError cloudDirectory
+      "InvalidFacetUpdateException"
+      . hasStatus 400
+
+-- | Cannot list the parents of a 'Directory' root.
+--
+--
+_CannotListParentOfRootException :: AsError a => Getting (First ServiceError) a ServiceError
+_CannotListParentOfRootException
+  = _MatchServiceError cloudDirectory
+      "CannotListParentOfRootException"
+      . hasStatus 400
+
+-- | Indicates that the provided @SchemaDoc@ value is not valid.
+--
+--
+_InvalidSchemaDocException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidSchemaDocException
+  = _MatchServiceError cloudDirectory
+      "InvalidSchemaDocException"
+      . hasStatus 400
+
+-- | A facet with the same name already exists.
+--
+--
+_FacetAlreadyExistsException :: AsError a => Getting (First ServiceError) a ServiceError
+_FacetAlreadyExistsException
+  = _MatchServiceError cloudDirectory
+      "FacetAlreadyExistsException"
+      . hasStatus 400
+
+-- | Access denied. Check your permissions.
+--
+--
+_AccessDeniedException :: AsError a => Getting (First ServiceError) a ServiceError
+_AccessDeniedException
+  = _MatchServiceError cloudDirectory
+      "AccessDeniedException"
+      . hasStatus 403
+
 -- | Indicates that the requested index type is not supported.
 --
 --
@@ -895,76 +1021,49 @@ _ValidationException
       "ValidationException"
       . hasStatus 400
 
--- | Access denied. Check your permissions.
+-- | The 'Facet' that you provided was not well formed or could not be validated with the schema.
 --
 --
-_AccessDeniedException :: AsError a => Getting (First ServiceError) a ServiceError
-_AccessDeniedException
+_FacetValidationException :: AsError a => Getting (First ServiceError) a ServiceError
+_FacetValidationException
   = _MatchServiceError cloudDirectory
-      "AccessDeniedException"
-      . hasStatus 403
-
--- | A facet with the same name already exists.
---
---
-_FacetAlreadyExistsException :: AsError a => Getting (First ServiceError) a ServiceError
-_FacetAlreadyExistsException
-  = _MatchServiceError cloudDirectory
-      "FacetAlreadyExistsException"
+      "FacetValidationException"
       . hasStatus 400
 
--- | Indicates that the provided @SchemaDoc@ value is not valid.
+-- | Operations are only permitted on enabled directories.
 --
 --
-_InvalidSchemaDocException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidSchemaDocException
+_DirectoryNotEnabledException :: AsError a => Getting (First ServiceError) a ServiceError
+_DirectoryNotEnabledException
   = _MatchServiceError cloudDirectory
-      "InvalidSchemaDocException"
+      "DirectoryNotEnabledException"
       . hasStatus 400
 
--- | Indicates that an attempt to make an attachment was invalid. For example, attaching two nodes with a link type that is not applicable to the nodes or attempting to apply a schema to a directory a second time.
+-- | The specified resource could not be found.
 --
 --
-_InvalidAttachmentException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidAttachmentException
+_ResourceNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
+_ResourceNotFoundException
   = _MatchServiceError cloudDirectory
-      "InvalidAttachmentException"
+      "ResourceNotFoundException"
+      . hasStatus 404
+
+-- | A directory that has been deleted and to which access has been attempted. Note: The requested resource will eventually cease to exist.
+--
+--
+_DirectoryDeletedException :: AsError a => Getting (First ServiceError) a ServiceError
+_DirectoryDeletedException
+  = _MatchServiceError cloudDirectory
+      "DirectoryDeletedException"
       . hasStatus 400
 
--- | Cannot list the parents of a 'Directory' root.
+-- | Indicates that the provided ARN value is not valid.
 --
 --
-_CannotListParentOfRootException :: AsError a => Getting (First ServiceError) a ServiceError
-_CannotListParentOfRootException
+_InvalidARNException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidARNException
   = _MatchServiceError cloudDirectory
-      "CannotListParentOfRootException"
-      . hasStatus 400
-
--- | Indicates that the requested operation can only operate on policy objects.
---
---
-_NotPolicyException :: AsError a => Getting (First ServiceError) a ServiceError
-_NotPolicyException
-  = _MatchServiceError cloudDirectory
-      "NotPolicyException"
-      . hasStatus 400
-
--- | Can occur for multiple reasons such as when you tag a resource that doesn’t exist or if you specify a higher number of tags for a resource than the allowed limit. Allowed limit is 50 tags per resource.
---
---
-_InvalidTaggingRequestException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidTaggingRequestException
-  = _MatchServiceError cloudDirectory
-      "InvalidTaggingRequestException"
-      . hasStatus 400
-
--- | An attempt to modify a 'Facet' resulted in an invalid schema exception.
---
---
-_InvalidFacetUpdateException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidFacetUpdateException
-  = _MatchServiceError cloudDirectory
-      "InvalidFacetUpdateException"
+      "InvalidArnException"
       . hasStatus 400
 
 -- | Occurs when any of the rule parameter keys or values are invalid.
@@ -976,111 +1075,22 @@ _InvalidRuleException
       "InvalidRuleException"
       . hasStatus 400
 
--- | Indicates that a schema is already published.
+-- | Can occur for multiple reasons such as when you tag a resource that doesn’t exist or if you specify a higher number of tags for a resource than the allowed limit. Allowed limit is 50 tags per resource.
 --
 --
-_SchemaAlreadyPublishedException :: AsError a => Getting (First ServiceError) a ServiceError
-_SchemaAlreadyPublishedException
+_InvalidTaggingRequestException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidTaggingRequestException
   = _MatchServiceError cloudDirectory
-      "SchemaAlreadyPublishedException"
+      "InvalidTaggingRequestException"
       . hasStatus 400
 
--- | Indicates that a 'Directory' could not be created due to a naming conflict. Choose a different name and try again.
+-- | Indicates that the requested operation can only operate on policy objects.
 --
 --
-_DirectoryAlreadyExistsException :: AsError a => Getting (First ServiceError) a ServiceError
-_DirectoryAlreadyExistsException
+_NotPolicyException :: AsError a => Getting (First ServiceError) a ServiceError
+_NotPolicyException
   = _MatchServiceError cloudDirectory
-      "DirectoryAlreadyExistsException"
-      . hasStatus 400
-
--- | An operation can only operate on a disabled directory.
---
---
-_DirectoryNotDisabledException :: AsError a => Getting (First ServiceError) a ServiceError
-_DirectoryNotDisabledException
-  = _MatchServiceError cloudDirectory
-      "DirectoryNotDisabledException"
-      . hasStatus 400
-
--- | A @BatchWrite@ exception has occurred.
---
---
-_BatchWriteException :: AsError a => Getting (First ServiceError) a ServiceError
-_BatchWriteException
-  = _MatchServiceError cloudDirectory
-      "BatchWriteException"
-
--- | Operations are only permitted on enabled directories.
---
---
-_DirectoryNotEnabledException :: AsError a => Getting (First ServiceError) a ServiceError
-_DirectoryNotEnabledException
-  = _MatchServiceError cloudDirectory
-      "DirectoryNotEnabledException"
-      . hasStatus 400
-
--- | Occurs when deleting a facet that contains an attribute that is a target to an attribute reference in a different facet.
---
---
-_FacetInUseException :: AsError a => Getting (First ServiceError) a ServiceError
-_FacetInUseException
-  = _MatchServiceError cloudDirectory
-      "FacetInUseException"
-      . hasStatus 400
-
--- | The 'Facet' that you provided was not well formed or could not be validated with the schema.
---
---
-_FacetValidationException :: AsError a => Getting (First ServiceError) a ServiceError
-_FacetValidationException
-  = _MatchServiceError cloudDirectory
-      "FacetValidationException"
-      . hasStatus 400
-
--- | The object could not be deleted because links still exist. Remove the links and then try the operation again.
---
---
-_StillContainsLinksException :: AsError a => Getting (First ServiceError) a ServiceError
-_StillContainsLinksException
-  = _MatchServiceError cloudDirectory
-      "StillContainsLinksException"
-      . hasStatus 400
-
--- | Indicates a failure occurred while performing a check for backward compatibility between the specified schema and the schema that is currently applied to the directory.
---
---
-_IncompatibleSchemaException :: AsError a => Getting (First ServiceError) a ServiceError
-_IncompatibleSchemaException
-  = _MatchServiceError cloudDirectory
-      "IncompatibleSchemaException"
-      . hasStatus 400
-
--- | Occurs when any invalid operations are performed on an object that is not a node, such as calling @ListObjectChildren@ for a leaf node object.
---
---
-_NotNodeException :: AsError a => Getting (First ServiceError) a ServiceError
-_NotNodeException
-  = _MatchServiceError cloudDirectory
-      "NotNodeException"
-      . hasStatus 400
-
--- | Indicates that the @NextToken@ value is not valid.
---
---
-_InvalidNextTokenException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidNextTokenException
-  = _MatchServiceError cloudDirectory
-      "InvalidNextTokenException"
-      . hasStatus 400
-
--- | Indicates that the object is not attached to the index.
---
---
-_ObjectAlreadyDetachedException :: AsError a => Getting (First ServiceError) a ServiceError
-_ObjectAlreadyDetachedException
-  = _MatchServiceError cloudDirectory
-      "ObjectAlreadyDetachedException"
+      "NotPolicyException"
       . hasStatus 400
 
 -- | Indicates that a link could not be created due to a naming conflict. Choose a different name and then try again.
@@ -1092,68 +1102,32 @@ _LinkNameAlreadyInUseException
       "LinkNameAlreadyInUseException"
       . hasStatus 400
 
--- | Indicates a problem that must be resolved by Amazon Web Services. This might be a transient error in which case you can retry your request until it succeeds. Otherwise, go to the <http://status.aws.amazon.com/ AWS Service Health Dashboard> site to see if there are any operational issues with the service.
+-- | Indicates that the @NextToken@ value is not valid.
 --
 --
-_InternalServiceException :: AsError a => Getting (First ServiceError) a ServiceError
-_InternalServiceException
+_InvalidNextTokenException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidNextTokenException
   = _MatchServiceError cloudDirectory
-      "InternalServiceException"
-      . hasStatus 500
-
--- | Indicates that a schema could not be created due to a naming conflict. Please select a different name and then try again.
---
---
-_SchemaAlreadyExistsException :: AsError a => Getting (First ServiceError) a ServiceError
-_SchemaAlreadyExistsException
-  = _MatchServiceError cloudDirectory
-      "SchemaAlreadyExistsException"
+      "InvalidNextTokenException"
       . hasStatus 400
 
--- | An object has been attempted to be attached to an object that does not have the appropriate attribute value.
+-- | Indicates a failure occurred while performing a check for backward compatibility between the specified schema and the schema that is currently applied to the directory.
 --
 --
-_IndexedAttributeMissingException :: AsError a => Getting (First ServiceError) a ServiceError
-_IndexedAttributeMissingException
+_IncompatibleSchemaException :: AsError a => Getting (First ServiceError) a ServiceError
+_IncompatibleSchemaException
   = _MatchServiceError cloudDirectory
-      "IndexedAttributeMissingException"
+      "IncompatibleSchemaException"
       . hasStatus 400
 
--- | A directory that has been deleted and to which access has been attempted. Note: The requested resource will eventually cease to exist.
+-- | Indicates that an attempt to make an attachment was invalid. For example, attaching two nodes with a link type that is not applicable to the nodes or attempting to apply a schema to a directory a second time.
 --
 --
-_DirectoryDeletedException :: AsError a => Getting (First ServiceError) a ServiceError
-_DirectoryDeletedException
+_InvalidAttachmentException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidAttachmentException
   = _MatchServiceError cloudDirectory
-      "DirectoryDeletedException"
+      "InvalidAttachmentException"
       . hasStatus 400
-
--- | Occurs when a conflict with a previous successful write is detected. For example, if a write operation occurs on an object and then an attempt is made to read the object using “SERIALIZABLE” consistency, this exception may result. This generally occurs when the previous write did not have time to propagate to the host serving the current request. A retry (with appropriate backoff logic) is the recommended response to this exception.
---
---
-_RetryableConflictException :: AsError a => Getting (First ServiceError) a ServiceError
-_RetryableConflictException
-  = _MatchServiceError cloudDirectory
-      "RetryableConflictException"
-      . hasStatus 409
-
--- | Indicates that the provided ARN value is not valid.
---
---
-_InvalidARNException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidARNException
-  = _MatchServiceError cloudDirectory
-      "InvalidArnException"
-      . hasStatus 400
-
--- | The specified resource could not be found.
---
---
-_ResourceNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
-_ResourceNotFoundException
-  = _MatchServiceError cloudDirectory
-      "ResourceNotFoundException"
-      . hasStatus 404
 
 -- | The specified 'Facet' could not be found.
 --
@@ -1181,3 +1155,29 @@ _ObjectNotDetachedException
   = _MatchServiceError cloudDirectory
       "ObjectNotDetachedException"
       . hasStatus 400
+
+-- | The object could not be deleted because links still exist. Remove the links and then try the operation again.
+--
+--
+_StillContainsLinksException :: AsError a => Getting (First ServiceError) a ServiceError
+_StillContainsLinksException
+  = _MatchServiceError cloudDirectory
+      "StillContainsLinksException"
+      . hasStatus 400
+
+-- | Occurs when deleting a facet that contains an attribute that is a target to an attribute reference in a different facet.
+--
+--
+_FacetInUseException :: AsError a => Getting (First ServiceError) a ServiceError
+_FacetInUseException
+  = _MatchServiceError cloudDirectory
+      "FacetInUseException"
+      . hasStatus 400
+
+-- | A @BatchWrite@ exception has occurred.
+--
+--
+_BatchWriteException :: AsError a => Getting (First ServiceError) a ServiceError
+_BatchWriteException
+  = _MatchServiceError cloudDirectory
+      "BatchWriteException"

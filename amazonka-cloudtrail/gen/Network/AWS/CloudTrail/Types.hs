@@ -16,48 +16,48 @@ module Network.AWS.CloudTrail.Types
       cloudTrail
 
     -- * Errors
-    , _InvalidTimeRangeException
-    , _InsufficientS3BucketPolicyException
-    , _MaximumNumberOfTrailsExceededException
-    , _InsufficientDependencyServiceAccessPermissionException
-    , _UnsupportedOperationException
-    , _InvalidEventCategoryException
-    , _KMSKeyDisabledException
-    , _InsufficientEncryptionPolicyException
-    , _InsufficientSNSTopicPolicyException
+    , _InvalidTrailNameException
+    , _InvalidMaxResultsException
     , _InvalidCloudWatchLogsRoleARNException
     , _CloudTrailAccessNotEnabledException
-    , _TagsLimitExceededException
     , _CloudTrailARNInvalidException
-    , _InvalidLookupAttributesException
-    , _InvalidTrailNameException
-    , _InvalidSNSTopicNameException
-    , _ResourceTypeNotSupportedException
-    , _CloudWatchLogsDeliveryUnavailableException
-    , _OrganizationsNotInUseException
-    , _KMSKeyNotFoundException
-    , _TrailNotFoundException
-    , _InsightNotEnabledException
-    , _NotOrganizationMasterAccountException
-    , _InvalidEventSelectorsException
-    , _TrailNotProvidedException
-    , _InvalidS3BucketNameException
-    , _InvalidCloudWatchLogsLogGroupARNException
-    , _KMSException
-    , _S3BucketDoesNotExistException
-    , _InvalidNextTokenException
+    , _InsufficientEncryptionPolicyException
+    , _InsufficientSNSTopicPolicyException
     , _InvalidTagParameterException
     , _OperationNotPermittedException
-    , _InvalidTokenException
-    , _InvalidMaxResultsException
-    , _TrailAlreadyExistsException
-    , _OrganizationNotInAllFeaturesModeException
-    , _InvalidInsightSelectorsException
-    , _InvalidS3PrefixException
+    , _KMSKeyDisabledException
+    , _KMSException
+    , _InvalidEventCategoryException
+    , _InvalidS3BucketNameException
+    , _UnsupportedOperationException
+    , _InvalidTimeRangeException
+    , _InsufficientS3BucketPolicyException
+    , _InvalidEventSelectorsException
+    , _InsightNotEnabledException
+    , _TrailNotFoundException
+    , _CloudWatchLogsDeliveryUnavailableException
+    , _OrganizationsNotInUseException
+    , _InvalidSNSTopicNameException
     , _ResourceNotFoundException
-    , _InvalidParameterCombinationException
+    , _InvalidLookupAttributesException
+    , _OrganizationNotInAllFeaturesModeException
+    , _TrailAlreadyExistsException
+    , _TagsLimitExceededException
+    , _InvalidTokenException
+    , _S3BucketDoesNotExistException
+    , _InvalidNextTokenException
+    , _InvalidCloudWatchLogsLogGroupARNException
+    , _MaximumNumberOfTrailsExceededException
+    , _TrailNotProvidedException
+    , _InsufficientDependencyServiceAccessPermissionException
+    , _NotOrganizationMasterAccountException
     , _InvalidKMSKeyIdException
     , _InvalidHomeRegionException
+    , _KMSKeyNotFoundException
+    , _ResourceTypeNotSupportedException
+    , _InvalidParameterCombinationException
+    , _InvalidS3PrefixException
+    , _InvalidInsightSelectorsException
 
     -- * EventCategory
     , EventCategory (..)
@@ -216,120 +216,6 @@ cloudTrail
           | has (hasStatus 509) e = Just "limit_exceeded"
           | otherwise = Nothing
 
--- | Occurs if the timestamp values are invalid. Either the start time occurs after the end time or the time range is outside the range of possible values.
---
---
-_InvalidTimeRangeException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidTimeRangeException
-  = _MatchServiceError cloudTrail
-      "InvalidTimeRangeException"
-
--- | This exception is thrown when the policy on the S3 bucket is not sufficient.
---
---
-_InsufficientS3BucketPolicyException :: AsError a => Getting (First ServiceError) a ServiceError
-_InsufficientS3BucketPolicyException
-  = _MatchServiceError cloudTrail
-      "InsufficientS3BucketPolicyException"
-
--- | This exception is thrown when the maximum number of trails is reached.
---
---
-_MaximumNumberOfTrailsExceededException :: AsError a => Getting (First ServiceError) a ServiceError
-_MaximumNumberOfTrailsExceededException
-  = _MatchServiceError cloudTrail
-      "MaximumNumberOfTrailsExceededException"
-
--- | This exception is thrown when the IAM user or role that is used to create the organization trail is lacking one or more required permissions for creating an organization trail in a required service. For more information, see <https://docs.aws.amazon.com/awscloudtrail/latest/userguide/creating-an-organizational-trail-prepare.html Prepare For Creating a Trail For Your Organization> .
---
---
-_InsufficientDependencyServiceAccessPermissionException :: AsError a => Getting (First ServiceError) a ServiceError
-_InsufficientDependencyServiceAccessPermissionException
-  = _MatchServiceError cloudTrail
-      "InsufficientDependencyServiceAccessPermissionException"
-
--- | This exception is thrown when the requested operation is not supported.
---
---
-_UnsupportedOperationException :: AsError a => Getting (First ServiceError) a ServiceError
-_UnsupportedOperationException
-  = _MatchServiceError cloudTrail
-      "UnsupportedOperationException"
-
--- | Occurs if an event category that is not valid is specified as a value of @EventCategory@ .
---
---
-_InvalidEventCategoryException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidEventCategoryException
-  = _MatchServiceError cloudTrail
-      "InvalidEventCategoryException"
-
--- | This exception is no longer in use.
---
---
-_KMSKeyDisabledException :: AsError a => Getting (First ServiceError) a ServiceError
-_KMSKeyDisabledException
-  = _MatchServiceError cloudTrail
-      "KmsKeyDisabledException"
-
--- | This exception is thrown when the policy on the S3 bucket or KMS key is not sufficient.
---
---
-_InsufficientEncryptionPolicyException :: AsError a => Getting (First ServiceError) a ServiceError
-_InsufficientEncryptionPolicyException
-  = _MatchServiceError cloudTrail
-      "InsufficientEncryptionPolicyException"
-
--- | This exception is thrown when the policy on the SNS topic is not sufficient.
---
---
-_InsufficientSNSTopicPolicyException :: AsError a => Getting (First ServiceError) a ServiceError
-_InsufficientSNSTopicPolicyException
-  = _MatchServiceError cloudTrail
-      "InsufficientSnsTopicPolicyException"
-
--- | This exception is thrown when the provided role is not valid.
---
---
-_InvalidCloudWatchLogsRoleARNException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidCloudWatchLogsRoleARNException
-  = _MatchServiceError cloudTrail
-      "InvalidCloudWatchLogsRoleArnException"
-
--- | This exception is thrown when trusted access has not been enabled between AWS CloudTrail and AWS Organizations. For more information, see <https://docs.aws.amazon.com/organizations/latest/userguide/orgs_integrate_services.html Enabling Trusted Access with Other AWS Services> and <https://docs.aws.amazon.com/awscloudtrail/latest/userguide/creating-an-organizational-trail-prepare.html Prepare For Creating a Trail For Your Organization> . 
---
---
-_CloudTrailAccessNotEnabledException :: AsError a => Getting (First ServiceError) a ServiceError
-_CloudTrailAccessNotEnabledException
-  = _MatchServiceError cloudTrail
-      "CloudTrailAccessNotEnabledException"
-
--- | The number of tags per trail has exceeded the permitted amount. Currently, the limit is 50.
---
---
-_TagsLimitExceededException :: AsError a => Getting (First ServiceError) a ServiceError
-_TagsLimitExceededException
-  = _MatchServiceError cloudTrail
-      "TagsLimitExceededException"
-
--- | This exception is thrown when an operation is called with an invalid trail ARN. The format of a trail ARN is:
---
---
--- @arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail@ 
---
-_CloudTrailARNInvalidException :: AsError a => Getting (First ServiceError) a ServiceError
-_CloudTrailARNInvalidException
-  = _MatchServiceError cloudTrail
-      "CloudTrailARNInvalidException"
-
--- | Occurs when an invalid lookup attribute is specified.
---
---
-_InvalidLookupAttributesException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidLookupAttributesException
-  = _MatchServiceError cloudTrail
-      "InvalidLookupAttributesException"
-
 -- | This exception is thrown when the provided trail name is not valid. Trail names must meet the following requirements:
 --
 --
@@ -350,69 +236,126 @@ _InvalidTrailNameException
   = _MatchServiceError cloudTrail
       "InvalidTrailNameException"
 
--- | This exception is thrown when the provided SNS topic name is not valid.
+-- | This exception is thrown if the limit specified is invalid.
 --
 --
-_InvalidSNSTopicNameException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidSNSTopicNameException
+_InvalidMaxResultsException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidMaxResultsException
   = _MatchServiceError cloudTrail
-      "InvalidSnsTopicNameException"
+      "InvalidMaxResultsException"
 
--- | This exception is thrown when the specified resource type is not supported by CloudTrail.
+-- | This exception is thrown when the provided role is not valid.
 --
 --
-_ResourceTypeNotSupportedException :: AsError a => Getting (First ServiceError) a ServiceError
-_ResourceTypeNotSupportedException
+_InvalidCloudWatchLogsRoleARNException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidCloudWatchLogsRoleARNException
   = _MatchServiceError cloudTrail
-      "ResourceTypeNotSupportedException"
+      "InvalidCloudWatchLogsRoleArnException"
 
--- | Cannot set a CloudWatch Logs delivery for this region.
+-- | This exception is thrown when trusted access has not been enabled between AWS CloudTrail and AWS Organizations. For more information, see <https://docs.aws.amazon.com/organizations/latest/userguide/orgs_integrate_services.html Enabling Trusted Access with Other AWS Services> and <https://docs.aws.amazon.com/awscloudtrail/latest/userguide/creating-an-organizational-trail-prepare.html Prepare For Creating a Trail For Your Organization> . 
 --
 --
-_CloudWatchLogsDeliveryUnavailableException :: AsError a => Getting (First ServiceError) a ServiceError
-_CloudWatchLogsDeliveryUnavailableException
+_CloudTrailAccessNotEnabledException :: AsError a => Getting (First ServiceError) a ServiceError
+_CloudTrailAccessNotEnabledException
   = _MatchServiceError cloudTrail
-      "CloudWatchLogsDeliveryUnavailableException"
+      "CloudTrailAccessNotEnabledException"
 
--- | This exception is thrown when the request is made from an AWS account that is not a member of an organization. To make this request, sign in using the credentials of an account that belongs to an organization.
+-- | This exception is thrown when an operation is called with an invalid trail ARN. The format of a trail ARN is:
 --
 --
-_OrganizationsNotInUseException :: AsError a => Getting (First ServiceError) a ServiceError
-_OrganizationsNotInUseException
+-- @arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail@ 
+--
+_CloudTrailARNInvalidException :: AsError a => Getting (First ServiceError) a ServiceError
+_CloudTrailARNInvalidException
   = _MatchServiceError cloudTrail
-      "OrganizationsNotInUseException"
+      "CloudTrailARNInvalidException"
 
--- | This exception is thrown when the KMS key does not exist, or when the S3 bucket and the KMS key are not in the same region.
+-- | This exception is thrown when the policy on the S3 bucket or KMS key is not sufficient.
 --
 --
-_KMSKeyNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
-_KMSKeyNotFoundException
+_InsufficientEncryptionPolicyException :: AsError a => Getting (First ServiceError) a ServiceError
+_InsufficientEncryptionPolicyException
   = _MatchServiceError cloudTrail
-      "KmsKeyNotFoundException"
+      "InsufficientEncryptionPolicyException"
 
--- | This exception is thrown when the trail with the given name is not found.
+-- | This exception is thrown when the policy on the SNS topic is not sufficient.
 --
 --
-_TrailNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
-_TrailNotFoundException
+_InsufficientSNSTopicPolicyException :: AsError a => Getting (First ServiceError) a ServiceError
+_InsufficientSNSTopicPolicyException
   = _MatchServiceError cloudTrail
-      "TrailNotFoundException"
+      "InsufficientSnsTopicPolicyException"
 
--- | If you run @GetInsightSelectors@ on a trail that does not have Insights events enabled, the operation throws the exception @InsightNotEnabledException@ .
+-- | This exception is thrown when the specified tag key or values are not valid. It can also occur if there are duplicate tags or too many tags on the resource.
 --
 --
-_InsightNotEnabledException :: AsError a => Getting (First ServiceError) a ServiceError
-_InsightNotEnabledException
+_InvalidTagParameterException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidTagParameterException
   = _MatchServiceError cloudTrail
-      "InsightNotEnabledException"
+      "InvalidTagParameterException"
 
--- | This exception is thrown when the AWS account making the request to create or update an organization trail is not the master account for an organization in AWS Organizations. For more information, see <https://docs.aws.amazon.com/awscloudtrail/latest/userguide/creating-an-organizational-trail-prepare.html Prepare For Creating a Trail For Your Organization> .
+-- | This exception is thrown when the requested operation is not permitted.
 --
 --
-_NotOrganizationMasterAccountException :: AsError a => Getting (First ServiceError) a ServiceError
-_NotOrganizationMasterAccountException
+_OperationNotPermittedException :: AsError a => Getting (First ServiceError) a ServiceError
+_OperationNotPermittedException
   = _MatchServiceError cloudTrail
-      "NotOrganizationMasterAccountException"
+      "OperationNotPermittedException"
+
+-- | This exception is no longer in use.
+--
+--
+_KMSKeyDisabledException :: AsError a => Getting (First ServiceError) a ServiceError
+_KMSKeyDisabledException
+  = _MatchServiceError cloudTrail
+      "KmsKeyDisabledException"
+
+-- | This exception is thrown when there is an issue with the specified KMS key and the trail can’t be updated.
+--
+--
+_KMSException :: AsError a => Getting (First ServiceError) a ServiceError
+_KMSException
+  = _MatchServiceError cloudTrail "KmsException"
+
+-- | Occurs if an event category that is not valid is specified as a value of @EventCategory@ .
+--
+--
+_InvalidEventCategoryException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidEventCategoryException
+  = _MatchServiceError cloudTrail
+      "InvalidEventCategoryException"
+
+-- | This exception is thrown when the provided S3 bucket name is not valid.
+--
+--
+_InvalidS3BucketNameException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidS3BucketNameException
+  = _MatchServiceError cloudTrail
+      "InvalidS3BucketNameException"
+
+-- | This exception is thrown when the requested operation is not supported.
+--
+--
+_UnsupportedOperationException :: AsError a => Getting (First ServiceError) a ServiceError
+_UnsupportedOperationException
+  = _MatchServiceError cloudTrail
+      "UnsupportedOperationException"
+
+-- | Occurs if the timestamp values are invalid. Either the start time occurs after the end time or the time range is outside the range of possible values.
+--
+--
+_InvalidTimeRangeException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidTimeRangeException
+  = _MatchServiceError cloudTrail
+      "InvalidTimeRangeException"
+
+-- | This exception is thrown when the policy on the S3 bucket is not sufficient.
+--
+--
+_InsufficientS3BucketPolicyException :: AsError a => Getting (First ServiceError) a ServiceError
+_InsufficientS3BucketPolicyException
+  = _MatchServiceError cloudTrail
+      "InsufficientS3BucketPolicyException"
 
 -- | This exception is thrown when the @PutEventSelectors@ operation is called with a number of event selectors or data resources that is not valid. The combination of event selectors and data resources is not valid. A trail can have up to 5 event selectors. A trail is limited to 250 data resources. These data resources can be distributed across event selectors, but the overall total cannot exceed 250.
 --
@@ -432,36 +375,93 @@ _InvalidEventSelectorsException
   = _MatchServiceError cloudTrail
       "InvalidEventSelectorsException"
 
--- | This exception is no longer in use.
+-- | If you run @GetInsightSelectors@ on a trail that does not have Insights events enabled, the operation throws the exception @InsightNotEnabledException@ .
 --
 --
-_TrailNotProvidedException :: AsError a => Getting (First ServiceError) a ServiceError
-_TrailNotProvidedException
+_InsightNotEnabledException :: AsError a => Getting (First ServiceError) a ServiceError
+_InsightNotEnabledException
   = _MatchServiceError cloudTrail
-      "TrailNotProvidedException"
+      "InsightNotEnabledException"
 
--- | This exception is thrown when the provided S3 bucket name is not valid.
+-- | This exception is thrown when the trail with the given name is not found.
 --
 --
-_InvalidS3BucketNameException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidS3BucketNameException
+_TrailNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
+_TrailNotFoundException
   = _MatchServiceError cloudTrail
-      "InvalidS3BucketNameException"
+      "TrailNotFoundException"
 
--- | This exception is thrown when the provided CloudWatch log group is not valid.
+-- | Cannot set a CloudWatch Logs delivery for this region.
 --
 --
-_InvalidCloudWatchLogsLogGroupARNException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidCloudWatchLogsLogGroupARNException
+_CloudWatchLogsDeliveryUnavailableException :: AsError a => Getting (First ServiceError) a ServiceError
+_CloudWatchLogsDeliveryUnavailableException
   = _MatchServiceError cloudTrail
-      "InvalidCloudWatchLogsLogGroupArnException"
+      "CloudWatchLogsDeliveryUnavailableException"
 
--- | This exception is thrown when there is an issue with the specified KMS key and the trail can’t be updated.
+-- | This exception is thrown when the request is made from an AWS account that is not a member of an organization. To make this request, sign in using the credentials of an account that belongs to an organization.
 --
 --
-_KMSException :: AsError a => Getting (First ServiceError) a ServiceError
-_KMSException
-  = _MatchServiceError cloudTrail "KmsException"
+_OrganizationsNotInUseException :: AsError a => Getting (First ServiceError) a ServiceError
+_OrganizationsNotInUseException
+  = _MatchServiceError cloudTrail
+      "OrganizationsNotInUseException"
+
+-- | This exception is thrown when the provided SNS topic name is not valid.
+--
+--
+_InvalidSNSTopicNameException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidSNSTopicNameException
+  = _MatchServiceError cloudTrail
+      "InvalidSnsTopicNameException"
+
+-- | This exception is thrown when the specified resource is not found.
+--
+--
+_ResourceNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
+_ResourceNotFoundException
+  = _MatchServiceError cloudTrail
+      "ResourceNotFoundException"
+
+-- | Occurs when an invalid lookup attribute is specified.
+--
+--
+_InvalidLookupAttributesException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidLookupAttributesException
+  = _MatchServiceError cloudTrail
+      "InvalidLookupAttributesException"
+
+-- | This exception is thrown when AWS Organizations is not configured to support all features. All features must be enabled in AWS Organization to support creating an organization trail. For more information, see <https://docs.aws.amazon.com/awscloudtrail/latest/userguide/creating-an-organizational-trail-prepare.html Prepare For Creating a Trail For Your Organization> .
+--
+--
+_OrganizationNotInAllFeaturesModeException :: AsError a => Getting (First ServiceError) a ServiceError
+_OrganizationNotInAllFeaturesModeException
+  = _MatchServiceError cloudTrail
+      "OrganizationNotInAllFeaturesModeException"
+
+-- | This exception is thrown when the specified trail already exists.
+--
+--
+_TrailAlreadyExistsException :: AsError a => Getting (First ServiceError) a ServiceError
+_TrailAlreadyExistsException
+  = _MatchServiceError cloudTrail
+      "TrailAlreadyExistsException"
+
+-- | The number of tags per trail has exceeded the permitted amount. Currently, the limit is 50.
+--
+--
+_TagsLimitExceededException :: AsError a => Getting (First ServiceError) a ServiceError
+_TagsLimitExceededException
+  = _MatchServiceError cloudTrail
+      "TagsLimitExceededException"
+
+-- | Reserved for future use.
+--
+--
+_InvalidTokenException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidTokenException
+  = _MatchServiceError cloudTrail
+      "InvalidTokenException"
 
 -- | This exception is thrown when the specified S3 bucket does not exist.
 --
@@ -479,85 +479,45 @@ _InvalidNextTokenException
   = _MatchServiceError cloudTrail
       "InvalidNextTokenException"
 
--- | This exception is thrown when the specified tag key or values are not valid. It can also occur if there are duplicate tags or too many tags on the resource.
+-- | This exception is thrown when the provided CloudWatch log group is not valid.
 --
 --
-_InvalidTagParameterException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidTagParameterException
+_InvalidCloudWatchLogsLogGroupARNException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidCloudWatchLogsLogGroupARNException
   = _MatchServiceError cloudTrail
-      "InvalidTagParameterException"
+      "InvalidCloudWatchLogsLogGroupArnException"
 
--- | This exception is thrown when the requested operation is not permitted.
+-- | This exception is thrown when the maximum number of trails is reached.
 --
 --
-_OperationNotPermittedException :: AsError a => Getting (First ServiceError) a ServiceError
-_OperationNotPermittedException
+_MaximumNumberOfTrailsExceededException :: AsError a => Getting (First ServiceError) a ServiceError
+_MaximumNumberOfTrailsExceededException
   = _MatchServiceError cloudTrail
-      "OperationNotPermittedException"
+      "MaximumNumberOfTrailsExceededException"
 
--- | Reserved for future use.
+-- | This exception is no longer in use.
 --
 --
-_InvalidTokenException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidTokenException
+_TrailNotProvidedException :: AsError a => Getting (First ServiceError) a ServiceError
+_TrailNotProvidedException
   = _MatchServiceError cloudTrail
-      "InvalidTokenException"
+      "TrailNotProvidedException"
 
--- | This exception is thrown if the limit specified is invalid.
+-- | This exception is thrown when the IAM user or role that is used to create the organization trail is lacking one or more required permissions for creating an organization trail in a required service. For more information, see <https://docs.aws.amazon.com/awscloudtrail/latest/userguide/creating-an-organizational-trail-prepare.html Prepare For Creating a Trail For Your Organization> .
 --
 --
-_InvalidMaxResultsException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidMaxResultsException
+_InsufficientDependencyServiceAccessPermissionException :: AsError a => Getting (First ServiceError) a ServiceError
+_InsufficientDependencyServiceAccessPermissionException
   = _MatchServiceError cloudTrail
-      "InvalidMaxResultsException"
+      "InsufficientDependencyServiceAccessPermissionException"
 
--- | This exception is thrown when the specified trail already exists.
+-- | This exception is thrown when the AWS account making the request to create or update an organization trail is not the master account for an organization in AWS Organizations. For more information, see <https://docs.aws.amazon.com/awscloudtrail/latest/userguide/creating-an-organizational-trail-prepare.html Prepare For Creating a Trail For Your Organization> .
 --
 --
-_TrailAlreadyExistsException :: AsError a => Getting (First ServiceError) a ServiceError
-_TrailAlreadyExistsException
+_NotOrganizationMasterAccountException :: AsError a => Getting (First ServiceError) a ServiceError
+_NotOrganizationMasterAccountException
   = _MatchServiceError cloudTrail
-      "TrailAlreadyExistsException"
-
--- | This exception is thrown when AWS Organizations is not configured to support all features. All features must be enabled in AWS Organization to support creating an organization trail. For more information, see <https://docs.aws.amazon.com/awscloudtrail/latest/userguide/creating-an-organizational-trail-prepare.html Prepare For Creating a Trail For Your Organization> .
---
---
-_OrganizationNotInAllFeaturesModeException :: AsError a => Getting (First ServiceError) a ServiceError
-_OrganizationNotInAllFeaturesModeException
-  = _MatchServiceError cloudTrail
-      "OrganizationNotInAllFeaturesModeException"
-
--- | The formatting or syntax of the @InsightSelectors@ JSON statement in your @PutInsightSelectors@ or @GetInsightSelectors@ request is not valid, or the specified insight type in the @InsightSelectors@ statement is not a valid insight type.
---
---
-_InvalidInsightSelectorsException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidInsightSelectorsException
-  = _MatchServiceError cloudTrail
-      "InvalidInsightSelectorsException"
-
--- | This exception is thrown when the provided S3 prefix is not valid.
---
---
-_InvalidS3PrefixException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidS3PrefixException
-  = _MatchServiceError cloudTrail
-      "InvalidS3PrefixException"
-
--- | This exception is thrown when the specified resource is not found.
---
---
-_ResourceNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
-_ResourceNotFoundException
-  = _MatchServiceError cloudTrail
-      "ResourceNotFoundException"
-
--- | This exception is thrown when the combination of parameters provided is not valid.
---
---
-_InvalidParameterCombinationException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidParameterCombinationException
-  = _MatchServiceError cloudTrail
-      "InvalidParameterCombinationException"
+      "NotOrganizationMasterAccountException"
 
 -- | This exception is thrown when the KMS key ARN is invalid.
 --
@@ -574,3 +534,43 @@ _InvalidHomeRegionException :: AsError a => Getting (First ServiceError) a Servi
 _InvalidHomeRegionException
   = _MatchServiceError cloudTrail
       "InvalidHomeRegionException"
+
+-- | This exception is thrown when the KMS key does not exist, or when the S3 bucket and the KMS key are not in the same region.
+--
+--
+_KMSKeyNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
+_KMSKeyNotFoundException
+  = _MatchServiceError cloudTrail
+      "KmsKeyNotFoundException"
+
+-- | This exception is thrown when the specified resource type is not supported by CloudTrail.
+--
+--
+_ResourceTypeNotSupportedException :: AsError a => Getting (First ServiceError) a ServiceError
+_ResourceTypeNotSupportedException
+  = _MatchServiceError cloudTrail
+      "ResourceTypeNotSupportedException"
+
+-- | This exception is thrown when the combination of parameters provided is not valid.
+--
+--
+_InvalidParameterCombinationException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidParameterCombinationException
+  = _MatchServiceError cloudTrail
+      "InvalidParameterCombinationException"
+
+-- | This exception is thrown when the provided S3 prefix is not valid.
+--
+--
+_InvalidS3PrefixException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidS3PrefixException
+  = _MatchServiceError cloudTrail
+      "InvalidS3PrefixException"
+
+-- | The formatting or syntax of the @InsightSelectors@ JSON statement in your @PutInsightSelectors@ or @GetInsightSelectors@ request is not valid, or the specified insight type in the @InsightSelectors@ statement is not a valid insight type.
+--
+--
+_InvalidInsightSelectorsException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidInsightSelectorsException
+  = _MatchServiceError cloudTrail
+      "InvalidInsightSelectorsException"

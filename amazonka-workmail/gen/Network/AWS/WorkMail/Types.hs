@@ -16,22 +16,22 @@ module Network.AWS.WorkMail.Types
       workMail
 
     -- * Errors
-    , _DirectoryUnavailableException
+    , _DirectoryServiceAuthenticationFailedException
+    , _EntityAlreadyRegisteredException
     , _InvalidParameterException
     , _UnsupportedOperationException
-    , _DirectoryServiceAuthenticationFailedException
+    , _DirectoryUnavailableException
+    , _MailDomainStateException
+    , _NameAvailabilityException
     , _OrganizationStateException
     , _EntityStateException
-    , _InvalidConfigurationException
-    , _MailDomainStateException
-    , _ReservedNameException
-    , _OrganizationNotFoundException
-    , _EntityNotFoundException
-    , _EntityAlreadyRegisteredException
     , _MailDomainNotFoundException
+    , _EntityNotFoundException
+    , _OrganizationNotFoundException
+    , _ReservedNameException
     , _EmailAddressInUseException
-    , _NameAvailabilityException
     , _InvalidPasswordException
+    , _InvalidConfigurationException
 
     -- * EntityState
     , EntityState (..)
@@ -170,13 +170,21 @@ workMail
           | has (hasStatus 509) e = Just "limit_exceeded"
           | otherwise = Nothing
 
--- | The directory that you are trying to perform operations on isn't available.
+-- | The Directory Service doesn't recognize the credentials supplied by the Amazon WorkMail service.
 --
 --
-_DirectoryUnavailableException :: AsError a => Getting (First ServiceError) a ServiceError
-_DirectoryUnavailableException
+_DirectoryServiceAuthenticationFailedException :: AsError a => Getting (First ServiceError) a ServiceError
+_DirectoryServiceAuthenticationFailedException
   = _MatchServiceError workMail
-      "DirectoryUnavailableException"
+      "DirectoryServiceAuthenticationFailedException"
+
+-- | The user, group, or resource that you're trying to register is already registered.
+--
+--
+_EntityAlreadyRegisteredException :: AsError a => Getting (First ServiceError) a ServiceError
+_EntityAlreadyRegisteredException
+  = _MatchServiceError workMail
+      "EntityAlreadyRegisteredException"
 
 -- | One or more of the input parameters don't match the service's restrictions.
 --
@@ -194,13 +202,29 @@ _UnsupportedOperationException
   = _MatchServiceError workMail
       "UnsupportedOperationException"
 
--- | The Directory Service doesn't recognize the credentials supplied by the Amazon WorkMail service.
+-- | The directory that you are trying to perform operations on isn't available.
 --
 --
-_DirectoryServiceAuthenticationFailedException :: AsError a => Getting (First ServiceError) a ServiceError
-_DirectoryServiceAuthenticationFailedException
+_DirectoryUnavailableException :: AsError a => Getting (First ServiceError) a ServiceError
+_DirectoryUnavailableException
   = _MatchServiceError workMail
-      "DirectoryServiceAuthenticationFailedException"
+      "DirectoryUnavailableException"
+
+-- | After a domain has been added to the organization, it must be verified. The domain is not yet verified.
+--
+--
+_MailDomainStateException :: AsError a => Getting (First ServiceError) a ServiceError
+_MailDomainStateException
+  = _MatchServiceError workMail
+      "MailDomainStateException"
+
+-- | The entity (user, group, or user) name isn't unique in Amazon WorkMail.
+--
+--
+_NameAvailabilityException :: AsError a => Getting (First ServiceError) a ServiceError
+_NameAvailabilityException
+  = _MatchServiceError workMail
+      "NameAvailabilityException"
 
 -- | The organization must have a valid state (Active or Synchronizing) to perform certain operations on the organization or its entities.
 --
@@ -217,36 +241,13 @@ _EntityStateException :: AsError a => Getting (First ServiceError) a ServiceErro
 _EntityStateException
   = _MatchServiceError workMail "EntityStateException"
 
--- | The configuration for a resource isn't valid. A resource must either be able to auto-respond to requests or have at least one delegate associated that can do it on its behalf.
+-- | For an email or alias to be created in Amazon WorkMail, the included domain must be defined in the organization.
 --
 --
-_InvalidConfigurationException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidConfigurationException
+_MailDomainNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
+_MailDomainNotFoundException
   = _MatchServiceError workMail
-      "InvalidConfigurationException"
-
--- | After a domain has been added to the organization, it must be verified. The domain is not yet verified.
---
---
-_MailDomainStateException :: AsError a => Getting (First ServiceError) a ServiceError
-_MailDomainStateException
-  = _MatchServiceError workMail
-      "MailDomainStateException"
-
--- | This entity name is not allowed in Amazon WorkMail.
---
---
-_ReservedNameException :: AsError a => Getting (First ServiceError) a ServiceError
-_ReservedNameException
-  = _MatchServiceError workMail "ReservedNameException"
-
--- | An operation received a valid organization identifier that either doesn't belong or exist in the system.
---
---
-_OrganizationNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
-_OrganizationNotFoundException
-  = _MatchServiceError workMail
-      "OrganizationNotFoundException"
+      "MailDomainNotFoundException"
 
 -- | The identifier supplied for the entity is valid, but it does not exist in your organization.
 --
@@ -256,21 +257,20 @@ _EntityNotFoundException
   = _MatchServiceError workMail
       "EntityNotFoundException"
 
--- | The user, group, or resource that you're trying to register is already registered.
+-- | An operation received a valid organization identifier that either doesn't belong or exist in the system.
 --
 --
-_EntityAlreadyRegisteredException :: AsError a => Getting (First ServiceError) a ServiceError
-_EntityAlreadyRegisteredException
+_OrganizationNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
+_OrganizationNotFoundException
   = _MatchServiceError workMail
-      "EntityAlreadyRegisteredException"
+      "OrganizationNotFoundException"
 
--- | For an email or alias to be created in Amazon WorkMail, the included domain must be defined in the organization.
+-- | This entity name is not allowed in Amazon WorkMail.
 --
 --
-_MailDomainNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
-_MailDomainNotFoundException
-  = _MatchServiceError workMail
-      "MailDomainNotFoundException"
+_ReservedNameException :: AsError a => Getting (First ServiceError) a ServiceError
+_ReservedNameException
+  = _MatchServiceError workMail "ReservedNameException"
 
 -- | The email address that you're trying to assign is already created for a different user, group, or resource.
 --
@@ -280,14 +280,6 @@ _EmailAddressInUseException
   = _MatchServiceError workMail
       "EmailAddressInUseException"
 
--- | The entity (user, group, or user) name isn't unique in Amazon WorkMail.
---
---
-_NameAvailabilityException :: AsError a => Getting (First ServiceError) a ServiceError
-_NameAvailabilityException
-  = _MatchServiceError workMail
-      "NameAvailabilityException"
-
 -- | The supplied password doesn't match the minimum security constraints, such as length or use of special characters.
 --
 --
@@ -295,3 +287,11 @@ _InvalidPasswordException :: AsError a => Getting (First ServiceError) a Service
 _InvalidPasswordException
   = _MatchServiceError workMail
       "InvalidPasswordException"
+
+-- | The configuration for a resource isn't valid. A resource must either be able to auto-respond to requests or have at least one delegate associated that can do it on its behalf.
+--
+--
+_InvalidConfigurationException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidConfigurationException
+  = _MatchServiceError workMail
+      "InvalidConfigurationException"

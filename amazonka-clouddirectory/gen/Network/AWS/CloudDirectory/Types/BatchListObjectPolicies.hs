@@ -26,12 +26,12 @@ import Network.AWS.Prelude
 --
 --
 -- /See:/ 'batchListObjectPolicies' smart constructor.
-data BatchListObjectPolicies = BatchListObjectPolicies'{_bbNextToken
+data BatchListObjectPolicies = BatchListObjectPolicies'{_btchlstobjctplcsNextToken
                                                         :: !(Maybe Text),
-                                                        _bbMaxResults ::
-                                                        !(Maybe Nat),
-                                                        _bbObjectReference ::
-                                                        !ObjectReference}
+                                                        _btchlstobjctplcsMaxResults
+                                                        :: !(Maybe Nat),
+                                                        _btchlstobjctplcsObjectReference
+                                                        :: !ObjectReference}
                                  deriving (Eq, Read, Show, Data, Typeable,
                                            Generic)
 
@@ -39,30 +39,32 @@ data BatchListObjectPolicies = BatchListObjectPolicies'{_bbNextToken
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'bbNextToken' - The pagination token.
+-- * 'btchlstobjctplcsNextToken' - The pagination token.
 --
--- * 'bbMaxResults' - The maximum number of results to retrieve.
+-- * 'btchlstobjctplcsMaxResults' - The maximum number of results to retrieve.
 --
--- * 'bbObjectReference' - The reference that identifies the object whose attributes will be listed.
+-- * 'btchlstobjctplcsObjectReference' - The reference that identifies the object whose attributes will be listed.
 batchListObjectPolicies
-    :: ObjectReference -- ^ 'bbObjectReference'
+    :: ObjectReference -- ^ 'btchlstobjctplcsObjectReference'
     -> BatchListObjectPolicies
 batchListObjectPolicies pObjectReference_
-  = BatchListObjectPolicies'{_bbNextToken = Nothing,
-                             _bbMaxResults = Nothing,
-                             _bbObjectReference = pObjectReference_}
+  = BatchListObjectPolicies'{_btchlstobjctplcsNextToken
+                               = Nothing,
+                             _btchlstobjctplcsMaxResults = Nothing,
+                             _btchlstobjctplcsObjectReference =
+                               pObjectReference_}
 
 -- | The pagination token.
-bbNextToken :: Lens' BatchListObjectPolicies (Maybe Text)
-bbNextToken = lens _bbNextToken (\ s a -> s{_bbNextToken = a})
+btchlstobjctplcsNextToken :: Lens' BatchListObjectPolicies (Maybe Text)
+btchlstobjctplcsNextToken = lens _btchlstobjctplcsNextToken (\ s a -> s{_btchlstobjctplcsNextToken = a})
 
 -- | The maximum number of results to retrieve.
-bbMaxResults :: Lens' BatchListObjectPolicies (Maybe Natural)
-bbMaxResults = lens _bbMaxResults (\ s a -> s{_bbMaxResults = a}) . mapping _Nat
+btchlstobjctplcsMaxResults :: Lens' BatchListObjectPolicies (Maybe Natural)
+btchlstobjctplcsMaxResults = lens _btchlstobjctplcsMaxResults (\ s a -> s{_btchlstobjctplcsMaxResults = a}) . mapping _Nat
 
 -- | The reference that identifies the object whose attributes will be listed.
-bbObjectReference :: Lens' BatchListObjectPolicies ObjectReference
-bbObjectReference = lens _bbObjectReference (\ s a -> s{_bbObjectReference = a})
+btchlstobjctplcsObjectReference :: Lens' BatchListObjectPolicies ObjectReference
+btchlstobjctplcsObjectReference = lens _btchlstobjctplcsObjectReference (\ s a -> s{_btchlstobjctplcsObjectReference = a})
 
 instance Hashable BatchListObjectPolicies where
 
@@ -72,6 +74,8 @@ instance ToJSON BatchListObjectPolicies where
         toJSON BatchListObjectPolicies'{..}
           = object
               (catMaybes
-                 [("NextToken" .=) <$> _bbNextToken,
-                  ("MaxResults" .=) <$> _bbMaxResults,
-                  Just ("ObjectReference" .= _bbObjectReference)])
+                 [("NextToken" .=) <$> _btchlstobjctplcsNextToken,
+                  ("MaxResults" .=) <$> _btchlstobjctplcsMaxResults,
+                  Just
+                    ("ObjectReference" .=
+                       _btchlstobjctplcsObjectReference)])

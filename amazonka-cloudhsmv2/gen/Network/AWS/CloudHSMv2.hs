@@ -22,23 +22,23 @@ module Network.AWS.CloudHSMv2
     -- * Errors
     -- $errors
 
-    -- ** CloudHSMInternalFailureException
-    , _CloudHSMInternalFailureException
-
-    -- ** CloudHSMServiceException
-    , _CloudHSMServiceException
+    -- ** CloudHSMAccessDeniedException
+    , _CloudHSMAccessDeniedException
 
     -- ** CloudHSMInvalidRequestException
     , _CloudHSMInvalidRequestException
 
-    -- ** CloudHSMAccessDeniedException
-    , _CloudHSMAccessDeniedException
+    -- ** CloudHSMTagException
+    , _CloudHSMTagException
+
+    -- ** CloudHSMServiceException
+    , _CloudHSMServiceException
+
+    -- ** CloudHSMInternalFailureException
+    , _CloudHSMInternalFailureException
 
     -- ** CloudHSMResourceNotFoundException
     , _CloudHSMResourceNotFoundException
-
-    -- ** CloudHSMTagException
-    , _CloudHSMTagException
 
     -- * Waiters
     -- $waiters

@@ -17,11 +17,11 @@ module Network.AWS.LexModels.Types
 
     -- * Errors
     , _PreconditionFailedException
-    , _ConflictException
-    , _NotFoundException
     , _InternalFailureException
     , _BadRequestException
+    , _NotFoundException
     , _LimitExceededException
+    , _ConflictException
     , _ResourceInUseException
 
     -- * ChannelStatus
@@ -298,22 +298,6 @@ _PreconditionFailedException
       "PreconditionFailedException"
       . hasStatus 412
 
--- | There was a conflict processing the request. Try your request again. 
---
---
-_ConflictException :: AsError a => Getting (First ServiceError) a ServiceError
-_ConflictException
-  = _MatchServiceError lexModels "ConflictException" .
-      hasStatus 409
-
--- | The resource specified in the request was not found. Check the resource and try again.
---
---
-_NotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
-_NotFoundException
-  = _MatchServiceError lexModels "NotFoundException" .
-      hasStatus 404
-
 -- | An internal Amazon Lex error occurred. Try your request again.
 --
 --
@@ -331,6 +315,14 @@ _BadRequestException
   = _MatchServiceError lexModels "BadRequestException"
       . hasStatus 400
 
+-- | The resource specified in the request was not found. Check the resource and try again.
+--
+--
+_NotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
+_NotFoundException
+  = _MatchServiceError lexModels "NotFoundException" .
+      hasStatus 404
+
 -- | The request exceeded a limit. Try your request again.
 --
 --
@@ -339,6 +331,14 @@ _LimitExceededException
   = _MatchServiceError lexModels
       "LimitExceededException"
       . hasStatus 429
+
+-- | There was a conflict processing the request. Try your request again. 
+--
+--
+_ConflictException :: AsError a => Getting (First ServiceError) a ServiceError
+_ConflictException
+  = _MatchServiceError lexModels "ConflictException" .
+      hasStatus 409
 
 -- | The resource that you are attempting to delete is referred to by another resource. Use this information to remove references to the resource that you are trying to delete.
 --

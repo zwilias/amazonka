@@ -25,50 +25,14 @@ module Network.AWS.Lambda
     -- * Errors
     -- $errors
 
-    -- ** KMSInvalidStateException
-    , _KMSInvalidStateException
-
-    -- ** EC2ThrottledException
-    , _EC2ThrottledException
-
-    -- ** InvalidRuntimeException
-    , _InvalidRuntimeException
-
     -- ** PolicyLengthExceededException
     , _PolicyLengthExceededException
 
+    -- ** CodeStorageExceededException
+    , _CodeStorageExceededException
+
     -- ** PreconditionFailedException
     , _PreconditionFailedException
-
-    -- ** EC2AccessDeniedException
-    , _EC2AccessDeniedException
-
-    -- ** InvalidSubnetIdException
-    , _InvalidSubnetIdException
-
-    -- ** UnsupportedMediaTypeException
-    , _UnsupportedMediaTypeException
-
-    -- ** InvalidRequestContentException
-    , _InvalidRequestContentException
-
-    -- ** KMSNotFoundException
-    , _KMSNotFoundException
-
-    -- ** ENILimitReachedException
-    , _ENILimitReachedException
-
-    -- ** InvalidParameterValueException
-    , _InvalidParameterValueException
-
-    -- ** RequestTooLargeException
-    , _RequestTooLargeException
-
-    -- ** TooManyRequestsException
-    , _TooManyRequestsException
-
-    -- ** InvalidSecurityGroupIdException
-    , _InvalidSecurityGroupIdException
 
     -- ** KMSDisabledException
     , _KMSDisabledException
@@ -76,11 +40,35 @@ module Network.AWS.Lambda
     -- ** SubnetIPAddressLimitReachedException
     , _SubnetIPAddressLimitReachedException
 
+    -- ** TooManyRequestsException
+    , _TooManyRequestsException
+
     -- ** ServiceException
     , _ServiceException
 
-    -- ** CodeStorageExceededException
-    , _CodeStorageExceededException
+    -- ** InvalidRuntimeException
+    , _InvalidRuntimeException
+
+    -- ** EC2ThrottledException
+    , _EC2ThrottledException
+
+    -- ** RequestTooLargeException
+    , _RequestTooLargeException
+
+    -- ** ENILimitReachedException
+    , _ENILimitReachedException
+
+    -- ** InvalidParameterValueException
+    , _InvalidParameterValueException
+
+    -- ** KMSNotFoundException
+    , _KMSNotFoundException
+
+    -- ** InvalidRequestContentException
+    , _InvalidRequestContentException
+
+    -- ** ResourceNotFoundException
+    , _ResourceNotFoundException
 
     -- ** InvalidZipFileException
     , _InvalidZipFileException
@@ -88,14 +76,26 @@ module Network.AWS.Lambda
     -- ** ResourceConflictException
     , _ResourceConflictException
 
-    -- ** EC2UnexpectedException
-    , _EC2UnexpectedException
+    -- ** EC2AccessDeniedException
+    , _EC2AccessDeniedException
 
-    -- ** ResourceNotFoundException
-    , _ResourceNotFoundException
+    -- ** InvalidSubnetIdException
+    , _InvalidSubnetIdException
+
+    -- ** InvalidSecurityGroupIdException
+    , _InvalidSecurityGroupIdException
+
+    -- ** KMSInvalidStateException
+    , _KMSInvalidStateException
 
     -- ** KMSAccessDeniedException
     , _KMSAccessDeniedException
+
+    -- ** EC2UnexpectedException
+    , _EC2UnexpectedException
+
+    -- ** UnsupportedMediaTypeException
+    , _UnsupportedMediaTypeException
 
     -- * Waiters
     -- $waiters

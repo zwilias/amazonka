@@ -16,43 +16,43 @@ module Network.AWS.CognitoIdentityProvider.Types
       cognitoIdentityProvider
 
     -- * Errors
-    , _UnsupportedUserStateException
-    , _PasswordResetRequiredException
-    , _InvalidParameterException
-    , _InvalidLambdaResponseException
-    , _InvalidEmailRoleAccessPolicyException
-    , _UnsupportedIdentityProviderException
-    , _UserNotFoundException
-    , _UnexpectedLambdaException
-    , _NotAuthorizedException
-    , _InternalErrorException
-    , _InvalidUserPoolConfigurationException
-    , _InvalidSmsRoleAccessPolicyException
     , _InvalidOAuthFlowException
-    , _CodeMismatchException
-    , _UserImportInProgressException
-    , _InvalidSmsRoleTrustRelationshipException
-    , _UserPoolTaggingException
-    , _SoftwareTokenMFANotFoundException
-    , _TooManyRequestsException
-    , _ConcurrentModificationException
-    , _UserPoolAddOnNotEnabledException
-    , _UserLambdaValidationException
-    , _PreconditionNotMetException
-    , _ExpiredCodeException
-    , _TooManyFailedAttemptsException
-    , _EnableSoftwareTokenMFAException
-    , _UserNotConfirmedException
+    , _InvalidSmsRoleAccessPolicyException
+    , _InvalidUserPoolConfigurationException
     , _GroupExistsException
-    , _CodeDeliveryFailureException
-    , _ScopeDoesNotExistException
-    , _ResourceNotFoundException
-    , _MFAMethodNotFoundException
-    , _AliasExistsException
-    , _DuplicateProviderException
-    , _LimitExceededException
-    , _InvalidPasswordException
+    , _ExpiredCodeException
+    , _UnexpectedLambdaException
+    , _UserNotFoundException
+    , _TooManyFailedAttemptsException
+    , _UserPoolAddOnNotEnabledException
+    , _InvalidEmailRoleAccessPolicyException
+    , _TooManyRequestsException
+    , _InvalidParameterException
+    , _UserPoolTaggingException
+    , _InvalidSmsRoleTrustRelationshipException
+    , _UnsupportedUserStateException
     , _UsernameExistsException
+    , _ResourceNotFoundException
+    , _InternalErrorException
+    , _UserNotConfirmedException
+    , _EnableSoftwareTokenMFAException
+    , _UnsupportedIdentityProviderException
+    , _NotAuthorizedException
+    , _PreconditionNotMetException
+    , _InvalidLambdaResponseException
+    , _SoftwareTokenMFANotFoundException
+    , _UserLambdaValidationException
+    , _ConcurrentModificationException
+    , _PasswordResetRequiredException
+    , _LimitExceededException
+    , _MFAMethodNotFoundException
+    , _InvalidPasswordException
+    , _DuplicateProviderException
+    , _AliasExistsException
+    , _UserImportInProgressException
+    , _CodeMismatchException
+    , _ScopeDoesNotExistException
+    , _CodeDeliveryFailureException
 
     -- * AccountTakeoverEventActionType
     , AccountTakeoverEventActionType (..)
@@ -798,93 +798,13 @@ cognitoIdentityProvider
           | has (hasStatus 509) e = Just "limit_exceeded"
           | otherwise = Nothing
 
--- | The request failed because the user is in an unsupported state.
+-- | This exception is thrown when the specified OAuth flow is invalid.
 --
 --
-_UnsupportedUserStateException :: AsError a => Getting (First ServiceError) a ServiceError
-_UnsupportedUserStateException
+_InvalidOAuthFlowException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidOAuthFlowException
   = _MatchServiceError cognitoIdentityProvider
-      "UnsupportedUserStateException"
-
--- | This exception is thrown when a password reset is required.
---
---
-_PasswordResetRequiredException :: AsError a => Getting (First ServiceError) a ServiceError
-_PasswordResetRequiredException
-  = _MatchServiceError cognitoIdentityProvider
-      "PasswordResetRequiredException"
-
--- | This exception is thrown when the Amazon Cognito service encounters an invalid parameter.
---
---
-_InvalidParameterException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidParameterException
-  = _MatchServiceError cognitoIdentityProvider
-      "InvalidParameterException"
-
--- | This exception is thrown when the Amazon Cognito service encounters an invalid AWS Lambda response.
---
---
-_InvalidLambdaResponseException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidLambdaResponseException
-  = _MatchServiceError cognitoIdentityProvider
-      "InvalidLambdaResponseException"
-
--- | This exception is thrown when Amazon Cognito is not allowed to use your email identity. HTTP status code: 400.
---
---
-_InvalidEmailRoleAccessPolicyException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidEmailRoleAccessPolicyException
-  = _MatchServiceError cognitoIdentityProvider
-      "InvalidEmailRoleAccessPolicyException"
-
--- | This exception is thrown when the specified identifier is not supported.
---
---
-_UnsupportedIdentityProviderException :: AsError a => Getting (First ServiceError) a ServiceError
-_UnsupportedIdentityProviderException
-  = _MatchServiceError cognitoIdentityProvider
-      "UnsupportedIdentityProviderException"
-
--- | This exception is thrown when a user is not found.
---
---
-_UserNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
-_UserNotFoundException
-  = _MatchServiceError cognitoIdentityProvider
-      "UserNotFoundException"
-
--- | This exception is thrown when the Amazon Cognito service encounters an unexpected exception with the AWS Lambda service.
---
---
-_UnexpectedLambdaException :: AsError a => Getting (First ServiceError) a ServiceError
-_UnexpectedLambdaException
-  = _MatchServiceError cognitoIdentityProvider
-      "UnexpectedLambdaException"
-
--- | This exception is thrown when a user is not authorized.
---
---
-_NotAuthorizedException :: AsError a => Getting (First ServiceError) a ServiceError
-_NotAuthorizedException
-  = _MatchServiceError cognitoIdentityProvider
-      "NotAuthorizedException"
-
--- | This exception is thrown when Amazon Cognito encounters an internal error.
---
---
-_InternalErrorException :: AsError a => Getting (First ServiceError) a ServiceError
-_InternalErrorException
-  = _MatchServiceError cognitoIdentityProvider
-      "InternalErrorException"
-
--- | This exception is thrown when the user pool configuration is invalid.
---
---
-_InvalidUserPoolConfigurationException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidUserPoolConfigurationException
-  = _MatchServiceError cognitoIdentityProvider
-      "InvalidUserPoolConfigurationException"
+      "InvalidOAuthFlowException"
 
 -- | This exception is returned when the role provided for SMS configuration does not have permission to publish using Amazon SNS.
 --
@@ -894,125 +814,13 @@ _InvalidSmsRoleAccessPolicyException
   = _MatchServiceError cognitoIdentityProvider
       "InvalidSmsRoleAccessPolicyException"
 
--- | This exception is thrown when the specified OAuth flow is invalid.
+-- | This exception is thrown when the user pool configuration is invalid.
 --
 --
-_InvalidOAuthFlowException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidOAuthFlowException
+_InvalidUserPoolConfigurationException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidUserPoolConfigurationException
   = _MatchServiceError cognitoIdentityProvider
-      "InvalidOAuthFlowException"
-
--- | This exception is thrown if the provided code does not match what the server was expecting.
---
---
-_CodeMismatchException :: AsError a => Getting (First ServiceError) a ServiceError
-_CodeMismatchException
-  = _MatchServiceError cognitoIdentityProvider
-      "CodeMismatchException"
-
--- | This exception is thrown when you are trying to modify a user pool while a user import job is in progress for that pool.
---
---
-_UserImportInProgressException :: AsError a => Getting (First ServiceError) a ServiceError
-_UserImportInProgressException
-  = _MatchServiceError cognitoIdentityProvider
-      "UserImportInProgressException"
-
--- | This exception is thrown when the trust relationship is invalid for the role provided for SMS configuration. This can happen if you do not trust __cognito-idp.amazonaws.com__ or the external ID provided in the role does not match what is provided in the SMS configuration for the user pool.
---
---
-_InvalidSmsRoleTrustRelationshipException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidSmsRoleTrustRelationshipException
-  = _MatchServiceError cognitoIdentityProvider
-      "InvalidSmsRoleTrustRelationshipException"
-
--- | This exception is thrown when a user pool tag cannot be set or updated.
---
---
-_UserPoolTaggingException :: AsError a => Getting (First ServiceError) a ServiceError
-_UserPoolTaggingException
-  = _MatchServiceError cognitoIdentityProvider
-      "UserPoolTaggingException"
-
--- | This exception is thrown when the software token TOTP multi-factor authentication (MFA) is not enabled for the user pool.
---
---
-_SoftwareTokenMFANotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
-_SoftwareTokenMFANotFoundException
-  = _MatchServiceError cognitoIdentityProvider
-      "SoftwareTokenMFANotFoundException"
-
--- | This exception is thrown when the user has made too many requests for a given operation.
---
---
-_TooManyRequestsException :: AsError a => Getting (First ServiceError) a ServiceError
-_TooManyRequestsException
-  = _MatchServiceError cognitoIdentityProvider
-      "TooManyRequestsException"
-
--- | This exception is thrown if two or more modifications are happening concurrently.
---
---
-_ConcurrentModificationException :: AsError a => Getting (First ServiceError) a ServiceError
-_ConcurrentModificationException
-  = _MatchServiceError cognitoIdentityProvider
-      "ConcurrentModificationException"
-
--- | This exception is thrown when user pool add-ons are not enabled.
---
---
-_UserPoolAddOnNotEnabledException :: AsError a => Getting (First ServiceError) a ServiceError
-_UserPoolAddOnNotEnabledException
-  = _MatchServiceError cognitoIdentityProvider
-      "UserPoolAddOnNotEnabledException"
-
--- | This exception is thrown when the Amazon Cognito service encounters a user validation exception with the AWS Lambda service.
---
---
-_UserLambdaValidationException :: AsError a => Getting (First ServiceError) a ServiceError
-_UserLambdaValidationException
-  = _MatchServiceError cognitoIdentityProvider
-      "UserLambdaValidationException"
-
--- | This exception is thrown when a precondition is not met.
---
---
-_PreconditionNotMetException :: AsError a => Getting (First ServiceError) a ServiceError
-_PreconditionNotMetException
-  = _MatchServiceError cognitoIdentityProvider
-      "PreconditionNotMetException"
-
--- | This exception is thrown if a code has expired.
---
---
-_ExpiredCodeException :: AsError a => Getting (First ServiceError) a ServiceError
-_ExpiredCodeException
-  = _MatchServiceError cognitoIdentityProvider
-      "ExpiredCodeException"
-
--- | This exception is thrown when the user has made too many failed attempts for a given action (e.g., sign in).
---
---
-_TooManyFailedAttemptsException :: AsError a => Getting (First ServiceError) a ServiceError
-_TooManyFailedAttemptsException
-  = _MatchServiceError cognitoIdentityProvider
-      "TooManyFailedAttemptsException"
-
--- | This exception is thrown when there is a code mismatch and the service fails to configure the software token TOTP multi-factor authentication (MFA).
---
---
-_EnableSoftwareTokenMFAException :: AsError a => Getting (First ServiceError) a ServiceError
-_EnableSoftwareTokenMFAException
-  = _MatchServiceError cognitoIdentityProvider
-      "EnableSoftwareTokenMFAException"
-
--- | This exception is thrown when a user is not confirmed successfully.
---
---
-_UserNotConfirmedException :: AsError a => Getting (First ServiceError) a ServiceError
-_UserNotConfirmedException
-  = _MatchServiceError cognitoIdentityProvider
-      "UserNotConfirmedException"
+      "InvalidUserPoolConfigurationException"
 
 -- | This exception is thrown when Amazon Cognito encounters a group that already exists in the user pool.
 --
@@ -1022,21 +830,101 @@ _GroupExistsException
   = _MatchServiceError cognitoIdentityProvider
       "GroupExistsException"
 
--- | This exception is thrown when a verification code fails to deliver successfully.
+-- | This exception is thrown if a code has expired.
 --
 --
-_CodeDeliveryFailureException :: AsError a => Getting (First ServiceError) a ServiceError
-_CodeDeliveryFailureException
+_ExpiredCodeException :: AsError a => Getting (First ServiceError) a ServiceError
+_ExpiredCodeException
   = _MatchServiceError cognitoIdentityProvider
-      "CodeDeliveryFailureException"
+      "ExpiredCodeException"
 
--- | This exception is thrown when the specified scope does not exist.
+-- | This exception is thrown when the Amazon Cognito service encounters an unexpected exception with the AWS Lambda service.
 --
 --
-_ScopeDoesNotExistException :: AsError a => Getting (First ServiceError) a ServiceError
-_ScopeDoesNotExistException
+_UnexpectedLambdaException :: AsError a => Getting (First ServiceError) a ServiceError
+_UnexpectedLambdaException
   = _MatchServiceError cognitoIdentityProvider
-      "ScopeDoesNotExistException"
+      "UnexpectedLambdaException"
+
+-- | This exception is thrown when a user is not found.
+--
+--
+_UserNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
+_UserNotFoundException
+  = _MatchServiceError cognitoIdentityProvider
+      "UserNotFoundException"
+
+-- | This exception is thrown when the user has made too many failed attempts for a given action (e.g., sign in).
+--
+--
+_TooManyFailedAttemptsException :: AsError a => Getting (First ServiceError) a ServiceError
+_TooManyFailedAttemptsException
+  = _MatchServiceError cognitoIdentityProvider
+      "TooManyFailedAttemptsException"
+
+-- | This exception is thrown when user pool add-ons are not enabled.
+--
+--
+_UserPoolAddOnNotEnabledException :: AsError a => Getting (First ServiceError) a ServiceError
+_UserPoolAddOnNotEnabledException
+  = _MatchServiceError cognitoIdentityProvider
+      "UserPoolAddOnNotEnabledException"
+
+-- | This exception is thrown when Amazon Cognito is not allowed to use your email identity. HTTP status code: 400.
+--
+--
+_InvalidEmailRoleAccessPolicyException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidEmailRoleAccessPolicyException
+  = _MatchServiceError cognitoIdentityProvider
+      "InvalidEmailRoleAccessPolicyException"
+
+-- | This exception is thrown when the user has made too many requests for a given operation.
+--
+--
+_TooManyRequestsException :: AsError a => Getting (First ServiceError) a ServiceError
+_TooManyRequestsException
+  = _MatchServiceError cognitoIdentityProvider
+      "TooManyRequestsException"
+
+-- | This exception is thrown when the Amazon Cognito service encounters an invalid parameter.
+--
+--
+_InvalidParameterException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidParameterException
+  = _MatchServiceError cognitoIdentityProvider
+      "InvalidParameterException"
+
+-- | This exception is thrown when a user pool tag cannot be set or updated.
+--
+--
+_UserPoolTaggingException :: AsError a => Getting (First ServiceError) a ServiceError
+_UserPoolTaggingException
+  = _MatchServiceError cognitoIdentityProvider
+      "UserPoolTaggingException"
+
+-- | This exception is thrown when the trust relationship is invalid for the role provided for SMS configuration. This can happen if you do not trust __cognito-idp.amazonaws.com__ or the external ID provided in the role does not match what is provided in the SMS configuration for the user pool.
+--
+--
+_InvalidSmsRoleTrustRelationshipException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidSmsRoleTrustRelationshipException
+  = _MatchServiceError cognitoIdentityProvider
+      "InvalidSmsRoleTrustRelationshipException"
+
+-- | The request failed because the user is in an unsupported state.
+--
+--
+_UnsupportedUserStateException :: AsError a => Getting (First ServiceError) a ServiceError
+_UnsupportedUserStateException
+  = _MatchServiceError cognitoIdentityProvider
+      "UnsupportedUserStateException"
+
+-- | This exception is thrown when Amazon Cognito encounters a user name that already exists in the user pool.
+--
+--
+_UsernameExistsException :: AsError a => Getting (First ServiceError) a ServiceError
+_UsernameExistsException
+  = _MatchServiceError cognitoIdentityProvider
+      "UsernameExistsException"
 
 -- | This exception is thrown when the Amazon Cognito service cannot find the requested resource.
 --
@@ -1046,29 +934,93 @@ _ResourceNotFoundException
   = _MatchServiceError cognitoIdentityProvider
       "ResourceNotFoundException"
 
--- | This exception is thrown when Amazon Cognito cannot find a multi-factor authentication (MFA) method.
+-- | This exception is thrown when Amazon Cognito encounters an internal error.
 --
 --
-_MFAMethodNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
-_MFAMethodNotFoundException
+_InternalErrorException :: AsError a => Getting (First ServiceError) a ServiceError
+_InternalErrorException
   = _MatchServiceError cognitoIdentityProvider
-      "MFAMethodNotFoundException"
+      "InternalErrorException"
 
--- | This exception is thrown when a user tries to confirm the account with an email or phone number that has already been supplied as an alias from a different account. This exception tells user that an account with this email or phone already exists.
+-- | This exception is thrown when a user is not confirmed successfully.
 --
 --
-_AliasExistsException :: AsError a => Getting (First ServiceError) a ServiceError
-_AliasExistsException
+_UserNotConfirmedException :: AsError a => Getting (First ServiceError) a ServiceError
+_UserNotConfirmedException
   = _MatchServiceError cognitoIdentityProvider
-      "AliasExistsException"
+      "UserNotConfirmedException"
 
--- | This exception is thrown when the provider is already supported by the user pool.
+-- | This exception is thrown when there is a code mismatch and the service fails to configure the software token TOTP multi-factor authentication (MFA).
 --
 --
-_DuplicateProviderException :: AsError a => Getting (First ServiceError) a ServiceError
-_DuplicateProviderException
+_EnableSoftwareTokenMFAException :: AsError a => Getting (First ServiceError) a ServiceError
+_EnableSoftwareTokenMFAException
   = _MatchServiceError cognitoIdentityProvider
-      "DuplicateProviderException"
+      "EnableSoftwareTokenMFAException"
+
+-- | This exception is thrown when the specified identifier is not supported.
+--
+--
+_UnsupportedIdentityProviderException :: AsError a => Getting (First ServiceError) a ServiceError
+_UnsupportedIdentityProviderException
+  = _MatchServiceError cognitoIdentityProvider
+      "UnsupportedIdentityProviderException"
+
+-- | This exception is thrown when a user is not authorized.
+--
+--
+_NotAuthorizedException :: AsError a => Getting (First ServiceError) a ServiceError
+_NotAuthorizedException
+  = _MatchServiceError cognitoIdentityProvider
+      "NotAuthorizedException"
+
+-- | This exception is thrown when a precondition is not met.
+--
+--
+_PreconditionNotMetException :: AsError a => Getting (First ServiceError) a ServiceError
+_PreconditionNotMetException
+  = _MatchServiceError cognitoIdentityProvider
+      "PreconditionNotMetException"
+
+-- | This exception is thrown when the Amazon Cognito service encounters an invalid AWS Lambda response.
+--
+--
+_InvalidLambdaResponseException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidLambdaResponseException
+  = _MatchServiceError cognitoIdentityProvider
+      "InvalidLambdaResponseException"
+
+-- | This exception is thrown when the software token TOTP multi-factor authentication (MFA) is not enabled for the user pool.
+--
+--
+_SoftwareTokenMFANotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
+_SoftwareTokenMFANotFoundException
+  = _MatchServiceError cognitoIdentityProvider
+      "SoftwareTokenMFANotFoundException"
+
+-- | This exception is thrown when the Amazon Cognito service encounters a user validation exception with the AWS Lambda service.
+--
+--
+_UserLambdaValidationException :: AsError a => Getting (First ServiceError) a ServiceError
+_UserLambdaValidationException
+  = _MatchServiceError cognitoIdentityProvider
+      "UserLambdaValidationException"
+
+-- | This exception is thrown if two or more modifications are happening concurrently.
+--
+--
+_ConcurrentModificationException :: AsError a => Getting (First ServiceError) a ServiceError
+_ConcurrentModificationException
+  = _MatchServiceError cognitoIdentityProvider
+      "ConcurrentModificationException"
+
+-- | This exception is thrown when a password reset is required.
+--
+--
+_PasswordResetRequiredException :: AsError a => Getting (First ServiceError) a ServiceError
+_PasswordResetRequiredException
+  = _MatchServiceError cognitoIdentityProvider
+      "PasswordResetRequiredException"
 
 -- | This exception is thrown when a user exceeds the limit for a requested AWS resource.
 --
@@ -1078,6 +1030,14 @@ _LimitExceededException
   = _MatchServiceError cognitoIdentityProvider
       "LimitExceededException"
 
+-- | This exception is thrown when Amazon Cognito cannot find a multi-factor authentication (MFA) method.
+--
+--
+_MFAMethodNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
+_MFAMethodNotFoundException
+  = _MatchServiceError cognitoIdentityProvider
+      "MFAMethodNotFoundException"
+
 -- | This exception is thrown when the Amazon Cognito service encounters an invalid password.
 --
 --
@@ -1086,10 +1046,50 @@ _InvalidPasswordException
   = _MatchServiceError cognitoIdentityProvider
       "InvalidPasswordException"
 
--- | This exception is thrown when Amazon Cognito encounters a user name that already exists in the user pool.
+-- | This exception is thrown when the provider is already supported by the user pool.
 --
 --
-_UsernameExistsException :: AsError a => Getting (First ServiceError) a ServiceError
-_UsernameExistsException
+_DuplicateProviderException :: AsError a => Getting (First ServiceError) a ServiceError
+_DuplicateProviderException
   = _MatchServiceError cognitoIdentityProvider
-      "UsernameExistsException"
+      "DuplicateProviderException"
+
+-- | This exception is thrown when a user tries to confirm the account with an email or phone number that has already been supplied as an alias from a different account. This exception tells user that an account with this email or phone already exists.
+--
+--
+_AliasExistsException :: AsError a => Getting (First ServiceError) a ServiceError
+_AliasExistsException
+  = _MatchServiceError cognitoIdentityProvider
+      "AliasExistsException"
+
+-- | This exception is thrown when you are trying to modify a user pool while a user import job is in progress for that pool.
+--
+--
+_UserImportInProgressException :: AsError a => Getting (First ServiceError) a ServiceError
+_UserImportInProgressException
+  = _MatchServiceError cognitoIdentityProvider
+      "UserImportInProgressException"
+
+-- | This exception is thrown if the provided code does not match what the server was expecting.
+--
+--
+_CodeMismatchException :: AsError a => Getting (First ServiceError) a ServiceError
+_CodeMismatchException
+  = _MatchServiceError cognitoIdentityProvider
+      "CodeMismatchException"
+
+-- | This exception is thrown when the specified scope does not exist.
+--
+--
+_ScopeDoesNotExistException :: AsError a => Getting (First ServiceError) a ServiceError
+_ScopeDoesNotExistException
+  = _MatchServiceError cognitoIdentityProvider
+      "ScopeDoesNotExistException"
+
+-- | This exception is thrown when a verification code fails to deliver successfully.
+--
+--
+_CodeDeliveryFailureException :: AsError a => Getting (First ServiceError) a ServiceError
+_CodeDeliveryFailureException
+  = _MatchServiceError cognitoIdentityProvider
+      "CodeDeliveryFailureException"

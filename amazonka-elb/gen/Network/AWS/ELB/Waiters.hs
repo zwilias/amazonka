@@ -30,8 +30,8 @@ anyInstanceInService
          _waitAttempts = 40, _waitDelay = 15,
          _waitAcceptors =
            [matchAny "InService" AcceptSuccess
-              (folding (concatOf dihrsInstanceStates) .
-                 isState . _Just
+              (folding (concatOf (dihrsInstanceStates . to toList))
+                 . isState . _Just
                  . to toTextCI)]}
 
 -- | Polls 'Network.AWS.ELB.DescribeInstanceHealth' every 15 seconds until a successful state is reached. An error is returned after 40 failed checks.
@@ -41,8 +41,8 @@ instanceDeregistered
          _waitAttempts = 40, _waitDelay = 15,
          _waitAcceptors =
            [matchAll "OutOfService" AcceptSuccess
-              (folding (concatOf dihrsInstanceStates) .
-                 isState . _Just
+              (folding (concatOf (dihrsInstanceStates . to toList))
+                 . isState . _Just
                  . to toTextCI),
             matchError "InvalidInstance" AcceptSuccess]}
 
@@ -53,7 +53,7 @@ instanceInService
          _waitAttempts = 40, _waitDelay = 15,
          _waitAcceptors =
            [matchAll "InService" AcceptSuccess
-              (folding (concatOf dihrsInstanceStates) .
-                 isState . _Just
+              (folding (concatOf (dihrsInstanceStates . to toList))
+                 . isState . _Just
                  . to toTextCI),
             matchError "InvalidInstance" AcceptRetry]}

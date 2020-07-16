@@ -27,23 +27,11 @@ module Network.AWS.CognitoSync
     -- * Errors
     -- $errors
 
+    -- ** TooManyRequestsException
+    , _TooManyRequestsException
+
     -- ** InvalidParameterException
     , _InvalidParameterException
-
-    -- ** NotAuthorizedException
-    , _NotAuthorizedException
-
-    -- ** InternalErrorException
-    , _InternalErrorException
-
-    -- ** InvalidConfigurationException
-    , _InvalidConfigurationException
-
-    -- ** DuplicateRequestException
-    , _DuplicateRequestException
-
-    -- ** LambdaThrottledException
-    , _LambdaThrottledException
 
     -- ** AlreadyStreamedException
     , _AlreadyStreamedException
@@ -51,20 +39,32 @@ module Network.AWS.CognitoSync
     -- ** InvalidLambdaFunctionOutputException
     , _InvalidLambdaFunctionOutputException
 
-    -- ** TooManyRequestsException
-    , _TooManyRequestsException
-
-    -- ** ConcurrentModificationException
-    , _ConcurrentModificationException
-
-    -- ** ResourceConflictException
-    , _ResourceConflictException
+    -- ** LambdaThrottledException
+    , _LambdaThrottledException
 
     -- ** ResourceNotFoundException
     , _ResourceNotFoundException
 
+    -- ** ResourceConflictException
+    , _ResourceConflictException
+
+    -- ** InternalErrorException
+    , _InternalErrorException
+
+    -- ** NotAuthorizedException
+    , _NotAuthorizedException
+
+    -- ** ConcurrentModificationException
+    , _ConcurrentModificationException
+
     -- ** LimitExceededException
     , _LimitExceededException
+
+    -- ** DuplicateRequestException
+    , _DuplicateRequestException
+
+    -- ** InvalidConfigurationException
+    , _InvalidConfigurationException
 
     -- * Waiters
     -- $waiters

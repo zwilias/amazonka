@@ -24,32 +24,14 @@ module Network.AWS.SDB
     -- * Errors
     -- $errors
 
-    -- ** InvalidNumberValueTests
-    , _InvalidNumberValueTests
+    -- ** InvalidParameterValue
+    , _InvalidParameterValue
 
-    -- ** NoSuchDomain
-    , _NoSuchDomain
-
-    -- ** NumberSubmittedItemsExceeded
-    , _NumberSubmittedItemsExceeded
-
-    -- ** AttributeDoesNotExist
-    , _AttributeDoesNotExist
-
-    -- ** NumberDomainAttributesExceeded
-    , _NumberDomainAttributesExceeded
+    -- ** TooManyRequestedAttributes
+    , _TooManyRequestedAttributes
 
     -- ** DuplicateItemName
     , _DuplicateItemName
-
-    -- ** MissingParameter
-    , _MissingParameter
-
-    -- ** InvalidNextToken
-    , _InvalidNextToken
-
-    -- ** InvalidParameterValue
-    , _InvalidParameterValue
 
     -- ** NumberItemAttributesExceeded
     , _NumberItemAttributesExceeded
@@ -57,20 +39,38 @@ module Network.AWS.SDB
     -- ** RequestTimeout
     , _RequestTimeout
 
-    -- ** TooManyRequestedAttributes
-    , _TooManyRequestedAttributes
+    -- ** AttributeDoesNotExist
+    , _AttributeDoesNotExist
 
-    -- ** InvalidNumberPredicates
-    , _InvalidNumberPredicates
+    -- ** InvalidNumberValueTests
+    , _InvalidNumberValueTests
 
-    -- ** NumberDomainsExceeded
-    , _NumberDomainsExceeded
+    -- ** NumberDomainBytesExceeded
+    , _NumberDomainBytesExceeded
 
     -- ** NumberSubmittedAttributesExceeded
     , _NumberSubmittedAttributesExceeded
 
-    -- ** NumberDomainBytesExceeded
-    , _NumberDomainBytesExceeded
+    -- ** NumberDomainsExceeded
+    , _NumberDomainsExceeded
+
+    -- ** InvalidNumberPredicates
+    , _InvalidNumberPredicates
+
+    -- ** InvalidNextToken
+    , _InvalidNextToken
+
+    -- ** MissingParameter
+    , _MissingParameter
+
+    -- ** NumberDomainAttributesExceeded
+    , _NumberDomainAttributesExceeded
+
+    -- ** NumberSubmittedItemsExceeded
+    , _NumberSubmittedItemsExceeded
+
+    -- ** NoSuchDomain
+    , _NoSuchDomain
 
     -- ** InvalidQueryExpression
     , _InvalidQueryExpression

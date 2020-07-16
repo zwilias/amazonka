@@ -22,20 +22,20 @@ module Network.AWS.Transcribe
     -- * Errors
     -- $errors
 
-    -- ** ConflictException
-    , _ConflictException
-
-    -- ** NotFoundException
-    , _NotFoundException
-
     -- ** InternalFailureException
     , _InternalFailureException
 
     -- ** BadRequestException
     , _BadRequestException
 
+    -- ** NotFoundException
+    , _NotFoundException
+
     -- ** LimitExceededException
     , _LimitExceededException
+
+    -- ** ConflictException
+    , _ConflictException
 
     -- * Waiters
     -- $waiters

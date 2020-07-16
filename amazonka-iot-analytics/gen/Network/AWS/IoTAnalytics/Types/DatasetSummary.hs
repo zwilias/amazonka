@@ -26,46 +26,49 @@ import Network.AWS.Prelude
 --
 --
 -- /See:/ 'datasetSummary' smart constructor.
-data DatasetSummary = DatasetSummary'{_dssCreationTime
+data DatasetSummary = DatasetSummary'{_dtstsmmryCreationTime
                                       :: !(Maybe POSIX),
-                                      _dssStatus :: !(Maybe DatasetStatus),
-                                      _dssDatasetName :: !(Maybe Text),
-                                      _dssLastUpdateTime :: !(Maybe POSIX)}
+                                      _dtstsmmryStatus ::
+                                      !(Maybe DatasetStatus),
+                                      _dtstsmmryDatasetName :: !(Maybe Text),
+                                      _dtstsmmryLastUpdateTime ::
+                                      !(Maybe POSIX)}
                         deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DatasetSummary' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dssCreationTime' - The time the data set was created.
+-- * 'dtstsmmryCreationTime' - The time the data set was created.
 --
--- * 'dssStatus' - The status of the data set.
+-- * 'dtstsmmryStatus' - The status of the data set.
 --
--- * 'dssDatasetName' - The name of the data set.
+-- * 'dtstsmmryDatasetName' - The name of the data set.
 --
--- * 'dssLastUpdateTime' - The last time the data set was updated.
+-- * 'dtstsmmryLastUpdateTime' - The last time the data set was updated.
 datasetSummary
     :: DatasetSummary
 datasetSummary
-  = DatasetSummary'{_dssCreationTime = Nothing,
-                    _dssStatus = Nothing, _dssDatasetName = Nothing,
-                    _dssLastUpdateTime = Nothing}
+  = DatasetSummary'{_dtstsmmryCreationTime = Nothing,
+                    _dtstsmmryStatus = Nothing,
+                    _dtstsmmryDatasetName = Nothing,
+                    _dtstsmmryLastUpdateTime = Nothing}
 
 -- | The time the data set was created.
-dssCreationTime :: Lens' DatasetSummary (Maybe UTCTime)
-dssCreationTime = lens _dssCreationTime (\ s a -> s{_dssCreationTime = a}) . mapping _Time
+dtstsmmryCreationTime :: Lens' DatasetSummary (Maybe UTCTime)
+dtstsmmryCreationTime = lens _dtstsmmryCreationTime (\ s a -> s{_dtstsmmryCreationTime = a}) . mapping _Time
 
 -- | The status of the data set.
-dssStatus :: Lens' DatasetSummary (Maybe DatasetStatus)
-dssStatus = lens _dssStatus (\ s a -> s{_dssStatus = a})
+dtstsmmryStatus :: Lens' DatasetSummary (Maybe DatasetStatus)
+dtstsmmryStatus = lens _dtstsmmryStatus (\ s a -> s{_dtstsmmryStatus = a})
 
 -- | The name of the data set.
-dssDatasetName :: Lens' DatasetSummary (Maybe Text)
-dssDatasetName = lens _dssDatasetName (\ s a -> s{_dssDatasetName = a})
+dtstsmmryDatasetName :: Lens' DatasetSummary (Maybe Text)
+dtstsmmryDatasetName = lens _dtstsmmryDatasetName (\ s a -> s{_dtstsmmryDatasetName = a})
 
 -- | The last time the data set was updated.
-dssLastUpdateTime :: Lens' DatasetSummary (Maybe UTCTime)
-dssLastUpdateTime = lens _dssLastUpdateTime (\ s a -> s{_dssLastUpdateTime = a}) . mapping _Time
+dtstsmmryLastUpdateTime :: Lens' DatasetSummary (Maybe UTCTime)
+dtstsmmryLastUpdateTime = lens _dtstsmmryLastUpdateTime (\ s a -> s{_dtstsmmryLastUpdateTime = a}) . mapping _Time
 
 instance FromJSON DatasetSummary where
         parseJSON

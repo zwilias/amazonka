@@ -27,10 +27,10 @@ module Network.AWS.EC2.DisassociateTransitGatewayMulticastDomain
       disassociateTransitGatewayMulticastDomain
     , DisassociateTransitGatewayMulticastDomain
     -- * Request Lenses
-    , dtgmdtSubnetIds
-    , dtgmdtTransitGatewayMulticastDomainId
-    , dtgmdtTransitGatewayAttachmentId
-    , dtgmdtDryRun
+    , dssscttrnstgtwymltcstdmnSubnetIds
+    , dssscttrnstgtwymltcstdmnTransitGatewayMulticastDomainId
+    , dssscttrnstgtwymltcstdmnTransitGatewayAttachmentId
+    , dssscttrnstgtwymltcstdmnDryRun
 
     -- * Destructuring the Response
     , disassociateTransitGatewayMulticastDomainResponse
@@ -48,19 +48,19 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'disassociateTransitGatewayMulticastDomain' smart constructor.
-data DisassociateTransitGatewayMulticastDomain = DisassociateTransitGatewayMulticastDomain'{_dtgmdtSubnetIds
+data DisassociateTransitGatewayMulticastDomain = DisassociateTransitGatewayMulticastDomain'{_dssscttrnstgtwymltcstdmnSubnetIds
                                                                                             ::
                                                                                             !(Maybe
                                                                                                 [Text]),
-                                                                                            _dtgmdtTransitGatewayMulticastDomainId
+                                                                                            _dssscttrnstgtwymltcstdmnTransitGatewayMulticastDomainId
                                                                                             ::
                                                                                             !(Maybe
                                                                                                 Text),
-                                                                                            _dtgmdtTransitGatewayAttachmentId
+                                                                                            _dssscttrnstgtwymltcstdmnTransitGatewayAttachmentId
                                                                                             ::
                                                                                             !(Maybe
                                                                                                 Text),
-                                                                                            _dtgmdtDryRun
+                                                                                            _dssscttrnstgtwymltcstdmnDryRun
                                                                                             ::
                                                                                             !(Maybe
                                                                                                 Bool)}
@@ -72,39 +72,40 @@ data DisassociateTransitGatewayMulticastDomain = DisassociateTransitGatewayMulti
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dtgmdtSubnetIds' - The IDs of the subnets;
+-- * 'dssscttrnstgtwymltcstdmnSubnetIds' - The IDs of the subnets;
 --
--- * 'dtgmdtTransitGatewayMulticastDomainId' - The ID of the transit gateway multicast domain.
+-- * 'dssscttrnstgtwymltcstdmnTransitGatewayMulticastDomainId' - The ID of the transit gateway multicast domain.
 --
--- * 'dtgmdtTransitGatewayAttachmentId' - The ID of the attachment.
+-- * 'dssscttrnstgtwymltcstdmnTransitGatewayAttachmentId' - The ID of the attachment.
 --
--- * 'dtgmdtDryRun' - Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
+-- * 'dssscttrnstgtwymltcstdmnDryRun' - Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 disassociateTransitGatewayMulticastDomain
     :: DisassociateTransitGatewayMulticastDomain
 disassociateTransitGatewayMulticastDomain
-  = DisassociateTransitGatewayMulticastDomain'{_dtgmdtSubnetIds
+  = DisassociateTransitGatewayMulticastDomain'{_dssscttrnstgtwymltcstdmnSubnetIds
                                                  = Nothing,
-                                               _dtgmdtTransitGatewayMulticastDomainId
+                                               _dssscttrnstgtwymltcstdmnTransitGatewayMulticastDomainId
                                                  = Nothing,
-                                               _dtgmdtTransitGatewayAttachmentId
+                                               _dssscttrnstgtwymltcstdmnTransitGatewayAttachmentId
                                                  = Nothing,
-                                               _dtgmdtDryRun = Nothing}
+                                               _dssscttrnstgtwymltcstdmnDryRun =
+                                                 Nothing}
 
 -- | The IDs of the subnets;
-dtgmdtSubnetIds :: Lens' DisassociateTransitGatewayMulticastDomain [Text]
-dtgmdtSubnetIds = lens _dtgmdtSubnetIds (\ s a -> s{_dtgmdtSubnetIds = a}) . _Default . _Coerce
+dssscttrnstgtwymltcstdmnSubnetIds :: Lens' DisassociateTransitGatewayMulticastDomain [Text]
+dssscttrnstgtwymltcstdmnSubnetIds = lens _dssscttrnstgtwymltcstdmnSubnetIds (\ s a -> s{_dssscttrnstgtwymltcstdmnSubnetIds = a}) . _Default . _Coerce
 
 -- | The ID of the transit gateway multicast domain.
-dtgmdtTransitGatewayMulticastDomainId :: Lens' DisassociateTransitGatewayMulticastDomain (Maybe Text)
-dtgmdtTransitGatewayMulticastDomainId = lens _dtgmdtTransitGatewayMulticastDomainId (\ s a -> s{_dtgmdtTransitGatewayMulticastDomainId = a})
+dssscttrnstgtwymltcstdmnTransitGatewayMulticastDomainId :: Lens' DisassociateTransitGatewayMulticastDomain (Maybe Text)
+dssscttrnstgtwymltcstdmnTransitGatewayMulticastDomainId = lens _dssscttrnstgtwymltcstdmnTransitGatewayMulticastDomainId (\ s a -> s{_dssscttrnstgtwymltcstdmnTransitGatewayMulticastDomainId = a})
 
 -- | The ID of the attachment.
-dtgmdtTransitGatewayAttachmentId :: Lens' DisassociateTransitGatewayMulticastDomain (Maybe Text)
-dtgmdtTransitGatewayAttachmentId = lens _dtgmdtTransitGatewayAttachmentId (\ s a -> s{_dtgmdtTransitGatewayAttachmentId = a})
+dssscttrnstgtwymltcstdmnTransitGatewayAttachmentId :: Lens' DisassociateTransitGatewayMulticastDomain (Maybe Text)
+dssscttrnstgtwymltcstdmnTransitGatewayAttachmentId = lens _dssscttrnstgtwymltcstdmnTransitGatewayAttachmentId (\ s a -> s{_dssscttrnstgtwymltcstdmnTransitGatewayAttachmentId = a})
 
 -- | Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
-dtgmdtDryRun :: Lens' DisassociateTransitGatewayMulticastDomain (Maybe Bool)
-dtgmdtDryRun = lens _dtgmdtDryRun (\ s a -> s{_dtgmdtDryRun = a})
+dssscttrnstgtwymltcstdmnDryRun :: Lens' DisassociateTransitGatewayMulticastDomain (Maybe Bool)
+dssscttrnstgtwymltcstdmnDryRun = lens _dssscttrnstgtwymltcstdmnDryRun (\ s a -> s{_dssscttrnstgtwymltcstdmnDryRun = a})
 
 instance AWSRequest
            DisassociateTransitGatewayMulticastDomain
@@ -147,12 +148,13 @@ instance ToQuery
                     ByteString),
                "Version" =: ("2016-11-15" :: ByteString),
                toQuery
-                 (toQueryList "SubnetIds" <$> _dtgmdtSubnetIds),
+                 (toQueryList "SubnetIds" <$>
+                    _dssscttrnstgtwymltcstdmnSubnetIds),
                "TransitGatewayMulticastDomainId" =:
-                 _dtgmdtTransitGatewayMulticastDomainId,
+                 _dssscttrnstgtwymltcstdmnTransitGatewayMulticastDomainId,
                "TransitGatewayAttachmentId" =:
-                 _dtgmdtTransitGatewayAttachmentId,
-               "DryRun" =: _dtgmdtDryRun]
+                 _dssscttrnstgtwymltcstdmnTransitGatewayAttachmentId,
+               "DryRun" =: _dssscttrnstgtwymltcstdmnDryRun]
 
 -- | /See:/ 'disassociateTransitGatewayMulticastDomainResponse' smart constructor.
 data DisassociateTransitGatewayMulticastDomainResponse = DisassociateTransitGatewayMulticastDomainResponse'{_dtgmdrsAssociations

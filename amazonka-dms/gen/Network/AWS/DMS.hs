@@ -25,35 +25,17 @@ module Network.AWS.DMS
     -- * Errors
     -- $errors
 
-    -- ** KMSAccessDeniedFault
-    , _KMSAccessDeniedFault
+    -- ** ReplicationSubnetGroupDoesNotCoverEnoughAZs
+    , _ReplicationSubnetGroupDoesNotCoverEnoughAZs
 
-    -- ** KMSDisabledFault
-    , _KMSDisabledFault
+    -- ** ResourceQuotaExceededFault
+    , _ResourceQuotaExceededFault
 
     -- ** InvalidSubnet
     , _InvalidSubnet
 
-    -- ** KMSKeyNotAccessibleFault
-    , _KMSKeyNotAccessibleFault
-
-    -- ** ReplicationSubnetGroupDoesNotCoverEnoughAZs
-    , _ReplicationSubnetGroupDoesNotCoverEnoughAZs
-
-    -- ** InvalidResourceStateFault
-    , _InvalidResourceStateFault
-
-    -- ** InvalidCertificateFault
-    , _InvalidCertificateFault
-
-    -- ** SNSNoAuthorizationFault
-    , _SNSNoAuthorizationFault
-
-    -- ** ResourceAlreadyExistsFault
-    , _ResourceAlreadyExistsFault
-
-    -- ** InsufficientResourceCapacityFault
-    , _InsufficientResourceCapacityFault
+    -- ** KMSThrottlingFault
+    , _KMSThrottlingFault
 
     -- ** SNSInvalidTopicFault
     , _SNSInvalidTopicFault
@@ -61,29 +43,47 @@ module Network.AWS.DMS
     -- ** KMSNotFoundFault
     , _KMSNotFoundFault
 
-    -- ** KMSThrottlingFault
-    , _KMSThrottlingFault
+    -- ** AccessDeniedFault
+    , _AccessDeniedFault
 
-    -- ** ResourceQuotaExceededFault
-    , _ResourceQuotaExceededFault
-
-    -- ** UpgradeDependencyFailureFault
-    , _UpgradeDependencyFailureFault
-
-    -- ** ResourceNotFoundFault
-    , _ResourceNotFoundFault
+    -- ** ResourceAlreadyExistsFault
+    , _ResourceAlreadyExistsFault
 
     -- ** StorageQuotaExceededFault
     , _StorageQuotaExceededFault
 
-    -- ** AccessDeniedFault
-    , _AccessDeniedFault
+    -- ** KMSKeyNotAccessibleFault
+    , _KMSKeyNotAccessibleFault
+
+    -- ** ResourceNotFoundFault
+    , _ResourceNotFoundFault
+
+    -- ** UpgradeDependencyFailureFault
+    , _UpgradeDependencyFailureFault
+
+    -- ** KMSDisabledFault
+    , _KMSDisabledFault
+
+    -- ** KMSAccessDeniedFault
+    , _KMSAccessDeniedFault
+
+    -- ** InsufficientResourceCapacityFault
+    , _InsufficientResourceCapacityFault
+
+    -- ** KMSInvalidStateFault
+    , _KMSInvalidStateFault
 
     -- ** SubnetAlreadyInUse
     , _SubnetAlreadyInUse
 
-    -- ** KMSInvalidStateFault
-    , _KMSInvalidStateFault
+    -- ** SNSNoAuthorizationFault
+    , _SNSNoAuthorizationFault
+
+    -- ** InvalidCertificateFault
+    , _InvalidCertificateFault
+
+    -- ** InvalidResourceStateFault
+    , _InvalidResourceStateFault
 
     -- * Waiters
     -- $waiters

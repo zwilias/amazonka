@@ -29,99 +29,103 @@ import Network.AWS.Prelude
 --
 --
 -- /See:/ 'jobDefinition' smart constructor.
-data JobDefinition = JobDefinition'{_jddStatus ::
+data JobDefinition = JobDefinition'{_jbdfntnStatus ::
                                     !(Maybe Text),
-                                    _jddRetryStrategy :: !(Maybe RetryStrategy),
-                                    _jddParameters :: !(Maybe (Map Text Text)),
-                                    _jddTimeout :: !(Maybe JobTimeout),
-                                    _jddContainerProperties ::
+                                    _jbdfntnRetryStrategy ::
+                                    !(Maybe RetryStrategy),
+                                    _jbdfntnParameters ::
+                                    !(Maybe (Map Text Text)),
+                                    _jbdfntnTimeout :: !(Maybe JobTimeout),
+                                    _jbdfntnContainerProperties ::
                                     !(Maybe ContainerProperties),
-                                    _jddNodeProperties ::
+                                    _jbdfntnNodeProperties ::
                                     !(Maybe NodeProperties),
-                                    _jddJobDefinitionName :: !Text,
-                                    _jddJobDefinitionARN :: !Text,
-                                    _jddRevision :: !Int, _jddType :: !Text}
+                                    _jbdfntnJobDefinitionName :: !Text,
+                                    _jbdfntnJobDefinitionARN :: !Text,
+                                    _jbdfntnRevision :: !Int,
+                                    _jbdfntnType :: !Text}
                        deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'JobDefinition' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'jddStatus' - The status of the job definition.
+-- * 'jbdfntnStatus' - The status of the job definition.
 --
--- * 'jddRetryStrategy' - The retry strategy to use for failed jobs that are submitted with this job definition.
+-- * 'jbdfntnRetryStrategy' - The retry strategy to use for failed jobs that are submitted with this job definition.
 --
--- * 'jddParameters' - Default parameters or parameter substitution placeholders that are set in the job definition. Parameters are specified as a key-value pair mapping. Parameters in a @SubmitJob@ request override any corresponding parameter defaults from the job definition. For more information about specifying parameters, see <https://docs.aws.amazon.com/batch/latest/userguide/job_definition_parameters.html Job Definition Parameters> in the /AWS Batch User Guide/ .
+-- * 'jbdfntnParameters' - Default parameters or parameter substitution placeholders that are set in the job definition. Parameters are specified as a key-value pair mapping. Parameters in a @SubmitJob@ request override any corresponding parameter defaults from the job definition. For more information about specifying parameters, see <https://docs.aws.amazon.com/batch/latest/userguide/job_definition_parameters.html Job Definition Parameters> in the /AWS Batch User Guide/ .
 --
--- * 'jddTimeout' - The timeout configuration for jobs that are submitted with this job definition. You can specify a timeout duration after which AWS Batch terminates your jobs if they have not finished.
+-- * 'jbdfntnTimeout' - The timeout configuration for jobs that are submitted with this job definition. You can specify a timeout duration after which AWS Batch terminates your jobs if they have not finished.
 --
--- * 'jddContainerProperties' - An object with various properties specific to container-based jobs.
+-- * 'jbdfntnContainerProperties' - An object with various properties specific to container-based jobs.
 --
--- * 'jddNodeProperties' - An object with various properties specific to multi-node parallel jobs.
+-- * 'jbdfntnNodeProperties' - An object with various properties specific to multi-node parallel jobs.
 --
--- * 'jddJobDefinitionName' - The name of the job definition.
+-- * 'jbdfntnJobDefinitionName' - The name of the job definition.
 --
--- * 'jddJobDefinitionARN' - The Amazon Resource Name (ARN) for the job definition.
+-- * 'jbdfntnJobDefinitionARN' - The Amazon Resource Name (ARN) for the job definition.
 --
--- * 'jddRevision' - The revision of the job definition.
+-- * 'jbdfntnRevision' - The revision of the job definition.
 --
--- * 'jddType' - The type of job definition.
+-- * 'jbdfntnType' - The type of job definition.
 jobDefinition
-    :: Text -- ^ 'jddJobDefinitionName'
-    -> Text -- ^ 'jddJobDefinitionARN'
-    -> Int -- ^ 'jddRevision'
-    -> Text -- ^ 'jddType'
+    :: Text -- ^ 'jbdfntnJobDefinitionName'
+    -> Text -- ^ 'jbdfntnJobDefinitionARN'
+    -> Int -- ^ 'jbdfntnRevision'
+    -> Text -- ^ 'jbdfntnType'
     -> JobDefinition
 jobDefinition pJobDefinitionName_ pJobDefinitionARN_
   pRevision_ pType_
-  = JobDefinition'{_jddStatus = Nothing,
-                   _jddRetryStrategy = Nothing,
-                   _jddParameters = Nothing, _jddTimeout = Nothing,
-                   _jddContainerProperties = Nothing,
-                   _jddNodeProperties = Nothing,
-                   _jddJobDefinitionName = pJobDefinitionName_,
-                   _jddJobDefinitionARN = pJobDefinitionARN_,
-                   _jddRevision = pRevision_, _jddType = pType_}
+  = JobDefinition'{_jbdfntnStatus = Nothing,
+                   _jbdfntnRetryStrategy = Nothing,
+                   _jbdfntnParameters = Nothing,
+                   _jbdfntnTimeout = Nothing,
+                   _jbdfntnContainerProperties = Nothing,
+                   _jbdfntnNodeProperties = Nothing,
+                   _jbdfntnJobDefinitionName = pJobDefinitionName_,
+                   _jbdfntnJobDefinitionARN = pJobDefinitionARN_,
+                   _jbdfntnRevision = pRevision_, _jbdfntnType = pType_}
 
 -- | The status of the job definition.
-jddStatus :: Lens' JobDefinition (Maybe Text)
-jddStatus = lens _jddStatus (\ s a -> s{_jddStatus = a})
+jbdfntnStatus :: Lens' JobDefinition (Maybe Text)
+jbdfntnStatus = lens _jbdfntnStatus (\ s a -> s{_jbdfntnStatus = a})
 
 -- | The retry strategy to use for failed jobs that are submitted with this job definition.
-jddRetryStrategy :: Lens' JobDefinition (Maybe RetryStrategy)
-jddRetryStrategy = lens _jddRetryStrategy (\ s a -> s{_jddRetryStrategy = a})
+jbdfntnRetryStrategy :: Lens' JobDefinition (Maybe RetryStrategy)
+jbdfntnRetryStrategy = lens _jbdfntnRetryStrategy (\ s a -> s{_jbdfntnRetryStrategy = a})
 
 -- | Default parameters or parameter substitution placeholders that are set in the job definition. Parameters are specified as a key-value pair mapping. Parameters in a @SubmitJob@ request override any corresponding parameter defaults from the job definition. For more information about specifying parameters, see <https://docs.aws.amazon.com/batch/latest/userguide/job_definition_parameters.html Job Definition Parameters> in the /AWS Batch User Guide/ .
-jddParameters :: Lens' JobDefinition (HashMap Text Text)
-jddParameters = lens _jddParameters (\ s a -> s{_jddParameters = a}) . _Default . _Map
+jbdfntnParameters :: Lens' JobDefinition (HashMap Text Text)
+jbdfntnParameters = lens _jbdfntnParameters (\ s a -> s{_jbdfntnParameters = a}) . _Default . _Map
 
 -- | The timeout configuration for jobs that are submitted with this job definition. You can specify a timeout duration after which AWS Batch terminates your jobs if they have not finished.
-jddTimeout :: Lens' JobDefinition (Maybe JobTimeout)
-jddTimeout = lens _jddTimeout (\ s a -> s{_jddTimeout = a})
+jbdfntnTimeout :: Lens' JobDefinition (Maybe JobTimeout)
+jbdfntnTimeout = lens _jbdfntnTimeout (\ s a -> s{_jbdfntnTimeout = a})
 
 -- | An object with various properties specific to container-based jobs.
-jddContainerProperties :: Lens' JobDefinition (Maybe ContainerProperties)
-jddContainerProperties = lens _jddContainerProperties (\ s a -> s{_jddContainerProperties = a})
+jbdfntnContainerProperties :: Lens' JobDefinition (Maybe ContainerProperties)
+jbdfntnContainerProperties = lens _jbdfntnContainerProperties (\ s a -> s{_jbdfntnContainerProperties = a})
 
 -- | An object with various properties specific to multi-node parallel jobs.
-jddNodeProperties :: Lens' JobDefinition (Maybe NodeProperties)
-jddNodeProperties = lens _jddNodeProperties (\ s a -> s{_jddNodeProperties = a})
+jbdfntnNodeProperties :: Lens' JobDefinition (Maybe NodeProperties)
+jbdfntnNodeProperties = lens _jbdfntnNodeProperties (\ s a -> s{_jbdfntnNodeProperties = a})
 
 -- | The name of the job definition.
-jddJobDefinitionName :: Lens' JobDefinition Text
-jddJobDefinitionName = lens _jddJobDefinitionName (\ s a -> s{_jddJobDefinitionName = a})
+jbdfntnJobDefinitionName :: Lens' JobDefinition Text
+jbdfntnJobDefinitionName = lens _jbdfntnJobDefinitionName (\ s a -> s{_jbdfntnJobDefinitionName = a})
 
 -- | The Amazon Resource Name (ARN) for the job definition.
-jddJobDefinitionARN :: Lens' JobDefinition Text
-jddJobDefinitionARN = lens _jddJobDefinitionARN (\ s a -> s{_jddJobDefinitionARN = a})
+jbdfntnJobDefinitionARN :: Lens' JobDefinition Text
+jbdfntnJobDefinitionARN = lens _jbdfntnJobDefinitionARN (\ s a -> s{_jbdfntnJobDefinitionARN = a})
 
 -- | The revision of the job definition.
-jddRevision :: Lens' JobDefinition Int
-jddRevision = lens _jddRevision (\ s a -> s{_jddRevision = a})
+jbdfntnRevision :: Lens' JobDefinition Int
+jbdfntnRevision = lens _jbdfntnRevision (\ s a -> s{_jbdfntnRevision = a})
 
 -- | The type of job definition.
-jddType :: Lens' JobDefinition Text
-jddType = lens _jddType (\ s a -> s{_jddType = a})
+jbdfntnType :: Lens' JobDefinition Text
+jbdfntnType = lens _jbdfntnType (\ s a -> s{_jbdfntnType = a})
 
 instance FromJSON JobDefinition where
         parseJSON

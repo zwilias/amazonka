@@ -16,25 +16,25 @@ module Network.AWS.ElasticBeanstalk.Types
       elasticBeanstalk
 
     -- * Errors
-    , _InvalidRequestException
-    , _TooManyBucketsException
-    , _S3SubscriptionRequiredException
-    , _OperationInProgressException
     , _PlatformVersionStillReferencedException
     , _TooManyApplicationVersionsException
-    , _TooManyConfigurationTemplatesException
-    , _ResourceTypeNotSupportedException
-    , _InsufficientPrivilegesException
-    , _ElasticBeanstalkServiceException
-    , _TooManyTagsException
-    , _TooManyApplicationsException
-    , _TooManyPlatformsException
-    , _ManagedActionInvalidStateException
-    , _SourceBundleDeletionException
-    , _S3LocationNotInServiceRegionException
     , _CodeBuildNotInServiceRegionException
-    , _TooManyEnvironmentsException
+    , _S3SubscriptionRequiredException
+    , _TooManyBucketsException
+    , _ManagedActionInvalidStateException
+    , _InvalidRequestException
+    , _TooManyApplicationsException
+    , _TooManyTagsException
+    , _ElasticBeanstalkServiceException
     , _ResourceNotFoundException
+    , _TooManyConfigurationTemplatesException
+    , _OperationInProgressException
+    , _S3LocationNotInServiceRegionException
+    , _SourceBundleDeletionException
+    , _TooManyPlatformsException
+    , _TooManyEnvironmentsException
+    , _InsufficientPrivilegesException
+    , _ResourceTypeNotSupportedException
 
     -- * ActionHistoryStatus
     , ActionHistoryStatus (..)
@@ -668,42 +668,6 @@ elasticBeanstalk
           | has (hasStatus 509) e = Just "limit_exceeded"
           | otherwise = Nothing
 
--- | One or more input parameters is not valid. Please correct the input parameters and try the operation again.
---
---
-_InvalidRequestException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidRequestException
-  = _MatchServiceError elasticBeanstalk
-      "InvalidRequestException"
-      . hasStatus 400
-
--- | The specified account has reached its limit of Amazon S3 buckets.
---
---
-_TooManyBucketsException :: AsError a => Getting (First ServiceError) a ServiceError
-_TooManyBucketsException
-  = _MatchServiceError elasticBeanstalk
-      "TooManyBucketsException"
-      . hasStatus 400
-
--- | The specified account does not have a subscription to Amazon S3.
---
---
-_S3SubscriptionRequiredException :: AsError a => Getting (First ServiceError) a ServiceError
-_S3SubscriptionRequiredException
-  = _MatchServiceError elasticBeanstalk
-      "S3SubscriptionRequiredException"
-      . hasStatus 400
-
--- | Unable to perform the specified operation because another operation that effects an element in this activity is already in progress.
---
---
-_OperationInProgressException :: AsError a => Getting (First ServiceError) a ServiceError
-_OperationInProgressException
-  = _MatchServiceError elasticBeanstalk
-      "OperationInProgressFailure"
-      . hasStatus 400
-
 -- | You cannot delete the platform version because there are still environments running on it.
 --
 --
@@ -721,40 +685,59 @@ _TooManyApplicationVersionsException
   = _MatchServiceError elasticBeanstalk
       "TooManyApplicationVersionsException"
 
--- | The specified account has reached its limit of configuration templates.
+-- | AWS CodeBuild is not available in the specified region.
 --
 --
-_TooManyConfigurationTemplatesException :: AsError a => Getting (First ServiceError) a ServiceError
-_TooManyConfigurationTemplatesException
+_CodeBuildNotInServiceRegionException :: AsError a => Getting (First ServiceError) a ServiceError
+_CodeBuildNotInServiceRegionException
   = _MatchServiceError elasticBeanstalk
-      "TooManyConfigurationTemplatesException"
+      "CodeBuildNotInServiceRegionException"
       . hasStatus 400
 
--- | The type of the specified Amazon Resource Name (ARN) isn't supported for this operation.
+-- | The specified account does not have a subscription to Amazon S3.
 --
 --
-_ResourceTypeNotSupportedException :: AsError a => Getting (First ServiceError) a ServiceError
-_ResourceTypeNotSupportedException
+_S3SubscriptionRequiredException :: AsError a => Getting (First ServiceError) a ServiceError
+_S3SubscriptionRequiredException
   = _MatchServiceError elasticBeanstalk
-      "ResourceTypeNotSupportedException"
+      "S3SubscriptionRequiredException"
       . hasStatus 400
 
--- | The specified account does not have sufficient privileges for one or more AWS services.
+-- | The specified account has reached its limit of Amazon S3 buckets.
 --
 --
-_InsufficientPrivilegesException :: AsError a => Getting (First ServiceError) a ServiceError
-_InsufficientPrivilegesException
+_TooManyBucketsException :: AsError a => Getting (First ServiceError) a ServiceError
+_TooManyBucketsException
   = _MatchServiceError elasticBeanstalk
-      "InsufficientPrivilegesException"
-      . hasStatus 403
+      "TooManyBucketsException"
+      . hasStatus 400
 
--- | A generic service exception has occurred.
+-- | Cannot modify the managed action in its current state.
 --
 --
-_ElasticBeanstalkServiceException :: AsError a => Getting (First ServiceError) a ServiceError
-_ElasticBeanstalkServiceException
+_ManagedActionInvalidStateException :: AsError a => Getting (First ServiceError) a ServiceError
+_ManagedActionInvalidStateException
   = _MatchServiceError elasticBeanstalk
-      "ElasticBeanstalkServiceException"
+      "ManagedActionInvalidStateException"
+      . hasStatus 400
+
+-- | One or more input parameters is not valid. Please correct the input parameters and try the operation again.
+--
+--
+_InvalidRequestException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidRequestException
+  = _MatchServiceError elasticBeanstalk
+      "InvalidRequestException"
+      . hasStatus 400
+
+-- | The specified account has reached its limit of applications.
+--
+--
+_TooManyApplicationsException :: AsError a => Getting (First ServiceError) a ServiceError
+_TooManyApplicationsException
+  = _MatchServiceError elasticBeanstalk
+      "TooManyApplicationsException"
+      . hasStatus 400
 
 -- | The number of tags in the resource would exceed the number of tags that each resource can have.
 --
@@ -767,40 +750,39 @@ _TooManyTagsException
       "TooManyTagsException"
       . hasStatus 400
 
--- | The specified account has reached its limit of applications.
+-- | A generic service exception has occurred.
 --
 --
-_TooManyApplicationsException :: AsError a => Getting (First ServiceError) a ServiceError
-_TooManyApplicationsException
+_ElasticBeanstalkServiceException :: AsError a => Getting (First ServiceError) a ServiceError
+_ElasticBeanstalkServiceException
   = _MatchServiceError elasticBeanstalk
-      "TooManyApplicationsException"
+      "ElasticBeanstalkServiceException"
+
+-- | A resource doesn't exist for the specified Amazon Resource Name (ARN).
+--
+--
+_ResourceNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
+_ResourceNotFoundException
+  = _MatchServiceError elasticBeanstalk
+      "ResourceNotFoundException"
       . hasStatus 400
 
--- | You have exceeded the maximum number of allowed platforms associated with the account.
+-- | The specified account has reached its limit of configuration templates.
 --
 --
-_TooManyPlatformsException :: AsError a => Getting (First ServiceError) a ServiceError
-_TooManyPlatformsException
+_TooManyConfigurationTemplatesException :: AsError a => Getting (First ServiceError) a ServiceError
+_TooManyConfigurationTemplatesException
   = _MatchServiceError elasticBeanstalk
-      "TooManyPlatformsException"
+      "TooManyConfigurationTemplatesException"
       . hasStatus 400
 
--- | Cannot modify the managed action in its current state.
+-- | Unable to perform the specified operation because another operation that effects an element in this activity is already in progress.
 --
 --
-_ManagedActionInvalidStateException :: AsError a => Getting (First ServiceError) a ServiceError
-_ManagedActionInvalidStateException
+_OperationInProgressException :: AsError a => Getting (First ServiceError) a ServiceError
+_OperationInProgressException
   = _MatchServiceError elasticBeanstalk
-      "ManagedActionInvalidStateException"
-      . hasStatus 400
-
--- | Unable to delete the Amazon S3 source bundle associated with the application version. The application version was deleted successfully.
---
---
-_SourceBundleDeletionException :: AsError a => Getting (First ServiceError) a ServiceError
-_SourceBundleDeletionException
-  = _MatchServiceError elasticBeanstalk
-      "SourceBundleDeletionFailure"
+      "OperationInProgressFailure"
       . hasStatus 400
 
 -- | The specified S3 bucket does not belong to the S3 region in which the service is running. The following regions are supported:
@@ -820,13 +802,22 @@ _S3LocationNotInServiceRegionException
       "S3LocationNotInServiceRegionException"
       . hasStatus 400
 
--- | AWS CodeBuild is not available in the specified region.
+-- | Unable to delete the Amazon S3 source bundle associated with the application version. The application version was deleted successfully.
 --
 --
-_CodeBuildNotInServiceRegionException :: AsError a => Getting (First ServiceError) a ServiceError
-_CodeBuildNotInServiceRegionException
+_SourceBundleDeletionException :: AsError a => Getting (First ServiceError) a ServiceError
+_SourceBundleDeletionException
   = _MatchServiceError elasticBeanstalk
-      "CodeBuildNotInServiceRegionException"
+      "SourceBundleDeletionFailure"
+      . hasStatus 400
+
+-- | You have exceeded the maximum number of allowed platforms associated with the account.
+--
+--
+_TooManyPlatformsException :: AsError a => Getting (First ServiceError) a ServiceError
+_TooManyPlatformsException
+  = _MatchServiceError elasticBeanstalk
+      "TooManyPlatformsException"
       . hasStatus 400
 
 -- | The specified account has reached its limit of environments.
@@ -838,11 +829,20 @@ _TooManyEnvironmentsException
       "TooManyEnvironmentsException"
       . hasStatus 400
 
--- | A resource doesn't exist for the specified Amazon Resource Name (ARN).
+-- | The specified account does not have sufficient privileges for one or more AWS services.
 --
 --
-_ResourceNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
-_ResourceNotFoundException
+_InsufficientPrivilegesException :: AsError a => Getting (First ServiceError) a ServiceError
+_InsufficientPrivilegesException
   = _MatchServiceError elasticBeanstalk
-      "ResourceNotFoundException"
+      "InsufficientPrivilegesException"
+      . hasStatus 403
+
+-- | The type of the specified Amazon Resource Name (ARN) isn't supported for this operation.
+--
+--
+_ResourceTypeNotSupportedException :: AsError a => Getting (First ServiceError) a ServiceError
+_ResourceTypeNotSupportedException
+  = _MatchServiceError elasticBeanstalk
+      "ResourceTypeNotSupportedException"
       . hasStatus 400

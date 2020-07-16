@@ -43,9 +43,9 @@ module Network.AWS.EC2.DescribeVolumes
     , describeVolumesResponse
     , DescribeVolumesResponse
     -- * Response Lenses
-    , dvvrsNextToken
-    , dvvrsVolumes
-    , dvvrsResponseStatus
+    , dscrbvlmsrsNextToken
+    , dscrbvlmsrsVolumes
+    , dscrbvlmsrsResponseStatus
     ) where
 
 import Network.AWS.EC2.Types
@@ -107,10 +107,11 @@ desMaxResults = lens _desMaxResults (\ s a -> s{_desMaxResults = a})
 
 instance AWSPager DescribeVolumes where
         page rq rs
-          | stop (rs ^. dvvrsNextToken) = Nothing
-          | stop (rs ^. dvvrsVolumes) = Nothing
+          | stop (rs ^. dscrbvlmsrsNextToken) = Nothing
+          | stop (rs ^. dscrbvlmsrsVolumes) = Nothing
           | otherwise =
-            Just $ rq & desNextToken .~ rs ^. dvvrsNextToken
+            Just $ rq &
+              desNextToken .~ rs ^. dscrbvlmsrsNextToken
 
 instance AWSRequest DescribeVolumes where
         type Rs DescribeVolumes = DescribeVolumesResponse
@@ -145,12 +146,12 @@ instance ToQuery DescribeVolumes where
                "MaxResults" =: _desMaxResults]
 
 -- | /See:/ 'describeVolumesResponse' smart constructor.
-data DescribeVolumesResponse = DescribeVolumesResponse'{_dvvrsNextToken
+data DescribeVolumesResponse = DescribeVolumesResponse'{_dscrbvlmsrsNextToken
                                                         :: !(Maybe Text),
-                                                        _dvvrsVolumes ::
+                                                        _dscrbvlmsrsVolumes ::
                                                         !(Maybe [Volume]),
-                                                        _dvvrsResponseStatus ::
-                                                        !Int}
+                                                        _dscrbvlmsrsResponseStatus
+                                                        :: !Int}
                                  deriving (Eq, Read, Show, Data, Typeable,
                                            Generic)
 
@@ -158,29 +159,30 @@ data DescribeVolumesResponse = DescribeVolumesResponse'{_dvvrsNextToken
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dvvrsNextToken' - The @NextToken@ value to include in a future @DescribeVolumes@ request. When the results of a @DescribeVolumes@ request exceed @MaxResults@ , this value can be used to retrieve the next page of results. This value is @null@ when there are no more results to return.
+-- * 'dscrbvlmsrsNextToken' - The @NextToken@ value to include in a future @DescribeVolumes@ request. When the results of a @DescribeVolumes@ request exceed @MaxResults@ , this value can be used to retrieve the next page of results. This value is @null@ when there are no more results to return.
 --
--- * 'dvvrsVolumes' - Information about the volumes.
+-- * 'dscrbvlmsrsVolumes' - Information about the volumes.
 --
--- * 'dvvrsResponseStatus' - -- | The response status code.
+-- * 'dscrbvlmsrsResponseStatus' - -- | The response status code.
 describeVolumesResponse
-    :: Int -- ^ 'dvvrsResponseStatus'
+    :: Int -- ^ 'dscrbvlmsrsResponseStatus'
     -> DescribeVolumesResponse
 describeVolumesResponse pResponseStatus_
-  = DescribeVolumesResponse'{_dvvrsNextToken = Nothing,
-                             _dvvrsVolumes = Nothing,
-                             _dvvrsResponseStatus = pResponseStatus_}
+  = DescribeVolumesResponse'{_dscrbvlmsrsNextToken =
+                               Nothing,
+                             _dscrbvlmsrsVolumes = Nothing,
+                             _dscrbvlmsrsResponseStatus = pResponseStatus_}
 
 -- | The @NextToken@ value to include in a future @DescribeVolumes@ request. When the results of a @DescribeVolumes@ request exceed @MaxResults@ , this value can be used to retrieve the next page of results. This value is @null@ when there are no more results to return.
-dvvrsNextToken :: Lens' DescribeVolumesResponse (Maybe Text)
-dvvrsNextToken = lens _dvvrsNextToken (\ s a -> s{_dvvrsNextToken = a})
+dscrbvlmsrsNextToken :: Lens' DescribeVolumesResponse (Maybe Text)
+dscrbvlmsrsNextToken = lens _dscrbvlmsrsNextToken (\ s a -> s{_dscrbvlmsrsNextToken = a})
 
 -- | Information about the volumes.
-dvvrsVolumes :: Lens' DescribeVolumesResponse [Volume]
-dvvrsVolumes = lens _dvvrsVolumes (\ s a -> s{_dvvrsVolumes = a}) . _Default . _Coerce
+dscrbvlmsrsVolumes :: Lens' DescribeVolumesResponse [Volume]
+dscrbvlmsrsVolumes = lens _dscrbvlmsrsVolumes (\ s a -> s{_dscrbvlmsrsVolumes = a}) . _Default . _Coerce
 
 -- | -- | The response status code.
-dvvrsResponseStatus :: Lens' DescribeVolumesResponse Int
-dvvrsResponseStatus = lens _dvvrsResponseStatus (\ s a -> s{_dvvrsResponseStatus = a})
+dscrbvlmsrsResponseStatus :: Lens' DescribeVolumesResponse Int
+dscrbvlmsrsResponseStatus = lens _dscrbvlmsrsResponseStatus (\ s a -> s{_dscrbvlmsrsResponseStatus = a})
 
 instance NFData DescribeVolumesResponse where

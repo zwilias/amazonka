@@ -63,68 +63,68 @@ module Network.AWS.KMS
     -- * Errors
     -- $errors
 
+    -- ** InvalidGrantTokenException
+    , _InvalidGrantTokenException
+
+    -- ** DependencyTimeoutException
+    , _DependencyTimeoutException
+
+    -- ** InvalidImportTokenException
+    , _InvalidImportTokenException
+
+    -- ** IncorrectKeyMaterialException
+    , _IncorrectKeyMaterialException
+
+    -- ** KeyUnavailableException
+    , _KeyUnavailableException
+
+    -- ** DisabledException
+    , _DisabledException
+
+    -- ** UnsupportedOperationException
+    , _UnsupportedOperationException
+
+    -- ** ExpiredImportTokenException
+    , _ExpiredImportTokenException
+
+    -- ** InvalidARNException
+    , _InvalidARNException
+
+    -- ** TagException
+    , _TagException
+
+    -- ** KMSInternalException
+    , _KMSInternalException
+
+    -- ** InvalidGrantIdException
+    , _InvalidGrantIdException
+
+    -- ** MalformedPolicyDocumentException
+    , _MalformedPolicyDocumentException
+
+    -- ** InvalidAliasNameException
+    , _InvalidAliasNameException
+
+    -- ** InvalidKeyUsageException
+    , _InvalidKeyUsageException
+
+    -- ** NotFoundException
+    , _NotFoundException
+
     -- ** InvalidMarkerException
     , _InvalidMarkerException
 
     -- ** KMSInvalidStateException
     , _KMSInvalidStateException
 
-    -- ** InvalidKeyUsageException
-    , _InvalidKeyUsageException
-
-    -- ** MalformedPolicyDocumentException
-    , _MalformedPolicyDocumentException
-
-    -- ** UnsupportedOperationException
-    , _UnsupportedOperationException
-
-    -- ** DisabledException
-    , _DisabledException
-
-    -- ** KeyUnavailableException
-    , _KeyUnavailableException
-
-    -- ** IncorrectKeyMaterialException
-    , _IncorrectKeyMaterialException
-
-    -- ** KMSInternalException
-    , _KMSInternalException
-
-    -- ** TagException
-    , _TagException
-
-    -- ** InvalidImportTokenException
-    , _InvalidImportTokenException
-
-    -- ** NotFoundException
-    , _NotFoundException
-
-    -- ** InvalidAliasNameException
-    , _InvalidAliasNameException
-
-    -- ** InvalidGrantIdException
-    , _InvalidGrantIdException
-
-    -- ** InvalidGrantTokenException
-    , _InvalidGrantTokenException
-
-    -- ** InvalidARNException
-    , _InvalidARNException
-
-    -- ** DependencyTimeoutException
-    , _DependencyTimeoutException
-
-    -- ** ExpiredImportTokenException
-    , _ExpiredImportTokenException
-
-    -- ** InvalidCiphertextException
-    , _InvalidCiphertextException
+    -- ** LimitExceededException
+    , _LimitExceededException
 
     -- ** AlreadyExistsException
     , _AlreadyExistsException
 
-    -- ** LimitExceededException
-    , _LimitExceededException
+    -- ** InvalidCiphertextException
+    , _InvalidCiphertextException
 
     -- * Waiters
     -- $waiters

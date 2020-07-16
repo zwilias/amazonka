@@ -17,8 +17,8 @@ module Network.AWS.MarketplaceEntitlement.Types
 
     -- * Errors
     , _InvalidParameterException
-    , _ThrottlingException
     , _InternalServiceErrorException
+    , _ThrottlingException
 
     -- * GetEntitlementFilterName
     , GetEntitlementFilterName (..)
@@ -92,14 +92,6 @@ _InvalidParameterException
   = _MatchServiceError marketplaceEntitlement
       "InvalidParameterException"
 
--- | The calls to the GetEntitlements API are throttled.
---
---
-_ThrottlingException :: AsError a => Getting (First ServiceError) a ServiceError
-_ThrottlingException
-  = _MatchServiceError marketplaceEntitlement
-      "ThrottlingException"
-
 -- | An internal error has occurred. Retry your request. If the problem persists, post a message with details on the AWS forums.
 --
 --
@@ -107,3 +99,11 @@ _InternalServiceErrorException :: AsError a => Getting (First ServiceError) a Se
 _InternalServiceErrorException
   = _MatchServiceError marketplaceEntitlement
       "InternalServiceErrorException"
+
+-- | The calls to the GetEntitlements API are throttled.
+--
+--
+_ThrottlingException :: AsError a => Getting (First ServiceError) a ServiceError
+_ThrottlingException
+  = _MatchServiceError marketplaceEntitlement
+      "ThrottlingException"

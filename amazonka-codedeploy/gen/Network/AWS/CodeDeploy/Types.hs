@@ -16,118 +16,118 @@ module Network.AWS.CodeDeploy.Types
       codeDeploy
 
     -- * Errors
-    , _LifecycleHookLimitExceededException
-    , _InvalidTimeRangeException
-    , _InvalidComputePlatformException
-    , _InvalidTagException
-    , _InvalidFileExistsBehaviorException
-    , _InvalidAlarmConfigException
-    , _InstanceNameAlreadyRegisteredException
-    , _IAMUserARNRequiredException
-    , _InvalidDeploymentGroupNameException
-    , _InvalidInstanceTypeException
-    , _IAMSessionARNAlreadyRegisteredException
-    , _InvalidTrafficRoutingConfigurationException
-    , _DescriptionTooLongException
-    , _InvalidIAMUserARNException
-    , _InvalidOnPremisesTagCombinationException
-    , _DeploymentNotStartedException
-    , _DeploymentConfigLimitExceededException
-    , _RoleRequiredException
-    , _InvalidLoadBalancerInfoException
-    , _InvalidBlueGreenDeploymentConfigurationException
-    , _InvalidRoleException
-    , _DeploymentConfigAlreadyExistsException
-    , _InvalidTargetInstancesException
-    , _InvalidTagsToAddException
-    , _DeploymentLimitExceededException
-    , _IAMUserARNAlreadyRegisteredException
-    , _InvalidIAMSessionARNException
-    , _InstanceLimitExceededException
-    , _InvalidLifecycleEventHookExecutionIdException
-    , _InvalidDeploymentStyleException
-    , _InvalidTargetFilterNameException
-    , _DeploymentTargetListSizeExceededException
-    , _InvalidDeployedStateFilterException
-    , _InvalidAutoScalingGroupException
-    , _InvalidApplicationNameException
+    , _InvalidDeploymentTargetIdException
+    , _InvalidDeploymentStatusException
+    , _MultipleIAMARNsProvidedException
+    , _TagSetListLimitExceededException
     , _GitHubAccountTokenDoesNotExistException
-    , _ApplicationDoesNotExistException
-    , _InvalidMinimumHealthyHostValueException
-    , _UnsupportedActionForDeploymentTypeException
-    , _ResourceValidationException
-    , _ARNNotSupportedException
-    , _InvalidGitHubAccountTokenException
-    , _InvalidEC2TagCombinationException
-    , _InvalidLifecycleEventHookExecutionStatusException
-    , _AlarmsLimitExceededException
-    , _OperationNotSupportedException
-    , _DeploymentTargetDoesNotExistException
-    , _InvalidTagFilterException
-    , _InvalidTriggerConfigException
-    , _InvalidDeploymentWaitTypeException
+    , _InvalidDeployedStateFilterException
+    , _TriggerTargetsLimitExceededException
+    , _InvalidInstanceStatusException
+    , _InvalidRegistrationStatusException
+    , _InstanceNotRegisteredException
+    , _ApplicationNameRequiredException
+    , _DeploymentTargetListSizeExceededException
+    , _InvalidApplicationNameException
+    , _InvalidIAMSessionARNException
+    , _InvalidInstanceNameException
+    , _InvalidLifecycleEventHookExecutionIdException
+    , _InvalidDeploymentConfigIdException
+    , _InvalidEC2TagException
+    , _DeploymentConfigInUseException
+    , _InvalidDeploymentStyleException
+    , _InvalidAutoRollbackConfigException
+    , _InvalidTagsToAddException
+    , _InvalidTargetInstancesException
+    , _InvalidRevisionException
+    , _InvalidInstanceIdException
+    , _DeploymentGroupDoesNotExistException
+    , _DeploymentIsNotInReadyStateException
+    , _RoleRequiredException
+    , _InvalidDeploymentIdException
+    , _InvalidDeploymentConfigNameException
+    , _DeploymentNotStartedException
+    , _InvalidBucketNameFilterException
+    , _DeploymentGroupNameRequiredException
+    , _InvalidDeploymentGroupNameException
+    , _InvalidAlarmConfigException
+    , _IAMSessionARNAlreadyRegisteredException
+    , _IAMUserARNRequiredException
+    , _InvalidTargetException
+    , _DescriptionTooLongException
+    , _InvalidTrafficRoutingConfigurationException
+    , _InvalidSortByException
+    , _InvalidTimeRangeException
+    , _TagRequiredException
+    , _LifecycleHookLimitExceededException
     , _InvalidIgnoreApplicationStopFailuresValueException
     , _InvalidUpdateOutdatedInstancesOnlyValueException
-    , _TagRequiredException
-    , _DeploymentGroupNameRequiredException
-    , _BucketNameFilterRequiredException
-    , _DeploymentConfigDoesNotExistException
-    , _InvalidBucketNameFilterException
-    , _DeploymentGroupAlreadyExistsException
-    , _InvalidSortByException
-    , _RevisionDoesNotExistException
-    , _InvalidTargetException
-    , _DeploymentGroupLimitExceededException
-    , _DeploymentGroupDoesNotExistException
-    , _ThrottlingException
-    , _InvalidDeploymentConfigNameException
-    , _DeploymentConfigNameRequiredException
-    , _DeploymentIdRequiredException
-    , _InvalidInstanceIdException
-    , _DeploymentIsNotInReadyStateException
-    , _InvalidTargetGroupPairException
-    , _InvalidNextTokenException
-    , _InstanceIdRequiredException
-    , _InvalidDeploymentIdException
-    , _InvalidSortOrderException
-    , _InvalidAutoRollbackConfigException
-    , _DeploymentAlreadyCompletedException
-    , _ECSServiceMappingLimitExceededException
+    , _InvalidComputePlatformException
+    , _InvalidTagException
+    , _InvalidDeploymentWaitTypeException
+    , _AlarmsLimitExceededException
+    , _DeploymentAlreadyStartedException
+    , _ARNNotSupportedException
+    , _InvalidGitHubAccountTokenException
+    , _InvalidKeyPrefixFilterException
+    , _OperationNotSupportedException
+    , _IAMARNRequiredException
+    , _GitHubAccountTokenNameRequiredException
+    , _LifecycleEventAlreadyCompletedException
+    , _ApplicationDoesNotExistException
+    , _ApplicationAlreadyExistsException
+    , _ApplicationLimitExceededException
+    , _InvalidOperationException
+    , _InvalidARNException
+    , _DeploymentTargetIdRequiredException
+    , _InvalidAutoScalingGroupException
+    , _TagLimitExceededException
+    , _DeploymentLimitExceededException
+    , _InstanceNameRequiredException
+    , _IAMUserARNAlreadyRegisteredException
+    , _InvalidInputException
+    , _InvalidTargetFilterNameException
+    , _InstanceLimitExceededException
     , _DeploymentDoesNotExistException
-    , _BatchLimitExceededException
-    , _InvalidRevisionException
     , _RevisionRequiredException
     , _InstanceDoesNotExistException
-    , _DeploymentConfigInUseException
-    , _InvalidDeploymentConfigIdException
-    , _InvalidInputException
-    , _InvalidEC2TagException
-    , _InvalidInstanceNameException
-    , _InstanceNameRequiredException
-    , _MultipleIAMARNsProvidedException
-    , _TriggerTargetsLimitExceededException
-    , _InvalidDeploymentStatusException
-    , _InvalidRegistrationStatusException
-    , _ApplicationNameRequiredException
-    , _InstanceNotRegisteredException
-    , _ApplicationAlreadyExistsException
-    , _InvalidInstanceStatusException
-    , _InvalidDeploymentTargetIdException
-    , _TagLimitExceededException
-    , _ApplicationLimitExceededException
-    , _TagSetListLimitExceededException
-    , _InvalidARNException
-    , _InvalidOperationException
-    , _DeploymentTargetIdRequiredException
-    , _GitHubAccountTokenNameRequiredException
-    , _InvalidECSServiceException
-    , _InvalidDeploymentInstanceTypeException
-    , _IAMARNRequiredException
-    , _InvalidGitHubAccountTokenNameException
-    , _LifecycleEventAlreadyCompletedException
-    , _InvalidKeyPrefixFilterException
+    , _DeploymentAlreadyCompletedException
+    , _BatchLimitExceededException
+    , _ECSServiceMappingLimitExceededException
+    , _InvalidOnPremisesTagCombinationException
+    , _DeploymentConfigNameRequiredException
+    , _DeploymentConfigLimitExceededException
+    , _InvalidBlueGreenDeploymentConfigurationException
+    , _DeploymentIdRequiredException
+    , _ThrottlingException
+    , _InvalidLoadBalancerInfoException
+    , _DeploymentConfigAlreadyExistsException
+    , _InvalidNextTokenException
+    , _InstanceIdRequiredException
+    , _InvalidTargetGroupPairException
+    , _InvalidRoleException
+    , _InvalidSortOrderException
+    , _DeploymentConfigDoesNotExistException
+    , _RevisionDoesNotExistException
+    , _DeploymentGroupAlreadyExistsException
+    , _DeploymentGroupLimitExceededException
+    , _InvalidInstanceTypeException
+    , _BucketNameFilterRequiredException
+    , _InvalidIAMUserARNException
+    , _InstanceNameAlreadyRegisteredException
+    , _InvalidTriggerConfigException
+    , _DeploymentTargetDoesNotExistException
+    , _InvalidTagFilterException
+    , _InvalidFileExistsBehaviorException
     , _ResourceARNRequiredException
-    , _DeploymentAlreadyStartedException
+    , _InvalidEC2TagCombinationException
+    , _InvalidLifecycleEventHookExecutionStatusException
+    , _InvalidDeploymentInstanceTypeException
+    , _InvalidGitHubAccountTokenNameException
+    , _InvalidECSServiceException
+    , _ResourceValidationException
+    , _InvalidMinimumHealthyHostValueException
+    , _UnsupportedActionForDeploymentTypeException
 
     -- * ApplicationRevisionSortBy
     , ApplicationRevisionSortBy (..)
@@ -751,44 +751,287 @@ codeDeploy
           | has (hasStatus 509) e = Just "limit_exceeded"
           | otherwise = Nothing
 
--- | The limit for lifecycle hooks was exceeded.
+-- | The target ID provided was not valid. 
 --
 --
-_LifecycleHookLimitExceededException :: AsError a => Getting (First ServiceError) a ServiceError
-_LifecycleHookLimitExceededException
+_InvalidDeploymentTargetIdException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidDeploymentTargetIdException
   = _MatchServiceError codeDeploy
-      "LifecycleHookLimitExceededException"
+      "InvalidDeploymentTargetIdException"
 
--- | The specified time range was specified in an invalid format.
+-- | The specified deployment status doesn't exist or cannot be determined.
 --
 --
-_InvalidTimeRangeException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidTimeRangeException
+_InvalidDeploymentStatusException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidDeploymentStatusException
   = _MatchServiceError codeDeploy
-      "InvalidTimeRangeException"
+      "InvalidDeploymentStatusException"
 
--- | The computePlatform is invalid. The computePlatform should be @Lambda@ or @Server@ .
+-- | Both an IAM user ARN and an IAM session ARN were included in the request. Use only one ARN type.
 --
 --
-_InvalidComputePlatformException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidComputePlatformException
+_MultipleIAMARNsProvidedException :: AsError a => Getting (First ServiceError) a ServiceError
+_MultipleIAMARNsProvidedException
   = _MatchServiceError codeDeploy
-      "InvalidComputePlatformException"
+      "MultipleIamArnsProvidedException"
+
+-- | The number of tag groups included in the tag set list exceeded the maximum allowed limit of 3.
+--
+--
+_TagSetListLimitExceededException :: AsError a => Getting (First ServiceError) a ServiceError
+_TagSetListLimitExceededException
+  = _MatchServiceError codeDeploy
+      "TagSetListLimitExceededException"
+
+-- | No GitHub account connection exists with the named specified in the call.
+--
+--
+_GitHubAccountTokenDoesNotExistException :: AsError a => Getting (First ServiceError) a ServiceError
+_GitHubAccountTokenDoesNotExistException
+  = _MatchServiceError codeDeploy
+      "GitHubAccountTokenDoesNotExistException"
+
+-- | The deployed state filter was specified in an invalid format.
+--
+--
+_InvalidDeployedStateFilterException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidDeployedStateFilterException
+  = _MatchServiceError codeDeploy
+      "InvalidDeployedStateFilterException"
+
+-- | The maximum allowed number of triggers was exceeded.
+--
+--
+_TriggerTargetsLimitExceededException :: AsError a => Getting (First ServiceError) a ServiceError
+_TriggerTargetsLimitExceededException
+  = _MatchServiceError codeDeploy
+      "TriggerTargetsLimitExceededException"
+
+-- | The specified instance status does not exist.
+--
+--
+_InvalidInstanceStatusException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidInstanceStatusException
+  = _MatchServiceError codeDeploy
+      "InvalidInstanceStatusException"
+
+-- | The registration status was specified in an invalid format.
+--
+--
+_InvalidRegistrationStatusException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidRegistrationStatusException
+  = _MatchServiceError codeDeploy
+      "InvalidRegistrationStatusException"
+
+-- | The specified on-premises instance is not registered.
+--
+--
+_InstanceNotRegisteredException :: AsError a => Getting (First ServiceError) a ServiceError
+_InstanceNotRegisteredException
+  = _MatchServiceError codeDeploy
+      "InstanceNotRegisteredException"
+
+-- | The minimum number of required application names was not specified.
+--
+--
+_ApplicationNameRequiredException :: AsError a => Getting (First ServiceError) a ServiceError
+_ApplicationNameRequiredException
+  = _MatchServiceError codeDeploy
+      "ApplicationNameRequiredException"
+
+-- | The maximum number of targets that can be associated with an Amazon ECS or AWS Lambda deployment was exceeded. The target list of both types of deployments must have exactly one item. This exception does not apply to EC2/On-premises deployments. 
+--
+--
+_DeploymentTargetListSizeExceededException :: AsError a => Getting (First ServiceError) a ServiceError
+_DeploymentTargetListSizeExceededException
+  = _MatchServiceError codeDeploy
+      "DeploymentTargetListSizeExceededException"
+
+-- | The application name was specified in an invalid format.
+--
+--
+_InvalidApplicationNameException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidApplicationNameException
+  = _MatchServiceError codeDeploy
+      "InvalidApplicationNameException"
+
+-- | The IAM session ARN was specified in an invalid format.
+--
+--
+_InvalidIAMSessionARNException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidIAMSessionARNException
+  = _MatchServiceError codeDeploy
+      "InvalidIamSessionArnException"
+
+-- | The on-premises instance name was specified in an invalid format.
+--
+--
+_InvalidInstanceNameException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidInstanceNameException
+  = _MatchServiceError codeDeploy
+      "InvalidInstanceNameException"
+
+-- | A lifecycle event hook is invalid. Review the @hooks@ section in your AppSpec file to ensure the lifecycle events and @hooks@ functions are valid.
+--
+--
+_InvalidLifecycleEventHookExecutionIdException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidLifecycleEventHookExecutionIdException
+  = _MatchServiceError codeDeploy
+      "InvalidLifecycleEventHookExecutionIdException"
+
+-- | The ID of the deployment configuration is invalid. 
+--
+--
+_InvalidDeploymentConfigIdException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidDeploymentConfigIdException
+  = _MatchServiceError codeDeploy
+      "InvalidDeploymentConfigIdException"
 
 -- | The tag was specified in an invalid format.
 --
 --
-_InvalidTagException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidTagException
-  = _MatchServiceError codeDeploy "InvalidTagException"
-
--- | An invalid fileExistsBehavior option was specified to determine how AWS CodeDeploy handles files or directories that already exist in a deployment target location, but weren't part of the previous successful deployment. Valid values include "DISALLOW," "OVERWRITE," and "RETAIN."
---
---
-_InvalidFileExistsBehaviorException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidFileExistsBehaviorException
+_InvalidEC2TagException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidEC2TagException
   = _MatchServiceError codeDeploy
-      "InvalidFileExistsBehaviorException"
+      "InvalidEC2TagException"
+
+-- | The deployment configuration is still in use.
+--
+--
+_DeploymentConfigInUseException :: AsError a => Getting (First ServiceError) a ServiceError
+_DeploymentConfigInUseException
+  = _MatchServiceError codeDeploy
+      "DeploymentConfigInUseException"
+
+-- | An invalid deployment style was specified. Valid deployment types include "IN_PLACE" and "BLUE_GREEN." Valid deployment options include "WITH_TRAFFIC_CONTROL" and "WITHOUT_TRAFFIC_CONTROL."
+--
+--
+_InvalidDeploymentStyleException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidDeploymentStyleException
+  = _MatchServiceError codeDeploy
+      "InvalidDeploymentStyleException"
+
+-- | The automatic rollback configuration was specified in an invalid format. For example, automatic rollback is enabled, but an invalid triggering event type or no event types were listed.
+--
+--
+_InvalidAutoRollbackConfigException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidAutoRollbackConfigException
+  = _MatchServiceError codeDeploy
+      "InvalidAutoRollbackConfigException"
+
+-- | The specified tags are not valid. 
+--
+--
+_InvalidTagsToAddException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidTagsToAddException
+  = _MatchServiceError codeDeploy
+      "InvalidTagsToAddException"
+
+-- | The target instance configuration is invalid. Possible causes include:
+--
+--
+--     * Configuration data for target instances was entered for an in-place deployment.
+--
+--     * The limit of 10 tags for a tag type was exceeded.
+--
+--     * The combined length of the tag names exceeded the limit. 
+--
+--     * A specified tag is not currently applied to any instances.
+--
+--
+--
+_InvalidTargetInstancesException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidTargetInstancesException
+  = _MatchServiceError codeDeploy
+      "InvalidTargetInstancesException"
+
+-- | The revision was specified in an invalid format.
+--
+--
+_InvalidRevisionException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidRevisionException
+  = _MatchServiceError codeDeploy
+      "InvalidRevisionException"
+
+-- | 
+--
+--
+_InvalidInstanceIdException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidInstanceIdException
+  = _MatchServiceError codeDeploy
+      "InvalidInstanceIdException"
+
+-- | The named deployment group with the IAM user or AWS account does not exist.
+--
+--
+_DeploymentGroupDoesNotExistException :: AsError a => Getting (First ServiceError) a ServiceError
+_DeploymentGroupDoesNotExistException
+  = _MatchServiceError codeDeploy
+      "DeploymentGroupDoesNotExistException"
+
+-- | The deployment does not have a status of Ready and can't continue yet.
+--
+--
+_DeploymentIsNotInReadyStateException :: AsError a => Getting (First ServiceError) a ServiceError
+_DeploymentIsNotInReadyStateException
+  = _MatchServiceError codeDeploy
+      "DeploymentIsNotInReadyStateException"
+
+-- | The role ID was not specified.
+--
+--
+_RoleRequiredException :: AsError a => Getting (First ServiceError) a ServiceError
+_RoleRequiredException
+  = _MatchServiceError codeDeploy
+      "RoleRequiredException"
+
+-- | At least one of the deployment IDs was specified in an invalid format.
+--
+--
+_InvalidDeploymentIdException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidDeploymentIdException
+  = _MatchServiceError codeDeploy
+      "InvalidDeploymentIdException"
+
+-- | The deployment configuration name was specified in an invalid format.
+--
+--
+_InvalidDeploymentConfigNameException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidDeploymentConfigNameException
+  = _MatchServiceError codeDeploy
+      "InvalidDeploymentConfigNameException"
+
+-- | The specified deployment has not started.
+--
+--
+_DeploymentNotStartedException :: AsError a => Getting (First ServiceError) a ServiceError
+_DeploymentNotStartedException
+  = _MatchServiceError codeDeploy
+      "DeploymentNotStartedException"
+
+-- | The bucket name either doesn't exist or was specified in an invalid format.
+--
+--
+_InvalidBucketNameFilterException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidBucketNameFilterException
+  = _MatchServiceError codeDeploy
+      "InvalidBucketNameFilterException"
+
+-- | The deployment group name was not specified.
+--
+--
+_DeploymentGroupNameRequiredException :: AsError a => Getting (First ServiceError) a ServiceError
+_DeploymentGroupNameRequiredException
+  = _MatchServiceError codeDeploy
+      "DeploymentGroupNameRequiredException"
+
+-- | The deployment group name was specified in an invalid format.
+--
+--
+_InvalidDeploymentGroupNameException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidDeploymentGroupNameException
+  = _MatchServiceError codeDeploy
+      "InvalidDeploymentGroupNameException"
 
 -- | The format of the alarm configuration is invalid. Possible causes include:
 --
@@ -810,13 +1053,13 @@ _InvalidAlarmConfigException
   = _MatchServiceError codeDeploy
       "InvalidAlarmConfigException"
 
--- | The specified on-premises instance name is already registered.
+-- | The request included an IAM session ARN that has already been used to register a different instance.
 --
 --
-_InstanceNameAlreadyRegisteredException :: AsError a => Getting (First ServiceError) a ServiceError
-_InstanceNameAlreadyRegisteredException
+_IAMSessionARNAlreadyRegisteredException :: AsError a => Getting (First ServiceError) a ServiceError
+_IAMSessionARNAlreadyRegisteredException
   = _MatchServiceError codeDeploy
-      "InstanceNameAlreadyRegisteredException"
+      "IamSessionArnAlreadyRegisteredException"
 
 -- | An IAM user ARN was not specified.
 --
@@ -826,37 +1069,13 @@ _IAMUserARNRequiredException
   = _MatchServiceError codeDeploy
       "IamUserArnRequiredException"
 
--- | The deployment group name was specified in an invalid format.
+-- | A target is not valid. 
 --
 --
-_InvalidDeploymentGroupNameException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidDeploymentGroupNameException
+_InvalidTargetException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidTargetException
   = _MatchServiceError codeDeploy
-      "InvalidDeploymentGroupNameException"
-
--- | An invalid instance type was specified for instances in a blue/green deployment. Valid values include "Blue" for an original environment and "Green" for a replacement environment.
---
---
-_InvalidInstanceTypeException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidInstanceTypeException
-  = _MatchServiceError codeDeploy
-      "InvalidInstanceTypeException"
-
--- | The request included an IAM session ARN that has already been used to register a different instance.
---
---
-_IAMSessionARNAlreadyRegisteredException :: AsError a => Getting (First ServiceError) a ServiceError
-_IAMSessionARNAlreadyRegisteredException
-  = _MatchServiceError codeDeploy
-      "IamSessionArnAlreadyRegisteredException"
-
--- | The configuration that specifies how traffic is routed during a deployment is invalid.
---
---
-_InvalidTrafficRoutingConfigurationException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidTrafficRoutingConfigurationException
-  = _MatchServiceError codeDeploy
-      "InvalidTrafficRoutingConfigurationException"
+      "InvalidTargetException"
 
 -- | The description is too long.
 --
@@ -866,311 +1085,45 @@ _DescriptionTooLongException
   = _MatchServiceError codeDeploy
       "DescriptionTooLongException"
 
--- | The IAM user ARN was specified in an invalid format.
+-- | The configuration that specifies how traffic is routed during a deployment is invalid.
 --
 --
-_InvalidIAMUserARNException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidIAMUserARNException
+_InvalidTrafficRoutingConfigurationException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidTrafficRoutingConfigurationException
   = _MatchServiceError codeDeploy
-      "InvalidIamUserArnException"
+      "InvalidTrafficRoutingConfigurationException"
 
--- | A call was submitted that specified both OnPremisesTagFilters and OnPremisesTagSet, but only one of these data types can be used in a single call.
+-- | The column name to sort by is either not present or was specified in an invalid format.
 --
 --
-_InvalidOnPremisesTagCombinationException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidOnPremisesTagCombinationException
+_InvalidSortByException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidSortByException
   = _MatchServiceError codeDeploy
-      "InvalidOnPremisesTagCombinationException"
+      "InvalidSortByException"
 
--- | The specified deployment has not started.
+-- | The specified time range was specified in an invalid format.
 --
 --
-_DeploymentNotStartedException :: AsError a => Getting (First ServiceError) a ServiceError
-_DeploymentNotStartedException
+_InvalidTimeRangeException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidTimeRangeException
   = _MatchServiceError codeDeploy
-      "DeploymentNotStartedException"
+      "InvalidTimeRangeException"
 
--- | The deployment configurations limit was exceeded.
+-- | A tag was not specified.
 --
 --
-_DeploymentConfigLimitExceededException :: AsError a => Getting (First ServiceError) a ServiceError
-_DeploymentConfigLimitExceededException
+_TagRequiredException :: AsError a => Getting (First ServiceError) a ServiceError
+_TagRequiredException
   = _MatchServiceError codeDeploy
-      "DeploymentConfigLimitExceededException"
+      "TagRequiredException"
 
--- | The role ID was not specified.
+-- | The limit for lifecycle hooks was exceeded.
 --
 --
-_RoleRequiredException :: AsError a => Getting (First ServiceError) a ServiceError
-_RoleRequiredException
+_LifecycleHookLimitExceededException :: AsError a => Getting (First ServiceError) a ServiceError
+_LifecycleHookLimitExceededException
   = _MatchServiceError codeDeploy
-      "RoleRequiredException"
-
--- | An invalid load balancer name, or no load balancer name, was specified.
---
---
-_InvalidLoadBalancerInfoException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidLoadBalancerInfoException
-  = _MatchServiceError codeDeploy
-      "InvalidLoadBalancerInfoException"
-
--- | The configuration for the blue/green deployment group was provided in an invalid format. For information about deployment configuration format, see 'CreateDeploymentConfig' .
---
---
-_InvalidBlueGreenDeploymentConfigurationException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidBlueGreenDeploymentConfigurationException
-  = _MatchServiceError codeDeploy
-      "InvalidBlueGreenDeploymentConfigurationException"
-
--- | The service role ARN was specified in an invalid format. Or, if an Auto Scaling group was specified, the specified service role does not grant the appropriate permissions to Amazon EC2 Auto Scaling.
---
---
-_InvalidRoleException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidRoleException
-  = _MatchServiceError codeDeploy
-      "InvalidRoleException"
-
--- | A deployment configuration with the specified name with the IAM user or AWS account already exists .
---
---
-_DeploymentConfigAlreadyExistsException :: AsError a => Getting (First ServiceError) a ServiceError
-_DeploymentConfigAlreadyExistsException
-  = _MatchServiceError codeDeploy
-      "DeploymentConfigAlreadyExistsException"
-
--- | The target instance configuration is invalid. Possible causes include:
---
---
---     * Configuration data for target instances was entered for an in-place deployment.
---
---     * The limit of 10 tags for a tag type was exceeded.
---
---     * The combined length of the tag names exceeded the limit. 
---
---     * A specified tag is not currently applied to any instances.
---
---
---
-_InvalidTargetInstancesException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidTargetInstancesException
-  = _MatchServiceError codeDeploy
-      "InvalidTargetInstancesException"
-
--- | The specified tags are not valid. 
---
---
-_InvalidTagsToAddException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidTagsToAddException
-  = _MatchServiceError codeDeploy
-      "InvalidTagsToAddException"
-
--- | The number of allowed deployments was exceeded.
---
---
-_DeploymentLimitExceededException :: AsError a => Getting (First ServiceError) a ServiceError
-_DeploymentLimitExceededException
-  = _MatchServiceError codeDeploy
-      "DeploymentLimitExceededException"
-
--- | The specified IAM user ARN is already registered with an on-premises instance.
---
---
-_IAMUserARNAlreadyRegisteredException :: AsError a => Getting (First ServiceError) a ServiceError
-_IAMUserARNAlreadyRegisteredException
-  = _MatchServiceError codeDeploy
-      "IamUserArnAlreadyRegisteredException"
-
--- | The IAM session ARN was specified in an invalid format.
---
---
-_InvalidIAMSessionARNException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidIAMSessionARNException
-  = _MatchServiceError codeDeploy
-      "InvalidIamSessionArnException"
-
--- | The maximum number of allowed on-premises instances in a single call was exceeded.
---
---
-_InstanceLimitExceededException :: AsError a => Getting (First ServiceError) a ServiceError
-_InstanceLimitExceededException
-  = _MatchServiceError codeDeploy
-      "InstanceLimitExceededException"
-
--- | A lifecycle event hook is invalid. Review the @hooks@ section in your AppSpec file to ensure the lifecycle events and @hooks@ functions are valid.
---
---
-_InvalidLifecycleEventHookExecutionIdException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidLifecycleEventHookExecutionIdException
-  = _MatchServiceError codeDeploy
-      "InvalidLifecycleEventHookExecutionIdException"
-
--- | An invalid deployment style was specified. Valid deployment types include "IN_PLACE" and "BLUE_GREEN." Valid deployment options include "WITH_TRAFFIC_CONTROL" and "WITHOUT_TRAFFIC_CONTROL."
---
---
-_InvalidDeploymentStyleException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidDeploymentStyleException
-  = _MatchServiceError codeDeploy
-      "InvalidDeploymentStyleException"
-
--- | The target filter name is invalid. 
---
---
-_InvalidTargetFilterNameException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidTargetFilterNameException
-  = _MatchServiceError codeDeploy
-      "InvalidTargetFilterNameException"
-
--- | The maximum number of targets that can be associated with an Amazon ECS or AWS Lambda deployment was exceeded. The target list of both types of deployments must have exactly one item. This exception does not apply to EC2/On-premises deployments. 
---
---
-_DeploymentTargetListSizeExceededException :: AsError a => Getting (First ServiceError) a ServiceError
-_DeploymentTargetListSizeExceededException
-  = _MatchServiceError codeDeploy
-      "DeploymentTargetListSizeExceededException"
-
--- | The deployed state filter was specified in an invalid format.
---
---
-_InvalidDeployedStateFilterException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidDeployedStateFilterException
-  = _MatchServiceError codeDeploy
-      "InvalidDeployedStateFilterException"
-
--- | The Auto Scaling group was specified in an invalid format or does not exist.
---
---
-_InvalidAutoScalingGroupException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidAutoScalingGroupException
-  = _MatchServiceError codeDeploy
-      "InvalidAutoScalingGroupException"
-
--- | The application name was specified in an invalid format.
---
---
-_InvalidApplicationNameException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidApplicationNameException
-  = _MatchServiceError codeDeploy
-      "InvalidApplicationNameException"
-
--- | No GitHub account connection exists with the named specified in the call.
---
---
-_GitHubAccountTokenDoesNotExistException :: AsError a => Getting (First ServiceError) a ServiceError
-_GitHubAccountTokenDoesNotExistException
-  = _MatchServiceError codeDeploy
-      "GitHubAccountTokenDoesNotExistException"
-
--- | The application does not exist with the IAM user or AWS account.
---
---
-_ApplicationDoesNotExistException :: AsError a => Getting (First ServiceError) a ServiceError
-_ApplicationDoesNotExistException
-  = _MatchServiceError codeDeploy
-      "ApplicationDoesNotExistException"
-
--- | The minimum healthy instance value was specified in an invalid format.
---
---
-_InvalidMinimumHealthyHostValueException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidMinimumHealthyHostValueException
-  = _MatchServiceError codeDeploy
-      "InvalidMinimumHealthyHostValueException"
-
--- | A call was submitted that is not supported for the specified deployment type.
---
---
-_UnsupportedActionForDeploymentTypeException :: AsError a => Getting (First ServiceError) a ServiceError
-_UnsupportedActionForDeploymentTypeException
-  = _MatchServiceError codeDeploy
-      "UnsupportedActionForDeploymentTypeException"
-
--- | The specified resource could not be validated.
---
---
-_ResourceValidationException :: AsError a => Getting (First ServiceError) a ServiceError
-_ResourceValidationException
-  = _MatchServiceError codeDeploy
-      "ResourceValidationException"
-
--- | The specified ARN is not supported. For example, it might be an ARN for a resource that is not expected. 
---
---
-_ARNNotSupportedException :: AsError a => Getting (First ServiceError) a ServiceError
-_ARNNotSupportedException
-  = _MatchServiceError codeDeploy
-      "ArnNotSupportedException"
-
--- | The GitHub token is not valid.
---
---
-_InvalidGitHubAccountTokenException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidGitHubAccountTokenException
-  = _MatchServiceError codeDeploy
-      "InvalidGitHubAccountTokenException"
-
--- | A call was submitted that specified both Ec2TagFilters and Ec2TagSet, but only one of these data types can be used in a single call.
---
---
-_InvalidEC2TagCombinationException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidEC2TagCombinationException
-  = _MatchServiceError codeDeploy
-      "InvalidEC2TagCombinationException"
-
--- | The result of a Lambda validation function that verifies a lifecycle event is invalid. It should return @Succeeded@ or @Failed@ .
---
---
-_InvalidLifecycleEventHookExecutionStatusException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidLifecycleEventHookExecutionStatusException
-  = _MatchServiceError codeDeploy
-      "InvalidLifecycleEventHookExecutionStatusException"
-
--- | The maximum number of alarms for a deployment group (10) was exceeded.
---
---
-_AlarmsLimitExceededException :: AsError a => Getting (First ServiceError) a ServiceError
-_AlarmsLimitExceededException
-  = _MatchServiceError codeDeploy
-      "AlarmsLimitExceededException"
-
--- | The API used does not support the deployment.
---
---
-_OperationNotSupportedException :: AsError a => Getting (First ServiceError) a ServiceError
-_OperationNotSupportedException
-  = _MatchServiceError codeDeploy
-      "OperationNotSupportedException"
-
--- | The provided target ID does not belong to the attempted deployment. 
---
---
-_DeploymentTargetDoesNotExistException :: AsError a => Getting (First ServiceError) a ServiceError
-_DeploymentTargetDoesNotExistException
-  = _MatchServiceError codeDeploy
-      "DeploymentTargetDoesNotExistException"
-
--- | The tag filter was specified in an invalid format.
---
---
-_InvalidTagFilterException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidTagFilterException
-  = _MatchServiceError codeDeploy
-      "InvalidTagFilterException"
-
--- | The trigger was specified in an invalid format.
---
---
-_InvalidTriggerConfigException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidTriggerConfigException
-  = _MatchServiceError codeDeploy
-      "InvalidTriggerConfigException"
-
--- | The wait type is invalid. 
---
---
-_InvalidDeploymentWaitTypeException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidDeploymentWaitTypeException
-  = _MatchServiceError codeDeploy
-      "InvalidDeploymentWaitTypeException"
+      "LifecycleHookLimitExceededException"
 
 -- | The IgnoreApplicationStopFailures value is invalid. For AWS Lambda deployments, @false@ is expected. For EC2/On-premises deployments, @true@ or @false@ is expected.
 --
@@ -1188,204 +1141,211 @@ _InvalidUpdateOutdatedInstancesOnlyValueException
   = _MatchServiceError codeDeploy
       "InvalidUpdateOutdatedInstancesOnlyValueException"
 
--- | A tag was not specified.
+-- | The computePlatform is invalid. The computePlatform should be @Lambda@ or @Server@ .
 --
 --
-_TagRequiredException :: AsError a => Getting (First ServiceError) a ServiceError
-_TagRequiredException
+_InvalidComputePlatformException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidComputePlatformException
   = _MatchServiceError codeDeploy
-      "TagRequiredException"
+      "InvalidComputePlatformException"
 
--- | The deployment group name was not specified.
+-- | The tag was specified in an invalid format.
 --
 --
-_DeploymentGroupNameRequiredException :: AsError a => Getting (First ServiceError) a ServiceError
-_DeploymentGroupNameRequiredException
+_InvalidTagException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidTagException
+  = _MatchServiceError codeDeploy "InvalidTagException"
+
+-- | The wait type is invalid. 
+--
+--
+_InvalidDeploymentWaitTypeException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidDeploymentWaitTypeException
   = _MatchServiceError codeDeploy
-      "DeploymentGroupNameRequiredException"
+      "InvalidDeploymentWaitTypeException"
 
--- | A bucket name is required, but was not provided.
+-- | The maximum number of alarms for a deployment group (10) was exceeded.
 --
 --
-_BucketNameFilterRequiredException :: AsError a => Getting (First ServiceError) a ServiceError
-_BucketNameFilterRequiredException
+_AlarmsLimitExceededException :: AsError a => Getting (First ServiceError) a ServiceError
+_AlarmsLimitExceededException
   = _MatchServiceError codeDeploy
-      "BucketNameFilterRequiredException"
+      "AlarmsLimitExceededException"
 
--- | The deployment configuration does not exist with the IAM user or AWS account.
+-- | A deployment to a target was attempted while another deployment was in progress. 
 --
 --
-_DeploymentConfigDoesNotExistException :: AsError a => Getting (First ServiceError) a ServiceError
-_DeploymentConfigDoesNotExistException
+_DeploymentAlreadyStartedException :: AsError a => Getting (First ServiceError) a ServiceError
+_DeploymentAlreadyStartedException
   = _MatchServiceError codeDeploy
-      "DeploymentConfigDoesNotExistException"
+      "DeploymentAlreadyStartedException"
 
--- | The bucket name either doesn't exist or was specified in an invalid format.
+-- | The specified ARN is not supported. For example, it might be an ARN for a resource that is not expected. 
 --
 --
-_InvalidBucketNameFilterException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidBucketNameFilterException
+_ARNNotSupportedException :: AsError a => Getting (First ServiceError) a ServiceError
+_ARNNotSupportedException
   = _MatchServiceError codeDeploy
-      "InvalidBucketNameFilterException"
+      "ArnNotSupportedException"
 
--- | A deployment group with the specified name with the IAM user or AWS account already exists.
+-- | The GitHub token is not valid.
 --
 --
-_DeploymentGroupAlreadyExistsException :: AsError a => Getting (First ServiceError) a ServiceError
-_DeploymentGroupAlreadyExistsException
+_InvalidGitHubAccountTokenException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidGitHubAccountTokenException
   = _MatchServiceError codeDeploy
-      "DeploymentGroupAlreadyExistsException"
+      "InvalidGitHubAccountTokenException"
 
--- | The column name to sort by is either not present or was specified in an invalid format.
+-- | The specified key prefix filter was specified in an invalid format.
 --
 --
-_InvalidSortByException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidSortByException
+_InvalidKeyPrefixFilterException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidKeyPrefixFilterException
   = _MatchServiceError codeDeploy
-      "InvalidSortByException"
+      "InvalidKeyPrefixFilterException"
 
--- | The named revision does not exist with the IAM user or AWS account.
+-- | The API used does not support the deployment.
 --
 --
-_RevisionDoesNotExistException :: AsError a => Getting (First ServiceError) a ServiceError
-_RevisionDoesNotExistException
+_OperationNotSupportedException :: AsError a => Getting (First ServiceError) a ServiceError
+_OperationNotSupportedException
   = _MatchServiceError codeDeploy
-      "RevisionDoesNotExistException"
+      "OperationNotSupportedException"
 
--- | A target is not valid. 
+-- | No IAM ARN was included in the request. You must use an IAM session ARN or IAM user ARN in the request.
 --
 --
-_InvalidTargetException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidTargetException
+_IAMARNRequiredException :: AsError a => Getting (First ServiceError) a ServiceError
+_IAMARNRequiredException
   = _MatchServiceError codeDeploy
-      "InvalidTargetException"
+      "IamArnRequiredException"
 
--- | The deployment groups limit was exceeded.
+-- | The call is missing a required GitHub account connection name.
 --
 --
-_DeploymentGroupLimitExceededException :: AsError a => Getting (First ServiceError) a ServiceError
-_DeploymentGroupLimitExceededException
+_GitHubAccountTokenNameRequiredException :: AsError a => Getting (First ServiceError) a ServiceError
+_GitHubAccountTokenNameRequiredException
   = _MatchServiceError codeDeploy
-      "DeploymentGroupLimitExceededException"
+      "GitHubAccountTokenNameRequiredException"
 
--- | The named deployment group with the IAM user or AWS account does not exist.
+-- | An attempt to return the status of an already completed lifecycle event occurred.
 --
 --
-_DeploymentGroupDoesNotExistException :: AsError a => Getting (First ServiceError) a ServiceError
-_DeploymentGroupDoesNotExistException
+_LifecycleEventAlreadyCompletedException :: AsError a => Getting (First ServiceError) a ServiceError
+_LifecycleEventAlreadyCompletedException
   = _MatchServiceError codeDeploy
-      "DeploymentGroupDoesNotExistException"
+      "LifecycleEventAlreadyCompletedException"
 
--- | An API function was called too frequently.
+-- | The application does not exist with the IAM user or AWS account.
 --
 --
-_ThrottlingException :: AsError a => Getting (First ServiceError) a ServiceError
-_ThrottlingException
-  = _MatchServiceError codeDeploy "ThrottlingException"
-
--- | The deployment configuration name was specified in an invalid format.
---
---
-_InvalidDeploymentConfigNameException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidDeploymentConfigNameException
+_ApplicationDoesNotExistException :: AsError a => Getting (First ServiceError) a ServiceError
+_ApplicationDoesNotExistException
   = _MatchServiceError codeDeploy
-      "InvalidDeploymentConfigNameException"
+      "ApplicationDoesNotExistException"
 
--- | The deployment configuration name was not specified.
+-- | An application with the specified name with the IAM user or AWS account already exists.
 --
 --
-_DeploymentConfigNameRequiredException :: AsError a => Getting (First ServiceError) a ServiceError
-_DeploymentConfigNameRequiredException
+_ApplicationAlreadyExistsException :: AsError a => Getting (First ServiceError) a ServiceError
+_ApplicationAlreadyExistsException
   = _MatchServiceError codeDeploy
-      "DeploymentConfigNameRequiredException"
+      "ApplicationAlreadyExistsException"
 
--- | At least one deployment ID must be specified.
+-- | More applications were attempted to be created than are allowed.
 --
 --
-_DeploymentIdRequiredException :: AsError a => Getting (First ServiceError) a ServiceError
-_DeploymentIdRequiredException
+_ApplicationLimitExceededException :: AsError a => Getting (First ServiceError) a ServiceError
+_ApplicationLimitExceededException
   = _MatchServiceError codeDeploy
-      "DeploymentIdRequiredException"
+      "ApplicationLimitExceededException"
 
--- | 
+-- | An invalid operation was detected.
 --
 --
-_InvalidInstanceIdException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidInstanceIdException
+_InvalidOperationException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidOperationException
   = _MatchServiceError codeDeploy
-      "InvalidInstanceIdException"
+      "InvalidOperationException"
 
--- | The deployment does not have a status of Ready and can't continue yet.
+-- | The specified ARN is not in a valid format. 
 --
 --
-_DeploymentIsNotInReadyStateException :: AsError a => Getting (First ServiceError) a ServiceError
-_DeploymentIsNotInReadyStateException
-  = _MatchServiceError codeDeploy
-      "DeploymentIsNotInReadyStateException"
+_InvalidARNException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidARNException
+  = _MatchServiceError codeDeploy "InvalidArnException"
 
--- | A target group pair associated with this deployment is not valid. 
+-- | A deployment target ID was not provided. 
 --
 --
-_InvalidTargetGroupPairException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidTargetGroupPairException
+_DeploymentTargetIdRequiredException :: AsError a => Getting (First ServiceError) a ServiceError
+_DeploymentTargetIdRequiredException
   = _MatchServiceError codeDeploy
-      "InvalidTargetGroupPairException"
+      "DeploymentTargetIdRequiredException"
 
--- | The next token was specified in an invalid format.
+-- | The Auto Scaling group was specified in an invalid format or does not exist.
 --
 --
-_InvalidNextTokenException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidNextTokenException
+_InvalidAutoScalingGroupException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidAutoScalingGroupException
   = _MatchServiceError codeDeploy
-      "InvalidNextTokenException"
+      "InvalidAutoScalingGroupException"
 
--- | The instance ID was not specified.
+-- | The maximum allowed number of tags was exceeded.
 --
 --
-_InstanceIdRequiredException :: AsError a => Getting (First ServiceError) a ServiceError
-_InstanceIdRequiredException
+_TagLimitExceededException :: AsError a => Getting (First ServiceError) a ServiceError
+_TagLimitExceededException
   = _MatchServiceError codeDeploy
-      "InstanceIdRequiredException"
+      "TagLimitExceededException"
 
--- | At least one of the deployment IDs was specified in an invalid format.
+-- | The number of allowed deployments was exceeded.
 --
 --
-_InvalidDeploymentIdException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidDeploymentIdException
+_DeploymentLimitExceededException :: AsError a => Getting (First ServiceError) a ServiceError
+_DeploymentLimitExceededException
   = _MatchServiceError codeDeploy
-      "InvalidDeploymentIdException"
+      "DeploymentLimitExceededException"
 
--- | The sort order was specified in an invalid format.
+-- | An on-premises instance name was not specified.
 --
 --
-_InvalidSortOrderException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidSortOrderException
+_InstanceNameRequiredException :: AsError a => Getting (First ServiceError) a ServiceError
+_InstanceNameRequiredException
   = _MatchServiceError codeDeploy
-      "InvalidSortOrderException"
+      "InstanceNameRequiredException"
 
--- | The automatic rollback configuration was specified in an invalid format. For example, automatic rollback is enabled, but an invalid triggering event type or no event types were listed.
+-- | The specified IAM user ARN is already registered with an on-premises instance.
 --
 --
-_InvalidAutoRollbackConfigException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidAutoRollbackConfigException
+_IAMUserARNAlreadyRegisteredException :: AsError a => Getting (First ServiceError) a ServiceError
+_IAMUserARNAlreadyRegisteredException
   = _MatchServiceError codeDeploy
-      "InvalidAutoRollbackConfigException"
+      "IamUserArnAlreadyRegisteredException"
 
--- | The deployment is already complete.
+-- | The input was specified in an invalid format.
 --
 --
-_DeploymentAlreadyCompletedException :: AsError a => Getting (First ServiceError) a ServiceError
-_DeploymentAlreadyCompletedException
+_InvalidInputException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidInputException
   = _MatchServiceError codeDeploy
-      "DeploymentAlreadyCompletedException"
+      "InvalidInputException"
 
--- | The Amazon ECS service is associated with more than one deployment groups. An Amazon ECS service can be associated with only one deployment group. 
+-- | The target filter name is invalid. 
 --
 --
-_ECSServiceMappingLimitExceededException :: AsError a => Getting (First ServiceError) a ServiceError
-_ECSServiceMappingLimitExceededException
+_InvalidTargetFilterNameException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidTargetFilterNameException
   = _MatchServiceError codeDeploy
-      "ECSServiceMappingLimitExceededException"
+      "InvalidTargetFilterNameException"
+
+-- | The maximum number of allowed on-premises instances in a single call was exceeded.
+--
+--
+_InstanceLimitExceededException :: AsError a => Getting (First ServiceError) a ServiceError
+_InstanceLimitExceededException
+  = _MatchServiceError codeDeploy
+      "InstanceLimitExceededException"
 
 -- | The deployment with the IAM user or AWS account does not exist.
 --
@@ -1394,22 +1354,6 @@ _DeploymentDoesNotExistException :: AsError a => Getting (First ServiceError) a 
 _DeploymentDoesNotExistException
   = _MatchServiceError codeDeploy
       "DeploymentDoesNotExistException"
-
--- | The maximum number of names or IDs allowed for this request (100) was exceeded.
---
---
-_BatchLimitExceededException :: AsError a => Getting (First ServiceError) a ServiceError
-_BatchLimitExceededException
-  = _MatchServiceError codeDeploy
-      "BatchLimitExceededException"
-
--- | The revision was specified in an invalid format.
---
---
-_InvalidRevisionException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidRevisionException
-  = _MatchServiceError codeDeploy
-      "InvalidRevisionException"
 
 -- | The revision ID was not specified.
 --
@@ -1427,228 +1371,228 @@ _InstanceDoesNotExistException
   = _MatchServiceError codeDeploy
       "InstanceDoesNotExistException"
 
--- | The deployment configuration is still in use.
+-- | The deployment is already complete.
 --
 --
-_DeploymentConfigInUseException :: AsError a => Getting (First ServiceError) a ServiceError
-_DeploymentConfigInUseException
+_DeploymentAlreadyCompletedException :: AsError a => Getting (First ServiceError) a ServiceError
+_DeploymentAlreadyCompletedException
   = _MatchServiceError codeDeploy
-      "DeploymentConfigInUseException"
+      "DeploymentAlreadyCompletedException"
 
--- | The ID of the deployment configuration is invalid. 
+-- | The maximum number of names or IDs allowed for this request (100) was exceeded.
 --
 --
-_InvalidDeploymentConfigIdException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidDeploymentConfigIdException
+_BatchLimitExceededException :: AsError a => Getting (First ServiceError) a ServiceError
+_BatchLimitExceededException
   = _MatchServiceError codeDeploy
-      "InvalidDeploymentConfigIdException"
+      "BatchLimitExceededException"
 
--- | The input was specified in an invalid format.
+-- | The Amazon ECS service is associated with more than one deployment groups. An Amazon ECS service can be associated with only one deployment group. 
 --
 --
-_InvalidInputException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidInputException
+_ECSServiceMappingLimitExceededException :: AsError a => Getting (First ServiceError) a ServiceError
+_ECSServiceMappingLimitExceededException
   = _MatchServiceError codeDeploy
-      "InvalidInputException"
+      "ECSServiceMappingLimitExceededException"
 
--- | The tag was specified in an invalid format.
+-- | A call was submitted that specified both OnPremisesTagFilters and OnPremisesTagSet, but only one of these data types can be used in a single call.
 --
 --
-_InvalidEC2TagException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidEC2TagException
+_InvalidOnPremisesTagCombinationException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidOnPremisesTagCombinationException
   = _MatchServiceError codeDeploy
-      "InvalidEC2TagException"
+      "InvalidOnPremisesTagCombinationException"
 
--- | The on-premises instance name was specified in an invalid format.
+-- | The deployment configuration name was not specified.
 --
 --
-_InvalidInstanceNameException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidInstanceNameException
+_DeploymentConfigNameRequiredException :: AsError a => Getting (First ServiceError) a ServiceError
+_DeploymentConfigNameRequiredException
   = _MatchServiceError codeDeploy
-      "InvalidInstanceNameException"
+      "DeploymentConfigNameRequiredException"
 
--- | An on-premises instance name was not specified.
+-- | The deployment configurations limit was exceeded.
 --
 --
-_InstanceNameRequiredException :: AsError a => Getting (First ServiceError) a ServiceError
-_InstanceNameRequiredException
+_DeploymentConfigLimitExceededException :: AsError a => Getting (First ServiceError) a ServiceError
+_DeploymentConfigLimitExceededException
   = _MatchServiceError codeDeploy
-      "InstanceNameRequiredException"
+      "DeploymentConfigLimitExceededException"
 
--- | Both an IAM user ARN and an IAM session ARN were included in the request. Use only one ARN type.
+-- | The configuration for the blue/green deployment group was provided in an invalid format. For information about deployment configuration format, see 'CreateDeploymentConfig' .
 --
 --
-_MultipleIAMARNsProvidedException :: AsError a => Getting (First ServiceError) a ServiceError
-_MultipleIAMARNsProvidedException
+_InvalidBlueGreenDeploymentConfigurationException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidBlueGreenDeploymentConfigurationException
   = _MatchServiceError codeDeploy
-      "MultipleIamArnsProvidedException"
+      "InvalidBlueGreenDeploymentConfigurationException"
 
--- | The maximum allowed number of triggers was exceeded.
+-- | At least one deployment ID must be specified.
 --
 --
-_TriggerTargetsLimitExceededException :: AsError a => Getting (First ServiceError) a ServiceError
-_TriggerTargetsLimitExceededException
+_DeploymentIdRequiredException :: AsError a => Getting (First ServiceError) a ServiceError
+_DeploymentIdRequiredException
   = _MatchServiceError codeDeploy
-      "TriggerTargetsLimitExceededException"
+      "DeploymentIdRequiredException"
 
--- | The specified deployment status doesn't exist or cannot be determined.
+-- | An API function was called too frequently.
 --
 --
-_InvalidDeploymentStatusException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidDeploymentStatusException
+_ThrottlingException :: AsError a => Getting (First ServiceError) a ServiceError
+_ThrottlingException
+  = _MatchServiceError codeDeploy "ThrottlingException"
+
+-- | An invalid load balancer name, or no load balancer name, was specified.
+--
+--
+_InvalidLoadBalancerInfoException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidLoadBalancerInfoException
   = _MatchServiceError codeDeploy
-      "InvalidDeploymentStatusException"
+      "InvalidLoadBalancerInfoException"
 
--- | The registration status was specified in an invalid format.
+-- | A deployment configuration with the specified name with the IAM user or AWS account already exists .
 --
 --
-_InvalidRegistrationStatusException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidRegistrationStatusException
+_DeploymentConfigAlreadyExistsException :: AsError a => Getting (First ServiceError) a ServiceError
+_DeploymentConfigAlreadyExistsException
   = _MatchServiceError codeDeploy
-      "InvalidRegistrationStatusException"
+      "DeploymentConfigAlreadyExistsException"
 
--- | The minimum number of required application names was not specified.
+-- | The next token was specified in an invalid format.
 --
 --
-_ApplicationNameRequiredException :: AsError a => Getting (First ServiceError) a ServiceError
-_ApplicationNameRequiredException
+_InvalidNextTokenException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidNextTokenException
   = _MatchServiceError codeDeploy
-      "ApplicationNameRequiredException"
+      "InvalidNextTokenException"
 
--- | The specified on-premises instance is not registered.
+-- | The instance ID was not specified.
 --
 --
-_InstanceNotRegisteredException :: AsError a => Getting (First ServiceError) a ServiceError
-_InstanceNotRegisteredException
+_InstanceIdRequiredException :: AsError a => Getting (First ServiceError) a ServiceError
+_InstanceIdRequiredException
   = _MatchServiceError codeDeploy
-      "InstanceNotRegisteredException"
+      "InstanceIdRequiredException"
 
--- | An application with the specified name with the IAM user or AWS account already exists.
+-- | A target group pair associated with this deployment is not valid. 
 --
 --
-_ApplicationAlreadyExistsException :: AsError a => Getting (First ServiceError) a ServiceError
-_ApplicationAlreadyExistsException
+_InvalidTargetGroupPairException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidTargetGroupPairException
   = _MatchServiceError codeDeploy
-      "ApplicationAlreadyExistsException"
+      "InvalidTargetGroupPairException"
 
--- | The specified instance status does not exist.
+-- | The service role ARN was specified in an invalid format. Or, if an Auto Scaling group was specified, the specified service role does not grant the appropriate permissions to Amazon EC2 Auto Scaling.
 --
 --
-_InvalidInstanceStatusException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidInstanceStatusException
+_InvalidRoleException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidRoleException
   = _MatchServiceError codeDeploy
-      "InvalidInstanceStatusException"
+      "InvalidRoleException"
 
--- | The target ID provided was not valid. 
+-- | The sort order was specified in an invalid format.
 --
 --
-_InvalidDeploymentTargetIdException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidDeploymentTargetIdException
+_InvalidSortOrderException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidSortOrderException
   = _MatchServiceError codeDeploy
-      "InvalidDeploymentTargetIdException"
+      "InvalidSortOrderException"
 
--- | The maximum allowed number of tags was exceeded.
+-- | The deployment configuration does not exist with the IAM user or AWS account.
 --
 --
-_TagLimitExceededException :: AsError a => Getting (First ServiceError) a ServiceError
-_TagLimitExceededException
+_DeploymentConfigDoesNotExistException :: AsError a => Getting (First ServiceError) a ServiceError
+_DeploymentConfigDoesNotExistException
   = _MatchServiceError codeDeploy
-      "TagLimitExceededException"
+      "DeploymentConfigDoesNotExistException"
 
--- | More applications were attempted to be created than are allowed.
+-- | The named revision does not exist with the IAM user or AWS account.
 --
 --
-_ApplicationLimitExceededException :: AsError a => Getting (First ServiceError) a ServiceError
-_ApplicationLimitExceededException
+_RevisionDoesNotExistException :: AsError a => Getting (First ServiceError) a ServiceError
+_RevisionDoesNotExistException
   = _MatchServiceError codeDeploy
-      "ApplicationLimitExceededException"
+      "RevisionDoesNotExistException"
 
--- | The number of tag groups included in the tag set list exceeded the maximum allowed limit of 3.
+-- | A deployment group with the specified name with the IAM user or AWS account already exists.
 --
 --
-_TagSetListLimitExceededException :: AsError a => Getting (First ServiceError) a ServiceError
-_TagSetListLimitExceededException
+_DeploymentGroupAlreadyExistsException :: AsError a => Getting (First ServiceError) a ServiceError
+_DeploymentGroupAlreadyExistsException
   = _MatchServiceError codeDeploy
-      "TagSetListLimitExceededException"
+      "DeploymentGroupAlreadyExistsException"
 
--- | The specified ARN is not in a valid format. 
+-- | The deployment groups limit was exceeded.
 --
 --
-_InvalidARNException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidARNException
-  = _MatchServiceError codeDeploy "InvalidArnException"
-
--- | An invalid operation was detected.
---
---
-_InvalidOperationException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidOperationException
+_DeploymentGroupLimitExceededException :: AsError a => Getting (First ServiceError) a ServiceError
+_DeploymentGroupLimitExceededException
   = _MatchServiceError codeDeploy
-      "InvalidOperationException"
+      "DeploymentGroupLimitExceededException"
 
--- | A deployment target ID was not provided. 
+-- | An invalid instance type was specified for instances in a blue/green deployment. Valid values include "Blue" for an original environment and "Green" for a replacement environment.
 --
 --
-_DeploymentTargetIdRequiredException :: AsError a => Getting (First ServiceError) a ServiceError
-_DeploymentTargetIdRequiredException
+_InvalidInstanceTypeException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidInstanceTypeException
   = _MatchServiceError codeDeploy
-      "DeploymentTargetIdRequiredException"
+      "InvalidInstanceTypeException"
 
--- | The call is missing a required GitHub account connection name.
+-- | A bucket name is required, but was not provided.
 --
 --
-_GitHubAccountTokenNameRequiredException :: AsError a => Getting (First ServiceError) a ServiceError
-_GitHubAccountTokenNameRequiredException
+_BucketNameFilterRequiredException :: AsError a => Getting (First ServiceError) a ServiceError
+_BucketNameFilterRequiredException
   = _MatchServiceError codeDeploy
-      "GitHubAccountTokenNameRequiredException"
+      "BucketNameFilterRequiredException"
 
--- | The Amazon ECS service identifier is not valid. 
+-- | The IAM user ARN was specified in an invalid format.
 --
 --
-_InvalidECSServiceException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidECSServiceException
+_InvalidIAMUserARNException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidIAMUserARNException
   = _MatchServiceError codeDeploy
-      "InvalidECSServiceException"
+      "InvalidIamUserArnException"
 
--- | An instance type was specified for an in-place deployment. Instance types are supported for blue/green deployments only.
+-- | The specified on-premises instance name is already registered.
 --
 --
-_InvalidDeploymentInstanceTypeException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidDeploymentInstanceTypeException
+_InstanceNameAlreadyRegisteredException :: AsError a => Getting (First ServiceError) a ServiceError
+_InstanceNameAlreadyRegisteredException
   = _MatchServiceError codeDeploy
-      "InvalidDeploymentInstanceTypeException"
+      "InstanceNameAlreadyRegisteredException"
 
--- | No IAM ARN was included in the request. You must use an IAM session ARN or IAM user ARN in the request.
+-- | The trigger was specified in an invalid format.
 --
 --
-_IAMARNRequiredException :: AsError a => Getting (First ServiceError) a ServiceError
-_IAMARNRequiredException
+_InvalidTriggerConfigException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidTriggerConfigException
   = _MatchServiceError codeDeploy
-      "IamArnRequiredException"
+      "InvalidTriggerConfigException"
 
--- | The format of the specified GitHub account connection name is invalid.
+-- | The provided target ID does not belong to the attempted deployment. 
 --
 --
-_InvalidGitHubAccountTokenNameException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidGitHubAccountTokenNameException
+_DeploymentTargetDoesNotExistException :: AsError a => Getting (First ServiceError) a ServiceError
+_DeploymentTargetDoesNotExistException
   = _MatchServiceError codeDeploy
-      "InvalidGitHubAccountTokenNameException"
+      "DeploymentTargetDoesNotExistException"
 
--- | An attempt to return the status of an already completed lifecycle event occurred.
+-- | The tag filter was specified in an invalid format.
 --
 --
-_LifecycleEventAlreadyCompletedException :: AsError a => Getting (First ServiceError) a ServiceError
-_LifecycleEventAlreadyCompletedException
+_InvalidTagFilterException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidTagFilterException
   = _MatchServiceError codeDeploy
-      "LifecycleEventAlreadyCompletedException"
+      "InvalidTagFilterException"
 
--- | The specified key prefix filter was specified in an invalid format.
+-- | An invalid fileExistsBehavior option was specified to determine how AWS CodeDeploy handles files or directories that already exist in a deployment target location, but weren't part of the previous successful deployment. Valid values include "DISALLOW," "OVERWRITE," and "RETAIN."
 --
 --
-_InvalidKeyPrefixFilterException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidKeyPrefixFilterException
+_InvalidFileExistsBehaviorException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidFileExistsBehaviorException
   = _MatchServiceError codeDeploy
-      "InvalidKeyPrefixFilterException"
+      "InvalidFileExistsBehaviorException"
 
 -- | The ARN of a resource is required, but was not found. 
 --
@@ -1658,10 +1602,66 @@ _ResourceARNRequiredException
   = _MatchServiceError codeDeploy
       "ResourceArnRequiredException"
 
--- | A deployment to a target was attempted while another deployment was in progress. 
+-- | A call was submitted that specified both Ec2TagFilters and Ec2TagSet, but only one of these data types can be used in a single call.
 --
 --
-_DeploymentAlreadyStartedException :: AsError a => Getting (First ServiceError) a ServiceError
-_DeploymentAlreadyStartedException
+_InvalidEC2TagCombinationException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidEC2TagCombinationException
   = _MatchServiceError codeDeploy
-      "DeploymentAlreadyStartedException"
+      "InvalidEC2TagCombinationException"
+
+-- | The result of a Lambda validation function that verifies a lifecycle event is invalid. It should return @Succeeded@ or @Failed@ .
+--
+--
+_InvalidLifecycleEventHookExecutionStatusException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidLifecycleEventHookExecutionStatusException
+  = _MatchServiceError codeDeploy
+      "InvalidLifecycleEventHookExecutionStatusException"
+
+-- | An instance type was specified for an in-place deployment. Instance types are supported for blue/green deployments only.
+--
+--
+_InvalidDeploymentInstanceTypeException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidDeploymentInstanceTypeException
+  = _MatchServiceError codeDeploy
+      "InvalidDeploymentInstanceTypeException"
+
+-- | The format of the specified GitHub account connection name is invalid.
+--
+--
+_InvalidGitHubAccountTokenNameException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidGitHubAccountTokenNameException
+  = _MatchServiceError codeDeploy
+      "InvalidGitHubAccountTokenNameException"
+
+-- | The Amazon ECS service identifier is not valid. 
+--
+--
+_InvalidECSServiceException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidECSServiceException
+  = _MatchServiceError codeDeploy
+      "InvalidECSServiceException"
+
+-- | The specified resource could not be validated.
+--
+--
+_ResourceValidationException :: AsError a => Getting (First ServiceError) a ServiceError
+_ResourceValidationException
+  = _MatchServiceError codeDeploy
+      "ResourceValidationException"
+
+-- | The minimum healthy instance value was specified in an invalid format.
+--
+--
+_InvalidMinimumHealthyHostValueException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidMinimumHealthyHostValueException
+  = _MatchServiceError codeDeploy
+      "InvalidMinimumHealthyHostValueException"
+
+-- | A call was submitted that is not supported for the specified deployment type.
+--
+--
+_UnsupportedActionForDeploymentTypeException :: AsError a => Getting (First ServiceError) a ServiceError
+_UnsupportedActionForDeploymentTypeException
+  = _MatchServiceError codeDeploy
+      "UnsupportedActionForDeploymentTypeException"

@@ -22,23 +22,23 @@ module Network.AWS.MediaStore
     -- * Errors
     -- $errors
 
+    -- ** ContainerNotFoundException
+    , _ContainerNotFoundException
+
     -- ** PolicyNotFoundException
     , _PolicyNotFoundException
-
-    -- ** CORSPolicyNotFoundException
-    , _CORSPolicyNotFoundException
-
-    -- ** ContainerInUseException
-    , _ContainerInUseException
 
     -- ** InternalServerError
     , _InternalServerError
 
-    -- ** ContainerNotFoundException
-    , _ContainerNotFoundException
+    -- ** ContainerInUseException
+    , _ContainerInUseException
 
     -- ** LimitExceededException
     , _LimitExceededException
+
+    -- ** CORSPolicyNotFoundException
+    , _CORSPolicyNotFoundException
 
     -- * Waiters
     -- $waiters

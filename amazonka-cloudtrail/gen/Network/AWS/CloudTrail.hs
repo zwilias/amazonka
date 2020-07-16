@@ -27,32 +27,11 @@ module Network.AWS.CloudTrail
     -- * Errors
     -- $errors
 
-    -- ** InvalidTimeRangeException
-    , _InvalidTimeRangeException
+    -- ** InvalidTrailNameException
+    , _InvalidTrailNameException
 
-    -- ** InsufficientS3BucketPolicyException
-    , _InsufficientS3BucketPolicyException
-
-    -- ** MaximumNumberOfTrailsExceededException
-    , _MaximumNumberOfTrailsExceededException
-
-    -- ** InsufficientDependencyServiceAccessPermissionException
-    , _InsufficientDependencyServiceAccessPermissionException
-
-    -- ** UnsupportedOperationException
-    , _UnsupportedOperationException
-
-    -- ** InvalidEventCategoryException
-    , _InvalidEventCategoryException
-
-    -- ** KMSKeyDisabledException
-    , _KMSKeyDisabledException
-
-    -- ** InsufficientEncryptionPolicyException
-    , _InsufficientEncryptionPolicyException
-
-    -- ** InsufficientSNSTopicPolicyException
-    , _InsufficientSNSTopicPolicyException
+    -- ** InvalidMaxResultsException
+    , _InvalidMaxResultsException
 
     -- ** InvalidCloudWatchLogsRoleARNException
     , _InvalidCloudWatchLogsRoleARNException
@@ -60,62 +39,14 @@ module Network.AWS.CloudTrail
     -- ** CloudTrailAccessNotEnabledException
     , _CloudTrailAccessNotEnabledException
 
-    -- ** TagsLimitExceededException
-    , _TagsLimitExceededException
-
     -- ** CloudTrailARNInvalidException
     , _CloudTrailARNInvalidException
 
-    -- ** InvalidLookupAttributesException
-    , _InvalidLookupAttributesException
+    -- ** InsufficientEncryptionPolicyException
+    , _InsufficientEncryptionPolicyException
 
-    -- ** InvalidTrailNameException
-    , _InvalidTrailNameException
-
-    -- ** InvalidSNSTopicNameException
-    , _InvalidSNSTopicNameException
-
-    -- ** ResourceTypeNotSupportedException
-    , _ResourceTypeNotSupportedException
-
-    -- ** CloudWatchLogsDeliveryUnavailableException
-    , _CloudWatchLogsDeliveryUnavailableException
-
-    -- ** OrganizationsNotInUseException
-    , _OrganizationsNotInUseException
-
-    -- ** KMSKeyNotFoundException
-    , _KMSKeyNotFoundException
-
-    -- ** TrailNotFoundException
-    , _TrailNotFoundException
-
-    -- ** InsightNotEnabledException
-    , _InsightNotEnabledException
-
-    -- ** NotOrganizationMasterAccountException
-    , _NotOrganizationMasterAccountException
-
-    -- ** InvalidEventSelectorsException
-    , _InvalidEventSelectorsException
-
-    -- ** TrailNotProvidedException
-    , _TrailNotProvidedException
-
-    -- ** InvalidS3BucketNameException
-    , _InvalidS3BucketNameException
-
-    -- ** InvalidCloudWatchLogsLogGroupARNException
-    , _InvalidCloudWatchLogsLogGroupARNException
-
-    -- ** KMSException
-    , _KMSException
-
-    -- ** S3BucketDoesNotExistException
-    , _S3BucketDoesNotExistException
-
-    -- ** InvalidNextTokenException
-    , _InvalidNextTokenException
+    -- ** InsufficientSNSTopicPolicyException
+    , _InsufficientSNSTopicPolicyException
 
     -- ** InvalidTagParameterException
     , _InvalidTagParameterException
@@ -123,35 +54,104 @@ module Network.AWS.CloudTrail
     -- ** OperationNotPermittedException
     , _OperationNotPermittedException
 
-    -- ** InvalidTokenException
-    , _InvalidTokenException
+    -- ** KMSKeyDisabledException
+    , _KMSKeyDisabledException
 
-    -- ** InvalidMaxResultsException
-    , _InvalidMaxResultsException
+    -- ** KMSException
+    , _KMSException
 
-    -- ** TrailAlreadyExistsException
-    , _TrailAlreadyExistsException
+    -- ** InvalidEventCategoryException
+    , _InvalidEventCategoryException
 
-    -- ** OrganizationNotInAllFeaturesModeException
-    , _OrganizationNotInAllFeaturesModeException
+    -- ** InvalidS3BucketNameException
+    , _InvalidS3BucketNameException
 
-    -- ** InvalidInsightSelectorsException
-    , _InvalidInsightSelectorsException
+    -- ** UnsupportedOperationException
+    , _UnsupportedOperationException
 
-    -- ** InvalidS3PrefixException
-    , _InvalidS3PrefixException
+    -- ** InvalidTimeRangeException
+    , _InvalidTimeRangeException
+
+    -- ** InsufficientS3BucketPolicyException
+    , _InsufficientS3BucketPolicyException
+
+    -- ** InvalidEventSelectorsException
+    , _InvalidEventSelectorsException
+
+    -- ** InsightNotEnabledException
+    , _InsightNotEnabledException
+
+    -- ** TrailNotFoundException
+    , _TrailNotFoundException
+
+    -- ** CloudWatchLogsDeliveryUnavailableException
+    , _CloudWatchLogsDeliveryUnavailableException
+
+    -- ** OrganizationsNotInUseException
+    , _OrganizationsNotInUseException
+
+    -- ** InvalidSNSTopicNameException
+    , _InvalidSNSTopicNameException
 
     -- ** ResourceNotFoundException
     , _ResourceNotFoundException
 
-    -- ** InvalidParameterCombinationException
-    , _InvalidParameterCombinationException
+    -- ** InvalidLookupAttributesException
+    , _InvalidLookupAttributesException
+
+    -- ** OrganizationNotInAllFeaturesModeException
+    , _OrganizationNotInAllFeaturesModeException
+
+    -- ** TrailAlreadyExistsException
+    , _TrailAlreadyExistsException
+
+    -- ** TagsLimitExceededException
+    , _TagsLimitExceededException
+
+    -- ** InvalidTokenException
+    , _InvalidTokenException
+
+    -- ** S3BucketDoesNotExistException
+    , _S3BucketDoesNotExistException
+
+    -- ** InvalidNextTokenException
+    , _InvalidNextTokenException
+
+    -- ** InvalidCloudWatchLogsLogGroupARNException
+    , _InvalidCloudWatchLogsLogGroupARNException
+
+    -- ** MaximumNumberOfTrailsExceededException
+    , _MaximumNumberOfTrailsExceededException
+
+    -- ** TrailNotProvidedException
+    , _TrailNotProvidedException
+
+    -- ** InsufficientDependencyServiceAccessPermissionException
+    , _InsufficientDependencyServiceAccessPermissionException
+
+    -- ** NotOrganizationMasterAccountException
+    , _NotOrganizationMasterAccountException
 
     -- ** InvalidKMSKeyIdException
     , _InvalidKMSKeyIdException
 
     -- ** InvalidHomeRegionException
     , _InvalidHomeRegionException
+
+    -- ** KMSKeyNotFoundException
+    , _KMSKeyNotFoundException
+
+    -- ** ResourceTypeNotSupportedException
+    , _ResourceTypeNotSupportedException
+
+    -- ** InvalidParameterCombinationException
+    , _InvalidParameterCombinationException
+
+    -- ** InvalidS3PrefixException
+    , _InvalidS3PrefixException
+
+    -- ** InvalidInsightSelectorsException
+    , _InvalidInsightSelectorsException
 
     -- * Waiters
     -- $waiters

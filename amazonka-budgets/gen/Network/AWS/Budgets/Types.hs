@@ -16,14 +16,14 @@ module Network.AWS.Budgets.Types
       budgets
 
     -- * Errors
-    , _AccessDeniedException
-    , _InvalidParameterException
-    , _InternalErrorException
-    , _ExpiredNextTokenException
-    , _NotFoundException
-    , _InvalidNextTokenException
-    , _DuplicateRecordException
     , _CreationLimitExceededException
+    , _DuplicateRecordException
+    , _InvalidParameterException
+    , _AccessDeniedException
+    , _InternalErrorException
+    , _InvalidNextTokenException
+    , _NotFoundException
+    , _ExpiredNextTokenException
 
     -- * BudgetType
     , BudgetType (..)
@@ -186,50 +186,13 @@ budgets
           | has (hasStatus 509) e = Just "limit_exceeded"
           | otherwise = Nothing
 
--- | You are not authorized to use this operation with the given parameters.
+-- | You've exceeded the notification or subscriber limit.
 --
 --
-_AccessDeniedException :: AsError a => Getting (First ServiceError) a ServiceError
-_AccessDeniedException
-  = _MatchServiceError budgets "AccessDeniedException"
-
--- | An error on the client occurred. Typically, the cause is an invalid input value.
---
---
-_InvalidParameterException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidParameterException
+_CreationLimitExceededException :: AsError a => Getting (First ServiceError) a ServiceError
+_CreationLimitExceededException
   = _MatchServiceError budgets
-      "InvalidParameterException"
-
--- | An error on the server occurred during the processing of your request. Try again later.
---
---
-_InternalErrorException :: AsError a => Getting (First ServiceError) a ServiceError
-_InternalErrorException
-  = _MatchServiceError budgets "InternalErrorException"
-
--- | The pagination token expired.
---
---
-_ExpiredNextTokenException :: AsError a => Getting (First ServiceError) a ServiceError
-_ExpiredNextTokenException
-  = _MatchServiceError budgets
-      "ExpiredNextTokenException"
-
--- | We can’t locate the resource that you specified.
---
---
-_NotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
-_NotFoundException
-  = _MatchServiceError budgets "NotFoundException"
-
--- | The pagination token is invalid.
---
---
-_InvalidNextTokenException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidNextTokenException
-  = _MatchServiceError budgets
-      "InvalidNextTokenException"
+      "CreationLimitExceededException"
 
 -- | The budget name already exists. Budget names must be unique within an account.
 --
@@ -239,10 +202,47 @@ _DuplicateRecordException
   = _MatchServiceError budgets
       "DuplicateRecordException"
 
--- | You've exceeded the notification or subscriber limit.
+-- | An error on the client occurred. Typically, the cause is an invalid input value.
 --
 --
-_CreationLimitExceededException :: AsError a => Getting (First ServiceError) a ServiceError
-_CreationLimitExceededException
+_InvalidParameterException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidParameterException
   = _MatchServiceError budgets
-      "CreationLimitExceededException"
+      "InvalidParameterException"
+
+-- | You are not authorized to use this operation with the given parameters.
+--
+--
+_AccessDeniedException :: AsError a => Getting (First ServiceError) a ServiceError
+_AccessDeniedException
+  = _MatchServiceError budgets "AccessDeniedException"
+
+-- | An error on the server occurred during the processing of your request. Try again later.
+--
+--
+_InternalErrorException :: AsError a => Getting (First ServiceError) a ServiceError
+_InternalErrorException
+  = _MatchServiceError budgets "InternalErrorException"
+
+-- | The pagination token is invalid.
+--
+--
+_InvalidNextTokenException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidNextTokenException
+  = _MatchServiceError budgets
+      "InvalidNextTokenException"
+
+-- | We can’t locate the resource that you specified.
+--
+--
+_NotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
+_NotFoundException
+  = _MatchServiceError budgets "NotFoundException"
+
+-- | The pagination token expired.
+--
+--
+_ExpiredNextTokenException :: AsError a => Getting (First ServiceError) a ServiceError
+_ExpiredNextTokenException
+  = _MatchServiceError budgets
+      "ExpiredNextTokenException"

@@ -31,8 +31,8 @@ module Network.AWS.S3.GetBucketLocation
     , getBucketLocationResponse
     , GetBucketLocationResponse
     -- * Response Lenses
-    , gblbrsResponseStatus
-    , gblbrsLocationConstraint
+    , gtbcktlctnrsResponseStatus
+    , gtbcktlctnrsLocationConstraint
     ) where
 
 import Network.AWS.Lens
@@ -86,9 +86,9 @@ instance ToQuery GetBucketLocation where
         toQuery = const (mconcat ["location"])
 
 -- | /See:/ 'getBucketLocationResponse' smart constructor.
-data GetBucketLocationResponse = GetBucketLocationResponse'{_gblbrsResponseStatus
+data GetBucketLocationResponse = GetBucketLocationResponse'{_gtbcktlctnrsResponseStatus
                                                             :: !Int,
-                                                            _gblbrsLocationConstraint
+                                                            _gtbcktlctnrsLocationConstraint
                                                             ::
                                                             !LocationConstraint}
                                    deriving (Eq, Read, Show, Data, Typeable,
@@ -98,25 +98,26 @@ data GetBucketLocationResponse = GetBucketLocationResponse'{_gblbrsResponseStatu
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'gblbrsResponseStatus' - -- | The response status code.
+-- * 'gtbcktlctnrsResponseStatus' - -- | The response status code.
 --
--- * 'gblbrsLocationConstraint' - Undocumented member.
+-- * 'gtbcktlctnrsLocationConstraint' - Undocumented member.
 getBucketLocationResponse
-    :: Int -- ^ 'gblbrsResponseStatus'
-    -> LocationConstraint -- ^ 'gblbrsLocationConstraint'
+    :: Int -- ^ 'gtbcktlctnrsResponseStatus'
+    -> LocationConstraint -- ^ 'gtbcktlctnrsLocationConstraint'
     -> GetBucketLocationResponse
 getBucketLocationResponse pResponseStatus_
   pLocationConstraint_
-  = GetBucketLocationResponse'{_gblbrsResponseStatus =
-                                 pResponseStatus_,
-                               _gblbrsLocationConstraint = pLocationConstraint_}
+  = GetBucketLocationResponse'{_gtbcktlctnrsResponseStatus
+                                 = pResponseStatus_,
+                               _gtbcktlctnrsLocationConstraint =
+                                 pLocationConstraint_}
 
 -- | -- | The response status code.
-gblbrsResponseStatus :: Lens' GetBucketLocationResponse Int
-gblbrsResponseStatus = lens _gblbrsResponseStatus (\ s a -> s{_gblbrsResponseStatus = a})
+gtbcktlctnrsResponseStatus :: Lens' GetBucketLocationResponse Int
+gtbcktlctnrsResponseStatus = lens _gtbcktlctnrsResponseStatus (\ s a -> s{_gtbcktlctnrsResponseStatus = a})
 
 -- | Undocumented member.
-gblbrsLocationConstraint :: Lens' GetBucketLocationResponse LocationConstraint
-gblbrsLocationConstraint = lens _gblbrsLocationConstraint (\ s a -> s{_gblbrsLocationConstraint = a})
+gtbcktlctnrsLocationConstraint :: Lens' GetBucketLocationResponse LocationConstraint
+gtbcktlctnrsLocationConstraint = lens _gtbcktlctnrsLocationConstraint (\ s a -> s{_gtbcktlctnrsLocationConstraint = a})
 
 instance NFData GetBucketLocationResponse where

@@ -27,14 +27,14 @@ module Network.AWS.DirectConnect.DeleteDirectConnectGateway
       deleteDirectConnectGateway
     , DeleteDirectConnectGateway
     -- * Request Lenses
-    , ddcgdDirectConnectGatewayId
+    , dltdrctcnnctgtwyDirectConnectGatewayId
 
     -- * Destructuring the Response
     , deleteDirectConnectGatewayResponse
     , DeleteDirectConnectGatewayResponse
     -- * Response Lenses
-    , ddcgdrsDirectConnectGateway
-    , ddcgdrsResponseStatus
+    , dltdrctcnnctgtwyrsDirectConnectGateway
+    , dltdrctcnnctgtwyrsResponseStatus
     ) where
 
 import Network.AWS.DirectConnect.Types
@@ -45,7 +45,7 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteDirectConnectGateway' smart constructor.
-newtype DeleteDirectConnectGateway = DeleteDirectConnectGateway'{_ddcgdDirectConnectGatewayId
+newtype DeleteDirectConnectGateway = DeleteDirectConnectGateway'{_dltdrctcnnctgtwyDirectConnectGatewayId
                                                                  :: Text}
                                        deriving (Eq, Read, Show, Data, Typeable,
                                                  Generic)
@@ -54,17 +54,17 @@ newtype DeleteDirectConnectGateway = DeleteDirectConnectGateway'{_ddcgdDirectCon
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ddcgdDirectConnectGatewayId' - The ID of the Direct Connect gateway.
+-- * 'dltdrctcnnctgtwyDirectConnectGatewayId' - The ID of the Direct Connect gateway.
 deleteDirectConnectGateway
-    :: Text -- ^ 'ddcgdDirectConnectGatewayId'
+    :: Text -- ^ 'dltdrctcnnctgtwyDirectConnectGatewayId'
     -> DeleteDirectConnectGateway
 deleteDirectConnectGateway pDirectConnectGatewayId_
-  = DeleteDirectConnectGateway'{_ddcgdDirectConnectGatewayId
+  = DeleteDirectConnectGateway'{_dltdrctcnnctgtwyDirectConnectGatewayId
                                   = pDirectConnectGatewayId_}
 
 -- | The ID of the Direct Connect gateway.
-ddcgdDirectConnectGatewayId :: Lens' DeleteDirectConnectGateway Text
-ddcgdDirectConnectGatewayId = lens _ddcgdDirectConnectGatewayId (\ s a -> s{_ddcgdDirectConnectGatewayId = a})
+dltdrctcnnctgtwyDirectConnectGatewayId :: Lens' DeleteDirectConnectGateway Text
+dltdrctcnnctgtwyDirectConnectGatewayId = lens _dltdrctcnnctgtwyDirectConnectGatewayId (\ s a -> s{_dltdrctcnnctgtwyDirectConnectGatewayId = a})
 
 instance AWSRequest DeleteDirectConnectGateway where
         type Rs DeleteDirectConnectGateway =
@@ -97,7 +97,7 @@ instance ToJSON DeleteDirectConnectGateway where
               (catMaybes
                  [Just
                     ("directConnectGatewayId" .=
-                       _ddcgdDirectConnectGatewayId)])
+                       _dltdrctcnnctgtwyDirectConnectGatewayId)])
 
 instance ToPath DeleteDirectConnectGateway where
         toPath = const "/"
@@ -106,11 +106,11 @@ instance ToQuery DeleteDirectConnectGateway where
         toQuery = const mempty
 
 -- | /See:/ 'deleteDirectConnectGatewayResponse' smart constructor.
-data DeleteDirectConnectGatewayResponse = DeleteDirectConnectGatewayResponse'{_ddcgdrsDirectConnectGateway
+data DeleteDirectConnectGatewayResponse = DeleteDirectConnectGatewayResponse'{_dltdrctcnnctgtwyrsDirectConnectGateway
                                                                               ::
                                                                               !(Maybe
                                                                                   DirectConnectGateway),
-                                                                              _ddcgdrsResponseStatus
+                                                                              _dltdrctcnnctgtwyrsResponseStatus
                                                                               ::
                                                                               !Int}
                                             deriving (Eq, Read, Show, Data,
@@ -120,25 +120,25 @@ data DeleteDirectConnectGatewayResponse = DeleteDirectConnectGatewayResponse'{_d
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ddcgdrsDirectConnectGateway' - The Direct Connect gateway.
+-- * 'dltdrctcnnctgtwyrsDirectConnectGateway' - The Direct Connect gateway.
 --
--- * 'ddcgdrsResponseStatus' - -- | The response status code.
+-- * 'dltdrctcnnctgtwyrsResponseStatus' - -- | The response status code.
 deleteDirectConnectGatewayResponse
-    :: Int -- ^ 'ddcgdrsResponseStatus'
+    :: Int -- ^ 'dltdrctcnnctgtwyrsResponseStatus'
     -> DeleteDirectConnectGatewayResponse
 deleteDirectConnectGatewayResponse pResponseStatus_
-  = DeleteDirectConnectGatewayResponse'{_ddcgdrsDirectConnectGateway
+  = DeleteDirectConnectGatewayResponse'{_dltdrctcnnctgtwyrsDirectConnectGateway
                                           = Nothing,
-                                        _ddcgdrsResponseStatus =
+                                        _dltdrctcnnctgtwyrsResponseStatus =
                                           pResponseStatus_}
 
 -- | The Direct Connect gateway.
-ddcgdrsDirectConnectGateway :: Lens' DeleteDirectConnectGatewayResponse (Maybe DirectConnectGateway)
-ddcgdrsDirectConnectGateway = lens _ddcgdrsDirectConnectGateway (\ s a -> s{_ddcgdrsDirectConnectGateway = a})
+dltdrctcnnctgtwyrsDirectConnectGateway :: Lens' DeleteDirectConnectGatewayResponse (Maybe DirectConnectGateway)
+dltdrctcnnctgtwyrsDirectConnectGateway = lens _dltdrctcnnctgtwyrsDirectConnectGateway (\ s a -> s{_dltdrctcnnctgtwyrsDirectConnectGateway = a})
 
 -- | -- | The response status code.
-ddcgdrsResponseStatus :: Lens' DeleteDirectConnectGatewayResponse Int
-ddcgdrsResponseStatus = lens _ddcgdrsResponseStatus (\ s a -> s{_ddcgdrsResponseStatus = a})
+dltdrctcnnctgtwyrsResponseStatus :: Lens' DeleteDirectConnectGatewayResponse Int
+dltdrctcnnctgtwyrsResponseStatus = lens _dltdrctcnnctgtwyrsResponseStatus (\ s a -> s{_dltdrctcnnctgtwyrsResponseStatus = a})
 
 instance NFData DeleteDirectConnectGatewayResponse
          where

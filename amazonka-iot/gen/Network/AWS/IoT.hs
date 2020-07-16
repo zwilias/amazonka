@@ -25,80 +25,80 @@ module Network.AWS.IoT
     -- * Errors
     -- $errors
 
-    -- ** CertificateConflictException
-    , _CertificateConflictException
-
-    -- ** SqlParseException
-    , _SqlParseException
-
-    -- ** IndexNotReadyException
-    , _IndexNotReadyException
-
-    -- ** InvalidRequestException
-    , _InvalidRequestException
-
-    -- ** TransferConflictException
-    , _TransferConflictException
-
-    -- ** CertificateStateException
-    , _CertificateStateException
-
-    -- ** InvalidResponseException
-    , _InvalidResponseException
-
-    -- ** RegistrationCodeValidationException
-    , _RegistrationCodeValidationException
-
-    -- ** MalformedPolicyException
-    , _MalformedPolicyException
-
-    -- ** DeleteConflictException
-    , _DeleteConflictException
-
-    -- ** ResourceAlreadyExistsException
-    , _ResourceAlreadyExistsException
-
-    -- ** NotConfiguredException
-    , _NotConfiguredException
-
-    -- ** CertificateValidationException
-    , _CertificateValidationException
-
-    -- ** ResourceRegistrationFailureException
-    , _ResourceRegistrationFailureException
-
-    -- ** InvalidQueryException
-    , _InvalidQueryException
-
-    -- ** TransferAlreadyCompletedException
-    , _TransferAlreadyCompletedException
-
-    -- ** ThrottlingException
-    , _ThrottlingException
-
-    -- ** ConflictingResourceUpdateException
-    , _ConflictingResourceUpdateException
-
-    -- ** InternalFailureException
-    , _InternalFailureException
+    -- ** VersionConflictException
+    , _VersionConflictException
 
     -- ** VersionsLimitExceededException
     , _VersionsLimitExceededException
 
-    -- ** ServiceUnavailableException
-    , _ServiceUnavailableException
+    -- ** RegistrationCodeValidationException
+    , _RegistrationCodeValidationException
 
-    -- ** InternalException
-    , _InternalException
+    -- ** DeleteConflictException
+    , _DeleteConflictException
 
-    -- ** VersionConflictException
-    , _VersionConflictException
+    -- ** InternalFailureException
+    , _InternalFailureException
+
+    -- ** CertificateStateException
+    , _CertificateStateException
+
+    -- ** ConflictingResourceUpdateException
+    , _ConflictingResourceUpdateException
+
+    -- ** TransferConflictException
+    , _TransferConflictException
+
+    -- ** InvalidRequestException
+    , _InvalidRequestException
+
+    -- ** ResourceRegistrationFailureException
+    , _ResourceRegistrationFailureException
+
+    -- ** SqlParseException
+    , _SqlParseException
+
+    -- ** CertificateValidationException
+    , _CertificateValidationException
+
+    -- ** NotConfiguredException
+    , _NotConfiguredException
+
+    -- ** ResourceNotFoundException
+    , _ResourceNotFoundException
+
+    -- ** ResourceAlreadyExistsException
+    , _ResourceAlreadyExistsException
 
     -- ** UnauthorizedException
     , _UnauthorizedException
 
-    -- ** ResourceNotFoundException
-    , _ResourceNotFoundException
+    -- ** ServiceUnavailableException
+    , _ServiceUnavailableException
+
+    -- ** MalformedPolicyException
+    , _MalformedPolicyException
+
+    -- ** InternalException
+    , _InternalException
+
+    -- ** InvalidResponseException
+    , _InvalidResponseException
+
+    -- ** ThrottlingException
+    , _ThrottlingException
+
+    -- ** TransferAlreadyCompletedException
+    , _TransferAlreadyCompletedException
+
+    -- ** IndexNotReadyException
+    , _IndexNotReadyException
+
+    -- ** CertificateConflictException
+    , _CertificateConflictException
+
+    -- ** InvalidQueryException
+    , _InvalidQueryException
 
     -- ** LimitExceededException
     , _LimitExceededException

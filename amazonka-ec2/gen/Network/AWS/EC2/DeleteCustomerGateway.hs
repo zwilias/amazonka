@@ -27,8 +27,8 @@ module Network.AWS.EC2.DeleteCustomerGateway
       deleteCustomerGateway
     , DeleteCustomerGateway
     -- * Request Lenses
-    , dcgcDryRun
-    , dcgcCustomerGatewayId
+    , dltcstmrgtwyDryRun
+    , dltcstmrgtwyCustomerGatewayId
 
     -- * Destructuring the Response
     , deleteCustomerGatewayResponse
@@ -47,10 +47,10 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'deleteCustomerGateway' smart constructor.
-data DeleteCustomerGateway = DeleteCustomerGateway'{_dcgcDryRun
+data DeleteCustomerGateway = DeleteCustomerGateway'{_dltcstmrgtwyDryRun
                                                     :: !(Maybe Bool),
-                                                    _dcgcCustomerGatewayId ::
-                                                    !Text}
+                                                    _dltcstmrgtwyCustomerGatewayId
+                                                    :: !Text}
                                deriving (Eq, Read, Show, Data, Typeable,
                                          Generic)
 
@@ -58,23 +58,24 @@ data DeleteCustomerGateway = DeleteCustomerGateway'{_dcgcDryRun
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dcgcDryRun' - Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
+-- * 'dltcstmrgtwyDryRun' - Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 --
--- * 'dcgcCustomerGatewayId' - The ID of the customer gateway.
+-- * 'dltcstmrgtwyCustomerGatewayId' - The ID of the customer gateway.
 deleteCustomerGateway
-    :: Text -- ^ 'dcgcCustomerGatewayId'
+    :: Text -- ^ 'dltcstmrgtwyCustomerGatewayId'
     -> DeleteCustomerGateway
 deleteCustomerGateway pCustomerGatewayId_
-  = DeleteCustomerGateway'{_dcgcDryRun = Nothing,
-                           _dcgcCustomerGatewayId = pCustomerGatewayId_}
+  = DeleteCustomerGateway'{_dltcstmrgtwyDryRun =
+                             Nothing,
+                           _dltcstmrgtwyCustomerGatewayId = pCustomerGatewayId_}
 
 -- | Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
-dcgcDryRun :: Lens' DeleteCustomerGateway (Maybe Bool)
-dcgcDryRun = lens _dcgcDryRun (\ s a -> s{_dcgcDryRun = a})
+dltcstmrgtwyDryRun :: Lens' DeleteCustomerGateway (Maybe Bool)
+dltcstmrgtwyDryRun = lens _dltcstmrgtwyDryRun (\ s a -> s{_dltcstmrgtwyDryRun = a})
 
 -- | The ID of the customer gateway.
-dcgcCustomerGatewayId :: Lens' DeleteCustomerGateway Text
-dcgcCustomerGatewayId = lens _dcgcCustomerGatewayId (\ s a -> s{_dcgcCustomerGatewayId = a})
+dltcstmrgtwyCustomerGatewayId :: Lens' DeleteCustomerGateway Text
+dltcstmrgtwyCustomerGatewayId = lens _dltcstmrgtwyCustomerGatewayId (\ s a -> s{_dltcstmrgtwyCustomerGatewayId = a})
 
 instance AWSRequest DeleteCustomerGateway where
         type Rs DeleteCustomerGateway =
@@ -97,8 +98,9 @@ instance ToQuery DeleteCustomerGateway where
           = mconcat
               ["Action" =: ("DeleteCustomerGateway" :: ByteString),
                "Version" =: ("2016-11-15" :: ByteString),
-               "DryRun" =: _dcgcDryRun,
-               "CustomerGatewayId" =: _dcgcCustomerGatewayId]
+               "DryRun" =: _dltcstmrgtwyDryRun,
+               "CustomerGatewayId" =:
+                 _dltcstmrgtwyCustomerGatewayId]
 
 -- | /See:/ 'deleteCustomerGatewayResponse' smart constructor.
 data DeleteCustomerGatewayResponse = DeleteCustomerGatewayResponse'

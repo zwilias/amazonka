@@ -43,23 +43,23 @@ module Network.AWS.IAM
     -- * Errors
     -- $errors
 
-    -- ** CredentialReportNotPresentException
-    , _CredentialReportNotPresentException
+    -- ** InvalidCertificateException
+    , _InvalidCertificateException
 
-    -- ** CredentialReportNotReadyException
-    , _CredentialReportNotReadyException
+    -- ** EntityTemporarilyUnmodifiableException
+    , _EntityTemporarilyUnmodifiableException
 
-    -- ** MalformedPolicyDocumentException
-    , _MalformedPolicyDocumentException
+    -- ** InvalidAuthenticationCodeException
+    , _InvalidAuthenticationCodeException
 
-    -- ** EntityAlreadyExistsException
-    , _EntityAlreadyExistsException
+    -- ** NoSuchEntityException
+    , _NoSuchEntityException
+
+    -- ** DeleteConflictException
+    , _DeleteConflictException
 
     -- ** MalformedCertificateException
     , _MalformedCertificateException
-
-    -- ** CredentialReportExpiredException
-    , _CredentialReportExpiredException
 
     -- ** UnmodifiableEntityException
     , _UnmodifiableEntityException
@@ -67,29 +67,26 @@ module Network.AWS.IAM
     -- ** DuplicateCertificateException
     , _DuplicateCertificateException
 
-    -- ** DeleteConflictException
-    , _DeleteConflictException
+    -- ** InvalidUserTypeException
+    , _InvalidUserTypeException
 
-    -- ** NoSuchEntityException
-    , _NoSuchEntityException
+    -- ** CredentialReportNotPresentException
+    , _CredentialReportNotPresentException
 
-    -- ** InvalidCertificateException
-    , _InvalidCertificateException
-
-    -- ** PolicyNotAttachableException
-    , _PolicyNotAttachableException
+    -- ** CredentialReportNotReadyException
+    , _CredentialReportNotReadyException
 
     -- ** ServiceNotSupportedException
     , _ServiceNotSupportedException
 
+    -- ** PolicyEvaluationException
+    , _PolicyEvaluationException
+
     -- ** UnrecognizedPublicKeyEncodingException
     , _UnrecognizedPublicKeyEncodingException
 
-    -- ** InvalidUserTypeException
-    , _InvalidUserTypeException
-
-    -- ** ServiceFailureException
-    , _ServiceFailureException
+    -- ** PolicyNotAttachableException
+    , _PolicyNotAttachableException
 
     -- ** InvalidInputException
     , _InvalidInputException
@@ -97,26 +94,29 @@ module Network.AWS.IAM
     -- ** InvalidPublicKeyException
     , _InvalidPublicKeyException
 
-    -- ** InvalidAuthenticationCodeException
-    , _InvalidAuthenticationCodeException
+    -- ** CredentialReportExpiredException
+    , _CredentialReportExpiredException
 
-    -- ** EntityTemporarilyUnmodifiableException
-    , _EntityTemporarilyUnmodifiableException
+    -- ** EntityAlreadyExistsException
+    , _EntityAlreadyExistsException
 
-    -- ** DuplicateSSHPublicKeyException
-    , _DuplicateSSHPublicKeyException
+    -- ** ServiceFailureException
+    , _ServiceFailureException
 
-    -- ** KeyPairMismatchException
-    , _KeyPairMismatchException
+    -- ** MalformedPolicyDocumentException
+    , _MalformedPolicyDocumentException
 
-    -- ** PolicyEvaluationException
-    , _PolicyEvaluationException
+    -- ** LimitExceededException
+    , _LimitExceededException
 
     -- ** PasswordPolicyViolationException
     , _PasswordPolicyViolationException
 
-    -- ** LimitExceededException
-    , _LimitExceededException
+    -- ** KeyPairMismatchException
+    , _KeyPairMismatchException
+
+    -- ** DuplicateSSHPublicKeyException
+    , _DuplicateSSHPublicKeyException
 
     -- * Waiters
     -- $waiters

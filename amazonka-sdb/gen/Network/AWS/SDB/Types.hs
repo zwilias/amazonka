@@ -16,22 +16,22 @@ module Network.AWS.SDB.Types
       sdb
 
     -- * Errors
-    , _InvalidNumberValueTests
-    , _NoSuchDomain
-    , _NumberSubmittedItemsExceeded
-    , _AttributeDoesNotExist
-    , _NumberDomainAttributesExceeded
-    , _DuplicateItemName
-    , _MissingParameter
-    , _InvalidNextToken
     , _InvalidParameterValue
+    , _TooManyRequestedAttributes
+    , _DuplicateItemName
     , _NumberItemAttributesExceeded
     , _RequestTimeout
-    , _TooManyRequestedAttributes
-    , _InvalidNumberPredicates
-    , _NumberDomainsExceeded
-    , _NumberSubmittedAttributesExceeded
+    , _AttributeDoesNotExist
+    , _InvalidNumberValueTests
     , _NumberDomainBytesExceeded
+    , _NumberSubmittedAttributesExceeded
+    , _NumberDomainsExceeded
+    , _InvalidNumberPredicates
+    , _InvalidNextToken
+    , _MissingParameter
+    , _NumberDomainAttributesExceeded
+    , _NumberSubmittedItemsExceeded
+    , _NoSuchDomain
     , _InvalidQueryExpression
 
     -- * Attribute
@@ -118,47 +118,21 @@ sdb
           | has (hasStatus 509) e = Just "limit_exceeded"
           | otherwise = Nothing
 
--- | Too many predicates exist in the query expression.
+-- | The value for a parameter is invalid.
 --
 --
-_InvalidNumberValueTests :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidNumberValueTests
-  = _MatchServiceError sdb "InvalidNumberValueTests" .
+_InvalidParameterValue :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidParameterValue
+  = _MatchServiceError sdb "InvalidParameterValue" .
       hasStatus 400
 
--- | The specified domain does not exist.
+-- | Too many attributes requested.
 --
 --
-_NoSuchDomain :: AsError a => Getting (First ServiceError) a ServiceError
-_NoSuchDomain
-  = _MatchServiceError sdb "NoSuchDomain" .
-      hasStatus 400
-
--- | Too many items exist in a single call.
---
---
-_NumberSubmittedItemsExceeded :: AsError a => Getting (First ServiceError) a ServiceError
-_NumberSubmittedItemsExceeded
-  = _MatchServiceError sdb
-      "NumberSubmittedItemsExceeded"
-      . hasStatus 409
-
--- | The specified attribute does not exist.
---
---
-_AttributeDoesNotExist :: AsError a => Getting (First ServiceError) a ServiceError
-_AttributeDoesNotExist
-  = _MatchServiceError sdb "AttributeDoesNotExist" .
-      hasStatus 404
-
--- | Too many attributes in this domain.
---
---
-_NumberDomainAttributesExceeded :: AsError a => Getting (First ServiceError) a ServiceError
-_NumberDomainAttributesExceeded
-  = _MatchServiceError sdb
-      "NumberDomainAttributesExceeded"
-      . hasStatus 409
+_TooManyRequestedAttributes :: AsError a => Getting (First ServiceError) a ServiceError
+_TooManyRequestedAttributes
+  = _MatchServiceError sdb "TooManyRequestedAttributes"
+      . hasStatus 400
 
 -- | The item name was specified more than once. 
 --
@@ -166,30 +140,6 @@ _NumberDomainAttributesExceeded
 _DuplicateItemName :: AsError a => Getting (First ServiceError) a ServiceError
 _DuplicateItemName
   = _MatchServiceError sdb "DuplicateItemName" .
-      hasStatus 400
-
--- | The request must contain the specified missing parameter.
---
---
-_MissingParameter :: AsError a => Getting (First ServiceError) a ServiceError
-_MissingParameter
-  = _MatchServiceError sdb "MissingParameter" .
-      hasStatus 400
-
--- | The specified NextToken is not valid. 
---
---
-_InvalidNextToken :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidNextToken
-  = _MatchServiceError sdb "InvalidNextToken" .
-      hasStatus 400
-
--- | The value for a parameter is invalid.
---
---
-_InvalidParameterValue :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidParameterValue
-  = _MatchServiceError sdb "InvalidParameterValue" .
       hasStatus 400
 
 -- | Too many attributes in this item.
@@ -209,29 +159,29 @@ _RequestTimeout
   = _MatchServiceError sdb "RequestTimeout" .
       hasStatus 408
 
--- | Too many attributes requested.
+-- | The specified attribute does not exist.
 --
 --
-_TooManyRequestedAttributes :: AsError a => Getting (First ServiceError) a ServiceError
-_TooManyRequestedAttributes
-  = _MatchServiceError sdb "TooManyRequestedAttributes"
-      . hasStatus 400
+_AttributeDoesNotExist :: AsError a => Getting (First ServiceError) a ServiceError
+_AttributeDoesNotExist
+  = _MatchServiceError sdb "AttributeDoesNotExist" .
+      hasStatus 404
 
 -- | Too many predicates exist in the query expression.
 --
 --
-_InvalidNumberPredicates :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidNumberPredicates
-  = _MatchServiceError sdb "InvalidNumberPredicates" .
+_InvalidNumberValueTests :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidNumberValueTests
+  = _MatchServiceError sdb "InvalidNumberValueTests" .
       hasStatus 400
 
--- | Too many domains exist per this account.
+-- | Too many bytes in this domain.
 --
 --
-_NumberDomainsExceeded :: AsError a => Getting (First ServiceError) a ServiceError
-_NumberDomainsExceeded
-  = _MatchServiceError sdb "NumberDomainsExceeded" .
-      hasStatus 409
+_NumberDomainBytesExceeded :: AsError a => Getting (First ServiceError) a ServiceError
+_NumberDomainBytesExceeded
+  = _MatchServiceError sdb "NumberDomainBytesExceeded"
+      . hasStatus 409
 
 -- | Too many attributes exist in a single call.
 --
@@ -242,13 +192,63 @@ _NumberSubmittedAttributesExceeded
       "NumberSubmittedAttributesExceeded"
       . hasStatus 409
 
--- | Too many bytes in this domain.
+-- | Too many domains exist per this account.
 --
 --
-_NumberDomainBytesExceeded :: AsError a => Getting (First ServiceError) a ServiceError
-_NumberDomainBytesExceeded
-  = _MatchServiceError sdb "NumberDomainBytesExceeded"
+_NumberDomainsExceeded :: AsError a => Getting (First ServiceError) a ServiceError
+_NumberDomainsExceeded
+  = _MatchServiceError sdb "NumberDomainsExceeded" .
+      hasStatus 409
+
+-- | Too many predicates exist in the query expression.
+--
+--
+_InvalidNumberPredicates :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidNumberPredicates
+  = _MatchServiceError sdb "InvalidNumberPredicates" .
+      hasStatus 400
+
+-- | The specified NextToken is not valid. 
+--
+--
+_InvalidNextToken :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidNextToken
+  = _MatchServiceError sdb "InvalidNextToken" .
+      hasStatus 400
+
+-- | The request must contain the specified missing parameter.
+--
+--
+_MissingParameter :: AsError a => Getting (First ServiceError) a ServiceError
+_MissingParameter
+  = _MatchServiceError sdb "MissingParameter" .
+      hasStatus 400
+
+-- | Too many attributes in this domain.
+--
+--
+_NumberDomainAttributesExceeded :: AsError a => Getting (First ServiceError) a ServiceError
+_NumberDomainAttributesExceeded
+  = _MatchServiceError sdb
+      "NumberDomainAttributesExceeded"
       . hasStatus 409
+
+-- | Too many items exist in a single call.
+--
+--
+_NumberSubmittedItemsExceeded :: AsError a => Getting (First ServiceError) a ServiceError
+_NumberSubmittedItemsExceeded
+  = _MatchServiceError sdb
+      "NumberSubmittedItemsExceeded"
+      . hasStatus 409
+
+-- | The specified domain does not exist.
+--
+--
+_NoSuchDomain :: AsError a => Getting (First ServiceError) a ServiceError
+_NoSuchDomain
+  = _MatchServiceError sdb "NoSuchDomain" .
+      hasStatus 400
 
 -- | The specified query expression syntax is not valid.
 --

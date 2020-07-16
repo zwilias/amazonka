@@ -31,38 +31,38 @@ module Network.AWS.AppStream
     -- * Errors
     -- $errors
 
-    -- ** InvalidRoleException
-    , _InvalidRoleException
-
-    -- ** ResourceAlreadyExistsException
-    , _ResourceAlreadyExistsException
+    -- ** OperationNotPermittedException
+    , _OperationNotPermittedException
 
     -- ** IncompatibleImageException
     , _IncompatibleImageException
 
-    -- ** ConcurrentModificationException
-    , _ConcurrentModificationException
-
-    -- ** OperationNotPermittedException
-    , _OperationNotPermittedException
-
-    -- ** InvalidAccountStatusException
-    , _InvalidAccountStatusException
+    -- ** ResourceNotAvailableException
+    , _ResourceNotAvailableException
 
     -- ** ResourceNotFoundException
     , _ResourceNotFoundException
 
-    -- ** InvalidParameterCombinationException
-    , _InvalidParameterCombinationException
+    -- ** ResourceAlreadyExistsException
+    , _ResourceAlreadyExistsException
 
-    -- ** ResourceNotAvailableException
-    , _ResourceNotAvailableException
+    -- ** InvalidAccountStatusException
+    , _InvalidAccountStatusException
+
+    -- ** InvalidRoleException
+    , _InvalidRoleException
+
+    -- ** ConcurrentModificationException
+    , _ConcurrentModificationException
 
     -- ** LimitExceededException
     , _LimitExceededException
 
     -- ** ResourceInUseException
     , _ResourceInUseException
+
+    -- ** InvalidParameterCombinationException
+    , _InvalidParameterCombinationException
 
     -- * Waiters
     -- $waiters

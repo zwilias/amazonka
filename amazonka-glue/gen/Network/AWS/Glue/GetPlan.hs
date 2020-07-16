@@ -37,9 +37,9 @@ module Network.AWS.Glue.GetPlan
     , getPlanResponse
     , GetPlanResponse
     -- * Response Lenses
-    , gpprsPythonScript
-    , gpprsScalaCode
-    , gpprsResponseStatus
+    , gtplnrsPythonScript
+    , gtplnrsScalaCode
+    , gtplnrsResponseStatus
     ) where
 
 import Network.AWS.Glue.Types
@@ -138,39 +138,39 @@ instance ToQuery GetPlan where
         toQuery = const mempty
 
 -- | /See:/ 'getPlanResponse' smart constructor.
-data GetPlanResponse = GetPlanResponse'{_gpprsPythonScript
+data GetPlanResponse = GetPlanResponse'{_gtplnrsPythonScript
                                         :: !(Maybe Text),
-                                        _gpprsScalaCode :: !(Maybe Text),
-                                        _gpprsResponseStatus :: !Int}
+                                        _gtplnrsScalaCode :: !(Maybe Text),
+                                        _gtplnrsResponseStatus :: !Int}
                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetPlanResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'gpprsPythonScript' - A Python script to perform the mapping.
+-- * 'gtplnrsPythonScript' - A Python script to perform the mapping.
 --
--- * 'gpprsScalaCode' - Scala code to perform the mapping.
+-- * 'gtplnrsScalaCode' - Scala code to perform the mapping.
 --
--- * 'gpprsResponseStatus' - -- | The response status code.
+-- * 'gtplnrsResponseStatus' - -- | The response status code.
 getPlanResponse
-    :: Int -- ^ 'gpprsResponseStatus'
+    :: Int -- ^ 'gtplnrsResponseStatus'
     -> GetPlanResponse
 getPlanResponse pResponseStatus_
-  = GetPlanResponse'{_gpprsPythonScript = Nothing,
-                     _gpprsScalaCode = Nothing,
-                     _gpprsResponseStatus = pResponseStatus_}
+  = GetPlanResponse'{_gtplnrsPythonScript = Nothing,
+                     _gtplnrsScalaCode = Nothing,
+                     _gtplnrsResponseStatus = pResponseStatus_}
 
 -- | A Python script to perform the mapping.
-gpprsPythonScript :: Lens' GetPlanResponse (Maybe Text)
-gpprsPythonScript = lens _gpprsPythonScript (\ s a -> s{_gpprsPythonScript = a})
+gtplnrsPythonScript :: Lens' GetPlanResponse (Maybe Text)
+gtplnrsPythonScript = lens _gtplnrsPythonScript (\ s a -> s{_gtplnrsPythonScript = a})
 
 -- | Scala code to perform the mapping.
-gpprsScalaCode :: Lens' GetPlanResponse (Maybe Text)
-gpprsScalaCode = lens _gpprsScalaCode (\ s a -> s{_gpprsScalaCode = a})
+gtplnrsScalaCode :: Lens' GetPlanResponse (Maybe Text)
+gtplnrsScalaCode = lens _gtplnrsScalaCode (\ s a -> s{_gtplnrsScalaCode = a})
 
 -- | -- | The response status code.
-gpprsResponseStatus :: Lens' GetPlanResponse Int
-gpprsResponseStatus = lens _gpprsResponseStatus (\ s a -> s{_gpprsResponseStatus = a})
+gtplnrsResponseStatus :: Lens' GetPlanResponse Int
+gtplnrsResponseStatus = lens _gtplnrsResponseStatus (\ s a -> s{_gtplnrsResponseStatus = a})
 
 instance NFData GetPlanResponse where

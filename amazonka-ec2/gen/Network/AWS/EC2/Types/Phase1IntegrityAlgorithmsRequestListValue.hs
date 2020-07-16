@@ -26,7 +26,7 @@ import Network.AWS.Prelude
 --
 --
 -- /See:/ 'phase1IntegrityAlgorithmsRequestListValue' smart constructor.
-newtype Phase1IntegrityAlgorithmsRequestListValue = Phase1IntegrityAlgorithmsRequestListValue'{_piarlviValue
+newtype Phase1IntegrityAlgorithmsRequestListValue = Phase1IntegrityAlgorithmsRequestListValue'{_phs1intgrtyalgrthmsrqstlstvlValue
                                                                                                ::
                                                                                                Maybe
                                                                                                  Text}
@@ -38,16 +38,16 @@ newtype Phase1IntegrityAlgorithmsRequestListValue = Phase1IntegrityAlgorithmsReq
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'piarlviValue' - The value for the integrity algorithm.
+-- * 'phs1intgrtyalgrthmsrqstlstvlValue' - The value for the integrity algorithm.
 phase1IntegrityAlgorithmsRequestListValue
     :: Phase1IntegrityAlgorithmsRequestListValue
 phase1IntegrityAlgorithmsRequestListValue
-  = Phase1IntegrityAlgorithmsRequestListValue'{_piarlviValue
+  = Phase1IntegrityAlgorithmsRequestListValue'{_phs1intgrtyalgrthmsrqstlstvlValue
                                                  = Nothing}
 
 -- | The value for the integrity algorithm.
-piarlviValue :: Lens' Phase1IntegrityAlgorithmsRequestListValue (Maybe Text)
-piarlviValue = lens _piarlviValue (\ s a -> s{_piarlviValue = a})
+phs1intgrtyalgrthmsrqstlstvlValue :: Lens' Phase1IntegrityAlgorithmsRequestListValue (Maybe Text)
+phs1intgrtyalgrthmsrqstlstvlValue = lens _phs1intgrtyalgrthmsrqstlstvlValue (\ s a -> s{_phs1intgrtyalgrthmsrqstlstvlValue = a})
 
 instance Hashable
            Phase1IntegrityAlgorithmsRequestListValue
@@ -62,4 +62,5 @@ instance ToQuery
          where
         toQuery
           Phase1IntegrityAlgorithmsRequestListValue'{..}
-          = mconcat ["Value" =: _piarlviValue]
+          = mconcat
+              ["Value" =: _phs1intgrtyalgrthmsrqstlstvlValue]

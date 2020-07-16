@@ -25,26 +25,26 @@ module Network.AWS.CertificateManager
     -- * Errors
     -- $errors
 
-    -- ** InvalidTagException
-    , _InvalidTagException
-
     -- ** InvalidDomainValidationOptionsException
     , _InvalidDomainValidationOptionsException
 
-    -- ** TooManyTagsException
-    , _TooManyTagsException
+    -- ** InvalidTagException
+    , _InvalidTagException
 
     -- ** RequestInProgressException
     , _RequestInProgressException
 
-    -- ** InvalidARNException
-    , _InvalidARNException
+    -- ** InvalidStateException
+    , _InvalidStateException
+
+    -- ** TooManyTagsException
+    , _TooManyTagsException
 
     -- ** ResourceNotFoundException
     , _ResourceNotFoundException
 
-    -- ** InvalidStateException
-    , _InvalidStateException
+    -- ** InvalidARNException
+    , _InvalidARNException
 
     -- ** LimitExceededException
     , _LimitExceededException

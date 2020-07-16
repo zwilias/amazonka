@@ -56,17 +56,17 @@ module Network.AWS.OpsWorksCM
     -- ** ValidationException
     , _ValidationException
 
+    -- ** InvalidStateException
+    , _InvalidStateException
+
+    -- ** ResourceNotFoundException
+    , _ResourceNotFoundException
+
     -- ** ResourceAlreadyExistsException
     , _ResourceAlreadyExistsException
 
     -- ** InvalidNextTokenException
     , _InvalidNextTokenException
-
-    -- ** ResourceNotFoundException
-    , _ResourceNotFoundException
-
-    -- ** InvalidStateException
-    , _InvalidStateException
 
     -- ** LimitExceededException
     , _LimitExceededException

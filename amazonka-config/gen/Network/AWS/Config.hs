@@ -25,17 +25,125 @@ module Network.AWS.Config
     -- * Errors
     -- $errors
 
-    -- ** NoSuchRemediationConfigurationException
-    , _NoSuchRemediationConfigurationException
+    -- ** MaxNumberOfConfigurationRecordersExceededException
+    , _MaxNumberOfConfigurationRecordersExceededException
+
+    -- ** InvalidLimitException
+    , _InvalidLimitException
+
+    -- ** OrganizationConformancePackTemplateValidationException
+    , _OrganizationConformancePackTemplateValidationException
+
+    -- ** NoSuchRemediationExceptionException
+    , _NoSuchRemediationExceptionException
+
+    -- ** OversizedConfigurationItemException
+    , _OversizedConfigurationItemException
+
+    -- ** MaxNumberOfConformancePacksExceededException
+    , _MaxNumberOfConformancePacksExceededException
+
+    -- ** InsufficientPermissionsException
+    , _InsufficientPermissionsException
+
+    -- ** OrganizationAllFeaturesNotEnabledException
+    , _OrganizationAllFeaturesNotEnabledException
+
+    -- ** RemediationInProgressException
+    , _RemediationInProgressException
+
+    -- ** ResourceNotDiscoveredException
+    , _ResourceNotDiscoveredException
+
+    -- ** OrganizationAccessDeniedException
+    , _OrganizationAccessDeniedException
+
+    -- ** NoSuchConformancePackException
+    , _NoSuchConformancePackException
+
+    -- ** InvalidSNSTopicARNException
+    , _InvalidSNSTopicARNException
 
     -- ** InvalidTimeRangeException
     , _InvalidTimeRangeException
 
-    -- ** NoSuchOrganizationConformancePackException
-    , _NoSuchOrganizationConformancePackException
+    -- ** NoSuchRemediationConfigurationException
+    , _NoSuchRemediationConfigurationException
 
-    -- ** InvalidSNSTopicARNException
-    , _InvalidSNSTopicARNException
+    -- ** NoSuchDeliveryChannelException
+    , _NoSuchDeliveryChannelException
+
+    -- ** InvalidParameterValueException
+    , _InvalidParameterValueException
+
+    -- ** NoSuchConfigRuleInConformancePackException
+    , _NoSuchConfigRuleInConformancePackException
+
+    -- ** ValidationException
+    , _ValidationException
+
+    -- ** InvalidS3KeyPrefixException
+    , _InvalidS3KeyPrefixException
+
+    -- ** TooManyTagsException
+    , _TooManyTagsException
+
+    -- ** MaxNumberOfOrganizationConformancePacksExceededException
+    , _MaxNumberOfOrganizationConformancePacksExceededException
+
+    -- ** MaxNumberOfOrganizationConfigRulesExceededException
+    , _MaxNumberOfOrganizationConfigRulesExceededException
+
+    -- ** ResourceNotFoundException
+    , _ResourceNotFoundException
+
+    -- ** InsufficientDeliveryPolicyException
+    , _InsufficientDeliveryPolicyException
+
+    -- ** InvalidConfigurationRecorderNameException
+    , _InvalidConfigurationRecorderNameException
+
+    -- ** NoRunningConfigurationRecorderException
+    , _NoRunningConfigurationRecorderException
+
+    -- ** NoAvailableDeliveryChannelException
+    , _NoAvailableDeliveryChannelException
+
+    -- ** LastDeliveryChannelDeleteFailedException
+    , _LastDeliveryChannelDeleteFailedException
+
+    -- ** ConformancePackTemplateValidationException
+    , _ConformancePackTemplateValidationException
+
+    -- ** NoSuchBucketException
+    , _NoSuchBucketException
+
+    -- ** MaxNumberOfConfigRulesExceededException
+    , _MaxNumberOfConfigRulesExceededException
+
+    -- ** MaxActiveResourcesExceededException
+    , _MaxActiveResourcesExceededException
+
+    -- ** MaxNumberOfRetentionConfigurationsExceededException
+    , _MaxNumberOfRetentionConfigurationsExceededException
+
+    -- ** NoAvailableConfigurationRecorderException
+    , _NoAvailableConfigurationRecorderException
+
+    -- ** NoSuchConfigurationAggregatorException
+    , _NoSuchConfigurationAggregatorException
+
+    -- ** InvalidNextTokenException
+    , _InvalidNextTokenException
+
+    -- ** InvalidRoleException
+    , _InvalidRoleException
+
+    -- ** NoSuchConfigRuleException
+    , _NoSuchConfigRuleException
+
+    -- ** NoSuchRetentionConfigurationException
+    , _NoSuchRetentionConfigurationException
 
     -- ** InvalidRecordingGroupException
     , _InvalidRecordingGroupException
@@ -46,137 +154,29 @@ module Network.AWS.Config
     -- ** NoAvailableOrganizationException
     , _NoAvailableOrganizationException
 
-    -- ** ValidationException
-    , _ValidationException
-
-    -- ** OrganizationAccessDeniedException
-    , _OrganizationAccessDeniedException
-
-    -- ** NoSuchConfigurationAggregatorException
-    , _NoSuchConfigurationAggregatorException
-
-    -- ** InvalidRoleException
-    , _InvalidRoleException
-
-    -- ** OversizedConfigurationItemException
-    , _OversizedConfigurationItemException
-
-    -- ** LastDeliveryChannelDeleteFailedException
-    , _LastDeliveryChannelDeleteFailedException
-
-    -- ** ConformancePackTemplateValidationException
-    , _ConformancePackTemplateValidationException
-
-    -- ** NoSuchRemediationExceptionException
-    , _NoSuchRemediationExceptionException
-
-    -- ** InvalidLimitException
-    , _InvalidLimitException
-
-    -- ** MaxNumberOfOrganizationConformancePacksExceededException
-    , _MaxNumberOfOrganizationConformancePacksExceededException
-
-    -- ** InvalidDeliveryChannelNameException
-    , _InvalidDeliveryChannelNameException
-
-    -- ** TooManyTagsException
-    , _TooManyTagsException
-
-    -- ** InvalidParameterValueException
-    , _InvalidParameterValueException
-
-    -- ** InvalidResultTokenException
-    , _InvalidResultTokenException
-
-    -- ** NoSuchConfigRuleInConformancePackException
-    , _NoSuchConfigRuleInConformancePackException
+    -- ** NoSuchOrganizationConformancePackException
+    , _NoSuchOrganizationConformancePackException
 
     -- ** NoSuchOrganizationConfigRuleException
     , _NoSuchOrganizationConfigRuleException
 
-    -- ** NoSuchDeliveryChannelException
-    , _NoSuchDeliveryChannelException
-
-    -- ** NoSuchConfigRuleException
-    , _NoSuchConfigRuleException
-
-    -- ** NoSuchConformancePackException
-    , _NoSuchConformancePackException
-
-    -- ** NoSuchRetentionConfigurationException
-    , _NoSuchRetentionConfigurationException
-
-    -- ** RemediationInProgressException
-    , _RemediationInProgressException
-
-    -- ** OrganizationAllFeaturesNotEnabledException
-    , _OrganizationAllFeaturesNotEnabledException
-
-    -- ** InsufficientPermissionsException
-    , _InsufficientPermissionsException
-
-    -- ** ResourceNotDiscoveredException
-    , _ResourceNotDiscoveredException
-
-    -- ** InvalidNextTokenException
-    , _InvalidNextTokenException
-
-    -- ** MaxNumberOfRetentionConfigurationsExceededException
-    , _MaxNumberOfRetentionConfigurationsExceededException
-
-    -- ** MaxNumberOfConformancePacksExceededException
-    , _MaxNumberOfConformancePacksExceededException
-
-    -- ** MaxNumberOfConfigRulesExceededException
-    , _MaxNumberOfConfigRulesExceededException
-
-    -- ** NoAvailableConfigurationRecorderException
-    , _NoAvailableConfigurationRecorderException
-
-    -- ** NoSuchBucketException
-    , _NoSuchBucketException
-
-    -- ** MaxActiveResourcesExceededException
-    , _MaxActiveResourcesExceededException
-
-    -- ** NoAvailableDeliveryChannelException
-    , _NoAvailableDeliveryChannelException
-
-    -- ** OrganizationConformancePackTemplateValidationException
-    , _OrganizationConformancePackTemplateValidationException
-
-    -- ** InvalidConfigurationRecorderNameException
-    , _InvalidConfigurationRecorderNameException
-
-    -- ** NoRunningConfigurationRecorderException
-    , _NoRunningConfigurationRecorderException
-
-    -- ** MaxNumberOfConfigurationRecordersExceededException
-    , _MaxNumberOfConfigurationRecordersExceededException
-
-    -- ** InsufficientDeliveryPolicyException
-    , _InsufficientDeliveryPolicyException
-
-    -- ** MaxNumberOfDeliveryChannelsExceededException
-    , _MaxNumberOfDeliveryChannelsExceededException
-
-    -- ** MaxNumberOfOrganizationConfigRulesExceededException
-    , _MaxNumberOfOrganizationConfigRulesExceededException
-
-    -- ** ResourceNotFoundException
-    , _ResourceNotFoundException
-
-    -- ** NoSuchConfigurationRecorderException
-    , _NoSuchConfigurationRecorderException
-
-    -- ** InvalidS3KeyPrefixException
-    , _InvalidS3KeyPrefixException
+    -- ** InvalidResultTokenException
+    , _InvalidResultTokenException
 
     -- ** LimitExceededException
     , _LimitExceededException
 
     -- ** ResourceInUseException
     , _ResourceInUseException
+
+    -- ** NoSuchConfigurationRecorderException
+    , _NoSuchConfigurationRecorderException
+
+    -- ** InvalidDeliveryChannelNameException
+    , _InvalidDeliveryChannelNameException
+
+    -- ** MaxNumberOfDeliveryChannelsExceededException
+    , _MaxNumberOfDeliveryChannelsExceededException
 
     -- * Waiters
     -- $waiters

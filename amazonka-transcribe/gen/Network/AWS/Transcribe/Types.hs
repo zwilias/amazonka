@@ -16,11 +16,11 @@ module Network.AWS.Transcribe.Types
       transcribe
 
     -- * Errors
-    , _ConflictException
-    , _NotFoundException
     , _InternalFailureException
     , _BadRequestException
+    , _NotFoundException
     , _LimitExceededException
+    , _ConflictException
 
     -- * LanguageCode
     , LanguageCode (..)
@@ -133,20 +133,6 @@ transcribe
           | has (hasStatus 509) e = Just "limit_exceeded"
           | otherwise = Nothing
 
--- | The @JobName@ field is a duplicate of a previously entered job name. Resend your request with a different name.
---
---
-_ConflictException :: AsError a => Getting (First ServiceError) a ServiceError
-_ConflictException
-  = _MatchServiceError transcribe "ConflictException"
-
--- | We can't find the requested transcription job or custom vocabulary. Check the name and try your request again.
---
---
-_NotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
-_NotFoundException
-  = _MatchServiceError transcribe "NotFoundException"
-
 -- | There was an internal error. Check the error message and try your request again.
 --
 --
@@ -162,6 +148,13 @@ _BadRequestException :: AsError a => Getting (First ServiceError) a ServiceError
 _BadRequestException
   = _MatchServiceError transcribe "BadRequestException"
 
+-- | We can't find the requested transcription job or custom vocabulary. Check the name and try your request again.
+--
+--
+_NotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
+_NotFoundException
+  = _MatchServiceError transcribe "NotFoundException"
+
 -- | Either you have sent too many requests or your input file is too long. Wait before you resend your request, or use a smaller file and resend the request.
 --
 --
@@ -169,3 +162,10 @@ _LimitExceededException :: AsError a => Getting (First ServiceError) a ServiceEr
 _LimitExceededException
   = _MatchServiceError transcribe
       "LimitExceededException"
+
+-- | The @JobName@ field is a duplicate of a previously entered job name. Resend your request with a different name.
+--
+--
+_ConflictException :: AsError a => Getting (First ServiceError) a ServiceError
+_ConflictException
+  = _MatchServiceError transcribe "ConflictException"

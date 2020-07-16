@@ -16,15 +16,15 @@ module Network.AWS.Support.Types
       support
 
     -- * Errors
-    , _AttachmentSetExpired
-    , _AttachmentLimitExceeded
-    , _DescribeAttachmentLimitExceeded
-    , _CaseIdNotFound
     , _AttachmentSetIdNotFound
-    , _AttachmentSetSizeLimitExceeded
+    , _DescribeAttachmentLimitExceeded
+    , _AttachmentLimitExceeded
     , _AttachmentIdNotFound
-    , _InternalServerError
     , _CaseCreationLimitExceeded
+    , _AttachmentSetSizeLimitExceeded
+    , _InternalServerError
+    , _CaseIdNotFound
+    , _AttachmentSetExpired
 
     -- * Attachment
     , Attachment
@@ -206,20 +206,13 @@ support
           | has (hasStatus 509) e = Just "limit_exceeded"
           | otherwise = Nothing
 
--- | The expiration time of the attachment set has passed. The set expires 1 hour after it is created.
+-- | An attachment set with the specified ID could not be found.
 --
 --
-_AttachmentSetExpired :: AsError a => Getting (First ServiceError) a ServiceError
-_AttachmentSetExpired
-  = _MatchServiceError support "AttachmentSetExpired"
-
--- | The limit for the number of attachment sets created in a short period of time has been exceeded.
---
---
-_AttachmentLimitExceeded :: AsError a => Getting (First ServiceError) a ServiceError
-_AttachmentLimitExceeded
+_AttachmentSetIdNotFound :: AsError a => Getting (First ServiceError) a ServiceError
+_AttachmentSetIdNotFound
   = _MatchServiceError support
-      "AttachmentLimitExceeded"
+      "AttachmentSetIdNotFound"
 
 -- | The limit for the number of 'DescribeAttachment' requests in a short period of time has been exceeded.
 --
@@ -229,20 +222,28 @@ _DescribeAttachmentLimitExceeded
   = _MatchServiceError support
       "DescribeAttachmentLimitExceeded"
 
--- | The requested @caseId@ could not be located.
+-- | The limit for the number of attachment sets created in a short period of time has been exceeded.
 --
 --
-_CaseIdNotFound :: AsError a => Getting (First ServiceError) a ServiceError
-_CaseIdNotFound
-  = _MatchServiceError support "CaseIdNotFound"
-
--- | An attachment set with the specified ID could not be found.
---
---
-_AttachmentSetIdNotFound :: AsError a => Getting (First ServiceError) a ServiceError
-_AttachmentSetIdNotFound
+_AttachmentLimitExceeded :: AsError a => Getting (First ServiceError) a ServiceError
+_AttachmentLimitExceeded
   = _MatchServiceError support
-      "AttachmentSetIdNotFound"
+      "AttachmentLimitExceeded"
+
+-- | An attachment with the specified ID could not be found.
+--
+--
+_AttachmentIdNotFound :: AsError a => Getting (First ServiceError) a ServiceError
+_AttachmentIdNotFound
+  = _MatchServiceError support "AttachmentIdNotFound"
+
+-- | The case creation limit for the account has been exceeded.
+--
+--
+_CaseCreationLimitExceeded :: AsError a => Getting (First ServiceError) a ServiceError
+_CaseCreationLimitExceeded
+  = _MatchServiceError support
+      "CaseCreationLimitExceeded"
 
 -- | A limit for the size of an attachment set has been exceeded. The limits are 3 attachments and 5 MB per attachment.
 --
@@ -252,13 +253,6 @@ _AttachmentSetSizeLimitExceeded
   = _MatchServiceError support
       "AttachmentSetSizeLimitExceeded"
 
--- | An attachment with the specified ID could not be found.
---
---
-_AttachmentIdNotFound :: AsError a => Getting (First ServiceError) a ServiceError
-_AttachmentIdNotFound
-  = _MatchServiceError support "AttachmentIdNotFound"
-
 -- | An internal server error occurred.
 --
 --
@@ -266,10 +260,16 @@ _InternalServerError :: AsError a => Getting (First ServiceError) a ServiceError
 _InternalServerError
   = _MatchServiceError support "InternalServerError"
 
--- | The case creation limit for the account has been exceeded.
+-- | The requested @caseId@ could not be located.
 --
 --
-_CaseCreationLimitExceeded :: AsError a => Getting (First ServiceError) a ServiceError
-_CaseCreationLimitExceeded
-  = _MatchServiceError support
-      "CaseCreationLimitExceeded"
+_CaseIdNotFound :: AsError a => Getting (First ServiceError) a ServiceError
+_CaseIdNotFound
+  = _MatchServiceError support "CaseIdNotFound"
+
+-- | The expiration time of the attachment set has passed. The set expires 1 hour after it is created.
+--
+--
+_AttachmentSetExpired :: AsError a => Getting (First ServiceError) a ServiceError
+_AttachmentSetExpired
+  = _MatchServiceError support "AttachmentSetExpired"

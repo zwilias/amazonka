@@ -16,29 +16,29 @@ module Network.AWS.DynamoDB.Types
       dynamoDB
 
     -- * Errors
-    , _BackupNotFoundException
-    , _TableInUseException
+    , _IdempotentParameterMismatchException
+    , _TransactionConflictException
     , _ContinuousBackupsUnavailableException
-    , _ProvisionedThroughputExceededException
+    , _BackupInUseException
+    , _TableInUseException
+    , _IndexNotFoundException
+    , _TableNotFoundException
+    , _BackupNotFoundException
+    , _ItemCollectionSizeLimitExceededException
+    , _RequestLimitExceeded
+    , _TransactionCanceledException
+    , _ReplicaNotFoundException
+    , _ReplicaAlreadyExistsException
     , _GlobalTableNotFoundException
     , _TransactionInProgressException
-    , _TransactionCanceledException
-    , _ConditionalCheckFailedException
-    , _GlobalTableAlreadyExistsException
-    , _ReplicaNotFoundException
-    , _TableAlreadyExistsException
-    , _RequestLimitExceeded
-    , _ItemCollectionSizeLimitExceededException
-    , _InternalServerError
-    , _TableNotFoundException
-    , _IndexNotFoundException
-    , _TransactionConflictException
-    , _BackupInUseException
-    , _PointInTimeRecoveryUnavailableException
-    , _IdempotentParameterMismatchException
-    , _InvalidRestoreTimeException
+    , _ProvisionedThroughputExceededException
     , _ResourceNotFoundException
-    , _ReplicaAlreadyExistsException
+    , _InvalidRestoreTimeException
+    , _PointInTimeRecoveryUnavailableException
+    , _InternalServerError
+    , _TableAlreadyExistsException
+    , _GlobalTableAlreadyExistsException
+    , _ConditionalCheckFailedException
     , _LimitExceededException
     , _ResourceInUseException
 
@@ -942,20 +942,21 @@ dynamoDB
           | has (hasStatus 509) e = Just "limit_exceeded"
           | otherwise = Nothing
 
--- | Backup not found for the given BackupARN. 
+-- | DynamoDB rejected the request because you retried a request with a different payload but with an idempotent token that was already used.
 --
 --
-_BackupNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
-_BackupNotFoundException
+_IdempotentParameterMismatchException :: AsError a => Getting (First ServiceError) a ServiceError
+_IdempotentParameterMismatchException
   = _MatchServiceError dynamoDB
-      "BackupNotFoundException"
+      "IdempotentParameterMismatchException"
 
--- | A target table with the specified name is either being created or deleted. 
+-- | Operation was rejected because there is an ongoing transaction for the item.
 --
 --
-_TableInUseException :: AsError a => Getting (First ServiceError) a ServiceError
-_TableInUseException
-  = _MatchServiceError dynamoDB "TableInUseException"
+_TransactionConflictException :: AsError a => Getting (First ServiceError) a ServiceError
+_TransactionConflictException
+  = _MatchServiceError dynamoDB
+      "TransactionConflictException"
 
 -- | Backups have not yet been enabled for this table.
 --
@@ -965,29 +966,58 @@ _ContinuousBackupsUnavailableException
   = _MatchServiceError dynamoDB
       "ContinuousBackupsUnavailableException"
 
--- | Your request rate is too high. The AWS SDKs for DynamoDB automatically retry requests that receive this exception. Your request is eventually successful, unless your retry queue is too large to finish. Reduce the frequency of requests and use exponential backoff. For more information, go to <https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Programming.Errors.html#Programming.Errors.RetryAndBackoff Error Retries and Exponential Backoff> in the /Amazon DynamoDB Developer Guide/ .
+-- | There is another ongoing conflicting backup control plane operation on the table. The backup is either being created, deleted or restored to a table.
 --
 --
-_ProvisionedThroughputExceededException :: AsError a => Getting (First ServiceError) a ServiceError
-_ProvisionedThroughputExceededException
-  = _MatchServiceError dynamoDB
-      "ProvisionedThroughputExceededException"
+_BackupInUseException :: AsError a => Getting (First ServiceError) a ServiceError
+_BackupInUseException
+  = _MatchServiceError dynamoDB "BackupInUseException"
 
--- | The specified global table does not exist.
+-- | A target table with the specified name is either being created or deleted. 
 --
 --
-_GlobalTableNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
-_GlobalTableNotFoundException
-  = _MatchServiceError dynamoDB
-      "GlobalTableNotFoundException"
+_TableInUseException :: AsError a => Getting (First ServiceError) a ServiceError
+_TableInUseException
+  = _MatchServiceError dynamoDB "TableInUseException"
 
--- | The transaction with the given request token is already in progress.
+-- | The operation tried to access a nonexistent index.
 --
 --
-_TransactionInProgressException :: AsError a => Getting (First ServiceError) a ServiceError
-_TransactionInProgressException
+_IndexNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
+_IndexNotFoundException
   = _MatchServiceError dynamoDB
-      "TransactionInProgressException"
+      "IndexNotFoundException"
+
+-- | A source table with the name @TableName@ does not currently exist within the subscriber's account.
+--
+--
+_TableNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
+_TableNotFoundException
+  = _MatchServiceError dynamoDB
+      "TableNotFoundException"
+
+-- | Backup not found for the given BackupARN. 
+--
+--
+_BackupNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
+_BackupNotFoundException
+  = _MatchServiceError dynamoDB
+      "BackupNotFoundException"
+
+-- | An item collection is too large. This exception is only returned for tables that have one or more local secondary indexes.
+--
+--
+_ItemCollectionSizeLimitExceededException :: AsError a => Getting (First ServiceError) a ServiceError
+_ItemCollectionSizeLimitExceededException
+  = _MatchServiceError dynamoDB
+      "ItemCollectionSizeLimitExceededException"
+
+-- | Throughput exceeds the current throughput limit for your account. Please contact AWS Support at <https://aws.amazon.com/support AWS Support> to request a limit increase.
+--
+--
+_RequestLimitExceeded :: AsError a => Getting (First ServiceError) a ServiceError
+_RequestLimitExceeded
+  = _MatchServiceError dynamoDB "RequestLimitExceeded"
 
 -- | The entire transaction request was canceled.
 --
@@ -1119,22 +1149,6 @@ _TransactionCanceledException
   = _MatchServiceError dynamoDB
       "TransactionCanceledException"
 
--- | A condition specified in the operation could not be evaluated.
---
---
-_ConditionalCheckFailedException :: AsError a => Getting (First ServiceError) a ServiceError
-_ConditionalCheckFailedException
-  = _MatchServiceError dynamoDB
-      "ConditionalCheckFailedException"
-
--- | The specified global table already exists.
---
---
-_GlobalTableAlreadyExistsException :: AsError a => Getting (First ServiceError) a ServiceError
-_GlobalTableAlreadyExistsException
-  = _MatchServiceError dynamoDB
-      "GlobalTableAlreadyExistsException"
-
 -- | The specified replica is no longer part of the global table.
 --
 --
@@ -1143,90 +1157,37 @@ _ReplicaNotFoundException
   = _MatchServiceError dynamoDB
       "ReplicaNotFoundException"
 
--- | A target table with the specified name already exists. 
+-- | The specified replica is already part of the global table.
 --
 --
-_TableAlreadyExistsException :: AsError a => Getting (First ServiceError) a ServiceError
-_TableAlreadyExistsException
+_ReplicaAlreadyExistsException :: AsError a => Getting (First ServiceError) a ServiceError
+_ReplicaAlreadyExistsException
   = _MatchServiceError dynamoDB
-      "TableAlreadyExistsException"
+      "ReplicaAlreadyExistsException"
 
--- | Throughput exceeds the current throughput limit for your account. Please contact AWS Support at <https://aws.amazon.com/support AWS Support> to request a limit increase.
+-- | The specified global table does not exist.
 --
 --
-_RequestLimitExceeded :: AsError a => Getting (First ServiceError) a ServiceError
-_RequestLimitExceeded
-  = _MatchServiceError dynamoDB "RequestLimitExceeded"
-
--- | An item collection is too large. This exception is only returned for tables that have one or more local secondary indexes.
---
---
-_ItemCollectionSizeLimitExceededException :: AsError a => Getting (First ServiceError) a ServiceError
-_ItemCollectionSizeLimitExceededException
+_GlobalTableNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
+_GlobalTableNotFoundException
   = _MatchServiceError dynamoDB
-      "ItemCollectionSizeLimitExceededException"
+      "GlobalTableNotFoundException"
 
--- | An error occurred on the server side.
+-- | The transaction with the given request token is already in progress.
 --
 --
-_InternalServerError :: AsError a => Getting (First ServiceError) a ServiceError
-_InternalServerError
-  = _MatchServiceError dynamoDB "InternalServerError"
-
--- | A source table with the name @TableName@ does not currently exist within the subscriber's account.
---
---
-_TableNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
-_TableNotFoundException
+_TransactionInProgressException :: AsError a => Getting (First ServiceError) a ServiceError
+_TransactionInProgressException
   = _MatchServiceError dynamoDB
-      "TableNotFoundException"
+      "TransactionInProgressException"
 
--- | The operation tried to access a nonexistent index.
+-- | Your request rate is too high. The AWS SDKs for DynamoDB automatically retry requests that receive this exception. Your request is eventually successful, unless your retry queue is too large to finish. Reduce the frequency of requests and use exponential backoff. For more information, go to <https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Programming.Errors.html#Programming.Errors.RetryAndBackoff Error Retries and Exponential Backoff> in the /Amazon DynamoDB Developer Guide/ .
 --
 --
-_IndexNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
-_IndexNotFoundException
+_ProvisionedThroughputExceededException :: AsError a => Getting (First ServiceError) a ServiceError
+_ProvisionedThroughputExceededException
   = _MatchServiceError dynamoDB
-      "IndexNotFoundException"
-
--- | Operation was rejected because there is an ongoing transaction for the item.
---
---
-_TransactionConflictException :: AsError a => Getting (First ServiceError) a ServiceError
-_TransactionConflictException
-  = _MatchServiceError dynamoDB
-      "TransactionConflictException"
-
--- | There is another ongoing conflicting backup control plane operation on the table. The backup is either being created, deleted or restored to a table.
---
---
-_BackupInUseException :: AsError a => Getting (First ServiceError) a ServiceError
-_BackupInUseException
-  = _MatchServiceError dynamoDB "BackupInUseException"
-
--- | Point in time recovery has not yet been enabled for this source table.
---
---
-_PointInTimeRecoveryUnavailableException :: AsError a => Getting (First ServiceError) a ServiceError
-_PointInTimeRecoveryUnavailableException
-  = _MatchServiceError dynamoDB
-      "PointInTimeRecoveryUnavailableException"
-
--- | DynamoDB rejected the request because you retried a request with a different payload but with an idempotent token that was already used.
---
---
-_IdempotentParameterMismatchException :: AsError a => Getting (First ServiceError) a ServiceError
-_IdempotentParameterMismatchException
-  = _MatchServiceError dynamoDB
-      "IdempotentParameterMismatchException"
-
--- | An invalid restore time was specified. RestoreDateTime must be between EarliestRestorableDateTime and LatestRestorableDateTime.
---
---
-_InvalidRestoreTimeException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidRestoreTimeException
-  = _MatchServiceError dynamoDB
-      "InvalidRestoreTimeException"
+      "ProvisionedThroughputExceededException"
 
 -- | The operation tried to access a nonexistent table or index. The resource might not be specified correctly, or its status might not be @ACTIVE@ .
 --
@@ -1236,13 +1197,52 @@ _ResourceNotFoundException
   = _MatchServiceError dynamoDB
       "ResourceNotFoundException"
 
--- | The specified replica is already part of the global table.
+-- | An invalid restore time was specified. RestoreDateTime must be between EarliestRestorableDateTime and LatestRestorableDateTime.
 --
 --
-_ReplicaAlreadyExistsException :: AsError a => Getting (First ServiceError) a ServiceError
-_ReplicaAlreadyExistsException
+_InvalidRestoreTimeException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidRestoreTimeException
   = _MatchServiceError dynamoDB
-      "ReplicaAlreadyExistsException"
+      "InvalidRestoreTimeException"
+
+-- | Point in time recovery has not yet been enabled for this source table.
+--
+--
+_PointInTimeRecoveryUnavailableException :: AsError a => Getting (First ServiceError) a ServiceError
+_PointInTimeRecoveryUnavailableException
+  = _MatchServiceError dynamoDB
+      "PointInTimeRecoveryUnavailableException"
+
+-- | An error occurred on the server side.
+--
+--
+_InternalServerError :: AsError a => Getting (First ServiceError) a ServiceError
+_InternalServerError
+  = _MatchServiceError dynamoDB "InternalServerError"
+
+-- | A target table with the specified name already exists. 
+--
+--
+_TableAlreadyExistsException :: AsError a => Getting (First ServiceError) a ServiceError
+_TableAlreadyExistsException
+  = _MatchServiceError dynamoDB
+      "TableAlreadyExistsException"
+
+-- | The specified global table already exists.
+--
+--
+_GlobalTableAlreadyExistsException :: AsError a => Getting (First ServiceError) a ServiceError
+_GlobalTableAlreadyExistsException
+  = _MatchServiceError dynamoDB
+      "GlobalTableAlreadyExistsException"
+
+-- | A condition specified in the operation could not be evaluated.
+--
+--
+_ConditionalCheckFailedException :: AsError a => Getting (First ServiceError) a ServiceError
+_ConditionalCheckFailedException
+  = _MatchServiceError dynamoDB
+      "ConditionalCheckFailedException"
 
 -- | There is no limit to the number of daily on-demand backups that can be taken. 
 --

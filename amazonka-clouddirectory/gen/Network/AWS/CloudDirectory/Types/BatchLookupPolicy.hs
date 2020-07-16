@@ -26,10 +26,11 @@ import Network.AWS.Prelude
 --
 --
 -- /See:/ 'batchLookupPolicy' smart constructor.
-data BatchLookupPolicy = BatchLookupPolicy'{_blplNextToken
+data BatchLookupPolicy = BatchLookupPolicy'{_btchlkpplcyNextToken
                                             :: !(Maybe Text),
-                                            _blplMaxResults :: !(Maybe Nat),
-                                            _blplObjectReference ::
+                                            _btchlkpplcyMaxResults ::
+                                            !(Maybe Nat),
+                                            _btchlkpplcyObjectReference ::
                                             !ObjectReference}
                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -37,30 +38,30 @@ data BatchLookupPolicy = BatchLookupPolicy'{_blplNextToken
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'blplNextToken' - The pagination token.
+-- * 'btchlkpplcyNextToken' - The pagination token.
 --
--- * 'blplMaxResults' - The maximum number of results to retrieve.
+-- * 'btchlkpplcyMaxResults' - The maximum number of results to retrieve.
 --
--- * 'blplObjectReference' - Reference that identifies the object whose policies will be looked up.
+-- * 'btchlkpplcyObjectReference' - Reference that identifies the object whose policies will be looked up.
 batchLookupPolicy
-    :: ObjectReference -- ^ 'blplObjectReference'
+    :: ObjectReference -- ^ 'btchlkpplcyObjectReference'
     -> BatchLookupPolicy
 batchLookupPolicy pObjectReference_
-  = BatchLookupPolicy'{_blplNextToken = Nothing,
-                       _blplMaxResults = Nothing,
-                       _blplObjectReference = pObjectReference_}
+  = BatchLookupPolicy'{_btchlkpplcyNextToken = Nothing,
+                       _btchlkpplcyMaxResults = Nothing,
+                       _btchlkpplcyObjectReference = pObjectReference_}
 
 -- | The pagination token.
-blplNextToken :: Lens' BatchLookupPolicy (Maybe Text)
-blplNextToken = lens _blplNextToken (\ s a -> s{_blplNextToken = a})
+btchlkpplcyNextToken :: Lens' BatchLookupPolicy (Maybe Text)
+btchlkpplcyNextToken = lens _btchlkpplcyNextToken (\ s a -> s{_btchlkpplcyNextToken = a})
 
 -- | The maximum number of results to retrieve.
-blplMaxResults :: Lens' BatchLookupPolicy (Maybe Natural)
-blplMaxResults = lens _blplMaxResults (\ s a -> s{_blplMaxResults = a}) . mapping _Nat
+btchlkpplcyMaxResults :: Lens' BatchLookupPolicy (Maybe Natural)
+btchlkpplcyMaxResults = lens _btchlkpplcyMaxResults (\ s a -> s{_btchlkpplcyMaxResults = a}) . mapping _Nat
 
 -- | Reference that identifies the object whose policies will be looked up.
-blplObjectReference :: Lens' BatchLookupPolicy ObjectReference
-blplObjectReference = lens _blplObjectReference (\ s a -> s{_blplObjectReference = a})
+btchlkpplcyObjectReference :: Lens' BatchLookupPolicy ObjectReference
+btchlkpplcyObjectReference = lens _btchlkpplcyObjectReference (\ s a -> s{_btchlkpplcyObjectReference = a})
 
 instance Hashable BatchLookupPolicy where
 
@@ -70,6 +71,7 @@ instance ToJSON BatchLookupPolicy where
         toJSON BatchLookupPolicy'{..}
           = object
               (catMaybes
-                 [("NextToken" .=) <$> _blplNextToken,
-                  ("MaxResults" .=) <$> _blplMaxResults,
-                  Just ("ObjectReference" .= _blplObjectReference)])
+                 [("NextToken" .=) <$> _btchlkpplcyNextToken,
+                  ("MaxResults" .=) <$> _btchlkpplcyMaxResults,
+                  Just
+                    ("ObjectReference" .= _btchlkpplcyObjectReference)])

@@ -16,14 +16,14 @@ module Network.AWS.MachineLearning.Types
       machineLearning
 
     -- * Errors
-    , _InvalidTagException
-    , _InternalServerException
-    , _InvalidInputException
     , _IdempotentParameterMismatchException
-    , _TagLimitExceededException
-    , _PredictorNotMountedException
+    , _InvalidTagException
     , _ResourceNotFoundException
+    , _TagLimitExceededException
+    , _InvalidInputException
+    , _InternalServerException
     , _LimitExceededException
+    , _PredictorNotMountedException
 
     -- * Algorithm
     , Algorithm (..)
@@ -310,30 +310,6 @@ machineLearning
           | has (hasStatus 509) e = Just "limit_exceeded"
           | otherwise = Nothing
 
--- | Prism for InvalidTagException' errors.
-_InvalidTagException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidTagException
-  = _MatchServiceError machineLearning
-      "InvalidTagException"
-
--- | An error on the server occurred when trying to process a request.
---
---
-_InternalServerException :: AsError a => Getting (First ServiceError) a ServiceError
-_InternalServerException
-  = _MatchServiceError machineLearning
-      "InternalServerException"
-      . hasStatus 500
-
--- | An error on the client occurred. Typically, the cause is an invalid input value.
---
---
-_InvalidInputException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidInputException
-  = _MatchServiceError machineLearning
-      "InvalidInputException"
-      . hasStatus 400
-
 -- | A second request to use or change an object was not allowed. This can result from retrying a request using a parameter that was not present in the original request.
 --
 --
@@ -343,20 +319,11 @@ _IdempotentParameterMismatchException
       "IdempotentParameterMismatchException"
       . hasStatus 400
 
--- | Prism for TagLimitExceededException' errors.
-_TagLimitExceededException :: AsError a => Getting (First ServiceError) a ServiceError
-_TagLimitExceededException
+-- | Prism for InvalidTagException' errors.
+_InvalidTagException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidTagException
   = _MatchServiceError machineLearning
-      "TagLimitExceededException"
-
--- | The exception is thrown when a predict request is made to an unmounted @MLModel@ .
---
---
-_PredictorNotMountedException :: AsError a => Getting (First ServiceError) a ServiceError
-_PredictorNotMountedException
-  = _MatchServiceError machineLearning
-      "PredictorNotMountedException"
-      . hasStatus 400
+      "InvalidTagException"
 
 -- | A specified resource cannot be located.
 --
@@ -367,6 +334,30 @@ _ResourceNotFoundException
       "ResourceNotFoundException"
       . hasStatus 404
 
+-- | Prism for TagLimitExceededException' errors.
+_TagLimitExceededException :: AsError a => Getting (First ServiceError) a ServiceError
+_TagLimitExceededException
+  = _MatchServiceError machineLearning
+      "TagLimitExceededException"
+
+-- | An error on the client occurred. Typically, the cause is an invalid input value.
+--
+--
+_InvalidInputException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidInputException
+  = _MatchServiceError machineLearning
+      "InvalidInputException"
+      . hasStatus 400
+
+-- | An error on the server occurred when trying to process a request.
+--
+--
+_InternalServerException :: AsError a => Getting (First ServiceError) a ServiceError
+_InternalServerException
+  = _MatchServiceError machineLearning
+      "InternalServerException"
+      . hasStatus 500
+
 -- | The subscriber exceeded the maximum number of operations. This exception can occur when listing objects such as @DataSource@ .
 --
 --
@@ -375,3 +366,12 @@ _LimitExceededException
   = _MatchServiceError machineLearning
       "LimitExceededException"
       . hasStatus 417
+
+-- | The exception is thrown when a predict request is made to an unmounted @MLModel@ .
+--
+--
+_PredictorNotMountedException :: AsError a => Getting (First ServiceError) a ServiceError
+_PredictorNotMountedException
+  = _MatchServiceError machineLearning
+      "PredictorNotMountedException"
+      . hasStatus 400

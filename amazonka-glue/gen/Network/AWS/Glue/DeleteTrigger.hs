@@ -27,7 +27,7 @@ module Network.AWS.Glue.DeleteTrigger
       deleteTrigger
     , DeleteTrigger
     -- * Request Lenses
-    , dttName
+    , dlttrggrName
 
     -- * Destructuring the Response
     , deleteTriggerResponse
@@ -45,24 +45,24 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteTrigger' smart constructor.
-newtype DeleteTrigger = DeleteTrigger'{_dttName ::
-                                       Text}
+newtype DeleteTrigger = DeleteTrigger'{_dlttrggrName
+                                       :: Text}
                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteTrigger' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dttName' - The name of the trigger to delete.
+-- * 'dlttrggrName' - The name of the trigger to delete.
 deleteTrigger
-    :: Text -- ^ 'dttName'
+    :: Text -- ^ 'dlttrggrName'
     -> DeleteTrigger
 deleteTrigger pName_
-  = DeleteTrigger'{_dttName = pName_}
+  = DeleteTrigger'{_dlttrggrName = pName_}
 
 -- | The name of the trigger to delete.
-dttName :: Lens' DeleteTrigger Text
-dttName = lens _dttName (\ s a -> s{_dttName = a})
+dlttrggrName :: Lens' DeleteTrigger Text
+dlttrggrName = lens _dlttrggrName (\ s a -> s{_dlttrggrName = a})
 
 instance AWSRequest DeleteTrigger where
         type Rs DeleteTrigger = DeleteTriggerResponse
@@ -88,7 +88,7 @@ instance ToHeaders DeleteTrigger where
 
 instance ToJSON DeleteTrigger where
         toJSON DeleteTrigger'{..}
-          = object (catMaybes [Just ("Name" .= _dttName)])
+          = object (catMaybes [Just ("Name" .= _dlttrggrName)])
 
 instance ToPath DeleteTrigger where
         toPath = const "/"

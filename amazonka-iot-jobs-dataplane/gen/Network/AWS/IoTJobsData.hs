@@ -26,26 +26,26 @@ module Network.AWS.IoTJobsData
     -- * Errors
     -- $errors
 
-    -- ** TerminalStateException
-    , _TerminalStateException
-
     -- ** InvalidRequestException
     , _InvalidRequestException
 
     -- ** CertificateValidationException
     , _CertificateValidationException
 
-    -- ** ThrottlingException
-    , _ThrottlingException
-
-    -- ** ServiceUnavailableException
-    , _ServiceUnavailableException
-
     -- ** InvalidStateTransitionException
     , _InvalidStateTransitionException
 
     -- ** ResourceNotFoundException
     , _ResourceNotFoundException
+
+    -- ** ServiceUnavailableException
+    , _ServiceUnavailableException
+
+    -- ** ThrottlingException
+    , _ThrottlingException
+
+    -- ** TerminalStateException
+    , _TerminalStateException
 
     -- * Waiters
     -- $waiters

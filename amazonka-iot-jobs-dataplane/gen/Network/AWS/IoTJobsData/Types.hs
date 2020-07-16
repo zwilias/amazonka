@@ -16,13 +16,13 @@ module Network.AWS.IoTJobsData.Types
       ioTJobsData
 
     -- * Errors
-    , _TerminalStateException
     , _InvalidRequestException
     , _CertificateValidationException
-    , _ThrottlingException
-    , _ServiceUnavailableException
     , _InvalidStateTransitionException
     , _ResourceNotFoundException
+    , _ServiceUnavailableException
+    , _ThrottlingException
+    , _TerminalStateException
 
     -- * JobExecutionStatus
     , JobExecutionStatus (..)
@@ -101,15 +101,6 @@ ioTJobsData
           | has (hasStatus 509) e = Just "limit_exceeded"
           | otherwise = Nothing
 
--- | The job is in a terminal state.
---
---
-_TerminalStateException :: AsError a => Getting (First ServiceError) a ServiceError
-_TerminalStateException
-  = _MatchServiceError ioTJobsData
-      "TerminalStateException"
-      . hasStatus 410
-
 -- | The contents of the request were invalid. For example, this code is returned when an UpdateJobExecution request contains invalid status details. The message contains details about the error.
 --
 --
@@ -128,24 +119,6 @@ _CertificateValidationException
       "CertificateValidationException"
       . hasStatus 400
 
--- | The rate exceeds the limit.
---
---
-_ThrottlingException :: AsError a => Getting (First ServiceError) a ServiceError
-_ThrottlingException
-  = _MatchServiceError ioTJobsData
-      "ThrottlingException"
-      . hasStatus 429
-
--- | The service is temporarily unavailable.
---
---
-_ServiceUnavailableException :: AsError a => Getting (First ServiceError) a ServiceError
-_ServiceUnavailableException
-  = _MatchServiceError ioTJobsData
-      "ServiceUnavailableException"
-      . hasStatus 503
-
 -- | An update attempted to change the job execution to a state that is invalid because of the job execution's current state (for example, an attempt to change a request in state SUCCESS to state IN_PROGRESS). In this case, the body of the error message also contains the executionState field.
 --
 --
@@ -163,3 +136,30 @@ _ResourceNotFoundException
   = _MatchServiceError ioTJobsData
       "ResourceNotFoundException"
       . hasStatus 404
+
+-- | The service is temporarily unavailable.
+--
+--
+_ServiceUnavailableException :: AsError a => Getting (First ServiceError) a ServiceError
+_ServiceUnavailableException
+  = _MatchServiceError ioTJobsData
+      "ServiceUnavailableException"
+      . hasStatus 503
+
+-- | The rate exceeds the limit.
+--
+--
+_ThrottlingException :: AsError a => Getting (First ServiceError) a ServiceError
+_ThrottlingException
+  = _MatchServiceError ioTJobsData
+      "ThrottlingException"
+      . hasStatus 429
+
+-- | The job is in a terminal state.
+--
+--
+_TerminalStateException :: AsError a => Getting (First ServiceError) a ServiceError
+_TerminalStateException
+  = _MatchServiceError ioTJobsData
+      "TerminalStateException"
+      . hasStatus 410

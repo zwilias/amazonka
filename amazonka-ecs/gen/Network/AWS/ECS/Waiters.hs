@@ -30,10 +30,12 @@ servicesInactive
          _waitAttempts = 40, _waitDelay = 15,
          _waitAcceptors =
            [matchAny "MISSING" AcceptFailure
-              (folding (concatOf dssrsFailures) . fReason . _Just .
-                 to toTextCI),
+              (folding (concatOf (dssrsFailures . to toList)) .
+                 fReason . _Just
+                 . to toTextCI),
             matchAny "INACTIVE" AcceptSuccess
-              (folding (concatOf dssrsServices) . csStatus . _Just
+              (folding (concatOf (dssrsServices . to toList)) .
+                 csStatus . _Just
                  . to toTextCI)]}
 
 -- | Polls 'Network.AWS.ECS.DescribeTasks' every 6 seconds until a successful state is reached. An error is returned after 100 failed checks.
@@ -43,14 +45,17 @@ tasksRunning
          _waitAttempts = 100, _waitDelay = 6,
          _waitAcceptors =
            [matchAny "STOPPED" AcceptFailure
-              (folding (concatOf dtrsTasks) . tLastStatus . _Just .
-                 to toTextCI),
+              (folding (concatOf (dtrsTasks . to toList)) .
+                 tLastStatus . _Just
+                 . to toTextCI),
             matchAny "MISSING" AcceptFailure
-              (folding (concatOf dtrsFailures) . fReason . _Just .
-                 to toTextCI),
+              (folding (concatOf (dtrsFailures . to toList)) .
+                 fReason . _Just
+                 . to toTextCI),
             matchAll "RUNNING" AcceptSuccess
-              (folding (concatOf dtrsTasks) . tLastStatus . _Just .
-                 to toTextCI)]}
+              (folding (concatOf (dtrsTasks . to toList)) .
+                 tLastStatus . _Just
+                 . to toTextCI)]}
 
 -- | Polls 'Network.AWS.ECS.DescribeTasks' every 6 seconds until a successful state is reached. An error is returned after 100 failed checks.
 tasksStopped :: Wait DescribeTasks
@@ -59,5 +64,6 @@ tasksStopped
          _waitAttempts = 100, _waitDelay = 6,
          _waitAcceptors =
            [matchAll "STOPPED" AcceptSuccess
-              (folding (concatOf dtrsTasks) . tLastStatus . _Just .
-                 to toTextCI)]}
+              (folding (concatOf (dtrsTasks . to toList)) .
+                 tLastStatus . _Just
+                 . to toTextCI)]}

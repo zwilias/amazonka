@@ -22,17 +22,17 @@ module Network.AWS.MediaStoreData
     -- * Errors
     -- $errors
 
-    -- ** RequestedRangeNotSatisfiableException
-    , _RequestedRangeNotSatisfiableException
-
-    -- ** InternalServerError
-    , _InternalServerError
-
     -- ** ContainerNotFoundException
     , _ContainerNotFoundException
 
     -- ** ObjectNotFoundException
     , _ObjectNotFoundException
+
+    -- ** InternalServerError
+    , _InternalServerError
+
+    -- ** RequestedRangeNotSatisfiableException
+    , _RequestedRangeNotSatisfiableException
 
     -- * Waiters
     -- $waiters

@@ -16,13 +16,13 @@ module Network.AWS.Cloud9.Types
       cloud9
 
     -- * Errors
-    , _ConflictException
-    , _ForbiddenException
-    , _NotFoundException
-    , _TooManyRequestsException
     , _InternalServerErrorException
+    , _TooManyRequestsException
+    , _ForbiddenException
     , _BadRequestException
+    , _NotFoundException
     , _LimitExceededException
+    , _ConflictException
 
     -- * EnvironmentLifecycleStatus
     , EnvironmentLifecycleStatus (..)
@@ -119,26 +119,13 @@ cloud9
           | has (hasStatus 509) e = Just "limit_exceeded"
           | otherwise = Nothing
 
--- | A conflict occurred.
+-- | An internal server error occurred.
 --
 --
-_ConflictException :: AsError a => Getting (First ServiceError) a ServiceError
-_ConflictException
-  = _MatchServiceError cloud9 "ConflictException"
-
--- | An access permissions issue occurred.
---
---
-_ForbiddenException :: AsError a => Getting (First ServiceError) a ServiceError
-_ForbiddenException
-  = _MatchServiceError cloud9 "ForbiddenException"
-
--- | The target resource cannot be found.
---
---
-_NotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
-_NotFoundException
-  = _MatchServiceError cloud9 "NotFoundException"
+_InternalServerErrorException :: AsError a => Getting (First ServiceError) a ServiceError
+_InternalServerErrorException
+  = _MatchServiceError cloud9
+      "InternalServerErrorException"
 
 -- | Too many service requests were made over the given time period.
 --
@@ -148,13 +135,12 @@ _TooManyRequestsException
   = _MatchServiceError cloud9
       "TooManyRequestsException"
 
--- | An internal server error occurred.
+-- | An access permissions issue occurred.
 --
 --
-_InternalServerErrorException :: AsError a => Getting (First ServiceError) a ServiceError
-_InternalServerErrorException
-  = _MatchServiceError cloud9
-      "InternalServerErrorException"
+_ForbiddenException :: AsError a => Getting (First ServiceError) a ServiceError
+_ForbiddenException
+  = _MatchServiceError cloud9 "ForbiddenException"
 
 -- | The target request is invalid.
 --
@@ -163,9 +149,23 @@ _BadRequestException :: AsError a => Getting (First ServiceError) a ServiceError
 _BadRequestException
   = _MatchServiceError cloud9 "BadRequestException"
 
+-- | The target resource cannot be found.
+--
+--
+_NotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
+_NotFoundException
+  = _MatchServiceError cloud9 "NotFoundException"
+
 -- | A service limit was exceeded.
 --
 --
 _LimitExceededException :: AsError a => Getting (First ServiceError) a ServiceError
 _LimitExceededException
   = _MatchServiceError cloud9 "LimitExceededException"
+
+-- | A conflict occurred.
+--
+--
+_ConflictException :: AsError a => Getting (First ServiceError) a ServiceError
+_ConflictException
+  = _MatchServiceError cloud9 "ConflictException"

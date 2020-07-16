@@ -17,8 +17,8 @@ module Network.AWS.EMR.Types
 
     -- * Errors
     , _InvalidRequestException
-    , _InternalServerError
     , _InternalServerException
+    , _InternalServerError
 
     -- * ActionOnFailure
     , ActionOnFailure (..)
@@ -776,16 +776,16 @@ _InvalidRequestException :: AsError a => Getting (First ServiceError) a ServiceE
 _InvalidRequestException
   = _MatchServiceError emr "InvalidRequestException"
 
--- | Indicates that an error occurred while processing the request and that the request was not completed.
---
---
-_InternalServerError :: AsError a => Getting (First ServiceError) a ServiceError
-_InternalServerError
-  = _MatchServiceError emr "InternalServerError"
-
 -- | This exception occurs when there is an internal failure in the EMR service.
 --
 --
 _InternalServerException :: AsError a => Getting (First ServiceError) a ServiceError
 _InternalServerException
   = _MatchServiceError emr "InternalServerException"
+
+-- | Indicates that an error occurred while processing the request and that the request was not completed.
+--
+--
+_InternalServerError :: AsError a => Getting (First ServiceError) a ServiceError
+_InternalServerError
+  = _MatchServiceError emr "InternalServerError"

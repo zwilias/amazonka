@@ -22,29 +22,29 @@ module Network.AWS.Snowball
     -- * Errors
     -- $errors
 
-    -- ** InvalidResourceException
-    , _InvalidResourceException
+    -- ** KMSRequestFailedException
+    , _KMSRequestFailedException
 
     -- ** UnsupportedAddressException
     , _UnsupportedAddressException
 
-    -- ** KMSRequestFailedException
-    , _KMSRequestFailedException
+    -- ** InvalidInputCombinationException
+    , _InvalidInputCombinationException
 
     -- ** InvalidJobStateException
     , _InvalidJobStateException
 
-    -- ** InvalidInputCombinationException
-    , _InvalidInputCombinationException
-
-    -- ** InvalidNextTokenException
-    , _InvalidNextTokenException
+    -- ** ClusterLimitExceededException
+    , _ClusterLimitExceededException
 
     -- ** InvalidAddressException
     , _InvalidAddressException
 
-    -- ** ClusterLimitExceededException
-    , _ClusterLimitExceededException
+    -- ** InvalidNextTokenException
+    , _InvalidNextTokenException
+
+    -- ** InvalidResourceException
+    , _InvalidResourceException
 
     -- * Waiters
     -- $waiters

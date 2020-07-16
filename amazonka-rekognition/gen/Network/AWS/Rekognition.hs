@@ -22,44 +22,44 @@ module Network.AWS.Rekognition
     -- * Errors
     -- $errors
 
-    -- ** AccessDeniedException
-    , _AccessDeniedException
-
-    -- ** VideoTooLargeException
-    , _VideoTooLargeException
-
-    -- ** InvalidParameterException
-    , _InvalidParameterException
+    -- ** IdempotentParameterMismatchException
+    , _IdempotentParameterMismatchException
 
     -- ** InvalidImageFormatException
     , _InvalidImageFormatException
 
-    -- ** ResourceAlreadyExistsException
-    , _ResourceAlreadyExistsException
+    -- ** InvalidParameterException
+    , _InvalidParameterException
 
-    -- ** InvalidS3ObjectException
-    , _InvalidS3ObjectException
-
-    -- ** ProvisionedThroughputExceededException
-    , _ProvisionedThroughputExceededException
+    -- ** AccessDeniedException
+    , _AccessDeniedException
 
     -- ** ImageTooLargeException
     , _ImageTooLargeException
 
-    -- ** ThrottlingException
-    , _ThrottlingException
+    -- ** InvalidPaginationTokenException
+    , _InvalidPaginationTokenException
 
-    -- ** InternalServerError
-    , _InternalServerError
-
-    -- ** IdempotentParameterMismatchException
-    , _IdempotentParameterMismatchException
+    -- ** ProvisionedThroughputExceededException
+    , _ProvisionedThroughputExceededException
 
     -- ** ResourceNotFoundException
     , _ResourceNotFoundException
 
-    -- ** InvalidPaginationTokenException
-    , _InvalidPaginationTokenException
+    -- ** InvalidS3ObjectException
+    , _InvalidS3ObjectException
+
+    -- ** ResourceAlreadyExistsException
+    , _ResourceAlreadyExistsException
+
+    -- ** InternalServerError
+    , _InternalServerError
+
+    -- ** ThrottlingException
+    , _ThrottlingException
+
+    -- ** VideoTooLargeException
+    , _VideoTooLargeException
 
     -- ** LimitExceededException
     , _LimitExceededException

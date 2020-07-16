@@ -16,15 +16,15 @@ module Network.AWS.Shield.Types
       shield
 
     -- * Errors
-    , _InvalidResourceException
-    , _InvalidParameterException
     , _LimitsExceededException
-    , _InternalErrorException
-    , _ResourceAlreadyExistsException
-    , _OptimisticLockException
-    , _InvalidOperationException
-    , _LockedSubscriptionException
+    , _InvalidParameterException
     , _ResourceNotFoundException
+    , _LockedSubscriptionException
+    , _ResourceAlreadyExistsException
+    , _InvalidOperationException
+    , _InternalErrorException
+    , _OptimisticLockException
+    , _InvalidResourceException
 
     -- * AttackLayer
     , AttackLayer (..)
@@ -185,22 +185,6 @@ shield
           | has (hasStatus 509) e = Just "limit_exceeded"
           | otherwise = Nothing
 
--- | Exception that indicates that the resource is invalid. You might not have access to the resource, or the resource might not exist.
---
---
-_InvalidResourceException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidResourceException
-  = _MatchServiceError shield
-      "InvalidResourceException"
-
--- | Exception that indicates that the parameters passed to the API are invalid. 
---
---
-_InvalidParameterException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidParameterException
-  = _MatchServiceError shield
-      "InvalidParameterException"
-
 -- | Exception that indicates that the operation would exceed a limit.
 --
 --
@@ -212,35 +196,21 @@ _LimitsExceededException :: AsError a => Getting (First ServiceError) a ServiceE
 _LimitsExceededException
   = _MatchServiceError shield "LimitsExceededException"
 
--- | Exception that indicates that a problem occurred with the service infrastructure. You can retry the request.
+-- | Exception that indicates that the parameters passed to the API are invalid. 
 --
 --
-_InternalErrorException :: AsError a => Getting (First ServiceError) a ServiceError
-_InternalErrorException
-  = _MatchServiceError shield "InternalErrorException"
-
--- | Exception indicating the specified resource already exists.
---
---
-_ResourceAlreadyExistsException :: AsError a => Getting (First ServiceError) a ServiceError
-_ResourceAlreadyExistsException
+_InvalidParameterException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidParameterException
   = _MatchServiceError shield
-      "ResourceAlreadyExistsException"
+      "InvalidParameterException"
 
--- | Exception that indicates that the protection state has been modified by another client. You can retry the request.
+-- | Exception indicating the specified resource does not exist.
 --
 --
-_OptimisticLockException :: AsError a => Getting (First ServiceError) a ServiceError
-_OptimisticLockException
-  = _MatchServiceError shield "OptimisticLockException"
-
--- | Exception that indicates that the operation would not cause any change to occur.
---
---
-_InvalidOperationException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidOperationException
+_ResourceNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
+_ResourceNotFoundException
   = _MatchServiceError shield
-      "InvalidOperationException"
+      "ResourceNotFoundException"
 
 -- | Exception that indicates that the subscription you are trying to delete has not yet completed the 1-year commitment. You cannot delete this subscription.
 --
@@ -250,10 +220,40 @@ _LockedSubscriptionException
   = _MatchServiceError shield
       "LockedSubscriptionException"
 
--- | Exception indicating the specified resource does not exist.
+-- | Exception indicating the specified resource already exists.
 --
 --
-_ResourceNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
-_ResourceNotFoundException
+_ResourceAlreadyExistsException :: AsError a => Getting (First ServiceError) a ServiceError
+_ResourceAlreadyExistsException
   = _MatchServiceError shield
-      "ResourceNotFoundException"
+      "ResourceAlreadyExistsException"
+
+-- | Exception that indicates that the operation would not cause any change to occur.
+--
+--
+_InvalidOperationException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidOperationException
+  = _MatchServiceError shield
+      "InvalidOperationException"
+
+-- | Exception that indicates that a problem occurred with the service infrastructure. You can retry the request.
+--
+--
+_InternalErrorException :: AsError a => Getting (First ServiceError) a ServiceError
+_InternalErrorException
+  = _MatchServiceError shield "InternalErrorException"
+
+-- | Exception that indicates that the protection state has been modified by another client. You can retry the request.
+--
+--
+_OptimisticLockException :: AsError a => Getting (First ServiceError) a ServiceError
+_OptimisticLockException
+  = _MatchServiceError shield "OptimisticLockException"
+
+-- | Exception that indicates that the resource is invalid. You might not have access to the resource, or the resource might not exist.
+--
+--
+_InvalidResourceException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidResourceException
+  = _MatchServiceError shield
+      "InvalidResourceException"

@@ -23,23 +23,11 @@ module Network.AWS.EFS
     -- * Errors
     -- $errors
 
-    -- ** MountTargetNotFound
-    , _MountTargetNotFound
+    -- ** IPAddressInUse
+    , _IPAddressInUse
 
-    -- ** SecurityGroupLimitExceeded
-    , _SecurityGroupLimitExceeded
-
-    -- ** SecurityGroupNotFound
-    , _SecurityGroupNotFound
-
-    -- ** MountTargetConflict
-    , _MountTargetConflict
-
-    -- ** UnsupportedAvailabilityZone
-    , _UnsupportedAvailabilityZone
-
-    -- ** FileSystemLimitExceeded
-    , _FileSystemLimitExceeded
+    -- ** IncorrectFileSystemLifeCycleState
+    , _IncorrectFileSystemLifeCycleState
 
     -- ** NetworkInterfaceLimitExceeded
     , _NetworkInterfaceLimitExceeded
@@ -47,26 +35,29 @@ module Network.AWS.EFS
     -- ** FileSystemAlreadyExists
     , _FileSystemAlreadyExists
 
+    -- ** FileSystemLimitExceeded
+    , _FileSystemLimitExceeded
+
+    -- ** UnsupportedAvailabilityZone
+    , _UnsupportedAvailabilityZone
+
+    -- ** MountTargetConflict
+    , _MountTargetConflict
+
+    -- ** SecurityGroupNotFound
+    , _SecurityGroupNotFound
+
+    -- ** MountTargetNotFound
+    , _MountTargetNotFound
+
+    -- ** BadRequest
+    , _BadRequest
+
     -- ** SubnetNotFound
     , _SubnetNotFound
 
     -- ** FileSystemNotFound
     , _FileSystemNotFound
-
-    -- ** IncorrectFileSystemLifeCycleState
-    , _IncorrectFileSystemLifeCycleState
-
-    -- ** BadRequest
-    , _BadRequest
-
-    -- ** NoFreeAddressesInSubnet
-    , _NoFreeAddressesInSubnet
-
-    -- ** DependencyTimeout
-    , _DependencyTimeout
-
-    -- ** FileSystemInUse
-    , _FileSystemInUse
 
     -- ** IncorrectMountTargetState
     , _IncorrectMountTargetState
@@ -74,8 +65,17 @@ module Network.AWS.EFS
     -- ** InternalServerError
     , _InternalServerError
 
-    -- ** IPAddressInUse
-    , _IPAddressInUse
+    -- ** SecurityGroupLimitExceeded
+    , _SecurityGroupLimitExceeded
+
+    -- ** FileSystemInUse
+    , _FileSystemInUse
+
+    -- ** DependencyTimeout
+    , _DependencyTimeout
+
+    -- ** NoFreeAddressesInSubnet
+    , _NoFreeAddressesInSubnet
 
     -- * Waiters
     -- $waiters

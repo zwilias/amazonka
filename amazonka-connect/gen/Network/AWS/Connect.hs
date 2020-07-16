@@ -26,8 +26,11 @@ module Network.AWS.Connect
     -- * Errors
     -- $errors
 
-    -- ** OutboundContactNotPermittedException
-    , _OutboundContactNotPermittedException
+    -- ** UserNotFoundException
+    , _UserNotFoundException
+
+    -- ** InternalServiceException
+    , _InternalServiceException
 
     -- ** InvalidParameterException
     , _InvalidParameterException
@@ -35,26 +38,23 @@ module Network.AWS.Connect
     -- ** InvalidRequestException
     , _InvalidRequestException
 
-    -- ** DuplicateResourceException
-    , _DuplicateResourceException
-
-    -- ** UserNotFoundException
-    , _UserNotFoundException
+    -- ** ContactNotFoundException
+    , _ContactNotFoundException
 
     -- ** DestinationNotAllowedException
     , _DestinationNotAllowedException
 
-    -- ** ContactNotFoundException
-    , _ContactNotFoundException
+    -- ** ResourceNotFoundException
+    , _ResourceNotFoundException
+
+    -- ** DuplicateResourceException
+    , _DuplicateResourceException
 
     -- ** ThrottlingException
     , _ThrottlingException
 
-    -- ** InternalServiceException
-    , _InternalServiceException
-
-    -- ** ResourceNotFoundException
-    , _ResourceNotFoundException
+    -- ** OutboundContactNotPermittedException
+    , _OutboundContactNotPermittedException
 
     -- ** LimitExceededException
     , _LimitExceededException

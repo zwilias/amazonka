@@ -33,8 +33,8 @@ module Network.AWS.Glue.GetDevEndpoint
     , getDevEndpointResponse
     , GetDevEndpointResponse
     -- * Response Lenses
-    , gdedrsDevEndpoint
-    , gdedrsResponseStatus
+    , gtdvendpntrsDevEndpoint
+    , gtdvendpntrsResponseStatus
     ) where
 
 import Network.AWS.Glue.Types
@@ -99,10 +99,10 @@ instance ToQuery GetDevEndpoint where
         toQuery = const mempty
 
 -- | /See:/ 'getDevEndpointResponse' smart constructor.
-data GetDevEndpointResponse = GetDevEndpointResponse'{_gdedrsDevEndpoint
+data GetDevEndpointResponse = GetDevEndpointResponse'{_gtdvendpntrsDevEndpoint
                                                       :: !(Maybe DevEndpoint),
-                                                      _gdedrsResponseStatus ::
-                                                      !Int}
+                                                      _gtdvendpntrsResponseStatus
+                                                      :: !Int}
                                 deriving (Eq, Read, Show, Data, Typeable,
                                           Generic)
 
@@ -110,23 +110,23 @@ data GetDevEndpointResponse = GetDevEndpointResponse'{_gdedrsDevEndpoint
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'gdedrsDevEndpoint' - A DevEndpoint definition.
+-- * 'gtdvendpntrsDevEndpoint' - A DevEndpoint definition.
 --
--- * 'gdedrsResponseStatus' - -- | The response status code.
+-- * 'gtdvendpntrsResponseStatus' - -- | The response status code.
 getDevEndpointResponse
-    :: Int -- ^ 'gdedrsResponseStatus'
+    :: Int -- ^ 'gtdvendpntrsResponseStatus'
     -> GetDevEndpointResponse
 getDevEndpointResponse pResponseStatus_
-  = GetDevEndpointResponse'{_gdedrsDevEndpoint =
+  = GetDevEndpointResponse'{_gtdvendpntrsDevEndpoint =
                               Nothing,
-                            _gdedrsResponseStatus = pResponseStatus_}
+                            _gtdvendpntrsResponseStatus = pResponseStatus_}
 
 -- | A DevEndpoint definition.
-gdedrsDevEndpoint :: Lens' GetDevEndpointResponse (Maybe DevEndpoint)
-gdedrsDevEndpoint = lens _gdedrsDevEndpoint (\ s a -> s{_gdedrsDevEndpoint = a})
+gtdvendpntrsDevEndpoint :: Lens' GetDevEndpointResponse (Maybe DevEndpoint)
+gtdvendpntrsDevEndpoint = lens _gtdvendpntrsDevEndpoint (\ s a -> s{_gtdvendpntrsDevEndpoint = a})
 
 -- | -- | The response status code.
-gdedrsResponseStatus :: Lens' GetDevEndpointResponse Int
-gdedrsResponseStatus = lens _gdedrsResponseStatus (\ s a -> s{_gdedrsResponseStatus = a})
+gtdvendpntrsResponseStatus :: Lens' GetDevEndpointResponse Int
+gtdvendpntrsResponseStatus = lens _gtdvendpntrsResponseStatus (\ s a -> s{_gtdvendpntrsResponseStatus = a})
 
 instance NFData GetDevEndpointResponse where

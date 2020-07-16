@@ -71,29 +71,23 @@ module Network.AWS.CodeStar
     -- * Errors
     -- $errors
 
-    -- ** TeamMemberAlreadyAssociatedException
-    , _TeamMemberAlreadyAssociatedException
-
-    -- ** ValidationException
-    , _ValidationException
+    -- ** UserProfileAlreadyExistsException
+    , _UserProfileAlreadyExistsException
 
     -- ** InvalidServiceRoleException
     , _InvalidServiceRoleException
 
-    -- ** ProjectCreationFailedException
-    , _ProjectCreationFailedException
-
-    -- ** UserProfileAlreadyExistsException
-    , _UserProfileAlreadyExistsException
+    -- ** ValidationException
+    , _ValidationException
 
     -- ** ProjectNotFoundException
     , _ProjectNotFoundException
 
-    -- ** TeamMemberNotFoundException
-    , _TeamMemberNotFoundException
+    -- ** ProjectCreationFailedException
+    , _ProjectCreationFailedException
 
-    -- ** ProjectAlreadyExistsException
-    , _ProjectAlreadyExistsException
+    -- ** InvalidNextTokenException
+    , _InvalidNextTokenException
 
     -- ** ProjectConfigurationException
     , _ProjectConfigurationException
@@ -101,14 +95,20 @@ module Network.AWS.CodeStar
     -- ** ConcurrentModificationException
     , _ConcurrentModificationException
 
-    -- ** InvalidNextTokenException
-    , _InvalidNextTokenException
+    -- ** ProjectAlreadyExistsException
+    , _ProjectAlreadyExistsException
 
-    -- ** UserProfileNotFoundException
-    , _UserProfileNotFoundException
+    -- ** TeamMemberAlreadyAssociatedException
+    , _TeamMemberAlreadyAssociatedException
+
+    -- ** TeamMemberNotFoundException
+    , _TeamMemberNotFoundException
 
     -- ** LimitExceededException
     , _LimitExceededException
+
+    -- ** UserProfileNotFoundException
+    , _UserProfileNotFoundException
 
     -- * Waiters
     -- $waiters

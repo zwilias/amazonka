@@ -32,32 +32,32 @@ module Network.AWS.CloudWatchLogs
     -- * Errors
     -- $errors
 
-    -- ** InvalidParameterException
-    , _InvalidParameterException
+    -- ** DataAlreadyAcceptedException
+    , _DataAlreadyAcceptedException
 
     -- ** InvalidSequenceTokenException
     , _InvalidSequenceTokenException
 
-    -- ** ResourceAlreadyExistsException
-    , _ResourceAlreadyExistsException
-
-    -- ** OperationAbortedException
-    , _OperationAbortedException
-
-    -- ** ServiceUnavailableException
-    , _ServiceUnavailableException
-
-    -- ** DataAlreadyAcceptedException
-    , _DataAlreadyAcceptedException
-
-    -- ** InvalidOperationException
-    , _InvalidOperationException
+    -- ** InvalidParameterException
+    , _InvalidParameterException
 
     -- ** ResourceNotFoundException
     , _ResourceNotFoundException
 
+    -- ** ResourceAlreadyExistsException
+    , _ResourceAlreadyExistsException
+
+    -- ** InvalidOperationException
+    , _InvalidOperationException
+
+    -- ** ServiceUnavailableException
+    , _ServiceUnavailableException
+
     -- ** LimitExceededException
     , _LimitExceededException
+
+    -- ** OperationAbortedException
+    , _OperationAbortedException
 
     -- * Waiters
     -- $waiters

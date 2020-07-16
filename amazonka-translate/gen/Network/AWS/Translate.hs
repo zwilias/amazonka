@@ -22,23 +22,23 @@ module Network.AWS.Translate
     -- * Errors
     -- $errors
 
+    -- ** TooManyRequestsException
+    , _TooManyRequestsException
+
     -- ** InvalidRequestException
     , _InvalidRequestException
-
-    -- ** UnsupportedLanguagePairException
-    , _UnsupportedLanguagePairException
 
     -- ** DetectedLanguageLowConfidenceException
     , _DetectedLanguageLowConfidenceException
 
-    -- ** TooManyRequestsException
-    , _TooManyRequestsException
+    -- ** ServiceUnavailableException
+    , _ServiceUnavailableException
 
     -- ** InternalServerException
     , _InternalServerException
 
-    -- ** ServiceUnavailableException
-    , _ServiceUnavailableException
+    -- ** UnsupportedLanguagePairException
+    , _UnsupportedLanguagePairException
 
     -- ** TextSizeLimitExceededException
     , _TextSizeLimitExceededException

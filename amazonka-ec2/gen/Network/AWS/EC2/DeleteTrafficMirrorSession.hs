@@ -27,15 +27,15 @@ module Network.AWS.EC2.DeleteTrafficMirrorSession
       deleteTrafficMirrorSession
     , DeleteTrafficMirrorSession
     -- * Request Lenses
-    , dtmstDryRun
-    , dtmstTrafficMirrorSessionId
+    , dlttrffcmrrrsssnDryRun
+    , dlttrffcmrrrsssnTrafficMirrorSessionId
 
     -- * Destructuring the Response
     , deleteTrafficMirrorSessionResponse
     , DeleteTrafficMirrorSessionResponse
     -- * Response Lenses
-    , dtmstrsTrafficMirrorSessionId
-    , dtmstrsResponseStatus
+    , dlttrffcmrrrsssnrsTrafficMirrorSessionId
+    , dlttrffcmrrrsssnrsResponseStatus
     ) where
 
 import Network.AWS.EC2.Types
@@ -46,9 +46,9 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteTrafficMirrorSession' smart constructor.
-data DeleteTrafficMirrorSession = DeleteTrafficMirrorSession'{_dtmstDryRun
+data DeleteTrafficMirrorSession = DeleteTrafficMirrorSession'{_dlttrffcmrrrsssnDryRun
                                                               :: !(Maybe Bool),
-                                                              _dtmstTrafficMirrorSessionId
+                                                              _dlttrffcmrrrsssnTrafficMirrorSessionId
                                                               :: !Text}
                                     deriving (Eq, Read, Show, Data, Typeable,
                                               Generic)
@@ -57,24 +57,25 @@ data DeleteTrafficMirrorSession = DeleteTrafficMirrorSession'{_dtmstDryRun
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dtmstDryRun' - Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
+-- * 'dlttrffcmrrrsssnDryRun' - Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 --
--- * 'dtmstTrafficMirrorSessionId' - The ID of the Traffic Mirror session.
+-- * 'dlttrffcmrrrsssnTrafficMirrorSessionId' - The ID of the Traffic Mirror session.
 deleteTrafficMirrorSession
-    :: Text -- ^ 'dtmstTrafficMirrorSessionId'
+    :: Text -- ^ 'dlttrffcmrrrsssnTrafficMirrorSessionId'
     -> DeleteTrafficMirrorSession
 deleteTrafficMirrorSession pTrafficMirrorSessionId_
-  = DeleteTrafficMirrorSession'{_dtmstDryRun = Nothing,
-                                _dtmstTrafficMirrorSessionId =
+  = DeleteTrafficMirrorSession'{_dlttrffcmrrrsssnDryRun
+                                  = Nothing,
+                                _dlttrffcmrrrsssnTrafficMirrorSessionId =
                                   pTrafficMirrorSessionId_}
 
 -- | Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
-dtmstDryRun :: Lens' DeleteTrafficMirrorSession (Maybe Bool)
-dtmstDryRun = lens _dtmstDryRun (\ s a -> s{_dtmstDryRun = a})
+dlttrffcmrrrsssnDryRun :: Lens' DeleteTrafficMirrorSession (Maybe Bool)
+dlttrffcmrrrsssnDryRun = lens _dlttrffcmrrrsssnDryRun (\ s a -> s{_dlttrffcmrrrsssnDryRun = a})
 
 -- | The ID of the Traffic Mirror session.
-dtmstTrafficMirrorSessionId :: Lens' DeleteTrafficMirrorSession Text
-dtmstTrafficMirrorSessionId = lens _dtmstTrafficMirrorSessionId (\ s a -> s{_dtmstTrafficMirrorSessionId = a})
+dlttrffcmrrrsssnTrafficMirrorSessionId :: Lens' DeleteTrafficMirrorSession Text
+dlttrffcmrrrsssnTrafficMirrorSessionId = lens _dlttrffcmrrrsssnTrafficMirrorSessionId (\ s a -> s{_dlttrffcmrrrsssnTrafficMirrorSessionId = a})
 
 instance AWSRequest DeleteTrafficMirrorSession where
         type Rs DeleteTrafficMirrorSession =
@@ -103,16 +104,16 @@ instance ToQuery DeleteTrafficMirrorSession where
               ["Action" =:
                  ("DeleteTrafficMirrorSession" :: ByteString),
                "Version" =: ("2016-11-15" :: ByteString),
-               "DryRun" =: _dtmstDryRun,
+               "DryRun" =: _dlttrffcmrrrsssnDryRun,
                "TrafficMirrorSessionId" =:
-                 _dtmstTrafficMirrorSessionId]
+                 _dlttrffcmrrrsssnTrafficMirrorSessionId]
 
 -- | /See:/ 'deleteTrafficMirrorSessionResponse' smart constructor.
-data DeleteTrafficMirrorSessionResponse = DeleteTrafficMirrorSessionResponse'{_dtmstrsTrafficMirrorSessionId
+data DeleteTrafficMirrorSessionResponse = DeleteTrafficMirrorSessionResponse'{_dlttrffcmrrrsssnrsTrafficMirrorSessionId
                                                                               ::
                                                                               !(Maybe
                                                                                   Text),
-                                                                              _dtmstrsResponseStatus
+                                                                              _dlttrffcmrrrsssnrsResponseStatus
                                                                               ::
                                                                               !Int}
                                             deriving (Eq, Read, Show, Data,
@@ -122,25 +123,25 @@ data DeleteTrafficMirrorSessionResponse = DeleteTrafficMirrorSessionResponse'{_d
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dtmstrsTrafficMirrorSessionId' - The ID of the deleted Traffic Mirror session.
+-- * 'dlttrffcmrrrsssnrsTrafficMirrorSessionId' - The ID of the deleted Traffic Mirror session.
 --
--- * 'dtmstrsResponseStatus' - -- | The response status code.
+-- * 'dlttrffcmrrrsssnrsResponseStatus' - -- | The response status code.
 deleteTrafficMirrorSessionResponse
-    :: Int -- ^ 'dtmstrsResponseStatus'
+    :: Int -- ^ 'dlttrffcmrrrsssnrsResponseStatus'
     -> DeleteTrafficMirrorSessionResponse
 deleteTrafficMirrorSessionResponse pResponseStatus_
-  = DeleteTrafficMirrorSessionResponse'{_dtmstrsTrafficMirrorSessionId
+  = DeleteTrafficMirrorSessionResponse'{_dlttrffcmrrrsssnrsTrafficMirrorSessionId
                                           = Nothing,
-                                        _dtmstrsResponseStatus =
+                                        _dlttrffcmrrrsssnrsResponseStatus =
                                           pResponseStatus_}
 
 -- | The ID of the deleted Traffic Mirror session.
-dtmstrsTrafficMirrorSessionId :: Lens' DeleteTrafficMirrorSessionResponse (Maybe Text)
-dtmstrsTrafficMirrorSessionId = lens _dtmstrsTrafficMirrorSessionId (\ s a -> s{_dtmstrsTrafficMirrorSessionId = a})
+dlttrffcmrrrsssnrsTrafficMirrorSessionId :: Lens' DeleteTrafficMirrorSessionResponse (Maybe Text)
+dlttrffcmrrrsssnrsTrafficMirrorSessionId = lens _dlttrffcmrrrsssnrsTrafficMirrorSessionId (\ s a -> s{_dlttrffcmrrrsssnrsTrafficMirrorSessionId = a})
 
 -- | -- | The response status code.
-dtmstrsResponseStatus :: Lens' DeleteTrafficMirrorSessionResponse Int
-dtmstrsResponseStatus = lens _dtmstrsResponseStatus (\ s a -> s{_dtmstrsResponseStatus = a})
+dlttrffcmrrrsssnrsResponseStatus :: Lens' DeleteTrafficMirrorSessionResponse Int
+dlttrffcmrrrsssnrsResponseStatus = lens _dlttrffcmrrrsssnrsResponseStatus (\ s a -> s{_dlttrffcmrrrsssnrsResponseStatus = a})
 
 instance NFData DeleteTrafficMirrorSessionResponse
          where

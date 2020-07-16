@@ -20,32 +20,32 @@ module Network.AWS.SMS
     -- * Errors
     -- $errors
 
-    -- ** ReplicationRunLimitExceededException
-    , _ReplicationRunLimitExceededException
-
-    -- ** InvalidParameterException
-    , _InvalidParameterException
-
-    -- ** NoConnectorsAvailableException
-    , _NoConnectorsAvailableException
-
-    -- ** ReplicationJobNotFoundException
-    , _ReplicationJobNotFoundException
-
-    -- ** ServerCannotBeReplicatedException
-    , _ServerCannotBeReplicatedException
-
-    -- ** InternalError
-    , _InternalError
+    -- ** OperationNotPermittedException
+    , _OperationNotPermittedException
 
     -- ** ReplicationJobAlreadyExistsException
     , _ReplicationJobAlreadyExistsException
 
-    -- ** OperationNotPermittedException
-    , _OperationNotPermittedException
+    -- ** InvalidParameterException
+    , _InvalidParameterException
+
+    -- ** ReplicationJobNotFoundException
+    , _ReplicationJobNotFoundException
 
     -- ** MissingRequiredParameterException
     , _MissingRequiredParameterException
+
+    -- ** InternalError
+    , _InternalError
+
+    -- ** NoConnectorsAvailableException
+    , _NoConnectorsAvailableException
+
+    -- ** ReplicationRunLimitExceededException
+    , _ReplicationRunLimitExceededException
+
+    -- ** ServerCannotBeReplicatedException
+    , _ServerCannotBeReplicatedException
 
     -- ** UnauthorizedOperationException
     , _UnauthorizedOperationException

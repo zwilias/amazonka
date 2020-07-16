@@ -16,17 +16,17 @@ module Network.AWS.Route53AutoNaming.Types
       route53AutoNaming
 
     -- * Errors
-    , _ResourceLimitExceeded
-    , _InvalidInput
-    , _NamespaceAlreadyExists
     , _NamespaceNotFound
-    , _ServiceAlreadyExists
-    , _ResourceInUse
-    , _CustomHealthNotFound
     , _InstanceNotFound
-    , _DuplicateRequest
-    , _ServiceNotFound
+    , _CustomHealthNotFound
+    , _ResourceLimitExceeded
     , _OperationNotFound
+    , _ServiceNotFound
+    , _ServiceAlreadyExists
+    , _NamespaceAlreadyExists
+    , _InvalidInput
+    , _DuplicateRequest
+    , _ResourceInUse
 
     -- * CustomHealthStatus
     , CustomHealthStatus (..)
@@ -281,29 +281,6 @@ route53AutoNaming
           | has (hasStatus 509) e = Just "limit_exceeded"
           | otherwise = Nothing
 
--- | The resource can't be created because you've reached the limit on the number of resources.
---
---
-_ResourceLimitExceeded :: AsError a => Getting (First ServiceError) a ServiceError
-_ResourceLimitExceeded
-  = _MatchServiceError route53AutoNaming
-      "ResourceLimitExceeded"
-
--- | One or more specified values aren't valid. For example, when you're creating a namespace, the value of @Name@ might not be a valid DNS name.
---
---
-_InvalidInput :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidInput
-  = _MatchServiceError route53AutoNaming "InvalidInput"
-
--- | The namespace that you're trying to create already exists.
---
---
-_NamespaceAlreadyExists :: AsError a => Getting (First ServiceError) a ServiceError
-_NamespaceAlreadyExists
-  = _MatchServiceError route53AutoNaming
-      "NamespaceAlreadyExists"
-
 -- | No namespace exists with the specified ID.
 --
 --
@@ -311,28 +288,6 @@ _NamespaceNotFound :: AsError a => Getting (First ServiceError) a ServiceError
 _NamespaceNotFound
   = _MatchServiceError route53AutoNaming
       "NamespaceNotFound"
-
--- | The service can't be created because a service with the same name already exists.
---
---
-_ServiceAlreadyExists :: AsError a => Getting (First ServiceError) a ServiceError
-_ServiceAlreadyExists
-  = _MatchServiceError route53AutoNaming
-      "ServiceAlreadyExists"
-
--- | The specified resource can't be deleted because it contains other resources. For example, you can't delete a service that contains any instances.
---
---
-_ResourceInUse :: AsError a => Getting (First ServiceError) a ServiceError
-_ResourceInUse
-  = _MatchServiceError route53AutoNaming
-      "ResourceInUse"
-
--- | Prism for CustomHealthNotFound' errors.
-_CustomHealthNotFound :: AsError a => Getting (First ServiceError) a ServiceError
-_CustomHealthNotFound
-  = _MatchServiceError route53AutoNaming
-      "CustomHealthNotFound"
 
 -- | No instance exists with the specified ID, or the instance was recently registered, and information about the instance hasn't propagated yet.
 --
@@ -342,13 +297,27 @@ _InstanceNotFound
   = _MatchServiceError route53AutoNaming
       "InstanceNotFound"
 
--- | The operation is already in progress.
---
---
-_DuplicateRequest :: AsError a => Getting (First ServiceError) a ServiceError
-_DuplicateRequest
+-- | Prism for CustomHealthNotFound' errors.
+_CustomHealthNotFound :: AsError a => Getting (First ServiceError) a ServiceError
+_CustomHealthNotFound
   = _MatchServiceError route53AutoNaming
-      "DuplicateRequest"
+      "CustomHealthNotFound"
+
+-- | The resource can't be created because you've reached the limit on the number of resources.
+--
+--
+_ResourceLimitExceeded :: AsError a => Getting (First ServiceError) a ServiceError
+_ResourceLimitExceeded
+  = _MatchServiceError route53AutoNaming
+      "ResourceLimitExceeded"
+
+-- | No operation exists with the specified ID.
+--
+--
+_OperationNotFound :: AsError a => Getting (First ServiceError) a ServiceError
+_OperationNotFound
+  = _MatchServiceError route53AutoNaming
+      "OperationNotFound"
 
 -- | No service exists with the specified ID.
 --
@@ -358,10 +327,41 @@ _ServiceNotFound
   = _MatchServiceError route53AutoNaming
       "ServiceNotFound"
 
--- | No operation exists with the specified ID.
+-- | The service can't be created because a service with the same name already exists.
 --
 --
-_OperationNotFound :: AsError a => Getting (First ServiceError) a ServiceError
-_OperationNotFound
+_ServiceAlreadyExists :: AsError a => Getting (First ServiceError) a ServiceError
+_ServiceAlreadyExists
   = _MatchServiceError route53AutoNaming
-      "OperationNotFound"
+      "ServiceAlreadyExists"
+
+-- | The namespace that you're trying to create already exists.
+--
+--
+_NamespaceAlreadyExists :: AsError a => Getting (First ServiceError) a ServiceError
+_NamespaceAlreadyExists
+  = _MatchServiceError route53AutoNaming
+      "NamespaceAlreadyExists"
+
+-- | One or more specified values aren't valid. For example, when you're creating a namespace, the value of @Name@ might not be a valid DNS name.
+--
+--
+_InvalidInput :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidInput
+  = _MatchServiceError route53AutoNaming "InvalidInput"
+
+-- | The operation is already in progress.
+--
+--
+_DuplicateRequest :: AsError a => Getting (First ServiceError) a ServiceError
+_DuplicateRequest
+  = _MatchServiceError route53AutoNaming
+      "DuplicateRequest"
+
+-- | The specified resource can't be deleted because it contains other resources. For example, you can't delete a service that contains any instances.
+--
+--
+_ResourceInUse :: AsError a => Getting (First ServiceError) a ServiceError
+_ResourceInUse
+  = _MatchServiceError route53AutoNaming
+      "ResourceInUse"

@@ -34,8 +34,8 @@ module Network.AWS.CloudSearch.DeleteAnalysisScheme
     , deleteAnalysisSchemeResponse
     , DeleteAnalysisSchemeResponse
     -- * Response Lenses
-    , dasarsResponseStatus
-    , dasarsAnalysisScheme
+    , dltanlyssschmrsResponseStatus
+    , dltanlyssschmrsAnalysisScheme
     ) where
 
 import Network.AWS.CloudSearch.Types
@@ -114,9 +114,9 @@ instance ToQuery DeleteAnalysisScheme where
 --
 --
 -- /See:/ 'deleteAnalysisSchemeResponse' smart constructor.
-data DeleteAnalysisSchemeResponse = DeleteAnalysisSchemeResponse'{_dasarsResponseStatus
+data DeleteAnalysisSchemeResponse = DeleteAnalysisSchemeResponse'{_dltanlyssschmrsResponseStatus
                                                                   :: !Int,
-                                                                  _dasarsAnalysisScheme
+                                                                  _dltanlyssschmrsAnalysisScheme
                                                                   ::
                                                                   !AnalysisSchemeStatus}
                                       deriving (Eq, Read, Show, Data, Typeable,
@@ -126,25 +126,26 @@ data DeleteAnalysisSchemeResponse = DeleteAnalysisSchemeResponse'{_dasarsRespons
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dasarsResponseStatus' - -- | The response status code.
+-- * 'dltanlyssschmrsResponseStatus' - -- | The response status code.
 --
--- * 'dasarsAnalysisScheme' - The status of the analysis scheme being deleted.
+-- * 'dltanlyssschmrsAnalysisScheme' - The status of the analysis scheme being deleted.
 deleteAnalysisSchemeResponse
-    :: Int -- ^ 'dasarsResponseStatus'
-    -> AnalysisSchemeStatus -- ^ 'dasarsAnalysisScheme'
+    :: Int -- ^ 'dltanlyssschmrsResponseStatus'
+    -> AnalysisSchemeStatus -- ^ 'dltanlyssschmrsAnalysisScheme'
     -> DeleteAnalysisSchemeResponse
 deleteAnalysisSchemeResponse pResponseStatus_
   pAnalysisScheme_
-  = DeleteAnalysisSchemeResponse'{_dasarsResponseStatus
+  = DeleteAnalysisSchemeResponse'{_dltanlyssschmrsResponseStatus
                                     = pResponseStatus_,
-                                  _dasarsAnalysisScheme = pAnalysisScheme_}
+                                  _dltanlyssschmrsAnalysisScheme =
+                                    pAnalysisScheme_}
 
 -- | -- | The response status code.
-dasarsResponseStatus :: Lens' DeleteAnalysisSchemeResponse Int
-dasarsResponseStatus = lens _dasarsResponseStatus (\ s a -> s{_dasarsResponseStatus = a})
+dltanlyssschmrsResponseStatus :: Lens' DeleteAnalysisSchemeResponse Int
+dltanlyssschmrsResponseStatus = lens _dltanlyssschmrsResponseStatus (\ s a -> s{_dltanlyssschmrsResponseStatus = a})
 
 -- | The status of the analysis scheme being deleted.
-dasarsAnalysisScheme :: Lens' DeleteAnalysisSchemeResponse AnalysisSchemeStatus
-dasarsAnalysisScheme = lens _dasarsAnalysisScheme (\ s a -> s{_dasarsAnalysisScheme = a})
+dltanlyssschmrsAnalysisScheme :: Lens' DeleteAnalysisSchemeResponse AnalysisSchemeStatus
+dltanlyssschmrsAnalysisScheme = lens _dltanlyssschmrsAnalysisScheme (\ s a -> s{_dltanlyssschmrsAnalysisScheme = a})
 
 instance NFData DeleteAnalysisSchemeResponse where

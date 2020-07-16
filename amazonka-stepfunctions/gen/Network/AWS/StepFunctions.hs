@@ -27,62 +27,62 @@ module Network.AWS.StepFunctions
     -- * Errors
     -- $errors
 
-    -- ** ExecutionLimitExceeded
-    , _ExecutionLimitExceeded
+    -- ** InvalidExecutionInput
+    , _InvalidExecutionInput
 
-    -- ** InvalidDefinition
-    , _InvalidDefinition
+    -- ** InvalidToken
+    , _InvalidToken
 
     -- ** StateMachineLimitExceeded
     , _StateMachineLimitExceeded
 
-    -- ** ExecutionAlreadyExists
-    , _ExecutionAlreadyExists
+    -- ** InvalidARN
+    , _InvalidARN
 
     -- ** StateMachineAlreadyExists
     , _StateMachineAlreadyExists
 
+    -- ** InvalidDefinition
+    , _InvalidDefinition
+
+    -- ** MissingRequiredParameter
+    , _MissingRequiredParameter
+
+    -- ** ExecutionDoesNotExist
+    , _ExecutionDoesNotExist
+
+    -- ** TaskDoesNotExist
+    , _TaskDoesNotExist
+
+    -- ** StateMachineDeleting
+    , _StateMachineDeleting
+
+    -- ** ActivityDoesNotExist
+    , _ActivityDoesNotExist
+
+    -- ** ActivityLimitExceeded
+    , _ActivityLimitExceeded
+
+    -- ** ActivityWorkerLimitExceeded
+    , _ActivityWorkerLimitExceeded
+
     -- ** TaskTimedOut
     , _TaskTimedOut
 
-    -- ** InvalidExecutionInput
-    , _InvalidExecutionInput
+    -- ** ExecutionLimitExceeded
+    , _ExecutionLimitExceeded
+
+    -- ** ExecutionAlreadyExists
+    , _ExecutionAlreadyExists
+
+    -- ** StateMachineDoesNotExist
+    , _StateMachineDoesNotExist
 
     -- ** InvalidOutput
     , _InvalidOutput
 
     -- ** InvalidName
     , _InvalidName
-
-    -- ** TaskDoesNotExist
-    , _TaskDoesNotExist
-
-    -- ** ActivityDoesNotExist
-    , _ActivityDoesNotExist
-
-    -- ** StateMachineDeleting
-    , _StateMachineDeleting
-
-    -- ** MissingRequiredParameter
-    , _MissingRequiredParameter
-
-    -- ** InvalidARN
-    , _InvalidARN
-
-    -- ** InvalidToken
-    , _InvalidToken
-
-    -- ** ActivityWorkerLimitExceeded
-    , _ActivityWorkerLimitExceeded
-
-    -- ** ActivityLimitExceeded
-    , _ActivityLimitExceeded
-
-    -- ** ExecutionDoesNotExist
-    , _ExecutionDoesNotExist
-
-    -- ** StateMachineDoesNotExist
-    , _StateMachineDoesNotExist
 
     -- * Waiters
     -- $waiters

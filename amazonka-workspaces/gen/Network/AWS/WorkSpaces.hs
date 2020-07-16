@@ -23,23 +23,29 @@ module Network.AWS.WorkSpaces
     -- * Errors
     -- $errors
 
-    -- ** AccessDeniedException
-    , _AccessDeniedException
-
-    -- ** ResourceCreationFailedException
-    , _ResourceCreationFailedException
-
-    -- ** ResourceUnavailableException
-    , _ResourceUnavailableException
-
-    -- ** InvalidParameterValuesException
-    , _InvalidParameterValuesException
+    -- ** InvalidResourceStateException
+    , _InvalidResourceStateException
 
     -- ** ResourceAssociatedException
     , _ResourceAssociatedException
 
-    -- ** OperationInProgressException
-    , _OperationInProgressException
+    -- ** InvalidParameterValuesException
+    , _InvalidParameterValuesException
+
+    -- ** UnsupportedWorkspaceConfigurationException
+    , _UnsupportedWorkspaceConfigurationException
+
+    -- ** ResourceCreationFailedException
+    , _ResourceCreationFailedException
+
+    -- ** AccessDeniedException
+    , _AccessDeniedException
+
+    -- ** OperationNotSupportedException
+    , _OperationNotSupportedException
+
+    -- ** ResourceNotFoundException
+    , _ResourceNotFoundException
 
     -- ** ResourceAlreadyExistsException
     , _ResourceAlreadyExistsException
@@ -47,17 +53,11 @@ module Network.AWS.WorkSpaces
     -- ** ResourceLimitExceededException
     , _ResourceLimitExceededException
 
-    -- ** InvalidResourceStateException
-    , _InvalidResourceStateException
+    -- ** OperationInProgressException
+    , _OperationInProgressException
 
-    -- ** OperationNotSupportedException
-    , _OperationNotSupportedException
-
-    -- ** UnsupportedWorkspaceConfigurationException
-    , _UnsupportedWorkspaceConfigurationException
-
-    -- ** ResourceNotFoundException
-    , _ResourceNotFoundException
+    -- ** ResourceUnavailableException
+    , _ResourceUnavailableException
 
     -- * Waiters
     -- $waiters

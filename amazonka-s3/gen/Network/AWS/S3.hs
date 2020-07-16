@@ -20,26 +20,26 @@ module Network.AWS.S3
     -- * Errors
     -- $errors
 
-    -- ** BucketAlreadyOwnedByYou
-    , _BucketAlreadyOwnedByYou
-
-    -- ** ObjectAlreadyInActiveTierError
-    , _ObjectAlreadyInActiveTierError
-
     -- ** BucketAlreadyExists
     , _BucketAlreadyExists
-
-    -- ** ObjectNotInActiveTierError
-    , _ObjectNotInActiveTierError
-
-    -- ** NoSuchUpload
-    , _NoSuchUpload
 
     -- ** NoSuchBucket
     , _NoSuchBucket
 
+    -- ** BucketAlreadyOwnedByYou
+    , _BucketAlreadyOwnedByYou
+
+    -- ** NoSuchUpload
+    , _NoSuchUpload
+
+    -- ** ObjectNotInActiveTierError
+    , _ObjectNotInActiveTierError
+
     -- ** NoSuchKey
     , _NoSuchKey
+
+    -- ** ObjectAlreadyInActiveTierError
+    , _ObjectAlreadyInActiveTierError
 
     -- * Waiters
     -- $waiters

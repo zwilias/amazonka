@@ -27,8 +27,8 @@ module Network.AWS.StorageGateway.DeleteBandwidthRateLimit
       deleteBandwidthRateLimit
     , DeleteBandwidthRateLimit
     -- * Request Lenses
-    , dbrlbGatewayARN
-    , dbrlbBandwidthType
+    , dltbndwdthrtlmtGatewayARN
+    , dltbndwdthrtlmtBandwidthType
 
     -- * Destructuring the Response
     , deleteBandwidthRateLimitResponse
@@ -54,10 +54,10 @@ import Network.AWS.StorageGateway.Types.Product
 --
 --
 -- /See:/ 'deleteBandwidthRateLimit' smart constructor.
-data DeleteBandwidthRateLimit = DeleteBandwidthRateLimit'{_dbrlbGatewayARN
+data DeleteBandwidthRateLimit = DeleteBandwidthRateLimit'{_dltbndwdthrtlmtGatewayARN
                                                           :: !Text,
-                                                          _dbrlbBandwidthType ::
-                                                          !Text}
+                                                          _dltbndwdthrtlmtBandwidthType
+                                                          :: !Text}
                                   deriving (Eq, Read, Show, Data, Typeable,
                                             Generic)
 
@@ -65,25 +65,25 @@ data DeleteBandwidthRateLimit = DeleteBandwidthRateLimit'{_dbrlbGatewayARN
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dbrlbGatewayARN' - Undocumented member.
+-- * 'dltbndwdthrtlmtGatewayARN' - Undocumented member.
 --
--- * 'dbrlbBandwidthType' - One of the BandwidthType values that indicates the gateway bandwidth rate limit to delete. Valid Values: @Upload@ , @Download@ , @All@ .
+-- * 'dltbndwdthrtlmtBandwidthType' - One of the BandwidthType values that indicates the gateway bandwidth rate limit to delete. Valid Values: @Upload@ , @Download@ , @All@ .
 deleteBandwidthRateLimit
-    :: Text -- ^ 'dbrlbGatewayARN'
-    -> Text -- ^ 'dbrlbBandwidthType'
+    :: Text -- ^ 'dltbndwdthrtlmtGatewayARN'
+    -> Text -- ^ 'dltbndwdthrtlmtBandwidthType'
     -> DeleteBandwidthRateLimit
 deleteBandwidthRateLimit pGatewayARN_ pBandwidthType_
-  = DeleteBandwidthRateLimit'{_dbrlbGatewayARN =
-                                pGatewayARN_,
-                              _dbrlbBandwidthType = pBandwidthType_}
+  = DeleteBandwidthRateLimit'{_dltbndwdthrtlmtGatewayARN
+                                = pGatewayARN_,
+                              _dltbndwdthrtlmtBandwidthType = pBandwidthType_}
 
 -- | Undocumented member.
-dbrlbGatewayARN :: Lens' DeleteBandwidthRateLimit Text
-dbrlbGatewayARN = lens _dbrlbGatewayARN (\ s a -> s{_dbrlbGatewayARN = a})
+dltbndwdthrtlmtGatewayARN :: Lens' DeleteBandwidthRateLimit Text
+dltbndwdthrtlmtGatewayARN = lens _dltbndwdthrtlmtGatewayARN (\ s a -> s{_dltbndwdthrtlmtGatewayARN = a})
 
 -- | One of the BandwidthType values that indicates the gateway bandwidth rate limit to delete. Valid Values: @Upload@ , @Download@ , @All@ .
-dbrlbBandwidthType :: Lens' DeleteBandwidthRateLimit Text
-dbrlbBandwidthType = lens _dbrlbBandwidthType (\ s a -> s{_dbrlbBandwidthType = a})
+dltbndwdthrtlmtBandwidthType :: Lens' DeleteBandwidthRateLimit Text
+dltbndwdthrtlmtBandwidthType = lens _dltbndwdthrtlmtBandwidthType (\ s a -> s{_dltbndwdthrtlmtBandwidthType = a})
 
 instance AWSRequest DeleteBandwidthRateLimit where
         type Rs DeleteBandwidthRateLimit =
@@ -113,8 +113,9 @@ instance ToJSON DeleteBandwidthRateLimit where
         toJSON DeleteBandwidthRateLimit'{..}
           = object
               (catMaybes
-                 [Just ("GatewayARN" .= _dbrlbGatewayARN),
-                  Just ("BandwidthType" .= _dbrlbBandwidthType)])
+                 [Just ("GatewayARN" .= _dltbndwdthrtlmtGatewayARN),
+                  Just
+                    ("BandwidthType" .= _dltbndwdthrtlmtBandwidthType)])
 
 instance ToPath DeleteBandwidthRateLimit where
         toPath = const "/"

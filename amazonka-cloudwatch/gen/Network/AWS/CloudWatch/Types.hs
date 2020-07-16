@@ -16,19 +16,19 @@ module Network.AWS.CloudWatch.Types
       cloudWatch
 
     -- * Errors
-    , _LimitExceededFault
-    , _DashboardNotFoundError
-    , _InvalidNextToken
-    , _InternalServiceFault
-    , _DashboardInvalidInputError
-    , _InvalidParameterValueException
-    , _ConcurrentModificationException
     , _InvalidFormatFault
-    , _MissingRequiredParameterException
+    , _InvalidParameterValueException
     , _ResourceNotFoundException
-    , _InvalidParameterCombinationException
+    , _MissingRequiredParameterException
+    , _DashboardInvalidInputError
+    , _InternalServiceFault
+    , _InvalidNextToken
+    , _ConcurrentModificationException
+    , _DashboardNotFoundError
+    , _LimitExceededFault
     , _LimitExceededException
     , _ResourceNotFound
+    , _InvalidParameterCombinationException
 
     -- * AlarmType
     , AlarmType (..)
@@ -356,47 +356,13 @@ cloudWatch
           | has (hasStatus 509) e = Just "limit_exceeded"
           | otherwise = Nothing
 
--- | The quota for alarms for this customer has already been reached.
+-- | Data was not syntactically valid JSON.
 --
 --
-_LimitExceededFault :: AsError a => Getting (First ServiceError) a ServiceError
-_LimitExceededFault
-  = _MatchServiceError cloudWatch "LimitExceeded" .
+_InvalidFormatFault :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidFormatFault
+  = _MatchServiceError cloudWatch "InvalidFormat" .
       hasStatus 400
-
--- | The specified dashboard does not exist.
---
---
-_DashboardNotFoundError :: AsError a => Getting (First ServiceError) a ServiceError
-_DashboardNotFoundError
-  = _MatchServiceError cloudWatch "ResourceNotFound" .
-      hasStatus 404
-
--- | The next token specified is invalid.
---
---
-_InvalidNextToken :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidNextToken
-  = _MatchServiceError cloudWatch "InvalidNextToken" .
-      hasStatus 400
-
--- | Request processing has failed due to some unknown error, exception, or failure.
---
---
-_InternalServiceFault :: AsError a => Getting (First ServiceError) a ServiceError
-_InternalServiceFault
-  = _MatchServiceError cloudWatch
-      "InternalServiceError"
-      . hasStatus 500
-
--- | Some part of the dashboard data is invalid.
---
---
-_DashboardInvalidInputError :: AsError a => Getting (First ServiceError) a ServiceError
-_DashboardInvalidInputError
-  = _MatchServiceError cloudWatch
-      "InvalidParameterInput"
-      . hasStatus 400
 
 -- | The value of an input parameter is bad or out-of-range.
 --
@@ -407,31 +373,6 @@ _InvalidParameterValueException
       "InvalidParameterValue"
       . hasStatus 400
 
--- | More than one process tried to modify a resource at the same time.
---
---
-_ConcurrentModificationException :: AsError a => Getting (First ServiceError) a ServiceError
-_ConcurrentModificationException
-  = _MatchServiceError cloudWatch
-      "ConcurrentModificationException"
-      . hasStatus 429
-
--- | Data was not syntactically valid JSON.
---
---
-_InvalidFormatFault :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidFormatFault
-  = _MatchServiceError cloudWatch "InvalidFormat" .
-      hasStatus 400
-
--- | An input parameter that is required is missing.
---
---
-_MissingRequiredParameterException :: AsError a => Getting (First ServiceError) a ServiceError
-_MissingRequiredParameterException
-  = _MatchServiceError cloudWatch "MissingParameter" .
-      hasStatus 400
-
 -- | The named resource does not exist.
 --
 --
@@ -441,14 +382,64 @@ _ResourceNotFoundException
       "ResourceNotFoundException"
       . hasStatus 404
 
--- | Parameters were used together that cannot be used together.
+-- | An input parameter that is required is missing.
 --
 --
-_InvalidParameterCombinationException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidParameterCombinationException
+_MissingRequiredParameterException :: AsError a => Getting (First ServiceError) a ServiceError
+_MissingRequiredParameterException
+  = _MatchServiceError cloudWatch "MissingParameter" .
+      hasStatus 400
+
+-- | Some part of the dashboard data is invalid.
+--
+--
+_DashboardInvalidInputError :: AsError a => Getting (First ServiceError) a ServiceError
+_DashboardInvalidInputError
   = _MatchServiceError cloudWatch
-      "InvalidParameterCombination"
+      "InvalidParameterInput"
       . hasStatus 400
+
+-- | Request processing has failed due to some unknown error, exception, or failure.
+--
+--
+_InternalServiceFault :: AsError a => Getting (First ServiceError) a ServiceError
+_InternalServiceFault
+  = _MatchServiceError cloudWatch
+      "InternalServiceError"
+      . hasStatus 500
+
+-- | The next token specified is invalid.
+--
+--
+_InvalidNextToken :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidNextToken
+  = _MatchServiceError cloudWatch "InvalidNextToken" .
+      hasStatus 400
+
+-- | More than one process tried to modify a resource at the same time.
+--
+--
+_ConcurrentModificationException :: AsError a => Getting (First ServiceError) a ServiceError
+_ConcurrentModificationException
+  = _MatchServiceError cloudWatch
+      "ConcurrentModificationException"
+      . hasStatus 429
+
+-- | The specified dashboard does not exist.
+--
+--
+_DashboardNotFoundError :: AsError a => Getting (First ServiceError) a ServiceError
+_DashboardNotFoundError
+  = _MatchServiceError cloudWatch "ResourceNotFound" .
+      hasStatus 404
+
+-- | The quota for alarms for this customer has already been reached.
+--
+--
+_LimitExceededFault :: AsError a => Getting (First ServiceError) a ServiceError
+_LimitExceededFault
+  = _MatchServiceError cloudWatch "LimitExceeded" .
+      hasStatus 400
 
 -- | The operation exceeded one or more limits.
 --
@@ -466,3 +457,12 @@ _ResourceNotFound :: AsError a => Getting (First ServiceError) a ServiceError
 _ResourceNotFound
   = _MatchServiceError cloudWatch "ResourceNotFound" .
       hasStatus 404
+
+-- | Parameters were used together that cannot be used together.
+--
+--
+_InvalidParameterCombinationException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidParameterCombinationException
+  = _MatchServiceError cloudWatch
+      "InvalidParameterCombination"
+      . hasStatus 400

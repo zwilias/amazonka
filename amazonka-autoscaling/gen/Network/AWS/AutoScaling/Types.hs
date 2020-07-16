@@ -16,13 +16,13 @@ module Network.AWS.AutoScaling.Types
       autoScaling
 
     -- * Errors
-    , _AlreadyExistsFault
-    , _LimitExceededFault
-    , _ResourceInUseFault
-    , _InvalidNextToken
-    , _ScalingActivityInProgressFault
-    , _ResourceContentionFault
     , _ServiceLinkedRoleFailure
+    , _ScalingActivityInProgressFault
+    , _InvalidNextToken
+    , _ResourceInUseFault
+    , _LimitExceededFault
+    , _AlreadyExistsFault
+    , _ResourceContentionFault
 
     -- * LifecycleState
     , LifecycleState (..)
@@ -467,37 +467,14 @@ autoScaling
           | has (hasStatus 509) e = Just "limit_exceeded"
           | otherwise = Nothing
 
--- | You already have an Auto Scaling group or launch configuration with this name.
+-- | The service-linked role is not yet ready for use.
 --
 --
-_AlreadyExistsFault :: AsError a => Getting (First ServiceError) a ServiceError
-_AlreadyExistsFault
-  = _MatchServiceError autoScaling "AlreadyExists" .
-      hasStatus 400
-
--- | You have already reached a limit for your Amazon EC2 Auto Scaling resources (for example, Auto Scaling groups, launch configurations, or lifecycle hooks). For more information, see 'DescribeAccountLimits' .
---
---
-_LimitExceededFault :: AsError a => Getting (First ServiceError) a ServiceError
-_LimitExceededFault
-  = _MatchServiceError autoScaling "LimitExceeded" .
-      hasStatus 400
-
--- | The operation can't be performed because the resource is in use.
---
---
-_ResourceInUseFault :: AsError a => Getting (First ServiceError) a ServiceError
-_ResourceInUseFault
-  = _MatchServiceError autoScaling "ResourceInUse" .
-      hasStatus 400
-
--- | The @NextToken@ value is not valid.
---
---
-_InvalidNextToken :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidNextToken
-  = _MatchServiceError autoScaling "InvalidNextToken" .
-      hasStatus 400
+_ServiceLinkedRoleFailure :: AsError a => Getting (First ServiceError) a ServiceError
+_ServiceLinkedRoleFailure
+  = _MatchServiceError autoScaling
+      "ServiceLinkedRoleFailure"
+      . hasStatus 500
 
 -- | The operation can't be performed because there are scaling activities in progress.
 --
@@ -508,19 +485,42 @@ _ScalingActivityInProgressFault
       "ScalingActivityInProgress"
       . hasStatus 400
 
+-- | The @NextToken@ value is not valid.
+--
+--
+_InvalidNextToken :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidNextToken
+  = _MatchServiceError autoScaling "InvalidNextToken" .
+      hasStatus 400
+
+-- | The operation can't be performed because the resource is in use.
+--
+--
+_ResourceInUseFault :: AsError a => Getting (First ServiceError) a ServiceError
+_ResourceInUseFault
+  = _MatchServiceError autoScaling "ResourceInUse" .
+      hasStatus 400
+
+-- | You have already reached a limit for your Amazon EC2 Auto Scaling resources (for example, Auto Scaling groups, launch configurations, or lifecycle hooks). For more information, see 'DescribeAccountLimits' .
+--
+--
+_LimitExceededFault :: AsError a => Getting (First ServiceError) a ServiceError
+_LimitExceededFault
+  = _MatchServiceError autoScaling "LimitExceeded" .
+      hasStatus 400
+
+-- | You already have an Auto Scaling group or launch configuration with this name.
+--
+--
+_AlreadyExistsFault :: AsError a => Getting (First ServiceError) a ServiceError
+_AlreadyExistsFault
+  = _MatchServiceError autoScaling "AlreadyExists" .
+      hasStatus 400
+
 -- | You already have a pending update to an Amazon EC2 Auto Scaling resource (for example, an Auto Scaling group, instance, or load balancer).
 --
 --
 _ResourceContentionFault :: AsError a => Getting (First ServiceError) a ServiceError
 _ResourceContentionFault
   = _MatchServiceError autoScaling "ResourceContention"
-      . hasStatus 500
-
--- | The service-linked role is not yet ready for use.
---
---
-_ServiceLinkedRoleFailure :: AsError a => Getting (First ServiceError) a ServiceError
-_ServiceLinkedRoleFailure
-  = _MatchServiceError autoScaling
-      "ServiceLinkedRoleFailure"
       . hasStatus 500

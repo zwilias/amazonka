@@ -33,7 +33,7 @@ module Network.AWS.SSM.DeleteParameter
     , deleteParameterResponse
     , DeleteParameterResponse
     -- * Response Lenses
-    , dpprsResponseStatus
+    , dltprmtrrsResponseStatus
     ) where
 
 import Network.AWS.Lens
@@ -95,7 +95,7 @@ instance ToQuery DeleteParameter where
         toQuery = const mempty
 
 -- | /See:/ 'deleteParameterResponse' smart constructor.
-newtype DeleteParameterResponse = DeleteParameterResponse'{_dpprsResponseStatus
+newtype DeleteParameterResponse = DeleteParameterResponse'{_dltprmtrrsResponseStatus
                                                            :: Int}
                                     deriving (Eq, Read, Show, Data, Typeable,
                                               Generic)
@@ -104,16 +104,16 @@ newtype DeleteParameterResponse = DeleteParameterResponse'{_dpprsResponseStatus
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dpprsResponseStatus' - -- | The response status code.
+-- * 'dltprmtrrsResponseStatus' - -- | The response status code.
 deleteParameterResponse
-    :: Int -- ^ 'dpprsResponseStatus'
+    :: Int -- ^ 'dltprmtrrsResponseStatus'
     -> DeleteParameterResponse
 deleteParameterResponse pResponseStatus_
-  = DeleteParameterResponse'{_dpprsResponseStatus =
-                               pResponseStatus_}
+  = DeleteParameterResponse'{_dltprmtrrsResponseStatus
+                               = pResponseStatus_}
 
 -- | -- | The response status code.
-dpprsResponseStatus :: Lens' DeleteParameterResponse Int
-dpprsResponseStatus = lens _dpprsResponseStatus (\ s a -> s{_dpprsResponseStatus = a})
+dltprmtrrsResponseStatus :: Lens' DeleteParameterResponse Int
+dltprmtrrsResponseStatus = lens _dltprmtrrsResponseStatus (\ s a -> s{_dltprmtrrsResponseStatus = a})
 
 instance NFData DeleteParameterResponse where

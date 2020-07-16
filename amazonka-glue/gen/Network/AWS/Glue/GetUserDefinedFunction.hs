@@ -35,8 +35,8 @@ module Network.AWS.Glue.GetUserDefinedFunction
     , getUserDefinedFunctionResponse
     , GetUserDefinedFunctionResponse
     -- * Response Lenses
-    , gudfursUserDefinedFunction
-    , gudfursResponseStatus
+    , gtusrdfndfnctnrsUserDefinedFunction
+    , gtusrdfndfnctnrsResponseStatus
     ) where
 
 import Network.AWS.Glue.Types
@@ -123,11 +123,11 @@ instance ToQuery GetUserDefinedFunction where
         toQuery = const mempty
 
 -- | /See:/ 'getUserDefinedFunctionResponse' smart constructor.
-data GetUserDefinedFunctionResponse = GetUserDefinedFunctionResponse'{_gudfursUserDefinedFunction
+data GetUserDefinedFunctionResponse = GetUserDefinedFunctionResponse'{_gtusrdfndfnctnrsUserDefinedFunction
                                                                       ::
                                                                       !(Maybe
                                                                           UserDefinedFunction),
-                                                                      _gudfursResponseStatus
+                                                                      _gtusrdfndfnctnrsResponseStatus
                                                                       :: !Int}
                                         deriving (Eq, Read, Show, Data,
                                                   Typeable, Generic)
@@ -136,23 +136,24 @@ data GetUserDefinedFunctionResponse = GetUserDefinedFunctionResponse'{_gudfursUs
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'gudfursUserDefinedFunction' - The requested function definition.
+-- * 'gtusrdfndfnctnrsUserDefinedFunction' - The requested function definition.
 --
--- * 'gudfursResponseStatus' - -- | The response status code.
+-- * 'gtusrdfndfnctnrsResponseStatus' - -- | The response status code.
 getUserDefinedFunctionResponse
-    :: Int -- ^ 'gudfursResponseStatus'
+    :: Int -- ^ 'gtusrdfndfnctnrsResponseStatus'
     -> GetUserDefinedFunctionResponse
 getUserDefinedFunctionResponse pResponseStatus_
-  = GetUserDefinedFunctionResponse'{_gudfursUserDefinedFunction
+  = GetUserDefinedFunctionResponse'{_gtusrdfndfnctnrsUserDefinedFunction
                                       = Nothing,
-                                    _gudfursResponseStatus = pResponseStatus_}
+                                    _gtusrdfndfnctnrsResponseStatus =
+                                      pResponseStatus_}
 
 -- | The requested function definition.
-gudfursUserDefinedFunction :: Lens' GetUserDefinedFunctionResponse (Maybe UserDefinedFunction)
-gudfursUserDefinedFunction = lens _gudfursUserDefinedFunction (\ s a -> s{_gudfursUserDefinedFunction = a})
+gtusrdfndfnctnrsUserDefinedFunction :: Lens' GetUserDefinedFunctionResponse (Maybe UserDefinedFunction)
+gtusrdfndfnctnrsUserDefinedFunction = lens _gtusrdfndfnctnrsUserDefinedFunction (\ s a -> s{_gtusrdfndfnctnrsUserDefinedFunction = a})
 
 -- | -- | The response status code.
-gudfursResponseStatus :: Lens' GetUserDefinedFunctionResponse Int
-gudfursResponseStatus = lens _gudfursResponseStatus (\ s a -> s{_gudfursResponseStatus = a})
+gtusrdfndfnctnrsResponseStatus :: Lens' GetUserDefinedFunctionResponse Int
+gtusrdfndfnctnrsResponseStatus = lens _gtusrdfndfnctnrsResponseStatus (\ s a -> s{_gtusrdfndfnctnrsResponseStatus = a})
 
 instance NFData GetUserDefinedFunctionResponse where

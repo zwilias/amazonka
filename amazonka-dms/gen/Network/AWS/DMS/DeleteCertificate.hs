@@ -33,8 +33,8 @@ module Network.AWS.DMS.DeleteCertificate
     , deleteCertificateResponse
     , DeleteCertificateResponse
     -- * Response Lenses
-    , dccrsCertificate
-    , dccrsResponseStatus
+    , dltcrtfctrsCertificate
+    , dltcrtfctrsResponseStatus
     ) where
 
 import Network.AWS.DMS.Types
@@ -101,11 +101,11 @@ instance ToQuery DeleteCertificate where
         toQuery = const mempty
 
 -- | /See:/ 'deleteCertificateResponse' smart constructor.
-data DeleteCertificateResponse = DeleteCertificateResponse'{_dccrsCertificate
+data DeleteCertificateResponse = DeleteCertificateResponse'{_dltcrtfctrsCertificate
                                                             ::
                                                             !(Maybe
                                                                 Certificate),
-                                                            _dccrsResponseStatus
+                                                            _dltcrtfctrsResponseStatus
                                                             :: !Int}
                                    deriving (Eq, Read, Show, Data, Typeable,
                                              Generic)
@@ -114,23 +114,23 @@ data DeleteCertificateResponse = DeleteCertificateResponse'{_dccrsCertificate
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dccrsCertificate' - The Secure Sockets Layer (SSL) certificate.
+-- * 'dltcrtfctrsCertificate' - The Secure Sockets Layer (SSL) certificate.
 --
--- * 'dccrsResponseStatus' - -- | The response status code.
+-- * 'dltcrtfctrsResponseStatus' - -- | The response status code.
 deleteCertificateResponse
-    :: Int -- ^ 'dccrsResponseStatus'
+    :: Int -- ^ 'dltcrtfctrsResponseStatus'
     -> DeleteCertificateResponse
 deleteCertificateResponse pResponseStatus_
-  = DeleteCertificateResponse'{_dccrsCertificate =
-                                 Nothing,
-                               _dccrsResponseStatus = pResponseStatus_}
+  = DeleteCertificateResponse'{_dltcrtfctrsCertificate
+                                 = Nothing,
+                               _dltcrtfctrsResponseStatus = pResponseStatus_}
 
 -- | The Secure Sockets Layer (SSL) certificate.
-dccrsCertificate :: Lens' DeleteCertificateResponse (Maybe Certificate)
-dccrsCertificate = lens _dccrsCertificate (\ s a -> s{_dccrsCertificate = a})
+dltcrtfctrsCertificate :: Lens' DeleteCertificateResponse (Maybe Certificate)
+dltcrtfctrsCertificate = lens _dltcrtfctrsCertificate (\ s a -> s{_dltcrtfctrsCertificate = a})
 
 -- | -- | The response status code.
-dccrsResponseStatus :: Lens' DeleteCertificateResponse Int
-dccrsResponseStatus = lens _dccrsResponseStatus (\ s a -> s{_dccrsResponseStatus = a})
+dltcrtfctrsResponseStatus :: Lens' DeleteCertificateResponse Int
+dltcrtfctrsResponseStatus = lens _dltcrtfctrsResponseStatus (\ s a -> s{_dltcrtfctrsResponseStatus = a})
 
 instance NFData DeleteCertificateResponse where

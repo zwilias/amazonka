@@ -16,52 +16,52 @@ module Network.AWS.ElastiCache.Types
       elastiCache
 
     -- * Errors
-    , _CacheSubnetGroupInUse
-    , _ReservedCacheNodeAlreadyExistsFault
-    , _CacheSecurityGroupNotFoundFault
-    , _CacheSubnetGroupAlreadyExistsFault
+    , _CacheParameterGroupNotFoundFault
+    , _InvalidSnapshotStateFault
+    , _InsufficientCacheClusterCapacityFault
+    , _SnapshotNotFoundFault
+    , _ClusterQuotaForCustomerExceededFault
+    , _CacheSecurityGroupQuotaExceededFault
+    , _InvalidSubnet
+    , _CacheClusterAlreadyExistsFault
+    , _TagQuotaPerResourceExceeded
+    , _AuthorizationNotFoundFault
+    , _ReplicationGroupNotFoundFault
+    , _ReservedCacheNodesOfferingNotFoundFault
     , _NodeGroupsPerReplicationGroupQuotaExceededFault
-    , _CacheSubnetGroupQuotaExceededFault
+    , _ReplicationGroupAlreadyExistsFault
     , _AuthorizationAlreadyExistsFault
     , _ReservedCacheNodeQuotaExceededFault
-    , _ReservedCacheNodesOfferingNotFoundFault
-    , _ReplicationGroupNotFoundFault
-    , _InvalidSubnet
-    , _TagQuotaPerResourceExceeded
-    , _SnapshotNotFoundFault
-    , _InsufficientCacheClusterCapacityFault
-    , _InvalidSnapshotStateFault
-    , _SnapshotAlreadyExistsFault
-    , _TagNotFoundFault
-    , _SnapshotQuotaExceededFault
-    , _NodeQuotaForClusterExceededFault
-    , _APICallRateForCustomerExceededFault
-    , _NodeGroupNotFoundFault
-    , _CacheParameterGroupAlreadyExistsFault
-    , _ReservedCacheNodeNotFoundFault
-    , _CacheSubnetGroupNotFoundFault
-    , _SnapshotFeatureNotSupportedFault
+    , _ReservedCacheNodeAlreadyExistsFault
+    , _CacheSecurityGroupNotFoundFault
     , _InvalidParameterValueException
-    , _TestFailoverNotAvailableFault
-    , _InvalidReplicationGroupStateFault
-    , _ReplicationGroupAlreadyExistsFault
-    , _InvalidVPCNetworkStateFault
-    , _SubnetInUse
-    , _CacheClusterNotFoundFault
-    , _ClusterQuotaForCustomerExceededFault
-    , _AuthorizationNotFoundFault
-    , _InvalidCacheClusterStateFault
-    , _CacheSecurityGroupQuotaExceededFault
-    , _CacheClusterAlreadyExistsFault
-    , _CacheParameterGroupQuotaExceededFault
-    , _NodeQuotaForCustomerExceededFault
-    , _CacheSubnetQuotaExceededFault
-    , _CacheParameterGroupNotFoundFault
-    , _InvalidARNFault
-    , _InvalidCacheParameterGroupStateFault
-    , _InvalidParameterCombinationException
+    , _CacheSubnetGroupInUse
+    , _SnapshotFeatureNotSupportedFault
+    , _ReservedCacheNodeNotFoundFault
     , _InvalidCacheSecurityGroupStateFault
+    , _NodeGroupNotFoundFault
+    , _NodeQuotaForClusterExceededFault
+    , _InvalidARNFault
+    , _SnapshotQuotaExceededFault
+    , _TagNotFoundFault
+    , _CacheSubnetQuotaExceededFault
+    , _NodeQuotaForCustomerExceededFault
+    , _SnapshotAlreadyExistsFault
+    , _CacheParameterGroupQuotaExceededFault
+    , _InvalidCacheClusterStateFault
+    , _CacheSubnetGroupQuotaExceededFault
+    , _InvalidVPCNetworkStateFault
+    , _CacheClusterNotFoundFault
+    , _SubnetInUse
+    , _InvalidReplicationGroupStateFault
+    , _TestFailoverNotAvailableFault
+    , _CacheSubnetGroupAlreadyExistsFault
+    , _CacheSubnetGroupNotFoundFault
     , _CacheSecurityGroupAlreadyExistsFault
+    , _InvalidParameterCombinationException
+    , _CacheParameterGroupAlreadyExistsFault
+    , _APICallRateForCustomerExceededFault
+    , _InvalidCacheParameterGroupStateFault
 
     -- * AZMode
     , AZMode (..)
@@ -499,41 +499,112 @@ elastiCache
           | has (hasStatus 509) e = Just "limit_exceeded"
           | otherwise = Nothing
 
--- | The requested cache subnet group is currently in use.
+-- | The requested cache parameter group name does not refer to an existing cache parameter group.
 --
 --
-_CacheSubnetGroupInUse :: AsError a => Getting (First ServiceError) a ServiceError
-_CacheSubnetGroupInUse
+_CacheParameterGroupNotFoundFault :: AsError a => Getting (First ServiceError) a ServiceError
+_CacheParameterGroupNotFoundFault
   = _MatchServiceError elastiCache
-      "CacheSubnetGroupInUse"
-      . hasStatus 400
-
--- | You already have a reservation with the given identifier.
---
---
-_ReservedCacheNodeAlreadyExistsFault :: AsError a => Getting (First ServiceError) a ServiceError
-_ReservedCacheNodeAlreadyExistsFault
-  = _MatchServiceError elastiCache
-      "ReservedCacheNodeAlreadyExists"
+      "CacheParameterGroupNotFound"
       . hasStatus 404
 
--- | The requested cache security group name does not refer to an existing cache security group.
+-- | The current state of the snapshot does not allow the requested operation to occur.
 --
 --
-_CacheSecurityGroupNotFoundFault :: AsError a => Getting (First ServiceError) a ServiceError
-_CacheSecurityGroupNotFoundFault
+_InvalidSnapshotStateFault :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidSnapshotStateFault
   = _MatchServiceError elastiCache
-      "CacheSecurityGroupNotFound"
+      "InvalidSnapshotState"
+      . hasStatus 400
+
+-- | The requested cache node type is not available in the specified Availability Zone.
+--
+--
+_InsufficientCacheClusterCapacityFault :: AsError a => Getting (First ServiceError) a ServiceError
+_InsufficientCacheClusterCapacityFault
+  = _MatchServiceError elastiCache
+      "InsufficientCacheClusterCapacity"
+      . hasStatus 400
+
+-- | The requested snapshot name does not refer to an existing snapshot.
+--
+--
+_SnapshotNotFoundFault :: AsError a => Getting (First ServiceError) a ServiceError
+_SnapshotNotFoundFault
+  = _MatchServiceError elastiCache
+      "SnapshotNotFoundFault"
       . hasStatus 404
 
--- | The requested cache subnet group name is already in use by an existing cache subnet group.
+-- | The request cannot be processed because it would exceed the allowed number of clusters per customer.
 --
 --
-_CacheSubnetGroupAlreadyExistsFault :: AsError a => Getting (First ServiceError) a ServiceError
-_CacheSubnetGroupAlreadyExistsFault
+_ClusterQuotaForCustomerExceededFault :: AsError a => Getting (First ServiceError) a ServiceError
+_ClusterQuotaForCustomerExceededFault
   = _MatchServiceError elastiCache
-      "CacheSubnetGroupAlreadyExists"
+      "ClusterQuotaForCustomerExceeded"
       . hasStatus 400
+
+-- | The request cannot be processed because it would exceed the allowed number of cache security groups.
+--
+--
+_CacheSecurityGroupQuotaExceededFault :: AsError a => Getting (First ServiceError) a ServiceError
+_CacheSecurityGroupQuotaExceededFault
+  = _MatchServiceError elastiCache
+      "QuotaExceeded.CacheSecurityGroup"
+      . hasStatus 400
+
+-- | An invalid subnet identifier was specified.
+--
+--
+_InvalidSubnet :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidSubnet
+  = _MatchServiceError elastiCache "InvalidSubnet" .
+      hasStatus 400
+
+-- | You already have a cluster with the given identifier.
+--
+--
+_CacheClusterAlreadyExistsFault :: AsError a => Getting (First ServiceError) a ServiceError
+_CacheClusterAlreadyExistsFault
+  = _MatchServiceError elastiCache
+      "CacheClusterAlreadyExists"
+      . hasStatus 400
+
+-- | The request cannot be processed because it would cause the resource to have more than the allowed number of tags. The maximum number of tags permitted on a resource is 50.
+--
+--
+_TagQuotaPerResourceExceeded :: AsError a => Getting (First ServiceError) a ServiceError
+_TagQuotaPerResourceExceeded
+  = _MatchServiceError elastiCache
+      "TagQuotaPerResourceExceeded"
+      . hasStatus 400
+
+-- | The specified Amazon EC2 security group is not authorized for the specified cache security group.
+--
+--
+_AuthorizationNotFoundFault :: AsError a => Getting (First ServiceError) a ServiceError
+_AuthorizationNotFoundFault
+  = _MatchServiceError elastiCache
+      "AuthorizationNotFound"
+      . hasStatus 404
+
+-- | The specified replication group does not exist.
+--
+--
+_ReplicationGroupNotFoundFault :: AsError a => Getting (First ServiceError) a ServiceError
+_ReplicationGroupNotFoundFault
+  = _MatchServiceError elastiCache
+      "ReplicationGroupNotFoundFault"
+      . hasStatus 404
+
+-- | The requested cache node offering does not exist.
+--
+--
+_ReservedCacheNodesOfferingNotFoundFault :: AsError a => Getting (First ServiceError) a ServiceError
+_ReservedCacheNodesOfferingNotFoundFault
+  = _MatchServiceError elastiCache
+      "ReservedCacheNodesOfferingNotFound"
+      . hasStatus 404
 
 -- | The request cannot be processed because it would exceed the maximum allowed number of node groups (shards) in a single replication group. The default maximum is 15
 --
@@ -544,13 +615,13 @@ _NodeGroupsPerReplicationGroupQuotaExceededFault
       "NodeGroupsPerReplicationGroupQuotaExceeded"
       . hasStatus 400
 
--- | The request cannot be processed because it would exceed the allowed number of cache subnet groups.
+-- | The specified replication group already exists.
 --
 --
-_CacheSubnetGroupQuotaExceededFault :: AsError a => Getting (First ServiceError) a ServiceError
-_CacheSubnetGroupQuotaExceededFault
+_ReplicationGroupAlreadyExistsFault :: AsError a => Getting (First ServiceError) a ServiceError
+_ReplicationGroupAlreadyExistsFault
   = _MatchServiceError elastiCache
-      "CacheSubnetGroupQuotaExceeded"
+      "ReplicationGroupAlreadyExists"
       . hasStatus 400
 
 -- | The specified Amazon EC2 security group is already authorized for the specified cache security group.
@@ -571,146 +642,40 @@ _ReservedCacheNodeQuotaExceededFault
       "ReservedCacheNodeQuotaExceeded"
       . hasStatus 400
 
--- | The requested cache node offering does not exist.
+-- | You already have a reservation with the given identifier.
 --
 --
-_ReservedCacheNodesOfferingNotFoundFault :: AsError a => Getting (First ServiceError) a ServiceError
-_ReservedCacheNodesOfferingNotFoundFault
+_ReservedCacheNodeAlreadyExistsFault :: AsError a => Getting (First ServiceError) a ServiceError
+_ReservedCacheNodeAlreadyExistsFault
   = _MatchServiceError elastiCache
-      "ReservedCacheNodesOfferingNotFound"
+      "ReservedCacheNodeAlreadyExists"
       . hasStatus 404
 
--- | The specified replication group does not exist.
+-- | The requested cache security group name does not refer to an existing cache security group.
 --
 --
-_ReplicationGroupNotFoundFault :: AsError a => Getting (First ServiceError) a ServiceError
-_ReplicationGroupNotFoundFault
+_CacheSecurityGroupNotFoundFault :: AsError a => Getting (First ServiceError) a ServiceError
+_CacheSecurityGroupNotFoundFault
   = _MatchServiceError elastiCache
-      "ReplicationGroupNotFoundFault"
+      "CacheSecurityGroupNotFound"
       . hasStatus 404
 
--- | An invalid subnet identifier was specified.
+-- | The value for a parameter is invalid.
 --
 --
-_InvalidSubnet :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidSubnet
-  = _MatchServiceError elastiCache "InvalidSubnet" .
-      hasStatus 400
-
--- | The request cannot be processed because it would cause the resource to have more than the allowed number of tags. The maximum number of tags permitted on a resource is 50.
---
---
-_TagQuotaPerResourceExceeded :: AsError a => Getting (First ServiceError) a ServiceError
-_TagQuotaPerResourceExceeded
+_InvalidParameterValueException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidParameterValueException
   = _MatchServiceError elastiCache
-      "TagQuotaPerResourceExceeded"
+      "InvalidParameterValue"
       . hasStatus 400
 
--- | The requested snapshot name does not refer to an existing snapshot.
+-- | The requested cache subnet group is currently in use.
 --
 --
-_SnapshotNotFoundFault :: AsError a => Getting (First ServiceError) a ServiceError
-_SnapshotNotFoundFault
+_CacheSubnetGroupInUse :: AsError a => Getting (First ServiceError) a ServiceError
+_CacheSubnetGroupInUse
   = _MatchServiceError elastiCache
-      "SnapshotNotFoundFault"
-      . hasStatus 404
-
--- | The requested cache node type is not available in the specified Availability Zone.
---
---
-_InsufficientCacheClusterCapacityFault :: AsError a => Getting (First ServiceError) a ServiceError
-_InsufficientCacheClusterCapacityFault
-  = _MatchServiceError elastiCache
-      "InsufficientCacheClusterCapacity"
-      . hasStatus 400
-
--- | The current state of the snapshot does not allow the requested operation to occur.
---
---
-_InvalidSnapshotStateFault :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidSnapshotStateFault
-  = _MatchServiceError elastiCache
-      "InvalidSnapshotState"
-      . hasStatus 400
-
--- | You already have a snapshot with the given name.
---
---
-_SnapshotAlreadyExistsFault :: AsError a => Getting (First ServiceError) a ServiceError
-_SnapshotAlreadyExistsFault
-  = _MatchServiceError elastiCache
-      "SnapshotAlreadyExistsFault"
-      . hasStatus 400
-
--- | The requested tag was not found on this resource.
---
---
-_TagNotFoundFault :: AsError a => Getting (First ServiceError) a ServiceError
-_TagNotFoundFault
-  = _MatchServiceError elastiCache "TagNotFound" .
-      hasStatus 404
-
--- | The request cannot be processed because it would exceed the maximum number of snapshots.
---
---
-_SnapshotQuotaExceededFault :: AsError a => Getting (First ServiceError) a ServiceError
-_SnapshotQuotaExceededFault
-  = _MatchServiceError elastiCache
-      "SnapshotQuotaExceededFault"
-      . hasStatus 400
-
--- | The request cannot be processed because it would exceed the allowed number of cache nodes in a single cluster.
---
---
-_NodeQuotaForClusterExceededFault :: AsError a => Getting (First ServiceError) a ServiceError
-_NodeQuotaForClusterExceededFault
-  = _MatchServiceError elastiCache
-      "NodeQuotaForClusterExceeded"
-      . hasStatus 400
-
--- | The customer has exceeded the allowed rate of API calls.
---
---
-_APICallRateForCustomerExceededFault :: AsError a => Getting (First ServiceError) a ServiceError
-_APICallRateForCustomerExceededFault
-  = _MatchServiceError elastiCache
-      "APICallRateForCustomerExceeded"
-      . hasStatus 400
-
--- | The node group specified by the @NodeGroupId@ parameter could not be found. Please verify that the node group exists and that you spelled the @NodeGroupId@ value correctly.
---
---
-_NodeGroupNotFoundFault :: AsError a => Getting (First ServiceError) a ServiceError
-_NodeGroupNotFoundFault
-  = _MatchServiceError elastiCache
-      "NodeGroupNotFoundFault"
-      . hasStatus 404
-
--- | A cache parameter group with the requested name already exists.
---
---
-_CacheParameterGroupAlreadyExistsFault :: AsError a => Getting (First ServiceError) a ServiceError
-_CacheParameterGroupAlreadyExistsFault
-  = _MatchServiceError elastiCache
-      "CacheParameterGroupAlreadyExists"
-      . hasStatus 400
-
--- | The requested reserved cache node was not found.
---
---
-_ReservedCacheNodeNotFoundFault :: AsError a => Getting (First ServiceError) a ServiceError
-_ReservedCacheNodeNotFoundFault
-  = _MatchServiceError elastiCache
-      "ReservedCacheNodeNotFound"
-      . hasStatus 404
-
--- | The requested cache subnet group name does not refer to an existing cache subnet group.
---
---
-_CacheSubnetGroupNotFoundFault :: AsError a => Getting (First ServiceError) a ServiceError
-_CacheSubnetGroupNotFoundFault
-  = _MatchServiceError elastiCache
-      "CacheSubnetGroupNotFoundFault"
+      "CacheSubnetGroupInUse"
       . hasStatus 400
 
 -- | You attempted one of the following operations:
@@ -730,118 +695,74 @@ _SnapshotFeatureNotSupportedFault
       "SnapshotFeatureNotSupportedFault"
       . hasStatus 400
 
--- | The value for a parameter is invalid.
+-- | The requested reserved cache node was not found.
 --
 --
-_InvalidParameterValueException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidParameterValueException
+_ReservedCacheNodeNotFoundFault :: AsError a => Getting (First ServiceError) a ServiceError
+_ReservedCacheNodeNotFoundFault
   = _MatchServiceError elastiCache
-      "InvalidParameterValue"
+      "ReservedCacheNodeNotFound"
+      . hasStatus 404
+
+-- | The current state of the cache security group does not allow deletion.
+--
+--
+_InvalidCacheSecurityGroupStateFault :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidCacheSecurityGroupStateFault
+  = _MatchServiceError elastiCache
+      "InvalidCacheSecurityGroupState"
       . hasStatus 400
 
--- | Prism for TestFailoverNotAvailableFault' errors.
-_TestFailoverNotAvailableFault :: AsError a => Getting (First ServiceError) a ServiceError
-_TestFailoverNotAvailableFault
+-- | The node group specified by the @NodeGroupId@ parameter could not be found. Please verify that the node group exists and that you spelled the @NodeGroupId@ value correctly.
+--
+--
+_NodeGroupNotFoundFault :: AsError a => Getting (First ServiceError) a ServiceError
+_NodeGroupNotFoundFault
   = _MatchServiceError elastiCache
-      "TestFailoverNotAvailableFault"
+      "NodeGroupNotFoundFault"
+      . hasStatus 404
+
+-- | The request cannot be processed because it would exceed the allowed number of cache nodes in a single cluster.
+--
+--
+_NodeQuotaForClusterExceededFault :: AsError a => Getting (First ServiceError) a ServiceError
+_NodeQuotaForClusterExceededFault
+  = _MatchServiceError elastiCache
+      "NodeQuotaForClusterExceeded"
       . hasStatus 400
 
--- | The requested replication group is not in the @available@ state.
+-- | The requested Amazon Resource Name (ARN) does not refer to an existing resource.
 --
 --
-_InvalidReplicationGroupStateFault :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidReplicationGroupStateFault
-  = _MatchServiceError elastiCache
-      "InvalidReplicationGroupState"
-      . hasStatus 400
-
--- | The specified replication group already exists.
---
---
-_ReplicationGroupAlreadyExistsFault :: AsError a => Getting (First ServiceError) a ServiceError
-_ReplicationGroupAlreadyExistsFault
-  = _MatchServiceError elastiCache
-      "ReplicationGroupAlreadyExists"
-      . hasStatus 400
-
--- | The VPC network is in an invalid state.
---
---
-_InvalidVPCNetworkStateFault :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidVPCNetworkStateFault
-  = _MatchServiceError elastiCache
-      "InvalidVPCNetworkStateFault"
-      . hasStatus 400
-
--- | The requested subnet is being used by another cache subnet group.
---
---
-_SubnetInUse :: AsError a => Getting (First ServiceError) a ServiceError
-_SubnetInUse
-  = _MatchServiceError elastiCache "SubnetInUse" .
+_InvalidARNFault :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidARNFault
+  = _MatchServiceError elastiCache "InvalidARN" .
       hasStatus 400
 
--- | The requested cluster ID does not refer to an existing cluster.
+-- | The request cannot be processed because it would exceed the maximum number of snapshots.
 --
 --
-_CacheClusterNotFoundFault :: AsError a => Getting (First ServiceError) a ServiceError
-_CacheClusterNotFoundFault
+_SnapshotQuotaExceededFault :: AsError a => Getting (First ServiceError) a ServiceError
+_SnapshotQuotaExceededFault
   = _MatchServiceError elastiCache
-      "CacheClusterNotFound"
-      . hasStatus 404
-
--- | The request cannot be processed because it would exceed the allowed number of clusters per customer.
---
---
-_ClusterQuotaForCustomerExceededFault :: AsError a => Getting (First ServiceError) a ServiceError
-_ClusterQuotaForCustomerExceededFault
-  = _MatchServiceError elastiCache
-      "ClusterQuotaForCustomerExceeded"
+      "SnapshotQuotaExceededFault"
       . hasStatus 400
 
--- | The specified Amazon EC2 security group is not authorized for the specified cache security group.
+-- | The requested tag was not found on this resource.
 --
 --
-_AuthorizationNotFoundFault :: AsError a => Getting (First ServiceError) a ServiceError
-_AuthorizationNotFoundFault
-  = _MatchServiceError elastiCache
-      "AuthorizationNotFound"
-      . hasStatus 404
+_TagNotFoundFault :: AsError a => Getting (First ServiceError) a ServiceError
+_TagNotFoundFault
+  = _MatchServiceError elastiCache "TagNotFound" .
+      hasStatus 404
 
--- | The requested cluster is not in the @available@ state.
+-- | The request cannot be processed because it would exceed the allowed number of subnets in a cache subnet group.
 --
 --
-_InvalidCacheClusterStateFault :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidCacheClusterStateFault
+_CacheSubnetQuotaExceededFault :: AsError a => Getting (First ServiceError) a ServiceError
+_CacheSubnetQuotaExceededFault
   = _MatchServiceError elastiCache
-      "InvalidCacheClusterState"
-      . hasStatus 400
-
--- | The request cannot be processed because it would exceed the allowed number of cache security groups.
---
---
-_CacheSecurityGroupQuotaExceededFault :: AsError a => Getting (First ServiceError) a ServiceError
-_CacheSecurityGroupQuotaExceededFault
-  = _MatchServiceError elastiCache
-      "QuotaExceeded.CacheSecurityGroup"
-      . hasStatus 400
-
--- | You already have a cluster with the given identifier.
---
---
-_CacheClusterAlreadyExistsFault :: AsError a => Getting (First ServiceError) a ServiceError
-_CacheClusterAlreadyExistsFault
-  = _MatchServiceError elastiCache
-      "CacheClusterAlreadyExists"
-      . hasStatus 400
-
--- | The request cannot be processed because it would exceed the maximum number of cache security groups.
---
---
-_CacheParameterGroupQuotaExceededFault :: AsError a => Getting (First ServiceError) a ServiceError
-_CacheParameterGroupQuotaExceededFault
-  = _MatchServiceError elastiCache
-      "CacheParameterGroupQuotaExceeded"
+      "CacheSubnetQuotaExceededFault"
       . hasStatus 400
 
 -- | The request cannot be processed because it would exceed the allowed number of cache nodes per customer.
@@ -853,39 +774,109 @@ _NodeQuotaForCustomerExceededFault
       "NodeQuotaForCustomerExceeded"
       . hasStatus 400
 
--- | The request cannot be processed because it would exceed the allowed number of subnets in a cache subnet group.
+-- | You already have a snapshot with the given name.
 --
 --
-_CacheSubnetQuotaExceededFault :: AsError a => Getting (First ServiceError) a ServiceError
-_CacheSubnetQuotaExceededFault
+_SnapshotAlreadyExistsFault :: AsError a => Getting (First ServiceError) a ServiceError
+_SnapshotAlreadyExistsFault
   = _MatchServiceError elastiCache
-      "CacheSubnetQuotaExceededFault"
+      "SnapshotAlreadyExistsFault"
       . hasStatus 400
 
--- | The requested cache parameter group name does not refer to an existing cache parameter group.
+-- | The request cannot be processed because it would exceed the maximum number of cache security groups.
 --
 --
-_CacheParameterGroupNotFoundFault :: AsError a => Getting (First ServiceError) a ServiceError
-_CacheParameterGroupNotFoundFault
+_CacheParameterGroupQuotaExceededFault :: AsError a => Getting (First ServiceError) a ServiceError
+_CacheParameterGroupQuotaExceededFault
   = _MatchServiceError elastiCache
-      "CacheParameterGroupNotFound"
+      "CacheParameterGroupQuotaExceeded"
+      . hasStatus 400
+
+-- | The requested cluster is not in the @available@ state.
+--
+--
+_InvalidCacheClusterStateFault :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidCacheClusterStateFault
+  = _MatchServiceError elastiCache
+      "InvalidCacheClusterState"
+      . hasStatus 400
+
+-- | The request cannot be processed because it would exceed the allowed number of cache subnet groups.
+--
+--
+_CacheSubnetGroupQuotaExceededFault :: AsError a => Getting (First ServiceError) a ServiceError
+_CacheSubnetGroupQuotaExceededFault
+  = _MatchServiceError elastiCache
+      "CacheSubnetGroupQuotaExceeded"
+      . hasStatus 400
+
+-- | The VPC network is in an invalid state.
+--
+--
+_InvalidVPCNetworkStateFault :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidVPCNetworkStateFault
+  = _MatchServiceError elastiCache
+      "InvalidVPCNetworkStateFault"
+      . hasStatus 400
+
+-- | The requested cluster ID does not refer to an existing cluster.
+--
+--
+_CacheClusterNotFoundFault :: AsError a => Getting (First ServiceError) a ServiceError
+_CacheClusterNotFoundFault
+  = _MatchServiceError elastiCache
+      "CacheClusterNotFound"
       . hasStatus 404
 
--- | The requested Amazon Resource Name (ARN) does not refer to an existing resource.
+-- | The requested subnet is being used by another cache subnet group.
 --
 --
-_InvalidARNFault :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidARNFault
-  = _MatchServiceError elastiCache "InvalidARN" .
+_SubnetInUse :: AsError a => Getting (First ServiceError) a ServiceError
+_SubnetInUse
+  = _MatchServiceError elastiCache "SubnetInUse" .
       hasStatus 400
 
--- | The current state of the cache parameter group does not allow the requested operation to occur.
+-- | The requested replication group is not in the @available@ state.
 --
 --
-_InvalidCacheParameterGroupStateFault :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidCacheParameterGroupStateFault
+_InvalidReplicationGroupStateFault :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidReplicationGroupStateFault
   = _MatchServiceError elastiCache
-      "InvalidCacheParameterGroupState"
+      "InvalidReplicationGroupState"
+      . hasStatus 400
+
+-- | Prism for TestFailoverNotAvailableFault' errors.
+_TestFailoverNotAvailableFault :: AsError a => Getting (First ServiceError) a ServiceError
+_TestFailoverNotAvailableFault
+  = _MatchServiceError elastiCache
+      "TestFailoverNotAvailableFault"
+      . hasStatus 400
+
+-- | The requested cache subnet group name is already in use by an existing cache subnet group.
+--
+--
+_CacheSubnetGroupAlreadyExistsFault :: AsError a => Getting (First ServiceError) a ServiceError
+_CacheSubnetGroupAlreadyExistsFault
+  = _MatchServiceError elastiCache
+      "CacheSubnetGroupAlreadyExists"
+      . hasStatus 400
+
+-- | The requested cache subnet group name does not refer to an existing cache subnet group.
+--
+--
+_CacheSubnetGroupNotFoundFault :: AsError a => Getting (First ServiceError) a ServiceError
+_CacheSubnetGroupNotFoundFault
+  = _MatchServiceError elastiCache
+      "CacheSubnetGroupNotFoundFault"
+      . hasStatus 400
+
+-- | A cache security group with the specified name already exists.
+--
+--
+_CacheSecurityGroupAlreadyExistsFault :: AsError a => Getting (First ServiceError) a ServiceError
+_CacheSecurityGroupAlreadyExistsFault
+  = _MatchServiceError elastiCache
+      "CacheSecurityGroupAlreadyExists"
       . hasStatus 400
 
 -- | Two or more incompatible parameters were specified.
@@ -897,20 +888,29 @@ _InvalidParameterCombinationException
       "InvalidParameterCombination"
       . hasStatus 400
 
--- | The current state of the cache security group does not allow deletion.
+-- | A cache parameter group with the requested name already exists.
 --
 --
-_InvalidCacheSecurityGroupStateFault :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidCacheSecurityGroupStateFault
+_CacheParameterGroupAlreadyExistsFault :: AsError a => Getting (First ServiceError) a ServiceError
+_CacheParameterGroupAlreadyExistsFault
   = _MatchServiceError elastiCache
-      "InvalidCacheSecurityGroupState"
+      "CacheParameterGroupAlreadyExists"
       . hasStatus 400
 
--- | A cache security group with the specified name already exists.
+-- | The customer has exceeded the allowed rate of API calls.
 --
 --
-_CacheSecurityGroupAlreadyExistsFault :: AsError a => Getting (First ServiceError) a ServiceError
-_CacheSecurityGroupAlreadyExistsFault
+_APICallRateForCustomerExceededFault :: AsError a => Getting (First ServiceError) a ServiceError
+_APICallRateForCustomerExceededFault
   = _MatchServiceError elastiCache
-      "CacheSecurityGroupAlreadyExists"
+      "APICallRateForCustomerExceeded"
+      . hasStatus 400
+
+-- | The current state of the cache parameter group does not allow the requested operation to occur.
+--
+--
+_InvalidCacheParameterGroupStateFault :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidCacheParameterGroupStateFault
+  = _MatchServiceError elastiCache
+      "InvalidCacheParameterGroupState"
       . hasStatus 400
