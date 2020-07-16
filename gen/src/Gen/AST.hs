@@ -22,6 +22,8 @@ import Control.Lens
 import Control.Monad.Except (throwError)
 import Control.Monad.State
 
+import Data.Hashable
+
 import Gen.AST.Cofree
 import Gen.AST.Data
 import Gen.AST.Override
@@ -87,17 +89,26 @@ renderShapes cfg svc = do
         -- Separate the operation input/output shapes from the .Types shapes.
         >>= separate (svc ^. operations)
 
-    -- Prune anything that is an orphan, or not an exception
-    let prune = Map.filter $ \s -> not (isOrphan s) || s ^. infoException
+    let exceptions = Map.filter $ \s -> s ^. infoException
+        nonOrphans = Map.filter $ \s -> not (isOrphan s)
+
+        -- Errors are rendered as both ADTs (for reference in other ADTs) and
+        -- functions (for prismatic error handling).  We need a transformation
+        -- of the IDs that should not generate conflicts.
+        errId n = mkId (typeId (prependId "_" n))
+
+        mapKeys :: (Eq a', Hashable a') => (a -> a') -> (Map a b) -> (Map a' b)
+        mapKeys f m = Map.fromList $ first f <$> Map.toList m
 
     -- Convert shape ASTs into a rendered Haskell AST declaration,
     xs <- traverse (operationData cfg svc) x
-    ys <- kvTraverseMaybe (const (shapeData svc)) (prune y)
+    ys <- kvTraverseMaybe (const (shapeData svc)) $ (nonOrphans y)
+    es <- mapKeys errId <$> kvTraverseMaybe (const (errorData svc errId)) (exceptions y)
     zs <- Map.traverseWithKey (waiterData svc x) (svc ^. waiters)
 
     return $! svc
         { _operations = xs
-        , _shapes     = ys
+        , _shapes     = Map.union ys es
         , _waiters    = zs
         }
 

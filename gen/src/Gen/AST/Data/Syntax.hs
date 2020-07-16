@@ -303,6 +303,8 @@ getterN e = if go e then "^?" else "^."
     -- FIXME: doesn't support Maybe fields currently.
 notationE :: Notation Field -> Exp
 notationE = \case
+    EmptyText    k        -> Exts.app (var "emptyText") (label False k)
+    EmptyList    k        -> label False k
     NonEmptyText k        -> Exts.app (var "nonEmptyText") (label False k)
     NonEmptyList k        -> label False k
     Access      (k :| ks) -> labels k ks
@@ -320,6 +322,38 @@ notationE = \case
     label b = \case
         Key  f -> key b f
         Each f -> Exts.app (var "folding") . Exts.paren $ Exts.app (var "concatOf") (key False f)
+        Last f -> Exts.infixApp (key False f) "." (var "_last")
+
+    key False f = var (fieldLens f)
+    key True  f
+        | fieldMonoid f = key False f
+        | fieldMaybe f  = Exts.infixApp (key False f) "." (var "_Just")
+        | otherwise     = key False f
+
+waiterNotationE :: Notation Field -> Exp
+waiterNotationE = \case
+    EmptyText    k        -> Exts.app (var "emptyText") (label False k)
+    EmptyList    k        -> label False k
+    NonEmptyText k        -> Exts.app (var "nonEmptyText") (label False k)
+    NonEmptyList k        -> label False k
+    Access      (k :| ks) -> labels k ks
+    Choice       x y      -> Exts.appFun (var "choice") [branch x, branch y]
+  where
+    branch x =
+        let e = notationE x
+         in Exts.paren (Exts.app (var (getterN e)) e)
+
+    labels k [] = label True k
+    labels k ks = foldl' f (label True k) ks
+      where
+         f e x = Exts.infixApp e "." (label True x)
+
+    label b = \case
+        Key  f -> key b f
+        Each f -> Exts.app (var "folding") . Exts.paren $
+          Exts.app (var "concatOf") $
+          Exts.infixApp (key True f) "." $
+          Exts.app (var "to") (var "toList")
         Last f -> Exts.infixApp (key False f) "." (var "_last")
 
     key False f = var (fieldLens f)
@@ -750,6 +784,9 @@ waiterD n w = Exts.sfun (ident c) [] (unguarded rhs) Exts.noBinds
 
     match x =
         case (_acceptMatch x, _acceptArgument x) of
+            (_, Just (EmptyList _)) ->
+                Exts.appFun (var "matchEmpty") (expect x : criteria x : argument' x)
+
             (_, Just (NonEmptyList _)) ->
                 Exts.appFun (var "matchNonEmpty") (expect x : criteria x : argument' x)
 
@@ -780,7 +817,7 @@ waiterD n w = Exts.sfun (ident c) [] (unguarded rhs) Exts.noBinds
             Success -> var "AcceptSuccess"
             Failure -> var "AcceptFailure"
 
-    argument' x = go <$> maybeToList (notationE <$> _acceptArgument x)
+    argument' x = go <$> maybeToList (waiterNotationE <$> _acceptArgument x)
       where
         go = case _acceptExpect x of
             Textual {} ->
