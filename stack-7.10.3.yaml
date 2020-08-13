@@ -75,6 +75,7 @@ packages:
   - amazonka-ecr
   - amazonka-ecs
   - amazonka-efs
+  - amazonka-eks
   - amazonka-elasticache
   - amazonka-elasticbeanstalk
   - amazonka-elasticsearch

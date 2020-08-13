@@ -20,7 +20,6 @@
 /docdb/
 /ebs/
 /ec2-instance-connect/
-/eks/
 /elastic-inference/
 /forecast/
 /forecastquery/
