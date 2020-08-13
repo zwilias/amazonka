@@ -28,14 +28,15 @@ make clean-model model
 env MODELS=model/${MODEL} make gen
 popd
 
-echo "Generating Stack and Travis builds"
-script/generate
+echo "Generating Stack build to test"
+script/generate-stack
 
 echo "Testing amazonka-${MODEL}"
 stack test amazonka-${MODEL}
 
 echo "Cleaning generated sources that don't belong on develop"
-rm -rf amazonka-${MODEL}
+git clean -fdx amazonka-${MODEL}
+git checkout -- stack*.yaml
 
 echo "Staging changes"
 git add -A .
