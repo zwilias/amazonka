@@ -79,6 +79,10 @@ describeRule pName_
 desEventBusName :: Lens' DescribeRule (Maybe Text)
 desEventBusName = lens _desEventBusName (\ s a -> s{_desEventBusName = a})
 
+-- | The event bus associated with the rule. If you omit this, the default event bus is used.
+desEventBusName :: Lens' DescribeRule (Maybe Text)
+desEventBusName = lens _desEventBusName (\ s a -> s{_desEventBusName = a})
+
 -- | The name of the rule.
 desName :: Lens' DescribeRule Text
 desName = lens _desName (\ s a -> s{_desName = a})

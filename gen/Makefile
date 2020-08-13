@@ -58,7 +58,10 @@ $(STYLISH): $(BIN_DIR)
 $(BIN_DIR):
 	mkdir $@
 
-clean:
+clean-model:
+	rm -rf $(MODEL_DIR)
+
+clean: clean
 	stack clean --nix
 	rm -rf $(MODEL_DIR) $(OUT_DIR)/amazonka-*/gen
 

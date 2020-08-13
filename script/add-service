@@ -1,0 +1,48 @@
+#!/usr/bin/env bash
+
+## Adds a new service to the amazonka build
+
+## First arg is the model name
+## Second arg is the service abbrevation in the package name
+
+### Example: add-service eks EKS
+
+set -euo pipefail
+
+MODEL=$1
+ABBREV=$2
+
+echo "Switching to branch for ${MODEL}"
+git checkout -B add-$MODEL develop
+
+echo "Removing ${MODEL} from pinned models"
+sed -i "/\/$MODEL\//d" gen/pinned-models.txt
+
+echo "Adding a configuration for ${MODEL}"
+[ -f "gen/config/${MODEL}.json" ] || jq --indent 4 -n --arg library "amazonka-${MODEL}" '{ "libraryName": $library }' > gen/config/${MODEL}.json
+[ -f "gen/annex/${MODEL}.json" ] || jq --indent 4 -n --arg abbrev "${ABBREV}" '{ "metadata": { "serviceAbbreviation": $abbrev } }' > gen/annex/${MODEL}.json
+
+echo "Generate the ${MODEL} Haskell"
+pushd gen
+make clean-model model
+env MODELS=model/${MODEL} make gen
+popd
+
+echo "Generating Stack build to test"
+script/generate-stack
+
+echo "Testing amazonka-${MODEL}"
+stack test amazonka-${MODEL}
+
+echo "Cleaning generated sources that don't belong on develop"
+git clean -fdx amazonka-${MODEL}
+git checkout -- stack*.yaml
+
+echo "Staging changes"
+git add -A .
+
+echo
+echo
+echo
+echo "It worked!"
+echo "Please commit and send a PR to EarnestResearch/amazonka's develop branch"
