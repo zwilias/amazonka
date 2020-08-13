@@ -90,6 +90,9 @@ matrix:
     - env: LIBRARY=amazonka-apigateway GHCVER=8.2.2 STACK_YAML=stack-8.2.2.yaml CACHE_NAME=amazonka-apigateway-8.2.2
       compiler: ": #stack 8.2.2"
       addons: {apt: {packages: [ghc-8.2.2], sources: [hvr-ghc]}}
+    - env: LIBRARY=amazonka-apigatewaymanagementapi GHCVER=8.2.2 STACK_YAML=stack-8.2.2.yaml CACHE_NAME=amazonka-apigatewaymanagementapi-8.2.2
+      compiler: ": #stack 8.2.2"
+      addons: {apt: {packages: [ghc-8.2.2], sources: [hvr-ghc]}}
     - env: LIBRARY=amazonka-application-autoscaling GHCVER=8.2.2 STACK_YAML=stack-8.2.2.yaml CACHE_NAME=amazonka-application-autoscaling-8.2.2
       compiler: ": #stack 8.2.2"
       addons: {apt: {packages: [ghc-8.2.2], sources: [hvr-ghc]}}

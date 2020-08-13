@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Adds the specified targets to the specified rule, or updates the targets if they're already associated with the rule.
+-- Adds the specified targets to the specified rule, or updates the targets if they are already associated with the rule.
 --
 --
 -- Targets are the resources that are invoked when a rule is triggered.
@@ -73,11 +73,11 @@
 --
 --     * If none of the following arguments are specified for a target, then the entire event is passed to the target in JSON format (unless the target is Amazon EC2 Run Command or Amazon ECS task, in which case nothing from the event is passed to the target).
 --
---     * If @Input@ is specified in the form of valid JSON, then the matched event is overridden with this constant.
+--     * If __Input__ is specified in the form of valid JSON, then the matched event is overridden with this constant.
 --
---     * If @InputPath@ is specified in the form of JSONPath (for example, @> .detail@ ), only the part of the event specified in the path is passed to the target (for example, only the detail part of the event is passed).
+--     * If __InputPath__ is specified in the form of JSONPath (for example, @> .detail@ ), then only the part of the event specified in the path is passed to the target (for example, only the detail part of the event is passed).
 --
---     * If @InputTransformer@ is specified, one or more specified JSONPaths are extracted from the event and used as values in a template that you specify as the input to the target.
+--     * If __InputTransformer__ is specified, then one or more specified JSONPaths are extracted from the event and used as values in a template that you specify as the input to the target.
 --
 --
 --
@@ -85,7 +85,7 @@
 --
 -- When you add targets to a rule and the associated rule triggers soon after, new or updated targets might not be immediately invoked. Allow a short period of time for changes to take effect.
 --
--- This action can partially fail if too many requests are made at the same time. If that happens, @FailedEntryCount@ is nonzero in the response, and each entry in @FailedEntries@ provides the ID of the failed target and the error code.
+-- This action can partially fail if too many requests are made at the same time. If that happens, @FailedEntryCount@ is non-zero in the response and each entry in @FailedEntries@ provides the ID of the failed target and the error code.
 --
 module Network.AWS.CloudWatchEvents.PutTargets
     (

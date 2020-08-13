@@ -16,7 +16,6 @@ module Network.AWS.CloudWatchEvents.Types
       cloudWatchEvents
 
     -- * Errors
-    , _ManagedRuleException
     , _PolicyLengthExceededException
     , _InvalidEventPatternException
     , _InvalidStateException
@@ -298,14 +297,6 @@ cloudWatchEvents
           | has (hasStatus 509) e = Just "limit_exceeded"
           | otherwise = Nothing
 
--- | An AWS service created this rule on behalf of your account. That service manages it. If you see this error in response to @DeleteRule@ or @RemoveTargets@ , you can use the @Force@ parameter in those calls to delete the rule or remove targets from the rule. You can't modify these managed rules by using @DisableRule@ , @EnableRule@ , @PutTargets@ , @PutRule@ , @TagResource@ , or @UntagResource@ .
---
---
-_ManagedRuleException :: AsError a => Getting (First ServiceError) a ServiceError
-_ManagedRuleException =
-  _MatchServiceError cloudWatchEvents "ManagedRuleException"
-
-
 -- | The event bus policy is too long. For more information, see the limits.
 --
 --
@@ -370,15 +361,7 @@ _ManagedRuleException
   = _MatchServiceError cloudWatchEvents
       "ManagedRuleException"
 
--- | The specified state isn't a valid state for an event source.
---
---
-_InvalidStateException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidStateException =
-  _MatchServiceError cloudWatchEvents "InvalidStateException"
-
-
--- | You tried to create more resources than is allowed.
+-- | You tried to create more rules or add more targets to a rule than is allowed.
 --
 --
 _LimitExceededException :: AsError a => Getting (First ServiceError) a ServiceError

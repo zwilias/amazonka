@@ -73,7 +73,7 @@ data PutPermission = PutPermission'{_ppEventBusName
 --
 -- * 'ppPrincipal' - The 12-digit AWS account ID that you are permitting to put events to your default event bus. Specify "*" to permit any account to put events to your default event bus. If you specify "*" without specifying @Condition@ , avoid creating rules that may match undesirable events. To create more secure rules, make sure that the event pattern for each rule contains an @account@ field with a specific account ID from which to receive events. Rules with an account field do not match any events sent from other accounts.
 --
--- * 'ppStatementId' - An identifier string for the external account that you're granting permissions to. If you later want to revoke the permission for this external account, specify this @StatementId@ when you run 'RemovePermission' .
+-- * 'ppStatementId' - An identifier string for the external account that you are granting permissions to. If you later want to revoke the permission for this external account, specify this @StatementId@ when you run 'RemovePermission' .
 putPermission
     :: Text -- ^ 'ppAction'
     -> Text -- ^ 'ppPrincipal'
@@ -93,15 +93,7 @@ ppEventBusName = lens _ppEventBusName (\ s a -> s{_ppEventBusName = a})
 ppCondition :: Lens' PutPermission (Maybe Condition)
 ppCondition = lens _ppCondition (\ s a -> s{_ppCondition = a})
 
--- | The event bus associated with the rule. If you omit this, the default event bus is used.
-ppEventBusName :: Lens' PutPermission (Maybe Text)
-ppEventBusName = lens _ppEventBusName (\ s a -> s{_ppEventBusName = a})
-
--- | This parameter enables you to limit the permission to accounts that fulfill a certain condition, such as being a member of a certain AWS organization. For more information about AWS Organizations, see <https://docs.aws.amazon.com/organizations/latest/userguide/orgs_introduction.html What Is AWS Organizations?> in the /AWS Organizations User Guide/ . If you specify @Condition@ with an AWS organization ID and specify "*" as the value for @Principal@ , you grant permission to all the accounts in the named organization. The @Condition@ is a JSON string that must contain @Type@ , @Key@ , and @Value@ fields.
-ppCondition :: Lens' PutPermission (Maybe Condition)
-ppCondition = lens _ppCondition (\ s a -> s{_ppCondition = a})
-
--- | The action that you're enabling the other account to perform. Currently, this must be @events:PutEvents@ .
+-- | The action that you are enabling the other account to perform. Currently, this must be @events:PutEvents@ .
 ppAction :: Lens' PutPermission Text
 ppAction = lens _ppAction (\ s a -> s{_ppAction = a})
 
@@ -109,7 +101,7 @@ ppAction = lens _ppAction (\ s a -> s{_ppAction = a})
 ppPrincipal :: Lens' PutPermission Text
 ppPrincipal = lens _ppPrincipal (\ s a -> s{_ppPrincipal = a})
 
--- | An identifier string for the external account that you're granting permissions to. If you later want to revoke the permission for this external account, specify this @StatementId@ when you run 'RemovePermission' .
+-- | An identifier string for the external account that you are granting permissions to. If you later want to revoke the permission for this external account, specify this @StatementId@ when you run 'RemovePermission' .
 ppStatementId :: Lens' PutPermission Text
 ppStatementId = lens _ppStatementId (\ s a -> s{_ppStatementId = a})
 

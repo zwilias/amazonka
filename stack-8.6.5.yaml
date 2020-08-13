@@ -24,6 +24,7 @@ packages:
 # GENERATED
   - amazonka-alexa-business
   - amazonka-apigateway
+  - amazonka-apigatewaymanagementapi
   - amazonka-application-autoscaling
   - amazonka-appstream
   - amazonka-appsync
