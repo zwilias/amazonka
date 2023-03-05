@@ -55,7 +55,8 @@ presign ex rq a r ts = signRequest meta mempty auth
         . pair (CI.original hAMZSignedHeaders) (toBS shs)
         . pair (CI.original hAMZToken)         (toBS <$> _authToken a)
 
-    digest = Tag "UNSIGNED-PAYLOAD"
+    -- Empty digest hash, from https://docs.aws.amazon.com/AmazonS3/latest/API/sig-v4-header-based-auth.html
+    digest = Tag "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
 
     prepare = rqHeaders %~ ( hdr hHost (_endpointHost end) )
     end     = _svcEndpoint (_rqService rq) r
